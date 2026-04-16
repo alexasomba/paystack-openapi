@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransactionExportResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class TransactionExportResponseData implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'path' => 'string',
-        'expires_at' => 'string'
+        'expiresAt' => 'string'
     ];
 
     /**
@@ -71,7 +71,7 @@ class TransactionExportResponseData implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPIFormats = [
         'path' => null,
-        'expires_at' => null
+        'expiresAt' => null
     ];
 
     /**
@@ -81,7 +81,7 @@ class TransactionExportResponseData implements ModelInterface, ArrayAccess, \Jso
       */
     protected static array $openAPINullables = [
         'path' => false,
-        'expires_at' => false
+        'expiresAt' => false
     ];
 
     /**
@@ -171,7 +171,7 @@ class TransactionExportResponseData implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $attributeMap = [
         'path' => 'path',
-        'expires_at' => 'expiresAt'
+        'expiresAt' => 'expiresAt'
     ];
 
     /**
@@ -181,7 +181,7 @@ class TransactionExportResponseData implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $setters = [
         'path' => 'setPath',
-        'expires_at' => 'setExpiresAt'
+        'expiresAt' => 'setExpiresAt'
     ];
 
     /**
@@ -191,7 +191,7 @@ class TransactionExportResponseData implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $getters = [
         'path' => 'getPath',
-        'expires_at' => 'getExpiresAt'
+        'expiresAt' => 'getExpiresAt'
     ];
 
     /**
@@ -252,7 +252,7 @@ class TransactionExportResponseData implements ModelInterface, ArrayAccess, \Jso
     public function __construct(?array $data = null)
     {
         $this->setIfExists('path', $data ?? [], null);
-        $this->setIfExists('expires_at', $data ?? [], null);
+        $this->setIfExists('expiresAt', $data ?? [], null);
     }
 
     /**
@@ -285,8 +285,8 @@ class TransactionExportResponseData implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['path'] === null) {
             $invalidProperties[] = "'path' can't be null";
         }
-        if ($this->container['expires_at'] === null) {
-            $invalidProperties[] = "'expires_at' can't be null";
+        if ($this->container['expiresAt'] === null) {
+            $invalidProperties[] = "'expiresAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -331,28 +331,28 @@ class TransactionExportResponseData implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets expires_at
+     * Gets expiresAt
      *
      * @return string
      */
     public function getExpiresAt()
     {
-        return $this->container['expires_at'];
+        return $this->container['expiresAt'];
     }
 
     /**
-     * Sets expires_at
+     * Sets expiresAt
      *
-     * @param string $expires_at expires_at
+     * @param string $expiresAt expiresAt
      *
      * @return self
      */
-    public function setExpiresAt($expires_at)
+    public function setExpiresAt($expiresAt)
     {
-        if (is_null($expires_at)) {
-            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
+        if (is_null($expiresAt)) {
+            throw new \InvalidArgumentException('non-nullable expiresAt cannot be null');
         }
-        $this->container['expires_at'] = $expires_at;
+        $this->container['expiresAt'] = $expiresAt;
 
         return $this;
     }

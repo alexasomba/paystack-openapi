@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * CustomerDirectDebitActivationChargeRequest Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class CustomerDirectDebitActivationChargeRequest implements ModelInterface, Arra
       * @var string[]
       */
     protected static $openAPITypes = [
-        'authorization_id' => 'int'
+        'authorizationId' => 'int'
     ];
 
     /**
@@ -69,7 +69,7 @@ class CustomerDirectDebitActivationChargeRequest implements ModelInterface, Arra
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'authorization_id' => null
+        'authorizationId' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class CustomerDirectDebitActivationChargeRequest implements ModelInterface, Arra
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'authorization_id' => false
+        'authorizationId' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class CustomerDirectDebitActivationChargeRequest implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'authorization_id' => 'authorization_id'
+        'authorizationId' => 'authorization_id'
     ];
 
     /**
@@ -176,7 +176,7 @@ class CustomerDirectDebitActivationChargeRequest implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'authorization_id' => 'setAuthorizationId'
+        'authorizationId' => 'setAuthorizationId'
     ];
 
     /**
@@ -185,7 +185,7 @@ class CustomerDirectDebitActivationChargeRequest implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'authorization_id' => 'getAuthorizationId'
+        'authorizationId' => 'getAuthorizationId'
     ];
 
     /**
@@ -245,7 +245,7 @@ class CustomerDirectDebitActivationChargeRequest implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('authorization_id', $data ?? [], null);
+        $this->setIfExists('authorizationId', $data ?? [], null);
     }
 
     /**
@@ -275,8 +275,8 @@ class CustomerDirectDebitActivationChargeRequest implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['authorization_id'] === null) {
-            $invalidProperties[] = "'authorization_id' can't be null";
+        if ($this->container['authorizationId'] === null) {
+            $invalidProperties[] = "'authorizationId' can't be null";
         }
         return $invalidProperties;
     }
@@ -294,28 +294,28 @@ class CustomerDirectDebitActivationChargeRequest implements ModelInterface, Arra
 
 
     /**
-     * Gets authorization_id
+     * Gets authorizationId
      *
      * @return int
      */
     public function getAuthorizationId()
     {
-        return $this->container['authorization_id'];
+        return $this->container['authorizationId'];
     }
 
     /**
-     * Sets authorization_id
+     * Sets authorizationId
      *
-     * @param int $authorization_id The authorization ID gotten from the initiation response
+     * @param int $authorizationId The authorization ID gotten from the initiation response
      *
      * @return self
      */
-    public function setAuthorizationId($authorization_id)
+    public function setAuthorizationId($authorizationId)
     {
-        if (is_null($authorization_id)) {
-            throw new \InvalidArgumentException('non-nullable authorization_id cannot be null');
+        if (is_null($authorizationId)) {
+            throw new \InvalidArgumentException('non-nullable authorizationId cannot be null');
         }
-        $this->container['authorization_id'] = $authorization_id;
+        $this->container['authorizationId'] = $authorizationId;
 
         return $this;
     }

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransactionCheckAuthorization Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class TransactionCheckAuthorization implements ModelInterface, ArrayAccess, \Jso
     protected static $openAPITypes = [
         'email' => 'string',
         'amount' => 'int',
-        'authorization_code' => 'string',
+        'authorizationCode' => 'string',
         'currency' => 'string'
     ];
 
@@ -74,7 +74,7 @@ class TransactionCheckAuthorization implements ModelInterface, ArrayAccess, \Jso
     protected static $openAPIFormats = [
         'email' => null,
         'amount' => 'int32',
-        'authorization_code' => null,
+        'authorizationCode' => null,
         'currency' => null
     ];
 
@@ -86,7 +86,7 @@ class TransactionCheckAuthorization implements ModelInterface, ArrayAccess, \Jso
     protected static array $openAPINullables = [
         'email' => false,
         'amount' => false,
-        'authorization_code' => false,
+        'authorizationCode' => false,
         'currency' => false
     ];
 
@@ -178,7 +178,7 @@ class TransactionCheckAuthorization implements ModelInterface, ArrayAccess, \Jso
     protected static $attributeMap = [
         'email' => 'email',
         'amount' => 'amount',
-        'authorization_code' => 'authorization_code',
+        'authorizationCode' => 'authorization_code',
         'currency' => 'currency'
     ];
 
@@ -190,7 +190,7 @@ class TransactionCheckAuthorization implements ModelInterface, ArrayAccess, \Jso
     protected static $setters = [
         'email' => 'setEmail',
         'amount' => 'setAmount',
-        'authorization_code' => 'setAuthorizationCode',
+        'authorizationCode' => 'setAuthorizationCode',
         'currency' => 'setCurrency'
     ];
 
@@ -202,7 +202,7 @@ class TransactionCheckAuthorization implements ModelInterface, ArrayAccess, \Jso
     protected static $getters = [
         'email' => 'getEmail',
         'amount' => 'getAmount',
-        'authorization_code' => 'getAuthorizationCode',
+        'authorizationCode' => 'getAuthorizationCode',
         'currency' => 'getCurrency'
     ];
 
@@ -265,7 +265,7 @@ class TransactionCheckAuthorization implements ModelInterface, ArrayAccess, \Jso
     {
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('authorization_code', $data ?? [], null);
+        $this->setIfExists('authorizationCode', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
     }
 
@@ -372,28 +372,28 @@ class TransactionCheckAuthorization implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets authorization_code
+     * Gets authorizationCode
      *
      * @return string|null
      */
     public function getAuthorizationCode()
     {
-        return $this->container['authorization_code'];
+        return $this->container['authorizationCode'];
     }
 
     /**
-     * Sets authorization_code
+     * Sets authorizationCode
      *
-     * @param string|null $authorization_code Valid authorization code to charge
+     * @param string|null $authorizationCode Valid authorization code to charge
      *
      * @return self
      */
-    public function setAuthorizationCode($authorization_code)
+    public function setAuthorizationCode($authorizationCode)
     {
-        if (is_null($authorization_code)) {
-            throw new \InvalidArgumentException('non-nullable authorization_code cannot be null');
+        if (is_null($authorizationCode)) {
+            throw new \InvalidArgumentException('non-nullable authorizationCode cannot be null');
         }
-        $this->container['authorization_code'] = $authorization_code;
+        $this->container['authorizationCode'] = $authorizationCode;
 
         return $this;
     }

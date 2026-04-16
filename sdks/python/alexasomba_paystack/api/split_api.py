@@ -51,7 +51,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_add_subaccount(
+    def add_subaccount(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         split_subaccounts: Optional[SplitSubaccounts] = None,
@@ -98,7 +98,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_add_subaccount_serialize(
+        _param = self._add_subaccount_serialize(
             id=id,
             split_subaccounts=split_subaccounts,
             _request_auth=_request_auth,
@@ -123,7 +123,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_add_subaccount_with_http_info(
+    def add_subaccount_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         split_subaccounts: Optional[SplitSubaccounts] = None,
@@ -170,7 +170,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_add_subaccount_serialize(
+        _param = self._add_subaccount_serialize(
             id=id,
             split_subaccounts=split_subaccounts,
             _request_auth=_request_auth,
@@ -195,7 +195,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_add_subaccount_without_preload_content(
+    def add_subaccount_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         split_subaccounts: Optional[SplitSubaccounts] = None,
@@ -242,7 +242,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_add_subaccount_serialize(
+        _param = self._add_subaccount_serialize(
             id=id,
             split_subaccounts=split_subaccounts,
             _request_auth=_request_auth,
@@ -262,7 +262,7 @@ class SplitApi:
         return response_data.response
 
 
-    def _split_add_subaccount_serialize(
+    def _add_subaccount_serialize(
         self,
         id,
         split_subaccounts,
@@ -344,7 +344,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_create(
+    def create(
         self,
         split_create: Optional[SplitCreate] = None,
         _request_timeout: Union[
@@ -388,7 +388,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_create_serialize(
+        _param = self._create_serialize(
             split_create=split_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -412,7 +412,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_create_with_http_info(
+    def create_with_http_info(
         self,
         split_create: Optional[SplitCreate] = None,
         _request_timeout: Union[
@@ -456,7 +456,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_create_serialize(
+        _param = self._create_serialize(
             split_create=split_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -480,7 +480,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_create_without_preload_content(
+    def create_without_preload_content(
         self,
         split_create: Optional[SplitCreate] = None,
         _request_timeout: Union[
@@ -524,7 +524,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_create_serialize(
+        _param = self._create_serialize(
             split_create=split_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -543,7 +543,7 @@ class SplitApi:
         return response_data.response
 
 
-    def _split_create_serialize(
+    def _create_serialize(
         self,
         split_create,
         _request_auth,
@@ -622,7 +622,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_fetch(
+    def fetch(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         _request_timeout: Union[
@@ -666,7 +666,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -691,7 +691,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         _request_timeout: Union[
@@ -735,7 +735,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -760,7 +760,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         _request_timeout: Union[
@@ -804,7 +804,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -824,7 +824,7 @@ class SplitApi:
         return response_data.response
 
 
-    def _split_fetch_serialize(
+    def _fetch_serialize(
         self,
         id,
         _request_auth,
@@ -889,7 +889,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_list(
+    def list(
         self,
         subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
         name: Annotated[Optional[StrictStr], Field(description="The name of the split")] = None,
@@ -954,7 +954,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_list_serialize(
+        _param = self._list_serialize(
             subaccount_code=subaccount_code,
             name=name,
             active=active,
@@ -986,7 +986,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_list_with_http_info(
+    def list_with_http_info(
         self,
         subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
         name: Annotated[Optional[StrictStr], Field(description="The name of the split")] = None,
@@ -1051,7 +1051,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_list_serialize(
+        _param = self._list_serialize(
             subaccount_code=subaccount_code,
             name=name,
             active=active,
@@ -1083,7 +1083,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_list_without_preload_content(
+    def list_without_preload_content(
         self,
         subaccount_code: Annotated[Optional[StrictStr], Field(description="Filter by subaccount code")] = None,
         name: Annotated[Optional[StrictStr], Field(description="The name of the split")] = None,
@@ -1148,7 +1148,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_list_serialize(
+        _param = self._list_serialize(
             subaccount_code=subaccount_code,
             name=name,
             active=active,
@@ -1175,7 +1175,7 @@ class SplitApi:
         return response_data.response
 
 
-    def _split_list_serialize(
+    def _list_serialize(
         self,
         subaccount_code,
         name,
@@ -1295,7 +1295,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_remove_subaccount(
+    def remove_subaccount(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         split_subaccount_remove: Optional[SplitSubaccountRemove] = None,
@@ -1342,7 +1342,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_remove_subaccount_serialize(
+        _param = self._remove_subaccount_serialize(
             id=id,
             split_subaccount_remove=split_subaccount_remove,
             _request_auth=_request_auth,
@@ -1367,7 +1367,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_remove_subaccount_with_http_info(
+    def remove_subaccount_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         split_subaccount_remove: Optional[SplitSubaccountRemove] = None,
@@ -1414,7 +1414,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_remove_subaccount_serialize(
+        _param = self._remove_subaccount_serialize(
             id=id,
             split_subaccount_remove=split_subaccount_remove,
             _request_auth=_request_auth,
@@ -1439,7 +1439,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_remove_subaccount_without_preload_content(
+    def remove_subaccount_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the split configuration to fetch")],
         split_subaccount_remove: Optional[SplitSubaccountRemove] = None,
@@ -1486,7 +1486,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_remove_subaccount_serialize(
+        _param = self._remove_subaccount_serialize(
             id=id,
             split_subaccount_remove=split_subaccount_remove,
             _request_auth=_request_auth,
@@ -1506,7 +1506,7 @@ class SplitApi:
         return response_data.response
 
 
-    def _split_remove_subaccount_serialize(
+    def _remove_subaccount_serialize(
         self,
         id,
         split_subaccount_remove,
@@ -1588,7 +1588,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_update(
+    def update(
         self,
         id: StrictStr,
         split_update: Optional[SplitUpdate] = None,
@@ -1635,7 +1635,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_update_serialize(
+        _param = self._update_serialize(
             id=id,
             split_update=split_update,
             _request_auth=_request_auth,
@@ -1661,7 +1661,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_update_with_http_info(
+    def update_with_http_info(
         self,
         id: StrictStr,
         split_update: Optional[SplitUpdate] = None,
@@ -1708,7 +1708,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_update_serialize(
+        _param = self._update_serialize(
             id=id,
             split_update=split_update,
             _request_auth=_request_auth,
@@ -1734,7 +1734,7 @@ class SplitApi:
 
 
     @validate_call
-    def split_update_without_preload_content(
+    def update_without_preload_content(
         self,
         id: StrictStr,
         split_update: Optional[SplitUpdate] = None,
@@ -1781,7 +1781,7 @@ class SplitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._split_update_serialize(
+        _param = self._update_serialize(
             id=id,
             split_update=split_update,
             _request_auth=_request_auth,
@@ -1802,7 +1802,7 @@ class SplitApi:
         return response_data.response
 
 
-    def _split_update_serialize(
+    def _update_serialize(
         self,
         id,
         split_update,

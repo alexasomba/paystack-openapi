@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * CursorMeta Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class CursorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'next' => 'string',
         'previous' => 'string',
-        'per_page' => 'int'
+        'perPage' => 'int'
     ];
 
     /**
@@ -73,7 +73,7 @@ class CursorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'next' => null,
         'previous' => null,
-        'per_page' => null
+        'perPage' => null
     ];
 
     /**
@@ -84,7 +84,7 @@ class CursorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'next' => true,
         'previous' => true,
-        'per_page' => false
+        'perPage' => false
     ];
 
     /**
@@ -175,7 +175,7 @@ class CursorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'next' => 'next',
         'previous' => 'previous',
-        'per_page' => 'perPage'
+        'perPage' => 'perPage'
     ];
 
     /**
@@ -186,7 +186,7 @@ class CursorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'next' => 'setNext',
         'previous' => 'setPrevious',
-        'per_page' => 'setPerPage'
+        'perPage' => 'setPerPage'
     ];
 
     /**
@@ -197,7 +197,7 @@ class CursorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'next' => 'getNext',
         'previous' => 'getPrevious',
-        'per_page' => 'getPerPage'
+        'perPage' => 'getPerPage'
     ];
 
     /**
@@ -259,7 +259,7 @@ class CursorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('next', $data ?? [], null);
         $this->setIfExists('previous', $data ?? [], null);
-        $this->setIfExists('per_page', $data ?? [], null);
+        $this->setIfExists('perPage', $data ?? [], null);
     }
 
     /**
@@ -295,8 +295,8 @@ class CursorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['previous'] === null && !$this->isNullableSetToNull('previous')) {
             $invalidProperties[] = "'previous' can't be null";
         }
-        if ($this->container['per_page'] === null) {
-            $invalidProperties[] = "'per_page' can't be null";
+        if ($this->container['perPage'] === null) {
+            $invalidProperties[] = "'perPage' can't be null";
         }
         return $invalidProperties;
     }
@@ -382,28 +382,28 @@ class CursorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets per_page
+     * Gets perPage
      *
      * @return int
      */
     public function getPerPage()
     {
-        return $this->container['per_page'];
+        return $this->container['perPage'];
     }
 
     /**
-     * Sets per_page
+     * Sets perPage
      *
-     * @param int $per_page per_page
+     * @param int $perPage perPage
      *
      * @return self
      */
-    public function setPerPage($per_page)
+    public function setPerPage($perPage)
     {
-        if (is_null($per_page)) {
-            throw new \InvalidArgumentException('non-nullable per_page cannot be null');
+        if (is_null($perPage)) {
+            throw new \InvalidArgumentException('non-nullable perPage cannot be null');
         }
-        $this->container['per_page'] = $per_page;
+        $this->container['perPage'] = $perPage;
 
         return $this;
     }

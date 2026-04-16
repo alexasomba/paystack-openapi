@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * CustomerInitializeDirectDebitRequest Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class CustomerInitializeDirectDebitRequest implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account' => '\Alexasomba\\Paystack\Model\CustomerInitializeDirectDebitAccount',
-        'address' => '\Alexasomba\\Paystack\Model\CustomerInitializeDirectDebitAddress'
+        'account' => '\Alexasomba\Paystack\Model\CustomerInitializeDirectDebitAccount',
+        'address' => '\Alexasomba\Paystack\Model\CustomerInitializeDirectDebitAddress'
     ];
 
     /**
@@ -306,7 +306,7 @@ class CustomerInitializeDirectDebitRequest implements ModelInterface, ArrayAcces
     /**
      * Gets account
      *
-     * @return \Alexasomba\\Paystack\Model\CustomerInitializeDirectDebitAccount
+     * @return \Alexasomba\Paystack\Model\CustomerInitializeDirectDebitAccount
      */
     public function getAccount()
     {
@@ -316,7 +316,7 @@ class CustomerInitializeDirectDebitRequest implements ModelInterface, ArrayAcces
     /**
      * Sets account
      *
-     * @param \Alexasomba\\Paystack\Model\CustomerInitializeDirectDebitAccount $account account
+     * @param \Alexasomba\Paystack\Model\CustomerInitializeDirectDebitAccount $account account
      *
      * @return self
      */
@@ -333,7 +333,7 @@ class CustomerInitializeDirectDebitRequest implements ModelInterface, ArrayAcces
     /**
      * Gets address
      *
-     * @return \Alexasomba\\Paystack\Model\CustomerInitializeDirectDebitAddress
+     * @return \Alexasomba\Paystack\Model\CustomerInitializeDirectDebitAddress
      */
     public function getAddress()
     {
@@ -343,7 +343,7 @@ class CustomerInitializeDirectDebitRequest implements ModelInterface, ArrayAcces
     /**
      * Sets address
      *
-     * @param \Alexasomba\\Paystack\Model\CustomerInitializeDirectDebitAddress $address address
+     * @param \Alexasomba\Paystack\Model\CustomerInitializeDirectDebitAddress $address address
      *
      * @return self
      */

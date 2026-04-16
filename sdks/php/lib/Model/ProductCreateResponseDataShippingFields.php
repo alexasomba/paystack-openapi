@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * ProductCreateResponseDataShippingFields Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ProductCreateResponseDataShippingFields implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'delivery_note' => 'string'
+        'deliveryNote' => 'string'
     ];
 
     /**
@@ -69,7 +69,7 @@ class ProductCreateResponseDataShippingFields implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'delivery_note' => null
+        'deliveryNote' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class ProductCreateResponseDataShippingFields implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'delivery_note' => false
+        'deliveryNote' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class ProductCreateResponseDataShippingFields implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'delivery_note' => 'delivery_note'
+        'deliveryNote' => 'delivery_note'
     ];
 
     /**
@@ -176,7 +176,7 @@ class ProductCreateResponseDataShippingFields implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'delivery_note' => 'setDeliveryNote'
+        'deliveryNote' => 'setDeliveryNote'
     ];
 
     /**
@@ -185,7 +185,7 @@ class ProductCreateResponseDataShippingFields implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'delivery_note' => 'getDeliveryNote'
+        'deliveryNote' => 'getDeliveryNote'
     ];
 
     /**
@@ -245,7 +245,7 @@ class ProductCreateResponseDataShippingFields implements ModelInterface, ArrayAc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('delivery_note', $data ?? [], null);
+        $this->setIfExists('deliveryNote', $data ?? [], null);
     }
 
     /**
@@ -275,8 +275,8 @@ class ProductCreateResponseDataShippingFields implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['delivery_note'] === null) {
-            $invalidProperties[] = "'delivery_note' can't be null";
+        if ($this->container['deliveryNote'] === null) {
+            $invalidProperties[] = "'deliveryNote' can't be null";
         }
         return $invalidProperties;
     }
@@ -294,28 +294,28 @@ class ProductCreateResponseDataShippingFields implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets delivery_note
+     * Gets deliveryNote
      *
      * @return string
      */
     public function getDeliveryNote()
     {
-        return $this->container['delivery_note'];
+        return $this->container['deliveryNote'];
     }
 
     /**
-     * Sets delivery_note
+     * Sets deliveryNote
      *
-     * @param string $delivery_note delivery_note
+     * @param string $deliveryNote deliveryNote
      *
      * @return self
      */
-    public function setDeliveryNote($delivery_note)
+    public function setDeliveryNote($deliveryNote)
     {
-        if (is_null($delivery_note)) {
-            throw new \InvalidArgumentException('non-nullable delivery_note cannot be null');
+        if (is_null($deliveryNote)) {
+            throw new \InvalidArgumentException('non-nullable deliveryNote cannot be null');
         }
-        $this->container['delivery_note'] = $delivery_note;
+        $this->container['deliveryNote'] = $deliveryNote;
 
         return $this;
     }

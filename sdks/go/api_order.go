@@ -25,31 +25,31 @@ import (
 // OrderAPIService OrderAPI service
 type OrderAPIService service
 
-type ApiOrderCreateRequest struct {
+type ApiCreateRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
 	orderCreate *OrderCreate
 }
 
-func (r ApiOrderCreateRequest) OrderCreate(orderCreate OrderCreate) ApiOrderCreateRequest {
+func (r ApiCreateRequest) OrderCreate(orderCreate OrderCreate) ApiCreateRequest {
 	r.orderCreate = &orderCreate
 	return r
 }
 
-func (r ApiOrderCreateRequest) Execute() (*OrderCreateResponse, *http.Response, error) {
-	return r.ApiService.OrderCreateExecute(r)
+func (r ApiCreateRequest) Execute() (*OrderCreateResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-OrderCreate Create Order
+Create Create Order
 
 Create an order for selected items
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOrderCreateRequest
+ @return ApiCreateRequest
 */
-func (a *OrderAPIService) OrderCreate(ctx context.Context) ApiOrderCreateRequest {
-	return ApiOrderCreateRequest{
+func (a *OrderAPIService) Create(ctx context.Context) ApiCreateRequest {
+	return ApiCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *OrderAPIService) OrderCreate(ctx context.Context) ApiOrderCreateRequest
 
 // Execute executes the request
 //  @return OrderCreateResponse
-func (a *OrderAPIService) OrderCreateExecute(r ApiOrderCreateRequest) (*OrderCreateResponse, *http.Response, error) {
+func (a *OrderAPIService) CreateExecute(r ApiCreateRequest) (*OrderCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -65,7 +65,7 @@ func (a *OrderAPIService) OrderCreateExecute(r ApiOrderCreateRequest) (*OrderCre
 		localVarReturnValue  *OrderCreateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.OrderCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -143,27 +143,27 @@ func (a *OrderAPIService) OrderCreateExecute(r ApiOrderCreateRequest) (*OrderCre
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOrderFetchRequest struct {
+type ApiFetchRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
 	id int32
 }
 
-func (r ApiOrderFetchRequest) Execute() (*OrderFetchResponse, *http.Response, error) {
-	return r.ApiService.OrderFetchExecute(r)
+func (r ApiFetchRequest) Execute() (*OrderFetchResponse, *http.Response, error) {
+	return r.ApiService.FetchExecute(r)
 }
 
 /*
-OrderFetch Fetch Order
+Fetch Fetch Order
 
 Fetch the details of a previously created order
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the order
- @return ApiOrderFetchRequest
+ @return ApiFetchRequest
 */
-func (a *OrderAPIService) OrderFetch(ctx context.Context, id int32) ApiOrderFetchRequest {
-	return ApiOrderFetchRequest{
+func (a *OrderAPIService) Fetch(ctx context.Context, id int32) ApiFetchRequest {
+	return ApiFetchRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -172,7 +172,7 @@ func (a *OrderAPIService) OrderFetch(ctx context.Context, id int32) ApiOrderFetc
 
 // Execute executes the request
 //  @return OrderFetchResponse
-func (a *OrderAPIService) OrderFetchExecute(r ApiOrderFetchRequest) (*OrderFetchResponse, *http.Response, error) {
+func (a *OrderAPIService) FetchExecute(r ApiFetchRequest) (*OrderFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -180,7 +180,7 @@ func (a *OrderAPIService) OrderFetchExecute(r ApiOrderFetchRequest) (*OrderFetch
 		localVarReturnValue  *OrderFetchResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.OrderFetch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.Fetch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -268,7 +268,7 @@ func (a *OrderAPIService) OrderFetchExecute(r ApiOrderFetchRequest) (*OrderFetch
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOrderListRequest struct {
+type ApiListRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
 	perPage *int32
@@ -278,43 +278,43 @@ type ApiOrderListRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiOrderListRequest) PerPage(perPage int32) ApiOrderListRequest {
+func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiOrderListRequest) Page(page int32) ApiOrderListRequest {
+func (r ApiListRequest) Page(page int32) ApiListRequest {
 	r.page = &page
 	return r
 }
 
 // The start date
-func (r ApiOrderListRequest) From(from time.Time) ApiOrderListRequest {
+func (r ApiListRequest) From(from time.Time) ApiListRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiOrderListRequest) To(to time.Time) ApiOrderListRequest {
+func (r ApiListRequest) To(to time.Time) ApiListRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiOrderListRequest) Execute() (*OrderListResponse, *http.Response, error) {
-	return r.ApiService.OrderListExecute(r)
+func (r ApiListRequest) Execute() (*OrderListResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-OrderList List Orders
+List List Orders
 
 List the previously created orders
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOrderListRequest
+ @return ApiListRequest
 */
-func (a *OrderAPIService) OrderList(ctx context.Context) ApiOrderListRequest {
-	return ApiOrderListRequest{
+func (a *OrderAPIService) List(ctx context.Context) ApiListRequest {
+	return ApiListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -322,7 +322,7 @@ func (a *OrderAPIService) OrderList(ctx context.Context) ApiOrderListRequest {
 
 // Execute executes the request
 //  @return OrderListResponse
-func (a *OrderAPIService) OrderListExecute(r ApiOrderListRequest) (*OrderListResponse, *http.Response, error) {
+func (a *OrderAPIService) ListExecute(r ApiListRequest) (*OrderListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -330,7 +330,7 @@ func (a *OrderAPIService) OrderListExecute(r ApiOrderListRequest) (*OrderListRes
 		localVarReturnValue  *OrderListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.OrderList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -429,27 +429,27 @@ func (a *OrderAPIService) OrderListExecute(r ApiOrderListRequest) (*OrderListRes
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOrderProductRequest struct {
+type ApiProductRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
 	id int32
 }
 
-func (r ApiOrderProductRequest) Execute() (*OrderFetchProductResponse, *http.Response, error) {
-	return r.ApiService.OrderProductExecute(r)
+func (r ApiProductRequest) Execute() (*OrderFetchProductResponse, *http.Response, error) {
+	return r.ApiService.ProductExecute(r)
 }
 
 /*
-OrderProduct Fetch Product Orders
+Product Fetch Product Orders
 
 Fetch all orders for a particular product
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the order
- @return ApiOrderProductRequest
+ @return ApiProductRequest
 */
-func (a *OrderAPIService) OrderProduct(ctx context.Context, id int32) ApiOrderProductRequest {
-	return ApiOrderProductRequest{
+func (a *OrderAPIService) Product(ctx context.Context, id int32) ApiProductRequest {
+	return ApiProductRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -458,7 +458,7 @@ func (a *OrderAPIService) OrderProduct(ctx context.Context, id int32) ApiOrderPr
 
 // Execute executes the request
 //  @return OrderFetchProductResponse
-func (a *OrderAPIService) OrderProductExecute(r ApiOrderProductRequest) (*OrderFetchProductResponse, *http.Response, error) {
+func (a *OrderAPIService) ProductExecute(r ApiProductRequest) (*OrderFetchProductResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -466,7 +466,7 @@ func (a *OrderAPIService) OrderProductExecute(r ApiOrderProductRequest) (*OrderF
 		localVarReturnValue  *OrderFetchProductResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.OrderProduct")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.Product")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -554,27 +554,27 @@ func (a *OrderAPIService) OrderProductExecute(r ApiOrderProductRequest) (*OrderF
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOrderValidateRequest struct {
+type ApiValidateRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
 	code string
 }
 
-func (r ApiOrderValidateRequest) Execute() (*OrderValidateResponse, *http.Response, error) {
-	return r.ApiService.OrderValidateExecute(r)
+func (r ApiValidateRequest) Execute() (*OrderValidateResponse, *http.Response, error) {
+	return r.ApiService.ValidateExecute(r)
 }
 
 /*
-OrderValidate Validate Order
+Validate Validate Order
 
 Validate a pay for me order
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param code The unique code of a previously created order
- @return ApiOrderValidateRequest
+ @return ApiValidateRequest
 */
-func (a *OrderAPIService) OrderValidate(ctx context.Context, code string) ApiOrderValidateRequest {
-	return ApiOrderValidateRequest{
+func (a *OrderAPIService) Validate(ctx context.Context, code string) ApiValidateRequest {
+	return ApiValidateRequest{
 		ApiService: a,
 		ctx: ctx,
 		code: code,
@@ -583,7 +583,7 @@ func (a *OrderAPIService) OrderValidate(ctx context.Context, code string) ApiOrd
 
 // Execute executes the request
 //  @return OrderValidateResponse
-func (a *OrderAPIService) OrderValidateExecute(r ApiOrderValidateRequest) (*OrderValidateResponse, *http.Response, error) {
+func (a *OrderAPIService) ValidateExecute(r ApiValidateRequest) (*OrderValidateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -591,7 +591,7 @@ func (a *OrderAPIService) OrderValidateExecute(r ApiOrderValidateRequest) (*Orde
 		localVarReturnValue  *OrderValidateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.OrderValidate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrderAPIService.Validate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

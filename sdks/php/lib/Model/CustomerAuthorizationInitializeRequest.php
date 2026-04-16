@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * CustomerAuthorizationInitializeRequest Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class CustomerAuthorizationInitializeRequest implements ModelInterface, ArrayAcc
     protected static $openAPITypes = [
         'email' => 'string',
         'channel' => 'string',
-        'callback_url' => 'string',
-        'account' => '\Alexasomba\\Paystack\Model\CustomerAuthorizationInitializeAccount',
-        'address' => '\Alexasomba\\Paystack\Model\CustomerAuthorizationInitializeAddress'
+        'callbackUrl' => 'string',
+        'account' => '\Alexasomba\Paystack\Model\CustomerAuthorizationInitializeAccount',
+        'address' => '\Alexasomba\Paystack\Model\CustomerAuthorizationInitializeAddress'
     ];
 
     /**
@@ -75,7 +75,7 @@ class CustomerAuthorizationInitializeRequest implements ModelInterface, ArrayAcc
     protected static $openAPIFormats = [
         'email' => null,
         'channel' => null,
-        'callback_url' => null,
+        'callbackUrl' => null,
         'account' => null,
         'address' => null
     ];
@@ -88,7 +88,7 @@ class CustomerAuthorizationInitializeRequest implements ModelInterface, ArrayAcc
     protected static array $openAPINullables = [
         'email' => false,
         'channel' => false,
-        'callback_url' => false,
+        'callbackUrl' => false,
         'account' => false,
         'address' => false
     ];
@@ -181,7 +181,7 @@ class CustomerAuthorizationInitializeRequest implements ModelInterface, ArrayAcc
     protected static $attributeMap = [
         'email' => 'email',
         'channel' => 'channel',
-        'callback_url' => 'callback_url',
+        'callbackUrl' => 'callback_url',
         'account' => 'account',
         'address' => 'address'
     ];
@@ -194,7 +194,7 @@ class CustomerAuthorizationInitializeRequest implements ModelInterface, ArrayAcc
     protected static $setters = [
         'email' => 'setEmail',
         'channel' => 'setChannel',
-        'callback_url' => 'setCallbackUrl',
+        'callbackUrl' => 'setCallbackUrl',
         'account' => 'setAccount',
         'address' => 'setAddress'
     ];
@@ -207,7 +207,7 @@ class CustomerAuthorizationInitializeRequest implements ModelInterface, ArrayAcc
     protected static $getters = [
         'email' => 'getEmail',
         'channel' => 'getChannel',
-        'callback_url' => 'getCallbackUrl',
+        'callbackUrl' => 'getCallbackUrl',
         'account' => 'getAccount',
         'address' => 'getAddress'
     ];
@@ -284,7 +284,7 @@ class CustomerAuthorizationInitializeRequest implements ModelInterface, ArrayAcc
     {
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('channel', $data ?? [], null);
-        $this->setIfExists('callback_url', $data ?? [], null);
+        $this->setIfExists('callbackUrl', $data ?? [], null);
         $this->setIfExists('account', $data ?? [], null);
         $this->setIfExists('address', $data ?? [], null);
     }
@@ -411,28 +411,28 @@ class CustomerAuthorizationInitializeRequest implements ModelInterface, ArrayAcc
     }
 
     /**
-     * Gets callback_url
+     * Gets callbackUrl
      *
      * @return string|null
      */
     public function getCallbackUrl()
     {
-        return $this->container['callback_url'];
+        return $this->container['callbackUrl'];
     }
 
     /**
-     * Sets callback_url
+     * Sets callbackUrl
      *
-     * @param string|null $callback_url Fully qualified url (e.g. https://example.com/) to redirect your customer to
+     * @param string|null $callbackUrl Fully qualified url (e.g. https://example.com/) to redirect your customer to
      *
      * @return self
      */
-    public function setCallbackUrl($callback_url)
+    public function setCallbackUrl($callbackUrl)
     {
-        if (is_null($callback_url)) {
-            throw new \InvalidArgumentException('non-nullable callback_url cannot be null');
+        if (is_null($callbackUrl)) {
+            throw new \InvalidArgumentException('non-nullable callbackUrl cannot be null');
         }
-        $this->container['callback_url'] = $callback_url;
+        $this->container['callbackUrl'] = $callbackUrl;
 
         return $this;
     }
@@ -440,7 +440,7 @@ class CustomerAuthorizationInitializeRequest implements ModelInterface, ArrayAcc
     /**
      * Gets account
      *
-     * @return \Alexasomba\\Paystack\Model\CustomerAuthorizationInitializeAccount|null
+     * @return \Alexasomba\Paystack\Model\CustomerAuthorizationInitializeAccount|null
      */
     public function getAccount()
     {
@@ -450,7 +450,7 @@ class CustomerAuthorizationInitializeRequest implements ModelInterface, ArrayAcc
     /**
      * Sets account
      *
-     * @param \Alexasomba\\Paystack\Model\CustomerAuthorizationInitializeAccount|null $account account
+     * @param \Alexasomba\Paystack\Model\CustomerAuthorizationInitializeAccount|null $account account
      *
      * @return self
      */
@@ -467,7 +467,7 @@ class CustomerAuthorizationInitializeRequest implements ModelInterface, ArrayAcc
     /**
      * Gets address
      *
-     * @return \Alexasomba\\Paystack\Model\CustomerAuthorizationInitializeAddress|null
+     * @return \Alexasomba\Paystack\Model\CustomerAuthorizationInitializeAddress|null
      */
     public function getAddress()
     {
@@ -477,7 +477,7 @@ class CustomerAuthorizationInitializeRequest implements ModelInterface, ArrayAcc
     /**
      * Sets address
      *
-     * @param \Alexasomba\\Paystack\Model\CustomerAuthorizationInitializeAddress|null $address address
+     * @param \Alexasomba\Paystack\Model\CustomerAuthorizationInitializeAddress|null $address address
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * DedicatedVirtualAccountCreate Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,10 +59,10 @@ class DedicatedVirtualAccountCreate implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'customer' => 'string',
-        'preferred_bank' => 'string',
+        'preferredBank' => 'string',
         'subaccount' => 'string',
-        'split_code' => 'string',
-        'metadata' => '\Alexasomba\\Paystack\Model\TransactionInitializeMetadata'
+        'splitCode' => 'string',
+        'metadata' => '\Alexasomba\Paystack\Model\TransactionInitializeMetadata'
     ];
 
     /**
@@ -74,9 +74,9 @@ class DedicatedVirtualAccountCreate implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPIFormats = [
         'customer' => null,
-        'preferred_bank' => null,
+        'preferredBank' => null,
         'subaccount' => null,
-        'split_code' => null,
+        'splitCode' => null,
         'metadata' => null
     ];
 
@@ -87,9 +87,9 @@ class DedicatedVirtualAccountCreate implements ModelInterface, ArrayAccess, \Jso
       */
     protected static array $openAPINullables = [
         'customer' => false,
-        'preferred_bank' => false,
+        'preferredBank' => false,
         'subaccount' => false,
-        'split_code' => false,
+        'splitCode' => false,
         'metadata' => false
     ];
 
@@ -180,9 +180,9 @@ class DedicatedVirtualAccountCreate implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $attributeMap = [
         'customer' => 'customer',
-        'preferred_bank' => 'preferred_bank',
+        'preferredBank' => 'preferred_bank',
         'subaccount' => 'subaccount',
-        'split_code' => 'split_code',
+        'splitCode' => 'split_code',
         'metadata' => 'metadata'
     ];
 
@@ -193,9 +193,9 @@ class DedicatedVirtualAccountCreate implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $setters = [
         'customer' => 'setCustomer',
-        'preferred_bank' => 'setPreferredBank',
+        'preferredBank' => 'setPreferredBank',
         'subaccount' => 'setSubaccount',
-        'split_code' => 'setSplitCode',
+        'splitCode' => 'setSplitCode',
         'metadata' => 'setMetadata'
     ];
 
@@ -206,9 +206,9 @@ class DedicatedVirtualAccountCreate implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $getters = [
         'customer' => 'getCustomer',
-        'preferred_bank' => 'getPreferredBank',
+        'preferredBank' => 'getPreferredBank',
         'subaccount' => 'getSubaccount',
-        'split_code' => 'getSplitCode',
+        'splitCode' => 'getSplitCode',
         'metadata' => 'getMetadata'
     ];
 
@@ -270,9 +270,9 @@ class DedicatedVirtualAccountCreate implements ModelInterface, ArrayAccess, \Jso
     public function __construct(?array $data = null)
     {
         $this->setIfExists('customer', $data ?? [], null);
-        $this->setIfExists('preferred_bank', $data ?? [], null);
+        $this->setIfExists('preferredBank', $data ?? [], null);
         $this->setIfExists('subaccount', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
+        $this->setIfExists('splitCode', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
     }
 
@@ -349,28 +349,28 @@ class DedicatedVirtualAccountCreate implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets preferred_bank
+     * Gets preferredBank
      *
      * @return string|null
      */
     public function getPreferredBank()
     {
-        return $this->container['preferred_bank'];
+        return $this->container['preferredBank'];
     }
 
     /**
-     * Sets preferred_bank
+     * Sets preferredBank
      *
-     * @param string|null $preferred_bank The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint
+     * @param string|null $preferredBank The bank slug for preferred bank. To get a list of available banks, use the List Providers endpoint
      *
      * @return self
      */
-    public function setPreferredBank($preferred_bank)
+    public function setPreferredBank($preferredBank)
     {
-        if (is_null($preferred_bank)) {
-            throw new \InvalidArgumentException('non-nullable preferred_bank cannot be null');
+        if (is_null($preferredBank)) {
+            throw new \InvalidArgumentException('non-nullable preferredBank cannot be null');
         }
-        $this->container['preferred_bank'] = $preferred_bank;
+        $this->container['preferredBank'] = $preferredBank;
 
         return $this;
     }
@@ -403,28 +403,28 @@ class DedicatedVirtualAccountCreate implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets split_code
+     * Gets splitCode
      *
      * @return string|null
      */
     public function getSplitCode()
     {
-        return $this->container['split_code'];
+        return $this->container['splitCode'];
     }
 
     /**
-     * Sets split_code
+     * Sets splitCode
      *
-     * @param string|null $split_code Split code consisting of the lists of accounts you want to split the transaction with
+     * @param string|null $splitCode Split code consisting of the lists of accounts you want to split the transaction with
      *
      * @return self
      */
-    public function setSplitCode($split_code)
+    public function setSplitCode($splitCode)
     {
-        if (is_null($split_code)) {
-            throw new \InvalidArgumentException('non-nullable split_code cannot be null');
+        if (is_null($splitCode)) {
+            throw new \InvalidArgumentException('non-nullable splitCode cannot be null');
         }
-        $this->container['split_code'] = $split_code;
+        $this->container['splitCode'] = $splitCode;
 
         return $this;
     }
@@ -432,7 +432,7 @@ class DedicatedVirtualAccountCreate implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\\Paystack\Model\TransactionInitializeMetadata|null
+     * @return \Alexasomba\Paystack\Model\TransactionInitializeMetadata|null
      */
     public function getMetadata()
     {
@@ -442,7 +442,7 @@ class DedicatedVirtualAccountCreate implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\\Paystack\Model\TransactionInitializeMetadata|null $metadata metadata
+     * @param \Alexasomba\Paystack\Model\TransactionInitializeMetadata|null $metadata metadata
      *
      * @return self
      */

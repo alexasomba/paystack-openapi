@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from alexasomba_paystack.models.subscription_create_response_data_authorization import SubscriptionCreateResponseDataAuthorization
 from typing import Optional, Set
@@ -40,8 +40,8 @@ class SubscriptionCreateResponseData(BaseModel):
     subscription_code: StrictStr
     email_token: StrictStr
     id: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     __properties: ClassVar[List[str]] = ["customer", "plan", "integration", "domain", "start", "status", "quantity", "amount", "authorization", "subscription_code", "email_token", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
@@ -110,7 +110,7 @@ class SubscriptionCreateResponseData(BaseModel):
             "subscription_code": obj.get("subscription_code"),
             "email_token": obj.get("email_token"),
             "id": obj.get("id"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })
         return _obj

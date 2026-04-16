@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransferBulk Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class TransferBulk implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'source' => 'string',
         'currency' => 'string',
-        'transfers' => '\Alexasomba\\Paystack\Model\TransferBase[]'
+        'transfers' => '\Alexasomba\Paystack\Model\TransferBase[]'
     ];
 
     /**
@@ -407,7 +407,7 @@ class TransferBulk implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transfers
      *
-     * @return \Alexasomba\\Paystack\Model\TransferBase[]
+     * @return \Alexasomba\Paystack\Model\TransferBase[]
      */
     public function getTransfers()
     {
@@ -417,7 +417,7 @@ class TransferBulk implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transfers
      *
-     * @param \Alexasomba\\Paystack\Model\TransferBase[] $transfers A list of transfer object
+     * @param \Alexasomba\Paystack\Model\TransferBase[] $transfers A list of transfer object
      *
      * @return self
      */

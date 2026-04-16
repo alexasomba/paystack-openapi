@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * CustomerCreateResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,12 +61,12 @@ class CustomerCreateResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'email' => 'string',
         'integration' => 'int',
         'domain' => 'string',
-        'customer_code' => 'string',
+        'customerCode' => 'string',
         'id' => 'int',
         'identified' => 'bool',
         'identifications' => 'mixed',
-        'created_at' => 'string',
-        'updated_at' => 'string'
+        'createdAt' => 'string',
+        'updatedAt' => 'string'
     ];
 
     /**
@@ -80,12 +80,12 @@ class CustomerCreateResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'email' => null,
         'integration' => null,
         'domain' => null,
-        'customer_code' => null,
+        'customerCode' => null,
         'id' => null,
         'identified' => null,
         'identifications' => null,
-        'created_at' => null,
-        'updated_at' => null
+        'createdAt' => null,
+        'updatedAt' => null
     ];
 
     /**
@@ -97,12 +97,12 @@ class CustomerCreateResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'email' => false,
         'integration' => false,
         'domain' => false,
-        'customer_code' => false,
+        'customerCode' => false,
         'id' => false,
         'identified' => false,
         'identifications' => true,
-        'created_at' => false,
-        'updated_at' => false
+        'createdAt' => false,
+        'updatedAt' => false
     ];
 
     /**
@@ -194,12 +194,12 @@ class CustomerCreateResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'email' => 'email',
         'integration' => 'integration',
         'domain' => 'domain',
-        'customer_code' => 'customer_code',
+        'customerCode' => 'customer_code',
         'id' => 'id',
         'identified' => 'identified',
         'identifications' => 'identifications',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt'
     ];
 
     /**
@@ -211,12 +211,12 @@ class CustomerCreateResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'email' => 'setEmail',
         'integration' => 'setIntegration',
         'domain' => 'setDomain',
-        'customer_code' => 'setCustomerCode',
+        'customerCode' => 'setCustomerCode',
         'id' => 'setId',
         'identified' => 'setIdentified',
         'identifications' => 'setIdentifications',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
@@ -228,12 +228,12 @@ class CustomerCreateResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'email' => 'getEmail',
         'integration' => 'getIntegration',
         'domain' => 'getDomain',
-        'customer_code' => 'getCustomerCode',
+        'customerCode' => 'getCustomerCode',
         'id' => 'getId',
         'identified' => 'getIdentified',
         'identifications' => 'getIdentifications',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
@@ -296,12 +296,12 @@ class CustomerCreateResponseData implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
-        $this->setIfExists('customer_code', $data ?? [], null);
+        $this->setIfExists('customerCode', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('identified', $data ?? [], null);
         $this->setIfExists('identifications', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
     }
 
     /**
@@ -340,8 +340,8 @@ class CustomerCreateResponseData implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['domain'] === null) {
             $invalidProperties[] = "'domain' can't be null";
         }
-        if ($this->container['customer_code'] === null) {
-            $invalidProperties[] = "'customer_code' can't be null";
+        if ($this->container['customerCode'] === null) {
+            $invalidProperties[] = "'customerCode' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
@@ -352,11 +352,11 @@ class CustomerCreateResponseData implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['identifications'] === null && !$this->isNullableSetToNull('identifications')) {
             $invalidProperties[] = "'identifications' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -455,28 +455,28 @@ class CustomerCreateResponseData implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets customer_code
+     * Gets customerCode
      *
      * @return string
      */
     public function getCustomerCode()
     {
-        return $this->container['customer_code'];
+        return $this->container['customerCode'];
     }
 
     /**
-     * Sets customer_code
+     * Sets customerCode
      *
-     * @param string $customer_code customer_code
+     * @param string $customerCode customerCode
      *
      * @return self
      */
-    public function setCustomerCode($customer_code)
+    public function setCustomerCode($customerCode)
     {
-        if (is_null($customer_code)) {
-            throw new \InvalidArgumentException('non-nullable customer_code cannot be null');
+        if (is_null($customerCode)) {
+            throw new \InvalidArgumentException('non-nullable customerCode cannot be null');
         }
-        $this->container['customer_code'] = $customer_code;
+        $this->container['customerCode'] = $customerCode;
 
         return $this;
     }
@@ -570,55 +570,55 @@ class CustomerCreateResponseData implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

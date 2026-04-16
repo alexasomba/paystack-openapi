@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * DirectDebitActivationChargeRequest Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class DirectDebitActivationChargeRequest implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'customer_ids' => 'int[]'
+        'customerIds' => 'int[]'
     ];
 
     /**
@@ -69,7 +69,7 @@ class DirectDebitActivationChargeRequest implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'customer_ids' => null
+        'customerIds' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class DirectDebitActivationChargeRequest implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'customer_ids' => false
+        'customerIds' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class DirectDebitActivationChargeRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'customer_ids' => 'customer_ids'
+        'customerIds' => 'customer_ids'
     ];
 
     /**
@@ -176,7 +176,7 @@ class DirectDebitActivationChargeRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'customer_ids' => 'setCustomerIds'
+        'customerIds' => 'setCustomerIds'
     ];
 
     /**
@@ -185,7 +185,7 @@ class DirectDebitActivationChargeRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'customer_ids' => 'getCustomerIds'
+        'customerIds' => 'getCustomerIds'
     ];
 
     /**
@@ -245,7 +245,7 @@ class DirectDebitActivationChargeRequest implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('customer_ids', $data ?? [], null);
+        $this->setIfExists('customerIds', $data ?? [], null);
     }
 
     /**
@@ -275,8 +275,8 @@ class DirectDebitActivationChargeRequest implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['customer_ids'] === null) {
-            $invalidProperties[] = "'customer_ids' can't be null";
+        if ($this->container['customerIds'] === null) {
+            $invalidProperties[] = "'customerIds' can't be null";
         }
         return $invalidProperties;
     }
@@ -294,28 +294,28 @@ class DirectDebitActivationChargeRequest implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets customer_ids
+     * Gets customerIds
      *
      * @return int[]
      */
     public function getCustomerIds()
     {
-        return $this->container['customer_ids'];
+        return $this->container['customerIds'];
     }
 
     /**
-     * Sets customer_ids
+     * Sets customerIds
      *
-     * @param int[] $customer_ids Array of customer IDs to trigger activation charge for
+     * @param int[] $customerIds Array of customer IDs to trigger activation charge for
      *
      * @return self
      */
-    public function setCustomerIds($customer_ids)
+    public function setCustomerIds($customerIds)
     {
-        if (is_null($customer_ids)) {
-            throw new \InvalidArgumentException('non-nullable customer_ids cannot be null');
+        if (is_null($customerIds)) {
+            throw new \InvalidArgumentException('non-nullable customerIds cannot be null');
         }
-        $this->container['customer_ids'] = $customer_ids;
+        $this->container['customerIds'] = $customerIds;
 
         return $this;
     }

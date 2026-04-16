@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TerminalActivationToggle Class Doc Comment
  *
  * @category Class
  * @description Model for activating and deactivating a debug Terminal
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class TerminalActivationToggle implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'serial_number' => 'string'
+        'serialNumber' => 'string'
     ];
 
     /**
@@ -70,7 +70,7 @@ class TerminalActivationToggle implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'serial_number' => null
+        'serialNumber' => null
     ];
 
     /**
@@ -79,7 +79,7 @@ class TerminalActivationToggle implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'serial_number' => false
+        'serialNumber' => false
     ];
 
     /**
@@ -168,7 +168,7 @@ class TerminalActivationToggle implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'serial_number' => 'serial_number'
+        'serialNumber' => 'serial_number'
     ];
 
     /**
@@ -177,7 +177,7 @@ class TerminalActivationToggle implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'serial_number' => 'setSerialNumber'
+        'serialNumber' => 'setSerialNumber'
     ];
 
     /**
@@ -186,7 +186,7 @@ class TerminalActivationToggle implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'serial_number' => 'getSerialNumber'
+        'serialNumber' => 'getSerialNumber'
     ];
 
     /**
@@ -246,7 +246,7 @@ class TerminalActivationToggle implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('serial_number', $data ?? [], null);
+        $this->setIfExists('serialNumber', $data ?? [], null);
     }
 
     /**
@@ -276,8 +276,8 @@ class TerminalActivationToggle implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['serial_number'] === null) {
-            $invalidProperties[] = "'serial_number' can't be null";
+        if ($this->container['serialNumber'] === null) {
+            $invalidProperties[] = "'serialNumber' can't be null";
         }
         return $invalidProperties;
     }
@@ -295,28 +295,28 @@ class TerminalActivationToggle implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets serial_number
+     * Gets serialNumber
      *
      * @return string
      */
     public function getSerialNumber()
     {
-        return $this->container['serial_number'];
+        return $this->container['serialNumber'];
     }
 
     /**
-     * Sets serial_number
+     * Sets serialNumber
      *
-     * @param string $serial_number Device Serial Number
+     * @param string $serialNumber Device Serial Number
      *
      * @return self
      */
-    public function setSerialNumber($serial_number)
+    public function setSerialNumber($serialNumber)
     {
-        if (is_null($serial_number)) {
-            throw new \InvalidArgumentException('non-nullable serial_number cannot be null');
+        if (is_null($serialNumber)) {
+            throw new \InvalidArgumentException('non-nullable serialNumber cannot be null');
         }
-        $this->container['serial_number'] = $serial_number;
+        $this->container['serialNumber'] = $serialNumber;
 
         return $this;
     }

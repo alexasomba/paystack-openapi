@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * SplitSubaccountsArray Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class SplitSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'subaccount' => '\Alexasomba\\Paystack\Model\SplitSubaccountsArraySubaccount',
+        'subaccount' => '\Alexasomba\Paystack\Model\SplitSubaccountsArraySubaccount',
         'share' => 'int'
     ];
 
@@ -306,7 +306,7 @@ class SplitSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets subaccount
      *
-     * @return \Alexasomba\\Paystack\Model\SplitSubaccountsArraySubaccount
+     * @return \Alexasomba\Paystack\Model\SplitSubaccountsArraySubaccount
      */
     public function getSubaccount()
     {
@@ -316,7 +316,7 @@ class SplitSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets subaccount
      *
-     * @param \Alexasomba\\Paystack\Model\SplitSubaccountsArraySubaccount $subaccount subaccount
+     * @param \Alexasomba\Paystack\Model\SplitSubaccountsArraySubaccount $subaccount subaccount
      *
      * @return self
      */

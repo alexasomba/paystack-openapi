@@ -51,7 +51,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_capture(
+    def capture(
         self,
         pre_authorization_capture: Optional[PreAuthorizationCapture] = None,
         _request_timeout: Union[
@@ -95,7 +95,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_capture_serialize(
+        _param = self._capture_serialize(
             pre_authorization_capture=pre_authorization_capture,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -119,7 +119,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_capture_with_http_info(
+    def capture_with_http_info(
         self,
         pre_authorization_capture: Optional[PreAuthorizationCapture] = None,
         _request_timeout: Union[
@@ -163,7 +163,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_capture_serialize(
+        _param = self._capture_serialize(
             pre_authorization_capture=pre_authorization_capture,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -187,7 +187,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_capture_without_preload_content(
+    def capture_without_preload_content(
         self,
         pre_authorization_capture: Optional[PreAuthorizationCapture] = None,
         _request_timeout: Union[
@@ -231,7 +231,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_capture_serialize(
+        _param = self._capture_serialize(
             pre_authorization_capture=pre_authorization_capture,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -250,7 +250,7 @@ class CardPreauthorizationApi:
         return response_data.response
 
 
-    def _preauthorization_capture_serialize(
+    def _capture_serialize(
         self,
         pre_authorization_capture,
         _request_auth,
@@ -329,7 +329,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_initialize(
+    def initialize(
         self,
         pre_authorization_initialize: Optional[PreAuthorizationInitialize] = None,
         _request_timeout: Union[
@@ -373,7 +373,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_initialize_serialize(
+        _param = self._initialize_serialize(
             pre_authorization_initialize=pre_authorization_initialize,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -397,7 +397,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_initialize_with_http_info(
+    def initialize_with_http_info(
         self,
         pre_authorization_initialize: Optional[PreAuthorizationInitialize] = None,
         _request_timeout: Union[
@@ -441,7 +441,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_initialize_serialize(
+        _param = self._initialize_serialize(
             pre_authorization_initialize=pre_authorization_initialize,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -465,7 +465,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_initialize_without_preload_content(
+    def initialize_without_preload_content(
         self,
         pre_authorization_initialize: Optional[PreAuthorizationInitialize] = None,
         _request_timeout: Union[
@@ -509,7 +509,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_initialize_serialize(
+        _param = self._initialize_serialize(
             pre_authorization_initialize=pre_authorization_initialize,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -528,7 +528,7 @@ class CardPreauthorizationApi:
         return response_data.response
 
 
-    def _preauthorization_initialize_serialize(
+    def _initialize_serialize(
         self,
         pre_authorization_initialize,
         _request_auth,
@@ -607,7 +607,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_list(
+    def list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specify we use a default value of 50.")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specify we use a default value of 1.")] = None,
@@ -666,7 +666,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -695,7 +695,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_list_with_http_info(
+    def list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specify we use a default value of 50.")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specify we use a default value of 1.")] = None,
@@ -754,7 +754,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -783,7 +783,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_list_without_preload_content(
+    def list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specify we use a default value of 50.")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specify we use a default value of 1.")] = None,
@@ -842,7 +842,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -866,7 +866,7 @@ class CardPreauthorizationApi:
         return response_data.response
 
 
-    def _preauthorization_list_serialize(
+    def _list_serialize(
         self,
         per_page,
         page,
@@ -976,7 +976,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_release(
+    def release(
         self,
         pre_authorization_release: Optional[PreAuthorizationRelease] = None,
         _request_timeout: Union[
@@ -1020,7 +1020,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_release_serialize(
+        _param = self._release_serialize(
             pre_authorization_release=pre_authorization_release,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1044,7 +1044,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_release_with_http_info(
+    def release_with_http_info(
         self,
         pre_authorization_release: Optional[PreAuthorizationRelease] = None,
         _request_timeout: Union[
@@ -1088,7 +1088,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_release_serialize(
+        _param = self._release_serialize(
             pre_authorization_release=pre_authorization_release,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1112,7 +1112,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_release_without_preload_content(
+    def release_without_preload_content(
         self,
         pre_authorization_release: Optional[PreAuthorizationRelease] = None,
         _request_timeout: Union[
@@ -1156,7 +1156,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_release_serialize(
+        _param = self._release_serialize(
             pre_authorization_release=pre_authorization_release,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1175,7 +1175,7 @@ class CardPreauthorizationApi:
         return response_data.response
 
 
-    def _preauthorization_release_serialize(
+    def _release_serialize(
         self,
         pre_authorization_release,
         _request_auth,
@@ -1254,7 +1254,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_reserve_authorization(
+    def reserve_authorization(
         self,
         pre_authorization_reserve: Optional[PreAuthorizationReserve] = None,
         _request_timeout: Union[
@@ -1298,7 +1298,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_reserve_authorization_serialize(
+        _param = self._reserve_authorization_serialize(
             pre_authorization_reserve=pre_authorization_reserve,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1322,7 +1322,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_reserve_authorization_with_http_info(
+    def reserve_authorization_with_http_info(
         self,
         pre_authorization_reserve: Optional[PreAuthorizationReserve] = None,
         _request_timeout: Union[
@@ -1366,7 +1366,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_reserve_authorization_serialize(
+        _param = self._reserve_authorization_serialize(
             pre_authorization_reserve=pre_authorization_reserve,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1390,7 +1390,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_reserve_authorization_without_preload_content(
+    def reserve_authorization_without_preload_content(
         self,
         pre_authorization_reserve: Optional[PreAuthorizationReserve] = None,
         _request_timeout: Union[
@@ -1434,7 +1434,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_reserve_authorization_serialize(
+        _param = self._reserve_authorization_serialize(
             pre_authorization_reserve=pre_authorization_reserve,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1453,7 +1453,7 @@ class CardPreauthorizationApi:
         return response_data.response
 
 
-    def _preauthorization_reserve_authorization_serialize(
+    def _reserve_authorization_serialize(
         self,
         pre_authorization_reserve,
         _request_auth,
@@ -1532,7 +1532,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_verify(
+    def verify(
         self,
         reference: Annotated[StrictStr, Field(description="The transaction reference used to intiate the transaction")],
         _request_timeout: Union[
@@ -1576,7 +1576,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_verify_serialize(
+        _param = self._verify_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1601,7 +1601,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_verify_with_http_info(
+    def verify_with_http_info(
         self,
         reference: Annotated[StrictStr, Field(description="The transaction reference used to intiate the transaction")],
         _request_timeout: Union[
@@ -1645,7 +1645,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_verify_serialize(
+        _param = self._verify_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1670,7 +1670,7 @@ class CardPreauthorizationApi:
 
 
     @validate_call
-    def preauthorization_verify_without_preload_content(
+    def verify_without_preload_content(
         self,
         reference: Annotated[StrictStr, Field(description="The transaction reference used to intiate the transaction")],
         _request_timeout: Union[
@@ -1714,7 +1714,7 @@ class CardPreauthorizationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._preauthorization_verify_serialize(
+        _param = self._verify_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1734,7 +1734,7 @@ class CardPreauthorizationApi:
         return response_data.response
 
 
-    def _preauthorization_verify_serialize(
+    def _verify_serialize(
         self,
         reference,
         _request_auth,

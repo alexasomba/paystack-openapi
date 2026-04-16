@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Api;
+namespace Alexasomba\Paystack\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Alexasomba\\Paystack\ApiException;
-use Alexasomba\\Paystack\Configuration;
-use Alexasomba\\Paystack\FormDataProcessor;
-use Alexasomba\\Paystack\HeaderSelector;
-use Alexasomba\\Paystack\ObjectSerializer;
+use Alexasomba\Paystack\ApiException;
+use Alexasomba\Paystack\Configuration;
+use Alexasomba\Paystack\FormDataProcessor;
+use Alexasomba\Paystack\HeaderSelector;
+use Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * CapitecPayApi Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -75,7 +75,7 @@ class CapitecPayApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'capitecPayRequery' => [
+        'requery' => [
             'application/json',
         ],
     ];
@@ -127,38 +127,38 @@ class CapitecPayApi
     }
 
     /**
-     * Operation capitecPayRequery
+     * Operation requery
      *
      * Requery Transaction
      *
      * @param  string $ref The transaction reference from the previously initiated charge request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['capitecPayRequery'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['requery'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\CapitecPayRequeryResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\CapitecPayRequeryResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function capitecPayRequery($ref, string $contentType = self::contentTypes['capitecPayRequery'][0])
+    public function requery($ref, string $contentType = self::contentTypes['requery'][0])
     {
-        list($response) = $this->capitecPayRequeryWithHttpInfo($ref, $contentType);
+        list($response) = $this->requeryWithHttpInfo($ref, $contentType);
         return $response;
     }
 
     /**
-     * Operation capitecPayRequeryWithHttpInfo
+     * Operation requeryWithHttpInfo
      *
      * Requery Transaction
      *
      * @param  string $ref The transaction reference from the previously initiated charge request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['capitecPayRequery'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['requery'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\CapitecPayRequeryResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\CapitecPayRequeryResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function capitecPayRequeryWithHttpInfo($ref, string $contentType = self::contentTypes['capitecPayRequery'][0])
+    public function requeryWithHttpInfo($ref, string $contentType = self::contentTypes['requery'][0])
     {
-        $request = $this->capitecPayRequeryRequest($ref, $contentType);
+        $request = $this->requeryRequest($ref, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -186,13 +186,13 @@ class CapitecPayApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\CapitecPayRequeryResponse',
+                        '\Alexasomba\Paystack\Model\CapitecPayRequeryResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -214,7 +214,7 @@ class CapitecPayApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\CapitecPayRequeryResponse',
+                '\Alexasomba\Paystack\Model\CapitecPayRequeryResponse',
                 $request,
                 $response,
             );
@@ -223,7 +223,7 @@ class CapitecPayApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\CapitecPayRequeryResponse',
+                        '\Alexasomba\Paystack\Model\CapitecPayRequeryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -231,7 +231,7 @@ class CapitecPayApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -244,19 +244,19 @@ class CapitecPayApi
     }
 
     /**
-     * Operation capitecPayRequeryAsync
+     * Operation requeryAsync
      *
      * Requery Transaction
      *
      * @param  string $ref The transaction reference from the previously initiated charge request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['capitecPayRequery'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['requery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function capitecPayRequeryAsync($ref, string $contentType = self::contentTypes['capitecPayRequery'][0])
+    public function requeryAsync($ref, string $contentType = self::contentTypes['requery'][0])
     {
-        return $this->capitecPayRequeryAsyncWithHttpInfo($ref, $contentType)
+        return $this->requeryAsyncWithHttpInfo($ref, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -265,20 +265,20 @@ class CapitecPayApi
     }
 
     /**
-     * Operation capitecPayRequeryAsyncWithHttpInfo
+     * Operation requeryAsyncWithHttpInfo
      *
      * Requery Transaction
      *
      * @param  string $ref The transaction reference from the previously initiated charge request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['capitecPayRequery'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['requery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function capitecPayRequeryAsyncWithHttpInfo($ref, string $contentType = self::contentTypes['capitecPayRequery'][0])
+    public function requeryAsyncWithHttpInfo($ref, string $contentType = self::contentTypes['requery'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\CapitecPayRequeryResponse';
-        $request = $this->capitecPayRequeryRequest($ref, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\CapitecPayRequeryResponse';
+        $request = $this->requeryRequest($ref, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -317,21 +317,21 @@ class CapitecPayApi
     }
 
     /**
-     * Create request for operation 'capitecPayRequery'
+     * Create request for operation 'requery'
      *
      * @param  string $ref The transaction reference from the previously initiated charge request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['capitecPayRequery'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['requery'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function capitecPayRequeryRequest($ref, string $contentType = self::contentTypes['capitecPayRequery'][0])
+    public function requeryRequest($ref, string $contentType = self::contentTypes['requery'][0])
     {
 
         // verify the required parameter 'ref' is set
         if ($ref === null || (is_array($ref) && count($ref) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ref when calling capitecPayRequery'
+                'Missing the required parameter $ref when calling requery'
             );
         }
 

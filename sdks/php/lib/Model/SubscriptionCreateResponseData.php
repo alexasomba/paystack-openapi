@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * SubscriptionCreateResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -66,12 +66,12 @@ class SubscriptionCreateResponseData implements ModelInterface, ArrayAccess, \Js
         'status' => 'string',
         'quantity' => 'int',
         'amount' => 'int',
-        'authorization' => '\Alexasomba\\Paystack\Model\SubscriptionCreateResponseDataAuthorization',
-        'subscription_code' => 'string',
-        'email_token' => 'string',
+        'authorization' => '\Alexasomba\Paystack\Model\SubscriptionCreateResponseDataAuthorization',
+        'subscriptionCode' => 'string',
+        'emailToken' => 'string',
         'id' => 'int',
-        'created_at' => 'string',
-        'updated_at' => 'string'
+        'createdAt' => 'string',
+        'updatedAt' => 'string'
     ];
 
     /**
@@ -91,11 +91,11 @@ class SubscriptionCreateResponseData implements ModelInterface, ArrayAccess, \Js
         'quantity' => null,
         'amount' => null,
         'authorization' => null,
-        'subscription_code' => null,
-        'email_token' => null,
+        'subscriptionCode' => null,
+        'emailToken' => null,
         'id' => null,
-        'created_at' => null,
-        'updated_at' => null
+        'createdAt' => null,
+        'updatedAt' => null
     ];
 
     /**
@@ -113,11 +113,11 @@ class SubscriptionCreateResponseData implements ModelInterface, ArrayAccess, \Js
         'quantity' => false,
         'amount' => false,
         'authorization' => false,
-        'subscription_code' => false,
-        'email_token' => false,
+        'subscriptionCode' => false,
+        'emailToken' => false,
         'id' => false,
-        'created_at' => false,
-        'updated_at' => false
+        'createdAt' => false,
+        'updatedAt' => false
     ];
 
     /**
@@ -215,11 +215,11 @@ class SubscriptionCreateResponseData implements ModelInterface, ArrayAccess, \Js
         'quantity' => 'quantity',
         'amount' => 'amount',
         'authorization' => 'authorization',
-        'subscription_code' => 'subscription_code',
-        'email_token' => 'email_token',
+        'subscriptionCode' => 'subscription_code',
+        'emailToken' => 'email_token',
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt'
     ];
 
     /**
@@ -237,11 +237,11 @@ class SubscriptionCreateResponseData implements ModelInterface, ArrayAccess, \Js
         'quantity' => 'setQuantity',
         'amount' => 'setAmount',
         'authorization' => 'setAuthorization',
-        'subscription_code' => 'setSubscriptionCode',
-        'email_token' => 'setEmailToken',
+        'subscriptionCode' => 'setSubscriptionCode',
+        'emailToken' => 'setEmailToken',
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
@@ -259,11 +259,11 @@ class SubscriptionCreateResponseData implements ModelInterface, ArrayAccess, \Js
         'quantity' => 'getQuantity',
         'amount' => 'getAmount',
         'authorization' => 'getAuthorization',
-        'subscription_code' => 'getSubscriptionCode',
-        'email_token' => 'getEmailToken',
+        'subscriptionCode' => 'getSubscriptionCode',
+        'emailToken' => 'getEmailToken',
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
@@ -332,11 +332,11 @@ class SubscriptionCreateResponseData implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('authorization', $data ?? [], null);
-        $this->setIfExists('subscription_code', $data ?? [], null);
-        $this->setIfExists('email_token', $data ?? [], null);
+        $this->setIfExists('subscriptionCode', $data ?? [], null);
+        $this->setIfExists('emailToken', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
     }
 
     /**
@@ -393,20 +393,20 @@ class SubscriptionCreateResponseData implements ModelInterface, ArrayAccess, \Js
         if ($this->container['authorization'] === null) {
             $invalidProperties[] = "'authorization' can't be null";
         }
-        if ($this->container['subscription_code'] === null) {
-            $invalidProperties[] = "'subscription_code' can't be null";
+        if ($this->container['subscriptionCode'] === null) {
+            $invalidProperties[] = "'subscriptionCode' can't be null";
         }
-        if ($this->container['email_token'] === null) {
-            $invalidProperties[] = "'email_token' can't be null";
+        if ($this->container['emailToken'] === null) {
+            $invalidProperties[] = "'emailToken' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -642,7 +642,7 @@ class SubscriptionCreateResponseData implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets authorization
      *
-     * @return \Alexasomba\\Paystack\Model\SubscriptionCreateResponseDataAuthorization
+     * @return \Alexasomba\Paystack\Model\SubscriptionCreateResponseDataAuthorization
      */
     public function getAuthorization()
     {
@@ -652,7 +652,7 @@ class SubscriptionCreateResponseData implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets authorization
      *
-     * @param \Alexasomba\\Paystack\Model\SubscriptionCreateResponseDataAuthorization $authorization authorization
+     * @param \Alexasomba\Paystack\Model\SubscriptionCreateResponseDataAuthorization $authorization authorization
      *
      * @return self
      */
@@ -667,55 +667,55 @@ class SubscriptionCreateResponseData implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets subscription_code
+     * Gets subscriptionCode
      *
      * @return string
      */
     public function getSubscriptionCode()
     {
-        return $this->container['subscription_code'];
+        return $this->container['subscriptionCode'];
     }
 
     /**
-     * Sets subscription_code
+     * Sets subscriptionCode
      *
-     * @param string $subscription_code subscription_code
+     * @param string $subscriptionCode subscriptionCode
      *
      * @return self
      */
-    public function setSubscriptionCode($subscription_code)
+    public function setSubscriptionCode($subscriptionCode)
     {
-        if (is_null($subscription_code)) {
-            throw new \InvalidArgumentException('non-nullable subscription_code cannot be null');
+        if (is_null($subscriptionCode)) {
+            throw new \InvalidArgumentException('non-nullable subscriptionCode cannot be null');
         }
-        $this->container['subscription_code'] = $subscription_code;
+        $this->container['subscriptionCode'] = $subscriptionCode;
 
         return $this;
     }
 
     /**
-     * Gets email_token
+     * Gets emailToken
      *
      * @return string
      */
     public function getEmailToken()
     {
-        return $this->container['email_token'];
+        return $this->container['emailToken'];
     }
 
     /**
-     * Sets email_token
+     * Sets emailToken
      *
-     * @param string $email_token email_token
+     * @param string $emailToken emailToken
      *
      * @return self
      */
-    public function setEmailToken($email_token)
+    public function setEmailToken($emailToken)
     {
-        if (is_null($email_token)) {
-            throw new \InvalidArgumentException('non-nullable email_token cannot be null');
+        if (is_null($emailToken)) {
+            throw new \InvalidArgumentException('non-nullable emailToken cannot be null');
         }
-        $this->container['email_token'] = $email_token;
+        $this->container['emailToken'] = $emailToken;
 
         return $this;
     }
@@ -748,55 +748,55 @@ class SubscriptionCreateResponseData implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

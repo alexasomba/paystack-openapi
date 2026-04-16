@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PaymentRequestViewResponseDataCustomer Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,15 +58,15 @@ class PaymentRequestViewResponseDataCustomer implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'first_name' => 'string',
-        'last_name' => 'string',
+        'firstName' => 'string',
+        'lastName' => 'string',
         'email' => 'string',
         'phone' => 'string',
         'metadata' => 'object',
-        'customer_code' => 'string',
-        'risk_action' => 'string',
+        'customerCode' => 'string',
+        'riskAction' => 'string',
         'id' => 'int',
-        'international_format_phone' => 'string'
+        'internationalFormatPhone' => 'string'
     ];
 
     /**
@@ -77,15 +77,15 @@ class PaymentRequestViewResponseDataCustomer implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'first_name' => null,
-        'last_name' => null,
+        'firstName' => null,
+        'lastName' => null,
         'email' => null,
         'phone' => null,
         'metadata' => null,
-        'customer_code' => null,
-        'risk_action' => null,
+        'customerCode' => null,
+        'riskAction' => null,
         'id' => null,
-        'international_format_phone' => null
+        'internationalFormatPhone' => null
     ];
 
     /**
@@ -94,15 +94,15 @@ class PaymentRequestViewResponseDataCustomer implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'first_name' => false,
-        'last_name' => false,
+        'firstName' => false,
+        'lastName' => false,
         'email' => false,
         'phone' => true,
         'metadata' => true,
-        'customer_code' => false,
-        'risk_action' => false,
+        'customerCode' => false,
+        'riskAction' => false,
         'id' => false,
-        'international_format_phone' => true
+        'internationalFormatPhone' => true
     ];
 
     /**
@@ -191,15 +191,15 @@ class PaymentRequestViewResponseDataCustomer implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'first_name' => 'first_name',
-        'last_name' => 'last_name',
+        'firstName' => 'first_name',
+        'lastName' => 'last_name',
         'email' => 'email',
         'phone' => 'phone',
         'metadata' => 'metadata',
-        'customer_code' => 'customer_code',
-        'risk_action' => 'risk_action',
+        'customerCode' => 'customer_code',
+        'riskAction' => 'risk_action',
         'id' => 'id',
-        'international_format_phone' => 'international_format_phone'
+        'internationalFormatPhone' => 'international_format_phone'
     ];
 
     /**
@@ -208,15 +208,15 @@ class PaymentRequestViewResponseDataCustomer implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'first_name' => 'setFirstName',
-        'last_name' => 'setLastName',
+        'firstName' => 'setFirstName',
+        'lastName' => 'setLastName',
         'email' => 'setEmail',
         'phone' => 'setPhone',
         'metadata' => 'setMetadata',
-        'customer_code' => 'setCustomerCode',
-        'risk_action' => 'setRiskAction',
+        'customerCode' => 'setCustomerCode',
+        'riskAction' => 'setRiskAction',
         'id' => 'setId',
-        'international_format_phone' => 'setInternationalFormatPhone'
+        'internationalFormatPhone' => 'setInternationalFormatPhone'
     ];
 
     /**
@@ -225,15 +225,15 @@ class PaymentRequestViewResponseDataCustomer implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'first_name' => 'getFirstName',
-        'last_name' => 'getLastName',
+        'firstName' => 'getFirstName',
+        'lastName' => 'getLastName',
         'email' => 'getEmail',
         'phone' => 'getPhone',
         'metadata' => 'getMetadata',
-        'customer_code' => 'getCustomerCode',
-        'risk_action' => 'getRiskAction',
+        'customerCode' => 'getCustomerCode',
+        'riskAction' => 'getRiskAction',
         'id' => 'getId',
-        'international_format_phone' => 'getInternationalFormatPhone'
+        'internationalFormatPhone' => 'getInternationalFormatPhone'
     ];
 
     /**
@@ -293,15 +293,15 @@ class PaymentRequestViewResponseDataCustomer implements ModelInterface, ArrayAcc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('first_name', $data ?? [], null);
-        $this->setIfExists('last_name', $data ?? [], null);
+        $this->setIfExists('firstName', $data ?? [], null);
+        $this->setIfExists('lastName', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('customer_code', $data ?? [], null);
-        $this->setIfExists('risk_action', $data ?? [], null);
+        $this->setIfExists('customerCode', $data ?? [], null);
+        $this->setIfExists('riskAction', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('international_format_phone', $data ?? [], null);
+        $this->setIfExists('internationalFormatPhone', $data ?? [], null);
     }
 
     /**
@@ -331,11 +331,11 @@ class PaymentRequestViewResponseDataCustomer implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
-        if ($this->container['first_name'] === null) {
-            $invalidProperties[] = "'first_name' can't be null";
+        if ($this->container['firstName'] === null) {
+            $invalidProperties[] = "'firstName' can't be null";
         }
-        if ($this->container['last_name'] === null) {
-            $invalidProperties[] = "'last_name' can't be null";
+        if ($this->container['lastName'] === null) {
+            $invalidProperties[] = "'lastName' can't be null";
         }
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
@@ -346,11 +346,11 @@ class PaymentRequestViewResponseDataCustomer implements ModelInterface, ArrayAcc
         if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
         }
-        if ($this->container['customer_code'] === null) {
-            $invalidProperties[] = "'customer_code' can't be null";
+        if ($this->container['customerCode'] === null) {
+            $invalidProperties[] = "'customerCode' can't be null";
         }
-        if ($this->container['risk_action'] === null) {
-            $invalidProperties[] = "'risk_action' can't be null";
+        if ($this->container['riskAction'] === null) {
+            $invalidProperties[] = "'riskAction' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
@@ -371,55 +371,55 @@ class PaymentRequestViewResponseDataCustomer implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets first_name
+     * Gets firstName
      *
      * @return string
      */
     public function getFirstName()
     {
-        return $this->container['first_name'];
+        return $this->container['firstName'];
     }
 
     /**
-     * Sets first_name
+     * Sets firstName
      *
-     * @param string $first_name first_name
+     * @param string $firstName firstName
      *
      * @return self
      */
-    public function setFirstName($first_name)
+    public function setFirstName($firstName)
     {
-        if (is_null($first_name)) {
-            throw new \InvalidArgumentException('non-nullable first_name cannot be null');
+        if (is_null($firstName)) {
+            throw new \InvalidArgumentException('non-nullable firstName cannot be null');
         }
-        $this->container['first_name'] = $first_name;
+        $this->container['firstName'] = $firstName;
 
         return $this;
     }
 
     /**
-     * Gets last_name
+     * Gets lastName
      *
      * @return string
      */
     public function getLastName()
     {
-        return $this->container['last_name'];
+        return $this->container['lastName'];
     }
 
     /**
-     * Sets last_name
+     * Sets lastName
      *
-     * @param string $last_name last_name
+     * @param string $lastName lastName
      *
      * @return self
      */
-    public function setLastName($last_name)
+    public function setLastName($lastName)
     {
-        if (is_null($last_name)) {
-            throw new \InvalidArgumentException('non-nullable last_name cannot be null');
+        if (is_null($lastName)) {
+            throw new \InvalidArgumentException('non-nullable lastName cannot be null');
         }
-        $this->container['last_name'] = $last_name;
+        $this->container['lastName'] = $lastName;
 
         return $this;
     }
@@ -520,55 +520,55 @@ class PaymentRequestViewResponseDataCustomer implements ModelInterface, ArrayAcc
     }
 
     /**
-     * Gets customer_code
+     * Gets customerCode
      *
      * @return string
      */
     public function getCustomerCode()
     {
-        return $this->container['customer_code'];
+        return $this->container['customerCode'];
     }
 
     /**
-     * Sets customer_code
+     * Sets customerCode
      *
-     * @param string $customer_code customer_code
+     * @param string $customerCode customerCode
      *
      * @return self
      */
-    public function setCustomerCode($customer_code)
+    public function setCustomerCode($customerCode)
     {
-        if (is_null($customer_code)) {
-            throw new \InvalidArgumentException('non-nullable customer_code cannot be null');
+        if (is_null($customerCode)) {
+            throw new \InvalidArgumentException('non-nullable customerCode cannot be null');
         }
-        $this->container['customer_code'] = $customer_code;
+        $this->container['customerCode'] = $customerCode;
 
         return $this;
     }
 
     /**
-     * Gets risk_action
+     * Gets riskAction
      *
      * @return string
      */
     public function getRiskAction()
     {
-        return $this->container['risk_action'];
+        return $this->container['riskAction'];
     }
 
     /**
-     * Sets risk_action
+     * Sets riskAction
      *
-     * @param string $risk_action risk_action
+     * @param string $riskAction riskAction
      *
      * @return self
      */
-    public function setRiskAction($risk_action)
+    public function setRiskAction($riskAction)
     {
-        if (is_null($risk_action)) {
-            throw new \InvalidArgumentException('non-nullable risk_action cannot be null');
+        if (is_null($riskAction)) {
+            throw new \InvalidArgumentException('non-nullable riskAction cannot be null');
         }
-        $this->container['risk_action'] = $risk_action;
+        $this->container['riskAction'] = $riskAction;
 
         return $this;
     }
@@ -601,35 +601,35 @@ class PaymentRequestViewResponseDataCustomer implements ModelInterface, ArrayAcc
     }
 
     /**
-     * Gets international_format_phone
+     * Gets internationalFormatPhone
      *
      * @return string|null
      */
     public function getInternationalFormatPhone()
     {
-        return $this->container['international_format_phone'];
+        return $this->container['internationalFormatPhone'];
     }
 
     /**
-     * Sets international_format_phone
+     * Sets internationalFormatPhone
      *
-     * @param string|null $international_format_phone international_format_phone
+     * @param string|null $internationalFormatPhone internationalFormatPhone
      *
      * @return self
      */
-    public function setInternationalFormatPhone($international_format_phone)
+    public function setInternationalFormatPhone($internationalFormatPhone)
     {
-        if (is_null($international_format_phone)) {
-            array_push($this->openAPINullablesSetToNull, 'international_format_phone');
+        if (is_null($internationalFormatPhone)) {
+            array_push($this->openAPINullablesSetToNull, 'internationalFormatPhone');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('international_format_phone', $nullablesSetToNull);
+            $index = array_search('internationalFormatPhone', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['international_format_phone'] = $international_format_phone;
+        $this->container['internationalFormatPhone'] = $internationalFormatPhone;
 
         return $this;
     }

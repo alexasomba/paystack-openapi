@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * ApplePayDomainsResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ApplePayDomainsResponseData implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'domain_names' => 'string[]'
+        'domainNames' => 'string[]'
     ];
 
     /**
@@ -69,7 +69,7 @@ class ApplePayDomainsResponseData implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'domain_names' => null
+        'domainNames' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class ApplePayDomainsResponseData implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'domain_names' => false
+        'domainNames' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class ApplePayDomainsResponseData implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'domain_names' => 'domainNames'
+        'domainNames' => 'domainNames'
     ];
 
     /**
@@ -176,7 +176,7 @@ class ApplePayDomainsResponseData implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'domain_names' => 'setDomainNames'
+        'domainNames' => 'setDomainNames'
     ];
 
     /**
@@ -185,7 +185,7 @@ class ApplePayDomainsResponseData implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'domain_names' => 'getDomainNames'
+        'domainNames' => 'getDomainNames'
     ];
 
     /**
@@ -245,7 +245,7 @@ class ApplePayDomainsResponseData implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('domain_names', $data ?? [], null);
+        $this->setIfExists('domainNames', $data ?? [], null);
     }
 
     /**
@@ -275,8 +275,8 @@ class ApplePayDomainsResponseData implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['domain_names'] === null) {
-            $invalidProperties[] = "'domain_names' can't be null";
+        if ($this->container['domainNames'] === null) {
+            $invalidProperties[] = "'domainNames' can't be null";
         }
         return $invalidProperties;
     }
@@ -294,28 +294,28 @@ class ApplePayDomainsResponseData implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets domain_names
+     * Gets domainNames
      *
      * @return string[]
      */
     public function getDomainNames()
     {
-        return $this->container['domain_names'];
+        return $this->container['domainNames'];
     }
 
     /**
-     * Sets domain_names
+     * Sets domainNames
      *
-     * @param string[] $domain_names domain_names
+     * @param string[] $domainNames domainNames
      *
      * @return self
      */
-    public function setDomainNames($domain_names)
+    public function setDomainNames($domainNames)
     {
-        if (is_null($domain_names)) {
-            throw new \InvalidArgumentException('non-nullable domain_names cannot be null');
+        if (is_null($domainNames)) {
+            throw new \InvalidArgumentException('non-nullable domainNames cannot be null');
         }
-        $this->container['domain_names'] = $domain_names;
+        $this->container['domainNames'] = $domainNames;
 
         return $this;
     }

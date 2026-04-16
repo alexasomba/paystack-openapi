@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * ChargeAuthorizationResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,19 +60,19 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     protected static $openAPITypes = [
         'amount' => 'int',
         'currency' => 'string',
-        'transaction_date' => 'string',
+        'transactionDate' => 'string',
         'status' => 'string',
         'reference' => 'string',
         'domain' => 'string',
-        'metadata' => '\Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataMetadata',
-        'gateway_response' => 'string',
+        'metadata' => '\Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataMetadata',
+        'gatewayResponse' => 'string',
         'message' => 'string',
         'channel' => 'string',
-        'ip_address' => 'mixed',
-        'log' => '\Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataLog',
+        'ipAddress' => 'mixed',
+        'log' => '\Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataLog',
         'fees' => 'int',
-        'authorization' => '\Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataAuthorization',
-        'customer' => '\Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataCustomer',
+        'authorization' => '\Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataAuthorization',
+        'customer' => '\Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataCustomer',
         'plan' => 'mixed',
         'id' => 'int'
     ];
@@ -87,15 +87,15 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     protected static $openAPIFormats = [
         'amount' => null,
         'currency' => null,
-        'transaction_date' => null,
+        'transactionDate' => null,
         'status' => null,
         'reference' => null,
         'domain' => null,
         'metadata' => null,
-        'gateway_response' => null,
+        'gatewayResponse' => null,
         'message' => null,
         'channel' => null,
-        'ip_address' => null,
+        'ipAddress' => null,
         'log' => null,
         'fees' => null,
         'authorization' => null,
@@ -112,15 +112,15 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     protected static array $openAPINullables = [
         'amount' => false,
         'currency' => false,
-        'transaction_date' => false,
+        'transactionDate' => false,
         'status' => false,
         'reference' => false,
         'domain' => false,
         'metadata' => true,
-        'gateway_response' => false,
+        'gatewayResponse' => false,
         'message' => true,
         'channel' => false,
-        'ip_address' => true,
+        'ipAddress' => true,
         'log' => true,
         'fees' => true,
         'authorization' => false,
@@ -217,15 +217,15 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     protected static $attributeMap = [
         'amount' => 'amount',
         'currency' => 'currency',
-        'transaction_date' => 'transaction_date',
+        'transactionDate' => 'transaction_date',
         'status' => 'status',
         'reference' => 'reference',
         'domain' => 'domain',
         'metadata' => 'metadata',
-        'gateway_response' => 'gateway_response',
+        'gatewayResponse' => 'gateway_response',
         'message' => 'message',
         'channel' => 'channel',
-        'ip_address' => 'ip_address',
+        'ipAddress' => 'ip_address',
         'log' => 'log',
         'fees' => 'fees',
         'authorization' => 'authorization',
@@ -242,15 +242,15 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     protected static $setters = [
         'amount' => 'setAmount',
         'currency' => 'setCurrency',
-        'transaction_date' => 'setTransactionDate',
+        'transactionDate' => 'setTransactionDate',
         'status' => 'setStatus',
         'reference' => 'setReference',
         'domain' => 'setDomain',
         'metadata' => 'setMetadata',
-        'gateway_response' => 'setGatewayResponse',
+        'gatewayResponse' => 'setGatewayResponse',
         'message' => 'setMessage',
         'channel' => 'setChannel',
-        'ip_address' => 'setIpAddress',
+        'ipAddress' => 'setIpAddress',
         'log' => 'setLog',
         'fees' => 'setFees',
         'authorization' => 'setAuthorization',
@@ -267,15 +267,15 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     protected static $getters = [
         'amount' => 'getAmount',
         'currency' => 'getCurrency',
-        'transaction_date' => 'getTransactionDate',
+        'transactionDate' => 'getTransactionDate',
         'status' => 'getStatus',
         'reference' => 'getReference',
         'domain' => 'getDomain',
         'metadata' => 'getMetadata',
-        'gateway_response' => 'getGatewayResponse',
+        'gatewayResponse' => 'getGatewayResponse',
         'message' => 'getMessage',
         'channel' => 'getChannel',
-        'ip_address' => 'getIpAddress',
+        'ipAddress' => 'getIpAddress',
         'log' => 'getLog',
         'fees' => 'getFees',
         'authorization' => 'getAuthorization',
@@ -343,15 +343,15 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     {
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('transaction_date', $data ?? [], null);
+        $this->setIfExists('transactionDate', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('gateway_response', $data ?? [], null);
+        $this->setIfExists('gatewayResponse', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('channel', $data ?? [], null);
-        $this->setIfExists('ip_address', $data ?? [], null);
+        $this->setIfExists('ipAddress', $data ?? [], null);
         $this->setIfExists('log', $data ?? [], null);
         $this->setIfExists('fees', $data ?? [], null);
         $this->setIfExists('authorization', $data ?? [], null);
@@ -393,8 +393,8 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['transaction_date'] === null) {
-            $invalidProperties[] = "'transaction_date' can't be null";
+        if ($this->container['transactionDate'] === null) {
+            $invalidProperties[] = "'transactionDate' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
@@ -408,8 +408,8 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
         if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
         }
-        if ($this->container['gateway_response'] === null) {
-            $invalidProperties[] = "'gateway_response' can't be null";
+        if ($this->container['gatewayResponse'] === null) {
+            $invalidProperties[] = "'gatewayResponse' can't be null";
         }
         if ($this->container['message'] === null && !$this->isNullableSetToNull('message')) {
             $invalidProperties[] = "'message' can't be null";
@@ -417,8 +417,8 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
         if ($this->container['channel'] === null) {
             $invalidProperties[] = "'channel' can't be null";
         }
-        if ($this->container['ip_address'] === null && !$this->isNullableSetToNull('ip_address')) {
-            $invalidProperties[] = "'ip_address' can't be null";
+        if ($this->container['ipAddress'] === null && !$this->isNullableSetToNull('ipAddress')) {
+            $invalidProperties[] = "'ipAddress' can't be null";
         }
         if ($this->container['log'] === null && !$this->isNullableSetToNull('log')) {
             $invalidProperties[] = "'log' can't be null";
@@ -508,28 +508,28 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets transaction_date
+     * Gets transactionDate
      *
      * @return string
      */
     public function getTransactionDate()
     {
-        return $this->container['transaction_date'];
+        return $this->container['transactionDate'];
     }
 
     /**
-     * Sets transaction_date
+     * Sets transactionDate
      *
-     * @param string $transaction_date transaction_date
+     * @param string $transactionDate transactionDate
      *
      * @return self
      */
-    public function setTransactionDate($transaction_date)
+    public function setTransactionDate($transactionDate)
     {
-        if (is_null($transaction_date)) {
-            throw new \InvalidArgumentException('non-nullable transaction_date cannot be null');
+        if (is_null($transactionDate)) {
+            throw new \InvalidArgumentException('non-nullable transactionDate cannot be null');
         }
-        $this->container['transaction_date'] = $transaction_date;
+        $this->container['transactionDate'] = $transactionDate;
 
         return $this;
     }
@@ -618,7 +618,7 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataMetadata|null
+     * @return \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataMetadata|null
      */
     public function getMetadata()
     {
@@ -628,7 +628,7 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataMetadata|null $metadata metadata
+     * @param \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataMetadata|null $metadata metadata
      *
      * @return self
      */
@@ -650,28 +650,28 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets gateway_response
+     * Gets gatewayResponse
      *
      * @return string
      */
     public function getGatewayResponse()
     {
-        return $this->container['gateway_response'];
+        return $this->container['gatewayResponse'];
     }
 
     /**
-     * Sets gateway_response
+     * Sets gatewayResponse
      *
-     * @param string $gateway_response gateway_response
+     * @param string $gatewayResponse gatewayResponse
      *
      * @return self
      */
-    public function setGatewayResponse($gateway_response)
+    public function setGatewayResponse($gatewayResponse)
     {
-        if (is_null($gateway_response)) {
-            throw new \InvalidArgumentException('non-nullable gateway_response cannot be null');
+        if (is_null($gatewayResponse)) {
+            throw new \InvalidArgumentException('non-nullable gatewayResponse cannot be null');
         }
-        $this->container['gateway_response'] = $gateway_response;
+        $this->container['gatewayResponse'] = $gatewayResponse;
 
         return $this;
     }
@@ -738,35 +738,35 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets ip_address
+     * Gets ipAddress
      *
      * @return mixed|null
      */
     public function getIpAddress()
     {
-        return $this->container['ip_address'];
+        return $this->container['ipAddress'];
     }
 
     /**
-     * Sets ip_address
+     * Sets ipAddress
      *
-     * @param mixed|null $ip_address ip_address
+     * @param mixed|null $ipAddress ipAddress
      *
      * @return self
      */
-    public function setIpAddress($ip_address)
+    public function setIpAddress($ipAddress)
     {
-        if (is_null($ip_address)) {
-            array_push($this->openAPINullablesSetToNull, 'ip_address');
+        if (is_null($ipAddress)) {
+            array_push($this->openAPINullablesSetToNull, 'ipAddress');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ip_address', $nullablesSetToNull);
+            $index = array_search('ipAddress', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['ip_address'] = $ip_address;
+        $this->container['ipAddress'] = $ipAddress;
 
         return $this;
     }
@@ -774,7 +774,7 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Gets log
      *
-     * @return \Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataLog|null
+     * @return \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataLog|null
      */
     public function getLog()
     {
@@ -784,7 +784,7 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Sets log
      *
-     * @param \Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataLog|null $log log
+     * @param \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataLog|null $log log
      *
      * @return self
      */
@@ -842,7 +842,7 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Gets authorization
      *
-     * @return \Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataAuthorization
+     * @return \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataAuthorization
      */
     public function getAuthorization()
     {
@@ -852,7 +852,7 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Sets authorization
      *
-     * @param \Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataAuthorization $authorization authorization
+     * @param \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataAuthorization $authorization authorization
      *
      * @return self
      */
@@ -869,7 +869,7 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Gets customer
      *
-     * @return \Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -879,7 +879,7 @@ class ChargeAuthorizationResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Sets customer
      *
-     * @param \Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataCustomer $customer customer
      *
      * @return self
      */

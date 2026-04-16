@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * SplitCreate Class Doc Comment
  *
  * @category Class
  * @description Split configuration for transactions
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class SplitCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'name' => 'string',
         'type' => 'string',
-        'subaccounts' => '\Alexasomba\\Paystack\Model\SplitSubaccounts[]',
+        'subaccounts' => '\Alexasomba\Paystack\Model\SplitSubaccounts[]',
         'currency' => 'string',
-        'bearer_type' => 'string',
-        'bearer_subaccount' => 'string'
+        'bearerType' => 'string',
+        'bearerSubaccount' => 'string'
     ];
 
     /**
@@ -79,8 +79,8 @@ class SplitCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => null,
         'subaccounts' => null,
         'currency' => null,
-        'bearer_type' => null,
-        'bearer_subaccount' => null
+        'bearerType' => null,
+        'bearerSubaccount' => null
     ];
 
     /**
@@ -93,8 +93,8 @@ class SplitCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => false,
         'subaccounts' => false,
         'currency' => false,
-        'bearer_type' => false,
-        'bearer_subaccount' => false
+        'bearerType' => false,
+        'bearerSubaccount' => false
     ];
 
     /**
@@ -187,8 +187,8 @@ class SplitCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'type',
         'subaccounts' => 'subaccounts',
         'currency' => 'currency',
-        'bearer_type' => 'bearer_type',
-        'bearer_subaccount' => 'bearer_subaccount'
+        'bearerType' => 'bearer_type',
+        'bearerSubaccount' => 'bearer_subaccount'
     ];
 
     /**
@@ -201,8 +201,8 @@ class SplitCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'setType',
         'subaccounts' => 'setSubaccounts',
         'currency' => 'setCurrency',
-        'bearer_type' => 'setBearerType',
-        'bearer_subaccount' => 'setBearerSubaccount'
+        'bearerType' => 'setBearerType',
+        'bearerSubaccount' => 'setBearerSubaccount'
     ];
 
     /**
@@ -215,8 +215,8 @@ class SplitCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'type' => 'getType',
         'subaccounts' => 'getSubaccounts',
         'currency' => 'getCurrency',
-        'bearer_type' => 'getBearerType',
-        'bearer_subaccount' => 'getBearerSubaccount'
+        'bearerType' => 'getBearerType',
+        'bearerSubaccount' => 'getBearerSubaccount'
     ];
 
     /**
@@ -335,8 +335,8 @@ class SplitCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('subaccounts', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('bearer_type', $data ?? [], null);
-        $this->setIfExists('bearer_subaccount', $data ?? [], null);
+        $this->setIfExists('bearerType', $data ?? [], null);
+        $this->setIfExists('bearerSubaccount', $data ?? [], null);
     }
 
     /**
@@ -397,10 +397,10 @@ class SplitCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $allowedValues = $this->getBearerTypeAllowableValues();
-        if (!is_null($this->container['bearer_type']) && !in_array($this->container['bearer_type'], $allowedValues, true)) {
+        if (!is_null($this->container['bearerType']) && !in_array($this->container['bearerType'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'bearer_type', must be one of '%s'",
-                $this->container['bearer_type'],
+                "invalid value '%s' for 'bearerType', must be one of '%s'",
+                $this->container['bearerType'],
                 implode("', '", $allowedValues)
             );
         }
@@ -487,7 +487,7 @@ class SplitCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets subaccounts
      *
-     * @return \Alexasomba\\Paystack\Model\SplitSubaccounts[]
+     * @return \Alexasomba\Paystack\Model\SplitSubaccounts[]
      */
     public function getSubaccounts()
     {
@@ -497,7 +497,7 @@ class SplitCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets subaccounts
      *
-     * @param \Alexasomba\\Paystack\Model\SplitSubaccounts[] $subaccounts A list of object containing subaccount code and number of shares
+     * @param \Alexasomba\Paystack\Model\SplitSubaccounts[] $subaccounts A list of object containing subaccount code and number of shares
      *
      * @return self
      */
@@ -549,65 +549,65 @@ class SplitCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets bearer_type
+     * Gets bearerType
      *
      * @return string|null
      */
     public function getBearerType()
     {
-        return $this->container['bearer_type'];
+        return $this->container['bearerType'];
     }
 
     /**
-     * Sets bearer_type
+     * Sets bearerType
      *
-     * @param string|null $bearer_type This allows you specify how the transaction charge should be processed
+     * @param string|null $bearerType This allows you specify how the transaction charge should be processed
      *
      * @return self
      */
-    public function setBearerType($bearer_type)
+    public function setBearerType($bearerType)
     {
-        if (is_null($bearer_type)) {
-            throw new \InvalidArgumentException('non-nullable bearer_type cannot be null');
+        if (is_null($bearerType)) {
+            throw new \InvalidArgumentException('non-nullable bearerType cannot be null');
         }
         $allowedValues = $this->getBearerTypeAllowableValues();
-        if (!in_array($bearer_type, $allowedValues, true)) {
+        if (!in_array($bearerType, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'bearer_type', must be one of '%s'",
-                    $bearer_type,
+                    "Invalid value '%s' for 'bearerType', must be one of '%s'",
+                    $bearerType,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['bearer_type'] = $bearer_type;
+        $this->container['bearerType'] = $bearerType;
 
         return $this;
     }
 
     /**
-     * Gets bearer_subaccount
+     * Gets bearerSubaccount
      *
      * @return string|null
      */
     public function getBearerSubaccount()
     {
-        return $this->container['bearer_subaccount'];
+        return $this->container['bearerSubaccount'];
     }
 
     /**
-     * Sets bearer_subaccount
+     * Sets bearerSubaccount
      *
-     * @param string|null $bearer_subaccount This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
+     * @param string|null $bearerSubaccount This is the subaccount code of the customer or partner that would bear the transaction charge if you specified subaccount as the bearer type
      *
      * @return self
      */
-    public function setBearerSubaccount($bearer_subaccount)
+    public function setBearerSubaccount($bearerSubaccount)
     {
-        if (is_null($bearer_subaccount)) {
-            throw new \InvalidArgumentException('non-nullable bearer_subaccount cannot be null');
+        if (is_null($bearerSubaccount)) {
+            throw new \InvalidArgumentException('non-nullable bearerSubaccount cannot be null');
         }
-        $this->container['bearer_subaccount'] = $bearer_subaccount;
+        $this->container['bearerSubaccount'] = $bearerSubaccount;
 
         return $this;
     }

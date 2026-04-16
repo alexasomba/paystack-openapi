@@ -25,31 +25,31 @@ import (
 // ProductAPIService ProductAPI service
 type ProductAPIService service
 
-type ApiProductCreateRequest struct {
+type ApiCreateRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	productCreate *ProductCreate
 }
 
-func (r ApiProductCreateRequest) ProductCreate(productCreate ProductCreate) ApiProductCreateRequest {
+func (r ApiCreateRequest) ProductCreate(productCreate ProductCreate) ApiCreateRequest {
 	r.productCreate = &productCreate
 	return r
 }
 
-func (r ApiProductCreateRequest) Execute() (*ProductCreateResponse, *http.Response, error) {
-	return r.ApiService.ProductCreateExecute(r)
+func (r ApiCreateRequest) Execute() (*ProductCreateResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-ProductCreate Create Product
+Create Create Product
 
 Create a new product on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProductCreateRequest
+ @return ApiCreateRequest
 */
-func (a *ProductAPIService) ProductCreate(ctx context.Context) ApiProductCreateRequest {
-	return ApiProductCreateRequest{
+func (a *ProductAPIService) Create(ctx context.Context) ApiCreateRequest {
+	return ApiCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *ProductAPIService) ProductCreate(ctx context.Context) ApiProductCreateR
 
 // Execute executes the request
 //  @return ProductCreateResponse
-func (a *ProductAPIService) ProductCreateExecute(r ApiProductCreateRequest) (*ProductCreateResponse, *http.Response, error) {
+func (a *ProductAPIService) CreateExecute(r ApiCreateRequest) (*ProductCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -65,7 +65,7 @@ func (a *ProductAPIService) ProductCreateExecute(r ApiProductCreateRequest) (*Pr
 		localVarReturnValue  *ProductCreateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ProductCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -143,27 +143,27 @@ func (a *ProductAPIService) ProductCreateExecute(r ApiProductCreateRequest) (*Pr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProductDeleteRequest struct {
+type ApiDeleteRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	id int32
 }
 
-func (r ApiProductDeleteRequest) Execute() (*ProductDeleteResponse, *http.Response, error) {
-	return r.ApiService.ProductDeleteExecute(r)
+func (r ApiDeleteRequest) Execute() (*ProductDeleteResponse, *http.Response, error) {
+	return r.ApiService.DeleteExecute(r)
 }
 
 /*
-ProductDelete Delete Product
+Delete Delete Product
 
 Delete a previously created product
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the product
- @return ApiProductDeleteRequest
+ @return ApiDeleteRequest
 */
-func (a *ProductAPIService) ProductDelete(ctx context.Context, id int32) ApiProductDeleteRequest {
-	return ApiProductDeleteRequest{
+func (a *ProductAPIService) Delete(ctx context.Context, id int32) ApiDeleteRequest {
+	return ApiDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -172,7 +172,7 @@ func (a *ProductAPIService) ProductDelete(ctx context.Context, id int32) ApiProd
 
 // Execute executes the request
 //  @return ProductDeleteResponse
-func (a *ProductAPIService) ProductDeleteExecute(r ApiProductDeleteRequest) (*ProductDeleteResponse, *http.Response, error) {
+func (a *ProductAPIService) DeleteExecute(r ApiDeleteRequest) (*ProductDeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -180,7 +180,7 @@ func (a *ProductAPIService) ProductDeleteExecute(r ApiProductDeleteRequest) (*Pr
 		localVarReturnValue  *ProductDeleteResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ProductDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.Delete")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -268,27 +268,27 @@ func (a *ProductAPIService) ProductDeleteExecute(r ApiProductDeleteRequest) (*Pr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProductFetchRequest struct {
+type ApiFetchRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	id int32
 }
 
-func (r ApiProductFetchRequest) Execute() (*ProductFetchResponse, *http.Response, error) {
-	return r.ApiService.ProductFetchExecute(r)
+func (r ApiFetchRequest) Execute() (*ProductFetchResponse, *http.Response, error) {
+	return r.ApiService.FetchExecute(r)
 }
 
 /*
-ProductFetch Fetch Product
+Fetch Fetch Product
 
 Fetch a previously created product
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the product
- @return ApiProductFetchRequest
+ @return ApiFetchRequest
 */
-func (a *ProductAPIService) ProductFetch(ctx context.Context, id int32) ApiProductFetchRequest {
-	return ApiProductFetchRequest{
+func (a *ProductAPIService) Fetch(ctx context.Context, id int32) ApiFetchRequest {
+	return ApiFetchRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -297,7 +297,7 @@ func (a *ProductAPIService) ProductFetch(ctx context.Context, id int32) ApiProdu
 
 // Execute executes the request
 //  @return ProductFetchResponse
-func (a *ProductAPIService) ProductFetchExecute(r ApiProductFetchRequest) (*ProductFetchResponse, *http.Response, error) {
+func (a *ProductAPIService) FetchExecute(r ApiFetchRequest) (*ProductFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -305,7 +305,7 @@ func (a *ProductAPIService) ProductFetchExecute(r ApiProductFetchRequest) (*Prod
 		localVarReturnValue  *ProductFetchResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ProductFetch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.Fetch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -393,7 +393,7 @@ func (a *ProductAPIService) ProductFetchExecute(r ApiProductFetchRequest) (*Prod
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProductListRequest struct {
+type ApiListRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	perPage *int32
@@ -404,49 +404,49 @@ type ApiProductListRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiProductListRequest) PerPage(perPage int32) ApiProductListRequest {
+func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiProductListRequest) Page(page int32) ApiProductListRequest {
+func (r ApiListRequest) Page(page int32) ApiListRequest {
 	r.page = &page
 	return r
 }
 
 // The state of the product
-func (r ApiProductListRequest) Active(active bool) ApiProductListRequest {
+func (r ApiListRequest) Active(active bool) ApiListRequest {
 	r.active = &active
 	return r
 }
 
 // The start date
-func (r ApiProductListRequest) From(from time.Time) ApiProductListRequest {
+func (r ApiListRequest) From(from time.Time) ApiListRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiProductListRequest) To(to time.Time) ApiProductListRequest {
+func (r ApiListRequest) To(to time.Time) ApiListRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiProductListRequest) Execute() (*ProductListsResponse, *http.Response, error) {
-	return r.ApiService.ProductListExecute(r)
+func (r ApiListRequest) Execute() (*ProductListsResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-ProductList List Products
+List List Products
 
 List all previously created products
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProductListRequest
+ @return ApiListRequest
 */
-func (a *ProductAPIService) ProductList(ctx context.Context) ApiProductListRequest {
-	return ApiProductListRequest{
+func (a *ProductAPIService) List(ctx context.Context) ApiListRequest {
+	return ApiListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -454,7 +454,7 @@ func (a *ProductAPIService) ProductList(ctx context.Context) ApiProductListReque
 
 // Execute executes the request
 //  @return ProductListsResponse
-func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*ProductListsResponse, *http.Response, error) {
+func (a *ProductAPIService) ListExecute(r ApiListRequest) (*ProductListsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -462,7 +462,7 @@ func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*Produc
 		localVarReturnValue  *ProductListsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ProductList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -564,33 +564,33 @@ func (a *ProductAPIService) ProductListExecute(r ApiProductListRequest) (*Produc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProductUpdateRequest struct {
+type ApiUpdateRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	id int32
 	productUpdate *ProductUpdate
 }
 
-func (r ApiProductUpdateRequest) ProductUpdate(productUpdate ProductUpdate) ApiProductUpdateRequest {
+func (r ApiUpdateRequest) ProductUpdate(productUpdate ProductUpdate) ApiUpdateRequest {
 	r.productUpdate = &productUpdate
 	return r
 }
 
-func (r ApiProductUpdateRequest) Execute() (*ProductUpdateResponse, *http.Response, error) {
-	return r.ApiService.ProductUpdateExecute(r)
+func (r ApiUpdateRequest) Execute() (*ProductUpdateResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-ProductUpdate Update product
+Update Update product
 
 Update a previously created product
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the product
- @return ApiProductUpdateRequest
+ @return ApiUpdateRequest
 */
-func (a *ProductAPIService) ProductUpdate(ctx context.Context, id int32) ApiProductUpdateRequest {
-	return ApiProductUpdateRequest{
+func (a *ProductAPIService) Update(ctx context.Context, id int32) ApiUpdateRequest {
+	return ApiUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -599,7 +599,7 @@ func (a *ProductAPIService) ProductUpdate(ctx context.Context, id int32) ApiProd
 
 // Execute executes the request
 //  @return ProductUpdateResponse
-func (a *ProductAPIService) ProductUpdateExecute(r ApiProductUpdateRequest) (*ProductUpdateResponse, *http.Response, error) {
+func (a *ProductAPIService) UpdateExecute(r ApiUpdateRequest) (*ProductUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -607,7 +607,7 @@ func (a *ProductAPIService) ProductUpdateExecute(r ApiProductUpdateRequest) (*Pr
 		localVarReturnValue  *ProductUpdateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.ProductUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProductAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

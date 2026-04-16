@@ -61,7 +61,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_create(
+    def create(
         self,
         customer_create: Optional[CustomerCreate] = None,
         _request_timeout: Union[
@@ -105,7 +105,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_create_serialize(
+        _param = self._create_serialize(
             customer_create=customer_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -129,7 +129,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_create_with_http_info(
+    def create_with_http_info(
         self,
         customer_create: Optional[CustomerCreate] = None,
         _request_timeout: Union[
@@ -173,7 +173,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_create_serialize(
+        _param = self._create_serialize(
             customer_create=customer_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -197,7 +197,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_create_without_preload_content(
+    def create_without_preload_content(
         self,
         customer_create: Optional[CustomerCreate] = None,
         _request_timeout: Union[
@@ -241,7 +241,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_create_serialize(
+        _param = self._create_serialize(
             customer_create=customer_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -260,7 +260,7 @@ class CustomerApi:
         return response_data.response
 
 
-    def _customer_create_serialize(
+    def _create_serialize(
         self,
         customer_create,
         _request_auth,
@@ -339,7 +339,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_deactivate_authorization(
+    def deactivate_authorization(
         self,
         customer_deactivate_authorization: Optional[CustomerDeactivateAuthorization] = None,
         _request_timeout: Union[
@@ -383,7 +383,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_deactivate_authorization_serialize(
+        _param = self._deactivate_authorization_serialize(
             customer_deactivate_authorization=customer_deactivate_authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -407,7 +407,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_deactivate_authorization_with_http_info(
+    def deactivate_authorization_with_http_info(
         self,
         customer_deactivate_authorization: Optional[CustomerDeactivateAuthorization] = None,
         _request_timeout: Union[
@@ -451,7 +451,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_deactivate_authorization_serialize(
+        _param = self._deactivate_authorization_serialize(
             customer_deactivate_authorization=customer_deactivate_authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -475,7 +475,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_deactivate_authorization_without_preload_content(
+    def deactivate_authorization_without_preload_content(
         self,
         customer_deactivate_authorization: Optional[CustomerDeactivateAuthorization] = None,
         _request_timeout: Union[
@@ -519,7 +519,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_deactivate_authorization_serialize(
+        _param = self._deactivate_authorization_serialize(
             customer_deactivate_authorization=customer_deactivate_authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -538,7 +538,7 @@ class CustomerApi:
         return response_data.response
 
 
-    def _customer_deactivate_authorization_serialize(
+    def _deactivate_authorization_serialize(
         self,
         customer_deactivate_authorization,
         _request_auth,
@@ -617,7 +617,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_direct_debit_activation_charge(
+    def direct_debit_activation_charge(
         self,
         id: Annotated[StrictInt, Field(description="The customer ID attached to the authorization")],
         customer_direct_debit_activation_charge_request: Optional[CustomerDirectDebitActivationChargeRequest] = None,
@@ -664,7 +664,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_direct_debit_activation_charge_serialize(
+        _param = self._direct_debit_activation_charge_serialize(
             id=id,
             customer_direct_debit_activation_charge_request=customer_direct_debit_activation_charge_request,
             _request_auth=_request_auth,
@@ -689,7 +689,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_direct_debit_activation_charge_with_http_info(
+    def direct_debit_activation_charge_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The customer ID attached to the authorization")],
         customer_direct_debit_activation_charge_request: Optional[CustomerDirectDebitActivationChargeRequest] = None,
@@ -736,7 +736,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_direct_debit_activation_charge_serialize(
+        _param = self._direct_debit_activation_charge_serialize(
             id=id,
             customer_direct_debit_activation_charge_request=customer_direct_debit_activation_charge_request,
             _request_auth=_request_auth,
@@ -761,7 +761,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_direct_debit_activation_charge_without_preload_content(
+    def direct_debit_activation_charge_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The customer ID attached to the authorization")],
         customer_direct_debit_activation_charge_request: Optional[CustomerDirectDebitActivationChargeRequest] = None,
@@ -808,7 +808,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_direct_debit_activation_charge_serialize(
+        _param = self._direct_debit_activation_charge_serialize(
             id=id,
             customer_direct_debit_activation_charge_request=customer_direct_debit_activation_charge_request,
             _request_auth=_request_auth,
@@ -828,7 +828,7 @@ class CustomerApi:
         return response_data.response
 
 
-    def _customer_direct_debit_activation_charge_serialize(
+    def _direct_debit_activation_charge_serialize(
         self,
         id,
         customer_direct_debit_activation_charge_request,
@@ -910,7 +910,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_fetch(
+    def fetch(
         self,
         email_or_code: Annotated[StrictStr, Field(description="An email or customer code for the customer you want to fetch")],
         _request_timeout: Union[
@@ -954,7 +954,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_fetch_serialize(
+        _param = self._fetch_serialize(
             email_or_code=email_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -979,7 +979,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         email_or_code: Annotated[StrictStr, Field(description="An email or customer code for the customer you want to fetch")],
         _request_timeout: Union[
@@ -1023,7 +1023,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_fetch_serialize(
+        _param = self._fetch_serialize(
             email_or_code=email_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1048,7 +1048,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         email_or_code: Annotated[StrictStr, Field(description="An email or customer code for the customer you want to fetch")],
         _request_timeout: Union[
@@ -1092,7 +1092,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_fetch_serialize(
+        _param = self._fetch_serialize(
             email_or_code=email_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1112,7 +1112,7 @@ class CustomerApi:
         return response_data.response
 
 
-    def _customer_fetch_serialize(
+    def _fetch_serialize(
         self,
         email_or_code,
         _request_auth,
@@ -1177,7 +1177,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_fetch_mandate_authorizations(
+    def fetch_mandate_authorizations(
         self,
         id: Annotated[StrictInt, Field(description="The customer ID for the authorizations to fetch")],
         _request_timeout: Union[
@@ -1221,7 +1221,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_fetch_mandate_authorizations_serialize(
+        _param = self._fetch_mandate_authorizations_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1245,7 +1245,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_fetch_mandate_authorizations_with_http_info(
+    def fetch_mandate_authorizations_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The customer ID for the authorizations to fetch")],
         _request_timeout: Union[
@@ -1289,7 +1289,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_fetch_mandate_authorizations_serialize(
+        _param = self._fetch_mandate_authorizations_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1313,7 +1313,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_fetch_mandate_authorizations_without_preload_content(
+    def fetch_mandate_authorizations_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The customer ID for the authorizations to fetch")],
         _request_timeout: Union[
@@ -1357,7 +1357,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_fetch_mandate_authorizations_serialize(
+        _param = self._fetch_mandate_authorizations_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1376,7 +1376,7 @@ class CustomerApi:
         return response_data.response
 
 
-    def _customer_fetch_mandate_authorizations_serialize(
+    def _fetch_mandate_authorizations_serialize(
         self,
         id,
         _request_auth,
@@ -1441,7 +1441,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_initialize_authorization(
+    def initialize_authorization(
         self,
         customer_authorization_initialize_request: CustomerAuthorizationInitializeRequest,
         _request_timeout: Union[
@@ -1485,7 +1485,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_initialize_authorization_serialize(
+        _param = self._initialize_authorization_serialize(
             customer_authorization_initialize_request=customer_authorization_initialize_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1509,7 +1509,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_initialize_authorization_with_http_info(
+    def initialize_authorization_with_http_info(
         self,
         customer_authorization_initialize_request: CustomerAuthorizationInitializeRequest,
         _request_timeout: Union[
@@ -1553,7 +1553,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_initialize_authorization_serialize(
+        _param = self._initialize_authorization_serialize(
             customer_authorization_initialize_request=customer_authorization_initialize_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1577,7 +1577,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_initialize_authorization_without_preload_content(
+    def initialize_authorization_without_preload_content(
         self,
         customer_authorization_initialize_request: CustomerAuthorizationInitializeRequest,
         _request_timeout: Union[
@@ -1621,7 +1621,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_initialize_authorization_serialize(
+        _param = self._initialize_authorization_serialize(
             customer_authorization_initialize_request=customer_authorization_initialize_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1640,7 +1640,7 @@ class CustomerApi:
         return response_data.response
 
 
-    def _customer_initialize_authorization_serialize(
+    def _initialize_authorization_serialize(
         self,
         customer_authorization_initialize_request,
         _request_auth,
@@ -1719,7 +1719,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_initialize_direct_debit(
+    def initialize_direct_debit(
         self,
         id: Annotated[StrictInt, Field(description="The ID of the customer to initialize the direct debit for")],
         customer_initialize_direct_debit_request: Optional[CustomerInitializeDirectDebitRequest] = None,
@@ -1766,7 +1766,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_initialize_direct_debit_serialize(
+        _param = self._initialize_direct_debit_serialize(
             id=id,
             customer_initialize_direct_debit_request=customer_initialize_direct_debit_request,
             _request_auth=_request_auth,
@@ -1791,7 +1791,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_initialize_direct_debit_with_http_info(
+    def initialize_direct_debit_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The ID of the customer to initialize the direct debit for")],
         customer_initialize_direct_debit_request: Optional[CustomerInitializeDirectDebitRequest] = None,
@@ -1838,7 +1838,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_initialize_direct_debit_serialize(
+        _param = self._initialize_direct_debit_serialize(
             id=id,
             customer_initialize_direct_debit_request=customer_initialize_direct_debit_request,
             _request_auth=_request_auth,
@@ -1863,7 +1863,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_initialize_direct_debit_without_preload_content(
+    def initialize_direct_debit_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The ID of the customer to initialize the direct debit for")],
         customer_initialize_direct_debit_request: Optional[CustomerInitializeDirectDebitRequest] = None,
@@ -1910,7 +1910,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_initialize_direct_debit_serialize(
+        _param = self._initialize_direct_debit_serialize(
             id=id,
             customer_initialize_direct_debit_request=customer_initialize_direct_debit_request,
             _request_auth=_request_auth,
@@ -1930,7 +1930,7 @@ class CustomerApi:
         return response_data.response
 
 
-    def _customer_initialize_direct_debit_serialize(
+    def _initialize_direct_debit_serialize(
         self,
         id,
         customer_initialize_direct_debit_request,
@@ -2012,7 +2012,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_list(
+    def list(
         self,
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
@@ -2074,7 +2074,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_list_serialize(
+        _param = self._list_serialize(
             use_cursor=use_cursor,
             next=next,
             previous=previous,
@@ -2105,7 +2105,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_list_with_http_info(
+    def list_with_http_info(
         self,
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
@@ -2167,7 +2167,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_list_serialize(
+        _param = self._list_serialize(
             use_cursor=use_cursor,
             next=next,
             previous=previous,
@@ -2198,7 +2198,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_list_without_preload_content(
+    def list_without_preload_content(
         self,
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
@@ -2260,7 +2260,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_list_serialize(
+        _param = self._list_serialize(
             use_cursor=use_cursor,
             next=next,
             previous=previous,
@@ -2286,7 +2286,7 @@ class CustomerApi:
         return response_data.response
 
 
-    def _customer_list_serialize(
+    def _list_serialize(
         self,
         use_cursor,
         next,
@@ -2401,7 +2401,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_risk_action(
+    def risk_action(
         self,
         customer_risk_action: Optional[CustomerRiskAction] = None,
         _request_timeout: Union[
@@ -2445,7 +2445,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_risk_action_serialize(
+        _param = self._risk_action_serialize(
             customer_risk_action=customer_risk_action,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2469,7 +2469,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_risk_action_with_http_info(
+    def risk_action_with_http_info(
         self,
         customer_risk_action: Optional[CustomerRiskAction] = None,
         _request_timeout: Union[
@@ -2513,7 +2513,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_risk_action_serialize(
+        _param = self._risk_action_serialize(
             customer_risk_action=customer_risk_action,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2537,7 +2537,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_risk_action_without_preload_content(
+    def risk_action_without_preload_content(
         self,
         customer_risk_action: Optional[CustomerRiskAction] = None,
         _request_timeout: Union[
@@ -2581,7 +2581,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_risk_action_serialize(
+        _param = self._risk_action_serialize(
             customer_risk_action=customer_risk_action,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2600,7 +2600,7 @@ class CustomerApi:
         return response_data.response
 
 
-    def _customer_risk_action_serialize(
+    def _risk_action_serialize(
         self,
         customer_risk_action,
         _request_auth,
@@ -2679,7 +2679,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_update(
+    def update(
         self,
         email_or_code: Annotated[StrictStr, Field(description="An email or customer code for the customer you want to fetch")],
         customer_update: Optional[CustomerUpdate] = None,
@@ -2726,7 +2726,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_update_serialize(
+        _param = self._update_serialize(
             email_or_code=email_or_code,
             customer_update=customer_update,
             _request_auth=_request_auth,
@@ -2752,7 +2752,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_update_with_http_info(
+    def update_with_http_info(
         self,
         email_or_code: Annotated[StrictStr, Field(description="An email or customer code for the customer you want to fetch")],
         customer_update: Optional[CustomerUpdate] = None,
@@ -2799,7 +2799,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_update_serialize(
+        _param = self._update_serialize(
             email_or_code=email_or_code,
             customer_update=customer_update,
             _request_auth=_request_auth,
@@ -2825,7 +2825,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_update_without_preload_content(
+    def update_without_preload_content(
         self,
         email_or_code: Annotated[StrictStr, Field(description="An email or customer code for the customer you want to fetch")],
         customer_update: Optional[CustomerUpdate] = None,
@@ -2872,7 +2872,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_update_serialize(
+        _param = self._update_serialize(
             email_or_code=email_or_code,
             customer_update=customer_update,
             _request_auth=_request_auth,
@@ -2893,7 +2893,7 @@ class CustomerApi:
         return response_data.response
 
 
-    def _customer_update_serialize(
+    def _update_serialize(
         self,
         email_or_code,
         customer_update,
@@ -2975,7 +2975,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_validate(
+    def validate(
         self,
         customer_code: Annotated[StrictStr, Field(description="Customer code")],
         customer_validate: Optional[CustomerValidate] = None,
@@ -3022,7 +3022,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_validate_serialize(
+        _param = self._validate_serialize(
             customer_code=customer_code,
             customer_validate=customer_validate,
             _request_auth=_request_auth,
@@ -3047,7 +3047,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_validate_with_http_info(
+    def validate_with_http_info(
         self,
         customer_code: Annotated[StrictStr, Field(description="Customer code")],
         customer_validate: Optional[CustomerValidate] = None,
@@ -3094,7 +3094,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_validate_serialize(
+        _param = self._validate_serialize(
             customer_code=customer_code,
             customer_validate=customer_validate,
             _request_auth=_request_auth,
@@ -3119,7 +3119,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_validate_without_preload_content(
+    def validate_without_preload_content(
         self,
         customer_code: Annotated[StrictStr, Field(description="Customer code")],
         customer_validate: Optional[CustomerValidate] = None,
@@ -3166,7 +3166,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_validate_serialize(
+        _param = self._validate_serialize(
             customer_code=customer_code,
             customer_validate=customer_validate,
             _request_auth=_request_auth,
@@ -3186,7 +3186,7 @@ class CustomerApi:
         return response_data.response
 
 
-    def _customer_validate_serialize(
+    def _validate_serialize(
         self,
         customer_code,
         customer_validate,
@@ -3268,7 +3268,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_verify_authorization(
+    def verify_authorization(
         self,
         reference: Annotated[StrictStr, Field(description="The reference returned in the initialization response")],
         _request_timeout: Union[
@@ -3312,7 +3312,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_verify_authorization_serialize(
+        _param = self._verify_authorization_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3337,7 +3337,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_verify_authorization_with_http_info(
+    def verify_authorization_with_http_info(
         self,
         reference: Annotated[StrictStr, Field(description="The reference returned in the initialization response")],
         _request_timeout: Union[
@@ -3381,7 +3381,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_verify_authorization_serialize(
+        _param = self._verify_authorization_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3406,7 +3406,7 @@ class CustomerApi:
 
 
     @validate_call
-    def customer_verify_authorization_without_preload_content(
+    def verify_authorization_without_preload_content(
         self,
         reference: Annotated[StrictStr, Field(description="The reference returned in the initialization response")],
         _request_timeout: Union[
@@ -3450,7 +3450,7 @@ class CustomerApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._customer_verify_authorization_serialize(
+        _param = self._verify_authorization_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3470,7 +3470,7 @@ class CustomerApi:
         return response_data.response
 
 
-    def _customer_verify_authorization_serialize(
+    def _verify_authorization_serialize(
         self,
         reference,
         _request_auth,

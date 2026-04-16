@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata implements Mo
       * @var string[]
       */
     protected static $openAPITypes = [
-        'calling_code' => 'string'
+        'callingCode' => 'string'
     ];
 
     /**
@@ -69,7 +69,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata implements Mo
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'calling_code' => null
+        'callingCode' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata implements Mo
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'calling_code' => false
+        'callingCode' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata implements Mo
      * @var string[]
      */
     protected static $attributeMap = [
-        'calling_code' => 'calling_code'
+        'callingCode' => 'calling_code'
     ];
 
     /**
@@ -176,7 +176,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata implements Mo
      * @var string[]
      */
     protected static $setters = [
-        'calling_code' => 'setCallingCode'
+        'callingCode' => 'setCallingCode'
     ];
 
     /**
@@ -185,7 +185,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata implements Mo
      * @var string[]
      */
     protected static $getters = [
-        'calling_code' => 'getCallingCode'
+        'callingCode' => 'getCallingCode'
     ];
 
     /**
@@ -245,7 +245,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata implements Mo
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('calling_code', $data ?? [], null);
+        $this->setIfExists('callingCode', $data ?? [], null);
     }
 
     /**
@@ -291,28 +291,28 @@ class BulkChargeFetchBulkBatchChargesResponseArrayCustomerMetadata implements Mo
 
 
     /**
-     * Gets calling_code
+     * Gets callingCode
      *
      * @return string|null
      */
     public function getCallingCode()
     {
-        return $this->container['calling_code'];
+        return $this->container['callingCode'];
     }
 
     /**
-     * Sets calling_code
+     * Sets callingCode
      *
-     * @param string|null $calling_code calling_code
+     * @param string|null $callingCode callingCode
      *
      * @return self
      */
-    public function setCallingCode($calling_code)
+    public function setCallingCode($callingCode)
     {
-        if (is_null($calling_code)) {
-            throw new \InvalidArgumentException('non-nullable calling_code cannot be null');
+        if (is_null($callingCode)) {
+            throw new \InvalidArgumentException('non-nullable callingCode cannot be null');
         }
-        $this->container['calling_code'] = $calling_code;
+        $this->container['callingCode'] = $callingCode;
 
         return $this;
     }

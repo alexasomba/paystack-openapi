@@ -23,7 +23,7 @@ import (
 // BankAPIService BankAPI service
 type BankAPIService service
 
-type ApiBankListRequest struct {
+type ApiListRequest struct {
 	ctx context.Context
 	ApiService *BankAPIService
 	country *string
@@ -42,97 +42,97 @@ type ApiBankListRequest struct {
 }
 
 // The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa
-func (r ApiBankListRequest) Country(country string) ApiBankListRequest {
+func (r ApiListRequest) Country(country string) ApiListRequest {
 	r.country = &country
 	return r
 }
 
 // One of the supported currency
-func (r ApiBankListRequest) Currency(currency string) ApiBankListRequest {
+func (r ApiListRequest) Currency(currency string) ApiListRequest {
 	r.currency = &currency
 	return r
 }
 
 // A flag to indicate if cursor based pagination should be used
-func (r ApiBankListRequest) UseCursor(useCursor bool) ApiBankListRequest {
+func (r ApiListRequest) UseCursor(useCursor bool) ApiListRequest {
 	r.useCursor = &useCursor
 	return r
 }
 
 // The number of objects to return per page. Defaults to 50, and limited to 100 records per page.
-func (r ApiBankListRequest) PerPage(perPage int32) ApiBankListRequest {
+func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
-func (r ApiBankListRequest) Page(page int32) ApiBankListRequest {
+func (r ApiListRequest) Page(page int32) ApiListRequest {
 	r.page = &page
 	return r
 }
 
 // An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
-func (r ApiBankListRequest) Next(next string) ApiBankListRequest {
+func (r ApiListRequest) Next(next string) ApiListRequest {
 	r.next = &next
 	return r
 }
 
 // An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
-func (r ApiBankListRequest) Previous(previous string) ApiBankListRequest {
+func (r ApiListRequest) Previous(previous string) ApiListRequest {
 	r.previous = &previous
 	return r
 }
 
 // A flag to filter for available banks a customer can make a transfer to complete a payment
-func (r ApiBankListRequest) PayWithBankTransfer(payWithBankTransfer bool) ApiBankListRequest {
+func (r ApiListRequest) PayWithBankTransfer(payWithBankTransfer bool) ApiListRequest {
 	r.payWithBankTransfer = &payWithBankTransfer
 	return r
 }
 
 // A flag to filter for banks a customer can pay directly from
-func (r ApiBankListRequest) PayWithBank(payWithBank bool) ApiBankListRequest {
+func (r ApiListRequest) PayWithBank(payWithBank bool) ApiListRequest {
 	r.payWithBank = &payWithBank
 	return r
 }
 
 // A flag to filter the banks that are supported for account verification in South Africa. You need to combine this with either the &#x60;currency&#x60; or &#x60;country&#x60; filter. 
-func (r ApiBankListRequest) EnabledForVerification(enabledForVerification bool) ApiBankListRequest {
+func (r ApiListRequest) EnabledForVerification(enabledForVerification bool) ApiListRequest {
 	r.enabledForVerification = &enabledForVerification
 	return r
 }
 
 // The gateway type of the bank
-func (r ApiBankListRequest) Gateway(gateway string) ApiBankListRequest {
+func (r ApiListRequest) Gateway(gateway string) ApiListRequest {
 	r.gateway = &gateway
 	return r
 }
 
 // Type of financial channel. For Ghanaian channels, please use either mobile_money for mobile money channels OR ghipss for bank channels
-func (r ApiBankListRequest) Type_(type_ string) ApiBankListRequest {
+func (r ApiListRequest) Type_(type_ string) ApiListRequest {
 	r.type_ = &type_
 	return r
 }
 
 // A flag that returns Nigerian banks with their NIP institution code.  The returned value can be used in identifying institutions on NIP. 
-func (r ApiBankListRequest) IncludeNipSortCode(includeNipSortCode bool) ApiBankListRequest {
+func (r ApiListRequest) IncludeNipSortCode(includeNipSortCode bool) ApiListRequest {
 	r.includeNipSortCode = &includeNipSortCode
 	return r
 }
 
-func (r ApiBankListRequest) Execute() (*MiscellaneousListBanksResponse, *http.Response, error) {
-	return r.ApiService.BankListExecute(r)
+func (r ApiListRequest) Execute() (*MiscellaneousListBanksResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-BankList List Banks
+List List Banks
 
 Get a list of all supported banks and their properties
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiBankListRequest
+ @return ApiListRequest
 */
-func (a *BankAPIService) BankList(ctx context.Context) ApiBankListRequest {
-	return ApiBankListRequest{
+func (a *BankAPIService) List(ctx context.Context) ApiListRequest {
+	return ApiListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -140,7 +140,7 @@ func (a *BankAPIService) BankList(ctx context.Context) ApiBankListRequest {
 
 // Execute executes the request
 //  @return MiscellaneousListBanksResponse
-func (a *BankAPIService) BankListExecute(r ApiBankListRequest) (*MiscellaneousListBanksResponse, *http.Response, error) {
+func (a *BankAPIService) ListExecute(r ApiListRequest) (*MiscellaneousListBanksResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -148,7 +148,7 @@ func (a *BankAPIService) BankListExecute(r ApiBankListRequest) (*MiscellaneousLi
 		localVarReturnValue  *MiscellaneousListBanksResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BankAPIService.BankList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BankAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -274,7 +274,7 @@ func (a *BankAPIService) BankListExecute(r ApiBankListRequest) (*MiscellaneousLi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiBankResolveAccountNumberRequest struct {
+type ApiResolveAccountNumberRequest struct {
 	ctx context.Context
 	ApiService *BankAPIService
 	accountNumber *string
@@ -282,31 +282,31 @@ type ApiBankResolveAccountNumberRequest struct {
 }
 
 // The account number of interest
-func (r ApiBankResolveAccountNumberRequest) AccountNumber(accountNumber string) ApiBankResolveAccountNumberRequest {
+func (r ApiResolveAccountNumberRequest) AccountNumber(accountNumber string) ApiResolveAccountNumberRequest {
 	r.accountNumber = &accountNumber
 	return r
 }
 
 // The bank code associated with the account number
-func (r ApiBankResolveAccountNumberRequest) BankCode(bankCode string) ApiBankResolveAccountNumberRequest {
+func (r ApiResolveAccountNumberRequest) BankCode(bankCode string) ApiResolveAccountNumberRequest {
 	r.bankCode = &bankCode
 	return r
 }
 
-func (r ApiBankResolveAccountNumberRequest) Execute() (*VerificationResolveAccountNumberResponse, *http.Response, error) {
-	return r.ApiService.BankResolveAccountNumberExecute(r)
+func (r ApiResolveAccountNumberRequest) Execute() (*VerificationResolveAccountNumberResponse, *http.Response, error) {
+	return r.ApiService.ResolveAccountNumberExecute(r)
 }
 
 /*
-BankResolveAccountNumber Resolve Account Number
+ResolveAccountNumber Resolve Account Number
 
 Resolve an account number to confirm the name associated with it
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiBankResolveAccountNumberRequest
+ @return ApiResolveAccountNumberRequest
 */
-func (a *BankAPIService) BankResolveAccountNumber(ctx context.Context) ApiBankResolveAccountNumberRequest {
-	return ApiBankResolveAccountNumberRequest{
+func (a *BankAPIService) ResolveAccountNumber(ctx context.Context) ApiResolveAccountNumberRequest {
+	return ApiResolveAccountNumberRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -314,7 +314,7 @@ func (a *BankAPIService) BankResolveAccountNumber(ctx context.Context) ApiBankRe
 
 // Execute executes the request
 //  @return VerificationResolveAccountNumberResponse
-func (a *BankAPIService) BankResolveAccountNumberExecute(r ApiBankResolveAccountNumberRequest) (*VerificationResolveAccountNumberResponse, *http.Response, error) {
+func (a *BankAPIService) ResolveAccountNumberExecute(r ApiResolveAccountNumberRequest) (*VerificationResolveAccountNumberResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -322,7 +322,7 @@ func (a *BankAPIService) BankResolveAccountNumberExecute(r ApiBankResolveAccount
 		localVarReturnValue  *VerificationResolveAccountNumberResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BankAPIService.BankResolveAccountNumber")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BankAPIService.ResolveAccountNumber")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -415,31 +415,31 @@ func (a *BankAPIService) BankResolveAccountNumberExecute(r ApiBankResolveAccount
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiBankValidateAccountNumberRequest struct {
+type ApiValidateAccountNumberRequest struct {
 	ctx context.Context
 	ApiService *BankAPIService
 	bankValidateRequest *BankValidateRequest
 }
 
-func (r ApiBankValidateAccountNumberRequest) BankValidateRequest(bankValidateRequest BankValidateRequest) ApiBankValidateAccountNumberRequest {
+func (r ApiValidateAccountNumberRequest) BankValidateRequest(bankValidateRequest BankValidateRequest) ApiValidateAccountNumberRequest {
 	r.bankValidateRequest = &bankValidateRequest
 	return r
 }
 
-func (r ApiBankValidateAccountNumberRequest) Execute() (*VerificationValidateAccountResponse, *http.Response, error) {
-	return r.ApiService.BankValidateAccountNumberExecute(r)
+func (r ApiValidateAccountNumberRequest) Execute() (*VerificationValidateAccountResponse, *http.Response, error) {
+	return r.ApiService.ValidateAccountNumberExecute(r)
 }
 
 /*
-BankValidateAccountNumber Validate Bank Account
+ValidateAccountNumber Validate Bank Account
 
 Confirm the authenticity of a customer's account number before sending money
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiBankValidateAccountNumberRequest
+ @return ApiValidateAccountNumberRequest
 */
-func (a *BankAPIService) BankValidateAccountNumber(ctx context.Context) ApiBankValidateAccountNumberRequest {
-	return ApiBankValidateAccountNumberRequest{
+func (a *BankAPIService) ValidateAccountNumber(ctx context.Context) ApiValidateAccountNumberRequest {
+	return ApiValidateAccountNumberRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -447,7 +447,7 @@ func (a *BankAPIService) BankValidateAccountNumber(ctx context.Context) ApiBankV
 
 // Execute executes the request
 //  @return VerificationValidateAccountResponse
-func (a *BankAPIService) BankValidateAccountNumberExecute(r ApiBankValidateAccountNumberRequest) (*VerificationValidateAccountResponse, *http.Response, error) {
+func (a *BankAPIService) ValidateAccountNumberExecute(r ApiValidateAccountNumberRequest) (*VerificationValidateAccountResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -455,7 +455,7 @@ func (a *BankAPIService) BankValidateAccountNumberExecute(r ApiBankValidateAccou
 		localVarReturnValue  *VerificationValidateAccountResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BankAPIService.BankValidateAccountNumber")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BankAPIService.ValidateAccountNumber")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

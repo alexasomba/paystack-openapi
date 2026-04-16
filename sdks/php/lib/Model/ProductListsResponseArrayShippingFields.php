@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * ProductListsResponseArrayShippingFields Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'delivery_note' => 'string',
-        'shipping_address' => 'string',
-        'shipping_fees' => 'mixed[]'
+        'deliveryNote' => 'string',
+        'shippingAddress' => 'string',
+        'shippingFees' => 'mixed[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'delivery_note' => null,
-        'shipping_address' => null,
-        'shipping_fees' => null
+        'deliveryNote' => null,
+        'shippingAddress' => null,
+        'shippingFees' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'delivery_note' => false,
-        'shipping_address' => false,
-        'shipping_fees' => false
+        'deliveryNote' => false,
+        'shippingAddress' => false,
+        'shippingFees' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'delivery_note' => 'delivery_note',
-        'shipping_address' => 'shipping_address',
-        'shipping_fees' => 'shipping_fees'
+        'deliveryNote' => 'delivery_note',
+        'shippingAddress' => 'shipping_address',
+        'shippingFees' => 'shipping_fees'
     ];
 
     /**
@@ -184,9 +184,9 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'delivery_note' => 'setDeliveryNote',
-        'shipping_address' => 'setShippingAddress',
-        'shipping_fees' => 'setShippingFees'
+        'deliveryNote' => 'setDeliveryNote',
+        'shippingAddress' => 'setShippingAddress',
+        'shippingFees' => 'setShippingFees'
     ];
 
     /**
@@ -195,9 +195,9 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'delivery_note' => 'getDeliveryNote',
-        'shipping_address' => 'getShippingAddress',
-        'shipping_fees' => 'getShippingFees'
+        'deliveryNote' => 'getDeliveryNote',
+        'shippingAddress' => 'getShippingAddress',
+        'shippingFees' => 'getShippingFees'
     ];
 
     /**
@@ -257,9 +257,9 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('delivery_note', $data ?? [], null);
-        $this->setIfExists('shipping_address', $data ?? [], null);
-        $this->setIfExists('shipping_fees', $data ?? [], null);
+        $this->setIfExists('deliveryNote', $data ?? [], null);
+        $this->setIfExists('shippingAddress', $data ?? [], null);
+        $this->setIfExists('shippingFees', $data ?? [], null);
     }
 
     /**
@@ -289,8 +289,8 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['delivery_note'] === null) {
-            $invalidProperties[] = "'delivery_note' can't be null";
+        if ($this->container['deliveryNote'] === null) {
+            $invalidProperties[] = "'deliveryNote' can't be null";
         }
         return $invalidProperties;
     }
@@ -308,82 +308,82 @@ class ProductListsResponseArrayShippingFields implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets delivery_note
+     * Gets deliveryNote
      *
      * @return string
      */
     public function getDeliveryNote()
     {
-        return $this->container['delivery_note'];
+        return $this->container['deliveryNote'];
     }
 
     /**
-     * Sets delivery_note
+     * Sets deliveryNote
      *
-     * @param string $delivery_note delivery_note
+     * @param string $deliveryNote deliveryNote
      *
      * @return self
      */
-    public function setDeliveryNote($delivery_note)
+    public function setDeliveryNote($deliveryNote)
     {
-        if (is_null($delivery_note)) {
-            throw new \InvalidArgumentException('non-nullable delivery_note cannot be null');
+        if (is_null($deliveryNote)) {
+            throw new \InvalidArgumentException('non-nullable deliveryNote cannot be null');
         }
-        $this->container['delivery_note'] = $delivery_note;
+        $this->container['deliveryNote'] = $deliveryNote;
 
         return $this;
     }
 
     /**
-     * Gets shipping_address
+     * Gets shippingAddress
      *
      * @return string|null
      */
     public function getShippingAddress()
     {
-        return $this->container['shipping_address'];
+        return $this->container['shippingAddress'];
     }
 
     /**
-     * Sets shipping_address
+     * Sets shippingAddress
      *
-     * @param string|null $shipping_address shipping_address
+     * @param string|null $shippingAddress shippingAddress
      *
      * @return self
      */
-    public function setShippingAddress($shipping_address)
+    public function setShippingAddress($shippingAddress)
     {
-        if (is_null($shipping_address)) {
-            throw new \InvalidArgumentException('non-nullable shipping_address cannot be null');
+        if (is_null($shippingAddress)) {
+            throw new \InvalidArgumentException('non-nullable shippingAddress cannot be null');
         }
-        $this->container['shipping_address'] = $shipping_address;
+        $this->container['shippingAddress'] = $shippingAddress;
 
         return $this;
     }
 
     /**
-     * Gets shipping_fees
+     * Gets shippingFees
      *
      * @return mixed[]|null
      */
     public function getShippingFees()
     {
-        return $this->container['shipping_fees'];
+        return $this->container['shippingFees'];
     }
 
     /**
-     * Sets shipping_fees
+     * Sets shippingFees
      *
-     * @param mixed[]|null $shipping_fees shipping_fees
+     * @param mixed[]|null $shippingFees shippingFees
      *
      * @return self
      */
-    public function setShippingFees($shipping_fees)
+    public function setShippingFees($shippingFees)
     {
-        if (is_null($shipping_fees)) {
-            throw new \InvalidArgumentException('non-nullable shipping_fees cannot be null');
+        if (is_null($shippingFees)) {
+            throw new \InvalidArgumentException('non-nullable shippingFees cannot be null');
         }
-        $this->container['shipping_fees'] = $shipping_fees;
+        $this->container['shippingFees'] = $shippingFees;
 
         return $this;
     }

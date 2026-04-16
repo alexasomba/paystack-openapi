@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Api;
+namespace Alexasomba\Paystack\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Alexasomba\\Paystack\ApiException;
-use Alexasomba\\Paystack\Configuration;
-use Alexasomba\\Paystack\FormDataProcessor;
-use Alexasomba\\Paystack\HeaderSelector;
-use Alexasomba\\Paystack\ObjectSerializer;
+use Alexasomba\Paystack\ApiException;
+use Alexasomba\Paystack\Configuration;
+use Alexasomba\Paystack\FormDataProcessor;
+use Alexasomba\Paystack\HeaderSelector;
+use Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * CardPreauthorizationApi Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -75,26 +75,26 @@ class CardPreauthorizationApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'preauthorizationCapture' => [
+        'callList' => [
+            'application/json',
+        ],
+        'capture' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'preauthorizationInitialize' => [
+        'initialize' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'preauthorizationList' => [
-            'application/json',
-        ],
-        'preauthorizationRelease' => [
+        'release' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'preauthorizationReserveAuthorization' => [
+        'reserveAuthorization' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'preauthorizationVerify' => [
+        'verify' => [
             'application/json',
         ],
     ];
@@ -146,38 +146,48 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Operation preauthorizationCapture
+     * Operation callList
      *
-     * Capture Preauthorization
+     * List Preauthorizations
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationCapture|null $pre_authorization_capture pre_authorization_capture (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationCapture'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  string|null $status Filter transactions by status. (optional)
+     * @param  int|null $amount Filter transactions by amount using the supported currency code (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationListResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function preauthorizationCapture($pre_authorization_capture = null, string $contentType = self::contentTypes['preauthorizationCapture'][0])
+    public function callList($perPage = null, $page = null, $from = null, $to = null, $status = null, $amount = null, string $contentType = self::contentTypes['callList'][0])
     {
-        list($response) = $this->preauthorizationCaptureWithHttpInfo($pre_authorization_capture, $contentType);
+        list($response) = $this->callListWithHttpInfo($perPage, $page, $from, $to, $status, $amount, $contentType);
         return $response;
     }
 
     /**
-     * Operation preauthorizationCaptureWithHttpInfo
+     * Operation callListWithHttpInfo
      *
-     * Capture Preauthorization
+     * List Preauthorizations
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationCapture|null $pre_authorization_capture (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationCapture'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  string|null $status Filter transactions by status. (optional)
+     * @param  int|null $amount Filter transactions by amount using the supported currency code (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PreAuthorizationListResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function preauthorizationCaptureWithHttpInfo($pre_authorization_capture = null, string $contentType = self::contentTypes['preauthorizationCapture'][0])
+    public function callListWithHttpInfo($perPage = null, $page = null, $from = null, $to = null, $status = null, $amount = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $request = $this->preauthorizationCaptureRequest($pre_authorization_capture, $contentType);
+        $request = $this->callListRequest($perPage, $page, $from, $to, $status, $amount, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -205,13 +215,13 @@ class CardPreauthorizationApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponse',
+                        '\Alexasomba\Paystack\Model\PreAuthorizationListResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -233,7 +243,7 @@ class CardPreauthorizationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponse',
+                '\Alexasomba\Paystack\Model\PreAuthorizationListResponse',
                 $request,
                 $response,
             );
@@ -242,7 +252,7 @@ class CardPreauthorizationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponse',
+                        '\Alexasomba\Paystack\Model\PreAuthorizationListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -250,7 +260,7 @@ class CardPreauthorizationApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -263,19 +273,24 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Operation preauthorizationCaptureAsync
+     * Operation callListAsync
      *
-     * Capture Preauthorization
+     * List Preauthorizations
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationCapture|null $pre_authorization_capture (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationCapture'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  string|null $status Filter transactions by status. (optional)
+     * @param  int|null $amount Filter transactions by amount using the supported currency code (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function preauthorizationCaptureAsync($pre_authorization_capture = null, string $contentType = self::contentTypes['preauthorizationCapture'][0])
+    public function callListAsync($perPage = null, $page = null, $from = null, $to = null, $status = null, $amount = null, string $contentType = self::contentTypes['callList'][0])
     {
-        return $this->preauthorizationCaptureAsyncWithHttpInfo($pre_authorization_capture, $contentType)
+        return $this->callListAsyncWithHttpInfo($perPage, $page, $from, $to, $status, $amount, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -284,20 +299,25 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Operation preauthorizationCaptureAsyncWithHttpInfo
+     * Operation callListAsyncWithHttpInfo
      *
-     * Capture Preauthorization
+     * List Preauthorizations
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationCapture|null $pre_authorization_capture (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationCapture'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  string|null $status Filter transactions by status. (optional)
+     * @param  int|null $amount Filter transactions by amount using the supported currency code (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function preauthorizationCaptureAsyncWithHttpInfo($pre_authorization_capture = null, string $contentType = self::contentTypes['preauthorizationCapture'][0])
+    public function callListAsyncWithHttpInfo($perPage = null, $page = null, $from = null, $to = null, $status = null, $amount = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponse';
-        $request = $this->preauthorizationCaptureRequest($pre_authorization_capture, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PreAuthorizationListResponse';
+        $request = $this->callListRequest($perPage, $page, $from, $to, $status, $amount, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -336,598 +356,20 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Create request for operation 'preauthorizationCapture'
+     * Create request for operation 'callList'
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationCapture|null $pre_authorization_capture (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationCapture'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  string|null $status Filter transactions by status. (optional)
+     * @param  int|null $amount Filter transactions by amount using the supported currency code (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function preauthorizationCaptureRequest($pre_authorization_capture = null, string $contentType = self::contentTypes['preauthorizationCapture'][0])
-    {
-
-
-
-        $resourcePath = '/preauthorization/capture';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($pre_authorization_capture)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($pre_authorization_capture));
-            } else {
-                $httpBody = $pre_authorization_capture;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation preauthorizationInitialize
-     *
-     * Initialize Preauthorization
-     *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationInitialize|null $pre_authorization_initialize pre_authorization_initialize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationInitialize'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationInitializeResponse|\Alexasomba\\Paystack\Model\Error
-     */
-    public function preauthorizationInitialize($pre_authorization_initialize = null, string $contentType = self::contentTypes['preauthorizationInitialize'][0])
-    {
-        list($response) = $this->preauthorizationInitializeWithHttpInfo($pre_authorization_initialize, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation preauthorizationInitializeWithHttpInfo
-     *
-     * Initialize Preauthorization
-     *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationInitialize|null $pre_authorization_initialize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationInitialize'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PreAuthorizationInitializeResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function preauthorizationInitializeWithHttpInfo($pre_authorization_initialize = null, string $contentType = self::contentTypes['preauthorizationInitialize'][0])
-    {
-        $request = $this->preauthorizationInitializeRequest($pre_authorization_initialize, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PreAuthorizationInitializeResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PreAuthorizationInitializeResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PreAuthorizationInitializeResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation preauthorizationInitializeAsync
-     *
-     * Initialize Preauthorization
-     *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationInitialize|null $pre_authorization_initialize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationInitialize'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function preauthorizationInitializeAsync($pre_authorization_initialize = null, string $contentType = self::contentTypes['preauthorizationInitialize'][0])
-    {
-        return $this->preauthorizationInitializeAsyncWithHttpInfo($pre_authorization_initialize, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation preauthorizationInitializeAsyncWithHttpInfo
-     *
-     * Initialize Preauthorization
-     *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationInitialize|null $pre_authorization_initialize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationInitialize'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function preauthorizationInitializeAsyncWithHttpInfo($pre_authorization_initialize = null, string $contentType = self::contentTypes['preauthorizationInitialize'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\PreAuthorizationInitializeResponse';
-        $request = $this->preauthorizationInitializeRequest($pre_authorization_initialize, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'preauthorizationInitialize'
-     *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationInitialize|null $pre_authorization_initialize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationInitialize'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function preauthorizationInitializeRequest($pre_authorization_initialize = null, string $contentType = self::contentTypes['preauthorizationInitialize'][0])
-    {
-
-
-
-        $resourcePath = '/preauthorization/initialize';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($pre_authorization_initialize)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($pre_authorization_initialize));
-            } else {
-                $httpBody = $pre_authorization_initialize;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation preauthorizationList
-     *
-     * List Preauthorizations
-     *
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what page you want to retrieve. If not specify we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  string|null $status Filter transactions by status. (optional)
-     * @param  int|null $amount Filter transactions by amount using the supported currency code (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationList'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationListResponse|\Alexasomba\\Paystack\Model\Error
-     */
-    public function preauthorizationList($per_page = null, $page = null, $from = null, $to = null, $status = null, $amount = null, string $contentType = self::contentTypes['preauthorizationList'][0])
-    {
-        list($response) = $this->preauthorizationListWithHttpInfo($per_page, $page, $from, $to, $status, $amount, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation preauthorizationListWithHttpInfo
-     *
-     * List Preauthorizations
-     *
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what page you want to retrieve. If not specify we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  string|null $status Filter transactions by status. (optional)
-     * @param  int|null $amount Filter transactions by amount using the supported currency code (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationList'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PreAuthorizationListResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function preauthorizationListWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, $status = null, $amount = null, string $contentType = self::contentTypes['preauthorizationList'][0])
-    {
-        $request = $this->preauthorizationListRequest($per_page, $page, $from, $to, $status, $amount, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PreAuthorizationListResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PreAuthorizationListResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PreAuthorizationListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation preauthorizationListAsync
-     *
-     * List Preauthorizations
-     *
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what page you want to retrieve. If not specify we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  string|null $status Filter transactions by status. (optional)
-     * @param  int|null $amount Filter transactions by amount using the supported currency code (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function preauthorizationListAsync($per_page = null, $page = null, $from = null, $to = null, $status = null, $amount = null, string $contentType = self::contentTypes['preauthorizationList'][0])
-    {
-        return $this->preauthorizationListAsyncWithHttpInfo($per_page, $page, $from, $to, $status, $amount, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation preauthorizationListAsyncWithHttpInfo
-     *
-     * List Preauthorizations
-     *
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what page you want to retrieve. If not specify we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  string|null $status Filter transactions by status. (optional)
-     * @param  int|null $amount Filter transactions by amount using the supported currency code (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function preauthorizationListAsyncWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, $status = null, $amount = null, string $contentType = self::contentTypes['preauthorizationList'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\PreAuthorizationListResponse';
-        $request = $this->preauthorizationListRequest($per_page, $page, $from, $to, $status, $amount, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'preauthorizationList'
-     *
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what page you want to retrieve. If not specify we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  string|null $status Filter transactions by status. (optional)
-     * @param  int|null $amount Filter transactions by amount using the supported currency code (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function preauthorizationListRequest($per_page = null, $page = null, $from = null, $to = null, $status = null, $amount = null, string $contentType = self::contentTypes['preauthorizationList'][0])
+    public function callListRequest($perPage = null, $page = null, $from = null, $to = null, $status = null, $amount = null, string $contentType = self::contentTypes['callList'][0])
     {
 
 
@@ -946,7 +388,7 @@ class CardPreauthorizationApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
+            $perPage,
             'perPage', // param base name
             'integer', // openApiType
             'form', // style
@@ -1060,38 +502,38 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Operation preauthorizationRelease
+     * Operation capture
      *
-     * Release Preauthorization
+     * Capture Preauthorization
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationRelease|null $pre_authorization_release pre_authorization_release (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationRelease'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationCapture|null $preAuthorizationCapture preAuthorizationCapture (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['capture'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationReleaseResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function preauthorizationRelease($pre_authorization_release = null, string $contentType = self::contentTypes['preauthorizationRelease'][0])
+    public function capture($preAuthorizationCapture = null, string $contentType = self::contentTypes['capture'][0])
     {
-        list($response) = $this->preauthorizationReleaseWithHttpInfo($pre_authorization_release, $contentType);
+        list($response) = $this->captureWithHttpInfo($preAuthorizationCapture, $contentType);
         return $response;
     }
 
     /**
-     * Operation preauthorizationReleaseWithHttpInfo
+     * Operation captureWithHttpInfo
      *
-     * Release Preauthorization
+     * Capture Preauthorization
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationRelease|null $pre_authorization_release (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationRelease'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationCapture|null $preAuthorizationCapture (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['capture'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PreAuthorizationReleaseResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function preauthorizationReleaseWithHttpInfo($pre_authorization_release = null, string $contentType = self::contentTypes['preauthorizationRelease'][0])
+    public function captureWithHttpInfo($preAuthorizationCapture = null, string $contentType = self::contentTypes['capture'][0])
     {
-        $request = $this->preauthorizationReleaseRequest($pre_authorization_release, $contentType);
+        $request = $this->captureRequest($preAuthorizationCapture, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1119,13 +561,13 @@ class CardPreauthorizationApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PreAuthorizationReleaseResponse',
+                        '\Alexasomba\Paystack\Model\PreAuthorizationCaptureResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1147,7 +589,7 @@ class CardPreauthorizationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PreAuthorizationReleaseResponse',
+                '\Alexasomba\Paystack\Model\PreAuthorizationCaptureResponse',
                 $request,
                 $response,
             );
@@ -1156,7 +598,7 @@ class CardPreauthorizationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PreAuthorizationReleaseResponse',
+                        '\Alexasomba\Paystack\Model\PreAuthorizationCaptureResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1164,7 +606,7 @@ class CardPreauthorizationApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1177,19 +619,19 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Operation preauthorizationReleaseAsync
+     * Operation captureAsync
      *
-     * Release Preauthorization
+     * Capture Preauthorization
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationRelease|null $pre_authorization_release (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationRelease'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationCapture|null $preAuthorizationCapture (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['capture'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function preauthorizationReleaseAsync($pre_authorization_release = null, string $contentType = self::contentTypes['preauthorizationRelease'][0])
+    public function captureAsync($preAuthorizationCapture = null, string $contentType = self::contentTypes['capture'][0])
     {
-        return $this->preauthorizationReleaseAsyncWithHttpInfo($pre_authorization_release, $contentType)
+        return $this->captureAsyncWithHttpInfo($preAuthorizationCapture, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1198,20 +640,20 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Operation preauthorizationReleaseAsyncWithHttpInfo
+     * Operation captureAsyncWithHttpInfo
      *
-     * Release Preauthorization
+     * Capture Preauthorization
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationRelease|null $pre_authorization_release (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationRelease'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationCapture|null $preAuthorizationCapture (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['capture'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function preauthorizationReleaseAsyncWithHttpInfo($pre_authorization_release = null, string $contentType = self::contentTypes['preauthorizationRelease'][0])
+    public function captureAsyncWithHttpInfo($preAuthorizationCapture = null, string $contentType = self::contentTypes['capture'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PreAuthorizationReleaseResponse';
-        $request = $this->preauthorizationReleaseRequest($pre_authorization_release, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PreAuthorizationCaptureResponse';
+        $request = $this->captureRequest($preAuthorizationCapture, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1250,15 +692,573 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Create request for operation 'preauthorizationRelease'
+     * Create request for operation 'capture'
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationRelease|null $pre_authorization_release (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationRelease'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationCapture|null $preAuthorizationCapture (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['capture'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function preauthorizationReleaseRequest($pre_authorization_release = null, string $contentType = self::contentTypes['preauthorizationRelease'][0])
+    public function captureRequest($preAuthorizationCapture = null, string $contentType = self::contentTypes['capture'][0])
+    {
+
+
+
+        $resourcePath = '/preauthorization/capture';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($preAuthorizationCapture)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($preAuthorizationCapture));
+            } else {
+                $httpBody = $preAuthorizationCapture;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation initialize
+     *
+     * Initialize Preauthorization
+     *
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationInitialize|null $preAuthorizationInitialize preAuthorizationInitialize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initialize'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationInitializeResponse|\Alexasomba\Paystack\Model\Error
+     */
+    public function initialize($preAuthorizationInitialize = null, string $contentType = self::contentTypes['initialize'][0])
+    {
+        list($response) = $this->initializeWithHttpInfo($preAuthorizationInitialize, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation initializeWithHttpInfo
+     *
+     * Initialize Preauthorization
+     *
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationInitialize|null $preAuthorizationInitialize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initialize'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\PreAuthorizationInitializeResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function initializeWithHttpInfo($preAuthorizationInitialize = null, string $contentType = self::contentTypes['initialize'][0])
+    {
+        $request = $this->initializeRequest($preAuthorizationInitialize, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\PreAuthorizationInitializeResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\PreAuthorizationInitializeResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\PreAuthorizationInitializeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation initializeAsync
+     *
+     * Initialize Preauthorization
+     *
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationInitialize|null $preAuthorizationInitialize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initialize'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function initializeAsync($preAuthorizationInitialize = null, string $contentType = self::contentTypes['initialize'][0])
+    {
+        return $this->initializeAsyncWithHttpInfo($preAuthorizationInitialize, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation initializeAsyncWithHttpInfo
+     *
+     * Initialize Preauthorization
+     *
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationInitialize|null $preAuthorizationInitialize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initialize'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function initializeAsyncWithHttpInfo($preAuthorizationInitialize = null, string $contentType = self::contentTypes['initialize'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\PreAuthorizationInitializeResponse';
+        $request = $this->initializeRequest($preAuthorizationInitialize, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'initialize'
+     *
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationInitialize|null $preAuthorizationInitialize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initialize'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function initializeRequest($preAuthorizationInitialize = null, string $contentType = self::contentTypes['initialize'][0])
+    {
+
+
+
+        $resourcePath = '/preauthorization/initialize';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($preAuthorizationInitialize)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($preAuthorizationInitialize));
+            } else {
+                $httpBody = $preAuthorizationInitialize;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation release
+     *
+     * Release Preauthorization
+     *
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationRelease|null $preAuthorizationRelease preAuthorizationRelease (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['release'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationReleaseResponse|\Alexasomba\Paystack\Model\Error
+     */
+    public function release($preAuthorizationRelease = null, string $contentType = self::contentTypes['release'][0])
+    {
+        list($response) = $this->releaseWithHttpInfo($preAuthorizationRelease, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation releaseWithHttpInfo
+     *
+     * Release Preauthorization
+     *
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationRelease|null $preAuthorizationRelease (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['release'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\PreAuthorizationReleaseResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function releaseWithHttpInfo($preAuthorizationRelease = null, string $contentType = self::contentTypes['release'][0])
+    {
+        $request = $this->releaseRequest($preAuthorizationRelease, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\PreAuthorizationReleaseResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\PreAuthorizationReleaseResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\PreAuthorizationReleaseResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation releaseAsync
+     *
+     * Release Preauthorization
+     *
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationRelease|null $preAuthorizationRelease (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['release'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function releaseAsync($preAuthorizationRelease = null, string $contentType = self::contentTypes['release'][0])
+    {
+        return $this->releaseAsyncWithHttpInfo($preAuthorizationRelease, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation releaseAsyncWithHttpInfo
+     *
+     * Release Preauthorization
+     *
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationRelease|null $preAuthorizationRelease (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['release'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function releaseAsyncWithHttpInfo($preAuthorizationRelease = null, string $contentType = self::contentTypes['release'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\PreAuthorizationReleaseResponse';
+        $request = $this->releaseRequest($preAuthorizationRelease, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'release'
+     *
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationRelease|null $preAuthorizationRelease (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['release'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function releaseRequest($preAuthorizationRelease = null, string $contentType = self::contentTypes['release'][0])
     {
 
 
@@ -1281,12 +1281,12 @@ class CardPreauthorizationApi
         );
 
         // for model (json/xml)
-        if (isset($pre_authorization_release)) {
+        if (isset($preAuthorizationRelease)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($pre_authorization_release));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($preAuthorizationRelease));
             } else {
-                $httpBody = $pre_authorization_release;
+                $httpBody = $preAuthorizationRelease;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1339,38 +1339,38 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Operation preauthorizationReserveAuthorization
+     * Operation reserveAuthorization
      *
      * Reserve Preauthorization
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationReserve|null $pre_authorization_reserve pre_authorization_reserve (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationReserveAuthorization'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationReserve|null $preAuthorizationReserve preAuthorizationReserve (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reserveAuthorization'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function preauthorizationReserveAuthorization($pre_authorization_reserve = null, string $contentType = self::contentTypes['preauthorizationReserveAuthorization'][0])
+    public function reserveAuthorization($preAuthorizationReserve = null, string $contentType = self::contentTypes['reserveAuthorization'][0])
     {
-        list($response) = $this->preauthorizationReserveAuthorizationWithHttpInfo($pre_authorization_reserve, $contentType);
+        list($response) = $this->reserveAuthorizationWithHttpInfo($preAuthorizationReserve, $contentType);
         return $response;
     }
 
     /**
-     * Operation preauthorizationReserveAuthorizationWithHttpInfo
+     * Operation reserveAuthorizationWithHttpInfo
      *
      * Reserve Preauthorization
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationReserve|null $pre_authorization_reserve (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationReserveAuthorization'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationReserve|null $preAuthorizationReserve (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reserveAuthorization'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function preauthorizationReserveAuthorizationWithHttpInfo($pre_authorization_reserve = null, string $contentType = self::contentTypes['preauthorizationReserveAuthorization'][0])
+    public function reserveAuthorizationWithHttpInfo($preAuthorizationReserve = null, string $contentType = self::contentTypes['reserveAuthorization'][0])
     {
-        $request = $this->preauthorizationReserveAuthorizationRequest($pre_authorization_reserve, $contentType);
+        $request = $this->reserveAuthorizationRequest($preAuthorizationReserve, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1398,13 +1398,13 @@ class CardPreauthorizationApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponse',
+                        '\Alexasomba\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1426,7 +1426,7 @@ class CardPreauthorizationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponse',
+                '\Alexasomba\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponse',
                 $request,
                 $response,
             );
@@ -1435,7 +1435,7 @@ class CardPreauthorizationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponse',
+                        '\Alexasomba\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1443,7 +1443,7 @@ class CardPreauthorizationApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1456,19 +1456,19 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Operation preauthorizationReserveAuthorizationAsync
+     * Operation reserveAuthorizationAsync
      *
      * Reserve Preauthorization
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationReserve|null $pre_authorization_reserve (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationReserveAuthorization'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationReserve|null $preAuthorizationReserve (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reserveAuthorization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function preauthorizationReserveAuthorizationAsync($pre_authorization_reserve = null, string $contentType = self::contentTypes['preauthorizationReserveAuthorization'][0])
+    public function reserveAuthorizationAsync($preAuthorizationReserve = null, string $contentType = self::contentTypes['reserveAuthorization'][0])
     {
-        return $this->preauthorizationReserveAuthorizationAsyncWithHttpInfo($pre_authorization_reserve, $contentType)
+        return $this->reserveAuthorizationAsyncWithHttpInfo($preAuthorizationReserve, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1477,20 +1477,20 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Operation preauthorizationReserveAuthorizationAsyncWithHttpInfo
+     * Operation reserveAuthorizationAsyncWithHttpInfo
      *
      * Reserve Preauthorization
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationReserve|null $pre_authorization_reserve (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationReserveAuthorization'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationReserve|null $preAuthorizationReserve (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reserveAuthorization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function preauthorizationReserveAuthorizationAsyncWithHttpInfo($pre_authorization_reserve = null, string $contentType = self::contentTypes['preauthorizationReserveAuthorization'][0])
+    public function reserveAuthorizationAsyncWithHttpInfo($preAuthorizationReserve = null, string $contentType = self::contentTypes['reserveAuthorization'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponse';
-        $request = $this->preauthorizationReserveAuthorizationRequest($pre_authorization_reserve, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponse';
+        $request = $this->reserveAuthorizationRequest($preAuthorizationReserve, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1529,15 +1529,15 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Create request for operation 'preauthorizationReserveAuthorization'
+     * Create request for operation 'reserveAuthorization'
      *
-     * @param  \Alexasomba\\Paystack\Model\PreAuthorizationReserve|null $pre_authorization_reserve (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationReserveAuthorization'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PreAuthorizationReserve|null $preAuthorizationReserve (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reserveAuthorization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function preauthorizationReserveAuthorizationRequest($pre_authorization_reserve = null, string $contentType = self::contentTypes['preauthorizationReserveAuthorization'][0])
+    public function reserveAuthorizationRequest($preAuthorizationReserve = null, string $contentType = self::contentTypes['reserveAuthorization'][0])
     {
 
 
@@ -1560,12 +1560,12 @@ class CardPreauthorizationApi
         );
 
         // for model (json/xml)
-        if (isset($pre_authorization_reserve)) {
+        if (isset($preAuthorizationReserve)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($pre_authorization_reserve));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($preAuthorizationReserve));
             } else {
-                $httpBody = $pre_authorization_reserve;
+                $httpBody = $preAuthorizationReserve;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1618,38 +1618,38 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Operation preauthorizationVerify
+     * Operation verify
      *
      * Verify Preauthorization
      *
      * @param  string $reference The transaction reference used to intiate the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationVerifyResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationVerifyResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function preauthorizationVerify($reference, string $contentType = self::contentTypes['preauthorizationVerify'][0])
+    public function verify($reference, string $contentType = self::contentTypes['verify'][0])
     {
-        list($response) = $this->preauthorizationVerifyWithHttpInfo($reference, $contentType);
+        list($response) = $this->verifyWithHttpInfo($reference, $contentType);
         return $response;
     }
 
     /**
-     * Operation preauthorizationVerifyWithHttpInfo
+     * Operation verifyWithHttpInfo
      *
      * Verify Preauthorization
      *
      * @param  string $reference The transaction reference used to intiate the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PreAuthorizationVerifyResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PreAuthorizationVerifyResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function preauthorizationVerifyWithHttpInfo($reference, string $contentType = self::contentTypes['preauthorizationVerify'][0])
+    public function verifyWithHttpInfo($reference, string $contentType = self::contentTypes['verify'][0])
     {
-        $request = $this->preauthorizationVerifyRequest($reference, $contentType);
+        $request = $this->verifyRequest($reference, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1677,19 +1677,19 @@ class CardPreauthorizationApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PreAuthorizationVerifyResponse',
+                        '\Alexasomba\Paystack\Model\PreAuthorizationVerifyResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1711,7 +1711,7 @@ class CardPreauthorizationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PreAuthorizationVerifyResponse',
+                '\Alexasomba\Paystack\Model\PreAuthorizationVerifyResponse',
                 $request,
                 $response,
             );
@@ -1720,7 +1720,7 @@ class CardPreauthorizationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PreAuthorizationVerifyResponse',
+                        '\Alexasomba\Paystack\Model\PreAuthorizationVerifyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1728,7 +1728,7 @@ class CardPreauthorizationApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1736,7 +1736,7 @@ class CardPreauthorizationApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1749,19 +1749,19 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Operation preauthorizationVerifyAsync
+     * Operation verifyAsync
      *
      * Verify Preauthorization
      *
      * @param  string $reference The transaction reference used to intiate the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function preauthorizationVerifyAsync($reference, string $contentType = self::contentTypes['preauthorizationVerify'][0])
+    public function verifyAsync($reference, string $contentType = self::contentTypes['verify'][0])
     {
-        return $this->preauthorizationVerifyAsyncWithHttpInfo($reference, $contentType)
+        return $this->verifyAsyncWithHttpInfo($reference, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1770,20 +1770,20 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Operation preauthorizationVerifyAsyncWithHttpInfo
+     * Operation verifyAsyncWithHttpInfo
      *
      * Verify Preauthorization
      *
      * @param  string $reference The transaction reference used to intiate the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function preauthorizationVerifyAsyncWithHttpInfo($reference, string $contentType = self::contentTypes['preauthorizationVerify'][0])
+    public function verifyAsyncWithHttpInfo($reference, string $contentType = self::contentTypes['verify'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PreAuthorizationVerifyResponse';
-        $request = $this->preauthorizationVerifyRequest($reference, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PreAuthorizationVerifyResponse';
+        $request = $this->verifyRequest($reference, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1822,21 +1822,21 @@ class CardPreauthorizationApi
     }
 
     /**
-     * Create request for operation 'preauthorizationVerify'
+     * Create request for operation 'verify'
      *
      * @param  string $reference The transaction reference used to intiate the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['preauthorizationVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function preauthorizationVerifyRequest($reference, string $contentType = self::contentTypes['preauthorizationVerify'][0])
+    public function verifyRequest($reference, string $contentType = self::contentTypes['verify'][0])
     {
 
         // verify the required parameter 'reference' is set
         if ($reference === null || (is_array($reference) && count($reference) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $reference when calling preauthorizationVerify'
+                'Missing the required parameter $reference when calling verify'
             );
         }
 

@@ -44,7 +44,7 @@ class BankApi:
 
 
     @validate_call
-    def bank_list(
+    def list(
         self,
         country: Annotated[Optional[StrictStr], Field(description="The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="One of the supported currency")] = None,
@@ -124,7 +124,7 @@ class BankApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bank_list_serialize(
+        _param = self._list_serialize(
             country=country,
             currency=currency,
             use_cursor=use_cursor,
@@ -161,7 +161,7 @@ class BankApi:
 
 
     @validate_call
-    def bank_list_with_http_info(
+    def list_with_http_info(
         self,
         country: Annotated[Optional[StrictStr], Field(description="The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="One of the supported currency")] = None,
@@ -241,7 +241,7 @@ class BankApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bank_list_serialize(
+        _param = self._list_serialize(
             country=country,
             currency=currency,
             use_cursor=use_cursor,
@@ -278,7 +278,7 @@ class BankApi:
 
 
     @validate_call
-    def bank_list_without_preload_content(
+    def list_without_preload_content(
         self,
         country: Annotated[Optional[StrictStr], Field(description="The country from which to obtain the list of supported banks. Accepted values are: ghana, kenya, nigeria, south africa")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="One of the supported currency")] = None,
@@ -358,7 +358,7 @@ class BankApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bank_list_serialize(
+        _param = self._list_serialize(
             country=country,
             currency=currency,
             use_cursor=use_cursor,
@@ -390,7 +390,7 @@ class BankApi:
         return response_data.response
 
 
-    def _bank_list_serialize(
+    def _list_serialize(
         self,
         country,
         currency,
@@ -517,7 +517,7 @@ class BankApi:
 
 
     @validate_call
-    def bank_resolve_account_number(
+    def resolve_account_number(
         self,
         account_number: Annotated[Optional[StrictStr], Field(description="The account number of interest")] = None,
         bank_code: Annotated[Optional[StrictStr], Field(description="The bank code associated with the account number")] = None,
@@ -564,7 +564,7 @@ class BankApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bank_resolve_account_number_serialize(
+        _param = self._resolve_account_number_serialize(
             account_number=account_number,
             bank_code=bank_code,
             _request_auth=_request_auth,
@@ -590,7 +590,7 @@ class BankApi:
 
 
     @validate_call
-    def bank_resolve_account_number_with_http_info(
+    def resolve_account_number_with_http_info(
         self,
         account_number: Annotated[Optional[StrictStr], Field(description="The account number of interest")] = None,
         bank_code: Annotated[Optional[StrictStr], Field(description="The bank code associated with the account number")] = None,
@@ -637,7 +637,7 @@ class BankApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bank_resolve_account_number_serialize(
+        _param = self._resolve_account_number_serialize(
             account_number=account_number,
             bank_code=bank_code,
             _request_auth=_request_auth,
@@ -663,7 +663,7 @@ class BankApi:
 
 
     @validate_call
-    def bank_resolve_account_number_without_preload_content(
+    def resolve_account_number_without_preload_content(
         self,
         account_number: Annotated[Optional[StrictStr], Field(description="The account number of interest")] = None,
         bank_code: Annotated[Optional[StrictStr], Field(description="The bank code associated with the account number")] = None,
@@ -710,7 +710,7 @@ class BankApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bank_resolve_account_number_serialize(
+        _param = self._resolve_account_number_serialize(
             account_number=account_number,
             bank_code=bank_code,
             _request_auth=_request_auth,
@@ -731,7 +731,7 @@ class BankApi:
         return response_data.response
 
 
-    def _bank_resolve_account_number_serialize(
+    def _resolve_account_number_serialize(
         self,
         account_number,
         bank_code,
@@ -803,7 +803,7 @@ class BankApi:
 
 
     @validate_call
-    def bank_validate_account_number(
+    def validate_account_number(
         self,
         bank_validate_request: Optional[BankValidateRequest] = None,
         _request_timeout: Union[
@@ -847,7 +847,7 @@ class BankApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bank_validate_account_number_serialize(
+        _param = self._validate_account_number_serialize(
             bank_validate_request=bank_validate_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -871,7 +871,7 @@ class BankApi:
 
 
     @validate_call
-    def bank_validate_account_number_with_http_info(
+    def validate_account_number_with_http_info(
         self,
         bank_validate_request: Optional[BankValidateRequest] = None,
         _request_timeout: Union[
@@ -915,7 +915,7 @@ class BankApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bank_validate_account_number_serialize(
+        _param = self._validate_account_number_serialize(
             bank_validate_request=bank_validate_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -939,7 +939,7 @@ class BankApi:
 
 
     @validate_call
-    def bank_validate_account_number_without_preload_content(
+    def validate_account_number_without_preload_content(
         self,
         bank_validate_request: Optional[BankValidateRequest] = None,
         _request_timeout: Union[
@@ -983,7 +983,7 @@ class BankApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bank_validate_account_number_serialize(
+        _param = self._validate_account_number_serialize(
             bank_validate_request=bank_validate_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1002,7 +1002,7 @@ class BankApi:
         return response_data.response
 
 
-    def _bank_validate_account_number_serialize(
+    def _validate_account_number_serialize(
         self,
         bank_validate_request,
         _request_auth,

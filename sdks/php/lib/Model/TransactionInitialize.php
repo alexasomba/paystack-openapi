@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransactionInitialize Class Doc Comment
  *
  * @category Class
  * @description Initialize a transaction
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,20 +60,20 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'email' => 'string',
-        'amount' => '\Alexasomba\\Paystack\Model\TransactionInitializeAmount',
-        'currency' => '\Alexasomba\\Paystack\Model\Currency',
+        'amount' => '\Alexasomba\Paystack\Model\TransactionInitializeAmount',
+        'currency' => '\Alexasomba\Paystack\Model\Currency',
         'reference' => 'string',
         'channels' => 'string[]',
-        'callback_url' => 'string',
+        'callbackUrl' => 'string',
         'plan' => 'string',
-        'invoice_limit' => 'int',
-        'split_code' => 'string',
-        'split' => '\Alexasomba\\Paystack\Model\SplitCreate',
+        'invoiceLimit' => 'int',
+        'splitCode' => 'string',
+        'split' => '\Alexasomba\Paystack\Model\SplitCreate',
         'subaccount' => 'string',
-        'transaction_charge' => 'int',
+        'transactionCharge' => 'int',
         'bearer' => 'string',
         'label' => 'string',
-        'metadata' => '\Alexasomba\\Paystack\Model\TransactionInitializeMetadata'
+        'metadata' => '\Alexasomba\Paystack\Model\TransactionInitializeMetadata'
     ];
 
     /**
@@ -89,13 +89,13 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => null,
         'reference' => null,
         'channels' => null,
-        'callback_url' => null,
+        'callbackUrl' => null,
         'plan' => null,
-        'invoice_limit' => null,
-        'split_code' => null,
+        'invoiceLimit' => null,
+        'splitCode' => null,
         'split' => null,
         'subaccount' => null,
-        'transaction_charge' => null,
+        'transactionCharge' => null,
         'bearer' => null,
         'label' => null,
         'metadata' => null
@@ -112,13 +112,13 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => false,
         'reference' => false,
         'channels' => false,
-        'callback_url' => false,
+        'callbackUrl' => false,
         'plan' => false,
-        'invoice_limit' => false,
-        'split_code' => false,
+        'invoiceLimit' => false,
+        'splitCode' => false,
         'split' => false,
         'subaccount' => false,
-        'transaction_charge' => false,
+        'transactionCharge' => false,
         'bearer' => false,
         'label' => false,
         'metadata' => false
@@ -215,13 +215,13 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'currency',
         'reference' => 'reference',
         'channels' => 'channels',
-        'callback_url' => 'callback_url',
+        'callbackUrl' => 'callback_url',
         'plan' => 'plan',
-        'invoice_limit' => 'invoice_limit',
-        'split_code' => 'split_code',
+        'invoiceLimit' => 'invoice_limit',
+        'splitCode' => 'split_code',
         'split' => 'split',
         'subaccount' => 'subaccount',
-        'transaction_charge' => 'transaction_charge',
+        'transactionCharge' => 'transaction_charge',
         'bearer' => 'bearer',
         'label' => 'label',
         'metadata' => 'metadata'
@@ -238,13 +238,13 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'setCurrency',
         'reference' => 'setReference',
         'channels' => 'setChannels',
-        'callback_url' => 'setCallbackUrl',
+        'callbackUrl' => 'setCallbackUrl',
         'plan' => 'setPlan',
-        'invoice_limit' => 'setInvoiceLimit',
-        'split_code' => 'setSplitCode',
+        'invoiceLimit' => 'setInvoiceLimit',
+        'splitCode' => 'setSplitCode',
         'split' => 'setSplit',
         'subaccount' => 'setSubaccount',
-        'transaction_charge' => 'setTransactionCharge',
+        'transactionCharge' => 'setTransactionCharge',
         'bearer' => 'setBearer',
         'label' => 'setLabel',
         'metadata' => 'setMetadata'
@@ -261,13 +261,13 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
         'currency' => 'getCurrency',
         'reference' => 'getReference',
         'channels' => 'getChannels',
-        'callback_url' => 'getCallbackUrl',
+        'callbackUrl' => 'getCallbackUrl',
         'plan' => 'getPlan',
-        'invoice_limit' => 'getInvoiceLimit',
-        'split_code' => 'getSplitCode',
+        'invoiceLimit' => 'getInvoiceLimit',
+        'splitCode' => 'getSplitCode',
         'split' => 'getSplit',
         'subaccount' => 'getSubaccount',
-        'transaction_charge' => 'getTransactionCharge',
+        'transactionCharge' => 'getTransactionCharge',
         'bearer' => 'getBearer',
         'label' => 'getLabel',
         'metadata' => 'getMetadata'
@@ -381,13 +381,13 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('channels', $data ?? [], null);
-        $this->setIfExists('callback_url', $data ?? [], null);
+        $this->setIfExists('callbackUrl', $data ?? [], null);
         $this->setIfExists('plan', $data ?? [], null);
-        $this->setIfExists('invoice_limit', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
+        $this->setIfExists('invoiceLimit', $data ?? [], null);
+        $this->setIfExists('splitCode', $data ?? [], null);
         $this->setIfExists('split', $data ?? [], null);
         $this->setIfExists('subaccount', $data ?? [], null);
-        $this->setIfExists('transaction_charge', $data ?? [], null);
+        $this->setIfExists('transactionCharge', $data ?? [], null);
         $this->setIfExists('bearer', $data ?? [], null);
         $this->setIfExists('label', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
@@ -480,7 +480,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets amount
      *
-     * @return \Alexasomba\\Paystack\Model\TransactionInitializeAmount
+     * @return \Alexasomba\Paystack\Model\TransactionInitializeAmount
      */
     public function getAmount()
     {
@@ -490,7 +490,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets amount
      *
-     * @param \Alexasomba\\Paystack\Model\TransactionInitializeAmount $amount amount
+     * @param \Alexasomba\Paystack\Model\TransactionInitializeAmount $amount amount
      *
      * @return self
      */
@@ -507,7 +507,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets currency
      *
-     * @return \Alexasomba\\Paystack\Model\Currency|null
+     * @return \Alexasomba\Paystack\Model\Currency|null
      */
     public function getCurrency()
     {
@@ -517,7 +517,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets currency
      *
-     * @param \Alexasomba\\Paystack\Model\Currency|null $currency currency
+     * @param \Alexasomba\Paystack\Model\Currency|null $currency currency
      *
      * @return self
      */
@@ -595,28 +595,28 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets callback_url
+     * Gets callbackUrl
      *
      * @return string|null
      */
     public function getCallbackUrl()
     {
-        return $this->container['callback_url'];
+        return $this->container['callbackUrl'];
     }
 
     /**
-     * Sets callback_url
+     * Sets callbackUrl
      *
-     * @param string|null $callback_url Fully qualified url, e.g. https://example.com/ to redirect your customers to after a successful payment. Use this to override the callback url provided on the dashboard for this transaction
+     * @param string|null $callbackUrl Fully qualified url, e.g. https://example.com/ to redirect your customers to after a successful payment. Use this to override the callback url provided on the dashboard for this transaction
      *
      * @return self
      */
-    public function setCallbackUrl($callback_url)
+    public function setCallbackUrl($callbackUrl)
     {
-        if (is_null($callback_url)) {
-            throw new \InvalidArgumentException('non-nullable callback_url cannot be null');
+        if (is_null($callbackUrl)) {
+            throw new \InvalidArgumentException('non-nullable callbackUrl cannot be null');
         }
-        $this->container['callback_url'] = $callback_url;
+        $this->container['callbackUrl'] = $callbackUrl;
 
         return $this;
     }
@@ -649,55 +649,55 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets invoice_limit
+     * Gets invoiceLimit
      *
      * @return int|null
      */
     public function getInvoiceLimit()
     {
-        return $this->container['invoice_limit'];
+        return $this->container['invoiceLimit'];
     }
 
     /**
-     * Sets invoice_limit
+     * Sets invoiceLimit
      *
-     * @param int|null $invoice_limit Number of times to charge customer during subscription to plan
+     * @param int|null $invoiceLimit Number of times to charge customer during subscription to plan
      *
      * @return self
      */
-    public function setInvoiceLimit($invoice_limit)
+    public function setInvoiceLimit($invoiceLimit)
     {
-        if (is_null($invoice_limit)) {
-            throw new \InvalidArgumentException('non-nullable invoice_limit cannot be null');
+        if (is_null($invoiceLimit)) {
+            throw new \InvalidArgumentException('non-nullable invoiceLimit cannot be null');
         }
-        $this->container['invoice_limit'] = $invoice_limit;
+        $this->container['invoiceLimit'] = $invoiceLimit;
 
         return $this;
     }
 
     /**
-     * Gets split_code
+     * Gets splitCode
      *
      * @return string|null
      */
     public function getSplitCode()
     {
-        return $this->container['split_code'];
+        return $this->container['splitCode'];
     }
 
     /**
-     * Sets split_code
+     * Sets splitCode
      *
-     * @param string|null $split_code The split code of the transaction split
+     * @param string|null $splitCode The split code of the transaction split
      *
      * @return self
      */
-    public function setSplitCode($split_code)
+    public function setSplitCode($splitCode)
     {
-        if (is_null($split_code)) {
-            throw new \InvalidArgumentException('non-nullable split_code cannot be null');
+        if (is_null($splitCode)) {
+            throw new \InvalidArgumentException('non-nullable splitCode cannot be null');
         }
-        $this->container['split_code'] = $split_code;
+        $this->container['splitCode'] = $splitCode;
 
         return $this;
     }
@@ -705,7 +705,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets split
      *
-     * @return \Alexasomba\\Paystack\Model\SplitCreate|null
+     * @return \Alexasomba\Paystack\Model\SplitCreate|null
      */
     public function getSplit()
     {
@@ -715,7 +715,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets split
      *
-     * @param \Alexasomba\\Paystack\Model\SplitCreate|null $split split
+     * @param \Alexasomba\Paystack\Model\SplitCreate|null $split split
      *
      * @return self
      */
@@ -757,28 +757,28 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets transaction_charge
+     * Gets transactionCharge
      *
      * @return int|null
      */
     public function getTransactionCharge()
     {
-        return $this->container['transaction_charge'];
+        return $this->container['transactionCharge'];
     }
 
     /**
-     * Sets transaction_charge
+     * Sets transactionCharge
      *
-     * @param int|null $transaction_charge A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
+     * @param int|null $transactionCharge A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
      *
      * @return self
      */
-    public function setTransactionCharge($transaction_charge)
+    public function setTransactionCharge($transactionCharge)
     {
-        if (is_null($transaction_charge)) {
-            throw new \InvalidArgumentException('non-nullable transaction_charge cannot be null');
+        if (is_null($transactionCharge)) {
+            throw new \InvalidArgumentException('non-nullable transactionCharge cannot be null');
         }
-        $this->container['transaction_charge'] = $transaction_charge;
+        $this->container['transactionCharge'] = $transactionCharge;
 
         return $this;
     }
@@ -850,7 +850,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\\Paystack\Model\TransactionInitializeMetadata|null
+     * @return \Alexasomba\Paystack\Model\TransactionInitializeMetadata|null
      */
     public function getMetadata()
     {
@@ -860,7 +860,7 @@ class TransactionInitialize implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\\Paystack\Model\TransactionInitializeMetadata|null $metadata metadata
+     * @param \Alexasomba\Paystack\Model\TransactionInitializeMetadata|null $metadata metadata
      *
      * @return self
      */

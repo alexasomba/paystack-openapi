@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransactionChargeAuthorization Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,16 +60,16 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'email' => 'string',
         'amount' => 'mixed',
-        'authorization_code' => 'string',
+        'authorizationCode' => 'string',
         'reference' => 'string',
-        'currency' => '\Alexasomba\\Paystack\Model\Currency',
+        'currency' => '\Alexasomba\Paystack\Model\Currency',
         'channels' => 'string[]',
-        'split_code' => 'string',
-        'split' => '\Alexasomba\\Paystack\Model\SplitCreate',
+        'splitCode' => 'string',
+        'split' => '\Alexasomba\Paystack\Model\SplitCreate',
         'subaccount' => 'string',
-        'transaction_charge' => 'int',
+        'transactionCharge' => 'int',
         'bearer' => 'string',
-        'metadata' => '\Alexasomba\\Paystack\Model\TransactionChargeAuthorizationMetadata',
+        'metadata' => '\Alexasomba\Paystack\Model\TransactionChargeAuthorizationMetadata',
         'queue' => 'bool'
     ];
 
@@ -83,14 +83,14 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     protected static $openAPIFormats = [
         'email' => null,
         'amount' => null,
-        'authorization_code' => null,
+        'authorizationCode' => null,
         'reference' => null,
         'currency' => null,
         'channels' => null,
-        'split_code' => null,
+        'splitCode' => null,
         'split' => null,
         'subaccount' => null,
-        'transaction_charge' => null,
+        'transactionCharge' => null,
         'bearer' => null,
         'metadata' => null,
         'queue' => null
@@ -104,14 +104,14 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     protected static array $openAPINullables = [
         'email' => false,
         'amount' => true,
-        'authorization_code' => false,
+        'authorizationCode' => false,
         'reference' => false,
         'currency' => false,
         'channels' => false,
-        'split_code' => false,
+        'splitCode' => false,
         'split' => false,
         'subaccount' => false,
-        'transaction_charge' => false,
+        'transactionCharge' => false,
         'bearer' => false,
         'metadata' => false,
         'queue' => false
@@ -205,14 +205,14 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     protected static $attributeMap = [
         'email' => 'email',
         'amount' => 'amount',
-        'authorization_code' => 'authorization_code',
+        'authorizationCode' => 'authorization_code',
         'reference' => 'reference',
         'currency' => 'currency',
         'channels' => 'channels',
-        'split_code' => 'split_code',
+        'splitCode' => 'split_code',
         'split' => 'split',
         'subaccount' => 'subaccount',
-        'transaction_charge' => 'transaction_charge',
+        'transactionCharge' => 'transaction_charge',
         'bearer' => 'bearer',
         'metadata' => 'metadata',
         'queue' => 'queue'
@@ -226,14 +226,14 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     protected static $setters = [
         'email' => 'setEmail',
         'amount' => 'setAmount',
-        'authorization_code' => 'setAuthorizationCode',
+        'authorizationCode' => 'setAuthorizationCode',
         'reference' => 'setReference',
         'currency' => 'setCurrency',
         'channels' => 'setChannels',
-        'split_code' => 'setSplitCode',
+        'splitCode' => 'setSplitCode',
         'split' => 'setSplit',
         'subaccount' => 'setSubaccount',
-        'transaction_charge' => 'setTransactionCharge',
+        'transactionCharge' => 'setTransactionCharge',
         'bearer' => 'setBearer',
         'metadata' => 'setMetadata',
         'queue' => 'setQueue'
@@ -247,14 +247,14 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     protected static $getters = [
         'email' => 'getEmail',
         'amount' => 'getAmount',
-        'authorization_code' => 'getAuthorizationCode',
+        'authorizationCode' => 'getAuthorizationCode',
         'reference' => 'getReference',
         'currency' => 'getCurrency',
         'channels' => 'getChannels',
-        'split_code' => 'getSplitCode',
+        'splitCode' => 'getSplitCode',
         'split' => 'getSplit',
         'subaccount' => 'getSubaccount',
-        'transaction_charge' => 'getTransactionCharge',
+        'transactionCharge' => 'getTransactionCharge',
         'bearer' => 'getBearer',
         'metadata' => 'getMetadata',
         'queue' => 'getQueue'
@@ -349,14 +349,14 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     {
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('authorization_code', $data ?? [], null);
+        $this->setIfExists('authorizationCode', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('channels', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
+        $this->setIfExists('splitCode', $data ?? [], null);
         $this->setIfExists('split', $data ?? [], null);
         $this->setIfExists('subaccount', $data ?? [], null);
-        $this->setIfExists('transaction_charge', $data ?? [], null);
+        $this->setIfExists('transactionCharge', $data ?? [], null);
         $this->setIfExists('bearer', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('queue', $data ?? [], null);
@@ -395,8 +395,8 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
         if ($this->container['amount'] === null && !$this->isNullableSetToNull('amount')) {
             $invalidProperties[] = "'amount' can't be null";
         }
-        if ($this->container['authorization_code'] === null) {
-            $invalidProperties[] = "'authorization_code' can't be null";
+        if ($this->container['authorizationCode'] === null) {
+            $invalidProperties[] = "'authorizationCode' can't be null";
         }
         $allowedValues = $this->getBearerAllowableValues();
         if (!is_null($this->container['bearer']) && !in_array($this->container['bearer'], $allowedValues, true)) {
@@ -484,28 +484,28 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets authorization_code
+     * Gets authorizationCode
      *
      * @return string
      */
     public function getAuthorizationCode()
     {
-        return $this->container['authorization_code'];
+        return $this->container['authorizationCode'];
     }
 
     /**
-     * Sets authorization_code
+     * Sets authorizationCode
      *
-     * @param string $authorization_code Valid authorization code to charge
+     * @param string $authorizationCode Valid authorization code to charge
      *
      * @return self
      */
-    public function setAuthorizationCode($authorization_code)
+    public function setAuthorizationCode($authorizationCode)
     {
-        if (is_null($authorization_code)) {
-            throw new \InvalidArgumentException('non-nullable authorization_code cannot be null');
+        if (is_null($authorizationCode)) {
+            throw new \InvalidArgumentException('non-nullable authorizationCode cannot be null');
         }
-        $this->container['authorization_code'] = $authorization_code;
+        $this->container['authorizationCode'] = $authorizationCode;
 
         return $this;
     }
@@ -540,7 +540,7 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets currency
      *
-     * @return \Alexasomba\\Paystack\Model\Currency|null
+     * @return \Alexasomba\Paystack\Model\Currency|null
      */
     public function getCurrency()
     {
@@ -550,7 +550,7 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets currency
      *
-     * @param \Alexasomba\\Paystack\Model\Currency|null $currency currency
+     * @param \Alexasomba\Paystack\Model\Currency|null $currency currency
      *
      * @return self
      */
@@ -601,28 +601,28 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets split_code
+     * Gets splitCode
      *
      * @return string|null
      */
     public function getSplitCode()
     {
-        return $this->container['split_code'];
+        return $this->container['splitCode'];
     }
 
     /**
-     * Sets split_code
+     * Sets splitCode
      *
-     * @param string|null $split_code The split code of the transaction split
+     * @param string|null $splitCode The split code of the transaction split
      *
      * @return self
      */
-    public function setSplitCode($split_code)
+    public function setSplitCode($splitCode)
     {
-        if (is_null($split_code)) {
-            throw new \InvalidArgumentException('non-nullable split_code cannot be null');
+        if (is_null($splitCode)) {
+            throw new \InvalidArgumentException('non-nullable splitCode cannot be null');
         }
-        $this->container['split_code'] = $split_code;
+        $this->container['splitCode'] = $splitCode;
 
         return $this;
     }
@@ -630,7 +630,7 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets split
      *
-     * @return \Alexasomba\\Paystack\Model\SplitCreate|null
+     * @return \Alexasomba\Paystack\Model\SplitCreate|null
      */
     public function getSplit()
     {
@@ -640,7 +640,7 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets split
      *
-     * @param \Alexasomba\\Paystack\Model\SplitCreate|null $split split
+     * @param \Alexasomba\Paystack\Model\SplitCreate|null $split split
      *
      * @return self
      */
@@ -682,28 +682,28 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets transaction_charge
+     * Gets transactionCharge
      *
      * @return int|null
      */
     public function getTransactionCharge()
     {
-        return $this->container['transaction_charge'];
+        return $this->container['transactionCharge'];
     }
 
     /**
-     * Sets transaction_charge
+     * Sets transactionCharge
      *
-     * @param int|null $transaction_charge A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
+     * @param int|null $transactionCharge A flat fee to charge the subaccount for a transaction.  This overrides the split percentage set when the subaccount was created
      *
      * @return self
      */
-    public function setTransactionCharge($transaction_charge)
+    public function setTransactionCharge($transactionCharge)
     {
-        if (is_null($transaction_charge)) {
-            throw new \InvalidArgumentException('non-nullable transaction_charge cannot be null');
+        if (is_null($transactionCharge)) {
+            throw new \InvalidArgumentException('non-nullable transactionCharge cannot be null');
         }
-        $this->container['transaction_charge'] = $transaction_charge;
+        $this->container['transactionCharge'] = $transactionCharge;
 
         return $this;
     }
@@ -748,7 +748,7 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\\Paystack\Model\TransactionChargeAuthorizationMetadata|null
+     * @return \Alexasomba\Paystack\Model\TransactionChargeAuthorizationMetadata|null
      */
     public function getMetadata()
     {
@@ -758,7 +758,7 @@ class TransactionChargeAuthorization implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\\Paystack\Model\TransactionChargeAuthorizationMetadata|null $metadata metadata
+     * @param \Alexasomba\Paystack\Model\TransactionChargeAuthorizationMetadata|null $metadata metadata
      *
      * @return self
      */

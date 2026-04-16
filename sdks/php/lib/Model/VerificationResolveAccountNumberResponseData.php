@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * VerificationResolveAccountNumberResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account_number' => 'string',
-        'account_name' => 'string'
+        'accountNumber' => 'string',
+        'accountName' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'account_number' => null,
-        'account_name' => null
+        'accountNumber' => null,
+        'accountName' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_number' => false,
-        'account_name' => false
+        'accountNumber' => false,
+        'accountName' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
-        'account_number' => 'account_number',
-        'account_name' => 'account_name'
+        'accountNumber' => 'account_number',
+        'accountName' => 'account_name'
     ];
 
     /**
@@ -180,8 +180,8 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
-        'account_number' => 'setAccountNumber',
-        'account_name' => 'setAccountName'
+        'accountNumber' => 'setAccountNumber',
+        'accountName' => 'setAccountName'
     ];
 
     /**
@@ -190,8 +190,8 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
-        'account_number' => 'getAccountNumber',
-        'account_name' => 'getAccountName'
+        'accountNumber' => 'getAccountNumber',
+        'accountName' => 'getAccountName'
     ];
 
     /**
@@ -251,8 +251,8 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('account_number', $data ?? [], null);
-        $this->setIfExists('account_name', $data ?? [], null);
+        $this->setIfExists('accountNumber', $data ?? [], null);
+        $this->setIfExists('accountName', $data ?? [], null);
     }
 
     /**
@@ -282,11 +282,11 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
     {
         $invalidProperties = [];
 
-        if ($this->container['account_number'] === null) {
-            $invalidProperties[] = "'account_number' can't be null";
+        if ($this->container['accountNumber'] === null) {
+            $invalidProperties[] = "'accountNumber' can't be null";
         }
-        if ($this->container['account_name'] === null) {
-            $invalidProperties[] = "'account_name' can't be null";
+        if ($this->container['accountName'] === null) {
+            $invalidProperties[] = "'accountName' can't be null";
         }
         return $invalidProperties;
     }
@@ -304,55 +304,55 @@ class VerificationResolveAccountNumberResponseData implements ModelInterface, Ar
 
 
     /**
-     * Gets account_number
+     * Gets accountNumber
      *
      * @return string
      */
     public function getAccountNumber()
     {
-        return $this->container['account_number'];
+        return $this->container['accountNumber'];
     }
 
     /**
-     * Sets account_number
+     * Sets accountNumber
      *
-     * @param string $account_number account_number
+     * @param string $accountNumber accountNumber
      *
      * @return self
      */
-    public function setAccountNumber($account_number)
+    public function setAccountNumber($accountNumber)
     {
-        if (is_null($account_number)) {
-            throw new \InvalidArgumentException('non-nullable account_number cannot be null');
+        if (is_null($accountNumber)) {
+            throw new \InvalidArgumentException('non-nullable accountNumber cannot be null');
         }
-        $this->container['account_number'] = $account_number;
+        $this->container['accountNumber'] = $accountNumber;
 
         return $this;
     }
 
     /**
-     * Gets account_name
+     * Gets accountName
      *
      * @return string
      */
     public function getAccountName()
     {
-        return $this->container['account_name'];
+        return $this->container['accountName'];
     }
 
     /**
-     * Sets account_name
+     * Sets accountName
      *
-     * @param string $account_name account_name
+     * @param string $accountName accountName
      *
      * @return self
      */
-    public function setAccountName($account_name)
+    public function setAccountName($accountName)
     {
-        if (is_null($account_name)) {
-            throw new \InvalidArgumentException('non-nullable account_name cannot be null');
+        if (is_null($accountName)) {
+            throw new \InvalidArgumentException('non-nullable accountName cannot be null');
         }
-        $this->container['account_name'] = $account_name;
+        $this->container['accountName'] = $accountName;
 
         return $this;
     }

@@ -55,7 +55,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_add_split_code(
+    def add_split_code(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_add_split_code: Optional[VirtualTerminalAddSplitCode] = None,
@@ -102,7 +102,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_add_split_code_serialize(
+        _param = self._add_split_code_serialize(
             code=code,
             virtual_terminal_add_split_code=virtual_terminal_add_split_code,
             _request_auth=_request_auth,
@@ -127,7 +127,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_add_split_code_with_http_info(
+    def add_split_code_with_http_info(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_add_split_code: Optional[VirtualTerminalAddSplitCode] = None,
@@ -174,7 +174,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_add_split_code_serialize(
+        _param = self._add_split_code_serialize(
             code=code,
             virtual_terminal_add_split_code=virtual_terminal_add_split_code,
             _request_auth=_request_auth,
@@ -199,7 +199,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_add_split_code_without_preload_content(
+    def add_split_code_without_preload_content(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_add_split_code: Optional[VirtualTerminalAddSplitCode] = None,
@@ -246,7 +246,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_add_split_code_serialize(
+        _param = self._add_split_code_serialize(
             code=code,
             virtual_terminal_add_split_code=virtual_terminal_add_split_code,
             _request_auth=_request_auth,
@@ -266,7 +266,7 @@ class VirtualTerminalApi:
         return response_data.response
 
 
-    def _virtual_terminal_add_split_code_serialize(
+    def _add_split_code_serialize(
         self,
         code,
         virtual_terminal_add_split_code,
@@ -348,7 +348,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_create(
+    def create(
         self,
         virtual_terminal_create: Optional[VirtualTerminalCreate] = None,
         _request_timeout: Union[
@@ -392,7 +392,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_create_serialize(
+        _param = self._create_serialize(
             virtual_terminal_create=virtual_terminal_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -416,7 +416,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_create_with_http_info(
+    def create_with_http_info(
         self,
         virtual_terminal_create: Optional[VirtualTerminalCreate] = None,
         _request_timeout: Union[
@@ -460,7 +460,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_create_serialize(
+        _param = self._create_serialize(
             virtual_terminal_create=virtual_terminal_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -484,7 +484,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_create_without_preload_content(
+    def create_without_preload_content(
         self,
         virtual_terminal_create: Optional[VirtualTerminalCreate] = None,
         _request_timeout: Union[
@@ -528,7 +528,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_create_serialize(
+        _param = self._create_serialize(
             virtual_terminal_create=virtual_terminal_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -547,7 +547,7 @@ class VirtualTerminalApi:
         return response_data.response
 
 
-    def _virtual_terminal_create_serialize(
+    def _create_serialize(
         self,
         virtual_terminal_create,
         _request_auth,
@@ -625,7 +625,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_deactivate(
+    def deactivate(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         _request_timeout: Union[
@@ -669,7 +669,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_deactivate_serialize(
+        _param = self._deactivate_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -693,7 +693,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_deactivate_with_http_info(
+    def deactivate_with_http_info(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         _request_timeout: Union[
@@ -737,7 +737,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_deactivate_serialize(
+        _param = self._deactivate_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -761,7 +761,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_deactivate_without_preload_content(
+    def deactivate_without_preload_content(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         _request_timeout: Union[
@@ -805,7 +805,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_deactivate_serialize(
+        _param = self._deactivate_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -824,7 +824,7 @@ class VirtualTerminalApi:
         return response_data.response
 
 
-    def _virtual_terminal_deactivate_serialize(
+    def _deactivate_serialize(
         self,
         code,
         _request_auth,
@@ -889,7 +889,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_delete_split_code(
+    def delete_split_code(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_delete_split_code: Optional[VirtualTerminalDeleteSplitCode] = None,
@@ -936,7 +936,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_delete_split_code_serialize(
+        _param = self._delete_split_code_serialize(
             code=code,
             virtual_terminal_delete_split_code=virtual_terminal_delete_split_code,
             _request_auth=_request_auth,
@@ -961,7 +961,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_delete_split_code_with_http_info(
+    def delete_split_code_with_http_info(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_delete_split_code: Optional[VirtualTerminalDeleteSplitCode] = None,
@@ -1008,7 +1008,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_delete_split_code_serialize(
+        _param = self._delete_split_code_serialize(
             code=code,
             virtual_terminal_delete_split_code=virtual_terminal_delete_split_code,
             _request_auth=_request_auth,
@@ -1033,7 +1033,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_delete_split_code_without_preload_content(
+    def delete_split_code_without_preload_content(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_delete_split_code: Optional[VirtualTerminalDeleteSplitCode] = None,
@@ -1080,7 +1080,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_delete_split_code_serialize(
+        _param = self._delete_split_code_serialize(
             code=code,
             virtual_terminal_delete_split_code=virtual_terminal_delete_split_code,
             _request_auth=_request_auth,
@@ -1100,7 +1100,7 @@ class VirtualTerminalApi:
         return response_data.response
 
 
-    def _virtual_terminal_delete_split_code_serialize(
+    def _delete_split_code_serialize(
         self,
         code,
         virtual_terminal_delete_split_code,
@@ -1182,7 +1182,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_destination_assign(
+    def destination_assign(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_destination_assign: Optional[VirtualTerminalDestinationAssign] = None,
@@ -1229,7 +1229,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_destination_assign_serialize(
+        _param = self._destination_assign_serialize(
             code=code,
             virtual_terminal_destination_assign=virtual_terminal_destination_assign,
             _request_auth=_request_auth,
@@ -1254,7 +1254,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_destination_assign_with_http_info(
+    def destination_assign_with_http_info(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_destination_assign: Optional[VirtualTerminalDestinationAssign] = None,
@@ -1301,7 +1301,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_destination_assign_serialize(
+        _param = self._destination_assign_serialize(
             code=code,
             virtual_terminal_destination_assign=virtual_terminal_destination_assign,
             _request_auth=_request_auth,
@@ -1326,7 +1326,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_destination_assign_without_preload_content(
+    def destination_assign_without_preload_content(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_destination_assign: Optional[VirtualTerminalDestinationAssign] = None,
@@ -1373,7 +1373,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_destination_assign_serialize(
+        _param = self._destination_assign_serialize(
             code=code,
             virtual_terminal_destination_assign=virtual_terminal_destination_assign,
             _request_auth=_request_auth,
@@ -1393,7 +1393,7 @@ class VirtualTerminalApi:
         return response_data.response
 
 
-    def _virtual_terminal_destination_assign_serialize(
+    def _destination_assign_serialize(
         self,
         code,
         virtual_terminal_destination_assign,
@@ -1475,7 +1475,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_destination_unassign(
+    def destination_unassign(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_destination_unassign: Optional[VirtualTerminalDestinationUnassign] = None,
@@ -1522,7 +1522,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_destination_unassign_serialize(
+        _param = self._destination_unassign_serialize(
             code=code,
             virtual_terminal_destination_unassign=virtual_terminal_destination_unassign,
             _request_auth=_request_auth,
@@ -1547,7 +1547,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_destination_unassign_with_http_info(
+    def destination_unassign_with_http_info(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_destination_unassign: Optional[VirtualTerminalDestinationUnassign] = None,
@@ -1594,7 +1594,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_destination_unassign_serialize(
+        _param = self._destination_unassign_serialize(
             code=code,
             virtual_terminal_destination_unassign=virtual_terminal_destination_unassign,
             _request_auth=_request_auth,
@@ -1619,7 +1619,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_destination_unassign_without_preload_content(
+    def destination_unassign_without_preload_content(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_destination_unassign: Optional[VirtualTerminalDestinationUnassign] = None,
@@ -1666,7 +1666,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_destination_unassign_serialize(
+        _param = self._destination_unassign_serialize(
             code=code,
             virtual_terminal_destination_unassign=virtual_terminal_destination_unassign,
             _request_auth=_request_auth,
@@ -1686,7 +1686,7 @@ class VirtualTerminalApi:
         return response_data.response
 
 
-    def _virtual_terminal_destination_unassign_serialize(
+    def _destination_unassign_serialize(
         self,
         code,
         virtual_terminal_destination_unassign,
@@ -1768,7 +1768,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_fetch(
+    def fetch(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         _request_timeout: Union[
@@ -1812,7 +1812,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_fetch_serialize(
+        _param = self._fetch_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1836,7 +1836,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         _request_timeout: Union[
@@ -1880,7 +1880,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_fetch_serialize(
+        _param = self._fetch_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1904,7 +1904,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         _request_timeout: Union[
@@ -1948,7 +1948,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_fetch_serialize(
+        _param = self._fetch_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1967,7 +1967,7 @@ class VirtualTerminalApi:
         return response_data.response
 
 
-    def _virtual_terminal_fetch_serialize(
+    def _fetch_serialize(
         self,
         code,
         _request_auth,
@@ -2032,7 +2032,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_list(
+    def list(
         self,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status ('active' or 'inactive')")] = None,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
@@ -2088,7 +2088,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_list_serialize(
+        _param = self._list_serialize(
             status=status,
             per_page=per_page,
             search=search,
@@ -2116,7 +2116,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_list_with_http_info(
+    def list_with_http_info(
         self,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status ('active' or 'inactive')")] = None,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
@@ -2172,7 +2172,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_list_serialize(
+        _param = self._list_serialize(
             status=status,
             per_page=per_page,
             search=search,
@@ -2200,7 +2200,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_list_without_preload_content(
+    def list_without_preload_content(
         self,
         status: Annotated[Optional[StrictStr], Field(description="Filter by status ('active' or 'inactive')")] = None,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records per page")] = None,
@@ -2256,7 +2256,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_list_serialize(
+        _param = self._list_serialize(
             status=status,
             per_page=per_page,
             search=search,
@@ -2279,7 +2279,7 @@ class VirtualTerminalApi:
         return response_data.response
 
 
-    def _virtual_terminal_list_serialize(
+    def _list_serialize(
         self,
         status,
         per_page,
@@ -2366,7 +2366,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_update(
+    def update(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_update: Optional[VirtualTerminalUpdate] = None,
@@ -2413,7 +2413,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_update_serialize(
+        _param = self._update_serialize(
             code=code,
             virtual_terminal_update=virtual_terminal_update,
             _request_auth=_request_auth,
@@ -2438,7 +2438,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_update_with_http_info(
+    def update_with_http_info(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_update: Optional[VirtualTerminalUpdate] = None,
@@ -2485,7 +2485,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_update_serialize(
+        _param = self._update_serialize(
             code=code,
             virtual_terminal_update=virtual_terminal_update,
             _request_auth=_request_auth,
@@ -2510,7 +2510,7 @@ class VirtualTerminalApi:
 
 
     @validate_call
-    def virtual_terminal_update_without_preload_content(
+    def update_without_preload_content(
         self,
         code: Annotated[StrictStr, Field(description="Code of the Virtual Terminal")],
         virtual_terminal_update: Optional[VirtualTerminalUpdate] = None,
@@ -2557,7 +2557,7 @@ class VirtualTerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._virtual_terminal_update_serialize(
+        _param = self._update_serialize(
             code=code,
             virtual_terminal_update=virtual_terminal_update,
             _request_auth=_request_auth,
@@ -2577,7 +2577,7 @@ class VirtualTerminalApi:
         return response_data.response
 
 
-    def _virtual_terminal_update_serialize(
+    def _update_serialize(
         self,
         code,
         virtual_terminal_update,

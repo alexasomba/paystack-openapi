@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.transfer_recipient_fetch_response_data_details import TransferRecipientFetchResponseDataDetails
 from typing import Optional, Set
@@ -44,8 +44,8 @@ class TransferRecipientFetchResponseData(BaseModel):
     id: StrictInt
     is_deleted: Optional[StrictBool] = Field(default=None, alias="isDeleted")
     is_deleted: Optional[StrictBool] = None
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     __properties: ClassVar[List[str]] = ["integration", "domain", "type", "currency", "name", "details", "description", "metadata", "recipient_code", "active", "recipient_account", "institution_code", "email", "id", "isDeleted", "is_deleted", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
@@ -143,7 +143,7 @@ class TransferRecipientFetchResponseData(BaseModel):
             "id": obj.get("id"),
             "isDeleted": obj.get("isDeleted"),
             "is_deleted": obj.get("is_deleted"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })
         return _obj

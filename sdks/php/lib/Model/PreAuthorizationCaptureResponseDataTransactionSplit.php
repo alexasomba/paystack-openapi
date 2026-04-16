@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PreAuthorizationCaptureResponseDataTransactionSplit Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class PreAuthorizationCaptureResponseDataTransactionSplit implements ModelInterf
     protected static $openAPITypes = [
         'id' => 'int',
         'name' => 'string',
-        'split_code' => 'string',
-        'formula' => '\Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplitFormula',
-        'shares' => '\Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplitShares'
+        'splitCode' => 'string',
+        'formula' => '\Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplitFormula',
+        'shares' => '\Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplitShares'
     ];
 
     /**
@@ -75,7 +75,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplit implements ModelInterf
     protected static $openAPIFormats = [
         'id' => null,
         'name' => null,
-        'split_code' => null,
+        'splitCode' => null,
         'formula' => null,
         'shares' => null
     ];
@@ -88,7 +88,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplit implements ModelInterf
     protected static array $openAPINullables = [
         'id' => false,
         'name' => false,
-        'split_code' => false,
+        'splitCode' => false,
         'formula' => false,
         'shares' => false
     ];
@@ -181,7 +181,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplit implements ModelInterf
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
-        'split_code' => 'split_code',
+        'splitCode' => 'split_code',
         'formula' => 'formula',
         'shares' => 'shares'
     ];
@@ -194,7 +194,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplit implements ModelInterf
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
-        'split_code' => 'setSplitCode',
+        'splitCode' => 'setSplitCode',
         'formula' => 'setFormula',
         'shares' => 'setShares'
     ];
@@ -207,7 +207,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplit implements ModelInterf
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
-        'split_code' => 'getSplitCode',
+        'splitCode' => 'getSplitCode',
         'formula' => 'getFormula',
         'shares' => 'getShares'
     ];
@@ -271,7 +271,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplit implements ModelInterf
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
+        $this->setIfExists('splitCode', $data ?? [], null);
         $this->setIfExists('formula', $data ?? [], null);
         $this->setIfExists('shares', $data ?? [], null);
     }
@@ -309,8 +309,8 @@ class PreAuthorizationCaptureResponseDataTransactionSplit implements ModelInterf
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['split_code'] === null) {
-            $invalidProperties[] = "'split_code' can't be null";
+        if ($this->container['splitCode'] === null) {
+            $invalidProperties[] = "'splitCode' can't be null";
         }
         if ($this->container['formula'] === null) {
             $invalidProperties[] = "'formula' can't be null";
@@ -388,28 +388,28 @@ class PreAuthorizationCaptureResponseDataTransactionSplit implements ModelInterf
     }
 
     /**
-     * Gets split_code
+     * Gets splitCode
      *
      * @return string
      */
     public function getSplitCode()
     {
-        return $this->container['split_code'];
+        return $this->container['splitCode'];
     }
 
     /**
-     * Sets split_code
+     * Sets splitCode
      *
-     * @param string $split_code split_code
+     * @param string $splitCode splitCode
      *
      * @return self
      */
-    public function setSplitCode($split_code)
+    public function setSplitCode($splitCode)
     {
-        if (is_null($split_code)) {
-            throw new \InvalidArgumentException('non-nullable split_code cannot be null');
+        if (is_null($splitCode)) {
+            throw new \InvalidArgumentException('non-nullable splitCode cannot be null');
         }
-        $this->container['split_code'] = $split_code;
+        $this->container['splitCode'] = $splitCode;
 
         return $this;
     }
@@ -417,7 +417,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplit implements ModelInterf
     /**
      * Gets formula
      *
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplitFormula
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplitFormula
      */
     public function getFormula()
     {
@@ -427,7 +427,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplit implements ModelInterf
     /**
      * Sets formula
      *
-     * @param \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplitFormula $formula formula
+     * @param \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplitFormula $formula formula
      *
      * @return self
      */
@@ -444,7 +444,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplit implements ModelInterf
     /**
      * Gets shares
      *
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplitShares
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplitShares
      */
     public function getShares()
     {
@@ -454,7 +454,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplit implements ModelInterf
     /**
      * Sets shares
      *
-     * @param \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplitShares $shares shares
+     * @param \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplitShares $shares shares
      *
      * @return self
      */

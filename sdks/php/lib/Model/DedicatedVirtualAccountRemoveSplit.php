@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * DedicatedVirtualAccountRemoveSplit Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class DedicatedVirtualAccountRemoveSplit implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account_number' => 'string'
+        'accountNumber' => 'string'
     ];
 
     /**
@@ -69,7 +69,7 @@ class DedicatedVirtualAccountRemoveSplit implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'account_number' => null
+        'accountNumber' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class DedicatedVirtualAccountRemoveSplit implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_number' => false
+        'accountNumber' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class DedicatedVirtualAccountRemoveSplit implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'account_number' => 'account_number'
+        'accountNumber' => 'account_number'
     ];
 
     /**
@@ -176,7 +176,7 @@ class DedicatedVirtualAccountRemoveSplit implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'account_number' => 'setAccountNumber'
+        'accountNumber' => 'setAccountNumber'
     ];
 
     /**
@@ -185,7 +185,7 @@ class DedicatedVirtualAccountRemoveSplit implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'account_number' => 'getAccountNumber'
+        'accountNumber' => 'getAccountNumber'
     ];
 
     /**
@@ -245,7 +245,7 @@ class DedicatedVirtualAccountRemoveSplit implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('account_number', $data ?? [], null);
+        $this->setIfExists('accountNumber', $data ?? [], null);
     }
 
     /**
@@ -275,8 +275,8 @@ class DedicatedVirtualAccountRemoveSplit implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['account_number'] === null) {
-            $invalidProperties[] = "'account_number' can't be null";
+        if ($this->container['accountNumber'] === null) {
+            $invalidProperties[] = "'accountNumber' can't be null";
         }
         return $invalidProperties;
     }
@@ -294,28 +294,28 @@ class DedicatedVirtualAccountRemoveSplit implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets account_number
+     * Gets accountNumber
      *
      * @return string
      */
     public function getAccountNumber()
     {
-        return $this->container['account_number'];
+        return $this->container['accountNumber'];
     }
 
     /**
-     * Sets account_number
+     * Sets accountNumber
      *
-     * @param string $account_number Valid Dedicated virtual account
+     * @param string $accountNumber Valid Dedicated virtual account
      *
      * @return self
      */
-    public function setAccountNumber($account_number)
+    public function setAccountNumber($accountNumber)
     {
-        if (is_null($account_number)) {
-            throw new \InvalidArgumentException('non-nullable account_number cannot be null');
+        if (is_null($accountNumber)) {
+            throw new \InvalidArgumentException('non-nullable accountNumber cannot be null');
         }
-        $this->container['account_number'] = $account_number;
+        $this->container['accountNumber'] = $accountNumber;
 
         return $this;
     }

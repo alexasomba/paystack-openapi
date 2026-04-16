@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Api;
+namespace Alexasomba\Paystack\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Alexasomba\\Paystack\ApiException;
-use Alexasomba\\Paystack\Configuration;
-use Alexasomba\\Paystack\FormDataProcessor;
-use Alexasomba\\Paystack\HeaderSelector;
-use Alexasomba\\Paystack\ObjectSerializer;
+use Alexasomba\Paystack\ApiException;
+use Alexasomba\Paystack\Configuration;
+use Alexasomba\Paystack\FormDataProcessor;
+use Alexasomba\Paystack\HeaderSelector;
+use Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PlanApi Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -75,17 +75,17 @@ class PlanApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'planCreate' => [
+        'callList' => [
+            'application/json',
+        ],
+        'create' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'planFetch' => [
+        'fetch' => [
             'application/json',
         ],
-        'planList' => [
-            'application/json',
-        ],
-        'planUpdate' => [
+        'update' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
@@ -138,38 +138,46 @@ class PlanApi
     }
 
     /**
-     * Operation planCreate
+     * Operation callList
      *
-     * Create Plan
+     * List Plans
      *
-     * @param  \Alexasomba\\Paystack\Model\PlanCreate|null $plan_create plan_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planCreate'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $status Filter list by plans with specified status (optional)
+     * @param  string|null $interval Specify interval of the plan (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PlanCreateResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PlanListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function planCreate($plan_create = null, string $contentType = self::contentTypes['planCreate'][0])
+    public function callList($perPage = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['callList'][0])
     {
-        list($response) = $this->planCreateWithHttpInfo($plan_create, $contentType);
+        list($response) = $this->callListWithHttpInfo($perPage, $page, $status, $interval, $amount, $contentType);
         return $response;
     }
 
     /**
-     * Operation planCreateWithHttpInfo
+     * Operation callListWithHttpInfo
      *
-     * Create Plan
+     * List Plans
      *
-     * @param  \Alexasomba\\Paystack\Model\PlanCreate|null $plan_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planCreate'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $status Filter list by plans with specified status (optional)
+     * @param  string|null $interval Specify interval of the plan (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PlanCreateResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PlanListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function planCreateWithHttpInfo($plan_create = null, string $contentType = self::contentTypes['planCreate'][0])
+    public function callListWithHttpInfo($perPage = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $request = $this->planCreateRequest($plan_create, $contentType);
+        $request = $this->callListRequest($perPage, $page, $status, $interval, $amount, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -197,13 +205,19 @@ class PlanApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PlanCreateResponse',
+                        '\Alexasomba\Paystack\Model\PlanListResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -225,7 +239,7 @@ class PlanApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PlanCreateResponse',
+                '\Alexasomba\Paystack\Model\PlanListResponse',
                 $request,
                 $response,
             );
@@ -234,7 +248,7 @@ class PlanApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PlanCreateResponse',
+                        '\Alexasomba\Paystack\Model\PlanListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -242,7 +256,15 @@ class PlanApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -255,19 +277,23 @@ class PlanApi
     }
 
     /**
-     * Operation planCreateAsync
+     * Operation callListAsync
      *
-     * Create Plan
+     * List Plans
      *
-     * @param  \Alexasomba\\Paystack\Model\PlanCreate|null $plan_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planCreate'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $status Filter list by plans with specified status (optional)
+     * @param  string|null $interval Specify interval of the plan (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function planCreateAsync($plan_create = null, string $contentType = self::contentTypes['planCreate'][0])
+    public function callListAsync($perPage = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['callList'][0])
     {
-        return $this->planCreateAsyncWithHttpInfo($plan_create, $contentType)
+        return $this->callListAsyncWithHttpInfo($perPage, $page, $status, $interval, $amount, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -276,20 +302,24 @@ class PlanApi
     }
 
     /**
-     * Operation planCreateAsyncWithHttpInfo
+     * Operation callListAsyncWithHttpInfo
      *
-     * Create Plan
+     * List Plans
      *
-     * @param  \Alexasomba\\Paystack\Model\PlanCreate|null $plan_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planCreate'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $status Filter list by plans with specified status (optional)
+     * @param  string|null $interval Specify interval of the plan (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function planCreateAsyncWithHttpInfo($plan_create = null, string $contentType = self::contentTypes['planCreate'][0])
+    public function callListAsyncWithHttpInfo($perPage = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PlanCreateResponse';
-        $request = $this->planCreateRequest($plan_create, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PlanListResponse';
+        $request = $this->callListRequest($perPage, $page, $status, $interval, $amount, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -328,628 +358,19 @@ class PlanApi
     }
 
     /**
-     * Create request for operation 'planCreate'
+     * Create request for operation 'callList'
      *
-     * @param  \Alexasomba\\Paystack\Model\PlanCreate|null $plan_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planCreate'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $status Filter list by plans with specified status (optional)
+     * @param  string|null $interval Specify interval of the plan (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function planCreateRequest($plan_create = null, string $contentType = self::contentTypes['planCreate'][0])
-    {
-
-
-
-        $resourcePath = '/plan';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($plan_create)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($plan_create));
-            } else {
-                $httpBody = $plan_create;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation planFetch
-     *
-     * Fetch Plan
-     *
-     * @param  string $id_or_code The plan ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planFetch'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PlanFetchResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
-     */
-    public function planFetch($id_or_code, string $contentType = self::contentTypes['planFetch'][0])
-    {
-        list($response) = $this->planFetchWithHttpInfo($id_or_code, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation planFetchWithHttpInfo
-     *
-     * Fetch Plan
-     *
-     * @param  string $id_or_code The plan ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planFetch'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PlanFetchResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function planFetchWithHttpInfo($id_or_code, string $contentType = self::contentTypes['planFetch'][0])
-    {
-        $request = $this->planFetchRequest($id_or_code, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PlanFetchResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PlanFetchResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PlanFetchResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation planFetchAsync
-     *
-     * Fetch Plan
-     *
-     * @param  string $id_or_code The plan ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planFetch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function planFetchAsync($id_or_code, string $contentType = self::contentTypes['planFetch'][0])
-    {
-        return $this->planFetchAsyncWithHttpInfo($id_or_code, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation planFetchAsyncWithHttpInfo
-     *
-     * Fetch Plan
-     *
-     * @param  string $id_or_code The plan ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planFetch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function planFetchAsyncWithHttpInfo($id_or_code, string $contentType = self::contentTypes['planFetch'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\PlanFetchResponse';
-        $request = $this->planFetchRequest($id_or_code, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'planFetch'
-     *
-     * @param  string $id_or_code The plan ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planFetch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function planFetchRequest($id_or_code, string $contentType = self::contentTypes['planFetch'][0])
-    {
-
-        // verify the required parameter 'id_or_code' is set
-        if ($id_or_code === null || (is_array($id_or_code) && count($id_or_code) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id_or_code when calling planFetch'
-            );
-        }
-
-
-        $resourcePath = '/plan/{id_or_code}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id_or_code !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id_or_code' . '}',
-                ObjectSerializer::toPathValue($id_or_code),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation planList
-     *
-     * List Plans
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  string|null $status Filter list by plans with specified status (optional)
-     * @param  string|null $interval Specify interval of the plan (optional)
-     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planList'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PlanListResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
-     */
-    public function planList($per_page = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['planList'][0])
-    {
-        list($response) = $this->planListWithHttpInfo($per_page, $page, $status, $interval, $amount, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation planListWithHttpInfo
-     *
-     * List Plans
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  string|null $status Filter list by plans with specified status (optional)
-     * @param  string|null $interval Specify interval of the plan (optional)
-     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planList'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PlanListResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function planListWithHttpInfo($per_page = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['planList'][0])
-    {
-        $request = $this->planListRequest($per_page, $page, $status, $interval, $amount, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PlanListResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PlanListResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PlanListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation planListAsync
-     *
-     * List Plans
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  string|null $status Filter list by plans with specified status (optional)
-     * @param  string|null $interval Specify interval of the plan (optional)
-     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function planListAsync($per_page = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['planList'][0])
-    {
-        return $this->planListAsyncWithHttpInfo($per_page, $page, $status, $interval, $amount, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation planListAsyncWithHttpInfo
-     *
-     * List Plans
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  string|null $status Filter list by plans with specified status (optional)
-     * @param  string|null $interval Specify interval of the plan (optional)
-     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function planListAsyncWithHttpInfo($per_page = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['planList'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\PlanListResponse';
-        $request = $this->planListRequest($per_page, $page, $status, $interval, $amount, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'planList'
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  string|null $status Filter list by plans with specified status (optional)
-     * @param  string|null $interval Specify interval of the plan (optional)
-     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter plans by a specific amount. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function planListRequest($per_page = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['planList'][0])
+    public function callListRequest($perPage = null, $page = null, $status = null, $interval = null, $amount = null, string $contentType = self::contentTypes['callList'][0])
     {
 
 
@@ -967,7 +388,7 @@ class PlanApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
+            $perPage,
             'perPage', // param base name
             'integer', // openApiType
             'form', // style
@@ -1072,40 +493,38 @@ class PlanApi
     }
 
     /**
-     * Operation planUpdate
+     * Operation create
      *
-     * Update Plan
+     * Create Plan
      *
-     * @param  string $id_or_code The plan ID or code you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PlanUpdate|null $plan_update plan_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planUpdate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PlanCreate|null $planCreate planCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PlanUpdateResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PlanCreateResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function planUpdate($id_or_code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
+    public function create($planCreate = null, string $contentType = self::contentTypes['create'][0])
     {
-        list($response) = $this->planUpdateWithHttpInfo($id_or_code, $plan_update, $contentType);
+        list($response) = $this->createWithHttpInfo($planCreate, $contentType);
         return $response;
     }
 
     /**
-     * Operation planUpdateWithHttpInfo
+     * Operation createWithHttpInfo
      *
-     * Update Plan
+     * Create Plan
      *
-     * @param  string $id_or_code The plan ID or code you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PlanUpdate|null $plan_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planUpdate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PlanCreate|null $planCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PlanUpdateResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PlanCreateResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function planUpdateWithHttpInfo($id_or_code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
+    public function createWithHttpInfo($planCreate = null, string $contentType = self::contentTypes['create'][0])
     {
-        $request = $this->planUpdateRequest($id_or_code, $plan_update, $contentType);
+        $request = $this->createRequest($planCreate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1133,19 +552,13 @@ class PlanApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PlanUpdateResponse',
+                        '\Alexasomba\Paystack\Model\PlanCreateResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1167,7 +580,7 @@ class PlanApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PlanUpdateResponse',
+                '\Alexasomba\Paystack\Model\PlanCreateResponse',
                 $request,
                 $response,
             );
@@ -1176,7 +589,7 @@ class PlanApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PlanUpdateResponse',
+                        '\Alexasomba\Paystack\Model\PlanCreateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1184,15 +597,7 @@ class PlanApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1205,20 +610,19 @@ class PlanApi
     }
 
     /**
-     * Operation planUpdateAsync
+     * Operation createAsync
      *
-     * Update Plan
+     * Create Plan
      *
-     * @param  string $id_or_code The plan ID or code you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PlanUpdate|null $plan_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planUpdate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PlanCreate|null $planCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function planUpdateAsync($id_or_code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
+    public function createAsync($planCreate = null, string $contentType = self::contentTypes['create'][0])
     {
-        return $this->planUpdateAsyncWithHttpInfo($id_or_code, $plan_update, $contentType)
+        return $this->createAsyncWithHttpInfo($planCreate, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1227,21 +631,20 @@ class PlanApi
     }
 
     /**
-     * Operation planUpdateAsyncWithHttpInfo
+     * Operation createAsyncWithHttpInfo
      *
-     * Update Plan
+     * Create Plan
      *
-     * @param  string $id_or_code The plan ID or code you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PlanUpdate|null $plan_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planUpdate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PlanCreate|null $planCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function planUpdateAsyncWithHttpInfo($id_or_code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
+    public function createAsyncWithHttpInfo($planCreate = null, string $contentType = self::contentTypes['create'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PlanUpdateResponse';
-        $request = $this->planUpdateRequest($id_or_code, $plan_update, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PlanCreateResponse';
+        $request = $this->createRequest($planCreate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1280,22 +683,619 @@ class PlanApi
     }
 
     /**
-     * Create request for operation 'planUpdate'
+     * Create request for operation 'create'
      *
-     * @param  string $id_or_code The plan ID or code you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PlanUpdate|null $plan_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['planUpdate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PlanCreate|null $planCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function planUpdateRequest($id_or_code, $plan_update = null, string $contentType = self::contentTypes['planUpdate'][0])
+    public function createRequest($planCreate = null, string $contentType = self::contentTypes['create'][0])
     {
 
-        // verify the required parameter 'id_or_code' is set
-        if ($id_or_code === null || (is_array($id_or_code) && count($id_or_code) === 0)) {
+
+
+        $resourcePath = '/plan';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($planCreate)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($planCreate));
+            } else {
+                $httpBody = $planCreate;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation fetch
+     *
+     * Fetch Plan
+     *
+     * @param  string $idOrCode The plan ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\PlanFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
+     */
+    public function fetch($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+        list($response) = $this->fetchWithHttpInfo($idOrCode, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation fetchWithHttpInfo
+     *
+     * Fetch Plan
+     *
+     * @param  string $idOrCode The plan ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\PlanFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function fetchWithHttpInfo($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+        $request = $this->fetchRequest($idOrCode, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\PlanFetchResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\PlanFetchResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\PlanFetchResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation fetchAsync
+     *
+     * Fetch Plan
+     *
+     * @param  string $idOrCode The plan ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchAsync($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+        return $this->fetchAsyncWithHttpInfo($idOrCode, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation fetchAsyncWithHttpInfo
+     *
+     * Fetch Plan
+     *
+     * @param  string $idOrCode The plan ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchAsyncWithHttpInfo($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\PlanFetchResponse';
+        $request = $this->fetchRequest($idOrCode, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'fetch'
+     *
+     * @param  string $idOrCode The plan ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function fetchRequest($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+
+        // verify the required parameter 'idOrCode' is set
+        if ($idOrCode === null || (is_array($idOrCode) && count($idOrCode) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id_or_code when calling planUpdate'
+                'Missing the required parameter $idOrCode when calling fetch'
+            );
+        }
+
+
+        $resourcePath = '/plan/{id_or_code}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($idOrCode !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id_or_code' . '}',
+                ObjectSerializer::toPathValue($idOrCode),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation update
+     *
+     * Update Plan
+     *
+     * @param  string $idOrCode The plan ID or code you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PlanUpdate|null $planUpdate planUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\PlanUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
+     */
+    public function update($idOrCode, $planUpdate = null, string $contentType = self::contentTypes['update'][0])
+    {
+        list($response) = $this->updateWithHttpInfo($idOrCode, $planUpdate, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateWithHttpInfo
+     *
+     * Update Plan
+     *
+     * @param  string $idOrCode The plan ID or code you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PlanUpdate|null $planUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\PlanUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateWithHttpInfo($idOrCode, $planUpdate = null, string $contentType = self::contentTypes['update'][0])
+    {
+        $request = $this->updateRequest($idOrCode, $planUpdate, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\PlanUpdateResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\PlanUpdateResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\PlanUpdateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAsync
+     *
+     * Update Plan
+     *
+     * @param  string $idOrCode The plan ID or code you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PlanUpdate|null $planUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAsync($idOrCode, $planUpdate = null, string $contentType = self::contentTypes['update'][0])
+    {
+        return $this->updateAsyncWithHttpInfo($idOrCode, $planUpdate, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAsyncWithHttpInfo
+     *
+     * Update Plan
+     *
+     * @param  string $idOrCode The plan ID or code you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PlanUpdate|null $planUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAsyncWithHttpInfo($idOrCode, $planUpdate = null, string $contentType = self::contentTypes['update'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\PlanUpdateResponse';
+        $request = $this->updateRequest($idOrCode, $planUpdate, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'update'
+     *
+     * @param  string $idOrCode The plan ID or code you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PlanUpdate|null $planUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateRequest($idOrCode, $planUpdate = null, string $contentType = self::contentTypes['update'][0])
+    {
+
+        // verify the required parameter 'idOrCode' is set
+        if ($idOrCode === null || (is_array($idOrCode) && count($idOrCode) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $idOrCode when calling update'
             );
         }
 
@@ -1311,10 +1311,10 @@ class PlanApi
 
 
         // path params
-        if ($id_or_code !== null) {
+        if ($idOrCode !== null) {
             $resourcePath = str_replace(
                 '{' . 'id_or_code' . '}',
-                ObjectSerializer::toPathValue($id_or_code),
+                ObjectSerializer::toPathValue($idOrCode),
                 $resourcePath
             );
         }
@@ -1327,12 +1327,12 @@ class PlanApi
         );
 
         // for model (json/xml)
-        if (isset($plan_update)) {
+        if (isset($planUpdate)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($plan_update));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($planUpdate));
             } else {
-                $httpBody = $plan_update;
+                $httpBody = $planUpdate;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

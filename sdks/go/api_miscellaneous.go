@@ -24,32 +24,32 @@ import (
 // MiscellaneousAPIService MiscellaneousAPI service
 type MiscellaneousAPIService service
 
-type ApiMiscellaneousAvsRequest struct {
+type ApiAvsRequest struct {
 	ctx context.Context
 	ApiService *MiscellaneousAPIService
 	country *string
 }
 
 // The country code of the states to list. It is gotten after the charge request
-func (r ApiMiscellaneousAvsRequest) Country(country string) ApiMiscellaneousAvsRequest {
+func (r ApiAvsRequest) Country(country string) ApiAvsRequest {
 	r.country = &country
 	return r
 }
 
-func (r ApiMiscellaneousAvsRequest) Execute() (*MiscellaneousListStatesResponse, *http.Response, error) {
-	return r.ApiService.MiscellaneousAvsExecute(r)
+func (r ApiAvsRequest) Execute() (*MiscellaneousListStatesResponse, *http.Response, error) {
+	return r.ApiService.AvsExecute(r)
 }
 
 /*
-MiscellaneousAvs List States (AVS)
+Avs List States (AVS)
 
 Get a list of states for a country for address verification
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiMiscellaneousAvsRequest
+ @return ApiAvsRequest
 */
-func (a *MiscellaneousAPIService) MiscellaneousAvs(ctx context.Context) ApiMiscellaneousAvsRequest {
-	return ApiMiscellaneousAvsRequest{
+func (a *MiscellaneousAPIService) Avs(ctx context.Context) ApiAvsRequest {
+	return ApiAvsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *MiscellaneousAPIService) MiscellaneousAvs(ctx context.Context) ApiMisce
 
 // Execute executes the request
 //  @return MiscellaneousListStatesResponse
-func (a *MiscellaneousAPIService) MiscellaneousAvsExecute(r ApiMiscellaneousAvsRequest) (*MiscellaneousListStatesResponse, *http.Response, error) {
+func (a *MiscellaneousAPIService) AvsExecute(r ApiAvsRequest) (*MiscellaneousListStatesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -65,7 +65,7 @@ func (a *MiscellaneousAPIService) MiscellaneousAvsExecute(r ApiMiscellaneousAvsR
 		localVarReturnValue  *MiscellaneousListStatesResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.MiscellaneousAvs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.Avs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -155,25 +155,25 @@ func (a *MiscellaneousAPIService) MiscellaneousAvsExecute(r ApiMiscellaneousAvsR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiMiscellaneousListCountriesRequest struct {
+type ApiListCountriesRequest struct {
 	ctx context.Context
 	ApiService *MiscellaneousAPIService
 }
 
-func (r ApiMiscellaneousListCountriesRequest) Execute() (*MiscellaneousListCountriesResponse, *http.Response, error) {
-	return r.ApiService.MiscellaneousListCountriesExecute(r)
+func (r ApiListCountriesRequest) Execute() (*MiscellaneousListCountriesResponse, *http.Response, error) {
+	return r.ApiService.ListCountriesExecute(r)
 }
 
 /*
-MiscellaneousListCountries List Countries
+ListCountries List Countries
 
 List all supported countries on Paystack
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiMiscellaneousListCountriesRequest
+ @return ApiListCountriesRequest
 */
-func (a *MiscellaneousAPIService) MiscellaneousListCountries(ctx context.Context) ApiMiscellaneousListCountriesRequest {
-	return ApiMiscellaneousListCountriesRequest{
+func (a *MiscellaneousAPIService) ListCountries(ctx context.Context) ApiListCountriesRequest {
+	return ApiListCountriesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -181,7 +181,7 @@ func (a *MiscellaneousAPIService) MiscellaneousListCountries(ctx context.Context
 
 // Execute executes the request
 //  @return MiscellaneousListCountriesResponse
-func (a *MiscellaneousAPIService) MiscellaneousListCountriesExecute(r ApiMiscellaneousListCountriesRequest) (*MiscellaneousListCountriesResponse, *http.Response, error) {
+func (a *MiscellaneousAPIService) ListCountriesExecute(r ApiListCountriesRequest) (*MiscellaneousListCountriesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -189,7 +189,7 @@ func (a *MiscellaneousAPIService) MiscellaneousListCountriesExecute(r ApiMiscell
 		localVarReturnValue  *MiscellaneousListCountriesResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.MiscellaneousListCountries")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.ListCountries")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -276,27 +276,27 @@ func (a *MiscellaneousAPIService) MiscellaneousListCountriesExecute(r ApiMiscell
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiMiscellaneousResolveCardBinRequest struct {
+type ApiResolveCardBinRequest struct {
 	ctx context.Context
 	ApiService *MiscellaneousAPIService
 	bin string
 }
 
-func (r ApiMiscellaneousResolveCardBinRequest) Execute() (*VerificationResolveCardBINResponse, *http.Response, error) {
-	return r.ApiService.MiscellaneousResolveCardBinExecute(r)
+func (r ApiResolveCardBinRequest) Execute() (*VerificationResolveCardBINResponse, *http.Response, error) {
+	return r.ApiService.ResolveCardBinExecute(r)
 }
 
 /*
-MiscellaneousResolveCardBin Resolve Card BIN
+ResolveCardBin Resolve Card BIN
 
 Get the details of a card BIN
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param bin The card bank identification number
- @return ApiMiscellaneousResolveCardBinRequest
+ @return ApiResolveCardBinRequest
 */
-func (a *MiscellaneousAPIService) MiscellaneousResolveCardBin(ctx context.Context, bin string) ApiMiscellaneousResolveCardBinRequest {
-	return ApiMiscellaneousResolveCardBinRequest{
+func (a *MiscellaneousAPIService) ResolveCardBin(ctx context.Context, bin string) ApiResolveCardBinRequest {
+	return ApiResolveCardBinRequest{
 		ApiService: a,
 		ctx: ctx,
 		bin: bin,
@@ -305,7 +305,7 @@ func (a *MiscellaneousAPIService) MiscellaneousResolveCardBin(ctx context.Contex
 
 // Execute executes the request
 //  @return VerificationResolveCardBINResponse
-func (a *MiscellaneousAPIService) MiscellaneousResolveCardBinExecute(r ApiMiscellaneousResolveCardBinRequest) (*VerificationResolveCardBINResponse, *http.Response, error) {
+func (a *MiscellaneousAPIService) ResolveCardBinExecute(r ApiResolveCardBinRequest) (*VerificationResolveCardBINResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -313,7 +313,7 @@ func (a *MiscellaneousAPIService) MiscellaneousResolveCardBinExecute(r ApiMiscel
 		localVarReturnValue  *VerificationResolveCardBINResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.MiscellaneousResolveCardBin")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MiscellaneousAPIService.ResolveCardBin")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

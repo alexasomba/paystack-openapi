@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,8 +33,8 @@ class BulkChargeFetchResponseData(BaseModel):
     status: StrictStr
     total_charges: StrictInt
     pending_charges: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     __properties: ClassVar[List[str]] = ["batch_code", "id", "domain", "status", "total_charges", "pending_charges", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
@@ -94,7 +94,7 @@ class BulkChargeFetchResponseData(BaseModel):
             "status": obj.get("status"),
             "total_charges": obj.get("total_charges"),
             "pending_charges": obj.get("pending_charges"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })
         return _obj

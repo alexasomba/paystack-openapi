@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PreAuthorizationInitialize Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,14 +62,14 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
         'email' => 'string',
         'currency' => 'string',
         'reference' => 'string',
-        'callback_url' => 'string',
-        'metadata' => '\Alexasomba\\Paystack\Model\PreAuthorizationInitializeMetadata',
-        'split_code' => 'string',
+        'callbackUrl' => 'string',
+        'metadata' => '\Alexasomba\Paystack\Model\PreAuthorizationInitializeMetadata',
+        'splitCode' => 'string',
         'subaccount' => 'string',
-        'transaction_charge' => 'int',
+        'transactionCharge' => 'int',
         'bearer' => 'string',
-        'expire_action' => 'string',
-        'expire_after_days' => 'int'
+        'expireAction' => 'string',
+        'expireAfterDays' => 'int'
     ];
 
     /**
@@ -84,14 +84,14 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
         'email' => null,
         'currency' => null,
         'reference' => null,
-        'callback_url' => null,
+        'callbackUrl' => null,
         'metadata' => null,
-        'split_code' => null,
+        'splitCode' => null,
         'subaccount' => null,
-        'transaction_charge' => null,
+        'transactionCharge' => null,
         'bearer' => null,
-        'expire_action' => null,
-        'expire_after_days' => null
+        'expireAction' => null,
+        'expireAfterDays' => null
     ];
 
     /**
@@ -104,14 +104,14 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
         'email' => false,
         'currency' => false,
         'reference' => false,
-        'callback_url' => false,
+        'callbackUrl' => false,
         'metadata' => false,
-        'split_code' => false,
+        'splitCode' => false,
         'subaccount' => false,
-        'transaction_charge' => false,
+        'transactionCharge' => false,
         'bearer' => false,
-        'expire_action' => false,
-        'expire_after_days' => false
+        'expireAction' => false,
+        'expireAfterDays' => false
     ];
 
     /**
@@ -204,14 +204,14 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
         'email' => 'email',
         'currency' => 'currency',
         'reference' => 'reference',
-        'callback_url' => 'callback_url',
+        'callbackUrl' => 'callback_url',
         'metadata' => 'metadata',
-        'split_code' => 'split_code',
+        'splitCode' => 'split_code',
         'subaccount' => 'subaccount',
-        'transaction_charge' => 'transaction_charge',
+        'transactionCharge' => 'transaction_charge',
         'bearer' => 'bearer',
-        'expire_action' => 'expire_action',
-        'expire_after_days' => 'expire_after_days'
+        'expireAction' => 'expire_action',
+        'expireAfterDays' => 'expire_after_days'
     ];
 
     /**
@@ -224,14 +224,14 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
         'email' => 'setEmail',
         'currency' => 'setCurrency',
         'reference' => 'setReference',
-        'callback_url' => 'setCallbackUrl',
+        'callbackUrl' => 'setCallbackUrl',
         'metadata' => 'setMetadata',
-        'split_code' => 'setSplitCode',
+        'splitCode' => 'setSplitCode',
         'subaccount' => 'setSubaccount',
-        'transaction_charge' => 'setTransactionCharge',
+        'transactionCharge' => 'setTransactionCharge',
         'bearer' => 'setBearer',
-        'expire_action' => 'setExpireAction',
-        'expire_after_days' => 'setExpireAfterDays'
+        'expireAction' => 'setExpireAction',
+        'expireAfterDays' => 'setExpireAfterDays'
     ];
 
     /**
@@ -244,14 +244,14 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
         'email' => 'getEmail',
         'currency' => 'getCurrency',
         'reference' => 'getReference',
-        'callback_url' => 'getCallbackUrl',
+        'callbackUrl' => 'getCallbackUrl',
         'metadata' => 'getMetadata',
-        'split_code' => 'getSplitCode',
+        'splitCode' => 'getSplitCode',
         'subaccount' => 'getSubaccount',
-        'transaction_charge' => 'getTransactionCharge',
+        'transactionCharge' => 'getTransactionCharge',
         'bearer' => 'getBearer',
-        'expire_action' => 'getExpireAction',
-        'expire_after_days' => 'getExpireAfterDays'
+        'expireAction' => 'getExpireAction',
+        'expireAfterDays' => 'getExpireAfterDays'
     ];
 
     /**
@@ -358,14 +358,14 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
-        $this->setIfExists('callback_url', $data ?? [], null);
+        $this->setIfExists('callbackUrl', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
+        $this->setIfExists('splitCode', $data ?? [], null);
         $this->setIfExists('subaccount', $data ?? [], null);
-        $this->setIfExists('transaction_charge', $data ?? [], null);
+        $this->setIfExists('transactionCharge', $data ?? [], null);
         $this->setIfExists('bearer', $data ?? [], null);
-        $this->setIfExists('expire_action', $data ?? [], null);
-        $this->setIfExists('expire_after_days', $data ?? [], null);
+        $this->setIfExists('expireAction', $data ?? [], null);
+        $this->setIfExists('expireAfterDays', $data ?? [], null);
     }
 
     /**
@@ -423,20 +423,20 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
         }
 
         $allowedValues = $this->getExpireActionAllowableValues();
-        if (!is_null($this->container['expire_action']) && !in_array($this->container['expire_action'], $allowedValues, true)) {
+        if (!is_null($this->container['expireAction']) && !in_array($this->container['expireAction'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'expire_action', must be one of '%s'",
-                $this->container['expire_action'],
+                "invalid value '%s' for 'expireAction', must be one of '%s'",
+                $this->container['expireAction'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if (!is_null($this->container['expire_after_days']) && ($this->container['expire_after_days'] > 30)) {
-            $invalidProperties[] = "invalid value for 'expire_after_days', must be smaller than or equal to 30.";
+        if (!is_null($this->container['expireAfterDays']) && ($this->container['expireAfterDays'] > 30)) {
+            $invalidProperties[] = "invalid value for 'expireAfterDays', must be smaller than or equal to 30.";
         }
 
-        if (!is_null($this->container['expire_after_days']) && ($this->container['expire_after_days'] < 1)) {
-            $invalidProperties[] = "invalid value for 'expire_after_days', must be bigger than or equal to 1.";
+        if (!is_null($this->container['expireAfterDays']) && ($this->container['expireAfterDays'] < 1)) {
+            $invalidProperties[] = "invalid value for 'expireAfterDays', must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -573,28 +573,28 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets callback_url
+     * Gets callbackUrl
      *
      * @return string|null
      */
     public function getCallbackUrl()
     {
-        return $this->container['callback_url'];
+        return $this->container['callbackUrl'];
     }
 
     /**
-     * Sets callback_url
+     * Sets callbackUrl
      *
-     * @param string|null $callback_url Fully qualified url, e.g. https://example.com/ . Use this to override the callback url provided on the dashboard for this transaction
+     * @param string|null $callbackUrl Fully qualified url, e.g. https://example.com/ . Use this to override the callback url provided on the dashboard for this transaction
      *
      * @return self
      */
-    public function setCallbackUrl($callback_url)
+    public function setCallbackUrl($callbackUrl)
     {
-        if (is_null($callback_url)) {
-            throw new \InvalidArgumentException('non-nullable callback_url cannot be null');
+        if (is_null($callbackUrl)) {
+            throw new \InvalidArgumentException('non-nullable callbackUrl cannot be null');
         }
-        $this->container['callback_url'] = $callback_url;
+        $this->container['callbackUrl'] = $callbackUrl;
 
         return $this;
     }
@@ -602,7 +602,7 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationInitializeMetadata|null
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationInitializeMetadata|null
      */
     public function getMetadata()
     {
@@ -612,7 +612,7 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\\Paystack\Model\PreAuthorizationInitializeMetadata|null $metadata metadata
+     * @param \Alexasomba\Paystack\Model\PreAuthorizationInitializeMetadata|null $metadata metadata
      *
      * @return self
      */
@@ -627,28 +627,28 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets split_code
+     * Gets splitCode
      *
      * @return string|null
      */
     public function getSplitCode()
     {
-        return $this->container['split_code'];
+        return $this->container['splitCode'];
     }
 
     /**
-     * Sets split_code
+     * Sets splitCode
      *
-     * @param string|null $split_code The split code of the transaction split. e.g. SPL_98WF13Eb3w
+     * @param string|null $splitCode The split code of the transaction split. e.g. SPL_98WF13Eb3w
      *
      * @return self
      */
-    public function setSplitCode($split_code)
+    public function setSplitCode($splitCode)
     {
-        if (is_null($split_code)) {
-            throw new \InvalidArgumentException('non-nullable split_code cannot be null');
+        if (is_null($splitCode)) {
+            throw new \InvalidArgumentException('non-nullable splitCode cannot be null');
         }
-        $this->container['split_code'] = $split_code;
+        $this->container['splitCode'] = $splitCode;
 
         return $this;
     }
@@ -681,28 +681,28 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets transaction_charge
+     * Gets transactionCharge
      *
      * @return int|null
      */
     public function getTransactionCharge()
     {
-        return $this->container['transaction_charge'];
+        return $this->container['transactionCharge'];
     }
 
     /**
-     * Sets transaction_charge
+     * Sets transactionCharge
      *
-     * @param int|null $transaction_charge An amount used to override the split configuration for a single split payment. If set, the amount specified goes to the main account regardless of the split configuration.
+     * @param int|null $transactionCharge An amount used to override the split configuration for a single split payment. If set, the amount specified goes to the main account regardless of the split configuration.
      *
      * @return self
      */
-    public function setTransactionCharge($transaction_charge)
+    public function setTransactionCharge($transactionCharge)
     {
-        if (is_null($transaction_charge)) {
-            throw new \InvalidArgumentException('non-nullable transaction_charge cannot be null');
+        if (is_null($transactionCharge)) {
+            throw new \InvalidArgumentException('non-nullable transactionCharge cannot be null');
         }
-        $this->container['transaction_charge'] = $transaction_charge;
+        $this->container['transactionCharge'] = $transactionCharge;
 
         return $this;
     }
@@ -745,73 +745,73 @@ class PreAuthorizationInitialize implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets expire_action
+     * Gets expireAction
      *
      * @return string|null
      */
     public function getExpireAction()
     {
-        return $this->container['expire_action'];
+        return $this->container['expireAction'];
     }
 
     /**
-     * Sets expire_action
+     * Sets expireAction
      *
-     * @param string|null $expire_action Specify the action to take on the expiry date. It’s either capture or release. Defaults to release.
+     * @param string|null $expireAction Specify the action to take on the expiry date. It’s either capture or release. Defaults to release.
      *
      * @return self
      */
-    public function setExpireAction($expire_action)
+    public function setExpireAction($expireAction)
     {
-        if (is_null($expire_action)) {
-            throw new \InvalidArgumentException('non-nullable expire_action cannot be null');
+        if (is_null($expireAction)) {
+            throw new \InvalidArgumentException('non-nullable expireAction cannot be null');
         }
         $allowedValues = $this->getExpireActionAllowableValues();
-        if (!in_array($expire_action, $allowedValues, true)) {
+        if (!in_array($expireAction, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'expire_action', must be one of '%s'",
-                    $expire_action,
+                    "Invalid value '%s' for 'expireAction', must be one of '%s'",
+                    $expireAction,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['expire_action'] = $expire_action;
+        $this->container['expireAction'] = $expireAction;
 
         return $this;
     }
 
     /**
-     * Gets expire_after_days
+     * Gets expireAfterDays
      *
      * @return int|null
      */
     public function getExpireAfterDays()
     {
-        return $this->container['expire_after_days'];
+        return $this->container['expireAfterDays'];
     }
 
     /**
-     * Sets expire_after_days
+     * Sets expireAfterDays
      *
-     * @param int|null $expire_after_days The number of days until the expire_action is executed. The minimum is 1 day and maximum 30 days. Defaults to 5 days.
+     * @param int|null $expireAfterDays The number of days until the expire_action is executed. The minimum is 1 day and maximum 30 days. Defaults to 5 days.
      *
      * @return self
      */
-    public function setExpireAfterDays($expire_after_days)
+    public function setExpireAfterDays($expireAfterDays)
     {
-        if (is_null($expire_after_days)) {
-            throw new \InvalidArgumentException('non-nullable expire_after_days cannot be null');
+        if (is_null($expireAfterDays)) {
+            throw new \InvalidArgumentException('non-nullable expireAfterDays cannot be null');
         }
 
-        if (($expire_after_days > 30)) {
-            throw new \InvalidArgumentException('invalid value for $expire_after_days when calling PreAuthorizationInitialize., must be smaller than or equal to 30.');
+        if (($expireAfterDays > 30)) {
+            throw new \InvalidArgumentException('invalid value for $expireAfterDays when calling PreAuthorizationInitialize., must be smaller than or equal to 30.');
         }
-        if (($expire_after_days < 1)) {
-            throw new \InvalidArgumentException('invalid value for $expire_after_days when calling PreAuthorizationInitialize., must be bigger than or equal to 1.');
+        if (($expireAfterDays < 1)) {
+            throw new \InvalidArgumentException('invalid value for $expireAfterDays when calling PreAuthorizationInitialize., must be bigger than or equal to 1.');
         }
 
-        $this->container['expire_after_days'] = $expire_after_days;
+        $this->container['expireAfterDays'] = $expireAfterDays;
 
         return $this;
     }

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * SubaccountListResponseArray Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,17 +59,17 @@ class SubaccountListResponseArray implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'id' => 'int',
-        'subaccount_code' => 'string',
-        'business_name' => 'string',
+        'subaccountCode' => 'string',
+        'businessName' => 'string',
         'description' => 'string',
-        'primary_contact_name' => 'string',
-        'primary_contact_email' => 'string',
-        'primary_contact_phone' => 'string',
+        'primaryContactName' => 'string',
+        'primaryContactEmail' => 'string',
+        'primaryContactPhone' => 'string',
         'metadata' => 'mixed',
-        'percentage_charge' => 'float',
-        'settlement_bank' => 'string',
-        'bank_id' => 'int',
-        'account_number' => 'string',
+        'percentageCharge' => 'float',
+        'settlementBank' => 'string',
+        'bankId' => 'int',
+        'accountNumber' => 'string',
         'currency' => 'string',
         'active' => 'int'
     ];
@@ -83,17 +83,17 @@ class SubaccountListResponseArray implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'subaccount_code' => null,
-        'business_name' => null,
+        'subaccountCode' => null,
+        'businessName' => null,
         'description' => null,
-        'primary_contact_name' => null,
-        'primary_contact_email' => null,
-        'primary_contact_phone' => null,
+        'primaryContactName' => null,
+        'primaryContactEmail' => null,
+        'primaryContactPhone' => null,
         'metadata' => null,
-        'percentage_charge' => null,
-        'settlement_bank' => null,
-        'bank_id' => null,
-        'account_number' => null,
+        'percentageCharge' => null,
+        'settlementBank' => null,
+        'bankId' => null,
+        'accountNumber' => null,
         'currency' => null,
         'active' => null
     ];
@@ -105,17 +105,17 @@ class SubaccountListResponseArray implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'subaccount_code' => false,
-        'business_name' => false,
+        'subaccountCode' => false,
+        'businessName' => false,
         'description' => true,
-        'primary_contact_name' => true,
-        'primary_contact_email' => true,
-        'primary_contact_phone' => true,
+        'primaryContactName' => true,
+        'primaryContactEmail' => true,
+        'primaryContactPhone' => true,
         'metadata' => true,
-        'percentage_charge' => false,
-        'settlement_bank' => false,
-        'bank_id' => false,
-        'account_number' => false,
+        'percentageCharge' => false,
+        'settlementBank' => false,
+        'bankId' => false,
+        'accountNumber' => false,
         'currency' => false,
         'active' => false
     ];
@@ -207,17 +207,17 @@ class SubaccountListResponseArray implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'subaccount_code' => 'subaccount_code',
-        'business_name' => 'business_name',
+        'subaccountCode' => 'subaccount_code',
+        'businessName' => 'business_name',
         'description' => 'description',
-        'primary_contact_name' => 'primary_contact_name',
-        'primary_contact_email' => 'primary_contact_email',
-        'primary_contact_phone' => 'primary_contact_phone',
+        'primaryContactName' => 'primary_contact_name',
+        'primaryContactEmail' => 'primary_contact_email',
+        'primaryContactPhone' => 'primary_contact_phone',
         'metadata' => 'metadata',
-        'percentage_charge' => 'percentage_charge',
-        'settlement_bank' => 'settlement_bank',
-        'bank_id' => 'bank_id',
-        'account_number' => 'account_number',
+        'percentageCharge' => 'percentage_charge',
+        'settlementBank' => 'settlement_bank',
+        'bankId' => 'bank_id',
+        'accountNumber' => 'account_number',
         'currency' => 'currency',
         'active' => 'active'
     ];
@@ -229,17 +229,17 @@ class SubaccountListResponseArray implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $setters = [
         'id' => 'setId',
-        'subaccount_code' => 'setSubaccountCode',
-        'business_name' => 'setBusinessName',
+        'subaccountCode' => 'setSubaccountCode',
+        'businessName' => 'setBusinessName',
         'description' => 'setDescription',
-        'primary_contact_name' => 'setPrimaryContactName',
-        'primary_contact_email' => 'setPrimaryContactEmail',
-        'primary_contact_phone' => 'setPrimaryContactPhone',
+        'primaryContactName' => 'setPrimaryContactName',
+        'primaryContactEmail' => 'setPrimaryContactEmail',
+        'primaryContactPhone' => 'setPrimaryContactPhone',
         'metadata' => 'setMetadata',
-        'percentage_charge' => 'setPercentageCharge',
-        'settlement_bank' => 'setSettlementBank',
-        'bank_id' => 'setBankId',
-        'account_number' => 'setAccountNumber',
+        'percentageCharge' => 'setPercentageCharge',
+        'settlementBank' => 'setSettlementBank',
+        'bankId' => 'setBankId',
+        'accountNumber' => 'setAccountNumber',
         'currency' => 'setCurrency',
         'active' => 'setActive'
     ];
@@ -251,17 +251,17 @@ class SubaccountListResponseArray implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $getters = [
         'id' => 'getId',
-        'subaccount_code' => 'getSubaccountCode',
-        'business_name' => 'getBusinessName',
+        'subaccountCode' => 'getSubaccountCode',
+        'businessName' => 'getBusinessName',
         'description' => 'getDescription',
-        'primary_contact_name' => 'getPrimaryContactName',
-        'primary_contact_email' => 'getPrimaryContactEmail',
-        'primary_contact_phone' => 'getPrimaryContactPhone',
+        'primaryContactName' => 'getPrimaryContactName',
+        'primaryContactEmail' => 'getPrimaryContactEmail',
+        'primaryContactPhone' => 'getPrimaryContactPhone',
         'metadata' => 'getMetadata',
-        'percentage_charge' => 'getPercentageCharge',
-        'settlement_bank' => 'getSettlementBank',
-        'bank_id' => 'getBankId',
-        'account_number' => 'getAccountNumber',
+        'percentageCharge' => 'getPercentageCharge',
+        'settlementBank' => 'getSettlementBank',
+        'bankId' => 'getBankId',
+        'accountNumber' => 'getAccountNumber',
         'currency' => 'getCurrency',
         'active' => 'getActive'
     ];
@@ -324,17 +324,17 @@ class SubaccountListResponseArray implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('subaccount_code', $data ?? [], null);
-        $this->setIfExists('business_name', $data ?? [], null);
+        $this->setIfExists('subaccountCode', $data ?? [], null);
+        $this->setIfExists('businessName', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('primary_contact_name', $data ?? [], null);
-        $this->setIfExists('primary_contact_email', $data ?? [], null);
-        $this->setIfExists('primary_contact_phone', $data ?? [], null);
+        $this->setIfExists('primaryContactName', $data ?? [], null);
+        $this->setIfExists('primaryContactEmail', $data ?? [], null);
+        $this->setIfExists('primaryContactPhone', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('percentage_charge', $data ?? [], null);
-        $this->setIfExists('settlement_bank', $data ?? [], null);
-        $this->setIfExists('bank_id', $data ?? [], null);
-        $this->setIfExists('account_number', $data ?? [], null);
+        $this->setIfExists('percentageCharge', $data ?? [], null);
+        $this->setIfExists('settlementBank', $data ?? [], null);
+        $this->setIfExists('bankId', $data ?? [], null);
+        $this->setIfExists('accountNumber', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
     }
@@ -369,38 +369,38 @@ class SubaccountListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['subaccount_code'] === null) {
-            $invalidProperties[] = "'subaccount_code' can't be null";
+        if ($this->container['subaccountCode'] === null) {
+            $invalidProperties[] = "'subaccountCode' can't be null";
         }
-        if ($this->container['business_name'] === null) {
-            $invalidProperties[] = "'business_name' can't be null";
+        if ($this->container['businessName'] === null) {
+            $invalidProperties[] = "'businessName' can't be null";
         }
         if ($this->container['description'] === null && !$this->isNullableSetToNull('description')) {
             $invalidProperties[] = "'description' can't be null";
         }
-        if ($this->container['primary_contact_name'] === null && !$this->isNullableSetToNull('primary_contact_name')) {
-            $invalidProperties[] = "'primary_contact_name' can't be null";
+        if ($this->container['primaryContactName'] === null && !$this->isNullableSetToNull('primaryContactName')) {
+            $invalidProperties[] = "'primaryContactName' can't be null";
         }
-        if ($this->container['primary_contact_email'] === null && !$this->isNullableSetToNull('primary_contact_email')) {
-            $invalidProperties[] = "'primary_contact_email' can't be null";
+        if ($this->container['primaryContactEmail'] === null && !$this->isNullableSetToNull('primaryContactEmail')) {
+            $invalidProperties[] = "'primaryContactEmail' can't be null";
         }
-        if ($this->container['primary_contact_phone'] === null && !$this->isNullableSetToNull('primary_contact_phone')) {
-            $invalidProperties[] = "'primary_contact_phone' can't be null";
+        if ($this->container['primaryContactPhone'] === null && !$this->isNullableSetToNull('primaryContactPhone')) {
+            $invalidProperties[] = "'primaryContactPhone' can't be null";
         }
         if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
         }
-        if ($this->container['percentage_charge'] === null) {
-            $invalidProperties[] = "'percentage_charge' can't be null";
+        if ($this->container['percentageCharge'] === null) {
+            $invalidProperties[] = "'percentageCharge' can't be null";
         }
-        if ($this->container['settlement_bank'] === null) {
-            $invalidProperties[] = "'settlement_bank' can't be null";
+        if ($this->container['settlementBank'] === null) {
+            $invalidProperties[] = "'settlementBank' can't be null";
         }
-        if ($this->container['bank_id'] === null) {
-            $invalidProperties[] = "'bank_id' can't be null";
+        if ($this->container['bankId'] === null) {
+            $invalidProperties[] = "'bankId' can't be null";
         }
-        if ($this->container['account_number'] === null) {
-            $invalidProperties[] = "'account_number' can't be null";
+        if ($this->container['accountNumber'] === null) {
+            $invalidProperties[] = "'accountNumber' can't be null";
         }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
@@ -451,55 +451,55 @@ class SubaccountListResponseArray implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets subaccount_code
+     * Gets subaccountCode
      *
      * @return string
      */
     public function getSubaccountCode()
     {
-        return $this->container['subaccount_code'];
+        return $this->container['subaccountCode'];
     }
 
     /**
-     * Sets subaccount_code
+     * Sets subaccountCode
      *
-     * @param string $subaccount_code subaccount_code
+     * @param string $subaccountCode subaccountCode
      *
      * @return self
      */
-    public function setSubaccountCode($subaccount_code)
+    public function setSubaccountCode($subaccountCode)
     {
-        if (is_null($subaccount_code)) {
-            throw new \InvalidArgumentException('non-nullable subaccount_code cannot be null');
+        if (is_null($subaccountCode)) {
+            throw new \InvalidArgumentException('non-nullable subaccountCode cannot be null');
         }
-        $this->container['subaccount_code'] = $subaccount_code;
+        $this->container['subaccountCode'] = $subaccountCode;
 
         return $this;
     }
 
     /**
-     * Gets business_name
+     * Gets businessName
      *
      * @return string
      */
     public function getBusinessName()
     {
-        return $this->container['business_name'];
+        return $this->container['businessName'];
     }
 
     /**
-     * Sets business_name
+     * Sets businessName
      *
-     * @param string $business_name business_name
+     * @param string $businessName businessName
      *
      * @return self
      */
-    public function setBusinessName($business_name)
+    public function setBusinessName($businessName)
     {
-        if (is_null($business_name)) {
-            throw new \InvalidArgumentException('non-nullable business_name cannot be null');
+        if (is_null($businessName)) {
+            throw new \InvalidArgumentException('non-nullable businessName cannot be null');
         }
-        $this->container['business_name'] = $business_name;
+        $this->container['businessName'] = $businessName;
 
         return $this;
     }
@@ -539,103 +539,103 @@ class SubaccountListResponseArray implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets primary_contact_name
+     * Gets primaryContactName
      *
      * @return string|null
      */
     public function getPrimaryContactName()
     {
-        return $this->container['primary_contact_name'];
+        return $this->container['primaryContactName'];
     }
 
     /**
-     * Sets primary_contact_name
+     * Sets primaryContactName
      *
-     * @param string|null $primary_contact_name primary_contact_name
+     * @param string|null $primaryContactName primaryContactName
      *
      * @return self
      */
-    public function setPrimaryContactName($primary_contact_name)
+    public function setPrimaryContactName($primaryContactName)
     {
-        if (is_null($primary_contact_name)) {
-            array_push($this->openAPINullablesSetToNull, 'primary_contact_name');
+        if (is_null($primaryContactName)) {
+            array_push($this->openAPINullablesSetToNull, 'primaryContactName');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('primary_contact_name', $nullablesSetToNull);
+            $index = array_search('primaryContactName', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['primary_contact_name'] = $primary_contact_name;
+        $this->container['primaryContactName'] = $primaryContactName;
 
         return $this;
     }
 
     /**
-     * Gets primary_contact_email
+     * Gets primaryContactEmail
      *
      * @return string|null
      */
     public function getPrimaryContactEmail()
     {
-        return $this->container['primary_contact_email'];
+        return $this->container['primaryContactEmail'];
     }
 
     /**
-     * Sets primary_contact_email
+     * Sets primaryContactEmail
      *
-     * @param string|null $primary_contact_email primary_contact_email
+     * @param string|null $primaryContactEmail primaryContactEmail
      *
      * @return self
      */
-    public function setPrimaryContactEmail($primary_contact_email)
+    public function setPrimaryContactEmail($primaryContactEmail)
     {
-        if (is_null($primary_contact_email)) {
-            array_push($this->openAPINullablesSetToNull, 'primary_contact_email');
+        if (is_null($primaryContactEmail)) {
+            array_push($this->openAPINullablesSetToNull, 'primaryContactEmail');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('primary_contact_email', $nullablesSetToNull);
+            $index = array_search('primaryContactEmail', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['primary_contact_email'] = $primary_contact_email;
+        $this->container['primaryContactEmail'] = $primaryContactEmail;
 
         return $this;
     }
 
     /**
-     * Gets primary_contact_phone
+     * Gets primaryContactPhone
      *
      * @return string|null
      */
     public function getPrimaryContactPhone()
     {
-        return $this->container['primary_contact_phone'];
+        return $this->container['primaryContactPhone'];
     }
 
     /**
-     * Sets primary_contact_phone
+     * Sets primaryContactPhone
      *
-     * @param string|null $primary_contact_phone primary_contact_phone
+     * @param string|null $primaryContactPhone primaryContactPhone
      *
      * @return self
      */
-    public function setPrimaryContactPhone($primary_contact_phone)
+    public function setPrimaryContactPhone($primaryContactPhone)
     {
-        if (is_null($primary_contact_phone)) {
-            array_push($this->openAPINullablesSetToNull, 'primary_contact_phone');
+        if (is_null($primaryContactPhone)) {
+            array_push($this->openAPINullablesSetToNull, 'primaryContactPhone');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('primary_contact_phone', $nullablesSetToNull);
+            $index = array_search('primaryContactPhone', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['primary_contact_phone'] = $primary_contact_phone;
+        $this->container['primaryContactPhone'] = $primaryContactPhone;
 
         return $this;
     }
@@ -675,109 +675,109 @@ class SubaccountListResponseArray implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets percentage_charge
+     * Gets percentageCharge
      *
      * @return float
      */
     public function getPercentageCharge()
     {
-        return $this->container['percentage_charge'];
+        return $this->container['percentageCharge'];
     }
 
     /**
-     * Sets percentage_charge
+     * Sets percentageCharge
      *
-     * @param float $percentage_charge percentage_charge
+     * @param float $percentageCharge percentageCharge
      *
      * @return self
      */
-    public function setPercentageCharge($percentage_charge)
+    public function setPercentageCharge($percentageCharge)
     {
-        if (is_null($percentage_charge)) {
-            throw new \InvalidArgumentException('non-nullable percentage_charge cannot be null');
+        if (is_null($percentageCharge)) {
+            throw new \InvalidArgumentException('non-nullable percentageCharge cannot be null');
         }
-        $this->container['percentage_charge'] = $percentage_charge;
+        $this->container['percentageCharge'] = $percentageCharge;
 
         return $this;
     }
 
     /**
-     * Gets settlement_bank
+     * Gets settlementBank
      *
      * @return string
      */
     public function getSettlementBank()
     {
-        return $this->container['settlement_bank'];
+        return $this->container['settlementBank'];
     }
 
     /**
-     * Sets settlement_bank
+     * Sets settlementBank
      *
-     * @param string $settlement_bank settlement_bank
+     * @param string $settlementBank settlementBank
      *
      * @return self
      */
-    public function setSettlementBank($settlement_bank)
+    public function setSettlementBank($settlementBank)
     {
-        if (is_null($settlement_bank)) {
-            throw new \InvalidArgumentException('non-nullable settlement_bank cannot be null');
+        if (is_null($settlementBank)) {
+            throw new \InvalidArgumentException('non-nullable settlementBank cannot be null');
         }
-        $this->container['settlement_bank'] = $settlement_bank;
+        $this->container['settlementBank'] = $settlementBank;
 
         return $this;
     }
 
     /**
-     * Gets bank_id
+     * Gets bankId
      *
      * @return int
      */
     public function getBankId()
     {
-        return $this->container['bank_id'];
+        return $this->container['bankId'];
     }
 
     /**
-     * Sets bank_id
+     * Sets bankId
      *
-     * @param int $bank_id bank_id
+     * @param int $bankId bankId
      *
      * @return self
      */
-    public function setBankId($bank_id)
+    public function setBankId($bankId)
     {
-        if (is_null($bank_id)) {
-            throw new \InvalidArgumentException('non-nullable bank_id cannot be null');
+        if (is_null($bankId)) {
+            throw new \InvalidArgumentException('non-nullable bankId cannot be null');
         }
-        $this->container['bank_id'] = $bank_id;
+        $this->container['bankId'] = $bankId;
 
         return $this;
     }
 
     /**
-     * Gets account_number
+     * Gets accountNumber
      *
      * @return string
      */
     public function getAccountNumber()
     {
-        return $this->container['account_number'];
+        return $this->container['accountNumber'];
     }
 
     /**
-     * Sets account_number
+     * Sets accountNumber
      *
-     * @param string $account_number account_number
+     * @param string $accountNumber accountNumber
      *
      * @return self
      */
-    public function setAccountNumber($account_number)
+    public function setAccountNumber($accountNumber)
     {
-        if (is_null($account_number)) {
-            throw new \InvalidArgumentException('non-nullable account_number cannot be null');
+        if (is_null($accountNumber)) {
+            throw new \InvalidArgumentException('non-nullable accountNumber cannot be null');
         }
-        $this->container['account_number'] = $account_number;
+        $this->container['accountNumber'] = $accountNumber;
 
         return $this;
     }

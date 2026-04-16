@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * RefundListResponseArray Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,18 +64,18 @@ class RefundListResponseArray implements ModelInterface, ArrayAccess, \JsonSeria
         'transaction' => 'int',
         'dispute' => 'int',
         'amount' => 'int',
-        'deducted_amount' => 'int',
+        'deductedAmount' => 'int',
         'currency' => 'string',
         'channel' => 'string',
         'settlement' => 'int',
-        'refunded_by' => 'string',
-        'refunded_at' => 'string',
-        'expected_at' => 'string',
-        'customer_note' => 'string',
-        'merchant_note' => 'string',
-        'fully_deducted' => 'int',
-        'created_at' => 'string',
-        'updated_at' => 'string',
+        'refundedBy' => 'string',
+        'refundedAt' => 'string',
+        'expectedAt' => 'string',
+        'customerNote' => 'string',
+        'merchantNote' => 'string',
+        'fullyDeducted' => 'int',
+        'createdAt' => 'string',
+        'updatedAt' => 'string',
         'status' => 'string'
     ];
 
@@ -93,18 +93,18 @@ class RefundListResponseArray implements ModelInterface, ArrayAccess, \JsonSeria
         'transaction' => null,
         'dispute' => null,
         'amount' => null,
-        'deducted_amount' => null,
+        'deductedAmount' => null,
         'currency' => null,
         'channel' => null,
         'settlement' => null,
-        'refunded_by' => null,
-        'refunded_at' => null,
-        'expected_at' => null,
-        'customer_note' => null,
-        'merchant_note' => null,
-        'fully_deducted' => null,
-        'created_at' => null,
-        'updated_at' => null,
+        'refundedBy' => null,
+        'refundedAt' => null,
+        'expectedAt' => null,
+        'customerNote' => null,
+        'merchantNote' => null,
+        'fullyDeducted' => null,
+        'createdAt' => null,
+        'updatedAt' => null,
         'status' => null
     ];
 
@@ -120,18 +120,18 @@ class RefundListResponseArray implements ModelInterface, ArrayAccess, \JsonSeria
         'transaction' => false,
         'dispute' => true,
         'amount' => false,
-        'deducted_amount' => true,
+        'deductedAmount' => true,
         'currency' => false,
         'channel' => false,
         'settlement' => true,
-        'refunded_by' => false,
-        'refunded_at' => true,
-        'expected_at' => false,
-        'customer_note' => false,
-        'merchant_note' => false,
-        'fully_deducted' => true,
-        'created_at' => false,
-        'updated_at' => false,
+        'refundedBy' => false,
+        'refundedAt' => true,
+        'expectedAt' => false,
+        'customerNote' => false,
+        'merchantNote' => false,
+        'fullyDeducted' => true,
+        'createdAt' => false,
+        'updatedAt' => false,
         'status' => false
     ];
 
@@ -227,18 +227,18 @@ class RefundListResponseArray implements ModelInterface, ArrayAccess, \JsonSeria
         'transaction' => 'transaction',
         'dispute' => 'dispute',
         'amount' => 'amount',
-        'deducted_amount' => 'deducted_amount',
+        'deductedAmount' => 'deducted_amount',
         'currency' => 'currency',
         'channel' => 'channel',
         'settlement' => 'settlement',
-        'refunded_by' => 'refunded_by',
-        'refunded_at' => 'refunded_at',
-        'expected_at' => 'expected_at',
-        'customer_note' => 'customer_note',
-        'merchant_note' => 'merchant_note',
-        'fully_deducted' => 'fully_deducted',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at',
+        'refundedBy' => 'refunded_by',
+        'refundedAt' => 'refunded_at',
+        'expectedAt' => 'expected_at',
+        'customerNote' => 'customer_note',
+        'merchantNote' => 'merchant_note',
+        'fullyDeducted' => 'fully_deducted',
+        'createdAt' => 'created_at',
+        'updatedAt' => 'updated_at',
         'status' => 'status'
     ];
 
@@ -254,18 +254,18 @@ class RefundListResponseArray implements ModelInterface, ArrayAccess, \JsonSeria
         'transaction' => 'setTransaction',
         'dispute' => 'setDispute',
         'amount' => 'setAmount',
-        'deducted_amount' => 'setDeductedAmount',
+        'deductedAmount' => 'setDeductedAmount',
         'currency' => 'setCurrency',
         'channel' => 'setChannel',
         'settlement' => 'setSettlement',
-        'refunded_by' => 'setRefundedBy',
-        'refunded_at' => 'setRefundedAt',
-        'expected_at' => 'setExpectedAt',
-        'customer_note' => 'setCustomerNote',
-        'merchant_note' => 'setMerchantNote',
-        'fully_deducted' => 'setFullyDeducted',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
+        'refundedBy' => 'setRefundedBy',
+        'refundedAt' => 'setRefundedAt',
+        'expectedAt' => 'setExpectedAt',
+        'customerNote' => 'setCustomerNote',
+        'merchantNote' => 'setMerchantNote',
+        'fullyDeducted' => 'setFullyDeducted',
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt',
         'status' => 'setStatus'
     ];
 
@@ -281,18 +281,18 @@ class RefundListResponseArray implements ModelInterface, ArrayAccess, \JsonSeria
         'transaction' => 'getTransaction',
         'dispute' => 'getDispute',
         'amount' => 'getAmount',
-        'deducted_amount' => 'getDeductedAmount',
+        'deductedAmount' => 'getDeductedAmount',
         'currency' => 'getCurrency',
         'channel' => 'getChannel',
         'settlement' => 'getSettlement',
-        'refunded_by' => 'getRefundedBy',
-        'refunded_at' => 'getRefundedAt',
-        'expected_at' => 'getExpectedAt',
-        'customer_note' => 'getCustomerNote',
-        'merchant_note' => 'getMerchantNote',
-        'fully_deducted' => 'getFullyDeducted',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
+        'refundedBy' => 'getRefundedBy',
+        'refundedAt' => 'getRefundedAt',
+        'expectedAt' => 'getExpectedAt',
+        'customerNote' => 'getCustomerNote',
+        'merchantNote' => 'getMerchantNote',
+        'fullyDeducted' => 'getFullyDeducted',
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt',
         'status' => 'getStatus'
     ];
 
@@ -359,18 +359,18 @@ class RefundListResponseArray implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('transaction', $data ?? [], null);
         $this->setIfExists('dispute', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('deducted_amount', $data ?? [], null);
+        $this->setIfExists('deductedAmount', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('channel', $data ?? [], null);
         $this->setIfExists('settlement', $data ?? [], null);
-        $this->setIfExists('refunded_by', $data ?? [], null);
-        $this->setIfExists('refunded_at', $data ?? [], null);
-        $this->setIfExists('expected_at', $data ?? [], null);
-        $this->setIfExists('customer_note', $data ?? [], null);
-        $this->setIfExists('merchant_note', $data ?? [], null);
-        $this->setIfExists('fully_deducted', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('refundedBy', $data ?? [], null);
+        $this->setIfExists('refundedAt', $data ?? [], null);
+        $this->setIfExists('expectedAt', $data ?? [], null);
+        $this->setIfExists('customerNote', $data ?? [], null);
+        $this->setIfExists('merchantNote', $data ?? [], null);
+        $this->setIfExists('fullyDeducted', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
     }
 
@@ -419,8 +419,8 @@ class RefundListResponseArray implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
-        if ($this->container['deducted_amount'] === null && !$this->isNullableSetToNull('deducted_amount')) {
-            $invalidProperties[] = "'deducted_amount' can't be null";
+        if ($this->container['deductedAmount'] === null && !$this->isNullableSetToNull('deductedAmount')) {
+            $invalidProperties[] = "'deductedAmount' can't be null";
         }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
@@ -431,29 +431,29 @@ class RefundListResponseArray implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['settlement'] === null && !$this->isNullableSetToNull('settlement')) {
             $invalidProperties[] = "'settlement' can't be null";
         }
-        if ($this->container['refunded_by'] === null) {
-            $invalidProperties[] = "'refunded_by' can't be null";
+        if ($this->container['refundedBy'] === null) {
+            $invalidProperties[] = "'refundedBy' can't be null";
         }
-        if ($this->container['refunded_at'] === null && !$this->isNullableSetToNull('refunded_at')) {
-            $invalidProperties[] = "'refunded_at' can't be null";
+        if ($this->container['refundedAt'] === null && !$this->isNullableSetToNull('refundedAt')) {
+            $invalidProperties[] = "'refundedAt' can't be null";
         }
-        if ($this->container['expected_at'] === null) {
-            $invalidProperties[] = "'expected_at' can't be null";
+        if ($this->container['expectedAt'] === null) {
+            $invalidProperties[] = "'expectedAt' can't be null";
         }
-        if ($this->container['customer_note'] === null) {
-            $invalidProperties[] = "'customer_note' can't be null";
+        if ($this->container['customerNote'] === null) {
+            $invalidProperties[] = "'customerNote' can't be null";
         }
-        if ($this->container['merchant_note'] === null) {
-            $invalidProperties[] = "'merchant_note' can't be null";
+        if ($this->container['merchantNote'] === null) {
+            $invalidProperties[] = "'merchantNote' can't be null";
         }
-        if ($this->container['fully_deducted'] === null && !$this->isNullableSetToNull('fully_deducted')) {
-            $invalidProperties[] = "'fully_deducted' can't be null";
+        if ($this->container['fullyDeducted'] === null && !$this->isNullableSetToNull('fullyDeducted')) {
+            $invalidProperties[] = "'fullyDeducted' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
@@ -643,35 +643,35 @@ class RefundListResponseArray implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets deducted_amount
+     * Gets deductedAmount
      *
      * @return int|null
      */
     public function getDeductedAmount()
     {
-        return $this->container['deducted_amount'];
+        return $this->container['deductedAmount'];
     }
 
     /**
-     * Sets deducted_amount
+     * Sets deductedAmount
      *
-     * @param int|null $deducted_amount deducted_amount
+     * @param int|null $deductedAmount deductedAmount
      *
      * @return self
      */
-    public function setDeductedAmount($deducted_amount)
+    public function setDeductedAmount($deductedAmount)
     {
-        if (is_null($deducted_amount)) {
-            array_push($this->openAPINullablesSetToNull, 'deducted_amount');
+        if (is_null($deductedAmount)) {
+            array_push($this->openAPINullablesSetToNull, 'deductedAmount');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('deducted_amount', $nullablesSetToNull);
+            $index = array_search('deductedAmount', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['deducted_amount'] = $deducted_amount;
+        $this->container['deductedAmount'] = $deductedAmount;
 
         return $this;
     }
@@ -765,231 +765,231 @@ class RefundListResponseArray implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets refunded_by
+     * Gets refundedBy
      *
      * @return string
      */
     public function getRefundedBy()
     {
-        return $this->container['refunded_by'];
+        return $this->container['refundedBy'];
     }
 
     /**
-     * Sets refunded_by
+     * Sets refundedBy
      *
-     * @param string $refunded_by refunded_by
+     * @param string $refundedBy refundedBy
      *
      * @return self
      */
-    public function setRefundedBy($refunded_by)
+    public function setRefundedBy($refundedBy)
     {
-        if (is_null($refunded_by)) {
-            throw new \InvalidArgumentException('non-nullable refunded_by cannot be null');
+        if (is_null($refundedBy)) {
+            throw new \InvalidArgumentException('non-nullable refundedBy cannot be null');
         }
-        $this->container['refunded_by'] = $refunded_by;
+        $this->container['refundedBy'] = $refundedBy;
 
         return $this;
     }
 
     /**
-     * Gets refunded_at
+     * Gets refundedAt
      *
      * @return string|null
      */
     public function getRefundedAt()
     {
-        return $this->container['refunded_at'];
+        return $this->container['refundedAt'];
     }
 
     /**
-     * Sets refunded_at
+     * Sets refundedAt
      *
-     * @param string|null $refunded_at refunded_at
+     * @param string|null $refundedAt refundedAt
      *
      * @return self
      */
-    public function setRefundedAt($refunded_at)
+    public function setRefundedAt($refundedAt)
     {
-        if (is_null($refunded_at)) {
-            array_push($this->openAPINullablesSetToNull, 'refunded_at');
+        if (is_null($refundedAt)) {
+            array_push($this->openAPINullablesSetToNull, 'refundedAt');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('refunded_at', $nullablesSetToNull);
+            $index = array_search('refundedAt', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['refunded_at'] = $refunded_at;
+        $this->container['refundedAt'] = $refundedAt;
 
         return $this;
     }
 
     /**
-     * Gets expected_at
+     * Gets expectedAt
      *
      * @return string
      */
     public function getExpectedAt()
     {
-        return $this->container['expected_at'];
+        return $this->container['expectedAt'];
     }
 
     /**
-     * Sets expected_at
+     * Sets expectedAt
      *
-     * @param string $expected_at expected_at
+     * @param string $expectedAt expectedAt
      *
      * @return self
      */
-    public function setExpectedAt($expected_at)
+    public function setExpectedAt($expectedAt)
     {
-        if (is_null($expected_at)) {
-            throw new \InvalidArgumentException('non-nullable expected_at cannot be null');
+        if (is_null($expectedAt)) {
+            throw new \InvalidArgumentException('non-nullable expectedAt cannot be null');
         }
-        $this->container['expected_at'] = $expected_at;
+        $this->container['expectedAt'] = $expectedAt;
 
         return $this;
     }
 
     /**
-     * Gets customer_note
+     * Gets customerNote
      *
      * @return string
      */
     public function getCustomerNote()
     {
-        return $this->container['customer_note'];
+        return $this->container['customerNote'];
     }
 
     /**
-     * Sets customer_note
+     * Sets customerNote
      *
-     * @param string $customer_note customer_note
+     * @param string $customerNote customerNote
      *
      * @return self
      */
-    public function setCustomerNote($customer_note)
+    public function setCustomerNote($customerNote)
     {
-        if (is_null($customer_note)) {
-            throw new \InvalidArgumentException('non-nullable customer_note cannot be null');
+        if (is_null($customerNote)) {
+            throw new \InvalidArgumentException('non-nullable customerNote cannot be null');
         }
-        $this->container['customer_note'] = $customer_note;
+        $this->container['customerNote'] = $customerNote;
 
         return $this;
     }
 
     /**
-     * Gets merchant_note
+     * Gets merchantNote
      *
      * @return string
      */
     public function getMerchantNote()
     {
-        return $this->container['merchant_note'];
+        return $this->container['merchantNote'];
     }
 
     /**
-     * Sets merchant_note
+     * Sets merchantNote
      *
-     * @param string $merchant_note merchant_note
+     * @param string $merchantNote merchantNote
      *
      * @return self
      */
-    public function setMerchantNote($merchant_note)
+    public function setMerchantNote($merchantNote)
     {
-        if (is_null($merchant_note)) {
-            throw new \InvalidArgumentException('non-nullable merchant_note cannot be null');
+        if (is_null($merchantNote)) {
+            throw new \InvalidArgumentException('non-nullable merchantNote cannot be null');
         }
-        $this->container['merchant_note'] = $merchant_note;
+        $this->container['merchantNote'] = $merchantNote;
 
         return $this;
     }
 
     /**
-     * Gets fully_deducted
+     * Gets fullyDeducted
      *
      * @return int|null
      */
     public function getFullyDeducted()
     {
-        return $this->container['fully_deducted'];
+        return $this->container['fullyDeducted'];
     }
 
     /**
-     * Sets fully_deducted
+     * Sets fullyDeducted
      *
-     * @param int|null $fully_deducted fully_deducted
+     * @param int|null $fullyDeducted fullyDeducted
      *
      * @return self
      */
-    public function setFullyDeducted($fully_deducted)
+    public function setFullyDeducted($fullyDeducted)
     {
-        if (is_null($fully_deducted)) {
-            array_push($this->openAPINullablesSetToNull, 'fully_deducted');
+        if (is_null($fullyDeducted)) {
+            array_push($this->openAPINullablesSetToNull, 'fullyDeducted');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('fully_deducted', $nullablesSetToNull);
+            $index = array_search('fullyDeducted', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['fully_deducted'] = $fully_deducted;
+        $this->container['fullyDeducted'] = $fullyDeducted;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

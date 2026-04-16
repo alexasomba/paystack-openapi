@@ -47,7 +47,7 @@ class SubaccountApi:
 
 
     @validate_call
-    def subaccount_create(
+    def create(
         self,
         subaccount_create: Optional[SubaccountCreate] = None,
         _request_timeout: Union[
@@ -91,7 +91,7 @@ class SubaccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subaccount_create_serialize(
+        _param = self._create_serialize(
             subaccount_create=subaccount_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -115,7 +115,7 @@ class SubaccountApi:
 
 
     @validate_call
-    def subaccount_create_with_http_info(
+    def create_with_http_info(
         self,
         subaccount_create: Optional[SubaccountCreate] = None,
         _request_timeout: Union[
@@ -159,7 +159,7 @@ class SubaccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subaccount_create_serialize(
+        _param = self._create_serialize(
             subaccount_create=subaccount_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -183,7 +183,7 @@ class SubaccountApi:
 
 
     @validate_call
-    def subaccount_create_without_preload_content(
+    def create_without_preload_content(
         self,
         subaccount_create: Optional[SubaccountCreate] = None,
         _request_timeout: Union[
@@ -227,7 +227,7 @@ class SubaccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subaccount_create_serialize(
+        _param = self._create_serialize(
             subaccount_create=subaccount_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -246,7 +246,7 @@ class SubaccountApi:
         return response_data.response
 
 
-    def _subaccount_create_serialize(
+    def _create_serialize(
         self,
         subaccount_create,
         _request_auth,
@@ -325,7 +325,7 @@ class SubaccountApi:
 
 
     @validate_call
-    def subaccount_fetch(
+    def fetch(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The subaccount ID or code you want to fetch")],
         _request_timeout: Union[
@@ -369,7 +369,7 @@ class SubaccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subaccount_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -394,7 +394,7 @@ class SubaccountApi:
 
 
     @validate_call
-    def subaccount_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The subaccount ID or code you want to fetch")],
         _request_timeout: Union[
@@ -438,7 +438,7 @@ class SubaccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subaccount_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -463,7 +463,7 @@ class SubaccountApi:
 
 
     @validate_call
-    def subaccount_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The subaccount ID or code you want to fetch")],
         _request_timeout: Union[
@@ -507,7 +507,7 @@ class SubaccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subaccount_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -527,7 +527,7 @@ class SubaccountApi:
         return response_data.response
 
 
-    def _subaccount_fetch_serialize(
+    def _fetch_serialize(
         self,
         id_or_code,
         _request_auth,
@@ -592,7 +592,7 @@ class SubaccountApi:
 
 
     @validate_call
-    def subaccount_list(
+    def list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per request")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
@@ -645,7 +645,7 @@ class SubaccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subaccount_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -673,7 +673,7 @@ class SubaccountApi:
 
 
     @validate_call
-    def subaccount_list_with_http_info(
+    def list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per request")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
@@ -726,7 +726,7 @@ class SubaccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subaccount_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -754,7 +754,7 @@ class SubaccountApi:
 
 
     @validate_call
-    def subaccount_list_without_preload_content(
+    def list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per request")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
@@ -807,7 +807,7 @@ class SubaccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subaccount_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -830,7 +830,7 @@ class SubaccountApi:
         return response_data.response
 
 
-    def _subaccount_list_serialize(
+    def _list_serialize(
         self,
         per_page,
         page,
@@ -930,7 +930,7 @@ class SubaccountApi:
 
 
     @validate_call
-    def subaccount_update(
+    def update(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The subaccount ID or code you want to fetch")],
         subaccount_update: Optional[SubaccountUpdate] = None,
@@ -977,7 +977,7 @@ class SubaccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subaccount_update_serialize(
+        _param = self._update_serialize(
             id_or_code=id_or_code,
             subaccount_update=subaccount_update,
             _request_auth=_request_auth,
@@ -1003,7 +1003,7 @@ class SubaccountApi:
 
 
     @validate_call
-    def subaccount_update_with_http_info(
+    def update_with_http_info(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The subaccount ID or code you want to fetch")],
         subaccount_update: Optional[SubaccountUpdate] = None,
@@ -1050,7 +1050,7 @@ class SubaccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subaccount_update_serialize(
+        _param = self._update_serialize(
             id_or_code=id_or_code,
             subaccount_update=subaccount_update,
             _request_auth=_request_auth,
@@ -1076,7 +1076,7 @@ class SubaccountApi:
 
 
     @validate_call
-    def subaccount_update_without_preload_content(
+    def update_without_preload_content(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The subaccount ID or code you want to fetch")],
         subaccount_update: Optional[SubaccountUpdate] = None,
@@ -1123,7 +1123,7 @@ class SubaccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subaccount_update_serialize(
+        _param = self._update_serialize(
             id_or_code=id_or_code,
             subaccount_update=subaccount_update,
             _request_auth=_request_auth,
@@ -1144,7 +1144,7 @@ class SubaccountApi:
         return response_data.response
 
 
-    def _subaccount_update_serialize(
+    def _update_serialize(
         self,
         id_or_code,
         subaccount_update,

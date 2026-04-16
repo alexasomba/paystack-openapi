@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * ProductListsResponseArrayMetadata Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ProductListsResponseArrayMetadata implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'background_color' => 'string'
+        'backgroundColor' => 'string'
     ];
 
     /**
@@ -69,7 +69,7 @@ class ProductListsResponseArrayMetadata implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'background_color' => null
+        'backgroundColor' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class ProductListsResponseArrayMetadata implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'background_color' => false
+        'backgroundColor' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class ProductListsResponseArrayMetadata implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'background_color' => 'background_color'
+        'backgroundColor' => 'background_color'
     ];
 
     /**
@@ -176,7 +176,7 @@ class ProductListsResponseArrayMetadata implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'background_color' => 'setBackgroundColor'
+        'backgroundColor' => 'setBackgroundColor'
     ];
 
     /**
@@ -185,7 +185,7 @@ class ProductListsResponseArrayMetadata implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'background_color' => 'getBackgroundColor'
+        'backgroundColor' => 'getBackgroundColor'
     ];
 
     /**
@@ -245,7 +245,7 @@ class ProductListsResponseArrayMetadata implements ModelInterface, ArrayAccess, 
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('background_color', $data ?? [], null);
+        $this->setIfExists('backgroundColor', $data ?? [], null);
     }
 
     /**
@@ -275,8 +275,8 @@ class ProductListsResponseArrayMetadata implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
-        if ($this->container['background_color'] === null) {
-            $invalidProperties[] = "'background_color' can't be null";
+        if ($this->container['backgroundColor'] === null) {
+            $invalidProperties[] = "'backgroundColor' can't be null";
         }
         return $invalidProperties;
     }
@@ -294,28 +294,28 @@ class ProductListsResponseArrayMetadata implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets background_color
+     * Gets backgroundColor
      *
      * @return string
      */
     public function getBackgroundColor()
     {
-        return $this->container['background_color'];
+        return $this->container['backgroundColor'];
     }
 
     /**
-     * Sets background_color
+     * Sets backgroundColor
      *
-     * @param string $background_color background_color
+     * @param string $backgroundColor backgroundColor
      *
      * @return self
      */
-    public function setBackgroundColor($background_color)
+    public function setBackgroundColor($backgroundColor)
     {
-        if (is_null($background_color)) {
-            throw new \InvalidArgumentException('non-nullable background_color cannot be null');
+        if (is_null($backgroundColor)) {
+            throw new \InvalidArgumentException('non-nullable backgroundColor cannot be null');
         }
-        $this->container['background_color'] = $background_color;
+        $this->container['backgroundColor'] = $backgroundColor;
 
         return $this;
     }

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PreAuthorizationCaptureResponseDataTransaction Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,19 +59,19 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
       */
     protected static $openAPITypes = [
         'currency' => 'string',
-        'transaction_date' => 'string',
+        'transactionDate' => 'string',
         'status' => 'string',
         'reference' => 'string',
         'domain' => 'string',
-        'metadata' => '\Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataMetadata',
-        'gateway_response' => 'string',
+        'metadata' => '\Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataMetadata',
+        'gatewayResponse' => 'string',
         'message' => 'string',
         'channel' => 'string',
         'fees' => 'int',
-        'authorization' => '\Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataAuthorization',
-        'customer' => '\Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionCustomer',
+        'authorization' => '\Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataAuthorization',
+        'customer' => '\Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionCustomer',
         'id' => 'int',
-        'split' => '\Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplit'
+        'split' => '\Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplit'
     ];
 
     /**
@@ -83,12 +83,12 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
       */
     protected static $openAPIFormats = [
         'currency' => null,
-        'transaction_date' => null,
+        'transactionDate' => null,
         'status' => null,
         'reference' => null,
         'domain' => null,
         'metadata' => null,
-        'gateway_response' => null,
+        'gatewayResponse' => null,
         'message' => null,
         'channel' => null,
         'fees' => null,
@@ -105,12 +105,12 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
       */
     protected static array $openAPINullables = [
         'currency' => false,
-        'transaction_date' => false,
+        'transactionDate' => false,
         'status' => false,
         'reference' => false,
         'domain' => false,
         'metadata' => true,
-        'gateway_response' => false,
+        'gatewayResponse' => false,
         'message' => true,
         'channel' => false,
         'fees' => false,
@@ -207,12 +207,12 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
      */
     protected static $attributeMap = [
         'currency' => 'currency',
-        'transaction_date' => 'transaction_date',
+        'transactionDate' => 'transaction_date',
         'status' => 'status',
         'reference' => 'reference',
         'domain' => 'domain',
         'metadata' => 'metadata',
-        'gateway_response' => 'gateway_response',
+        'gatewayResponse' => 'gateway_response',
         'message' => 'message',
         'channel' => 'channel',
         'fees' => 'fees',
@@ -229,12 +229,12 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
      */
     protected static $setters = [
         'currency' => 'setCurrency',
-        'transaction_date' => 'setTransactionDate',
+        'transactionDate' => 'setTransactionDate',
         'status' => 'setStatus',
         'reference' => 'setReference',
         'domain' => 'setDomain',
         'metadata' => 'setMetadata',
-        'gateway_response' => 'setGatewayResponse',
+        'gatewayResponse' => 'setGatewayResponse',
         'message' => 'setMessage',
         'channel' => 'setChannel',
         'fees' => 'setFees',
@@ -251,12 +251,12 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
      */
     protected static $getters = [
         'currency' => 'getCurrency',
-        'transaction_date' => 'getTransactionDate',
+        'transactionDate' => 'getTransactionDate',
         'status' => 'getStatus',
         'reference' => 'getReference',
         'domain' => 'getDomain',
         'metadata' => 'getMetadata',
-        'gateway_response' => 'getGatewayResponse',
+        'gatewayResponse' => 'getGatewayResponse',
         'message' => 'getMessage',
         'channel' => 'getChannel',
         'fees' => 'getFees',
@@ -324,12 +324,12 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
     public function __construct(?array $data = null)
     {
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('transaction_date', $data ?? [], null);
+        $this->setIfExists('transactionDate', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('gateway_response', $data ?? [], null);
+        $this->setIfExists('gatewayResponse', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('channel', $data ?? [], null);
         $this->setIfExists('fees', $data ?? [], null);
@@ -369,8 +369,8 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['transaction_date'] === null) {
-            $invalidProperties[] = "'transaction_date' can't be null";
+        if ($this->container['transactionDate'] === null) {
+            $invalidProperties[] = "'transactionDate' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
@@ -384,8 +384,8 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
         if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
         }
-        if ($this->container['gateway_response'] === null) {
-            $invalidProperties[] = "'gateway_response' can't be null";
+        if ($this->container['gatewayResponse'] === null) {
+            $invalidProperties[] = "'gatewayResponse' can't be null";
         }
         if ($this->container['message'] === null && !$this->isNullableSetToNull('message')) {
             $invalidProperties[] = "'message' can't be null";
@@ -448,28 +448,28 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
     }
 
     /**
-     * Gets transaction_date
+     * Gets transactionDate
      *
      * @return string
      */
     public function getTransactionDate()
     {
-        return $this->container['transaction_date'];
+        return $this->container['transactionDate'];
     }
 
     /**
-     * Sets transaction_date
+     * Sets transactionDate
      *
-     * @param string $transaction_date transaction_date
+     * @param string $transactionDate transactionDate
      *
      * @return self
      */
-    public function setTransactionDate($transaction_date)
+    public function setTransactionDate($transactionDate)
     {
-        if (is_null($transaction_date)) {
-            throw new \InvalidArgumentException('non-nullable transaction_date cannot be null');
+        if (is_null($transactionDate)) {
+            throw new \InvalidArgumentException('non-nullable transactionDate cannot be null');
         }
-        $this->container['transaction_date'] = $transaction_date;
+        $this->container['transactionDate'] = $transactionDate;
 
         return $this;
     }
@@ -558,7 +558,7 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataMetadata|null
+     * @return \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataMetadata|null
      */
     public function getMetadata()
     {
@@ -568,7 +568,7 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\\Paystack\Model\ChargeAuthorizationResponseDataMetadata|null $metadata metadata
+     * @param \Alexasomba\Paystack\Model\ChargeAuthorizationResponseDataMetadata|null $metadata metadata
      *
      * @return self
      */
@@ -590,28 +590,28 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
     }
 
     /**
-     * Gets gateway_response
+     * Gets gatewayResponse
      *
      * @return string
      */
     public function getGatewayResponse()
     {
-        return $this->container['gateway_response'];
+        return $this->container['gatewayResponse'];
     }
 
     /**
-     * Sets gateway_response
+     * Sets gatewayResponse
      *
-     * @param string $gateway_response gateway_response
+     * @param string $gatewayResponse gatewayResponse
      *
      * @return self
      */
-    public function setGatewayResponse($gateway_response)
+    public function setGatewayResponse($gatewayResponse)
     {
-        if (is_null($gateway_response)) {
-            throw new \InvalidArgumentException('non-nullable gateway_response cannot be null');
+        if (is_null($gatewayResponse)) {
+            throw new \InvalidArgumentException('non-nullable gatewayResponse cannot be null');
         }
-        $this->container['gateway_response'] = $gateway_response;
+        $this->container['gatewayResponse'] = $gatewayResponse;
 
         return $this;
     }
@@ -707,7 +707,7 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
     /**
      * Gets authorization
      *
-     * @return \Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataAuthorization
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataAuthorization
      */
     public function getAuthorization()
     {
@@ -717,7 +717,7 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
     /**
      * Sets authorization
      *
-     * @param \Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataAuthorization $authorization authorization
+     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataAuthorization $authorization authorization
      *
      * @return self
      */
@@ -734,7 +734,7 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
     /**
      * Gets customer
      *
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionCustomer
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionCustomer
      */
     public function getCustomer()
     {
@@ -744,7 +744,7 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
     /**
      * Sets customer
      *
-     * @param \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionCustomer $customer customer
      *
      * @return self
      */
@@ -788,7 +788,7 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
     /**
      * Gets split
      *
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplit|null
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplit|null
      */
     public function getSplit()
     {
@@ -798,7 +798,7 @@ class PreAuthorizationCaptureResponseDataTransaction implements ModelInterface, 
     /**
      * Sets split
      *
-     * @param \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplit|null $split split
+     * @param \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransactionSplit|null $split split
      *
      * @return self
      */

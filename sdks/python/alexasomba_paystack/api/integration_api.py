@@ -41,7 +41,7 @@ class IntegrationApi:
 
 
     @validate_call
-    def integration_fetch_payment_session_timeout(
+    def fetch_payment_session_timeout(
         self,
         _request_timeout: Union[
             None,
@@ -82,7 +82,7 @@ class IntegrationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._integration_fetch_payment_session_timeout_serialize(
+        _param = self._fetch_payment_session_timeout_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -106,7 +106,7 @@ class IntegrationApi:
 
 
     @validate_call
-    def integration_fetch_payment_session_timeout_with_http_info(
+    def fetch_payment_session_timeout_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -147,7 +147,7 @@ class IntegrationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._integration_fetch_payment_session_timeout_serialize(
+        _param = self._fetch_payment_session_timeout_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -171,7 +171,7 @@ class IntegrationApi:
 
 
     @validate_call
-    def integration_fetch_payment_session_timeout_without_preload_content(
+    def fetch_payment_session_timeout_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -212,7 +212,7 @@ class IntegrationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._integration_fetch_payment_session_timeout_serialize(
+        _param = self._fetch_payment_session_timeout_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -231,7 +231,7 @@ class IntegrationApi:
         return response_data.response
 
 
-    def _integration_fetch_payment_session_timeout_serialize(
+    def _fetch_payment_session_timeout_serialize(
         self,
         _request_auth,
         _content_type,
@@ -293,7 +293,7 @@ class IntegrationApi:
 
 
     @validate_call
-    def integration_update_payment_session_timeout(
+    def update_payment_session_timeout(
         self,
         payment_session: Optional[PaymentSession] = None,
         _request_timeout: Union[
@@ -337,7 +337,7 @@ class IntegrationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._integration_update_payment_session_timeout_serialize(
+        _param = self._update_payment_session_timeout_serialize(
             payment_session=payment_session,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -362,7 +362,7 @@ class IntegrationApi:
 
 
     @validate_call
-    def integration_update_payment_session_timeout_with_http_info(
+    def update_payment_session_timeout_with_http_info(
         self,
         payment_session: Optional[PaymentSession] = None,
         _request_timeout: Union[
@@ -406,7 +406,7 @@ class IntegrationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._integration_update_payment_session_timeout_serialize(
+        _param = self._update_payment_session_timeout_serialize(
             payment_session=payment_session,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -431,7 +431,7 @@ class IntegrationApi:
 
 
     @validate_call
-    def integration_update_payment_session_timeout_without_preload_content(
+    def update_payment_session_timeout_without_preload_content(
         self,
         payment_session: Optional[PaymentSession] = None,
         _request_timeout: Union[
@@ -475,7 +475,7 @@ class IntegrationApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._integration_update_payment_session_timeout_serialize(
+        _param = self._update_payment_session_timeout_serialize(
             payment_session=payment_session,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -495,7 +495,7 @@ class IntegrationApi:
         return response_data.response
 
 
-    def _integration_update_payment_session_timeout_serialize(
+    def _update_payment_session_timeout_serialize(
         self,
         payment_session,
         _request_auth,

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PreAuthorizationVerifyResponse Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class PreAuthorizationVerifyResponse implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'status' => 'bool',
         'message' => 'string',
-        'data' => '\Alexasomba\\Paystack\Model\PreAuthorizationVerifyResponseData'
+        'data' => '\Alexasomba\Paystack\Model\PreAuthorizationVerifyResponseData'
     ];
 
     /**
@@ -370,7 +370,7 @@ class PreAuthorizationVerifyResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets data
      *
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationVerifyResponseData
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationVerifyResponseData
      */
     public function getData()
     {
@@ -380,7 +380,7 @@ class PreAuthorizationVerifyResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets data
      *
-     * @param \Alexasomba\\Paystack\Model\PreAuthorizationVerifyResponseData $data data
+     * @param \Alexasomba\Paystack\Model\PreAuthorizationVerifyResponseData $data data
      *
      * @return self
      */

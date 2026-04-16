@@ -50,7 +50,7 @@ class PageApi:
 
 
     @validate_call
-    def page_add_products(
+    def add_products(
         self,
         id: StrictStr,
         page_product: Optional[PageProduct] = None,
@@ -97,7 +97,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_add_products_serialize(
+        _param = self._add_products_serialize(
             id=id,
             page_product=page_product,
             _request_auth=_request_auth,
@@ -122,7 +122,7 @@ class PageApi:
 
 
     @validate_call
-    def page_add_products_with_http_info(
+    def add_products_with_http_info(
         self,
         id: StrictStr,
         page_product: Optional[PageProduct] = None,
@@ -169,7 +169,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_add_products_serialize(
+        _param = self._add_products_serialize(
             id=id,
             page_product=page_product,
             _request_auth=_request_auth,
@@ -194,7 +194,7 @@ class PageApi:
 
 
     @validate_call
-    def page_add_products_without_preload_content(
+    def add_products_without_preload_content(
         self,
         id: StrictStr,
         page_product: Optional[PageProduct] = None,
@@ -241,7 +241,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_add_products_serialize(
+        _param = self._add_products_serialize(
             id=id,
             page_product=page_product,
             _request_auth=_request_auth,
@@ -261,7 +261,7 @@ class PageApi:
         return response_data.response
 
 
-    def _page_add_products_serialize(
+    def _add_products_serialize(
         self,
         id,
         page_product,
@@ -343,7 +343,7 @@ class PageApi:
 
 
     @validate_call
-    def page_check_slug_availability(
+    def check_slug_availability(
         self,
         slug: Annotated[StrictStr, Field(description="The custom slug to check")],
         _request_timeout: Union[
@@ -387,7 +387,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_check_slug_availability_serialize(
+        _param = self._check_slug_availability_serialize(
             slug=slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -412,7 +412,7 @@ class PageApi:
 
 
     @validate_call
-    def page_check_slug_availability_with_http_info(
+    def check_slug_availability_with_http_info(
         self,
         slug: Annotated[StrictStr, Field(description="The custom slug to check")],
         _request_timeout: Union[
@@ -456,7 +456,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_check_slug_availability_serialize(
+        _param = self._check_slug_availability_serialize(
             slug=slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -481,7 +481,7 @@ class PageApi:
 
 
     @validate_call
-    def page_check_slug_availability_without_preload_content(
+    def check_slug_availability_without_preload_content(
         self,
         slug: Annotated[StrictStr, Field(description="The custom slug to check")],
         _request_timeout: Union[
@@ -525,7 +525,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_check_slug_availability_serialize(
+        _param = self._check_slug_availability_serialize(
             slug=slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -545,7 +545,7 @@ class PageApi:
         return response_data.response
 
 
-    def _page_check_slug_availability_serialize(
+    def _check_slug_availability_serialize(
         self,
         slug,
         _request_auth,
@@ -610,7 +610,7 @@ class PageApi:
 
 
     @validate_call
-    def page_create(
+    def create(
         self,
         page_create: Optional[PageCreate] = None,
         _request_timeout: Union[
@@ -654,7 +654,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_create_serialize(
+        _param = self._create_serialize(
             page_create=page_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -678,7 +678,7 @@ class PageApi:
 
 
     @validate_call
-    def page_create_with_http_info(
+    def create_with_http_info(
         self,
         page_create: Optional[PageCreate] = None,
         _request_timeout: Union[
@@ -722,7 +722,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_create_serialize(
+        _param = self._create_serialize(
             page_create=page_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -746,7 +746,7 @@ class PageApi:
 
 
     @validate_call
-    def page_create_without_preload_content(
+    def create_without_preload_content(
         self,
         page_create: Optional[PageCreate] = None,
         _request_timeout: Union[
@@ -790,7 +790,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_create_serialize(
+        _param = self._create_serialize(
             page_create=page_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -809,7 +809,7 @@ class PageApi:
         return response_data.response
 
 
-    def _page_create_serialize(
+    def _create_serialize(
         self,
         page_create,
         _request_auth,
@@ -888,7 +888,7 @@ class PageApi:
 
 
     @validate_call
-    def page_fetch(
+    def fetch(
         self,
         id_or_slug: Annotated[StrictStr, Field(description="The page ID or slug you want to fetch")],
         _request_timeout: Union[
@@ -932,7 +932,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_slug=id_or_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -957,7 +957,7 @@ class PageApi:
 
 
     @validate_call
-    def page_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id_or_slug: Annotated[StrictStr, Field(description="The page ID or slug you want to fetch")],
         _request_timeout: Union[
@@ -1001,7 +1001,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_slug=id_or_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1026,7 +1026,7 @@ class PageApi:
 
 
     @validate_call
-    def page_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id_or_slug: Annotated[StrictStr, Field(description="The page ID or slug you want to fetch")],
         _request_timeout: Union[
@@ -1070,7 +1070,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_slug=id_or_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1090,7 +1090,7 @@ class PageApi:
         return response_data.response
 
 
-    def _page_fetch_serialize(
+    def _fetch_serialize(
         self,
         id_or_slug,
         _request_auth,
@@ -1155,7 +1155,7 @@ class PageApi:
 
 
     @validate_call
-    def page_list(
+    def list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1208,7 +1208,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1236,7 +1236,7 @@ class PageApi:
 
 
     @validate_call
-    def page_list_with_http_info(
+    def list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1289,7 +1289,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1317,7 +1317,7 @@ class PageApi:
 
 
     @validate_call
-    def page_list_without_preload_content(
+    def list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1370,7 +1370,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1393,7 +1393,7 @@ class PageApi:
         return response_data.response
 
 
-    def _page_list_serialize(
+    def _list_serialize(
         self,
         per_page,
         page,
@@ -1493,7 +1493,7 @@ class PageApi:
 
 
     @validate_call
-    def page_update(
+    def update(
         self,
         id_or_slug: Annotated[StrictStr, Field(description="The page ID or slug you want to fetch")],
         page_update: Optional[PageUpdate] = None,
@@ -1540,7 +1540,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_update_serialize(
+        _param = self._update_serialize(
             id_or_slug=id_or_slug,
             page_update=page_update,
             _request_auth=_request_auth,
@@ -1566,7 +1566,7 @@ class PageApi:
 
 
     @validate_call
-    def page_update_with_http_info(
+    def update_with_http_info(
         self,
         id_or_slug: Annotated[StrictStr, Field(description="The page ID or slug you want to fetch")],
         page_update: Optional[PageUpdate] = None,
@@ -1613,7 +1613,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_update_serialize(
+        _param = self._update_serialize(
             id_or_slug=id_or_slug,
             page_update=page_update,
             _request_auth=_request_auth,
@@ -1639,7 +1639,7 @@ class PageApi:
 
 
     @validate_call
-    def page_update_without_preload_content(
+    def update_without_preload_content(
         self,
         id_or_slug: Annotated[StrictStr, Field(description="The page ID or slug you want to fetch")],
         page_update: Optional[PageUpdate] = None,
@@ -1686,7 +1686,7 @@ class PageApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._page_update_serialize(
+        _param = self._update_serialize(
             id_or_slug=id_or_slug,
             page_update=page_update,
             _request_auth=_request_auth,
@@ -1707,7 +1707,7 @@ class PageApi:
         return response_data.response
 
 
-    def _page_update_serialize(
+    def _update_serialize(
         self,
         id_or_slug,
         page_update,

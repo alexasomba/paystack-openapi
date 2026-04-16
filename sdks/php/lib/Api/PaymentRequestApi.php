@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Api;
+namespace Alexasomba\Paystack\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Alexasomba\\Paystack\ApiException;
-use Alexasomba\\Paystack\Configuration;
-use Alexasomba\\Paystack\FormDataProcessor;
-use Alexasomba\\Paystack\HeaderSelector;
-use Alexasomba\\Paystack\ObjectSerializer;
+use Alexasomba\Paystack\ApiException;
+use Alexasomba\Paystack\Configuration;
+use Alexasomba\Paystack\FormDataProcessor;
+use Alexasomba\Paystack\HeaderSelector;
+use Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PaymentRequestApi Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -75,33 +75,33 @@ class PaymentRequestApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'paymentRequestArchive' => [
+        'archive' => [
             'application/json',
         ],
-        'paymentRequestCreate' => [
-            'application/json',
-            'application/x-www-form-urlencoded',
-        ],
-        'paymentRequestFetch' => [
+        'callList' => [
             'application/json',
         ],
-        'paymentRequestFinalize' => [
-            'application/json',
-        ],
-        'paymentRequestList' => [
-            'application/json',
-        ],
-        'paymentRequestNotify' => [
-            'application/json',
-        ],
-        'paymentRequestTotals' => [
-            'application/json',
-        ],
-        'paymentRequestUpdate' => [
+        'create' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'paymentRequestVerify' => [
+        'fetch' => [
+            'application/json',
+        ],
+        'finalize' => [
+            'application/json',
+        ],
+        'notify' => [
+            'application/json',
+        ],
+        'totals' => [
+            'application/json',
+        ],
+        'update' => [
+            'application/json',
+            'application/x-www-form-urlencoded',
+        ],
+        'verify' => [
             'application/json',
         ],
     ];
@@ -153,38 +153,38 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestArchive
+     * Operation archive
      *
      * Archive Payment Request
      *
      * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestArchive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestArchiveResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PaymentRequestArchiveResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function paymentRequestArchive($id, string $contentType = self::contentTypes['paymentRequestArchive'][0])
+    public function archive($id, string $contentType = self::contentTypes['archive'][0])
     {
-        list($response) = $this->paymentRequestArchiveWithHttpInfo($id, $contentType);
+        list($response) = $this->archiveWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation paymentRequestArchiveWithHttpInfo
+     * Operation archiveWithHttpInfo
      *
      * Archive Payment Request
      *
      * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestArchive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PaymentRequestArchiveResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PaymentRequestArchiveResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function paymentRequestArchiveWithHttpInfo($id, string $contentType = self::contentTypes['paymentRequestArchive'][0])
+    public function archiveWithHttpInfo($id, string $contentType = self::contentTypes['archive'][0])
     {
-        $request = $this->paymentRequestArchiveRequest($id, $contentType);
+        $request = $this->archiveRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -212,13 +212,13 @@ class PaymentRequestApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PaymentRequestArchiveResponse',
+                        '\Alexasomba\Paystack\Model\PaymentRequestArchiveResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -240,7 +240,7 @@ class PaymentRequestApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PaymentRequestArchiveResponse',
+                '\Alexasomba\Paystack\Model\PaymentRequestArchiveResponse',
                 $request,
                 $response,
             );
@@ -249,7 +249,7 @@ class PaymentRequestApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PaymentRequestArchiveResponse',
+                        '\Alexasomba\Paystack\Model\PaymentRequestArchiveResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -257,7 +257,7 @@ class PaymentRequestApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -270,19 +270,19 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestArchiveAsync
+     * Operation archiveAsync
      *
      * Archive Payment Request
      *
      * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestArchive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function paymentRequestArchiveAsync($id, string $contentType = self::contentTypes['paymentRequestArchive'][0])
+    public function archiveAsync($id, string $contentType = self::contentTypes['archive'][0])
     {
-        return $this->paymentRequestArchiveAsyncWithHttpInfo($id, $contentType)
+        return $this->archiveAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -291,20 +291,20 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestArchiveAsyncWithHttpInfo
+     * Operation archiveAsyncWithHttpInfo
      *
      * Archive Payment Request
      *
      * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestArchive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function paymentRequestArchiveAsyncWithHttpInfo($id, string $contentType = self::contentTypes['paymentRequestArchive'][0])
+    public function archiveAsyncWithHttpInfo($id, string $contentType = self::contentTypes['archive'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PaymentRequestArchiveResponse';
-        $request = $this->paymentRequestArchiveRequest($id, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PaymentRequestArchiveResponse';
+        $request = $this->archiveRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -343,21 +343,21 @@ class PaymentRequestApi
     }
 
     /**
-     * Create request for operation 'paymentRequestArchive'
+     * Create request for operation 'archive'
      *
      * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestArchive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function paymentRequestArchiveRequest($id, string $contentType = self::contentTypes['paymentRequestArchive'][0])
+    public function archiveRequest($id, string $contentType = self::contentTypes['archive'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling paymentRequestArchive'
+                'Missing the required parameter $id when calling archive'
             );
         }
 
@@ -439,38 +439,50 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestCreate
+     * Operation callList
      *
-     * Create Payment Request
+     * List Payment Request
      *
-     * @param  \Alexasomba\\Paystack\Model\PaymentRequestCreate|null $payment_request_create payment_request_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestCreate'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $customer Customer ID (optional)
+     * @param  string|null $status Invoice status to filter (optional)
+     * @param  string|null $currency If your integration supports more than one currency, choose the one to filter (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestCreateResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PaymentRequestListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function paymentRequestCreate($payment_request_create = null, string $contentType = self::contentTypes['paymentRequestCreate'][0])
+    public function callList($perPage = null, $page = null, $customer = null, $status = null, $currency = null, $from = null, $to = null, string $contentType = self::contentTypes['callList'][0])
     {
-        list($response) = $this->paymentRequestCreateWithHttpInfo($payment_request_create, $contentType);
+        list($response) = $this->callListWithHttpInfo($perPage, $page, $customer, $status, $currency, $from, $to, $contentType);
         return $response;
     }
 
     /**
-     * Operation paymentRequestCreateWithHttpInfo
+     * Operation callListWithHttpInfo
      *
-     * Create Payment Request
+     * List Payment Request
      *
-     * @param  \Alexasomba\\Paystack\Model\PaymentRequestCreate|null $payment_request_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestCreate'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $customer Customer ID (optional)
+     * @param  string|null $status Invoice status to filter (optional)
+     * @param  string|null $currency If your integration supports more than one currency, choose the one to filter (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PaymentRequestCreateResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PaymentRequestListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function paymentRequestCreateWithHttpInfo($payment_request_create = null, string $contentType = self::contentTypes['paymentRequestCreate'][0])
+    public function callListWithHttpInfo($perPage = null, $page = null, $customer = null, $status = null, $currency = null, $from = null, $to = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $request = $this->paymentRequestCreateRequest($payment_request_create, $contentType);
+        $request = $this->callListRequest($perPage, $page, $customer, $status, $currency, $from, $to, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -498,13 +510,19 @@ class PaymentRequestApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PaymentRequestCreateResponse',
+                        '\Alexasomba\Paystack\Model\PaymentRequestListResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -526,7 +544,7 @@ class PaymentRequestApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PaymentRequestCreateResponse',
+                '\Alexasomba\Paystack\Model\PaymentRequestListResponse',
                 $request,
                 $response,
             );
@@ -535,7 +553,7 @@ class PaymentRequestApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PaymentRequestCreateResponse',
+                        '\Alexasomba\Paystack\Model\PaymentRequestListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -543,7 +561,15 @@ class PaymentRequestApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -556,19 +582,25 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestCreateAsync
+     * Operation callListAsync
      *
-     * Create Payment Request
+     * List Payment Request
      *
-     * @param  \Alexasomba\\Paystack\Model\PaymentRequestCreate|null $payment_request_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestCreate'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $customer Customer ID (optional)
+     * @param  string|null $status Invoice status to filter (optional)
+     * @param  string|null $currency If your integration supports more than one currency, choose the one to filter (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function paymentRequestCreateAsync($payment_request_create = null, string $contentType = self::contentTypes['paymentRequestCreate'][0])
+    public function callListAsync($perPage = null, $page = null, $customer = null, $status = null, $currency = null, $from = null, $to = null, string $contentType = self::contentTypes['callList'][0])
     {
-        return $this->paymentRequestCreateAsyncWithHttpInfo($payment_request_create, $contentType)
+        return $this->callListAsyncWithHttpInfo($perPage, $page, $customer, $status, $currency, $from, $to, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -577,20 +609,26 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestCreateAsyncWithHttpInfo
+     * Operation callListAsyncWithHttpInfo
      *
-     * Create Payment Request
+     * List Payment Request
      *
-     * @param  \Alexasomba\\Paystack\Model\PaymentRequestCreate|null $payment_request_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestCreate'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $customer Customer ID (optional)
+     * @param  string|null $status Invoice status to filter (optional)
+     * @param  string|null $currency If your integration supports more than one currency, choose the one to filter (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function paymentRequestCreateAsyncWithHttpInfo($payment_request_create = null, string $contentType = self::contentTypes['paymentRequestCreate'][0])
+    public function callListAsyncWithHttpInfo($perPage = null, $page = null, $customer = null, $status = null, $currency = null, $from = null, $to = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PaymentRequestCreateResponse';
-        $request = $this->paymentRequestCreateRequest($payment_request_create, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PaymentRequestListResponse';
+        $request = $this->callListRequest($perPage, $page, $customer, $status, $currency, $from, $to, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -629,924 +667,21 @@ class PaymentRequestApi
     }
 
     /**
-     * Create request for operation 'paymentRequestCreate'
+     * Create request for operation 'callList'
      *
-     * @param  \Alexasomba\\Paystack\Model\PaymentRequestCreate|null $payment_request_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestCreate'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  string|null $customer Customer ID (optional)
+     * @param  string|null $status Invoice status to filter (optional)
+     * @param  string|null $currency If your integration supports more than one currency, choose the one to filter (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function paymentRequestCreateRequest($payment_request_create = null, string $contentType = self::contentTypes['paymentRequestCreate'][0])
-    {
-
-
-
-        $resourcePath = '/paymentrequest';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($payment_request_create)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($payment_request_create));
-            } else {
-                $httpBody = $payment_request_create;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation paymentRequestFetch
-     *
-     * Fetch Payment Request
-     *
-     * @param  string $id_or_code The payment request ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestFetch'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestViewResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
-     */
-    public function paymentRequestFetch($id_or_code, string $contentType = self::contentTypes['paymentRequestFetch'][0])
-    {
-        list($response) = $this->paymentRequestFetchWithHttpInfo($id_or_code, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation paymentRequestFetchWithHttpInfo
-     *
-     * Fetch Payment Request
-     *
-     * @param  string $id_or_code The payment request ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestFetch'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PaymentRequestViewResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function paymentRequestFetchWithHttpInfo($id_or_code, string $contentType = self::contentTypes['paymentRequestFetch'][0])
-    {
-        $request = $this->paymentRequestFetchRequest($id_or_code, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PaymentRequestViewResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PaymentRequestViewResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PaymentRequestViewResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation paymentRequestFetchAsync
-     *
-     * Fetch Payment Request
-     *
-     * @param  string $id_or_code The payment request ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestFetch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function paymentRequestFetchAsync($id_or_code, string $contentType = self::contentTypes['paymentRequestFetch'][0])
-    {
-        return $this->paymentRequestFetchAsyncWithHttpInfo($id_or_code, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation paymentRequestFetchAsyncWithHttpInfo
-     *
-     * Fetch Payment Request
-     *
-     * @param  string $id_or_code The payment request ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestFetch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function paymentRequestFetchAsyncWithHttpInfo($id_or_code, string $contentType = self::contentTypes['paymentRequestFetch'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\PaymentRequestViewResponse';
-        $request = $this->paymentRequestFetchRequest($id_or_code, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'paymentRequestFetch'
-     *
-     * @param  string $id_or_code The payment request ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestFetch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function paymentRequestFetchRequest($id_or_code, string $contentType = self::contentTypes['paymentRequestFetch'][0])
-    {
-
-        // verify the required parameter 'id_or_code' is set
-        if ($id_or_code === null || (is_array($id_or_code) && count($id_or_code) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id_or_code when calling paymentRequestFetch'
-            );
-        }
-
-
-        $resourcePath = '/paymentrequest/{id_or_code}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id_or_code !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id_or_code' . '}',
-                ObjectSerializer::toPathValue($id_or_code),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation paymentRequestFinalize
-     *
-     * Finalize Payment Request
-     *
-     * @param  int $id The unique identifier of a draft payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestFinalize'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestFinalizeResponse|\Alexasomba\\Paystack\Model\Error
-     */
-    public function paymentRequestFinalize($id, string $contentType = self::contentTypes['paymentRequestFinalize'][0])
-    {
-        list($response) = $this->paymentRequestFinalizeWithHttpInfo($id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation paymentRequestFinalizeWithHttpInfo
-     *
-     * Finalize Payment Request
-     *
-     * @param  int $id The unique identifier of a draft payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestFinalize'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PaymentRequestFinalizeResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function paymentRequestFinalizeWithHttpInfo($id, string $contentType = self::contentTypes['paymentRequestFinalize'][0])
-    {
-        $request = $this->paymentRequestFinalizeRequest($id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PaymentRequestFinalizeResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PaymentRequestFinalizeResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PaymentRequestFinalizeResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation paymentRequestFinalizeAsync
-     *
-     * Finalize Payment Request
-     *
-     * @param  int $id The unique identifier of a draft payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestFinalize'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function paymentRequestFinalizeAsync($id, string $contentType = self::contentTypes['paymentRequestFinalize'][0])
-    {
-        return $this->paymentRequestFinalizeAsyncWithHttpInfo($id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation paymentRequestFinalizeAsyncWithHttpInfo
-     *
-     * Finalize Payment Request
-     *
-     * @param  int $id The unique identifier of a draft payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestFinalize'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function paymentRequestFinalizeAsyncWithHttpInfo($id, string $contentType = self::contentTypes['paymentRequestFinalize'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\PaymentRequestFinalizeResponse';
-        $request = $this->paymentRequestFinalizeRequest($id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'paymentRequestFinalize'
-     *
-     * @param  int $id The unique identifier of a draft payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestFinalize'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function paymentRequestFinalizeRequest($id, string $contentType = self::contentTypes['paymentRequestFinalize'][0])
-    {
-
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling paymentRequestFinalize'
-            );
-        }
-
-
-        $resourcePath = '/paymentrequest/finalize/{id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation paymentRequestList
-     *
-     * List Payment Request
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  string|null $customer Customer ID (optional)
-     * @param  string|null $status Invoice status to filter (optional)
-     * @param  string|null $currency If your integration supports more than one currency, choose the one to filter (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestList'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestListResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
-     */
-    public function paymentRequestList($per_page = null, $page = null, $customer = null, $status = null, $currency = null, $from = null, $to = null, string $contentType = self::contentTypes['paymentRequestList'][0])
-    {
-        list($response) = $this->paymentRequestListWithHttpInfo($per_page, $page, $customer, $status, $currency, $from, $to, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation paymentRequestListWithHttpInfo
-     *
-     * List Payment Request
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  string|null $customer Customer ID (optional)
-     * @param  string|null $status Invoice status to filter (optional)
-     * @param  string|null $currency If your integration supports more than one currency, choose the one to filter (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestList'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PaymentRequestListResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function paymentRequestListWithHttpInfo($per_page = null, $page = null, $customer = null, $status = null, $currency = null, $from = null, $to = null, string $contentType = self::contentTypes['paymentRequestList'][0])
-    {
-        $request = $this->paymentRequestListRequest($per_page, $page, $customer, $status, $currency, $from, $to, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PaymentRequestListResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PaymentRequestListResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PaymentRequestListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation paymentRequestListAsync
-     *
-     * List Payment Request
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  string|null $customer Customer ID (optional)
-     * @param  string|null $status Invoice status to filter (optional)
-     * @param  string|null $currency If your integration supports more than one currency, choose the one to filter (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function paymentRequestListAsync($per_page = null, $page = null, $customer = null, $status = null, $currency = null, $from = null, $to = null, string $contentType = self::contentTypes['paymentRequestList'][0])
-    {
-        return $this->paymentRequestListAsyncWithHttpInfo($per_page, $page, $customer, $status, $currency, $from, $to, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation paymentRequestListAsyncWithHttpInfo
-     *
-     * List Payment Request
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  string|null $customer Customer ID (optional)
-     * @param  string|null $status Invoice status to filter (optional)
-     * @param  string|null $currency If your integration supports more than one currency, choose the one to filter (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function paymentRequestListAsyncWithHttpInfo($per_page = null, $page = null, $customer = null, $status = null, $currency = null, $from = null, $to = null, string $contentType = self::contentTypes['paymentRequestList'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\PaymentRequestListResponse';
-        $request = $this->paymentRequestListRequest($per_page, $page, $customer, $status, $currency, $from, $to, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'paymentRequestList'
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  string|null $customer Customer ID (optional)
-     * @param  string|null $status Invoice status to filter (optional)
-     * @param  string|null $currency If your integration supports more than one currency, choose the one to filter (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function paymentRequestListRequest($per_page = null, $page = null, $customer = null, $status = null, $currency = null, $from = null, $to = null, string $contentType = self::contentTypes['paymentRequestList'][0])
+    public function callListRequest($perPage = null, $page = null, $customer = null, $status = null, $currency = null, $from = null, $to = null, string $contentType = self::contentTypes['callList'][0])
     {
 
 
@@ -1566,7 +701,7 @@ class PaymentRequestApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
+            $perPage,
             'perPage', // param base name
             'integer', // openApiType
             'form', // style
@@ -1689,38 +824,38 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestNotify
+     * Operation create
      *
-     * Send Notification
+     * Create Payment Request
      *
-     * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestNotify'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PaymentRequestCreate|null $paymentRequestCreate paymentRequestCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestSendNotificationResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PaymentRequestCreateResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function paymentRequestNotify($id, string $contentType = self::contentTypes['paymentRequestNotify'][0])
+    public function create($paymentRequestCreate = null, string $contentType = self::contentTypes['create'][0])
     {
-        list($response) = $this->paymentRequestNotifyWithHttpInfo($id, $contentType);
+        list($response) = $this->createWithHttpInfo($paymentRequestCreate, $contentType);
         return $response;
     }
 
     /**
-     * Operation paymentRequestNotifyWithHttpInfo
+     * Operation createWithHttpInfo
      *
-     * Send Notification
+     * Create Payment Request
      *
-     * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestNotify'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PaymentRequestCreate|null $paymentRequestCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PaymentRequestSendNotificationResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PaymentRequestCreateResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function paymentRequestNotifyWithHttpInfo($id, string $contentType = self::contentTypes['paymentRequestNotify'][0])
+    public function createWithHttpInfo($paymentRequestCreate = null, string $contentType = self::contentTypes['create'][0])
     {
-        $request = $this->paymentRequestNotifyRequest($id, $contentType);
+        $request = $this->createRequest($paymentRequestCreate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1748,13 +883,13 @@ class PaymentRequestApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PaymentRequestSendNotificationResponse',
+                        '\Alexasomba\Paystack\Model\PaymentRequestCreateResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1776,7 +911,7 @@ class PaymentRequestApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PaymentRequestSendNotificationResponse',
+                '\Alexasomba\Paystack\Model\PaymentRequestCreateResponse',
                 $request,
                 $response,
             );
@@ -1785,7 +920,7 @@ class PaymentRequestApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PaymentRequestSendNotificationResponse',
+                        '\Alexasomba\Paystack\Model\PaymentRequestCreateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1793,7 +928,7 @@ class PaymentRequestApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1806,19 +941,19 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestNotifyAsync
+     * Operation createAsync
      *
-     * Send Notification
+     * Create Payment Request
      *
-     * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestNotify'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PaymentRequestCreate|null $paymentRequestCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function paymentRequestNotifyAsync($id, string $contentType = self::contentTypes['paymentRequestNotify'][0])
+    public function createAsync($paymentRequestCreate = null, string $contentType = self::contentTypes['create'][0])
     {
-        return $this->paymentRequestNotifyAsyncWithHttpInfo($id, $contentType)
+        return $this->createAsyncWithHttpInfo($paymentRequestCreate, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1827,20 +962,20 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestNotifyAsyncWithHttpInfo
+     * Operation createAsyncWithHttpInfo
      *
-     * Send Notification
+     * Create Payment Request
      *
-     * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestNotify'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PaymentRequestCreate|null $paymentRequestCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function paymentRequestNotifyAsyncWithHttpInfo($id, string $contentType = self::contentTypes['paymentRequestNotify'][0])
+    public function createAsyncWithHttpInfo($paymentRequestCreate = null, string $contentType = self::contentTypes['create'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PaymentRequestSendNotificationResponse';
-        $request = $this->paymentRequestNotifyRequest($id, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PaymentRequestCreateResponse';
+        $request = $this->createRequest($paymentRequestCreate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1879,21 +1014,886 @@ class PaymentRequestApi
     }
 
     /**
-     * Create request for operation 'paymentRequestNotify'
+     * Create request for operation 'create'
      *
-     * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestNotify'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PaymentRequestCreate|null $paymentRequestCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function paymentRequestNotifyRequest($id, string $contentType = self::contentTypes['paymentRequestNotify'][0])
+    public function createRequest($paymentRequestCreate = null, string $contentType = self::contentTypes['create'][0])
+    {
+
+
+
+        $resourcePath = '/paymentrequest';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($paymentRequestCreate)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($paymentRequestCreate));
+            } else {
+                $httpBody = $paymentRequestCreate;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation fetch
+     *
+     * Fetch Payment Request
+     *
+     * @param  string $idOrCode The payment request ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\PaymentRequestViewResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
+     */
+    public function fetch($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+        list($response) = $this->fetchWithHttpInfo($idOrCode, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation fetchWithHttpInfo
+     *
+     * Fetch Payment Request
+     *
+     * @param  string $idOrCode The payment request ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\PaymentRequestViewResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function fetchWithHttpInfo($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+        $request = $this->fetchRequest($idOrCode, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\PaymentRequestViewResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\PaymentRequestViewResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\PaymentRequestViewResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation fetchAsync
+     *
+     * Fetch Payment Request
+     *
+     * @param  string $idOrCode The payment request ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchAsync($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+        return $this->fetchAsyncWithHttpInfo($idOrCode, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation fetchAsyncWithHttpInfo
+     *
+     * Fetch Payment Request
+     *
+     * @param  string $idOrCode The payment request ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchAsyncWithHttpInfo($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\PaymentRequestViewResponse';
+        $request = $this->fetchRequest($idOrCode, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'fetch'
+     *
+     * @param  string $idOrCode The payment request ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function fetchRequest($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+
+        // verify the required parameter 'idOrCode' is set
+        if ($idOrCode === null || (is_array($idOrCode) && count($idOrCode) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $idOrCode when calling fetch'
+            );
+        }
+
+
+        $resourcePath = '/paymentrequest/{id_or_code}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($idOrCode !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id_or_code' . '}',
+                ObjectSerializer::toPathValue($idOrCode),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation finalize
+     *
+     * Finalize Payment Request
+     *
+     * @param  int $id The unique identifier of a draft payment request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalize'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\PaymentRequestFinalizeResponse|\Alexasomba\Paystack\Model\Error
+     */
+    public function finalize($id, string $contentType = self::contentTypes['finalize'][0])
+    {
+        list($response) = $this->finalizeWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation finalizeWithHttpInfo
+     *
+     * Finalize Payment Request
+     *
+     * @param  int $id The unique identifier of a draft payment request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalize'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\PaymentRequestFinalizeResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function finalizeWithHttpInfo($id, string $contentType = self::contentTypes['finalize'][0])
+    {
+        $request = $this->finalizeRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\PaymentRequestFinalizeResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\PaymentRequestFinalizeResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\PaymentRequestFinalizeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation finalizeAsync
+     *
+     * Finalize Payment Request
+     *
+     * @param  int $id The unique identifier of a draft payment request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalize'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function finalizeAsync($id, string $contentType = self::contentTypes['finalize'][0])
+    {
+        return $this->finalizeAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation finalizeAsyncWithHttpInfo
+     *
+     * Finalize Payment Request
+     *
+     * @param  int $id The unique identifier of a draft payment request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalize'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function finalizeAsyncWithHttpInfo($id, string $contentType = self::contentTypes['finalize'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\PaymentRequestFinalizeResponse';
+        $request = $this->finalizeRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'finalize'
+     *
+     * @param  int $id The unique identifier of a draft payment request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalize'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function finalizeRequest($id, string $contentType = self::contentTypes['finalize'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling paymentRequestNotify'
+                'Missing the required parameter $id when calling finalize'
+            );
+        }
+
+
+        $resourcePath = '/paymentrequest/finalize/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation notify
+     *
+     * Send Notification
+     *
+     * @param  int $id The unique identifier of a previously created payment request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['notify'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\PaymentRequestSendNotificationResponse|\Alexasomba\Paystack\Model\Error
+     */
+    public function notify($id, string $contentType = self::contentTypes['notify'][0])
+    {
+        list($response) = $this->notifyWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation notifyWithHttpInfo
+     *
+     * Send Notification
+     *
+     * @param  int $id The unique identifier of a previously created payment request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['notify'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\PaymentRequestSendNotificationResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function notifyWithHttpInfo($id, string $contentType = self::contentTypes['notify'][0])
+    {
+        $request = $this->notifyRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\PaymentRequestSendNotificationResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\PaymentRequestSendNotificationResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\PaymentRequestSendNotificationResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation notifyAsync
+     *
+     * Send Notification
+     *
+     * @param  int $id The unique identifier of a previously created payment request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['notify'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function notifyAsync($id, string $contentType = self::contentTypes['notify'][0])
+    {
+        return $this->notifyAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation notifyAsyncWithHttpInfo
+     *
+     * Send Notification
+     *
+     * @param  int $id The unique identifier of a previously created payment request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['notify'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function notifyAsyncWithHttpInfo($id, string $contentType = self::contentTypes['notify'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\PaymentRequestSendNotificationResponse';
+        $request = $this->notifyRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'notify'
+     *
+     * @param  int $id The unique identifier of a previously created payment request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['notify'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function notifyRequest($id, string $contentType = self::contentTypes['notify'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling notify'
             );
         }
 
@@ -1975,36 +1975,36 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestTotals
+     * Operation totals
      *
      * Payment Request Total
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestTotals'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['totals'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestTotalResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PaymentRequestTotalResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function paymentRequestTotals(string $contentType = self::contentTypes['paymentRequestTotals'][0])
+    public function totals(string $contentType = self::contentTypes['totals'][0])
     {
-        list($response) = $this->paymentRequestTotalsWithHttpInfo($contentType);
+        list($response) = $this->totalsWithHttpInfo($contentType);
         return $response;
     }
 
     /**
-     * Operation paymentRequestTotalsWithHttpInfo
+     * Operation totalsWithHttpInfo
      *
      * Payment Request Total
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestTotals'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['totals'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PaymentRequestTotalResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PaymentRequestTotalResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function paymentRequestTotalsWithHttpInfo(string $contentType = self::contentTypes['paymentRequestTotals'][0])
+    public function totalsWithHttpInfo(string $contentType = self::contentTypes['totals'][0])
     {
-        $request = $this->paymentRequestTotalsRequest($contentType);
+        $request = $this->totalsRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2032,19 +2032,19 @@ class PaymentRequestApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PaymentRequestTotalResponse',
+                        '\Alexasomba\Paystack\Model\PaymentRequestTotalResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -2066,7 +2066,7 @@ class PaymentRequestApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PaymentRequestTotalResponse',
+                '\Alexasomba\Paystack\Model\PaymentRequestTotalResponse',
                 $request,
                 $response,
             );
@@ -2075,7 +2075,7 @@ class PaymentRequestApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PaymentRequestTotalResponse',
+                        '\Alexasomba\Paystack\Model\PaymentRequestTotalResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2083,7 +2083,7 @@ class PaymentRequestApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2091,7 +2091,7 @@ class PaymentRequestApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2104,18 +2104,18 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestTotalsAsync
+     * Operation totalsAsync
      *
      * Payment Request Total
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestTotals'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['totals'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function paymentRequestTotalsAsync(string $contentType = self::contentTypes['paymentRequestTotals'][0])
+    public function totalsAsync(string $contentType = self::contentTypes['totals'][0])
     {
-        return $this->paymentRequestTotalsAsyncWithHttpInfo($contentType)
+        return $this->totalsAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2124,19 +2124,19 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestTotalsAsyncWithHttpInfo
+     * Operation totalsAsyncWithHttpInfo
      *
      * Payment Request Total
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestTotals'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['totals'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function paymentRequestTotalsAsyncWithHttpInfo(string $contentType = self::contentTypes['paymentRequestTotals'][0])
+    public function totalsAsyncWithHttpInfo(string $contentType = self::contentTypes['totals'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PaymentRequestTotalResponse';
-        $request = $this->paymentRequestTotalsRequest($contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PaymentRequestTotalResponse';
+        $request = $this->totalsRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2175,14 +2175,14 @@ class PaymentRequestApi
     }
 
     /**
-     * Create request for operation 'paymentRequestTotals'
+     * Create request for operation 'totals'
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestTotals'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['totals'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function paymentRequestTotalsRequest(string $contentType = self::contentTypes['paymentRequestTotals'][0])
+    public function totalsRequest(string $contentType = self::contentTypes['totals'][0])
     {
 
 
@@ -2255,40 +2255,40 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestUpdate
+     * Operation update
      *
      * Update Payment Request
      *
-     * @param  string $id_or_code The payment request ID or code you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PaymentRequestUpdate|null $payment_request_update payment_request_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestUpdate'] to see the possible values for this operation
+     * @param  string $idOrCode The payment request ID or code you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PaymentRequestUpdate|null $paymentRequestUpdate paymentRequestUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestUpdateResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PaymentRequestUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function paymentRequestUpdate($id_or_code, $payment_request_update = null, string $contentType = self::contentTypes['paymentRequestUpdate'][0])
+    public function update($idOrCode, $paymentRequestUpdate = null, string $contentType = self::contentTypes['update'][0])
     {
-        list($response) = $this->paymentRequestUpdateWithHttpInfo($id_or_code, $payment_request_update, $contentType);
+        list($response) = $this->updateWithHttpInfo($idOrCode, $paymentRequestUpdate, $contentType);
         return $response;
     }
 
     /**
-     * Operation paymentRequestUpdateWithHttpInfo
+     * Operation updateWithHttpInfo
      *
      * Update Payment Request
      *
-     * @param  string $id_or_code The payment request ID or code you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PaymentRequestUpdate|null $payment_request_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestUpdate'] to see the possible values for this operation
+     * @param  string $idOrCode The payment request ID or code you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PaymentRequestUpdate|null $paymentRequestUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PaymentRequestUpdateResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PaymentRequestUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function paymentRequestUpdateWithHttpInfo($id_or_code, $payment_request_update = null, string $contentType = self::contentTypes['paymentRequestUpdate'][0])
+    public function updateWithHttpInfo($idOrCode, $paymentRequestUpdate = null, string $contentType = self::contentTypes['update'][0])
     {
-        $request = $this->paymentRequestUpdateRequest($id_or_code, $payment_request_update, $contentType);
+        $request = $this->updateRequest($idOrCode, $paymentRequestUpdate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2316,19 +2316,19 @@ class PaymentRequestApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PaymentRequestUpdateResponse',
+                        '\Alexasomba\Paystack\Model\PaymentRequestUpdateResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -2350,7 +2350,7 @@ class PaymentRequestApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PaymentRequestUpdateResponse',
+                '\Alexasomba\Paystack\Model\PaymentRequestUpdateResponse',
                 $request,
                 $response,
             );
@@ -2359,7 +2359,7 @@ class PaymentRequestApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PaymentRequestUpdateResponse',
+                        '\Alexasomba\Paystack\Model\PaymentRequestUpdateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2367,7 +2367,7 @@ class PaymentRequestApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2375,7 +2375,7 @@ class PaymentRequestApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2388,20 +2388,20 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestUpdateAsync
+     * Operation updateAsync
      *
      * Update Payment Request
      *
-     * @param  string $id_or_code The payment request ID or code you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PaymentRequestUpdate|null $payment_request_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestUpdate'] to see the possible values for this operation
+     * @param  string $idOrCode The payment request ID or code you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PaymentRequestUpdate|null $paymentRequestUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function paymentRequestUpdateAsync($id_or_code, $payment_request_update = null, string $contentType = self::contentTypes['paymentRequestUpdate'][0])
+    public function updateAsync($idOrCode, $paymentRequestUpdate = null, string $contentType = self::contentTypes['update'][0])
     {
-        return $this->paymentRequestUpdateAsyncWithHttpInfo($id_or_code, $payment_request_update, $contentType)
+        return $this->updateAsyncWithHttpInfo($idOrCode, $paymentRequestUpdate, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2410,21 +2410,21 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestUpdateAsyncWithHttpInfo
+     * Operation updateAsyncWithHttpInfo
      *
      * Update Payment Request
      *
-     * @param  string $id_or_code The payment request ID or code you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PaymentRequestUpdate|null $payment_request_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestUpdate'] to see the possible values for this operation
+     * @param  string $idOrCode The payment request ID or code you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PaymentRequestUpdate|null $paymentRequestUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function paymentRequestUpdateAsyncWithHttpInfo($id_or_code, $payment_request_update = null, string $contentType = self::contentTypes['paymentRequestUpdate'][0])
+    public function updateAsyncWithHttpInfo($idOrCode, $paymentRequestUpdate = null, string $contentType = self::contentTypes['update'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PaymentRequestUpdateResponse';
-        $request = $this->paymentRequestUpdateRequest($id_or_code, $payment_request_update, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PaymentRequestUpdateResponse';
+        $request = $this->updateRequest($idOrCode, $paymentRequestUpdate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2463,22 +2463,22 @@ class PaymentRequestApi
     }
 
     /**
-     * Create request for operation 'paymentRequestUpdate'
+     * Create request for operation 'update'
      *
-     * @param  string $id_or_code The payment request ID or code you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PaymentRequestUpdate|null $payment_request_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestUpdate'] to see the possible values for this operation
+     * @param  string $idOrCode The payment request ID or code you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PaymentRequestUpdate|null $paymentRequestUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function paymentRequestUpdateRequest($id_or_code, $payment_request_update = null, string $contentType = self::contentTypes['paymentRequestUpdate'][0])
+    public function updateRequest($idOrCode, $paymentRequestUpdate = null, string $contentType = self::contentTypes['update'][0])
     {
 
-        // verify the required parameter 'id_or_code' is set
-        if ($id_or_code === null || (is_array($id_or_code) && count($id_or_code) === 0)) {
+        // verify the required parameter 'idOrCode' is set
+        if ($idOrCode === null || (is_array($idOrCode) && count($idOrCode) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id_or_code when calling paymentRequestUpdate'
+                'Missing the required parameter $idOrCode when calling update'
             );
         }
 
@@ -2494,10 +2494,10 @@ class PaymentRequestApi
 
 
         // path params
-        if ($id_or_code !== null) {
+        if ($idOrCode !== null) {
             $resourcePath = str_replace(
                 '{' . 'id_or_code' . '}',
-                ObjectSerializer::toPathValue($id_or_code),
+                ObjectSerializer::toPathValue($idOrCode),
                 $resourcePath
             );
         }
@@ -2510,12 +2510,12 @@ class PaymentRequestApi
         );
 
         // for model (json/xml)
-        if (isset($payment_request_update)) {
+        if (isset($paymentRequestUpdate)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($payment_request_update));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($paymentRequestUpdate));
             } else {
-                $httpBody = $payment_request_update;
+                $httpBody = $paymentRequestUpdate;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2568,38 +2568,38 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestVerify
+     * Operation verify
      *
      * Verify Payment Request
      *
      * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestVerifyResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PaymentRequestVerifyResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function paymentRequestVerify($id, string $contentType = self::contentTypes['paymentRequestVerify'][0])
+    public function verify($id, string $contentType = self::contentTypes['verify'][0])
     {
-        list($response) = $this->paymentRequestVerifyWithHttpInfo($id, $contentType);
+        list($response) = $this->verifyWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation paymentRequestVerifyWithHttpInfo
+     * Operation verifyWithHttpInfo
      *
      * Verify Payment Request
      *
      * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PaymentRequestVerifyResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PaymentRequestVerifyResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function paymentRequestVerifyWithHttpInfo($id, string $contentType = self::contentTypes['paymentRequestVerify'][0])
+    public function verifyWithHttpInfo($id, string $contentType = self::contentTypes['verify'][0])
     {
-        $request = $this->paymentRequestVerifyRequest($id, $contentType);
+        $request = $this->verifyRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2627,19 +2627,19 @@ class PaymentRequestApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PaymentRequestVerifyResponse',
+                        '\Alexasomba\Paystack\Model\PaymentRequestVerifyResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -2661,7 +2661,7 @@ class PaymentRequestApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PaymentRequestVerifyResponse',
+                '\Alexasomba\Paystack\Model\PaymentRequestVerifyResponse',
                 $request,
                 $response,
             );
@@ -2670,7 +2670,7 @@ class PaymentRequestApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PaymentRequestVerifyResponse',
+                        '\Alexasomba\Paystack\Model\PaymentRequestVerifyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2678,7 +2678,7 @@ class PaymentRequestApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2686,7 +2686,7 @@ class PaymentRequestApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2699,19 +2699,19 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestVerifyAsync
+     * Operation verifyAsync
      *
      * Verify Payment Request
      *
      * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function paymentRequestVerifyAsync($id, string $contentType = self::contentTypes['paymentRequestVerify'][0])
+    public function verifyAsync($id, string $contentType = self::contentTypes['verify'][0])
     {
-        return $this->paymentRequestVerifyAsyncWithHttpInfo($id, $contentType)
+        return $this->verifyAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2720,20 +2720,20 @@ class PaymentRequestApi
     }
 
     /**
-     * Operation paymentRequestVerifyAsyncWithHttpInfo
+     * Operation verifyAsyncWithHttpInfo
      *
      * Verify Payment Request
      *
      * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function paymentRequestVerifyAsyncWithHttpInfo($id, string $contentType = self::contentTypes['paymentRequestVerify'][0])
+    public function verifyAsyncWithHttpInfo($id, string $contentType = self::contentTypes['verify'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PaymentRequestVerifyResponse';
-        $request = $this->paymentRequestVerifyRequest($id, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PaymentRequestVerifyResponse';
+        $request = $this->verifyRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2772,21 +2772,21 @@ class PaymentRequestApi
     }
 
     /**
-     * Create request for operation 'paymentRequestVerify'
+     * Create request for operation 'verify'
      *
      * @param  int $id The unique identifier of a previously created payment request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['paymentRequestVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function paymentRequestVerifyRequest($id, string $contentType = self::contentTypes['paymentRequestVerify'][0])
+    public function verifyRequest($id, string $contentType = self::contentTypes['verify'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling paymentRequestVerify'
+                'Missing the required parameter $id when calling verify'
             );
         }
 

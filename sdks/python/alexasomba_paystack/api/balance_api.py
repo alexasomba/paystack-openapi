@@ -43,7 +43,7 @@ class BalanceApi:
 
 
     @validate_call
-    def balance_fetch(
+    def fetch(
         self,
         _request_timeout: Union[
             None,
@@ -84,7 +84,7 @@ class BalanceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._balance_fetch_serialize(
+        _param = self._fetch_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -108,7 +108,7 @@ class BalanceApi:
 
 
     @validate_call
-    def balance_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -149,7 +149,7 @@ class BalanceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._balance_fetch_serialize(
+        _param = self._fetch_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -173,7 +173,7 @@ class BalanceApi:
 
 
     @validate_call
-    def balance_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -214,7 +214,7 @@ class BalanceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._balance_fetch_serialize(
+        _param = self._fetch_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -233,7 +233,7 @@ class BalanceApi:
         return response_data.response
 
 
-    def _balance_fetch_serialize(
+    def _fetch_serialize(
         self,
         _request_auth,
         _content_type,
@@ -295,7 +295,7 @@ class BalanceApi:
 
 
     @validate_call
-    def balance_ledger(
+    def ledger(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -348,7 +348,7 @@ class BalanceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._balance_ledger_serialize(
+        _param = self._ledger_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -376,7 +376,7 @@ class BalanceApi:
 
 
     @validate_call
-    def balance_ledger_with_http_info(
+    def ledger_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -429,7 +429,7 @@ class BalanceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._balance_ledger_serialize(
+        _param = self._ledger_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -457,7 +457,7 @@ class BalanceApi:
 
 
     @validate_call
-    def balance_ledger_without_preload_content(
+    def ledger_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -510,7 +510,7 @@ class BalanceApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._balance_ledger_serialize(
+        _param = self._ledger_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -533,7 +533,7 @@ class BalanceApi:
         return response_data.response
 
 
-    def _balance_ledger_serialize(
+    def _ledger_serialize(
         self,
         per_page,
         page,

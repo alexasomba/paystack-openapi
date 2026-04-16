@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Api;
+namespace Alexasomba\Paystack\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Alexasomba\\Paystack\ApiException;
-use Alexasomba\\Paystack\Configuration;
-use Alexasomba\\Paystack\FormDataProcessor;
-use Alexasomba\\Paystack\HeaderSelector;
-use Alexasomba\\Paystack\ObjectSerializer;
+use Alexasomba\Paystack\ApiException;
+use Alexasomba\Paystack\Configuration;
+use Alexasomba\Paystack\FormDataProcessor;
+use Alexasomba\Paystack\HeaderSelector;
+use Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransferApi Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -75,42 +75,42 @@ class TransferApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'transferBulk' => [
+        'bulk' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'transferDisableOtp' => [
+        'callList' => [
             'application/json',
         ],
-        'transferDisableOtpFinalize' => [
-            'application/json',
-            'application/x-www-form-urlencoded',
-        ],
-        'transferEnableOtp' => [
+        'disableOtp' => [
             'application/json',
         ],
-        'transferExportTransfer' => [
-            'application/json',
-        ],
-        'transferFetch' => [
-            'application/json',
-        ],
-        'transferFinalize' => [
+        'disableOtpFinalize' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'transferInitiate' => [
+        'enableOtp' => [
+            'application/json',
+        ],
+        'exportTransfer' => [
+            'application/json',
+        ],
+        'fetch' => [
+            'application/json',
+        ],
+        'finalize' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'transferList' => [
-            'application/json',
-        ],
-        'transferResendOtp' => [
+        'initiate' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'transferVerify' => [
+        'resendOtp' => [
+            'application/json',
+            'application/x-www-form-urlencoded',
+        ],
+        'verify' => [
             'application/json',
         ],
     ];
@@ -162,38 +162,38 @@ class TransferApi
     }
 
     /**
-     * Operation transferBulk
+     * Operation bulk
      *
      * Initiate Bulk Transfer
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferBulk|null $transfer_bulk transfer_bulk (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferBulk'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferBulk|null $transferBulk transferBulk (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulk'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransferBulkResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransferBulkResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function transferBulk($transfer_bulk = null, string $contentType = self::contentTypes['transferBulk'][0])
+    public function bulk($transferBulk = null, string $contentType = self::contentTypes['bulk'][0])
     {
-        list($response) = $this->transferBulkWithHttpInfo($transfer_bulk, $contentType);
+        list($response) = $this->bulkWithHttpInfo($transferBulk, $contentType);
         return $response;
     }
 
     /**
-     * Operation transferBulkWithHttpInfo
+     * Operation bulkWithHttpInfo
      *
      * Initiate Bulk Transfer
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferBulk|null $transfer_bulk (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferBulk'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferBulk|null $transferBulk (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulk'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransferBulkResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransferBulkResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transferBulkWithHttpInfo($transfer_bulk = null, string $contentType = self::contentTypes['transferBulk'][0])
+    public function bulkWithHttpInfo($transferBulk = null, string $contentType = self::contentTypes['bulk'][0])
     {
-        $request = $this->transferBulkRequest($transfer_bulk, $contentType);
+        $request = $this->bulkRequest($transferBulk, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -221,13 +221,13 @@ class TransferApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransferBulkResponse',
+                        '\Alexasomba\Paystack\Model\TransferBulkResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -249,7 +249,7 @@ class TransferApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransferBulkResponse',
+                '\Alexasomba\Paystack\Model\TransferBulkResponse',
                 $request,
                 $response,
             );
@@ -258,7 +258,7 @@ class TransferApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransferBulkResponse',
+                        '\Alexasomba\Paystack\Model\TransferBulkResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -266,7 +266,7 @@ class TransferApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -279,19 +279,19 @@ class TransferApi
     }
 
     /**
-     * Operation transferBulkAsync
+     * Operation bulkAsync
      *
      * Initiate Bulk Transfer
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferBulk|null $transfer_bulk (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferBulk'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferBulk|null $transferBulk (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferBulkAsync($transfer_bulk = null, string $contentType = self::contentTypes['transferBulk'][0])
+    public function bulkAsync($transferBulk = null, string $contentType = self::contentTypes['bulk'][0])
     {
-        return $this->transferBulkAsyncWithHttpInfo($transfer_bulk, $contentType)
+        return $this->bulkAsyncWithHttpInfo($transferBulk, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -300,20 +300,20 @@ class TransferApi
     }
 
     /**
-     * Operation transferBulkAsyncWithHttpInfo
+     * Operation bulkAsyncWithHttpInfo
      *
      * Initiate Bulk Transfer
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferBulk|null $transfer_bulk (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferBulk'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferBulk|null $transferBulk (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferBulkAsyncWithHttpInfo($transfer_bulk = null, string $contentType = self::contentTypes['transferBulk'][0])
+    public function bulkAsyncWithHttpInfo($transferBulk = null, string $contentType = self::contentTypes['bulk'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransferBulkResponse';
-        $request = $this->transferBulkRequest($transfer_bulk, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransferBulkResponse';
+        $request = $this->bulkRequest($transferBulk, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -352,15 +352,15 @@ class TransferApi
     }
 
     /**
-     * Create request for operation 'transferBulk'
+     * Create request for operation 'bulk'
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferBulk|null $transfer_bulk (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferBulk'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferBulk|null $transferBulk (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulk'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transferBulkRequest($transfer_bulk = null, string $contentType = self::contentTypes['transferBulk'][0])
+    public function bulkRequest($transferBulk = null, string $contentType = self::contentTypes['bulk'][0])
     {
 
 
@@ -383,12 +383,12 @@ class TransferApi
         );
 
         // for model (json/xml)
-        if (isset($transfer_bulk)) {
+        if (isset($transferBulk)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transfer_bulk));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transferBulk));
             } else {
-                $httpBody = $transfer_bulk;
+                $httpBody = $transferBulk;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -441,36 +441,46 @@ class TransferApi
     }
 
     /**
-     * Operation transferDisableOtp
+     * Operation callList
      *
-     * Disable OTP for Transfers
+     * List Transfers
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferDisableOtp'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $recipient Filter by the recipient ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransferDisablesOtpResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransferListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transferDisableOtp(string $contentType = self::contentTypes['transferDisableOtp'][0])
+    public function callList($perPage = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['callList'][0])
     {
-        list($response) = $this->transferDisableOtpWithHttpInfo($contentType);
+        list($response) = $this->callListWithHttpInfo($perPage, $page, $from, $to, $recipient, $contentType);
         return $response;
     }
 
     /**
-     * Operation transferDisableOtpWithHttpInfo
+     * Operation callListWithHttpInfo
      *
-     * Disable OTP for Transfers
+     * List Transfers
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferDisableOtp'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $recipient Filter by the recipient ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransferDisablesOtpResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransferListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transferDisableOtpWithHttpInfo(string $contentType = self::contentTypes['transferDisableOtp'][0])
+    public function callListWithHttpInfo($perPage = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $request = $this->transferDisableOtpRequest($contentType);
+        $request = $this->callListRequest($perPage, $page, $from, $to, $recipient, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -498,13 +508,19 @@ class TransferApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransferDisablesOtpResponse',
+                        '\Alexasomba\Paystack\Model\TransferListResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -526,7 +542,7 @@ class TransferApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransferDisablesOtpResponse',
+                '\Alexasomba\Paystack\Model\TransferListResponse',
                 $request,
                 $response,
             );
@@ -535,7 +551,7 @@ class TransferApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransferDisablesOtpResponse',
+                        '\Alexasomba\Paystack\Model\TransferListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -543,7 +559,15 @@ class TransferApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -556,18 +580,23 @@ class TransferApi
     }
 
     /**
-     * Operation transferDisableOtpAsync
+     * Operation callListAsync
      *
-     * Disable OTP for Transfers
+     * List Transfers
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferDisableOtp'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $recipient Filter by the recipient ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferDisableOtpAsync(string $contentType = self::contentTypes['transferDisableOtp'][0])
+    public function callListAsync($perPage = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['callList'][0])
     {
-        return $this->transferDisableOtpAsyncWithHttpInfo($contentType)
+        return $this->callListAsyncWithHttpInfo($perPage, $page, $from, $to, $recipient, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -576,19 +605,24 @@ class TransferApi
     }
 
     /**
-     * Operation transferDisableOtpAsyncWithHttpInfo
+     * Operation callListAsyncWithHttpInfo
      *
-     * Disable OTP for Transfers
+     * List Transfers
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferDisableOtp'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $recipient Filter by the recipient ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferDisableOtpAsyncWithHttpInfo(string $contentType = self::contentTypes['transferDisableOtp'][0])
+    public function callListAsyncWithHttpInfo($perPage = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransferDisablesOtpResponse';
-        $request = $this->transferDisableOtpRequest($contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransferListResponse';
+        $request = $this->callListRequest($perPage, $page, $from, $to, $recipient, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -627,14 +661,335 @@ class TransferApi
     }
 
     /**
-     * Create request for operation 'transferDisableOtp'
+     * Create request for operation 'callList'
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferDisableOtp'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  int|null $recipient Filter by the recipient ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transferDisableOtpRequest(string $contentType = self::contentTypes['transferDisableOtp'][0])
+    public function callListRequest($perPage = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['callList'][0])
+    {
+
+
+
+
+
+
+
+        $resourcePath = '/transfer';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $perPage,
+            'perPage', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from,
+            'from', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to,
+            'to', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $recipient,
+            'recipient', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation disableOtp
+     *
+     * Disable OTP for Transfers
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableOtp'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\TransferDisablesOtpResponse|\Alexasomba\Paystack\Model\Error
+     */
+    public function disableOtp(string $contentType = self::contentTypes['disableOtp'][0])
+    {
+        list($response) = $this->disableOtpWithHttpInfo($contentType);
+        return $response;
+    }
+
+    /**
+     * Operation disableOtpWithHttpInfo
+     *
+     * Disable OTP for Transfers
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableOtp'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\TransferDisablesOtpResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function disableOtpWithHttpInfo(string $contentType = self::contentTypes['disableOtp'][0])
+    {
+        $request = $this->disableOtpRequest($contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\TransferDisablesOtpResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\TransferDisablesOtpResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\TransferDisablesOtpResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation disableOtpAsync
+     *
+     * Disable OTP for Transfers
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableOtp'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function disableOtpAsync(string $contentType = self::contentTypes['disableOtp'][0])
+    {
+        return $this->disableOtpAsyncWithHttpInfo($contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation disableOtpAsyncWithHttpInfo
+     *
+     * Disable OTP for Transfers
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableOtp'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function disableOtpAsyncWithHttpInfo(string $contentType = self::contentTypes['disableOtp'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\TransferDisablesOtpResponse';
+        $request = $this->disableOtpRequest($contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'disableOtp'
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableOtp'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function disableOtpRequest(string $contentType = self::contentTypes['disableOtp'][0])
     {
 
 
@@ -707,38 +1062,38 @@ class TransferApi
     }
 
     /**
-     * Operation transferDisableOtpFinalize
+     * Operation disableOtpFinalize
      *
      * Finalize Disabling OTP for Transfers
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferFinalizeDisableOTP|null $transfer_finalize_disable_otp transfer_finalize_disable_otp (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferDisableOtpFinalize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferFinalizeDisableOTP|null $transferFinalizeDisableOTP transferFinalizeDisableOTP (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableOtpFinalize'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransferFinalizeDisablesOtpResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransferFinalizeDisablesOtpResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function transferDisableOtpFinalize($transfer_finalize_disable_otp = null, string $contentType = self::contentTypes['transferDisableOtpFinalize'][0])
+    public function disableOtpFinalize($transferFinalizeDisableOTP = null, string $contentType = self::contentTypes['disableOtpFinalize'][0])
     {
-        list($response) = $this->transferDisableOtpFinalizeWithHttpInfo($transfer_finalize_disable_otp, $contentType);
+        list($response) = $this->disableOtpFinalizeWithHttpInfo($transferFinalizeDisableOTP, $contentType);
         return $response;
     }
 
     /**
-     * Operation transferDisableOtpFinalizeWithHttpInfo
+     * Operation disableOtpFinalizeWithHttpInfo
      *
      * Finalize Disabling OTP for Transfers
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferFinalizeDisableOTP|null $transfer_finalize_disable_otp (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferDisableOtpFinalize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferFinalizeDisableOTP|null $transferFinalizeDisableOTP (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableOtpFinalize'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransferFinalizeDisablesOtpResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransferFinalizeDisablesOtpResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transferDisableOtpFinalizeWithHttpInfo($transfer_finalize_disable_otp = null, string $contentType = self::contentTypes['transferDisableOtpFinalize'][0])
+    public function disableOtpFinalizeWithHttpInfo($transferFinalizeDisableOTP = null, string $contentType = self::contentTypes['disableOtpFinalize'][0])
     {
-        $request = $this->transferDisableOtpFinalizeRequest($transfer_finalize_disable_otp, $contentType);
+        $request = $this->disableOtpFinalizeRequest($transferFinalizeDisableOTP, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -766,13 +1121,13 @@ class TransferApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransferFinalizeDisablesOtpResponse',
+                        '\Alexasomba\Paystack\Model\TransferFinalizeDisablesOtpResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -794,7 +1149,7 @@ class TransferApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransferFinalizeDisablesOtpResponse',
+                '\Alexasomba\Paystack\Model\TransferFinalizeDisablesOtpResponse',
                 $request,
                 $response,
             );
@@ -803,7 +1158,7 @@ class TransferApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransferFinalizeDisablesOtpResponse',
+                        '\Alexasomba\Paystack\Model\TransferFinalizeDisablesOtpResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -811,7 +1166,7 @@ class TransferApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -824,19 +1179,19 @@ class TransferApi
     }
 
     /**
-     * Operation transferDisableOtpFinalizeAsync
+     * Operation disableOtpFinalizeAsync
      *
      * Finalize Disabling OTP for Transfers
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferFinalizeDisableOTP|null $transfer_finalize_disable_otp (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferDisableOtpFinalize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferFinalizeDisableOTP|null $transferFinalizeDisableOTP (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableOtpFinalize'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferDisableOtpFinalizeAsync($transfer_finalize_disable_otp = null, string $contentType = self::contentTypes['transferDisableOtpFinalize'][0])
+    public function disableOtpFinalizeAsync($transferFinalizeDisableOTP = null, string $contentType = self::contentTypes['disableOtpFinalize'][0])
     {
-        return $this->transferDisableOtpFinalizeAsyncWithHttpInfo($transfer_finalize_disable_otp, $contentType)
+        return $this->disableOtpFinalizeAsyncWithHttpInfo($transferFinalizeDisableOTP, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -845,20 +1200,20 @@ class TransferApi
     }
 
     /**
-     * Operation transferDisableOtpFinalizeAsyncWithHttpInfo
+     * Operation disableOtpFinalizeAsyncWithHttpInfo
      *
      * Finalize Disabling OTP for Transfers
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferFinalizeDisableOTP|null $transfer_finalize_disable_otp (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferDisableOtpFinalize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferFinalizeDisableOTP|null $transferFinalizeDisableOTP (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableOtpFinalize'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferDisableOtpFinalizeAsyncWithHttpInfo($transfer_finalize_disable_otp = null, string $contentType = self::contentTypes['transferDisableOtpFinalize'][0])
+    public function disableOtpFinalizeAsyncWithHttpInfo($transferFinalizeDisableOTP = null, string $contentType = self::contentTypes['disableOtpFinalize'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransferFinalizeDisablesOtpResponse';
-        $request = $this->transferDisableOtpFinalizeRequest($transfer_finalize_disable_otp, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransferFinalizeDisablesOtpResponse';
+        $request = $this->disableOtpFinalizeRequest($transferFinalizeDisableOTP, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -897,15 +1252,15 @@ class TransferApi
     }
 
     /**
-     * Create request for operation 'transferDisableOtpFinalize'
+     * Create request for operation 'disableOtpFinalize'
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferFinalizeDisableOTP|null $transfer_finalize_disable_otp (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferDisableOtpFinalize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferFinalizeDisableOTP|null $transferFinalizeDisableOTP (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disableOtpFinalize'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transferDisableOtpFinalizeRequest($transfer_finalize_disable_otp = null, string $contentType = self::contentTypes['transferDisableOtpFinalize'][0])
+    public function disableOtpFinalizeRequest($transferFinalizeDisableOTP = null, string $contentType = self::contentTypes['disableOtpFinalize'][0])
     {
 
 
@@ -928,12 +1283,12 @@ class TransferApi
         );
 
         // for model (json/xml)
-        if (isset($transfer_finalize_disable_otp)) {
+        if (isset($transferFinalizeDisableOTP)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transfer_finalize_disable_otp));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transferFinalizeDisableOTP));
             } else {
-                $httpBody = $transfer_finalize_disable_otp;
+                $httpBody = $transferFinalizeDisableOTP;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -986,36 +1341,36 @@ class TransferApi
     }
 
     /**
-     * Operation transferEnableOtp
+     * Operation enableOtp
      *
      * Enable OTP requirement for Transfers
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferEnableOtp'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableOtp'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransferEnablesOtpResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransferEnablesOtpResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function transferEnableOtp(string $contentType = self::contentTypes['transferEnableOtp'][0])
+    public function enableOtp(string $contentType = self::contentTypes['enableOtp'][0])
     {
-        list($response) = $this->transferEnableOtpWithHttpInfo($contentType);
+        list($response) = $this->enableOtpWithHttpInfo($contentType);
         return $response;
     }
 
     /**
-     * Operation transferEnableOtpWithHttpInfo
+     * Operation enableOtpWithHttpInfo
      *
      * Enable OTP requirement for Transfers
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferEnableOtp'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableOtp'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransferEnablesOtpResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransferEnablesOtpResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transferEnableOtpWithHttpInfo(string $contentType = self::contentTypes['transferEnableOtp'][0])
+    public function enableOtpWithHttpInfo(string $contentType = self::contentTypes['enableOtp'][0])
     {
-        $request = $this->transferEnableOtpRequest($contentType);
+        $request = $this->enableOtpRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1043,13 +1398,13 @@ class TransferApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransferEnablesOtpResponse',
+                        '\Alexasomba\Paystack\Model\TransferEnablesOtpResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1071,7 +1426,7 @@ class TransferApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransferEnablesOtpResponse',
+                '\Alexasomba\Paystack\Model\TransferEnablesOtpResponse',
                 $request,
                 $response,
             );
@@ -1080,7 +1435,7 @@ class TransferApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransferEnablesOtpResponse',
+                        '\Alexasomba\Paystack\Model\TransferEnablesOtpResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1088,7 +1443,7 @@ class TransferApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1101,18 +1456,18 @@ class TransferApi
     }
 
     /**
-     * Operation transferEnableOtpAsync
+     * Operation enableOtpAsync
      *
      * Enable OTP requirement for Transfers
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferEnableOtp'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableOtp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferEnableOtpAsync(string $contentType = self::contentTypes['transferEnableOtp'][0])
+    public function enableOtpAsync(string $contentType = self::contentTypes['enableOtp'][0])
     {
-        return $this->transferEnableOtpAsyncWithHttpInfo($contentType)
+        return $this->enableOtpAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1121,19 +1476,19 @@ class TransferApi
     }
 
     /**
-     * Operation transferEnableOtpAsyncWithHttpInfo
+     * Operation enableOtpAsyncWithHttpInfo
      *
      * Enable OTP requirement for Transfers
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferEnableOtp'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableOtp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferEnableOtpAsyncWithHttpInfo(string $contentType = self::contentTypes['transferEnableOtp'][0])
+    public function enableOtpAsyncWithHttpInfo(string $contentType = self::contentTypes['enableOtp'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransferEnablesOtpResponse';
-        $request = $this->transferEnableOtpRequest($contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransferEnablesOtpResponse';
+        $request = $this->enableOtpRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1172,14 +1527,14 @@ class TransferApi
     }
 
     /**
-     * Create request for operation 'transferEnableOtp'
+     * Create request for operation 'enableOtp'
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferEnableOtp'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableOtp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transferEnableOtpRequest(string $contentType = self::contentTypes['transferEnableOtp'][0])
+    public function enableOtpRequest(string $contentType = self::contentTypes['enableOtp'][0])
     {
 
 
@@ -1252,7 +1607,7 @@ class TransferApi
     }
 
     /**
-     * Operation transferExportTransfer
+     * Operation exportTransfer
      *
      * Export Transfers
      *
@@ -1260,20 +1615,20 @@ class TransferApi
      * @param  string|null $status Export transfer by status (optional, default to 'pending')
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferExportTransfer'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportTransfer'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transferExportTransfer($recipient = null, $status = 'pending', $from = null, $to = null, string $contentType = self::contentTypes['transferExportTransfer'][0])
+    public function exportTransfer($recipient = null, $status = 'pending', $from = null, $to = null, string $contentType = self::contentTypes['exportTransfer'][0])
     {
-        list($response) = $this->transferExportTransferWithHttpInfo($recipient, $status, $from, $to, $contentType);
+        list($response) = $this->exportTransferWithHttpInfo($recipient, $status, $from, $to, $contentType);
         return $response;
     }
 
     /**
-     * Operation transferExportTransferWithHttpInfo
+     * Operation exportTransferWithHttpInfo
      *
      * Export Transfers
      *
@@ -1281,15 +1636,15 @@ class TransferApi
      * @param  string|null $status Export transfer by status (optional, default to 'pending')
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferExportTransfer'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportTransfer'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transferExportTransferWithHttpInfo($recipient = null, $status = 'pending', $from = null, $to = null, string $contentType = self::contentTypes['transferExportTransfer'][0])
+    public function exportTransferWithHttpInfo($recipient = null, $status = 'pending', $from = null, $to = null, string $contentType = self::contentTypes['exportTransfer'][0])
     {
-        $request = $this->transferExportTransferRequest($recipient, $status, $from, $to, $contentType);
+        $request = $this->exportTransferRequest($recipient, $status, $from, $to, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1317,19 +1672,19 @@ class TransferApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1351,7 +1706,7 @@ class TransferApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\Response',
+                '\Alexasomba\Paystack\Model\Response',
                 $request,
                 $response,
             );
@@ -1360,7 +1715,7 @@ class TransferApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1368,7 +1723,7 @@ class TransferApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1376,7 +1731,7 @@ class TransferApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1389,7 +1744,7 @@ class TransferApi
     }
 
     /**
-     * Operation transferExportTransferAsync
+     * Operation exportTransferAsync
      *
      * Export Transfers
      *
@@ -1397,14 +1752,14 @@ class TransferApi
      * @param  string|null $status Export transfer by status (optional, default to 'pending')
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferExportTransfer'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportTransfer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferExportTransferAsync($recipient = null, $status = 'pending', $from = null, $to = null, string $contentType = self::contentTypes['transferExportTransfer'][0])
+    public function exportTransferAsync($recipient = null, $status = 'pending', $from = null, $to = null, string $contentType = self::contentTypes['exportTransfer'][0])
     {
-        return $this->transferExportTransferAsyncWithHttpInfo($recipient, $status, $from, $to, $contentType)
+        return $this->exportTransferAsyncWithHttpInfo($recipient, $status, $from, $to, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1413,7 +1768,7 @@ class TransferApi
     }
 
     /**
-     * Operation transferExportTransferAsyncWithHttpInfo
+     * Operation exportTransferAsyncWithHttpInfo
      *
      * Export Transfers
      *
@@ -1421,15 +1776,15 @@ class TransferApi
      * @param  string|null $status Export transfer by status (optional, default to 'pending')
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferExportTransfer'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportTransfer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferExportTransferAsyncWithHttpInfo($recipient = null, $status = 'pending', $from = null, $to = null, string $contentType = self::contentTypes['transferExportTransfer'][0])
+    public function exportTransferAsyncWithHttpInfo($recipient = null, $status = 'pending', $from = null, $to = null, string $contentType = self::contentTypes['exportTransfer'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\Response';
-        $request = $this->transferExportTransferRequest($recipient, $status, $from, $to, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\Response';
+        $request = $this->exportTransferRequest($recipient, $status, $from, $to, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1468,18 +1823,18 @@ class TransferApi
     }
 
     /**
-     * Create request for operation 'transferExportTransfer'
+     * Create request for operation 'exportTransfer'
      *
      * @param  string|null $recipient Export transfer by the recipient code (optional)
      * @param  string|null $status Export transfer by status (optional, default to 'pending')
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferExportTransfer'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportTransfer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transferExportTransferRequest($recipient = null, $status = 'pending', $from = null, $to = null, string $contentType = self::contentTypes['transferExportTransfer'][0])
+    public function exportTransferRequest($recipient = null, $status = 'pending', $from = null, $to = null, string $contentType = self::contentTypes['exportTransfer'][0])
     {
 
 
@@ -1592,38 +1947,38 @@ class TransferApi
     }
 
     /**
-     * Operation transferFetch
+     * Operation fetch
      *
      * Fetch Transfer
      *
-     * @param  string $id_or_code The transfer ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFetch'] to see the possible values for this operation
+     * @param  string $idOrCode The transfer ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransferFetchResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransferFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transferFetch($id_or_code, string $contentType = self::contentTypes['transferFetch'][0])
+    public function fetch($idOrCode, string $contentType = self::contentTypes['fetch'][0])
     {
-        list($response) = $this->transferFetchWithHttpInfo($id_or_code, $contentType);
+        list($response) = $this->fetchWithHttpInfo($idOrCode, $contentType);
         return $response;
     }
 
     /**
-     * Operation transferFetchWithHttpInfo
+     * Operation fetchWithHttpInfo
      *
      * Fetch Transfer
      *
-     * @param  string $id_or_code The transfer ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFetch'] to see the possible values for this operation
+     * @param  string $idOrCode The transfer ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransferFetchResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransferFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transferFetchWithHttpInfo($id_or_code, string $contentType = self::contentTypes['transferFetch'][0])
+    public function fetchWithHttpInfo($idOrCode, string $contentType = self::contentTypes['fetch'][0])
     {
-        $request = $this->transferFetchRequest($id_or_code, $contentType);
+        $request = $this->fetchRequest($idOrCode, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1651,19 +2006,19 @@ class TransferApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransferFetchResponse',
+                        '\Alexasomba\Paystack\Model\TransferFetchResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1685,7 +2040,7 @@ class TransferApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransferFetchResponse',
+                '\Alexasomba\Paystack\Model\TransferFetchResponse',
                 $request,
                 $response,
             );
@@ -1694,7 +2049,7 @@ class TransferApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransferFetchResponse',
+                        '\Alexasomba\Paystack\Model\TransferFetchResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1702,7 +2057,7 @@ class TransferApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1710,7 +2065,7 @@ class TransferApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1723,19 +2078,19 @@ class TransferApi
     }
 
     /**
-     * Operation transferFetchAsync
+     * Operation fetchAsync
      *
      * Fetch Transfer
      *
-     * @param  string $id_or_code The transfer ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFetch'] to see the possible values for this operation
+     * @param  string $idOrCode The transfer ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferFetchAsync($id_or_code, string $contentType = self::contentTypes['transferFetch'][0])
+    public function fetchAsync($idOrCode, string $contentType = self::contentTypes['fetch'][0])
     {
-        return $this->transferFetchAsyncWithHttpInfo($id_or_code, $contentType)
+        return $this->fetchAsyncWithHttpInfo($idOrCode, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1744,20 +2099,20 @@ class TransferApi
     }
 
     /**
-     * Operation transferFetchAsyncWithHttpInfo
+     * Operation fetchAsyncWithHttpInfo
      *
      * Fetch Transfer
      *
-     * @param  string $id_or_code The transfer ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFetch'] to see the possible values for this operation
+     * @param  string $idOrCode The transfer ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferFetchAsyncWithHttpInfo($id_or_code, string $contentType = self::contentTypes['transferFetch'][0])
+    public function fetchAsyncWithHttpInfo($idOrCode, string $contentType = self::contentTypes['fetch'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransferFetchResponse';
-        $request = $this->transferFetchRequest($id_or_code, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransferFetchResponse';
+        $request = $this->fetchRequest($idOrCode, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1796,21 +2151,21 @@ class TransferApi
     }
 
     /**
-     * Create request for operation 'transferFetch'
+     * Create request for operation 'fetch'
      *
-     * @param  string $id_or_code The transfer ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFetch'] to see the possible values for this operation
+     * @param  string $idOrCode The transfer ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transferFetchRequest($id_or_code, string $contentType = self::contentTypes['transferFetch'][0])
+    public function fetchRequest($idOrCode, string $contentType = self::contentTypes['fetch'][0])
     {
 
-        // verify the required parameter 'id_or_code' is set
-        if ($id_or_code === null || (is_array($id_or_code) && count($id_or_code) === 0)) {
+        // verify the required parameter 'idOrCode' is set
+        if ($idOrCode === null || (is_array($idOrCode) && count($idOrCode) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id_or_code when calling transferFetch'
+                'Missing the required parameter $idOrCode when calling fetch'
             );
         }
 
@@ -1825,10 +2180,10 @@ class TransferApi
 
 
         // path params
-        if ($id_or_code !== null) {
+        if ($idOrCode !== null) {
             $resourcePath = str_replace(
                 '{' . 'id_or_code' . '}',
-                ObjectSerializer::toPathValue($id_or_code),
+                ObjectSerializer::toPathValue($idOrCode),
                 $resourcePath
             );
         }
@@ -1892,38 +2247,38 @@ class TransferApi
     }
 
     /**
-     * Operation transferFinalize
+     * Operation finalize
      *
      * Finalize Transfer
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferFinalize|null $transfer_finalize transfer_finalize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFinalize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferFinalize|null $transferFinalize transferFinalize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalize'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error
      */
-    public function transferFinalize($transfer_finalize = null, string $contentType = self::contentTypes['transferFinalize'][0])
+    public function finalize($transferFinalize = null, string $contentType = self::contentTypes['finalize'][0])
     {
-        list($response) = $this->transferFinalizeWithHttpInfo($transfer_finalize, $contentType);
+        list($response) = $this->finalizeWithHttpInfo($transferFinalize, $contentType);
         return $response;
     }
 
     /**
-     * Operation transferFinalizeWithHttpInfo
+     * Operation finalizeWithHttpInfo
      *
      * Finalize Transfer
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferFinalize|null $transfer_finalize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFinalize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferFinalize|null $transferFinalize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalize'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transferFinalizeWithHttpInfo($transfer_finalize = null, string $contentType = self::contentTypes['transferFinalize'][0])
+    public function finalizeWithHttpInfo($transferFinalize = null, string $contentType = self::contentTypes['finalize'][0])
     {
-        $request = $this->transferFinalizeRequest($transfer_finalize, $contentType);
+        $request = $this->finalizeRequest($transferFinalize, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1951,13 +2306,13 @@ class TransferApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1979,7 +2334,7 @@ class TransferApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\Response',
+                '\Alexasomba\Paystack\Model\Response',
                 $request,
                 $response,
             );
@@ -1988,7 +2343,7 @@ class TransferApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1996,7 +2351,7 @@ class TransferApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2009,19 +2364,19 @@ class TransferApi
     }
 
     /**
-     * Operation transferFinalizeAsync
+     * Operation finalizeAsync
      *
      * Finalize Transfer
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferFinalize|null $transfer_finalize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFinalize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferFinalize|null $transferFinalize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalize'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferFinalizeAsync($transfer_finalize = null, string $contentType = self::contentTypes['transferFinalize'][0])
+    public function finalizeAsync($transferFinalize = null, string $contentType = self::contentTypes['finalize'][0])
     {
-        return $this->transferFinalizeAsyncWithHttpInfo($transfer_finalize, $contentType)
+        return $this->finalizeAsyncWithHttpInfo($transferFinalize, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2030,20 +2385,20 @@ class TransferApi
     }
 
     /**
-     * Operation transferFinalizeAsyncWithHttpInfo
+     * Operation finalizeAsyncWithHttpInfo
      *
      * Finalize Transfer
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferFinalize|null $transfer_finalize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFinalize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferFinalize|null $transferFinalize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalize'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferFinalizeAsyncWithHttpInfo($transfer_finalize = null, string $contentType = self::contentTypes['transferFinalize'][0])
+    public function finalizeAsyncWithHttpInfo($transferFinalize = null, string $contentType = self::contentTypes['finalize'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\Response';
-        $request = $this->transferFinalizeRequest($transfer_finalize, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\Response';
+        $request = $this->finalizeRequest($transferFinalize, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2082,15 +2437,15 @@ class TransferApi
     }
 
     /**
-     * Create request for operation 'transferFinalize'
+     * Create request for operation 'finalize'
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferFinalize|null $transfer_finalize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferFinalize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferFinalize|null $transferFinalize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalize'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transferFinalizeRequest($transfer_finalize = null, string $contentType = self::contentTypes['transferFinalize'][0])
+    public function finalizeRequest($transferFinalize = null, string $contentType = self::contentTypes['finalize'][0])
     {
 
 
@@ -2113,12 +2468,12 @@ class TransferApi
         );
 
         // for model (json/xml)
-        if (isset($transfer_finalize)) {
+        if (isset($transferFinalize)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transfer_finalize));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transferFinalize));
             } else {
-                $httpBody = $transfer_finalize;
+                $httpBody = $transferFinalize;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2171,38 +2526,38 @@ class TransferApi
     }
 
     /**
-     * Operation transferInitiate
+     * Operation initiate
      *
      * Initiate Transfer
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferInitiate|null $transfer_initiate transfer_initiate (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferInitiate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferInitiate|null $transferInitiate transferInitiate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiate'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransferCreateResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransferCreateResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function transferInitiate($transfer_initiate = null, string $contentType = self::contentTypes['transferInitiate'][0])
+    public function initiate($transferInitiate = null, string $contentType = self::contentTypes['initiate'][0])
     {
-        list($response) = $this->transferInitiateWithHttpInfo($transfer_initiate, $contentType);
+        list($response) = $this->initiateWithHttpInfo($transferInitiate, $contentType);
         return $response;
     }
 
     /**
-     * Operation transferInitiateWithHttpInfo
+     * Operation initiateWithHttpInfo
      *
      * Initiate Transfer
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferInitiate|null $transfer_initiate (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferInitiate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferInitiate|null $transferInitiate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiate'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransferCreateResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransferCreateResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transferInitiateWithHttpInfo($transfer_initiate = null, string $contentType = self::contentTypes['transferInitiate'][0])
+    public function initiateWithHttpInfo($transferInitiate = null, string $contentType = self::contentTypes['initiate'][0])
     {
-        $request = $this->transferInitiateRequest($transfer_initiate, $contentType);
+        $request = $this->initiateRequest($transferInitiate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2230,13 +2585,13 @@ class TransferApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransferCreateResponse',
+                        '\Alexasomba\Paystack\Model\TransferCreateResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -2258,7 +2613,7 @@ class TransferApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransferCreateResponse',
+                '\Alexasomba\Paystack\Model\TransferCreateResponse',
                 $request,
                 $response,
             );
@@ -2267,7 +2622,7 @@ class TransferApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransferCreateResponse',
+                        '\Alexasomba\Paystack\Model\TransferCreateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2275,7 +2630,7 @@ class TransferApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2288,19 +2643,19 @@ class TransferApi
     }
 
     /**
-     * Operation transferInitiateAsync
+     * Operation initiateAsync
      *
      * Initiate Transfer
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferInitiate|null $transfer_initiate (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferInitiate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferInitiate|null $transferInitiate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferInitiateAsync($transfer_initiate = null, string $contentType = self::contentTypes['transferInitiate'][0])
+    public function initiateAsync($transferInitiate = null, string $contentType = self::contentTypes['initiate'][0])
     {
-        return $this->transferInitiateAsyncWithHttpInfo($transfer_initiate, $contentType)
+        return $this->initiateAsyncWithHttpInfo($transferInitiate, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2309,20 +2664,20 @@ class TransferApi
     }
 
     /**
-     * Operation transferInitiateAsyncWithHttpInfo
+     * Operation initiateAsyncWithHttpInfo
      *
      * Initiate Transfer
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferInitiate|null $transfer_initiate (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferInitiate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferInitiate|null $transferInitiate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferInitiateAsyncWithHttpInfo($transfer_initiate = null, string $contentType = self::contentTypes['transferInitiate'][0])
+    public function initiateAsyncWithHttpInfo($transferInitiate = null, string $contentType = self::contentTypes['initiate'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransferCreateResponse';
-        $request = $this->transferInitiateRequest($transfer_initiate, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransferCreateResponse';
+        $request = $this->initiateRequest($transferInitiate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2361,15 +2716,15 @@ class TransferApi
     }
 
     /**
-     * Create request for operation 'transferInitiate'
+     * Create request for operation 'initiate'
      *
-     * @param  \Alexasomba\\Paystack\Model\TransferInitiate|null $transfer_initiate (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferInitiate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferInitiate|null $transferInitiate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transferInitiateRequest($transfer_initiate = null, string $contentType = self::contentTypes['transferInitiate'][0])
+    public function initiateRequest($transferInitiate = null, string $contentType = self::contentTypes['initiate'][0])
     {
 
 
@@ -2392,12 +2747,12 @@ class TransferApi
         );
 
         // for model (json/xml)
-        if (isset($transfer_initiate)) {
+        if (isset($transferInitiate)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transfer_initiate));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transferInitiate));
             } else {
-                $httpBody = $transfer_initiate;
+                $httpBody = $transferInitiate;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2450,46 +2805,38 @@ class TransferApi
     }
 
     /**
-     * Operation transferList
+     * Operation resendOtp
      *
-     * List Transfers
+     * Resend OTP for Transfer
      *
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  int|null $recipient Filter by the recipient ID (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferList'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferResendOTP|null $transferResendOTP transferResendOTP (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendOtp'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransferListResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransferResendsOtpResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function transferList($per_page = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['transferList'][0])
+    public function resendOtp($transferResendOTP = null, string $contentType = self::contentTypes['resendOtp'][0])
     {
-        list($response) = $this->transferListWithHttpInfo($per_page, $page, $from, $to, $recipient, $contentType);
+        list($response) = $this->resendOtpWithHttpInfo($transferResendOTP, $contentType);
         return $response;
     }
 
     /**
-     * Operation transferListWithHttpInfo
+     * Operation resendOtpWithHttpInfo
      *
-     * List Transfers
+     * Resend OTP for Transfer
      *
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  int|null $recipient Filter by the recipient ID (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferList'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferResendOTP|null $transferResendOTP (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendOtp'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransferListResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransferResendsOtpResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transferListWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['transferList'][0])
+    public function resendOtpWithHttpInfo($transferResendOTP = null, string $contentType = self::contentTypes['resendOtp'][0])
     {
-        $request = $this->transferListRequest($per_page, $page, $from, $to, $recipient, $contentType);
+        $request = $this->resendOtpRequest($transferResendOTP, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2517,19 +2864,13 @@ class TransferApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransferListResponse',
+                        '\Alexasomba\Paystack\Model\TransferResendsOtpResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -2551,7 +2892,7 @@ class TransferApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransferListResponse',
+                '\Alexasomba\Paystack\Model\TransferResendsOtpResponse',
                 $request,
                 $response,
             );
@@ -2560,7 +2901,7 @@ class TransferApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransferListResponse',
+                        '\Alexasomba\Paystack\Model\TransferResendsOtpResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2568,15 +2909,7 @@ class TransferApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2589,23 +2922,19 @@ class TransferApi
     }
 
     /**
-     * Operation transferListAsync
+     * Operation resendOtpAsync
      *
-     * List Transfers
+     * Resend OTP for Transfer
      *
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  int|null $recipient Filter by the recipient ID (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferList'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferResendOTP|null $transferResendOTP (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendOtp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferListAsync($per_page = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['transferList'][0])
+    public function resendOtpAsync($transferResendOTP = null, string $contentType = self::contentTypes['resendOtp'][0])
     {
-        return $this->transferListAsyncWithHttpInfo($per_page, $page, $from, $to, $recipient, $contentType)
+        return $this->resendOtpAsyncWithHttpInfo($transferResendOTP, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2614,24 +2943,20 @@ class TransferApi
     }
 
     /**
-     * Operation transferListAsyncWithHttpInfo
+     * Operation resendOtpAsyncWithHttpInfo
      *
-     * List Transfers
+     * Resend OTP for Transfer
      *
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  int|null $recipient Filter by the recipient ID (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferList'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferResendOTP|null $transferResendOTP (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendOtp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferListAsyncWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['transferList'][0])
+    public function resendOtpAsyncWithHttpInfo($transferResendOTP = null, string $contentType = self::contentTypes['resendOtp'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransferListResponse';
-        $request = $this->transferListRequest($per_page, $page, $from, $to, $recipient, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransferResendsOtpResponse';
+        $request = $this->resendOtpRequest($transferResendOTP, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2670,340 +2995,15 @@ class TransferApi
     }
 
     /**
-     * Create request for operation 'transferList'
+     * Create request for operation 'resendOtp'
      *
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specify we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what transfer you want to page. If not specify we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  int|null $recipient Filter by the recipient ID (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferList'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransferResendOTP|null $transferResendOTP (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendOtp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transferListRequest($per_page = null, $page = null, $from = null, $to = null, $recipient = null, string $contentType = self::contentTypes['transferList'][0])
-    {
-
-
-
-
-
-
-
-        $resourcePath = '/transfer';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
-            'perPage', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $from,
-            'from', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $to,
-            'to', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $recipient,
-            'recipient', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation transferResendOtp
-     *
-     * Resend OTP for Transfer
-     *
-     * @param  \Alexasomba\\Paystack\Model\TransferResendOTP|null $transfer_resend_otp transfer_resend_otp (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferResendOtp'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransferResendsOtpResponse|\Alexasomba\\Paystack\Model\Error
-     */
-    public function transferResendOtp($transfer_resend_otp = null, string $contentType = self::contentTypes['transferResendOtp'][0])
-    {
-        list($response) = $this->transferResendOtpWithHttpInfo($transfer_resend_otp, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation transferResendOtpWithHttpInfo
-     *
-     * Resend OTP for Transfer
-     *
-     * @param  \Alexasomba\\Paystack\Model\TransferResendOTP|null $transfer_resend_otp (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferResendOtp'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransferResendsOtpResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function transferResendOtpWithHttpInfo($transfer_resend_otp = null, string $contentType = self::contentTypes['transferResendOtp'][0])
-    {
-        $request = $this->transferResendOtpRequest($transfer_resend_otp, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransferResendsOtpResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransferResendsOtpResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransferResendsOtpResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation transferResendOtpAsync
-     *
-     * Resend OTP for Transfer
-     *
-     * @param  \Alexasomba\\Paystack\Model\TransferResendOTP|null $transfer_resend_otp (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferResendOtp'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function transferResendOtpAsync($transfer_resend_otp = null, string $contentType = self::contentTypes['transferResendOtp'][0])
-    {
-        return $this->transferResendOtpAsyncWithHttpInfo($transfer_resend_otp, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation transferResendOtpAsyncWithHttpInfo
-     *
-     * Resend OTP for Transfer
-     *
-     * @param  \Alexasomba\\Paystack\Model\TransferResendOTP|null $transfer_resend_otp (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferResendOtp'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function transferResendOtpAsyncWithHttpInfo($transfer_resend_otp = null, string $contentType = self::contentTypes['transferResendOtp'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\TransferResendsOtpResponse';
-        $request = $this->transferResendOtpRequest($transfer_resend_otp, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'transferResendOtp'
-     *
-     * @param  \Alexasomba\\Paystack\Model\TransferResendOTP|null $transfer_resend_otp (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferResendOtp'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function transferResendOtpRequest($transfer_resend_otp = null, string $contentType = self::contentTypes['transferResendOtp'][0])
+    public function resendOtpRequest($transferResendOTP = null, string $contentType = self::contentTypes['resendOtp'][0])
     {
 
 
@@ -3026,12 +3026,12 @@ class TransferApi
         );
 
         // for model (json/xml)
-        if (isset($transfer_resend_otp)) {
+        if (isset($transferResendOTP)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transfer_resend_otp));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transferResendOTP));
             } else {
-                $httpBody = $transfer_resend_otp;
+                $httpBody = $transferResendOTP;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3084,38 +3084,38 @@ class TransferApi
     }
 
     /**
-     * Operation transferVerify
+     * Operation verify
      *
      * Verify Transfer
      *
      * @param  string $reference Transfer reference (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransferVerifyResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransferVerifyResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transferVerify($reference, string $contentType = self::contentTypes['transferVerify'][0])
+    public function verify($reference, string $contentType = self::contentTypes['verify'][0])
     {
-        list($response) = $this->transferVerifyWithHttpInfo($reference, $contentType);
+        list($response) = $this->verifyWithHttpInfo($reference, $contentType);
         return $response;
     }
 
     /**
-     * Operation transferVerifyWithHttpInfo
+     * Operation verifyWithHttpInfo
      *
      * Verify Transfer
      *
      * @param  string $reference Transfer reference (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransferVerifyResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransferVerifyResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transferVerifyWithHttpInfo($reference, string $contentType = self::contentTypes['transferVerify'][0])
+    public function verifyWithHttpInfo($reference, string $contentType = self::contentTypes['verify'][0])
     {
-        $request = $this->transferVerifyRequest($reference, $contentType);
+        $request = $this->verifyRequest($reference, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3143,19 +3143,19 @@ class TransferApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransferVerifyResponse',
+                        '\Alexasomba\Paystack\Model\TransferVerifyResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -3177,7 +3177,7 @@ class TransferApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransferVerifyResponse',
+                '\Alexasomba\Paystack\Model\TransferVerifyResponse',
                 $request,
                 $response,
             );
@@ -3186,7 +3186,7 @@ class TransferApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransferVerifyResponse',
+                        '\Alexasomba\Paystack\Model\TransferVerifyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3194,7 +3194,7 @@ class TransferApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3202,7 +3202,7 @@ class TransferApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3215,19 +3215,19 @@ class TransferApi
     }
 
     /**
-     * Operation transferVerifyAsync
+     * Operation verifyAsync
      *
      * Verify Transfer
      *
      * @param  string $reference Transfer reference (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferVerifyAsync($reference, string $contentType = self::contentTypes['transferVerify'][0])
+    public function verifyAsync($reference, string $contentType = self::contentTypes['verify'][0])
     {
-        return $this->transferVerifyAsyncWithHttpInfo($reference, $contentType)
+        return $this->verifyAsyncWithHttpInfo($reference, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3236,20 +3236,20 @@ class TransferApi
     }
 
     /**
-     * Operation transferVerifyAsyncWithHttpInfo
+     * Operation verifyAsyncWithHttpInfo
      *
      * Verify Transfer
      *
      * @param  string $reference Transfer reference (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transferVerifyAsyncWithHttpInfo($reference, string $contentType = self::contentTypes['transferVerify'][0])
+    public function verifyAsyncWithHttpInfo($reference, string $contentType = self::contentTypes['verify'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransferVerifyResponse';
-        $request = $this->transferVerifyRequest($reference, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransferVerifyResponse';
+        $request = $this->verifyRequest($reference, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3288,21 +3288,21 @@ class TransferApi
     }
 
     /**
-     * Create request for operation 'transferVerify'
+     * Create request for operation 'verify'
      *
      * @param  string $reference Transfer reference (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transferVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transferVerifyRequest($reference, string $contentType = self::contentTypes['transferVerify'][0])
+    public function verifyRequest($reference, string $contentType = self::contentTypes['verify'][0])
     {
 
         // verify the required parameter 'reference' is set
         if ($reference === null || (is_array($reference) && count($reference) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $reference when calling transferVerify'
+                'Missing the required parameter $reference when calling verify'
             );
         }
 

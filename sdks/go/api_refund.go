@@ -25,31 +25,31 @@ import (
 // RefundAPIService RefundAPI service
 type RefundAPIService service
 
-type ApiRefundCreateRequest struct {
+type ApiCreateRequest struct {
 	ctx context.Context
 	ApiService *RefundAPIService
 	refundCreate *RefundCreate
 }
 
-func (r ApiRefundCreateRequest) RefundCreate(refundCreate RefundCreate) ApiRefundCreateRequest {
+func (r ApiCreateRequest) RefundCreate(refundCreate RefundCreate) ApiCreateRequest {
 	r.refundCreate = &refundCreate
 	return r
 }
 
-func (r ApiRefundCreateRequest) Execute() (*RefundCreateResponse, *http.Response, error) {
-	return r.ApiService.RefundCreateExecute(r)
+func (r ApiCreateRequest) Execute() (*RefundCreateResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-RefundCreate Create Refund
+Create Create Refund
 
 Initiate a refund for a previously completed transaction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRefundCreateRequest
+ @return ApiCreateRequest
 */
-func (a *RefundAPIService) RefundCreate(ctx context.Context) ApiRefundCreateRequest {
-	return ApiRefundCreateRequest{
+func (a *RefundAPIService) Create(ctx context.Context) ApiCreateRequest {
+	return ApiCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *RefundAPIService) RefundCreate(ctx context.Context) ApiRefundCreateRequ
 
 // Execute executes the request
 //  @return RefundCreateResponse
-func (a *RefundAPIService) RefundCreateExecute(r ApiRefundCreateRequest) (*RefundCreateResponse, *http.Response, error) {
+func (a *RefundAPIService) CreateExecute(r ApiCreateRequest) (*RefundCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -65,7 +65,7 @@ func (a *RefundAPIService) RefundCreateExecute(r ApiRefundCreateRequest) (*Refun
 		localVarReturnValue  *RefundCreateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RefundAPIService.RefundCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RefundAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -143,27 +143,27 @@ func (a *RefundAPIService) RefundCreateExecute(r ApiRefundCreateRequest) (*Refun
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRefundFetchRequest struct {
+type ApiFetchRequest struct {
 	ctx context.Context
 	ApiService *RefundAPIService
 	id int32
 }
 
-func (r ApiRefundFetchRequest) Execute() (*RefundFetchResponse, *http.Response, error) {
-	return r.ApiService.RefundFetchExecute(r)
+func (r ApiFetchRequest) Execute() (*RefundFetchResponse, *http.Response, error) {
+	return r.ApiService.FetchExecute(r)
 }
 
 /*
-RefundFetch Fetch Refund
+Fetch Fetch Refund
 
 Get a previously created refund
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identifier of the refund
- @return ApiRefundFetchRequest
+ @return ApiFetchRequest
 */
-func (a *RefundAPIService) RefundFetch(ctx context.Context, id int32) ApiRefundFetchRequest {
-	return ApiRefundFetchRequest{
+func (a *RefundAPIService) Fetch(ctx context.Context, id int32) ApiFetchRequest {
+	return ApiFetchRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -172,7 +172,7 @@ func (a *RefundAPIService) RefundFetch(ctx context.Context, id int32) ApiRefundF
 
 // Execute executes the request
 //  @return RefundFetchResponse
-func (a *RefundAPIService) RefundFetchExecute(r ApiRefundFetchRequest) (*RefundFetchResponse, *http.Response, error) {
+func (a *RefundAPIService) FetchExecute(r ApiFetchRequest) (*RefundFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -180,7 +180,7 @@ func (a *RefundAPIService) RefundFetchExecute(r ApiRefundFetchRequest) (*RefundF
 		localVarReturnValue  *RefundFetchResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RefundAPIService.RefundFetch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RefundAPIService.Fetch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -268,7 +268,7 @@ func (a *RefundAPIService) RefundFetchExecute(r ApiRefundFetchRequest) (*RefundF
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRefundListRequest struct {
+type ApiListRequest struct {
 	ctx context.Context
 	ApiService *RefundAPIService
 	transaction *string
@@ -280,55 +280,55 @@ type ApiRefundListRequest struct {
 }
 
 // The transaction ID of the refunded transaction
-func (r ApiRefundListRequest) Transaction(transaction string) ApiRefundListRequest {
+func (r ApiListRequest) Transaction(transaction string) ApiListRequest {
 	r.transaction = &transaction
 	return r
 }
 
 // Any of the supported currency
-func (r ApiRefundListRequest) Currency(currency string) ApiRefundListRequest {
+func (r ApiListRequest) Currency(currency string) ApiListRequest {
 	r.currency = &currency
 	return r
 }
 
 // Number of records to fetch per page
-func (r ApiRefundListRequest) PerPage(perPage int32) ApiRefundListRequest {
+func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiRefundListRequest) Page(page int32) ApiRefundListRequest {
+func (r ApiListRequest) Page(page int32) ApiListRequest {
 	r.page = &page
 	return r
 }
 
 // The start date
-func (r ApiRefundListRequest) From(from time.Time) ApiRefundListRequest {
+func (r ApiListRequest) From(from time.Time) ApiListRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiRefundListRequest) To(to time.Time) ApiRefundListRequest {
+func (r ApiListRequest) To(to time.Time) ApiListRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiRefundListRequest) Execute() (*RefundListResponse, *http.Response, error) {
-	return r.ApiService.RefundListExecute(r)
+func (r ApiListRequest) Execute() (*RefundListResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-RefundList List Refunds
+List List Refunds
 
 List previously created refunds
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRefundListRequest
+ @return ApiListRequest
 */
-func (a *RefundAPIService) RefundList(ctx context.Context) ApiRefundListRequest {
-	return ApiRefundListRequest{
+func (a *RefundAPIService) List(ctx context.Context) ApiListRequest {
+	return ApiListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -336,7 +336,7 @@ func (a *RefundAPIService) RefundList(ctx context.Context) ApiRefundListRequest 
 
 // Execute executes the request
 //  @return RefundListResponse
-func (a *RefundAPIService) RefundListExecute(r ApiRefundListRequest) (*RefundListResponse, *http.Response, error) {
+func (a *RefundAPIService) ListExecute(r ApiListRequest) (*RefundListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -344,7 +344,7 @@ func (a *RefundAPIService) RefundListExecute(r ApiRefundListRequest) (*RefundLis
 		localVarReturnValue  *RefundListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RefundAPIService.RefundList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RefundAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -453,33 +453,33 @@ func (a *RefundAPIService) RefundListExecute(r ApiRefundListRequest) (*RefundLis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRefundRetryRequest struct {
+type ApiRetryRequest struct {
 	ctx context.Context
 	ApiService *RefundAPIService
 	id int32
 	refundRetry *RefundRetry
 }
 
-func (r ApiRefundRetryRequest) RefundRetry(refundRetry RefundRetry) ApiRefundRetryRequest {
+func (r ApiRetryRequest) RefundRetry(refundRetry RefundRetry) ApiRetryRequest {
 	r.refundRetry = &refundRetry
 	return r
 }
 
-func (r ApiRefundRetryRequest) Execute() (*RefundRetryResponse, *http.Response, error) {
-	return r.ApiService.RefundRetryExecute(r)
+func (r ApiRetryRequest) Execute() (*RefundRetryResponse, *http.Response, error) {
+	return r.ApiService.RetryExecute(r)
 }
 
 /*
-RefundRetry Retry Refund
+Retry Retry Refund
 
 Retry a refund with a `needs-attention` status by providing the bank account details of a customer.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identifier of the refund
- @return ApiRefundRetryRequest
+ @return ApiRetryRequest
 */
-func (a *RefundAPIService) RefundRetry(ctx context.Context, id int32) ApiRefundRetryRequest {
-	return ApiRefundRetryRequest{
+func (a *RefundAPIService) Retry(ctx context.Context, id int32) ApiRetryRequest {
+	return ApiRetryRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -488,7 +488,7 @@ func (a *RefundAPIService) RefundRetry(ctx context.Context, id int32) ApiRefundR
 
 // Execute executes the request
 //  @return RefundRetryResponse
-func (a *RefundAPIService) RefundRetryExecute(r ApiRefundRetryRequest) (*RefundRetryResponse, *http.Response, error) {
+func (a *RefundAPIService) RetryExecute(r ApiRetryRequest) (*RefundRetryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -496,7 +496,7 @@ func (a *RefundAPIService) RefundRetryExecute(r ApiRefundRetryRequest) (*RefundR
 		localVarReturnValue  *RefundRetryResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RefundAPIService.RefundRetry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RefundAPIService.Retry")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * VerifyResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,31 +62,31 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'domain' => 'string',
         'status' => 'string',
         'reference' => 'string',
-        'receipt_number' => 'string',
+        'receiptNumber' => 'string',
         'amount' => 'int',
         'message' => 'string',
-        'gateway_response' => 'string',
+        'gatewayResponse' => 'string',
         'channel' => 'string',
         'currency' => 'string',
-        'ip_address' => 'string',
-        'metadata' => '\Alexasomba\\Paystack\Model\VerifyResponseDataMetadata',
-        'log' => '\Alexasomba\\Paystack\Model\VerifyResponseDataLog',
+        'ipAddress' => 'string',
+        'metadata' => '\Alexasomba\Paystack\Model\VerifyResponseDataMetadata',
+        'log' => '\Alexasomba\Paystack\Model\VerifyResponseDataLog',
         'fees' => 'int',
-        'fees_split' => 'mixed',
-        'authorization' => '\Alexasomba\\Paystack\Model\VerifyResponseDataAuthorization',
-        'customer' => '\Alexasomba\\Paystack\Model\VerifyResponseDataCustomer',
-        'plan' => '\Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataMetadata',
+        'feesSplit' => 'mixed',
+        'authorization' => '\Alexasomba\Paystack\Model\VerifyResponseDataAuthorization',
+        'customer' => '\Alexasomba\Paystack\Model\VerifyResponseDataCustomer',
+        'plan' => '\Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata',
         'split' => 'object',
-        'order_id' => 'mixed',
-        'paid_at' => 'string',
-        'created_at' => 'string',
-        'requested_amount' => 'int',
-        'pos_transaction_data' => 'mixed',
+        'orderId' => 'mixed',
+        'paidAt' => 'string',
+        'createdAt' => 'string',
+        'requestedAmount' => 'int',
+        'posTransactionData' => 'mixed',
         'source' => 'mixed',
-        'fees_breakdown' => 'mixed',
+        'feesBreakdown' => 'mixed',
         'connect' => 'mixed',
-        'transaction_date' => 'string',
-        'plan_object' => '\Alexasomba\\Paystack\Model\VerifyResponseDataPlanObject',
+        'transactionDate' => 'string',
+        'planObject' => '\Alexasomba\Paystack\Model\VerifyResponseDataPlanObject',
         'subaccount' => 'object'
     ];
 
@@ -102,31 +102,31 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'domain' => null,
         'status' => null,
         'reference' => null,
-        'receipt_number' => null,
+        'receiptNumber' => null,
         'amount' => null,
         'message' => null,
-        'gateway_response' => null,
+        'gatewayResponse' => null,
         'channel' => null,
         'currency' => null,
-        'ip_address' => null,
+        'ipAddress' => null,
         'metadata' => null,
         'log' => null,
         'fees' => null,
-        'fees_split' => null,
+        'feesSplit' => null,
         'authorization' => null,
         'customer' => null,
         'plan' => null,
         'split' => null,
-        'order_id' => null,
-        'paid_at' => null,
-        'created_at' => null,
-        'requested_amount' => null,
-        'pos_transaction_data' => null,
+        'orderId' => null,
+        'paidAt' => null,
+        'createdAt' => null,
+        'requestedAmount' => null,
+        'posTransactionData' => null,
         'source' => null,
-        'fees_breakdown' => null,
+        'feesBreakdown' => null,
         'connect' => null,
-        'transaction_date' => null,
-        'plan_object' => null,
+        'transactionDate' => null,
+        'planObject' => null,
         'subaccount' => null
     ];
 
@@ -140,31 +140,31 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'domain' => false,
         'status' => false,
         'reference' => false,
-        'receipt_number' => true,
+        'receiptNumber' => true,
         'amount' => false,
         'message' => true,
-        'gateway_response' => false,
+        'gatewayResponse' => false,
         'channel' => false,
         'currency' => false,
-        'ip_address' => true,
+        'ipAddress' => true,
         'metadata' => true,
         'log' => true,
         'fees' => true,
-        'fees_split' => true,
+        'feesSplit' => true,
         'authorization' => false,
         'customer' => false,
         'plan' => true,
         'split' => true,
-        'order_id' => true,
-        'paid_at' => true,
-        'created_at' => false,
-        'requested_amount' => false,
-        'pos_transaction_data' => true,
+        'orderId' => true,
+        'paidAt' => true,
+        'createdAt' => false,
+        'requestedAmount' => false,
+        'posTransactionData' => true,
         'source' => true,
-        'fees_breakdown' => true,
+        'feesBreakdown' => true,
         'connect' => true,
-        'transaction_date' => false,
-        'plan_object' => false,
+        'transactionDate' => false,
+        'planObject' => false,
         'subaccount' => true
     ];
 
@@ -258,31 +258,31 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'domain' => 'domain',
         'status' => 'status',
         'reference' => 'reference',
-        'receipt_number' => 'receipt_number',
+        'receiptNumber' => 'receipt_number',
         'amount' => 'amount',
         'message' => 'message',
-        'gateway_response' => 'gateway_response',
+        'gatewayResponse' => 'gateway_response',
         'channel' => 'channel',
         'currency' => 'currency',
-        'ip_address' => 'ip_address',
+        'ipAddress' => 'ip_address',
         'metadata' => 'metadata',
         'log' => 'log',
         'fees' => 'fees',
-        'fees_split' => 'fees_split',
+        'feesSplit' => 'fees_split',
         'authorization' => 'authorization',
         'customer' => 'customer',
         'plan' => 'plan',
         'split' => 'split',
-        'order_id' => 'order_id',
-        'paid_at' => 'paidAt',
-        'created_at' => 'createdAt',
-        'requested_amount' => 'requested_amount',
-        'pos_transaction_data' => 'pos_transaction_data',
+        'orderId' => 'order_id',
+        'paidAt' => 'paidAt',
+        'createdAt' => 'createdAt',
+        'requestedAmount' => 'requested_amount',
+        'posTransactionData' => 'pos_transaction_data',
         'source' => 'source',
-        'fees_breakdown' => 'fees_breakdown',
+        'feesBreakdown' => 'fees_breakdown',
         'connect' => 'connect',
-        'transaction_date' => 'transaction_date',
-        'plan_object' => 'plan_object',
+        'transactionDate' => 'transaction_date',
+        'planObject' => 'plan_object',
         'subaccount' => 'subaccount'
     ];
 
@@ -296,31 +296,31 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'domain' => 'setDomain',
         'status' => 'setStatus',
         'reference' => 'setReference',
-        'receipt_number' => 'setReceiptNumber',
+        'receiptNumber' => 'setReceiptNumber',
         'amount' => 'setAmount',
         'message' => 'setMessage',
-        'gateway_response' => 'setGatewayResponse',
+        'gatewayResponse' => 'setGatewayResponse',
         'channel' => 'setChannel',
         'currency' => 'setCurrency',
-        'ip_address' => 'setIpAddress',
+        'ipAddress' => 'setIpAddress',
         'metadata' => 'setMetadata',
         'log' => 'setLog',
         'fees' => 'setFees',
-        'fees_split' => 'setFeesSplit',
+        'feesSplit' => 'setFeesSplit',
         'authorization' => 'setAuthorization',
         'customer' => 'setCustomer',
         'plan' => 'setPlan',
         'split' => 'setSplit',
-        'order_id' => 'setOrderId',
-        'paid_at' => 'setPaidAt',
-        'created_at' => 'setCreatedAt',
-        'requested_amount' => 'setRequestedAmount',
-        'pos_transaction_data' => 'setPosTransactionData',
+        'orderId' => 'setOrderId',
+        'paidAt' => 'setPaidAt',
+        'createdAt' => 'setCreatedAt',
+        'requestedAmount' => 'setRequestedAmount',
+        'posTransactionData' => 'setPosTransactionData',
         'source' => 'setSource',
-        'fees_breakdown' => 'setFeesBreakdown',
+        'feesBreakdown' => 'setFeesBreakdown',
         'connect' => 'setConnect',
-        'transaction_date' => 'setTransactionDate',
-        'plan_object' => 'setPlanObject',
+        'transactionDate' => 'setTransactionDate',
+        'planObject' => 'setPlanObject',
         'subaccount' => 'setSubaccount'
     ];
 
@@ -334,31 +334,31 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         'domain' => 'getDomain',
         'status' => 'getStatus',
         'reference' => 'getReference',
-        'receipt_number' => 'getReceiptNumber',
+        'receiptNumber' => 'getReceiptNumber',
         'amount' => 'getAmount',
         'message' => 'getMessage',
-        'gateway_response' => 'getGatewayResponse',
+        'gatewayResponse' => 'getGatewayResponse',
         'channel' => 'getChannel',
         'currency' => 'getCurrency',
-        'ip_address' => 'getIpAddress',
+        'ipAddress' => 'getIpAddress',
         'metadata' => 'getMetadata',
         'log' => 'getLog',
         'fees' => 'getFees',
-        'fees_split' => 'getFeesSplit',
+        'feesSplit' => 'getFeesSplit',
         'authorization' => 'getAuthorization',
         'customer' => 'getCustomer',
         'plan' => 'getPlan',
         'split' => 'getSplit',
-        'order_id' => 'getOrderId',
-        'paid_at' => 'getPaidAt',
-        'created_at' => 'getCreatedAt',
-        'requested_amount' => 'getRequestedAmount',
-        'pos_transaction_data' => 'getPosTransactionData',
+        'orderId' => 'getOrderId',
+        'paidAt' => 'getPaidAt',
+        'createdAt' => 'getCreatedAt',
+        'requestedAmount' => 'getRequestedAmount',
+        'posTransactionData' => 'getPosTransactionData',
         'source' => 'getSource',
-        'fees_breakdown' => 'getFeesBreakdown',
+        'feesBreakdown' => 'getFeesBreakdown',
         'connect' => 'getConnect',
-        'transaction_date' => 'getTransactionDate',
-        'plan_object' => 'getPlanObject',
+        'transactionDate' => 'getTransactionDate',
+        'planObject' => 'getPlanObject',
         'subaccount' => 'getSubaccount'
     ];
 
@@ -423,31 +423,31 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
-        $this->setIfExists('receipt_number', $data ?? [], null);
+        $this->setIfExists('receiptNumber', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('gateway_response', $data ?? [], null);
+        $this->setIfExists('gatewayResponse', $data ?? [], null);
         $this->setIfExists('channel', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('ip_address', $data ?? [], null);
+        $this->setIfExists('ipAddress', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('log', $data ?? [], null);
         $this->setIfExists('fees', $data ?? [], null);
-        $this->setIfExists('fees_split', $data ?? [], null);
+        $this->setIfExists('feesSplit', $data ?? [], null);
         $this->setIfExists('authorization', $data ?? [], null);
         $this->setIfExists('customer', $data ?? [], null);
         $this->setIfExists('plan', $data ?? [], null);
         $this->setIfExists('split', $data ?? [], null);
-        $this->setIfExists('order_id', $data ?? [], null);
-        $this->setIfExists('paid_at', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('requested_amount', $data ?? [], null);
-        $this->setIfExists('pos_transaction_data', $data ?? [], null);
+        $this->setIfExists('orderId', $data ?? [], null);
+        $this->setIfExists('paidAt', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('requestedAmount', $data ?? [], null);
+        $this->setIfExists('posTransactionData', $data ?? [], null);
         $this->setIfExists('source', $data ?? [], null);
-        $this->setIfExists('fees_breakdown', $data ?? [], null);
+        $this->setIfExists('feesBreakdown', $data ?? [], null);
         $this->setIfExists('connect', $data ?? [], null);
-        $this->setIfExists('transaction_date', $data ?? [], null);
-        $this->setIfExists('plan_object', $data ?? [], null);
+        $this->setIfExists('transactionDate', $data ?? [], null);
+        $this->setIfExists('planObject', $data ?? [], null);
         $this->setIfExists('subaccount', $data ?? [], null);
     }
 
@@ -490,8 +490,8 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['reference'] === null) {
             $invalidProperties[] = "'reference' can't be null";
         }
-        if ($this->container['receipt_number'] === null && !$this->isNullableSetToNull('receipt_number')) {
-            $invalidProperties[] = "'receipt_number' can't be null";
+        if ($this->container['receiptNumber'] === null && !$this->isNullableSetToNull('receiptNumber')) {
+            $invalidProperties[] = "'receiptNumber' can't be null";
         }
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
@@ -499,8 +499,8 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['message'] === null && !$this->isNullableSetToNull('message')) {
             $invalidProperties[] = "'message' can't be null";
         }
-        if ($this->container['gateway_response'] === null) {
-            $invalidProperties[] = "'gateway_response' can't be null";
+        if ($this->container['gatewayResponse'] === null) {
+            $invalidProperties[] = "'gatewayResponse' can't be null";
         }
         if ($this->container['channel'] === null) {
             $invalidProperties[] = "'channel' can't be null";
@@ -508,8 +508,8 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['ip_address'] === null && !$this->isNullableSetToNull('ip_address')) {
-            $invalidProperties[] = "'ip_address' can't be null";
+        if ($this->container['ipAddress'] === null && !$this->isNullableSetToNull('ipAddress')) {
+            $invalidProperties[] = "'ipAddress' can't be null";
         }
         if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
@@ -520,8 +520,8 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['fees'] === null && !$this->isNullableSetToNull('fees')) {
             $invalidProperties[] = "'fees' can't be null";
         }
-        if ($this->container['fees_split'] === null && !$this->isNullableSetToNull('fees_split')) {
-            $invalidProperties[] = "'fees_split' can't be null";
+        if ($this->container['feesSplit'] === null && !$this->isNullableSetToNull('feesSplit')) {
+            $invalidProperties[] = "'feesSplit' can't be null";
         }
         if ($this->container['authorization'] === null) {
             $invalidProperties[] = "'authorization' can't be null";
@@ -535,35 +535,35 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['split'] === null && !$this->isNullableSetToNull('split')) {
             $invalidProperties[] = "'split' can't be null";
         }
-        if ($this->container['order_id'] === null && !$this->isNullableSetToNull('order_id')) {
-            $invalidProperties[] = "'order_id' can't be null";
+        if ($this->container['orderId'] === null && !$this->isNullableSetToNull('orderId')) {
+            $invalidProperties[] = "'orderId' can't be null";
         }
-        if ($this->container['paid_at'] === null && !$this->isNullableSetToNull('paid_at')) {
-            $invalidProperties[] = "'paid_at' can't be null";
+        if ($this->container['paidAt'] === null && !$this->isNullableSetToNull('paidAt')) {
+            $invalidProperties[] = "'paidAt' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['requested_amount'] === null) {
-            $invalidProperties[] = "'requested_amount' can't be null";
+        if ($this->container['requestedAmount'] === null) {
+            $invalidProperties[] = "'requestedAmount' can't be null";
         }
-        if ($this->container['pos_transaction_data'] === null && !$this->isNullableSetToNull('pos_transaction_data')) {
-            $invalidProperties[] = "'pos_transaction_data' can't be null";
+        if ($this->container['posTransactionData'] === null && !$this->isNullableSetToNull('posTransactionData')) {
+            $invalidProperties[] = "'posTransactionData' can't be null";
         }
         if ($this->container['source'] === null && !$this->isNullableSetToNull('source')) {
             $invalidProperties[] = "'source' can't be null";
         }
-        if ($this->container['fees_breakdown'] === null && !$this->isNullableSetToNull('fees_breakdown')) {
-            $invalidProperties[] = "'fees_breakdown' can't be null";
+        if ($this->container['feesBreakdown'] === null && !$this->isNullableSetToNull('feesBreakdown')) {
+            $invalidProperties[] = "'feesBreakdown' can't be null";
         }
         if ($this->container['connect'] === null && !$this->isNullableSetToNull('connect')) {
             $invalidProperties[] = "'connect' can't be null";
         }
-        if ($this->container['transaction_date'] === null) {
-            $invalidProperties[] = "'transaction_date' can't be null";
+        if ($this->container['transactionDate'] === null) {
+            $invalidProperties[] = "'transactionDate' can't be null";
         }
-        if ($this->container['plan_object'] === null) {
-            $invalidProperties[] = "'plan_object' can't be null";
+        if ($this->container['planObject'] === null) {
+            $invalidProperties[] = "'planObject' can't be null";
         }
         if ($this->container['subaccount'] === null && !$this->isNullableSetToNull('subaccount')) {
             $invalidProperties[] = "'subaccount' can't be null";
@@ -692,35 +692,35 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets receipt_number
+     * Gets receiptNumber
      *
      * @return string|null
      */
     public function getReceiptNumber()
     {
-        return $this->container['receipt_number'];
+        return $this->container['receiptNumber'];
     }
 
     /**
-     * Sets receipt_number
+     * Sets receiptNumber
      *
-     * @param string|null $receipt_number receipt_number
+     * @param string|null $receiptNumber receiptNumber
      *
      * @return self
      */
-    public function setReceiptNumber($receipt_number)
+    public function setReceiptNumber($receiptNumber)
     {
-        if (is_null($receipt_number)) {
-            array_push($this->openAPINullablesSetToNull, 'receipt_number');
+        if (is_null($receiptNumber)) {
+            array_push($this->openAPINullablesSetToNull, 'receiptNumber');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('receipt_number', $nullablesSetToNull);
+            $index = array_search('receiptNumber', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['receipt_number'] = $receipt_number;
+        $this->container['receiptNumber'] = $receiptNumber;
 
         return $this;
     }
@@ -787,28 +787,28 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets gateway_response
+     * Gets gatewayResponse
      *
      * @return string
      */
     public function getGatewayResponse()
     {
-        return $this->container['gateway_response'];
+        return $this->container['gatewayResponse'];
     }
 
     /**
-     * Sets gateway_response
+     * Sets gatewayResponse
      *
-     * @param string $gateway_response gateway_response
+     * @param string $gatewayResponse gatewayResponse
      *
      * @return self
      */
-    public function setGatewayResponse($gateway_response)
+    public function setGatewayResponse($gatewayResponse)
     {
-        if (is_null($gateway_response)) {
-            throw new \InvalidArgumentException('non-nullable gateway_response cannot be null');
+        if (is_null($gatewayResponse)) {
+            throw new \InvalidArgumentException('non-nullable gatewayResponse cannot be null');
         }
-        $this->container['gateway_response'] = $gateway_response;
+        $this->container['gatewayResponse'] = $gatewayResponse;
 
         return $this;
     }
@@ -868,35 +868,35 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets ip_address
+     * Gets ipAddress
      *
      * @return string|null
      */
     public function getIpAddress()
     {
-        return $this->container['ip_address'];
+        return $this->container['ipAddress'];
     }
 
     /**
-     * Sets ip_address
+     * Sets ipAddress
      *
-     * @param string|null $ip_address ip_address
+     * @param string|null $ipAddress ipAddress
      *
      * @return self
      */
-    public function setIpAddress($ip_address)
+    public function setIpAddress($ipAddress)
     {
-        if (is_null($ip_address)) {
-            array_push($this->openAPINullablesSetToNull, 'ip_address');
+        if (is_null($ipAddress)) {
+            array_push($this->openAPINullablesSetToNull, 'ipAddress');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ip_address', $nullablesSetToNull);
+            $index = array_search('ipAddress', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['ip_address'] = $ip_address;
+        $this->container['ipAddress'] = $ipAddress;
 
         return $this;
     }
@@ -904,7 +904,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\\Paystack\Model\VerifyResponseDataMetadata|null
+     * @return \Alexasomba\Paystack\Model\VerifyResponseDataMetadata|null
      */
     public function getMetadata()
     {
@@ -914,7 +914,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\\Paystack\Model\VerifyResponseDataMetadata|null $metadata metadata
+     * @param \Alexasomba\Paystack\Model\VerifyResponseDataMetadata|null $metadata metadata
      *
      * @return self
      */
@@ -938,7 +938,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets log
      *
-     * @return \Alexasomba\\Paystack\Model\VerifyResponseDataLog|null
+     * @return \Alexasomba\Paystack\Model\VerifyResponseDataLog|null
      */
     public function getLog()
     {
@@ -948,7 +948,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets log
      *
-     * @param \Alexasomba\\Paystack\Model\VerifyResponseDataLog|null $log log
+     * @param \Alexasomba\Paystack\Model\VerifyResponseDataLog|null $log log
      *
      * @return self
      */
@@ -1004,35 +1004,35 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets fees_split
+     * Gets feesSplit
      *
      * @return mixed|null
      */
     public function getFeesSplit()
     {
-        return $this->container['fees_split'];
+        return $this->container['feesSplit'];
     }
 
     /**
-     * Sets fees_split
+     * Sets feesSplit
      *
-     * @param mixed|null $fees_split fees_split
+     * @param mixed|null $feesSplit feesSplit
      *
      * @return self
      */
-    public function setFeesSplit($fees_split)
+    public function setFeesSplit($feesSplit)
     {
-        if (is_null($fees_split)) {
-            array_push($this->openAPINullablesSetToNull, 'fees_split');
+        if (is_null($feesSplit)) {
+            array_push($this->openAPINullablesSetToNull, 'feesSplit');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('fees_split', $nullablesSetToNull);
+            $index = array_search('feesSplit', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['fees_split'] = $fees_split;
+        $this->container['feesSplit'] = $feesSplit;
 
         return $this;
     }
@@ -1040,7 +1040,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets authorization
      *
-     * @return \Alexasomba\\Paystack\Model\VerifyResponseDataAuthorization
+     * @return \Alexasomba\Paystack\Model\VerifyResponseDataAuthorization
      */
     public function getAuthorization()
     {
@@ -1050,7 +1050,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets authorization
      *
-     * @param \Alexasomba\\Paystack\Model\VerifyResponseDataAuthorization $authorization authorization
+     * @param \Alexasomba\Paystack\Model\VerifyResponseDataAuthorization $authorization authorization
      *
      * @return self
      */
@@ -1067,7 +1067,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets customer
      *
-     * @return \Alexasomba\\Paystack\Model\VerifyResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\VerifyResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -1077,7 +1077,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets customer
      *
-     * @param \Alexasomba\\Paystack\Model\VerifyResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\VerifyResponseDataCustomer $customer customer
      *
      * @return self
      */
@@ -1094,7 +1094,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets plan
      *
-     * @return \Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null
      */
     public function getPlan()
     {
@@ -1104,7 +1104,7 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets plan
      *
-     * @param \Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null $plan plan
+     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null $plan plan
      *
      * @return self
      */
@@ -1160,157 +1160,157 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets order_id
+     * Gets orderId
      *
      * @return mixed|null
      */
     public function getOrderId()
     {
-        return $this->container['order_id'];
+        return $this->container['orderId'];
     }
 
     /**
-     * Sets order_id
+     * Sets orderId
      *
-     * @param mixed|null $order_id order_id
+     * @param mixed|null $orderId orderId
      *
      * @return self
      */
-    public function setOrderId($order_id)
+    public function setOrderId($orderId)
     {
-        if (is_null($order_id)) {
-            array_push($this->openAPINullablesSetToNull, 'order_id');
+        if (is_null($orderId)) {
+            array_push($this->openAPINullablesSetToNull, 'orderId');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('order_id', $nullablesSetToNull);
+            $index = array_search('orderId', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['order_id'] = $order_id;
+        $this->container['orderId'] = $orderId;
 
         return $this;
     }
 
     /**
-     * Gets paid_at
+     * Gets paidAt
      *
      * @return string|null
      */
     public function getPaidAt()
     {
-        return $this->container['paid_at'];
+        return $this->container['paidAt'];
     }
 
     /**
-     * Sets paid_at
+     * Sets paidAt
      *
-     * @param string|null $paid_at paid_at
+     * @param string|null $paidAt paidAt
      *
      * @return self
      */
-    public function setPaidAt($paid_at)
+    public function setPaidAt($paidAt)
     {
-        if (is_null($paid_at)) {
-            array_push($this->openAPINullablesSetToNull, 'paid_at');
+        if (is_null($paidAt)) {
+            array_push($this->openAPINullablesSetToNull, 'paidAt');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('paid_at', $nullablesSetToNull);
+            $index = array_search('paidAt', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['paid_at'] = $paid_at;
+        $this->container['paidAt'] = $paidAt;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets requested_amount
+     * Gets requestedAmount
      *
      * @return int
      */
     public function getRequestedAmount()
     {
-        return $this->container['requested_amount'];
+        return $this->container['requestedAmount'];
     }
 
     /**
-     * Sets requested_amount
+     * Sets requestedAmount
      *
-     * @param int $requested_amount requested_amount
+     * @param int $requestedAmount requestedAmount
      *
      * @return self
      */
-    public function setRequestedAmount($requested_amount)
+    public function setRequestedAmount($requestedAmount)
     {
-        if (is_null($requested_amount)) {
-            throw new \InvalidArgumentException('non-nullable requested_amount cannot be null');
+        if (is_null($requestedAmount)) {
+            throw new \InvalidArgumentException('non-nullable requestedAmount cannot be null');
         }
-        $this->container['requested_amount'] = $requested_amount;
+        $this->container['requestedAmount'] = $requestedAmount;
 
         return $this;
     }
 
     /**
-     * Gets pos_transaction_data
+     * Gets posTransactionData
      *
      * @return mixed|null
      */
     public function getPosTransactionData()
     {
-        return $this->container['pos_transaction_data'];
+        return $this->container['posTransactionData'];
     }
 
     /**
-     * Sets pos_transaction_data
+     * Sets posTransactionData
      *
-     * @param mixed|null $pos_transaction_data pos_transaction_data
+     * @param mixed|null $posTransactionData posTransactionData
      *
      * @return self
      */
-    public function setPosTransactionData($pos_transaction_data)
+    public function setPosTransactionData($posTransactionData)
     {
-        if (is_null($pos_transaction_data)) {
-            array_push($this->openAPINullablesSetToNull, 'pos_transaction_data');
+        if (is_null($posTransactionData)) {
+            array_push($this->openAPINullablesSetToNull, 'posTransactionData');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('pos_transaction_data', $nullablesSetToNull);
+            $index = array_search('posTransactionData', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['pos_transaction_data'] = $pos_transaction_data;
+        $this->container['posTransactionData'] = $posTransactionData;
 
         return $this;
     }
@@ -1350,35 +1350,35 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets fees_breakdown
+     * Gets feesBreakdown
      *
      * @return mixed|null
      */
     public function getFeesBreakdown()
     {
-        return $this->container['fees_breakdown'];
+        return $this->container['feesBreakdown'];
     }
 
     /**
-     * Sets fees_breakdown
+     * Sets feesBreakdown
      *
-     * @param mixed|null $fees_breakdown fees_breakdown
+     * @param mixed|null $feesBreakdown feesBreakdown
      *
      * @return self
      */
-    public function setFeesBreakdown($fees_breakdown)
+    public function setFeesBreakdown($feesBreakdown)
     {
-        if (is_null($fees_breakdown)) {
-            array_push($this->openAPINullablesSetToNull, 'fees_breakdown');
+        if (is_null($feesBreakdown)) {
+            array_push($this->openAPINullablesSetToNull, 'feesBreakdown');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('fees_breakdown', $nullablesSetToNull);
+            $index = array_search('feesBreakdown', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['fees_breakdown'] = $fees_breakdown;
+        $this->container['feesBreakdown'] = $feesBreakdown;
 
         return $this;
     }
@@ -1418,55 +1418,55 @@ class VerifyResponseData implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets transaction_date
+     * Gets transactionDate
      *
      * @return string
      */
     public function getTransactionDate()
     {
-        return $this->container['transaction_date'];
+        return $this->container['transactionDate'];
     }
 
     /**
-     * Sets transaction_date
+     * Sets transactionDate
      *
-     * @param string $transaction_date transaction_date
+     * @param string $transactionDate transactionDate
      *
      * @return self
      */
-    public function setTransactionDate($transaction_date)
+    public function setTransactionDate($transactionDate)
     {
-        if (is_null($transaction_date)) {
-            throw new \InvalidArgumentException('non-nullable transaction_date cannot be null');
+        if (is_null($transactionDate)) {
+            throw new \InvalidArgumentException('non-nullable transactionDate cannot be null');
         }
-        $this->container['transaction_date'] = $transaction_date;
+        $this->container['transactionDate'] = $transactionDate;
 
         return $this;
     }
 
     /**
-     * Gets plan_object
+     * Gets planObject
      *
-     * @return \Alexasomba\\Paystack\Model\VerifyResponseDataPlanObject
+     * @return \Alexasomba\Paystack\Model\VerifyResponseDataPlanObject
      */
     public function getPlanObject()
     {
-        return $this->container['plan_object'];
+        return $this->container['planObject'];
     }
 
     /**
-     * Sets plan_object
+     * Sets planObject
      *
-     * @param \Alexasomba\\Paystack\Model\VerifyResponseDataPlanObject $plan_object plan_object
+     * @param \Alexasomba\Paystack\Model\VerifyResponseDataPlanObject $planObject planObject
      *
      * @return self
      */
-    public function setPlanObject($plan_object)
+    public function setPlanObject($planObject)
     {
-        if (is_null($plan_object)) {
-            throw new \InvalidArgumentException('non-nullable plan_object cannot be null');
+        if (is_null($planObject)) {
+            throw new \InvalidArgumentException('non-nullable planObject cannot be null');
         }
-        $this->container['plan_object'] = $plan_object;
+        $this->container['planObject'] = $planObject;
 
         return $this;
     }

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransferRecipientListResponseArray Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'active' => 'bool',
-        'created_at' => 'string',
+        'createdAt' => 'string',
         'currency' => 'string',
         'description' => 'string',
         'domain' => 'string',
@@ -68,12 +68,12 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
         'integration' => 'int',
         'metadata' => 'object',
         'name' => 'string',
-        'recipient_code' => 'string',
+        'recipientCode' => 'string',
         'type' => 'string',
-        'updated_at' => 'string',
-        'is_deleted' => 'bool',
-        'is_deleted' => 'bool',
-        'details' => '\Alexasomba\\Paystack\Model\TransferRecipientListResponseArrayDetails'
+        'updatedAt' => 'string',
+        'isDeleted' => 'bool',
+        'isDeleted' => 'bool',
+        'details' => '\Alexasomba\Paystack\Model\TransferRecipientListResponseArrayDetails'
     ];
 
     /**
@@ -85,7 +85,7 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
       */
     protected static $openAPIFormats = [
         'active' => null,
-        'created_at' => null,
+        'createdAt' => null,
         'currency' => null,
         'description' => null,
         'domain' => null,
@@ -94,11 +94,11 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
         'integration' => null,
         'metadata' => null,
         'name' => null,
-        'recipient_code' => null,
+        'recipientCode' => null,
         'type' => null,
-        'updated_at' => null,
-        'is_deleted' => null,
-        'is_deleted' => null,
+        'updatedAt' => null,
+        'isDeleted' => null,
+        'isDeleted' => null,
         'details' => null
     ];
 
@@ -109,7 +109,7 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'active' => false,
-        'created_at' => false,
+        'createdAt' => false,
         'currency' => false,
         'description' => true,
         'domain' => false,
@@ -118,11 +118,11 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
         'integration' => false,
         'metadata' => true,
         'name' => false,
-        'recipient_code' => false,
+        'recipientCode' => false,
         'type' => false,
-        'updated_at' => false,
-        'is_deleted' => false,
-        'is_deleted' => false,
+        'updatedAt' => false,
+        'isDeleted' => false,
+        'isDeleted' => false,
         'details' => false
     ];
 
@@ -213,7 +213,7 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
      */
     protected static $attributeMap = [
         'active' => 'active',
-        'created_at' => 'createdAt',
+        'createdAt' => 'createdAt',
         'currency' => 'currency',
         'description' => 'description',
         'domain' => 'domain',
@@ -222,11 +222,11 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
         'integration' => 'integration',
         'metadata' => 'metadata',
         'name' => 'name',
-        'recipient_code' => 'recipient_code',
+        'recipientCode' => 'recipient_code',
         'type' => 'type',
-        'updated_at' => 'updatedAt',
-        'is_deleted' => 'is_deleted',
-        'is_deleted' => 'isDeleted',
+        'updatedAt' => 'updatedAt',
+        'isDeleted' => 'is_deleted',
+        'isDeleted' => 'isDeleted',
         'details' => 'details'
     ];
 
@@ -237,7 +237,7 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
      */
     protected static $setters = [
         'active' => 'setActive',
-        'created_at' => 'setCreatedAt',
+        'createdAt' => 'setCreatedAt',
         'currency' => 'setCurrency',
         'description' => 'setDescription',
         'domain' => 'setDomain',
@@ -246,11 +246,11 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
         'integration' => 'setIntegration',
         'metadata' => 'setMetadata',
         'name' => 'setName',
-        'recipient_code' => 'setRecipientCode',
+        'recipientCode' => 'setRecipientCode',
         'type' => 'setType',
-        'updated_at' => 'setUpdatedAt',
-        'is_deleted' => 'setIsDeleted',
-        'is_deleted' => 'setIsDeleted',
+        'updatedAt' => 'setUpdatedAt',
+        'isDeleted' => 'setIsDeleted',
+        'isDeleted' => 'setIsDeleted',
         'details' => 'setDetails'
     ];
 
@@ -261,7 +261,7 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
      */
     protected static $getters = [
         'active' => 'getActive',
-        'created_at' => 'getCreatedAt',
+        'createdAt' => 'getCreatedAt',
         'currency' => 'getCurrency',
         'description' => 'getDescription',
         'domain' => 'getDomain',
@@ -270,11 +270,11 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
         'integration' => 'getIntegration',
         'metadata' => 'getMetadata',
         'name' => 'getName',
-        'recipient_code' => 'getRecipientCode',
+        'recipientCode' => 'getRecipientCode',
         'type' => 'getType',
-        'updated_at' => 'getUpdatedAt',
-        'is_deleted' => 'getIsDeleted',
-        'is_deleted' => 'getIsDeleted',
+        'updatedAt' => 'getUpdatedAt',
+        'isDeleted' => 'getIsDeleted',
+        'isDeleted' => 'getIsDeleted',
         'details' => 'getDetails'
     ];
 
@@ -336,7 +336,7 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
     public function __construct(?array $data = null)
     {
         $this->setIfExists('active', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
@@ -345,11 +345,11 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
         $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('recipient_code', $data ?? [], null);
+        $this->setIfExists('recipientCode', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
-        $this->setIfExists('is_deleted', $data ?? [], null);
-        $this->setIfExists('is_deleted', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
+        $this->setIfExists('isDeleted', $data ?? [], null);
+        $this->setIfExists('isDeleted', $data ?? [], null);
         $this->setIfExists('details', $data ?? [], null);
     }
 
@@ -383,8 +383,8 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
         if ($this->container['active'] === null) {
             $invalidProperties[] = "'active' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
@@ -398,14 +398,14 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['recipient_code'] === null) {
-            $invalidProperties[] = "'recipient_code' can't be null";
+        if ($this->container['recipientCode'] === null) {
+            $invalidProperties[] = "'recipientCode' can't be null";
         }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         if ($this->container['details'] === null) {
             $invalidProperties[] = "'details' can't be null";
@@ -453,28 +453,28 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
@@ -717,28 +717,28 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets recipient_code
+     * Gets recipientCode
      *
      * @return string
      */
     public function getRecipientCode()
     {
-        return $this->container['recipient_code'];
+        return $this->container['recipientCode'];
     }
 
     /**
-     * Sets recipient_code
+     * Sets recipientCode
      *
-     * @param string $recipient_code recipient_code
+     * @param string $recipientCode recipientCode
      *
      * @return self
      */
-    public function setRecipientCode($recipient_code)
+    public function setRecipientCode($recipientCode)
     {
-        if (is_null($recipient_code)) {
-            throw new \InvalidArgumentException('non-nullable recipient_code cannot be null');
+        if (is_null($recipientCode)) {
+            throw new \InvalidArgumentException('non-nullable recipientCode cannot be null');
         }
-        $this->container['recipient_code'] = $recipient_code;
+        $this->container['recipientCode'] = $recipientCode;
 
         return $this;
     }
@@ -771,82 +771,82 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Gets is_deleted
+     * Gets isDeleted
      *
      * @return bool|null
      */
     public function getIsDeleted()
     {
-        return $this->container['is_deleted'];
+        return $this->container['isDeleted'];
     }
 
     /**
-     * Sets is_deleted
+     * Sets isDeleted
      *
-     * @param bool|null $is_deleted is_deleted
+     * @param bool|null $isDeleted isDeleted
      *
      * @return self
      */
-    public function setIsDeleted($is_deleted)
+    public function setIsDeleted($isDeleted)
     {
-        if (is_null($is_deleted)) {
-            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
+        if (is_null($isDeleted)) {
+            throw new \InvalidArgumentException('non-nullable isDeleted cannot be null');
         }
-        $this->container['is_deleted'] = $is_deleted;
+        $this->container['isDeleted'] = $isDeleted;
 
         return $this;
     }
 
     /**
-     * Gets is_deleted
+     * Gets isDeleted
      *
      * @return bool|null
      */
     public function getIsDeleted()
     {
-        return $this->container['is_deleted'];
+        return $this->container['isDeleted'];
     }
 
     /**
-     * Sets is_deleted
+     * Sets isDeleted
      *
-     * @param bool|null $is_deleted is_deleted
+     * @param bool|null $isDeleted isDeleted
      *
      * @return self
      */
-    public function setIsDeleted($is_deleted)
+    public function setIsDeleted($isDeleted)
     {
-        if (is_null($is_deleted)) {
-            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
+        if (is_null($isDeleted)) {
+            throw new \InvalidArgumentException('non-nullable isDeleted cannot be null');
         }
-        $this->container['is_deleted'] = $is_deleted;
+        $this->container['isDeleted'] = $isDeleted;
 
         return $this;
     }
@@ -854,7 +854,7 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
     /**
      * Gets details
      *
-     * @return \Alexasomba\\Paystack\Model\TransferRecipientListResponseArrayDetails
+     * @return \Alexasomba\Paystack\Model\TransferRecipientListResponseArrayDetails
      */
     public function getDetails()
     {
@@ -864,7 +864,7 @@ class TransferRecipientListResponseArray implements ModelInterface, ArrayAccess,
     /**
      * Sets details
      *
-     * @param \Alexasomba\\Paystack\Model\TransferRecipientListResponseArrayDetails $details details
+     * @param \Alexasomba\Paystack\Model\TransferRecipientListResponseArrayDetails $details details
      *
      * @return self
      */

@@ -56,7 +56,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_bulk(
+    def bulk(
         self,
         transfer_bulk: Optional[TransferBulk] = None,
         _request_timeout: Union[
@@ -100,7 +100,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_bulk_serialize(
+        _param = self._bulk_serialize(
             transfer_bulk=transfer_bulk,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -124,7 +124,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_bulk_with_http_info(
+    def bulk_with_http_info(
         self,
         transfer_bulk: Optional[TransferBulk] = None,
         _request_timeout: Union[
@@ -168,7 +168,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_bulk_serialize(
+        _param = self._bulk_serialize(
             transfer_bulk=transfer_bulk,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -192,7 +192,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_bulk_without_preload_content(
+    def bulk_without_preload_content(
         self,
         transfer_bulk: Optional[TransferBulk] = None,
         _request_timeout: Union[
@@ -236,7 +236,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_bulk_serialize(
+        _param = self._bulk_serialize(
             transfer_bulk=transfer_bulk,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -255,7 +255,7 @@ class TransferApi:
         return response_data.response
 
 
-    def _transfer_bulk_serialize(
+    def _bulk_serialize(
         self,
         transfer_bulk,
         _request_auth,
@@ -334,7 +334,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_disable_otp(
+    def disable_otp(
         self,
         _request_timeout: Union[
             None,
@@ -375,7 +375,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_disable_otp_serialize(
+        _param = self._disable_otp_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -398,7 +398,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_disable_otp_with_http_info(
+    def disable_otp_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -439,7 +439,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_disable_otp_serialize(
+        _param = self._disable_otp_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -462,7 +462,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_disable_otp_without_preload_content(
+    def disable_otp_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -503,7 +503,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_disable_otp_serialize(
+        _param = self._disable_otp_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -521,7 +521,7 @@ class TransferApi:
         return response_data.response
 
 
-    def _transfer_disable_otp_serialize(
+    def _disable_otp_serialize(
         self,
         _request_auth,
         _content_type,
@@ -583,7 +583,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_disable_otp_finalize(
+    def disable_otp_finalize(
         self,
         transfer_finalize_disable_otp: Optional[TransferFinalizeDisableOTP] = None,
         _request_timeout: Union[
@@ -627,7 +627,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_disable_otp_finalize_serialize(
+        _param = self._disable_otp_finalize_serialize(
             transfer_finalize_disable_otp=transfer_finalize_disable_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -651,7 +651,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_disable_otp_finalize_with_http_info(
+    def disable_otp_finalize_with_http_info(
         self,
         transfer_finalize_disable_otp: Optional[TransferFinalizeDisableOTP] = None,
         _request_timeout: Union[
@@ -695,7 +695,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_disable_otp_finalize_serialize(
+        _param = self._disable_otp_finalize_serialize(
             transfer_finalize_disable_otp=transfer_finalize_disable_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -719,7 +719,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_disable_otp_finalize_without_preload_content(
+    def disable_otp_finalize_without_preload_content(
         self,
         transfer_finalize_disable_otp: Optional[TransferFinalizeDisableOTP] = None,
         _request_timeout: Union[
@@ -763,7 +763,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_disable_otp_finalize_serialize(
+        _param = self._disable_otp_finalize_serialize(
             transfer_finalize_disable_otp=transfer_finalize_disable_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -782,7 +782,7 @@ class TransferApi:
         return response_data.response
 
 
-    def _transfer_disable_otp_finalize_serialize(
+    def _disable_otp_finalize_serialize(
         self,
         transfer_finalize_disable_otp,
         _request_auth,
@@ -861,7 +861,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_enable_otp(
+    def enable_otp(
         self,
         _request_timeout: Union[
             None,
@@ -902,7 +902,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_enable_otp_serialize(
+        _param = self._enable_otp_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -925,7 +925,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_enable_otp_with_http_info(
+    def enable_otp_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -966,7 +966,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_enable_otp_serialize(
+        _param = self._enable_otp_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -989,7 +989,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_enable_otp_without_preload_content(
+    def enable_otp_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -1030,7 +1030,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_enable_otp_serialize(
+        _param = self._enable_otp_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1048,7 +1048,7 @@ class TransferApi:
         return response_data.response
 
 
-    def _transfer_enable_otp_serialize(
+    def _enable_otp_serialize(
         self,
         _request_auth,
         _content_type,
@@ -1110,7 +1110,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_export_transfer(
+    def export_transfer(
         self,
         recipient: Annotated[Optional[StrictStr], Field(description="Export transfer by the recipient code")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Export transfer by status")] = None,
@@ -1163,7 +1163,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_export_transfer_serialize(
+        _param = self._export_transfer_serialize(
             recipient=recipient,
             status=status,
             var_from=var_from,
@@ -1191,7 +1191,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_export_transfer_with_http_info(
+    def export_transfer_with_http_info(
         self,
         recipient: Annotated[Optional[StrictStr], Field(description="Export transfer by the recipient code")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Export transfer by status")] = None,
@@ -1244,7 +1244,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_export_transfer_serialize(
+        _param = self._export_transfer_serialize(
             recipient=recipient,
             status=status,
             var_from=var_from,
@@ -1272,7 +1272,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_export_transfer_without_preload_content(
+    def export_transfer_without_preload_content(
         self,
         recipient: Annotated[Optional[StrictStr], Field(description="Export transfer by the recipient code")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Export transfer by status")] = None,
@@ -1325,7 +1325,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_export_transfer_serialize(
+        _param = self._export_transfer_serialize(
             recipient=recipient,
             status=status,
             var_from=var_from,
@@ -1348,7 +1348,7 @@ class TransferApi:
         return response_data.response
 
 
-    def _transfer_export_transfer_serialize(
+    def _export_transfer_serialize(
         self,
         recipient,
         status,
@@ -1448,7 +1448,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_fetch(
+    def fetch(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The transfer ID or code you want to fetch")],
         _request_timeout: Union[
@@ -1492,7 +1492,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1517,7 +1517,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The transfer ID or code you want to fetch")],
         _request_timeout: Union[
@@ -1561,7 +1561,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1586,7 +1586,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The transfer ID or code you want to fetch")],
         _request_timeout: Union[
@@ -1630,7 +1630,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1650,7 +1650,7 @@ class TransferApi:
         return response_data.response
 
 
-    def _transfer_fetch_serialize(
+    def _fetch_serialize(
         self,
         id_or_code,
         _request_auth,
@@ -1715,7 +1715,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_finalize(
+    def finalize(
         self,
         transfer_finalize: Optional[TransferFinalize] = None,
         _request_timeout: Union[
@@ -1759,7 +1759,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_finalize_serialize(
+        _param = self._finalize_serialize(
             transfer_finalize=transfer_finalize,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1783,7 +1783,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_finalize_with_http_info(
+    def finalize_with_http_info(
         self,
         transfer_finalize: Optional[TransferFinalize] = None,
         _request_timeout: Union[
@@ -1827,7 +1827,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_finalize_serialize(
+        _param = self._finalize_serialize(
             transfer_finalize=transfer_finalize,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1851,7 +1851,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_finalize_without_preload_content(
+    def finalize_without_preload_content(
         self,
         transfer_finalize: Optional[TransferFinalize] = None,
         _request_timeout: Union[
@@ -1895,7 +1895,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_finalize_serialize(
+        _param = self._finalize_serialize(
             transfer_finalize=transfer_finalize,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1914,7 +1914,7 @@ class TransferApi:
         return response_data.response
 
 
-    def _transfer_finalize_serialize(
+    def _finalize_serialize(
         self,
         transfer_finalize,
         _request_auth,
@@ -1993,7 +1993,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_initiate(
+    def initiate(
         self,
         transfer_initiate: Optional[TransferInitiate] = None,
         _request_timeout: Union[
@@ -2037,7 +2037,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_initiate_serialize(
+        _param = self._initiate_serialize(
             transfer_initiate=transfer_initiate,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2061,7 +2061,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_initiate_with_http_info(
+    def initiate_with_http_info(
         self,
         transfer_initiate: Optional[TransferInitiate] = None,
         _request_timeout: Union[
@@ -2105,7 +2105,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_initiate_serialize(
+        _param = self._initiate_serialize(
             transfer_initiate=transfer_initiate,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2129,7 +2129,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_initiate_without_preload_content(
+    def initiate_without_preload_content(
         self,
         transfer_initiate: Optional[TransferInitiate] = None,
         _request_timeout: Union[
@@ -2173,7 +2173,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_initiate_serialize(
+        _param = self._initiate_serialize(
             transfer_initiate=transfer_initiate,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2192,7 +2192,7 @@ class TransferApi:
         return response_data.response
 
 
-    def _transfer_initiate_serialize(
+    def _initiate_serialize(
         self,
         transfer_initiate,
         _request_auth,
@@ -2271,7 +2271,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_list(
+    def list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specify we use a default value of 50.")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Specify exactly what transfer you want to page. If not specify we use a default value of 1.")] = None,
@@ -2327,7 +2327,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -2356,7 +2356,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_list_with_http_info(
+    def list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specify we use a default value of 50.")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Specify exactly what transfer you want to page. If not specify we use a default value of 1.")] = None,
@@ -2412,7 +2412,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -2441,7 +2441,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_list_without_preload_content(
+    def list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specify we use a default value of 50.")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Specify exactly what transfer you want to page. If not specify we use a default value of 1.")] = None,
@@ -2497,7 +2497,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -2521,7 +2521,7 @@ class TransferApi:
         return response_data.response
 
 
-    def _transfer_list_serialize(
+    def _list_serialize(
         self,
         per_page,
         page,
@@ -2626,7 +2626,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_resend_otp(
+    def resend_otp(
         self,
         transfer_resend_otp: Optional[TransferResendOTP] = None,
         _request_timeout: Union[
@@ -2670,7 +2670,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_resend_otp_serialize(
+        _param = self._resend_otp_serialize(
             transfer_resend_otp=transfer_resend_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2694,7 +2694,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_resend_otp_with_http_info(
+    def resend_otp_with_http_info(
         self,
         transfer_resend_otp: Optional[TransferResendOTP] = None,
         _request_timeout: Union[
@@ -2738,7 +2738,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_resend_otp_serialize(
+        _param = self._resend_otp_serialize(
             transfer_resend_otp=transfer_resend_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2762,7 +2762,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_resend_otp_without_preload_content(
+    def resend_otp_without_preload_content(
         self,
         transfer_resend_otp: Optional[TransferResendOTP] = None,
         _request_timeout: Union[
@@ -2806,7 +2806,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_resend_otp_serialize(
+        _param = self._resend_otp_serialize(
             transfer_resend_otp=transfer_resend_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2825,7 +2825,7 @@ class TransferApi:
         return response_data.response
 
 
-    def _transfer_resend_otp_serialize(
+    def _resend_otp_serialize(
         self,
         transfer_resend_otp,
         _request_auth,
@@ -2904,7 +2904,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_verify(
+    def verify(
         self,
         reference: Annotated[StrictStr, Field(description="Transfer reference")],
         _request_timeout: Union[
@@ -2948,7 +2948,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_verify_serialize(
+        _param = self._verify_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2973,7 +2973,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_verify_with_http_info(
+    def verify_with_http_info(
         self,
         reference: Annotated[StrictStr, Field(description="Transfer reference")],
         _request_timeout: Union[
@@ -3017,7 +3017,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_verify_serialize(
+        _param = self._verify_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3042,7 +3042,7 @@ class TransferApi:
 
 
     @validate_call
-    def transfer_verify_without_preload_content(
+    def verify_without_preload_content(
         self,
         reference: Annotated[StrictStr, Field(description="Transfer reference")],
         _request_timeout: Union[
@@ -3086,7 +3086,7 @@ class TransferApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transfer_verify_serialize(
+        _param = self._verify_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3106,7 +3106,7 @@ class TransferApi:
         return response_data.response
 
 
-    def _transfer_verify_serialize(
+    def _verify_serialize(
         self,
         reference,
         _request_auth,

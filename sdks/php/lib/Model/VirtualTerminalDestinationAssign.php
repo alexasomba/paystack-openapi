@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * VirtualTerminalDestinationAssign Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class VirtualTerminalDestinationAssign implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'destinations' => '\Alexasomba\\Paystack\Model\VirtualTerminalDestinationAssignDestinationsInner[]'
+        'destinations' => '\Alexasomba\Paystack\Model\VirtualTerminalDestinationAssignDestinationsInner[]'
     ];
 
     /**
@@ -296,7 +296,7 @@ class VirtualTerminalDestinationAssign implements ModelInterface, ArrayAccess, \
     /**
      * Gets destinations
      *
-     * @return \Alexasomba\\Paystack\Model\VirtualTerminalDestinationAssignDestinationsInner[]
+     * @return \Alexasomba\Paystack\Model\VirtualTerminalDestinationAssignDestinationsInner[]
      */
     public function getDestinations()
     {
@@ -306,7 +306,7 @@ class VirtualTerminalDestinationAssign implements ModelInterface, ArrayAccess, \
     /**
      * Sets destinations
      *
-     * @param \Alexasomba\\Paystack\Model\VirtualTerminalDestinationAssignDestinationsInner[] $destinations Array of objects containing recipients for payment notifications for the Virtual Terminal.
+     * @param \Alexasomba\Paystack\Model\VirtualTerminalDestinationAssignDestinationsInner[] $destinations Array of objects containing recipients for payment notifications for the Virtual Terminal.
      *
      * @return self
      */

@@ -52,7 +52,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_check(
+    def check(
         self,
         reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
         _request_timeout: Union[
@@ -96,7 +96,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_check_serialize(
+        _param = self._check_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -121,7 +121,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_check_with_http_info(
+    def check_with_http_info(
         self,
         reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
         _request_timeout: Union[
@@ -165,7 +165,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_check_serialize(
+        _param = self._check_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -190,7 +190,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_check_without_preload_content(
+    def check_without_preload_content(
         self,
         reference: Annotated[StrictStr, Field(description="The reference of the ongoing transaction")],
         _request_timeout: Union[
@@ -234,7 +234,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_check_serialize(
+        _param = self._check_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -254,7 +254,7 @@ class ChargeApi:
         return response_data.response
 
 
-    def _charge_check_serialize(
+    def _check_serialize(
         self,
         reference,
         _request_auth,
@@ -319,7 +319,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_create(
+    def create(
         self,
         charge_create_request: Optional[ChargeCreateRequest] = None,
         _request_timeout: Union[
@@ -363,7 +363,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_create_serialize(
+        _param = self._create_serialize(
             charge_create_request=charge_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -387,7 +387,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_create_with_http_info(
+    def create_with_http_info(
         self,
         charge_create_request: Optional[ChargeCreateRequest] = None,
         _request_timeout: Union[
@@ -431,7 +431,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_create_serialize(
+        _param = self._create_serialize(
             charge_create_request=charge_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -455,7 +455,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_create_without_preload_content(
+    def create_without_preload_content(
         self,
         charge_create_request: Optional[ChargeCreateRequest] = None,
         _request_timeout: Union[
@@ -499,7 +499,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_create_serialize(
+        _param = self._create_serialize(
             charge_create_request=charge_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -518,7 +518,7 @@ class ChargeApi:
         return response_data.response
 
 
-    def _charge_create_serialize(
+    def _create_serialize(
         self,
         charge_create_request,
         _request_auth,
@@ -597,7 +597,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_address(
+    def submit_address(
         self,
         charge_submit_address: Optional[ChargeSubmitAddress] = None,
         _request_timeout: Union[
@@ -641,7 +641,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_address_serialize(
+        _param = self._submit_address_serialize(
             charge_submit_address=charge_submit_address,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -665,7 +665,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_address_with_http_info(
+    def submit_address_with_http_info(
         self,
         charge_submit_address: Optional[ChargeSubmitAddress] = None,
         _request_timeout: Union[
@@ -709,7 +709,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_address_serialize(
+        _param = self._submit_address_serialize(
             charge_submit_address=charge_submit_address,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -733,7 +733,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_address_without_preload_content(
+    def submit_address_without_preload_content(
         self,
         charge_submit_address: Optional[ChargeSubmitAddress] = None,
         _request_timeout: Union[
@@ -777,7 +777,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_address_serialize(
+        _param = self._submit_address_serialize(
             charge_submit_address=charge_submit_address,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -796,7 +796,7 @@ class ChargeApi:
         return response_data.response
 
 
-    def _charge_submit_address_serialize(
+    def _submit_address_serialize(
         self,
         charge_submit_address,
         _request_auth,
@@ -875,7 +875,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_birthday(
+    def submit_birthday(
         self,
         charge_submit_birthday: Optional[ChargeSubmitBirthday] = None,
         _request_timeout: Union[
@@ -919,7 +919,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_birthday_serialize(
+        _param = self._submit_birthday_serialize(
             charge_submit_birthday=charge_submit_birthday,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -943,7 +943,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_birthday_with_http_info(
+    def submit_birthday_with_http_info(
         self,
         charge_submit_birthday: Optional[ChargeSubmitBirthday] = None,
         _request_timeout: Union[
@@ -987,7 +987,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_birthday_serialize(
+        _param = self._submit_birthday_serialize(
             charge_submit_birthday=charge_submit_birthday,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1011,7 +1011,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_birthday_without_preload_content(
+    def submit_birthday_without_preload_content(
         self,
         charge_submit_birthday: Optional[ChargeSubmitBirthday] = None,
         _request_timeout: Union[
@@ -1055,7 +1055,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_birthday_serialize(
+        _param = self._submit_birthday_serialize(
             charge_submit_birthday=charge_submit_birthday,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1074,7 +1074,7 @@ class ChargeApi:
         return response_data.response
 
 
-    def _charge_submit_birthday_serialize(
+    def _submit_birthday_serialize(
         self,
         charge_submit_birthday,
         _request_auth,
@@ -1153,7 +1153,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_otp(
+    def submit_otp(
         self,
         charge_submit_otp: Optional[ChargeSubmitOTP] = None,
         _request_timeout: Union[
@@ -1197,7 +1197,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_otp_serialize(
+        _param = self._submit_otp_serialize(
             charge_submit_otp=charge_submit_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1221,7 +1221,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_otp_with_http_info(
+    def submit_otp_with_http_info(
         self,
         charge_submit_otp: Optional[ChargeSubmitOTP] = None,
         _request_timeout: Union[
@@ -1265,7 +1265,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_otp_serialize(
+        _param = self._submit_otp_serialize(
             charge_submit_otp=charge_submit_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1289,7 +1289,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_otp_without_preload_content(
+    def submit_otp_without_preload_content(
         self,
         charge_submit_otp: Optional[ChargeSubmitOTP] = None,
         _request_timeout: Union[
@@ -1333,7 +1333,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_otp_serialize(
+        _param = self._submit_otp_serialize(
             charge_submit_otp=charge_submit_otp,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1352,7 +1352,7 @@ class ChargeApi:
         return response_data.response
 
 
-    def _charge_submit_otp_serialize(
+    def _submit_otp_serialize(
         self,
         charge_submit_otp,
         _request_auth,
@@ -1431,7 +1431,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_phone(
+    def submit_phone(
         self,
         charge_submit_phone: Optional[ChargeSubmitPhone] = None,
         _request_timeout: Union[
@@ -1475,7 +1475,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_phone_serialize(
+        _param = self._submit_phone_serialize(
             charge_submit_phone=charge_submit_phone,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1499,7 +1499,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_phone_with_http_info(
+    def submit_phone_with_http_info(
         self,
         charge_submit_phone: Optional[ChargeSubmitPhone] = None,
         _request_timeout: Union[
@@ -1543,7 +1543,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_phone_serialize(
+        _param = self._submit_phone_serialize(
             charge_submit_phone=charge_submit_phone,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1567,7 +1567,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_phone_without_preload_content(
+    def submit_phone_without_preload_content(
         self,
         charge_submit_phone: Optional[ChargeSubmitPhone] = None,
         _request_timeout: Union[
@@ -1611,7 +1611,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_phone_serialize(
+        _param = self._submit_phone_serialize(
             charge_submit_phone=charge_submit_phone,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1630,7 +1630,7 @@ class ChargeApi:
         return response_data.response
 
 
-    def _charge_submit_phone_serialize(
+    def _submit_phone_serialize(
         self,
         charge_submit_phone,
         _request_auth,
@@ -1709,7 +1709,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_pin(
+    def submit_pin(
         self,
         charge_submit_pin: Optional[ChargeSubmitPin] = None,
         _request_timeout: Union[
@@ -1753,7 +1753,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_pin_serialize(
+        _param = self._submit_pin_serialize(
             charge_submit_pin=charge_submit_pin,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1777,7 +1777,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_pin_with_http_info(
+    def submit_pin_with_http_info(
         self,
         charge_submit_pin: Optional[ChargeSubmitPin] = None,
         _request_timeout: Union[
@@ -1821,7 +1821,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_pin_serialize(
+        _param = self._submit_pin_serialize(
             charge_submit_pin=charge_submit_pin,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1845,7 +1845,7 @@ class ChargeApi:
 
 
     @validate_call
-    def charge_submit_pin_without_preload_content(
+    def submit_pin_without_preload_content(
         self,
         charge_submit_pin: Optional[ChargeSubmitPin] = None,
         _request_timeout: Union[
@@ -1889,7 +1889,7 @@ class ChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._charge_submit_pin_serialize(
+        _param = self._submit_pin_serialize(
             charge_submit_pin=charge_submit_pin,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1908,7 +1908,7 @@ class ChargeApi:
         return response_data.response
 
 
-    def _charge_submit_pin_serialize(
+    def _submit_pin_serialize(
         self,
         charge_submit_pin,
         _request_auth,

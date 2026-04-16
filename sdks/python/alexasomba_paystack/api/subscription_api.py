@@ -47,7 +47,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_create(
+    def create(
         self,
         subscription_create: Optional[SubscriptionCreate] = None,
         _request_timeout: Union[
@@ -91,7 +91,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_create_serialize(
+        _param = self._create_serialize(
             subscription_create=subscription_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -115,7 +115,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_create_with_http_info(
+    def create_with_http_info(
         self,
         subscription_create: Optional[SubscriptionCreate] = None,
         _request_timeout: Union[
@@ -159,7 +159,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_create_serialize(
+        _param = self._create_serialize(
             subscription_create=subscription_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -183,7 +183,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_create_without_preload_content(
+    def create_without_preload_content(
         self,
         subscription_create: Optional[SubscriptionCreate] = None,
         _request_timeout: Union[
@@ -227,7 +227,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_create_serialize(
+        _param = self._create_serialize(
             subscription_create=subscription_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -246,7 +246,7 @@ class SubscriptionApi:
         return response_data.response
 
 
-    def _subscription_create_serialize(
+    def _create_serialize(
         self,
         subscription_create,
         _request_auth,
@@ -325,7 +325,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_disable(
+    def disable(
         self,
         subscription_toggle: Optional[SubscriptionToggle] = None,
         _request_timeout: Union[
@@ -369,7 +369,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_disable_serialize(
+        _param = self._disable_serialize(
             subscription_toggle=subscription_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -393,7 +393,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_disable_with_http_info(
+    def disable_with_http_info(
         self,
         subscription_toggle: Optional[SubscriptionToggle] = None,
         _request_timeout: Union[
@@ -437,7 +437,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_disable_serialize(
+        _param = self._disable_serialize(
             subscription_toggle=subscription_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -461,7 +461,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_disable_without_preload_content(
+    def disable_without_preload_content(
         self,
         subscription_toggle: Optional[SubscriptionToggle] = None,
         _request_timeout: Union[
@@ -505,7 +505,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_disable_serialize(
+        _param = self._disable_serialize(
             subscription_toggle=subscription_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -524,7 +524,7 @@ class SubscriptionApi:
         return response_data.response
 
 
-    def _subscription_disable_serialize(
+    def _disable_serialize(
         self,
         subscription_toggle,
         _request_auth,
@@ -603,7 +603,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_enable(
+    def enable(
         self,
         subscription_toggle: Optional[SubscriptionToggle] = None,
         _request_timeout: Union[
@@ -647,7 +647,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_enable_serialize(
+        _param = self._enable_serialize(
             subscription_toggle=subscription_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -671,7 +671,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_enable_with_http_info(
+    def enable_with_http_info(
         self,
         subscription_toggle: Optional[SubscriptionToggle] = None,
         _request_timeout: Union[
@@ -715,7 +715,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_enable_serialize(
+        _param = self._enable_serialize(
             subscription_toggle=subscription_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -739,7 +739,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_enable_without_preload_content(
+    def enable_without_preload_content(
         self,
         subscription_toggle: Optional[SubscriptionToggle] = None,
         _request_timeout: Union[
@@ -783,7 +783,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_enable_serialize(
+        _param = self._enable_serialize(
             subscription_toggle=subscription_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -802,7 +802,7 @@ class SubscriptionApi:
         return response_data.response
 
 
-    def _subscription_enable_serialize(
+    def _enable_serialize(
         self,
         subscription_toggle,
         _request_auth,
@@ -881,7 +881,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_fetch(
+    def fetch(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The subscription ID or code you want to fetch")],
         _request_timeout: Union[
@@ -925,7 +925,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -950,7 +950,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The subscription ID or code you want to fetch")],
         _request_timeout: Union[
@@ -994,7 +994,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1019,7 +1019,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The subscription ID or code you want to fetch")],
         _request_timeout: Union[
@@ -1063,7 +1063,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1083,7 +1083,7 @@ class SubscriptionApi:
         return response_data.response
 
 
-    def _subscription_fetch_serialize(
+    def _fetch_serialize(
         self,
         id_or_code,
         _request_auth,
@@ -1148,7 +1148,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_list(
+    def list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1201,7 +1201,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             plan=plan,
@@ -1229,7 +1229,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_list_with_http_info(
+    def list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1282,7 +1282,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             plan=plan,
@@ -1310,7 +1310,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_list_without_preload_content(
+    def list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1363,7 +1363,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             plan=plan,
@@ -1386,7 +1386,7 @@ class SubscriptionApi:
         return response_data.response
 
 
-    def _subscription_list_serialize(
+    def _list_serialize(
         self,
         per_page,
         page,
@@ -1468,7 +1468,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_manage_email(
+    def manage_email(
         self,
         code: Annotated[StrictStr, Field(description="Subscription code")],
         _request_timeout: Union[
@@ -1512,7 +1512,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_manage_email_serialize(
+        _param = self._manage_email_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1536,7 +1536,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_manage_email_with_http_info(
+    def manage_email_with_http_info(
         self,
         code: Annotated[StrictStr, Field(description="Subscription code")],
         _request_timeout: Union[
@@ -1580,7 +1580,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_manage_email_serialize(
+        _param = self._manage_email_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1604,7 +1604,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_manage_email_without_preload_content(
+    def manage_email_without_preload_content(
         self,
         code: Annotated[StrictStr, Field(description="Subscription code")],
         _request_timeout: Union[
@@ -1648,7 +1648,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_manage_email_serialize(
+        _param = self._manage_email_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1667,7 +1667,7 @@ class SubscriptionApi:
         return response_data.response
 
 
-    def _subscription_manage_email_serialize(
+    def _manage_email_serialize(
         self,
         code,
         _request_auth,
@@ -1732,7 +1732,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_manage_link(
+    def manage_link(
         self,
         code: Annotated[StrictStr, Field(description="Subscription code")],
         _request_timeout: Union[
@@ -1776,7 +1776,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_manage_link_serialize(
+        _param = self._manage_link_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1800,7 +1800,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_manage_link_with_http_info(
+    def manage_link_with_http_info(
         self,
         code: Annotated[StrictStr, Field(description="Subscription code")],
         _request_timeout: Union[
@@ -1844,7 +1844,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_manage_link_serialize(
+        _param = self._manage_link_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1868,7 +1868,7 @@ class SubscriptionApi:
 
 
     @validate_call
-    def subscription_manage_link_without_preload_content(
+    def manage_link_without_preload_content(
         self,
         code: Annotated[StrictStr, Field(description="Subscription code")],
         _request_timeout: Union[
@@ -1912,7 +1912,7 @@ class SubscriptionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._subscription_manage_link_serialize(
+        _param = self._manage_link_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1931,7 +1931,7 @@ class SubscriptionApi:
         return response_data.response
 
 
-    def _subscription_manage_link_serialize(
+    def _manage_link_serialize(
         self,
         code,
         _request_auth,

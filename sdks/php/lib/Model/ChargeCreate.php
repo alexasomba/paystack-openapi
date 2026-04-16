@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * ChargeCreate Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,12 +60,12 @@ class ChargeCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'email' => 'string',
         'amount' => 'int',
-        'authorization_code' => 'string',
+        'authorizationCode' => 'string',
         'pin' => 'string',
         'reference' => 'string',
         'birthday' => '\DateTime',
-        'device_id' => 'string',
-        'metadata' => '\Alexasomba\\Paystack\Model\ChargeCreateMetadata'
+        'deviceId' => 'string',
+        'metadata' => '\Alexasomba\Paystack\Model\ChargeCreateMetadata'
     ];
 
     /**
@@ -78,11 +78,11 @@ class ChargeCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'email' => null,
         'amount' => null,
-        'authorization_code' => null,
+        'authorizationCode' => null,
         'pin' => null,
         'reference' => null,
         'birthday' => 'date',
-        'device_id' => null,
+        'deviceId' => null,
         'metadata' => null
     ];
 
@@ -94,11 +94,11 @@ class ChargeCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'email' => false,
         'amount' => false,
-        'authorization_code' => false,
+        'authorizationCode' => false,
         'pin' => false,
         'reference' => false,
         'birthday' => false,
-        'device_id' => false,
+        'deviceId' => false,
         'metadata' => false
     ];
 
@@ -190,11 +190,11 @@ class ChargeCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'email' => 'email',
         'amount' => 'amount',
-        'authorization_code' => 'authorization_code',
+        'authorizationCode' => 'authorization_code',
         'pin' => 'pin',
         'reference' => 'reference',
         'birthday' => 'birthday',
-        'device_id' => 'device_id',
+        'deviceId' => 'device_id',
         'metadata' => 'metadata'
     ];
 
@@ -206,11 +206,11 @@ class ChargeCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'email' => 'setEmail',
         'amount' => 'setAmount',
-        'authorization_code' => 'setAuthorizationCode',
+        'authorizationCode' => 'setAuthorizationCode',
         'pin' => 'setPin',
         'reference' => 'setReference',
         'birthday' => 'setBirthday',
-        'device_id' => 'setDeviceId',
+        'deviceId' => 'setDeviceId',
         'metadata' => 'setMetadata'
     ];
 
@@ -222,11 +222,11 @@ class ChargeCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'email' => 'getEmail',
         'amount' => 'getAmount',
-        'authorization_code' => 'getAuthorizationCode',
+        'authorizationCode' => 'getAuthorizationCode',
         'pin' => 'getPin',
         'reference' => 'getReference',
         'birthday' => 'getBirthday',
-        'device_id' => 'getDeviceId',
+        'deviceId' => 'getDeviceId',
         'metadata' => 'getMetadata'
     ];
 
@@ -289,11 +289,11 @@ class ChargeCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('authorization_code', $data ?? [], null);
+        $this->setIfExists('authorizationCode', $data ?? [], null);
         $this->setIfExists('pin', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('birthday', $data ?? [], null);
-        $this->setIfExists('device_id', $data ?? [], null);
+        $this->setIfExists('deviceId', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
     }
 
@@ -400,28 +400,28 @@ class ChargeCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets authorization_code
+     * Gets authorizationCode
      *
      * @return string|null
      */
     public function getAuthorizationCode()
     {
-        return $this->container['authorization_code'];
+        return $this->container['authorizationCode'];
     }
 
     /**
-     * Sets authorization_code
+     * Sets authorizationCode
      *
-     * @param string|null $authorization_code An authorization code to charge.
+     * @param string|null $authorizationCode An authorization code to charge.
      *
      * @return self
      */
-    public function setAuthorizationCode($authorization_code)
+    public function setAuthorizationCode($authorizationCode)
     {
-        if (is_null($authorization_code)) {
-            throw new \InvalidArgumentException('non-nullable authorization_code cannot be null');
+        if (is_null($authorizationCode)) {
+            throw new \InvalidArgumentException('non-nullable authorizationCode cannot be null');
         }
-        $this->container['authorization_code'] = $authorization_code;
+        $this->container['authorizationCode'] = $authorizationCode;
 
         return $this;
     }
@@ -508,28 +508,28 @@ class ChargeCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets device_id
+     * Gets deviceId
      *
      * @return string|null
      */
     public function getDeviceId()
     {
-        return $this->container['device_id'];
+        return $this->container['deviceId'];
     }
 
     /**
-     * Sets device_id
+     * Sets deviceId
      *
-     * @param string|null $device_id This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.
+     * @param string|null $deviceId This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.
      *
      * @return self
      */
-    public function setDeviceId($device_id)
+    public function setDeviceId($deviceId)
     {
-        if (is_null($device_id)) {
-            throw new \InvalidArgumentException('non-nullable device_id cannot be null');
+        if (is_null($deviceId)) {
+            throw new \InvalidArgumentException('non-nullable deviceId cannot be null');
         }
-        $this->container['device_id'] = $device_id;
+        $this->container['deviceId'] = $deviceId;
 
         return $this;
     }
@@ -537,7 +537,7 @@ class ChargeCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\\Paystack\Model\ChargeCreateMetadata|null
+     * @return \Alexasomba\Paystack\Model\ChargeCreateMetadata|null
      */
     public function getMetadata()
     {
@@ -547,7 +547,7 @@ class ChargeCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\\Paystack\Model\ChargeCreateMetadata|null $metadata metadata
+     * @param \Alexasomba\Paystack\Model\ChargeCreateMetadata|null $metadata metadata
      *
      * @return self
      */

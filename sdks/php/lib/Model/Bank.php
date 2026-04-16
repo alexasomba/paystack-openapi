@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * Bank Class Doc Comment
  *
  * @category Class
  * @description The bank object if charging a bank account
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class Bank implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'code' => 'string',
-        'account_number' => 'string'
+        'accountNumber' => 'string'
     ];
 
     /**
@@ -72,7 +72,7 @@ class Bank implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'code' => null,
-        'account_number' => null
+        'accountNumber' => null
     ];
 
     /**
@@ -82,7 +82,7 @@ class Bank implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'code' => false,
-        'account_number' => false
+        'accountNumber' => false
     ];
 
     /**
@@ -172,7 +172,7 @@ class Bank implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'code' => 'code',
-        'account_number' => 'account_number'
+        'accountNumber' => 'account_number'
     ];
 
     /**
@@ -182,7 +182,7 @@ class Bank implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'code' => 'setCode',
-        'account_number' => 'setAccountNumber'
+        'accountNumber' => 'setAccountNumber'
     ];
 
     /**
@@ -192,7 +192,7 @@ class Bank implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'code' => 'getCode',
-        'account_number' => 'getAccountNumber'
+        'accountNumber' => 'getAccountNumber'
     ];
 
     /**
@@ -253,7 +253,7 @@ class Bank implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('account_number', $data ?? [], null);
+        $this->setIfExists('accountNumber', $data ?? [], null);
     }
 
     /**
@@ -326,28 +326,28 @@ class Bank implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets account_number
+     * Gets accountNumber
      *
      * @return string|null
      */
     public function getAccountNumber()
     {
-        return $this->container['account_number'];
+        return $this->container['accountNumber'];
     }
 
     /**
-     * Sets account_number
+     * Sets accountNumber
      *
-     * @param string|null $account_number Customer's account number
+     * @param string|null $accountNumber Customer's account number
      *
      * @return self
      */
-    public function setAccountNumber($account_number)
+    public function setAccountNumber($accountNumber)
     {
-        if (is_null($account_number)) {
-            throw new \InvalidArgumentException('non-nullable account_number cannot be null');
+        if (is_null($accountNumber)) {
+            throw new \InvalidArgumentException('non-nullable accountNumber cannot be null');
         }
-        $this->container['account_number'] = $account_number;
+        $this->container['accountNumber'] = $accountNumber;
 
         return $this;
     }

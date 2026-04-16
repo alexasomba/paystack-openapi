@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * OrderFetchProductResponseMeta Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class OrderFetchProductResponseMeta implements ModelInterface, ArrayAccess, \Jso
     protected static $openAPITypes = [
         'total' => 'int',
         'skipped' => 'int',
-        'per_page' => '\Alexasomba\\Paystack\Model\MetaPerPage',
+        'perPage' => '\Alexasomba\Paystack\Model\MetaPerPage',
         'page' => 'int',
-        'page_count' => 'int',
-        'quantity_sold' => 'int',
+        'pageCount' => 'int',
+        'quantitySold' => 'int',
         'revenue' => 'int'
     ];
 
@@ -77,10 +77,10 @@ class OrderFetchProductResponseMeta implements ModelInterface, ArrayAccess, \Jso
     protected static $openAPIFormats = [
         'total' => null,
         'skipped' => null,
-        'per_page' => null,
+        'perPage' => null,
         'page' => null,
-        'page_count' => null,
-        'quantity_sold' => null,
+        'pageCount' => null,
+        'quantitySold' => null,
         'revenue' => null
     ];
 
@@ -92,10 +92,10 @@ class OrderFetchProductResponseMeta implements ModelInterface, ArrayAccess, \Jso
     protected static array $openAPINullables = [
         'total' => false,
         'skipped' => false,
-        'per_page' => false,
+        'perPage' => false,
         'page' => false,
-        'page_count' => false,
-        'quantity_sold' => false,
+        'pageCount' => false,
+        'quantitySold' => false,
         'revenue' => false
     ];
 
@@ -187,10 +187,10 @@ class OrderFetchProductResponseMeta implements ModelInterface, ArrayAccess, \Jso
     protected static $attributeMap = [
         'total' => 'total',
         'skipped' => 'skipped',
-        'per_page' => 'perPage',
+        'perPage' => 'perPage',
         'page' => 'page',
-        'page_count' => 'pageCount',
-        'quantity_sold' => 'quantity_sold',
+        'pageCount' => 'pageCount',
+        'quantitySold' => 'quantity_sold',
         'revenue' => 'revenue'
     ];
 
@@ -202,10 +202,10 @@ class OrderFetchProductResponseMeta implements ModelInterface, ArrayAccess, \Jso
     protected static $setters = [
         'total' => 'setTotal',
         'skipped' => 'setSkipped',
-        'per_page' => 'setPerPage',
+        'perPage' => 'setPerPage',
         'page' => 'setPage',
-        'page_count' => 'setPageCount',
-        'quantity_sold' => 'setQuantitySold',
+        'pageCount' => 'setPageCount',
+        'quantitySold' => 'setQuantitySold',
         'revenue' => 'setRevenue'
     ];
 
@@ -217,10 +217,10 @@ class OrderFetchProductResponseMeta implements ModelInterface, ArrayAccess, \Jso
     protected static $getters = [
         'total' => 'getTotal',
         'skipped' => 'getSkipped',
-        'per_page' => 'getPerPage',
+        'perPage' => 'getPerPage',
         'page' => 'getPage',
-        'page_count' => 'getPageCount',
-        'quantity_sold' => 'getQuantitySold',
+        'pageCount' => 'getPageCount',
+        'quantitySold' => 'getQuantitySold',
         'revenue' => 'getRevenue'
     ];
 
@@ -283,10 +283,10 @@ class OrderFetchProductResponseMeta implements ModelInterface, ArrayAccess, \Jso
     {
         $this->setIfExists('total', $data ?? [], null);
         $this->setIfExists('skipped', $data ?? [], null);
-        $this->setIfExists('per_page', $data ?? [], null);
+        $this->setIfExists('perPage', $data ?? [], null);
         $this->setIfExists('page', $data ?? [], null);
-        $this->setIfExists('page_count', $data ?? [], null);
-        $this->setIfExists('quantity_sold', $data ?? [], null);
+        $this->setIfExists('pageCount', $data ?? [], null);
+        $this->setIfExists('quantitySold', $data ?? [], null);
         $this->setIfExists('revenue', $data ?? [], null);
     }
 
@@ -323,17 +323,17 @@ class OrderFetchProductResponseMeta implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['skipped'] === null) {
             $invalidProperties[] = "'skipped' can't be null";
         }
-        if ($this->container['per_page'] === null) {
-            $invalidProperties[] = "'per_page' can't be null";
+        if ($this->container['perPage'] === null) {
+            $invalidProperties[] = "'perPage' can't be null";
         }
         if ($this->container['page'] === null) {
             $invalidProperties[] = "'page' can't be null";
         }
-        if ($this->container['page_count'] === null) {
-            $invalidProperties[] = "'page_count' can't be null";
+        if ($this->container['pageCount'] === null) {
+            $invalidProperties[] = "'pageCount' can't be null";
         }
-        if ($this->container['quantity_sold'] === null) {
-            $invalidProperties[] = "'quantity_sold' can't be null";
+        if ($this->container['quantitySold'] === null) {
+            $invalidProperties[] = "'quantitySold' can't be null";
         }
         if ($this->container['revenue'] === null) {
             $invalidProperties[] = "'revenue' can't be null";
@@ -408,28 +408,28 @@ class OrderFetchProductResponseMeta implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets per_page
+     * Gets perPage
      *
-     * @return \Alexasomba\\Paystack\Model\MetaPerPage
+     * @return \Alexasomba\Paystack\Model\MetaPerPage
      */
     public function getPerPage()
     {
-        return $this->container['per_page'];
+        return $this->container['perPage'];
     }
 
     /**
-     * Sets per_page
+     * Sets perPage
      *
-     * @param \Alexasomba\\Paystack\Model\MetaPerPage $per_page per_page
+     * @param \Alexasomba\Paystack\Model\MetaPerPage $perPage perPage
      *
      * @return self
      */
-    public function setPerPage($per_page)
+    public function setPerPage($perPage)
     {
-        if (is_null($per_page)) {
-            throw new \InvalidArgumentException('non-nullable per_page cannot be null');
+        if (is_null($perPage)) {
+            throw new \InvalidArgumentException('non-nullable perPage cannot be null');
         }
-        $this->container['per_page'] = $per_page;
+        $this->container['perPage'] = $perPage;
 
         return $this;
     }
@@ -462,55 +462,55 @@ class OrderFetchProductResponseMeta implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets page_count
+     * Gets pageCount
      *
      * @return int
      */
     public function getPageCount()
     {
-        return $this->container['page_count'];
+        return $this->container['pageCount'];
     }
 
     /**
-     * Sets page_count
+     * Sets pageCount
      *
-     * @param int $page_count page_count
+     * @param int $pageCount pageCount
      *
      * @return self
      */
-    public function setPageCount($page_count)
+    public function setPageCount($pageCount)
     {
-        if (is_null($page_count)) {
-            throw new \InvalidArgumentException('non-nullable page_count cannot be null');
+        if (is_null($pageCount)) {
+            throw new \InvalidArgumentException('non-nullable pageCount cannot be null');
         }
-        $this->container['page_count'] = $page_count;
+        $this->container['pageCount'] = $pageCount;
 
         return $this;
     }
 
     /**
-     * Gets quantity_sold
+     * Gets quantitySold
      *
      * @return int
      */
     public function getQuantitySold()
     {
-        return $this->container['quantity_sold'];
+        return $this->container['quantitySold'];
     }
 
     /**
-     * Sets quantity_sold
+     * Sets quantitySold
      *
-     * @param int $quantity_sold quantity_sold
+     * @param int $quantitySold quantitySold
      *
      * @return self
      */
-    public function setQuantitySold($quantity_sold)
+    public function setQuantitySold($quantitySold)
     {
-        if (is_null($quantity_sold)) {
-            throw new \InvalidArgumentException('non-nullable quantity_sold cannot be null');
+        if (is_null($quantitySold)) {
+            throw new \InvalidArgumentException('non-nullable quantitySold cannot be null');
         }
-        $this->container['quantity_sold'] = $quantity_sold;
+        $this->container['quantitySold'] = $quantitySold;
 
         return $this;
     }

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PageAddProductsResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -66,21 +66,21 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         'amount' => 'int',
         'currency' => 'string',
         'slug' => 'string',
-        'custom_fields' => 'mixed',
+        'customFields' => 'mixed',
         'type' => 'string',
-        'redirect_url' => 'mixed',
-        'success_message' => 'mixed',
-        'collect_phone' => 'bool',
+        'redirectUrl' => 'mixed',
+        'successMessage' => 'mixed',
+        'collectPhone' => 'bool',
         'active' => 'bool',
         'published' => 'bool',
         'migrate' => 'bool',
-        'notification_email' => 'string',
+        'notificationEmail' => 'string',
         'metadata' => 'object',
-        'split_code' => 'string',
+        'splitCode' => 'string',
         'id' => 'int',
-        'created_at' => 'string',
-        'updated_at' => 'string',
-        'products' => '\Alexasomba\\Paystack\Model\PageProductsArray[]'
+        'createdAt' => 'string',
+        'updatedAt' => 'string',
+        'products' => '\Alexasomba\Paystack\Model\PageProductsArray[]'
     ];
 
     /**
@@ -99,20 +99,20 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         'amount' => null,
         'currency' => null,
         'slug' => null,
-        'custom_fields' => null,
+        'customFields' => null,
         'type' => null,
-        'redirect_url' => null,
-        'success_message' => null,
-        'collect_phone' => null,
+        'redirectUrl' => null,
+        'successMessage' => null,
+        'collectPhone' => null,
         'active' => null,
         'published' => null,
         'migrate' => null,
-        'notification_email' => null,
+        'notificationEmail' => null,
         'metadata' => null,
-        'split_code' => null,
+        'splitCode' => null,
         'id' => null,
-        'created_at' => null,
-        'updated_at' => null,
+        'createdAt' => null,
+        'updatedAt' => null,
         'products' => null
     ];
 
@@ -130,20 +130,20 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         'amount' => true,
         'currency' => false,
         'slug' => false,
-        'custom_fields' => true,
+        'customFields' => true,
         'type' => false,
-        'redirect_url' => true,
-        'success_message' => true,
-        'collect_phone' => false,
+        'redirectUrl' => true,
+        'successMessage' => true,
+        'collectPhone' => false,
         'active' => false,
         'published' => false,
         'migrate' => false,
-        'notification_email' => true,
+        'notificationEmail' => true,
         'metadata' => true,
-        'split_code' => true,
+        'splitCode' => true,
         'id' => false,
-        'created_at' => false,
-        'updated_at' => false,
+        'createdAt' => false,
+        'updatedAt' => false,
         'products' => false
     ];
 
@@ -241,20 +241,20 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         'amount' => 'amount',
         'currency' => 'currency',
         'slug' => 'slug',
-        'custom_fields' => 'custom_fields',
+        'customFields' => 'custom_fields',
         'type' => 'type',
-        'redirect_url' => 'redirect_url',
-        'success_message' => 'success_message',
-        'collect_phone' => 'collect_phone',
+        'redirectUrl' => 'redirect_url',
+        'successMessage' => 'success_message',
+        'collectPhone' => 'collect_phone',
         'active' => 'active',
         'published' => 'published',
         'migrate' => 'migrate',
-        'notification_email' => 'notification_email',
+        'notificationEmail' => 'notification_email',
         'metadata' => 'metadata',
-        'split_code' => 'split_code',
+        'splitCode' => 'split_code',
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt',
         'products' => 'products'
     ];
 
@@ -272,20 +272,20 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         'amount' => 'setAmount',
         'currency' => 'setCurrency',
         'slug' => 'setSlug',
-        'custom_fields' => 'setCustomFields',
+        'customFields' => 'setCustomFields',
         'type' => 'setType',
-        'redirect_url' => 'setRedirectUrl',
-        'success_message' => 'setSuccessMessage',
-        'collect_phone' => 'setCollectPhone',
+        'redirectUrl' => 'setRedirectUrl',
+        'successMessage' => 'setSuccessMessage',
+        'collectPhone' => 'setCollectPhone',
         'active' => 'setActive',
         'published' => 'setPublished',
         'migrate' => 'setMigrate',
-        'notification_email' => 'setNotificationEmail',
+        'notificationEmail' => 'setNotificationEmail',
         'metadata' => 'setMetadata',
-        'split_code' => 'setSplitCode',
+        'splitCode' => 'setSplitCode',
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt',
         'products' => 'setProducts'
     ];
 
@@ -303,20 +303,20 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         'amount' => 'getAmount',
         'currency' => 'getCurrency',
         'slug' => 'getSlug',
-        'custom_fields' => 'getCustomFields',
+        'customFields' => 'getCustomFields',
         'type' => 'getType',
-        'redirect_url' => 'getRedirectUrl',
-        'success_message' => 'getSuccessMessage',
-        'collect_phone' => 'getCollectPhone',
+        'redirectUrl' => 'getRedirectUrl',
+        'successMessage' => 'getSuccessMessage',
+        'collectPhone' => 'getCollectPhone',
         'active' => 'getActive',
         'published' => 'getPublished',
         'migrate' => 'getMigrate',
-        'notification_email' => 'getNotificationEmail',
+        'notificationEmail' => 'getNotificationEmail',
         'metadata' => 'getMetadata',
-        'split_code' => 'getSplitCode',
+        'splitCode' => 'getSplitCode',
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt',
         'products' => 'getProducts'
     ];
 
@@ -385,20 +385,20 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
-        $this->setIfExists('custom_fields', $data ?? [], null);
+        $this->setIfExists('customFields', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('redirect_url', $data ?? [], null);
-        $this->setIfExists('success_message', $data ?? [], null);
-        $this->setIfExists('collect_phone', $data ?? [], null);
+        $this->setIfExists('redirectUrl', $data ?? [], null);
+        $this->setIfExists('successMessage', $data ?? [], null);
+        $this->setIfExists('collectPhone', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('published', $data ?? [], null);
         $this->setIfExists('migrate', $data ?? [], null);
-        $this->setIfExists('notification_email', $data ?? [], null);
+        $this->setIfExists('notificationEmail', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
+        $this->setIfExists('splitCode', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
         $this->setIfExists('products', $data ?? [], null);
     }
 
@@ -453,8 +453,8 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['collect_phone'] === null) {
-            $invalidProperties[] = "'collect_phone' can't be null";
+        if ($this->container['collectPhone'] === null) {
+            $invalidProperties[] = "'collectPhone' can't be null";
         }
         if ($this->container['active'] === null) {
             $invalidProperties[] = "'active' can't be null";
@@ -468,11 +468,11 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         if ($this->container['products'] === null) {
             $invalidProperties[] = "'products' can't be null";
@@ -730,35 +730,35 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets custom_fields
+     * Gets customFields
      *
      * @return mixed|null
      */
     public function getCustomFields()
     {
-        return $this->container['custom_fields'];
+        return $this->container['customFields'];
     }
 
     /**
-     * Sets custom_fields
+     * Sets customFields
      *
-     * @param mixed|null $custom_fields custom_fields
+     * @param mixed|null $customFields customFields
      *
      * @return self
      */
-    public function setCustomFields($custom_fields)
+    public function setCustomFields($customFields)
     {
-        if (is_null($custom_fields)) {
-            array_push($this->openAPINullablesSetToNull, 'custom_fields');
+        if (is_null($customFields)) {
+            array_push($this->openAPINullablesSetToNull, 'customFields');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('custom_fields', $nullablesSetToNull);
+            $index = array_search('customFields', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['custom_fields'] = $custom_fields;
+        $this->container['customFields'] = $customFields;
 
         return $this;
     }
@@ -791,96 +791,96 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets redirect_url
+     * Gets redirectUrl
      *
      * @return mixed|null
      */
     public function getRedirectUrl()
     {
-        return $this->container['redirect_url'];
+        return $this->container['redirectUrl'];
     }
 
     /**
-     * Sets redirect_url
+     * Sets redirectUrl
      *
-     * @param mixed|null $redirect_url redirect_url
+     * @param mixed|null $redirectUrl redirectUrl
      *
      * @return self
      */
-    public function setRedirectUrl($redirect_url)
+    public function setRedirectUrl($redirectUrl)
     {
-        if (is_null($redirect_url)) {
-            array_push($this->openAPINullablesSetToNull, 'redirect_url');
+        if (is_null($redirectUrl)) {
+            array_push($this->openAPINullablesSetToNull, 'redirectUrl');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('redirect_url', $nullablesSetToNull);
+            $index = array_search('redirectUrl', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['redirect_url'] = $redirect_url;
+        $this->container['redirectUrl'] = $redirectUrl;
 
         return $this;
     }
 
     /**
-     * Gets success_message
+     * Gets successMessage
      *
      * @return mixed|null
      */
     public function getSuccessMessage()
     {
-        return $this->container['success_message'];
+        return $this->container['successMessage'];
     }
 
     /**
-     * Sets success_message
+     * Sets successMessage
      *
-     * @param mixed|null $success_message success_message
+     * @param mixed|null $successMessage successMessage
      *
      * @return self
      */
-    public function setSuccessMessage($success_message)
+    public function setSuccessMessage($successMessage)
     {
-        if (is_null($success_message)) {
-            array_push($this->openAPINullablesSetToNull, 'success_message');
+        if (is_null($successMessage)) {
+            array_push($this->openAPINullablesSetToNull, 'successMessage');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('success_message', $nullablesSetToNull);
+            $index = array_search('successMessage', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['success_message'] = $success_message;
+        $this->container['successMessage'] = $successMessage;
 
         return $this;
     }
 
     /**
-     * Gets collect_phone
+     * Gets collectPhone
      *
      * @return bool
      */
     public function getCollectPhone()
     {
-        return $this->container['collect_phone'];
+        return $this->container['collectPhone'];
     }
 
     /**
-     * Sets collect_phone
+     * Sets collectPhone
      *
-     * @param bool $collect_phone collect_phone
+     * @param bool $collectPhone collectPhone
      *
      * @return self
      */
-    public function setCollectPhone($collect_phone)
+    public function setCollectPhone($collectPhone)
     {
-        if (is_null($collect_phone)) {
-            throw new \InvalidArgumentException('non-nullable collect_phone cannot be null');
+        if (is_null($collectPhone)) {
+            throw new \InvalidArgumentException('non-nullable collectPhone cannot be null');
         }
-        $this->container['collect_phone'] = $collect_phone;
+        $this->container['collectPhone'] = $collectPhone;
 
         return $this;
     }
@@ -967,35 +967,35 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets notification_email
+     * Gets notificationEmail
      *
      * @return string|null
      */
     public function getNotificationEmail()
     {
-        return $this->container['notification_email'];
+        return $this->container['notificationEmail'];
     }
 
     /**
-     * Sets notification_email
+     * Sets notificationEmail
      *
-     * @param string|null $notification_email notification_email
+     * @param string|null $notificationEmail notificationEmail
      *
      * @return self
      */
-    public function setNotificationEmail($notification_email)
+    public function setNotificationEmail($notificationEmail)
     {
-        if (is_null($notification_email)) {
-            array_push($this->openAPINullablesSetToNull, 'notification_email');
+        if (is_null($notificationEmail)) {
+            array_push($this->openAPINullablesSetToNull, 'notificationEmail');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('notification_email', $nullablesSetToNull);
+            $index = array_search('notificationEmail', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['notification_email'] = $notification_email;
+        $this->container['notificationEmail'] = $notificationEmail;
 
         return $this;
     }
@@ -1035,35 +1035,35 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets split_code
+     * Gets splitCode
      *
      * @return string|null
      */
     public function getSplitCode()
     {
-        return $this->container['split_code'];
+        return $this->container['splitCode'];
     }
 
     /**
-     * Sets split_code
+     * Sets splitCode
      *
-     * @param string|null $split_code split_code
+     * @param string|null $splitCode splitCode
      *
      * @return self
      */
-    public function setSplitCode($split_code)
+    public function setSplitCode($splitCode)
     {
-        if (is_null($split_code)) {
-            array_push($this->openAPINullablesSetToNull, 'split_code');
+        if (is_null($splitCode)) {
+            array_push($this->openAPINullablesSetToNull, 'splitCode');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('split_code', $nullablesSetToNull);
+            $index = array_search('splitCode', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['split_code'] = $split_code;
+        $this->container['splitCode'] = $splitCode;
 
         return $this;
     }
@@ -1096,55 +1096,55 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }
@@ -1152,7 +1152,7 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets products
      *
-     * @return \Alexasomba\\Paystack\Model\PageProductsArray[]
+     * @return \Alexasomba\Paystack\Model\PageProductsArray[]
      */
     public function getProducts()
     {
@@ -1162,7 +1162,7 @@ class PageAddProductsResponseData implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets products
      *
-     * @param \Alexasomba\\Paystack\Model\PageProductsArray[] $products products
+     * @param \Alexasomba\Paystack\Model\PageProductsArray[] $products products
      *
      * @return self
      */

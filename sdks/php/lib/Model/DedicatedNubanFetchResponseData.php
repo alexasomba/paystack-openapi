@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * DedicatedNubanFetchResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,15 +58,15 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'customer' => '\Alexasomba\\Paystack\Model\DedicatedNubanCreateResponseDataCustomer',
-        'bank' => '\Alexasomba\\Paystack\Model\DedicatedNubanListResponseArrayBank',
+        'customer' => '\Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer',
+        'bank' => '\Alexasomba\Paystack\Model\DedicatedNubanListResponseArrayBank',
         'id' => 'int',
-        'account_name' => 'string',
-        'account_number' => 'string',
-        'created_at' => 'string',
-        'updated_at' => 'string',
+        'accountName' => 'string',
+        'accountNumber' => 'string',
+        'createdAt' => 'string',
+        'updatedAt' => 'string',
         'currency' => 'string',
-        'split_config' => '\Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataMetadata',
+        'splitConfig' => '\Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata',
         'active' => 'bool',
         'assigned' => 'bool'
     ];
@@ -82,12 +82,12 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
         'customer' => null,
         'bank' => null,
         'id' => null,
-        'account_name' => null,
-        'account_number' => null,
-        'created_at' => null,
-        'updated_at' => null,
+        'accountName' => null,
+        'accountNumber' => null,
+        'createdAt' => null,
+        'updatedAt' => null,
         'currency' => null,
-        'split_config' => null,
+        'splitConfig' => null,
         'active' => null,
         'assigned' => null
     ];
@@ -101,12 +101,12 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
         'customer' => false,
         'bank' => false,
         'id' => false,
-        'account_name' => false,
-        'account_number' => false,
-        'created_at' => false,
-        'updated_at' => false,
+        'accountName' => false,
+        'accountNumber' => false,
+        'createdAt' => false,
+        'updatedAt' => false,
         'currency' => false,
-        'split_config' => true,
+        'splitConfig' => true,
         'active' => false,
         'assigned' => false
     ];
@@ -200,12 +200,12 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
         'customer' => 'customer',
         'bank' => 'bank',
         'id' => 'id',
-        'account_name' => 'account_name',
-        'account_number' => 'account_number',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at',
+        'accountName' => 'account_name',
+        'accountNumber' => 'account_number',
+        'createdAt' => 'created_at',
+        'updatedAt' => 'updated_at',
         'currency' => 'currency',
-        'split_config' => 'split_config',
+        'splitConfig' => 'split_config',
         'active' => 'active',
         'assigned' => 'assigned'
     ];
@@ -219,12 +219,12 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
         'customer' => 'setCustomer',
         'bank' => 'setBank',
         'id' => 'setId',
-        'account_name' => 'setAccountName',
-        'account_number' => 'setAccountNumber',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
+        'accountName' => 'setAccountName',
+        'accountNumber' => 'setAccountNumber',
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt',
         'currency' => 'setCurrency',
-        'split_config' => 'setSplitConfig',
+        'splitConfig' => 'setSplitConfig',
         'active' => 'setActive',
         'assigned' => 'setAssigned'
     ];
@@ -238,12 +238,12 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
         'customer' => 'getCustomer',
         'bank' => 'getBank',
         'id' => 'getId',
-        'account_name' => 'getAccountName',
-        'account_number' => 'getAccountNumber',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
+        'accountName' => 'getAccountName',
+        'accountNumber' => 'getAccountNumber',
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt',
         'currency' => 'getCurrency',
-        'split_config' => 'getSplitConfig',
+        'splitConfig' => 'getSplitConfig',
         'active' => 'getActive',
         'assigned' => 'getAssigned'
     ];
@@ -308,12 +308,12 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
         $this->setIfExists('customer', $data ?? [], null);
         $this->setIfExists('bank', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('account_name', $data ?? [], null);
-        $this->setIfExists('account_number', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('accountName', $data ?? [], null);
+        $this->setIfExists('accountNumber', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('split_config', $data ?? [], null);
+        $this->setIfExists('splitConfig', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('assigned', $data ?? [], null);
     }
@@ -354,23 +354,23 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['account_name'] === null) {
-            $invalidProperties[] = "'account_name' can't be null";
+        if ($this->container['accountName'] === null) {
+            $invalidProperties[] = "'accountName' can't be null";
         }
-        if ($this->container['account_number'] === null) {
-            $invalidProperties[] = "'account_number' can't be null";
+        if ($this->container['accountNumber'] === null) {
+            $invalidProperties[] = "'accountNumber' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['split_config'] === null && !$this->isNullableSetToNull('split_config')) {
-            $invalidProperties[] = "'split_config' can't be null";
+        if ($this->container['splitConfig'] === null && !$this->isNullableSetToNull('splitConfig')) {
+            $invalidProperties[] = "'splitConfig' can't be null";
         }
         if ($this->container['active'] === null) {
             $invalidProperties[] = "'active' can't be null";
@@ -396,7 +396,7 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Gets customer
      *
-     * @return \Alexasomba\\Paystack\Model\DedicatedNubanCreateResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -406,7 +406,7 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Sets customer
      *
-     * @param \Alexasomba\\Paystack\Model\DedicatedNubanCreateResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer $customer customer
      *
      * @return self
      */
@@ -423,7 +423,7 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Gets bank
      *
-     * @return \Alexasomba\\Paystack\Model\DedicatedNubanListResponseArrayBank
+     * @return \Alexasomba\Paystack\Model\DedicatedNubanListResponseArrayBank
      */
     public function getBank()
     {
@@ -433,7 +433,7 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Sets bank
      *
-     * @param \Alexasomba\\Paystack\Model\DedicatedNubanListResponseArrayBank $bank bank
+     * @param \Alexasomba\Paystack\Model\DedicatedNubanListResponseArrayBank $bank bank
      *
      * @return self
      */
@@ -475,109 +475,109 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets account_name
+     * Gets accountName
      *
      * @return string
      */
     public function getAccountName()
     {
-        return $this->container['account_name'];
+        return $this->container['accountName'];
     }
 
     /**
-     * Sets account_name
+     * Sets accountName
      *
-     * @param string $account_name account_name
+     * @param string $accountName accountName
      *
      * @return self
      */
-    public function setAccountName($account_name)
+    public function setAccountName($accountName)
     {
-        if (is_null($account_name)) {
-            throw new \InvalidArgumentException('non-nullable account_name cannot be null');
+        if (is_null($accountName)) {
+            throw new \InvalidArgumentException('non-nullable accountName cannot be null');
         }
-        $this->container['account_name'] = $account_name;
+        $this->container['accountName'] = $accountName;
 
         return $this;
     }
 
     /**
-     * Gets account_number
+     * Gets accountNumber
      *
      * @return string
      */
     public function getAccountNumber()
     {
-        return $this->container['account_number'];
+        return $this->container['accountNumber'];
     }
 
     /**
-     * Sets account_number
+     * Sets accountNumber
      *
-     * @param string $account_number account_number
+     * @param string $accountNumber accountNumber
      *
      * @return self
      */
-    public function setAccountNumber($account_number)
+    public function setAccountNumber($accountNumber)
     {
-        if (is_null($account_number)) {
-            throw new \InvalidArgumentException('non-nullable account_number cannot be null');
+        if (is_null($accountNumber)) {
+            throw new \InvalidArgumentException('non-nullable accountNumber cannot be null');
         }
-        $this->container['account_number'] = $account_number;
+        $this->container['accountNumber'] = $accountNumber;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }
@@ -610,35 +610,35 @@ class DedicatedNubanFetchResponseData implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets split_config
+     * Gets splitConfig
      *
-     * @return \Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null
      */
     public function getSplitConfig()
     {
-        return $this->container['split_config'];
+        return $this->container['splitConfig'];
     }
 
     /**
-     * Sets split_config
+     * Sets splitConfig
      *
-     * @param \Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null $split_config split_config
+     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataMetadata|null $splitConfig splitConfig
      *
      * @return self
      */
-    public function setSplitConfig($split_config)
+    public function setSplitConfig($splitConfig)
     {
-        if (is_null($split_config)) {
-            array_push($this->openAPINullablesSetToNull, 'split_config');
+        if (is_null($splitConfig)) {
+            array_push($this->openAPINullablesSetToNull, 'splitConfig');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('split_config', $nullablesSetToNull);
+            $index = array_search('splitConfig', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['split_config'] = $split_config;
+        $this->container['splitConfig'] = $splitConfig;
 
         return $this;
     }

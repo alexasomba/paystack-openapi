@@ -47,7 +47,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_create(
+    def create(
         self,
         order_create: Optional[OrderCreate] = None,
         _request_timeout: Union[
@@ -91,7 +91,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_create_serialize(
+        _param = self._create_serialize(
             order_create=order_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -115,7 +115,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_create_with_http_info(
+    def create_with_http_info(
         self,
         order_create: Optional[OrderCreate] = None,
         _request_timeout: Union[
@@ -159,7 +159,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_create_serialize(
+        _param = self._create_serialize(
             order_create=order_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -183,7 +183,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_create_without_preload_content(
+    def create_without_preload_content(
         self,
         order_create: Optional[OrderCreate] = None,
         _request_timeout: Union[
@@ -227,7 +227,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_create_serialize(
+        _param = self._create_serialize(
             order_create=order_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -246,7 +246,7 @@ class OrderApi:
         return response_data.response
 
 
-    def _order_create_serialize(
+    def _create_serialize(
         self,
         order_create,
         _request_auth,
@@ -325,7 +325,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_fetch(
+    def fetch(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the order")],
         _request_timeout: Union[
@@ -369,7 +369,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -394,7 +394,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the order")],
         _request_timeout: Union[
@@ -438,7 +438,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -463,7 +463,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the order")],
         _request_timeout: Union[
@@ -507,7 +507,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -527,7 +527,7 @@ class OrderApi:
         return response_data.response
 
 
-    def _order_fetch_serialize(
+    def _fetch_serialize(
         self,
         id,
         _request_auth,
@@ -592,7 +592,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_list(
+    def list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -645,7 +645,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -673,7 +673,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_list_with_http_info(
+    def list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -726,7 +726,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -754,7 +754,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_list_without_preload_content(
+    def list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -807,7 +807,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -830,7 +830,7 @@ class OrderApi:
         return response_data.response
 
 
-    def _order_list_serialize(
+    def _list_serialize(
         self,
         per_page,
         page,
@@ -930,7 +930,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_product(
+    def product(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the order")],
         _request_timeout: Union[
@@ -974,7 +974,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_product_serialize(
+        _param = self._product_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -999,7 +999,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_product_with_http_info(
+    def product_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the order")],
         _request_timeout: Union[
@@ -1043,7 +1043,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_product_serialize(
+        _param = self._product_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1068,7 +1068,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_product_without_preload_content(
+    def product_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the order")],
         _request_timeout: Union[
@@ -1112,7 +1112,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_product_serialize(
+        _param = self._product_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1132,7 +1132,7 @@ class OrderApi:
         return response_data.response
 
 
-    def _order_product_serialize(
+    def _product_serialize(
         self,
         id,
         _request_auth,
@@ -1197,7 +1197,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_validate(
+    def validate(
         self,
         code: Annotated[StrictStr, Field(description="The unique code of a previously created order")],
         _request_timeout: Union[
@@ -1241,7 +1241,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_validate_serialize(
+        _param = self._validate_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1266,7 +1266,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_validate_with_http_info(
+    def validate_with_http_info(
         self,
         code: Annotated[StrictStr, Field(description="The unique code of a previously created order")],
         _request_timeout: Union[
@@ -1310,7 +1310,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_validate_serialize(
+        _param = self._validate_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1335,7 +1335,7 @@ class OrderApi:
 
 
     @validate_call
-    def order_validate_without_preload_content(
+    def validate_without_preload_content(
         self,
         code: Annotated[StrictStr, Field(description="The unique code of a previously created order")],
         _request_timeout: Union[
@@ -1379,7 +1379,7 @@ class OrderApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._order_validate_serialize(
+        _param = self._validate_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1399,7 +1399,7 @@ class OrderApi:
         return response_data.response
 
 
-    def _order_validate_serialize(
+    def _validate_serialize(
         self,
         code,
         _request_auth,

@@ -43,7 +43,7 @@ class MiscellaneousApi:
 
 
     @validate_call
-    def miscellaneous_avs(
+    def avs(
         self,
         country: Annotated[Optional[StrictStr], Field(description="The country code of the states to list. It is gotten after the charge request")] = None,
         _request_timeout: Union[
@@ -87,7 +87,7 @@ class MiscellaneousApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._miscellaneous_avs_serialize(
+        _param = self._avs_serialize(
             country=country,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -112,7 +112,7 @@ class MiscellaneousApi:
 
 
     @validate_call
-    def miscellaneous_avs_with_http_info(
+    def avs_with_http_info(
         self,
         country: Annotated[Optional[StrictStr], Field(description="The country code of the states to list. It is gotten after the charge request")] = None,
         _request_timeout: Union[
@@ -156,7 +156,7 @@ class MiscellaneousApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._miscellaneous_avs_serialize(
+        _param = self._avs_serialize(
             country=country,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -181,7 +181,7 @@ class MiscellaneousApi:
 
 
     @validate_call
-    def miscellaneous_avs_without_preload_content(
+    def avs_without_preload_content(
         self,
         country: Annotated[Optional[StrictStr], Field(description="The country code of the states to list. It is gotten after the charge request")] = None,
         _request_timeout: Union[
@@ -225,7 +225,7 @@ class MiscellaneousApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._miscellaneous_avs_serialize(
+        _param = self._avs_serialize(
             country=country,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -245,7 +245,7 @@ class MiscellaneousApi:
         return response_data.response
 
 
-    def _miscellaneous_avs_serialize(
+    def _avs_serialize(
         self,
         country,
         _request_auth,
@@ -312,7 +312,7 @@ class MiscellaneousApi:
 
 
     @validate_call
-    def miscellaneous_list_countries(
+    def list_countries(
         self,
         _request_timeout: Union[
             None,
@@ -353,7 +353,7 @@ class MiscellaneousApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._miscellaneous_list_countries_serialize(
+        _param = self._list_countries_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -377,7 +377,7 @@ class MiscellaneousApi:
 
 
     @validate_call
-    def miscellaneous_list_countries_with_http_info(
+    def list_countries_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -418,7 +418,7 @@ class MiscellaneousApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._miscellaneous_list_countries_serialize(
+        _param = self._list_countries_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -442,7 +442,7 @@ class MiscellaneousApi:
 
 
     @validate_call
-    def miscellaneous_list_countries_without_preload_content(
+    def list_countries_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -483,7 +483,7 @@ class MiscellaneousApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._miscellaneous_list_countries_serialize(
+        _param = self._list_countries_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -502,7 +502,7 @@ class MiscellaneousApi:
         return response_data.response
 
 
-    def _miscellaneous_list_countries_serialize(
+    def _list_countries_serialize(
         self,
         _request_auth,
         _content_type,
@@ -564,7 +564,7 @@ class MiscellaneousApi:
 
 
     @validate_call
-    def miscellaneous_resolve_card_bin(
+    def resolve_card_bin(
         self,
         bin: Annotated[StrictStr, Field(description="The card bank identification number")],
         _request_timeout: Union[
@@ -608,7 +608,7 @@ class MiscellaneousApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._miscellaneous_resolve_card_bin_serialize(
+        _param = self._resolve_card_bin_serialize(
             bin=bin,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -633,7 +633,7 @@ class MiscellaneousApi:
 
 
     @validate_call
-    def miscellaneous_resolve_card_bin_with_http_info(
+    def resolve_card_bin_with_http_info(
         self,
         bin: Annotated[StrictStr, Field(description="The card bank identification number")],
         _request_timeout: Union[
@@ -677,7 +677,7 @@ class MiscellaneousApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._miscellaneous_resolve_card_bin_serialize(
+        _param = self._resolve_card_bin_serialize(
             bin=bin,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -702,7 +702,7 @@ class MiscellaneousApi:
 
 
     @validate_call
-    def miscellaneous_resolve_card_bin_without_preload_content(
+    def resolve_card_bin_without_preload_content(
         self,
         bin: Annotated[StrictStr, Field(description="The card bank identification number")],
         _request_timeout: Union[
@@ -746,7 +746,7 @@ class MiscellaneousApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._miscellaneous_resolve_card_bin_serialize(
+        _param = self._resolve_card_bin_serialize(
             bin=bin,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -766,7 +766,7 @@ class MiscellaneousApi:
         return response_data.response
 
 
-    def _miscellaneous_resolve_card_bin_serialize(
+    def _resolve_card_bin_serialize(
         self,
         bin,
         _request_auth,

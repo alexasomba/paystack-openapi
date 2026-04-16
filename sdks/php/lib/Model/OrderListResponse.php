@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * OrderListResponse Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class OrderListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPITypes = [
         'status' => 'bool',
         'message' => 'string',
-        'data' => '\Alexasomba\\Paystack\Model\OrderListResponseArray[]',
-        'meta' => '\Alexasomba\\Paystack\Model\Meta'
+        'data' => '\Alexasomba\Paystack\Model\OrderListResponseArray[]',
+        'meta' => '\Alexasomba\Paystack\Model\Meta'
     ];
 
     /**
@@ -380,7 +380,7 @@ class OrderListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets data
      *
-     * @return \Alexasomba\\Paystack\Model\OrderListResponseArray[]
+     * @return \Alexasomba\Paystack\Model\OrderListResponseArray[]
      */
     public function getData()
     {
@@ -390,7 +390,7 @@ class OrderListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets data
      *
-     * @param \Alexasomba\\Paystack\Model\OrderListResponseArray[] $data data
+     * @param \Alexasomba\Paystack\Model\OrderListResponseArray[] $data data
      *
      * @return self
      */
@@ -407,7 +407,7 @@ class OrderListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets meta
      *
-     * @return \Alexasomba\\Paystack\Model\Meta
+     * @return \Alexasomba\Paystack\Model\Meta
      */
     public function getMeta()
     {
@@ -417,7 +417,7 @@ class OrderListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets meta
      *
-     * @param \Alexasomba\\Paystack\Model\Meta $meta meta
+     * @param \Alexasomba\Paystack\Model\Meta $meta meta
      *
      * @return self
      */

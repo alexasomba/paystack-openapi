@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransferRecipientUpdate Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class TransferRecipientUpdate implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'name' => 'string',
         'email' => 'string',
-        'metadata' => '\Alexasomba\\Paystack\Model\TransactionInitializeMetadata'
+        'metadata' => '\Alexasomba\Paystack\Model\TransactionInitializeMetadata'
     ];
 
     /**
@@ -361,7 +361,7 @@ class TransferRecipientUpdate implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\\Paystack\Model\TransactionInitializeMetadata|null
+     * @return \Alexasomba\Paystack\Model\TransactionInitializeMetadata|null
      */
     public function getMetadata()
     {
@@ -371,7 +371,7 @@ class TransferRecipientUpdate implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\\Paystack\Model\TransactionInitializeMetadata|null $metadata metadata
+     * @param \Alexasomba\Paystack\Model\TransactionInitializeMetadata|null $metadata metadata
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * Error Class Doc Comment
  *
  * @category Class
  * @description Standard error response returned when a Paystack API request fails.
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'status' => 'bool',
         'message' => 'string',
-        'meta' => '\Alexasomba\\Paystack\Model\ErrorMeta',
+        'meta' => '\Alexasomba\Paystack\Model\ErrorMeta',
         'type' => 'string',
         'code' => 'string',
-        'error_code_mapping_not_found' => 'bool'
+        'errorCodeMappingNotFound' => 'bool'
     ];
 
     /**
@@ -80,7 +80,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => null,
         'type' => null,
         'code' => null,
-        'error_code_mapping_not_found' => null
+        'errorCodeMappingNotFound' => null
     ];
 
     /**
@@ -94,7 +94,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => false,
         'type' => false,
         'code' => false,
-        'error_code_mapping_not_found' => false
+        'errorCodeMappingNotFound' => false
     ];
 
     /**
@@ -188,7 +188,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => 'meta',
         'type' => 'type',
         'code' => 'code',
-        'error_code_mapping_not_found' => 'errorCodeMappingNotFound'
+        'errorCodeMappingNotFound' => 'errorCodeMappingNotFound'
     ];
 
     /**
@@ -202,7 +202,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => 'setMeta',
         'type' => 'setType',
         'code' => 'setCode',
-        'error_code_mapping_not_found' => 'setErrorCodeMappingNotFound'
+        'errorCodeMappingNotFound' => 'setErrorCodeMappingNotFound'
     ];
 
     /**
@@ -216,7 +216,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         'meta' => 'getMeta',
         'type' => 'getType',
         'code' => 'getCode',
-        'error_code_mapping_not_found' => 'getErrorCodeMappingNotFound'
+        'errorCodeMappingNotFound' => 'getErrorCodeMappingNotFound'
     ];
 
     /**
@@ -298,7 +298,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('error_code_mapping_not_found', $data ?? [], null);
+        $this->setIfExists('errorCodeMappingNotFound', $data ?? [], null);
     }
 
     /**
@@ -409,7 +409,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets meta
      *
-     * @return \Alexasomba\\Paystack\Model\ErrorMeta|null
+     * @return \Alexasomba\Paystack\Model\ErrorMeta|null
      */
     public function getMeta()
     {
@@ -419,7 +419,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets meta
      *
-     * @param \Alexasomba\\Paystack\Model\ErrorMeta|null $meta meta
+     * @param \Alexasomba\Paystack\Model\ErrorMeta|null $meta meta
      *
      * @return self
      */
@@ -498,28 +498,28 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets error_code_mapping_not_found
+     * Gets errorCodeMappingNotFound
      *
      * @return bool|null
      */
     public function getErrorCodeMappingNotFound()
     {
-        return $this->container['error_code_mapping_not_found'];
+        return $this->container['errorCodeMappingNotFound'];
     }
 
     /**
-     * Sets error_code_mapping_not_found
+     * Sets errorCodeMappingNotFound
      *
-     * @param bool|null $error_code_mapping_not_found An indicator for error mapping for the request
+     * @param bool|null $errorCodeMappingNotFound An indicator for error mapping for the request
      *
      * @return self
      */
-    public function setErrorCodeMappingNotFound($error_code_mapping_not_found)
+    public function setErrorCodeMappingNotFound($errorCodeMappingNotFound)
     {
-        if (is_null($error_code_mapping_not_found)) {
-            throw new \InvalidArgumentException('non-nullable error_code_mapping_not_found cannot be null');
+        if (is_null($errorCodeMappingNotFound)) {
+            throw new \InvalidArgumentException('non-nullable errorCodeMappingNotFound cannot be null');
         }
-        $this->container['error_code_mapping_not_found'] = $error_code_mapping_not_found;
+        $this->container['errorCodeMappingNotFound'] = $errorCodeMappingNotFound;
 
         return $this;
     }

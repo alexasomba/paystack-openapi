@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * ProductUpdateResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,25 +60,25 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'name' => 'string',
         'description' => 'string',
-        'product_code' => 'string',
+        'productCode' => 'string',
         'price' => 'int',
         'currency' => 'string',
         'quantity' => 'int',
-        'quantity_sold' => 'mixed',
+        'quantitySold' => 'mixed',
         'type' => 'string',
-        'image_path' => 'string',
-        'file_path' => 'string',
-        'is_shippable' => 'bool',
+        'imagePath' => 'string',
+        'filePath' => 'string',
+        'isShippable' => 'bool',
         'unlimited' => 'bool',
         'domain' => 'string',
         'active' => 'bool',
         'features' => 'mixed',
-        'in_stock' => 'bool',
+        'inStock' => 'bool',
         'metadata' => 'mixed',
         'id' => 'int',
         'integration' => 'int',
-        'created_at' => 'string',
-        'updated_at' => 'string'
+        'createdAt' => 'string',
+        'updatedAt' => 'string'
     ];
 
     /**
@@ -91,25 +91,25 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPIFormats = [
         'name' => null,
         'description' => null,
-        'product_code' => null,
+        'productCode' => null,
         'price' => null,
         'currency' => null,
         'quantity' => null,
-        'quantity_sold' => null,
+        'quantitySold' => null,
         'type' => null,
-        'image_path' => null,
-        'file_path' => null,
-        'is_shippable' => null,
+        'imagePath' => null,
+        'filePath' => null,
+        'isShippable' => null,
         'unlimited' => null,
         'domain' => null,
         'active' => null,
         'features' => null,
-        'in_stock' => null,
+        'inStock' => null,
         'metadata' => null,
         'id' => null,
         'integration' => null,
-        'created_at' => null,
-        'updated_at' => null
+        'createdAt' => null,
+        'updatedAt' => null
     ];
 
     /**
@@ -120,25 +120,25 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'name' => false,
         'description' => false,
-        'product_code' => false,
+        'productCode' => false,
         'price' => false,
         'currency' => false,
         'quantity' => false,
-        'quantity_sold' => true,
+        'quantitySold' => true,
         'type' => false,
-        'image_path' => false,
-        'file_path' => false,
-        'is_shippable' => false,
+        'imagePath' => false,
+        'filePath' => false,
+        'isShippable' => false,
         'unlimited' => false,
         'domain' => false,
         'active' => false,
         'features' => true,
-        'in_stock' => false,
+        'inStock' => false,
         'metadata' => true,
         'id' => false,
         'integration' => false,
-        'created_at' => false,
-        'updated_at' => false
+        'createdAt' => false,
+        'updatedAt' => false
     ];
 
     /**
@@ -229,25 +229,25 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     protected static $attributeMap = [
         'name' => 'name',
         'description' => 'description',
-        'product_code' => 'product_code',
+        'productCode' => 'product_code',
         'price' => 'price',
         'currency' => 'currency',
         'quantity' => 'quantity',
-        'quantity_sold' => 'quantity_sold',
+        'quantitySold' => 'quantity_sold',
         'type' => 'type',
-        'image_path' => 'image_path',
-        'file_path' => 'file_path',
-        'is_shippable' => 'is_shippable',
+        'imagePath' => 'image_path',
+        'filePath' => 'file_path',
+        'isShippable' => 'is_shippable',
         'unlimited' => 'unlimited',
         'domain' => 'domain',
         'active' => 'active',
         'features' => 'features',
-        'in_stock' => 'in_stock',
+        'inStock' => 'in_stock',
         'metadata' => 'metadata',
         'id' => 'id',
         'integration' => 'integration',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt'
     ];
 
     /**
@@ -258,25 +258,25 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     protected static $setters = [
         'name' => 'setName',
         'description' => 'setDescription',
-        'product_code' => 'setProductCode',
+        'productCode' => 'setProductCode',
         'price' => 'setPrice',
         'currency' => 'setCurrency',
         'quantity' => 'setQuantity',
-        'quantity_sold' => 'setQuantitySold',
+        'quantitySold' => 'setQuantitySold',
         'type' => 'setType',
-        'image_path' => 'setImagePath',
-        'file_path' => 'setFilePath',
-        'is_shippable' => 'setIsShippable',
+        'imagePath' => 'setImagePath',
+        'filePath' => 'setFilePath',
+        'isShippable' => 'setIsShippable',
         'unlimited' => 'setUnlimited',
         'domain' => 'setDomain',
         'active' => 'setActive',
         'features' => 'setFeatures',
-        'in_stock' => 'setInStock',
+        'inStock' => 'setInStock',
         'metadata' => 'setMetadata',
         'id' => 'setId',
         'integration' => 'setIntegration',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
@@ -287,25 +287,25 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     protected static $getters = [
         'name' => 'getName',
         'description' => 'getDescription',
-        'product_code' => 'getProductCode',
+        'productCode' => 'getProductCode',
         'price' => 'getPrice',
         'currency' => 'getCurrency',
         'quantity' => 'getQuantity',
-        'quantity_sold' => 'getQuantitySold',
+        'quantitySold' => 'getQuantitySold',
         'type' => 'getType',
-        'image_path' => 'getImagePath',
-        'file_path' => 'getFilePath',
-        'is_shippable' => 'getIsShippable',
+        'imagePath' => 'getImagePath',
+        'filePath' => 'getFilePath',
+        'isShippable' => 'getIsShippable',
         'unlimited' => 'getUnlimited',
         'domain' => 'getDomain',
         'active' => 'getActive',
         'features' => 'getFeatures',
-        'in_stock' => 'getInStock',
+        'inStock' => 'getInStock',
         'metadata' => 'getMetadata',
         'id' => 'getId',
         'integration' => 'getIntegration',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
@@ -367,25 +367,25 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     {
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('product_code', $data ?? [], null);
+        $this->setIfExists('productCode', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
-        $this->setIfExists('quantity_sold', $data ?? [], null);
+        $this->setIfExists('quantitySold', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('image_path', $data ?? [], null);
-        $this->setIfExists('file_path', $data ?? [], null);
-        $this->setIfExists('is_shippable', $data ?? [], null);
+        $this->setIfExists('imagePath', $data ?? [], null);
+        $this->setIfExists('filePath', $data ?? [], null);
+        $this->setIfExists('isShippable', $data ?? [], null);
         $this->setIfExists('unlimited', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('features', $data ?? [], null);
-        $this->setIfExists('in_stock', $data ?? [], null);
+        $this->setIfExists('inStock', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
     }
 
     /**
@@ -421,8 +421,8 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['description'] === null) {
             $invalidProperties[] = "'description' can't be null";
         }
-        if ($this->container['product_code'] === null) {
-            $invalidProperties[] = "'product_code' can't be null";
+        if ($this->container['productCode'] === null) {
+            $invalidProperties[] = "'productCode' can't be null";
         }
         if ($this->container['price'] === null) {
             $invalidProperties[] = "'price' can't be null";
@@ -433,20 +433,20 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['quantity'] === null) {
             $invalidProperties[] = "'quantity' can't be null";
         }
-        if ($this->container['quantity_sold'] === null && !$this->isNullableSetToNull('quantity_sold')) {
-            $invalidProperties[] = "'quantity_sold' can't be null";
+        if ($this->container['quantitySold'] === null && !$this->isNullableSetToNull('quantitySold')) {
+            $invalidProperties[] = "'quantitySold' can't be null";
         }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['image_path'] === null) {
-            $invalidProperties[] = "'image_path' can't be null";
+        if ($this->container['imagePath'] === null) {
+            $invalidProperties[] = "'imagePath' can't be null";
         }
-        if ($this->container['file_path'] === null) {
-            $invalidProperties[] = "'file_path' can't be null";
+        if ($this->container['filePath'] === null) {
+            $invalidProperties[] = "'filePath' can't be null";
         }
-        if ($this->container['is_shippable'] === null) {
-            $invalidProperties[] = "'is_shippable' can't be null";
+        if ($this->container['isShippable'] === null) {
+            $invalidProperties[] = "'isShippable' can't be null";
         }
         if ($this->container['unlimited'] === null) {
             $invalidProperties[] = "'unlimited' can't be null";
@@ -460,8 +460,8 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['features'] === null && !$this->isNullableSetToNull('features')) {
             $invalidProperties[] = "'features' can't be null";
         }
-        if ($this->container['in_stock'] === null) {
-            $invalidProperties[] = "'in_stock' can't be null";
+        if ($this->container['inStock'] === null) {
+            $invalidProperties[] = "'inStock' can't be null";
         }
         if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
@@ -472,11 +472,11 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['integration'] === null) {
             $invalidProperties[] = "'integration' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -548,28 +548,28 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets product_code
+     * Gets productCode
      *
      * @return string
      */
     public function getProductCode()
     {
-        return $this->container['product_code'];
+        return $this->container['productCode'];
     }
 
     /**
-     * Sets product_code
+     * Sets productCode
      *
-     * @param string $product_code product_code
+     * @param string $productCode productCode
      *
      * @return self
      */
-    public function setProductCode($product_code)
+    public function setProductCode($productCode)
     {
-        if (is_null($product_code)) {
-            throw new \InvalidArgumentException('non-nullable product_code cannot be null');
+        if (is_null($productCode)) {
+            throw new \InvalidArgumentException('non-nullable productCode cannot be null');
         }
-        $this->container['product_code'] = $product_code;
+        $this->container['productCode'] = $productCode;
 
         return $this;
     }
@@ -656,35 +656,35 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets quantity_sold
+     * Gets quantitySold
      *
      * @return mixed|null
      */
     public function getQuantitySold()
     {
-        return $this->container['quantity_sold'];
+        return $this->container['quantitySold'];
     }
 
     /**
-     * Sets quantity_sold
+     * Sets quantitySold
      *
-     * @param mixed|null $quantity_sold quantity_sold
+     * @param mixed|null $quantitySold quantitySold
      *
      * @return self
      */
-    public function setQuantitySold($quantity_sold)
+    public function setQuantitySold($quantitySold)
     {
-        if (is_null($quantity_sold)) {
-            array_push($this->openAPINullablesSetToNull, 'quantity_sold');
+        if (is_null($quantitySold)) {
+            array_push($this->openAPINullablesSetToNull, 'quantitySold');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('quantity_sold', $nullablesSetToNull);
+            $index = array_search('quantitySold', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['quantity_sold'] = $quantity_sold;
+        $this->container['quantitySold'] = $quantitySold;
 
         return $this;
     }
@@ -717,82 +717,82 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets image_path
+     * Gets imagePath
      *
      * @return string
      */
     public function getImagePath()
     {
-        return $this->container['image_path'];
+        return $this->container['imagePath'];
     }
 
     /**
-     * Sets image_path
+     * Sets imagePath
      *
-     * @param string $image_path image_path
+     * @param string $imagePath imagePath
      *
      * @return self
      */
-    public function setImagePath($image_path)
+    public function setImagePath($imagePath)
     {
-        if (is_null($image_path)) {
-            throw new \InvalidArgumentException('non-nullable image_path cannot be null');
+        if (is_null($imagePath)) {
+            throw new \InvalidArgumentException('non-nullable imagePath cannot be null');
         }
-        $this->container['image_path'] = $image_path;
+        $this->container['imagePath'] = $imagePath;
 
         return $this;
     }
 
     /**
-     * Gets file_path
+     * Gets filePath
      *
      * @return string
      */
     public function getFilePath()
     {
-        return $this->container['file_path'];
+        return $this->container['filePath'];
     }
 
     /**
-     * Sets file_path
+     * Sets filePath
      *
-     * @param string $file_path file_path
+     * @param string $filePath filePath
      *
      * @return self
      */
-    public function setFilePath($file_path)
+    public function setFilePath($filePath)
     {
-        if (is_null($file_path)) {
-            throw new \InvalidArgumentException('non-nullable file_path cannot be null');
+        if (is_null($filePath)) {
+            throw new \InvalidArgumentException('non-nullable filePath cannot be null');
         }
-        $this->container['file_path'] = $file_path;
+        $this->container['filePath'] = $filePath;
 
         return $this;
     }
 
     /**
-     * Gets is_shippable
+     * Gets isShippable
      *
      * @return bool
      */
     public function getIsShippable()
     {
-        return $this->container['is_shippable'];
+        return $this->container['isShippable'];
     }
 
     /**
-     * Sets is_shippable
+     * Sets isShippable
      *
-     * @param bool $is_shippable is_shippable
+     * @param bool $isShippable isShippable
      *
      * @return self
      */
-    public function setIsShippable($is_shippable)
+    public function setIsShippable($isShippable)
     {
-        if (is_null($is_shippable)) {
-            throw new \InvalidArgumentException('non-nullable is_shippable cannot be null');
+        if (is_null($isShippable)) {
+            throw new \InvalidArgumentException('non-nullable isShippable cannot be null');
         }
-        $this->container['is_shippable'] = $is_shippable;
+        $this->container['isShippable'] = $isShippable;
 
         return $this;
     }
@@ -913,28 +913,28 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets in_stock
+     * Gets inStock
      *
      * @return bool
      */
     public function getInStock()
     {
-        return $this->container['in_stock'];
+        return $this->container['inStock'];
     }
 
     /**
-     * Sets in_stock
+     * Sets inStock
      *
-     * @param bool $in_stock in_stock
+     * @param bool $inStock inStock
      *
      * @return self
      */
-    public function setInStock($in_stock)
+    public function setInStock($inStock)
     {
-        if (is_null($in_stock)) {
-            throw new \InvalidArgumentException('non-nullable in_stock cannot be null');
+        if (is_null($inStock)) {
+            throw new \InvalidArgumentException('non-nullable inStock cannot be null');
         }
-        $this->container['in_stock'] = $in_stock;
+        $this->container['inStock'] = $inStock;
 
         return $this;
     }
@@ -1028,55 +1028,55 @@ class ProductUpdateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

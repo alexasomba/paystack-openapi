@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * RefundCreateResponseDataTransactionCustomer Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class RefundCreateResponseDataTransactionCustomer implements ModelInterface, Arr
       * @var string[]
       */
     protected static $openAPITypes = [
-        'international_format_phone' => 'string'
+        'internationalFormatPhone' => 'string'
     ];
 
     /**
@@ -69,7 +69,7 @@ class RefundCreateResponseDataTransactionCustomer implements ModelInterface, Arr
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'international_format_phone' => null
+        'internationalFormatPhone' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class RefundCreateResponseDataTransactionCustomer implements ModelInterface, Arr
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'international_format_phone' => true
+        'internationalFormatPhone' => true
     ];
 
     /**
@@ -167,7 +167,7 @@ class RefundCreateResponseDataTransactionCustomer implements ModelInterface, Arr
      * @var string[]
      */
     protected static $attributeMap = [
-        'international_format_phone' => 'international_format_phone'
+        'internationalFormatPhone' => 'international_format_phone'
     ];
 
     /**
@@ -176,7 +176,7 @@ class RefundCreateResponseDataTransactionCustomer implements ModelInterface, Arr
      * @var string[]
      */
     protected static $setters = [
-        'international_format_phone' => 'setInternationalFormatPhone'
+        'internationalFormatPhone' => 'setInternationalFormatPhone'
     ];
 
     /**
@@ -185,7 +185,7 @@ class RefundCreateResponseDataTransactionCustomer implements ModelInterface, Arr
      * @var string[]
      */
     protected static $getters = [
-        'international_format_phone' => 'getInternationalFormatPhone'
+        'internationalFormatPhone' => 'getInternationalFormatPhone'
     ];
 
     /**
@@ -245,7 +245,7 @@ class RefundCreateResponseDataTransactionCustomer implements ModelInterface, Arr
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('international_format_phone', $data ?? [], null);
+        $this->setIfExists('internationalFormatPhone', $data ?? [], null);
     }
 
     /**
@@ -291,35 +291,35 @@ class RefundCreateResponseDataTransactionCustomer implements ModelInterface, Arr
 
 
     /**
-     * Gets international_format_phone
+     * Gets internationalFormatPhone
      *
      * @return string|null
      */
     public function getInternationalFormatPhone()
     {
-        return $this->container['international_format_phone'];
+        return $this->container['internationalFormatPhone'];
     }
 
     /**
-     * Sets international_format_phone
+     * Sets internationalFormatPhone
      *
-     * @param string|null $international_format_phone international_format_phone
+     * @param string|null $internationalFormatPhone internationalFormatPhone
      *
      * @return self
      */
-    public function setInternationalFormatPhone($international_format_phone)
+    public function setInternationalFormatPhone($internationalFormatPhone)
     {
-        if (is_null($international_format_phone)) {
-            array_push($this->openAPINullablesSetToNull, 'international_format_phone');
+        if (is_null($internationalFormatPhone)) {
+            array_push($this->openAPINullablesSetToNull, 'internationalFormatPhone');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('international_format_phone', $nullablesSetToNull);
+            $index = array_search('internationalFormatPhone', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['international_format_phone'] = $international_format_phone;
+        $this->container['internationalFormatPhone'] = $internationalFormatPhone;
 
         return $this;
     }

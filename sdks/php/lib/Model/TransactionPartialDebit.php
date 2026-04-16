@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransactionPartialDebit Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,10 +59,10 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'email' => 'string',
-        'amount' => '\Alexasomba\\Paystack\Model\TransactionPartialDebitAmount',
-        'authorization_code' => 'string',
+        'amount' => '\Alexasomba\Paystack\Model\TransactionPartialDebitAmount',
+        'authorizationCode' => 'string',
         'currency' => 'string',
-        'at_least' => 'string',
+        'atLeast' => 'string',
         'reference' => 'string'
     ];
 
@@ -76,9 +76,9 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPIFormats = [
         'email' => null,
         'amount' => null,
-        'authorization_code' => null,
+        'authorizationCode' => null,
         'currency' => null,
-        'at_least' => null,
+        'atLeast' => null,
         'reference' => null
     ];
 
@@ -90,9 +90,9 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     protected static array $openAPINullables = [
         'email' => false,
         'amount' => false,
-        'authorization_code' => false,
+        'authorizationCode' => false,
         'currency' => false,
-        'at_least' => false,
+        'atLeast' => false,
         'reference' => false
     ];
 
@@ -184,9 +184,9 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $attributeMap = [
         'email' => 'email',
         'amount' => 'amount',
-        'authorization_code' => 'authorization_code',
+        'authorizationCode' => 'authorization_code',
         'currency' => 'currency',
-        'at_least' => 'at_least',
+        'atLeast' => 'at_least',
         'reference' => 'reference'
     ];
 
@@ -198,9 +198,9 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $setters = [
         'email' => 'setEmail',
         'amount' => 'setAmount',
-        'authorization_code' => 'setAuthorizationCode',
+        'authorizationCode' => 'setAuthorizationCode',
         'currency' => 'setCurrency',
-        'at_least' => 'setAtLeast',
+        'atLeast' => 'setAtLeast',
         'reference' => 'setReference'
     ];
 
@@ -212,9 +212,9 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $getters = [
         'email' => 'getEmail',
         'amount' => 'getAmount',
-        'authorization_code' => 'getAuthorizationCode',
+        'authorizationCode' => 'getAuthorizationCode',
         'currency' => 'getCurrency',
-        'at_least' => 'getAtLeast',
+        'atLeast' => 'getAtLeast',
         'reference' => 'getReference'
     ];
 
@@ -292,9 +292,9 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('authorization_code', $data ?? [], null);
+        $this->setIfExists('authorizationCode', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('at_least', $data ?? [], null);
+        $this->setIfExists('atLeast', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
     }
 
@@ -331,8 +331,8 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
-        if ($this->container['authorization_code'] === null) {
-            $invalidProperties[] = "'authorization_code' can't be null";
+        if ($this->container['authorizationCode'] === null) {
+            $invalidProperties[] = "'authorizationCode' can't be null";
         }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
@@ -391,7 +391,7 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets amount
      *
-     * @return \Alexasomba\\Paystack\Model\TransactionPartialDebitAmount
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitAmount
      */
     public function getAmount()
     {
@@ -401,7 +401,7 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets amount
      *
-     * @param \Alexasomba\\Paystack\Model\TransactionPartialDebitAmount $amount amount
+     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitAmount $amount amount
      *
      * @return self
      */
@@ -416,28 +416,28 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets authorization_code
+     * Gets authorizationCode
      *
      * @return string
      */
     public function getAuthorizationCode()
     {
-        return $this->container['authorization_code'];
+        return $this->container['authorizationCode'];
     }
 
     /**
-     * Sets authorization_code
+     * Sets authorizationCode
      *
-     * @param string $authorization_code Valid authorization code to charge
+     * @param string $authorizationCode Valid authorization code to charge
      *
      * @return self
      */
-    public function setAuthorizationCode($authorization_code)
+    public function setAuthorizationCode($authorizationCode)
     {
-        if (is_null($authorization_code)) {
-            throw new \InvalidArgumentException('non-nullable authorization_code cannot be null');
+        if (is_null($authorizationCode)) {
+            throw new \InvalidArgumentException('non-nullable authorizationCode cannot be null');
         }
-        $this->container['authorization_code'] = $authorization_code;
+        $this->container['authorizationCode'] = $authorizationCode;
 
         return $this;
     }
@@ -480,28 +480,28 @@ class TransactionPartialDebit implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets at_least
+     * Gets atLeast
      *
      * @return string|null
      */
     public function getAtLeast()
     {
-        return $this->container['at_least'];
+        return $this->container['atLeast'];
     }
 
     /**
-     * Sets at_least
+     * Sets atLeast
      *
-     * @param string|null $at_least Minimum amount to charge
+     * @param string|null $atLeast Minimum amount to charge
      *
      * @return self
      */
-    public function setAtLeast($at_least)
+    public function setAtLeast($atLeast)
     {
-        if (is_null($at_least)) {
-            throw new \InvalidArgumentException('non-nullable at_least cannot be null');
+        if (is_null($atLeast)) {
+            throw new \InvalidArgumentException('non-nullable atLeast cannot be null');
         }
-        $this->container['at_least'] = $at_least;
+        $this->container['atLeast'] = $atLeast;
 
         return $this;
     }

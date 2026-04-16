@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,15 +27,15 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
-use \Alexasomba\\Paystack\ObjectSerializer;
+namespace Alexasomba\Paystack\Model;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * Currency Class Doc Comment
  *
  * @category Class
  * @description List of all support currencies
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

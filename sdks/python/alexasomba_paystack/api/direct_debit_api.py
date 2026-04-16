@@ -43,7 +43,7 @@ class DirectDebitApi:
 
 
     @validate_call
-    def directdebit_list_mandate_authorizations(
+    def list_mandate_authorizations(
         self,
         cursor: Annotated[Optional[StrictStr], Field(description="The cursor value of the next set of authorizations to fetch. You can get this from the meta object of the response")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by the authorization status")] = None,
@@ -93,7 +93,7 @@ class DirectDebitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._directdebit_list_mandate_authorizations_serialize(
+        _param = self._list_mandate_authorizations_serialize(
             cursor=cursor,
             status=status,
             per_page=per_page,
@@ -119,7 +119,7 @@ class DirectDebitApi:
 
 
     @validate_call
-    def directdebit_list_mandate_authorizations_with_http_info(
+    def list_mandate_authorizations_with_http_info(
         self,
         cursor: Annotated[Optional[StrictStr], Field(description="The cursor value of the next set of authorizations to fetch. You can get this from the meta object of the response")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by the authorization status")] = None,
@@ -169,7 +169,7 @@ class DirectDebitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._directdebit_list_mandate_authorizations_serialize(
+        _param = self._list_mandate_authorizations_serialize(
             cursor=cursor,
             status=status,
             per_page=per_page,
@@ -195,7 +195,7 @@ class DirectDebitApi:
 
 
     @validate_call
-    def directdebit_list_mandate_authorizations_without_preload_content(
+    def list_mandate_authorizations_without_preload_content(
         self,
         cursor: Annotated[Optional[StrictStr], Field(description="The cursor value of the next set of authorizations to fetch. You can get this from the meta object of the response")] = None,
         status: Annotated[Optional[StrictStr], Field(description="Filter by the authorization status")] = None,
@@ -245,7 +245,7 @@ class DirectDebitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._directdebit_list_mandate_authorizations_serialize(
+        _param = self._list_mandate_authorizations_serialize(
             cursor=cursor,
             status=status,
             per_page=per_page,
@@ -266,7 +266,7 @@ class DirectDebitApi:
         return response_data.response
 
 
-    def _directdebit_list_mandate_authorizations_serialize(
+    def _list_mandate_authorizations_serialize(
         self,
         cursor,
         status,
@@ -343,7 +343,7 @@ class DirectDebitApi:
 
 
     @validate_call
-    def directdebit_trigger_activation_charge(
+    def trigger_activation_charge(
         self,
         direct_debit_activation_charge_request: DirectDebitActivationChargeRequest,
         _request_timeout: Union[
@@ -387,7 +387,7 @@ class DirectDebitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._directdebit_trigger_activation_charge_serialize(
+        _param = self._trigger_activation_charge_serialize(
             direct_debit_activation_charge_request=direct_debit_activation_charge_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -411,7 +411,7 @@ class DirectDebitApi:
 
 
     @validate_call
-    def directdebit_trigger_activation_charge_with_http_info(
+    def trigger_activation_charge_with_http_info(
         self,
         direct_debit_activation_charge_request: DirectDebitActivationChargeRequest,
         _request_timeout: Union[
@@ -455,7 +455,7 @@ class DirectDebitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._directdebit_trigger_activation_charge_serialize(
+        _param = self._trigger_activation_charge_serialize(
             direct_debit_activation_charge_request=direct_debit_activation_charge_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -479,7 +479,7 @@ class DirectDebitApi:
 
 
     @validate_call
-    def directdebit_trigger_activation_charge_without_preload_content(
+    def trigger_activation_charge_without_preload_content(
         self,
         direct_debit_activation_charge_request: DirectDebitActivationChargeRequest,
         _request_timeout: Union[
@@ -523,7 +523,7 @@ class DirectDebitApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._directdebit_trigger_activation_charge_serialize(
+        _param = self._trigger_activation_charge_serialize(
             direct_debit_activation_charge_request=direct_debit_activation_charge_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -542,7 +542,7 @@ class DirectDebitApi:
         return response_data.response
 
 
-    def _directdebit_trigger_activation_charge_serialize(
+    def _trigger_activation_charge_serialize(
         self,
         direct_debit_activation_charge_request,
         _request_auth,

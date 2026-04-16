@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TerminalSendEvent Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class TerminalSendEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPITypes = [
         'type' => 'string',
         'action' => 'string',
-        'data' => '\Alexasomba\\Paystack\Model\TerminalSendEventData'
+        'data' => '\Alexasomba\Paystack\Model\TerminalSendEventData'
     ];
 
     /**
@@ -431,7 +431,7 @@ class TerminalSendEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets data
      *
-     * @return \Alexasomba\\Paystack\Model\TerminalSendEventData|null
+     * @return \Alexasomba\Paystack\Model\TerminalSendEventData|null
      */
     public function getData()
     {
@@ -441,7 +441,7 @@ class TerminalSendEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets data
      *
-     * @param \Alexasomba\\Paystack\Model\TerminalSendEventData|null $data data
+     * @param \Alexasomba\Paystack\Model\TerminalSendEventData|null $data data
      *
      * @return self
      */

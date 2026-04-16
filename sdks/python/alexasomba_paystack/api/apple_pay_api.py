@@ -44,7 +44,7 @@ class ApplePayApi:
 
 
     @validate_call
-    def apple_pay_list_domain(
+    def list_domain(
         self,
         use_cursor: Annotated[Optional[StrictBool], Field(description="Flag to enable cursor pagination on the endpoint")] = None,
         next: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It can be used to fetch the next page of the list")] = None,
@@ -94,7 +94,7 @@ class ApplePayApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._apple_pay_list_domain_serialize(
+        _param = self._list_domain_serialize(
             use_cursor=use_cursor,
             next=next,
             previous=previous,
@@ -121,7 +121,7 @@ class ApplePayApi:
 
 
     @validate_call
-    def apple_pay_list_domain_with_http_info(
+    def list_domain_with_http_info(
         self,
         use_cursor: Annotated[Optional[StrictBool], Field(description="Flag to enable cursor pagination on the endpoint")] = None,
         next: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It can be used to fetch the next page of the list")] = None,
@@ -171,7 +171,7 @@ class ApplePayApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._apple_pay_list_domain_serialize(
+        _param = self._list_domain_serialize(
             use_cursor=use_cursor,
             next=next,
             previous=previous,
@@ -198,7 +198,7 @@ class ApplePayApi:
 
 
     @validate_call
-    def apple_pay_list_domain_without_preload_content(
+    def list_domain_without_preload_content(
         self,
         use_cursor: Annotated[Optional[StrictBool], Field(description="Flag to enable cursor pagination on the endpoint")] = None,
         next: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It can be used to fetch the next page of the list")] = None,
@@ -248,7 +248,7 @@ class ApplePayApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._apple_pay_list_domain_serialize(
+        _param = self._list_domain_serialize(
             use_cursor=use_cursor,
             next=next,
             previous=previous,
@@ -270,7 +270,7 @@ class ApplePayApi:
         return response_data.response
 
 
-    def _apple_pay_list_domain_serialize(
+    def _list_domain_serialize(
         self,
         use_cursor,
         next,
@@ -347,7 +347,7 @@ class ApplePayApi:
 
 
     @validate_call
-    def apple_pay_register_domain(
+    def register_domain(
         self,
         apple_pay_param: Optional[ApplePayParam] = None,
         _request_timeout: Union[
@@ -391,7 +391,7 @@ class ApplePayApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._apple_pay_register_domain_serialize(
+        _param = self._register_domain_serialize(
             apple_pay_param=apple_pay_param,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -415,7 +415,7 @@ class ApplePayApi:
 
 
     @validate_call
-    def apple_pay_register_domain_with_http_info(
+    def register_domain_with_http_info(
         self,
         apple_pay_param: Optional[ApplePayParam] = None,
         _request_timeout: Union[
@@ -459,7 +459,7 @@ class ApplePayApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._apple_pay_register_domain_serialize(
+        _param = self._register_domain_serialize(
             apple_pay_param=apple_pay_param,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -483,7 +483,7 @@ class ApplePayApi:
 
 
     @validate_call
-    def apple_pay_register_domain_without_preload_content(
+    def register_domain_without_preload_content(
         self,
         apple_pay_param: Optional[ApplePayParam] = None,
         _request_timeout: Union[
@@ -527,7 +527,7 @@ class ApplePayApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._apple_pay_register_domain_serialize(
+        _param = self._register_domain_serialize(
             apple_pay_param=apple_pay_param,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -546,7 +546,7 @@ class ApplePayApi:
         return response_data.response
 
 
-    def _apple_pay_register_domain_serialize(
+    def _register_domain_serialize(
         self,
         apple_pay_param,
         _request_auth,
@@ -625,7 +625,7 @@ class ApplePayApi:
 
 
     @validate_call
-    def apple_pay_unregister_domain(
+    def unregister_domain(
         self,
         apple_pay_param: Optional[ApplePayParam] = None,
         _request_timeout: Union[
@@ -669,7 +669,7 @@ class ApplePayApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._apple_pay_unregister_domain_serialize(
+        _param = self._unregister_domain_serialize(
             apple_pay_param=apple_pay_param,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -694,7 +694,7 @@ class ApplePayApi:
 
 
     @validate_call
-    def apple_pay_unregister_domain_with_http_info(
+    def unregister_domain_with_http_info(
         self,
         apple_pay_param: Optional[ApplePayParam] = None,
         _request_timeout: Union[
@@ -738,7 +738,7 @@ class ApplePayApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._apple_pay_unregister_domain_serialize(
+        _param = self._unregister_domain_serialize(
             apple_pay_param=apple_pay_param,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -763,7 +763,7 @@ class ApplePayApi:
 
 
     @validate_call
-    def apple_pay_unregister_domain_without_preload_content(
+    def unregister_domain_without_preload_content(
         self,
         apple_pay_param: Optional[ApplePayParam] = None,
         _request_timeout: Union[
@@ -807,7 +807,7 @@ class ApplePayApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._apple_pay_unregister_domain_serialize(
+        _param = self._unregister_domain_serialize(
             apple_pay_param=apple_pay_param,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -827,7 +827,7 @@ class ApplePayApi:
         return response_data.response
 
 
-    def _apple_pay_unregister_domain_serialize(
+    def _unregister_domain_serialize(
         self,
         apple_pay_param,
         _request_auth,

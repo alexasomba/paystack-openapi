@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * ChargeSubmitAddress Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ChargeSubmitAddress implements ModelInterface, ArrayAccess, \JsonSerializa
         'address' => 'string',
         'city' => 'string',
         'state' => 'string',
-        'zip_code' => 'string',
+        'zipCode' => 'string',
         'reference' => 'string'
     ];
 
@@ -76,7 +76,7 @@ class ChargeSubmitAddress implements ModelInterface, ArrayAccess, \JsonSerializa
         'address' => null,
         'city' => null,
         'state' => null,
-        'zip_code' => null,
+        'zipCode' => null,
         'reference' => null
     ];
 
@@ -89,7 +89,7 @@ class ChargeSubmitAddress implements ModelInterface, ArrayAccess, \JsonSerializa
         'address' => false,
         'city' => false,
         'state' => false,
-        'zip_code' => false,
+        'zipCode' => false,
         'reference' => false
     ];
 
@@ -182,7 +182,7 @@ class ChargeSubmitAddress implements ModelInterface, ArrayAccess, \JsonSerializa
         'address' => 'address',
         'city' => 'city',
         'state' => 'state',
-        'zip_code' => 'zip_code',
+        'zipCode' => 'zip_code',
         'reference' => 'reference'
     ];
 
@@ -195,7 +195,7 @@ class ChargeSubmitAddress implements ModelInterface, ArrayAccess, \JsonSerializa
         'address' => 'setAddress',
         'city' => 'setCity',
         'state' => 'setState',
-        'zip_code' => 'setZipCode',
+        'zipCode' => 'setZipCode',
         'reference' => 'setReference'
     ];
 
@@ -208,7 +208,7 @@ class ChargeSubmitAddress implements ModelInterface, ArrayAccess, \JsonSerializa
         'address' => 'getAddress',
         'city' => 'getCity',
         'state' => 'getState',
-        'zip_code' => 'getZipCode',
+        'zipCode' => 'getZipCode',
         'reference' => 'getReference'
     ];
 
@@ -272,7 +272,7 @@ class ChargeSubmitAddress implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('address', $data ?? [], null);
         $this->setIfExists('city', $data ?? [], null);
         $this->setIfExists('state', $data ?? [], null);
-        $this->setIfExists('zip_code', $data ?? [], null);
+        $this->setIfExists('zipCode', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
     }
 
@@ -312,8 +312,8 @@ class ChargeSubmitAddress implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['state'] === null) {
             $invalidProperties[] = "'state' can't be null";
         }
-        if ($this->container['zip_code'] === null) {
-            $invalidProperties[] = "'zip_code' can't be null";
+        if ($this->container['zipCode'] === null) {
+            $invalidProperties[] = "'zipCode' can't be null";
         }
         if ($this->container['reference'] === null) {
             $invalidProperties[] = "'reference' can't be null";
@@ -415,28 +415,28 @@ class ChargeSubmitAddress implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets zip_code
+     * Gets zipCode
      *
      * @return string
      */
     public function getZipCode()
     {
-        return $this->container['zip_code'];
+        return $this->container['zipCode'];
     }
 
     /**
-     * Sets zip_code
+     * Sets zipCode
      *
-     * @param string $zip_code Customer's zipcode
+     * @param string $zipCode Customer's zipcode
      *
      * @return self
      */
-    public function setZipCode($zip_code)
+    public function setZipCode($zipCode)
     {
-        if (is_null($zip_code)) {
-            throw new \InvalidArgumentException('non-nullable zip_code cannot be null');
+        if (is_null($zipCode)) {
+            throw new \InvalidArgumentException('non-nullable zipCode cannot be null');
         }
-        $this->container['zip_code'] = $zip_code;
+        $this->container['zipCode'] = $zipCode;
 
         return $this;
     }

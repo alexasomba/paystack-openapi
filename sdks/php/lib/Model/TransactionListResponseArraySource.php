@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransactionListResponseArraySource Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
         'source' => 'string',
         'type' => 'string',
         'identifier' => 'string',
-        'entry_point' => 'string'
+        'entryPoint' => 'string'
     ];
 
     /**
@@ -75,7 +75,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
         'source' => null,
         'type' => null,
         'identifier' => null,
-        'entry_point' => null
+        'entryPoint' => null
     ];
 
     /**
@@ -87,7 +87,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
         'source' => false,
         'type' => false,
         'identifier' => true,
-        'entry_point' => false
+        'entryPoint' => false
     ];
 
     /**
@@ -179,7 +179,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
         'source' => 'source',
         'type' => 'type',
         'identifier' => 'identifier',
-        'entry_point' => 'entry_point'
+        'entryPoint' => 'entry_point'
     ];
 
     /**
@@ -191,7 +191,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
         'source' => 'setSource',
         'type' => 'setType',
         'identifier' => 'setIdentifier',
-        'entry_point' => 'setEntryPoint'
+        'entryPoint' => 'setEntryPoint'
     ];
 
     /**
@@ -203,7 +203,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
         'source' => 'getSource',
         'type' => 'getType',
         'identifier' => 'getIdentifier',
-        'entry_point' => 'getEntryPoint'
+        'entryPoint' => 'getEntryPoint'
     ];
 
     /**
@@ -266,7 +266,7 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
         $this->setIfExists('source', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('identifier', $data ?? [], null);
-        $this->setIfExists('entry_point', $data ?? [], null);
+        $this->setIfExists('entryPoint', $data ?? [], null);
     }
 
     /**
@@ -400,28 +400,28 @@ class TransactionListResponseArraySource implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets entry_point
+     * Gets entryPoint
      *
      * @return string|null
      */
     public function getEntryPoint()
     {
-        return $this->container['entry_point'];
+        return $this->container['entryPoint'];
     }
 
     /**
-     * Sets entry_point
+     * Sets entryPoint
      *
-     * @param string|null $entry_point entry_point
+     * @param string|null $entryPoint entryPoint
      *
      * @return self
      */
-    public function setEntryPoint($entry_point)
+    public function setEntryPoint($entryPoint)
     {
-        if (is_null($entry_point)) {
-            throw new \InvalidArgumentException('non-nullable entry_point cannot be null');
+        if (is_null($entryPoint)) {
+            throw new \InvalidArgumentException('non-nullable entryPoint cannot be null');
         }
-        $this->container['entry_point'] = $entry_point;
+        $this->container['entryPoint'] = $entryPoint;
 
         return $this;
     }

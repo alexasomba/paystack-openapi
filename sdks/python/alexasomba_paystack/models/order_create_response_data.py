@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.order_create_response_data_shipping import OrderCreateResponseDataShipping
 from alexasomba_paystack.models.order_create_response_data_shipping_method import OrderCreateResponseDataShippingMethod
@@ -48,8 +48,8 @@ class OrderCreateResponseData(BaseModel):
     is_viewed: StrictBool
     expiration_date: Optional[Any]
     id: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     items: List[Any]
     pay_for_me_code: StrictStr
     discount_amount: StrictInt
@@ -146,8 +146,8 @@ class OrderCreateResponseData(BaseModel):
             "is_viewed": obj.get("is_viewed"),
             "expiration_date": obj.get("expiration_date"),
             "id": obj.get("id"),
-            "createdAt": obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
+            "updated_at": obj.get("updated_at") if obj.get("updated_at") is not None else obj.get("updatedAt"),
             "items": obj.get("items"),
             "pay_for_me_code": obj.get("pay_for_me_code"),
             "discount_amount": obj.get("discount_amount")

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransferListResponseArray Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'amount' => 'int',
-        'created_at' => 'string',
+        'createdAt' => 'string',
         'currency' => 'string',
         'domain' => 'string',
         'failures' => 'mixed',
@@ -68,12 +68,12 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'reason' => 'string',
         'reference' => 'string',
         'source' => 'string',
-        'source_details' => 'object',
+        'sourceDetails' => 'object',
         'status' => 'string',
-        'titan_code' => 'string',
-        'transfer_code' => 'string',
-        'updated_at' => 'string',
-        'recipient' => '\Alexasomba\\Paystack\Model\TransferListResponseArrayRecipient'
+        'titanCode' => 'string',
+        'transferCode' => 'string',
+        'updatedAt' => 'string',
+        'recipient' => '\Alexasomba\Paystack\Model\TransferListResponseArrayRecipient'
     ];
 
     /**
@@ -85,7 +85,7 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'amount' => null,
-        'created_at' => null,
+        'createdAt' => null,
         'currency' => null,
         'domain' => null,
         'failures' => null,
@@ -94,11 +94,11 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'reason' => null,
         'reference' => null,
         'source' => null,
-        'source_details' => null,
+        'sourceDetails' => null,
         'status' => null,
-        'titan_code' => null,
-        'transfer_code' => null,
-        'updated_at' => null,
+        'titanCode' => null,
+        'transferCode' => null,
+        'updatedAt' => null,
         'recipient' => null
     ];
 
@@ -109,7 +109,7 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'amount' => false,
-        'created_at' => false,
+        'createdAt' => false,
         'currency' => false,
         'domain' => false,
         'failures' => true,
@@ -118,11 +118,11 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'reason' => false,
         'reference' => false,
         'source' => false,
-        'source_details' => true,
+        'sourceDetails' => true,
         'status' => false,
-        'titan_code' => true,
-        'transfer_code' => false,
-        'updated_at' => false,
+        'titanCode' => true,
+        'transferCode' => false,
+        'updatedAt' => false,
         'recipient' => false
     ];
 
@@ -213,7 +213,7 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'amount' => 'amount',
-        'created_at' => 'createdAt',
+        'createdAt' => 'createdAt',
         'currency' => 'currency',
         'domain' => 'domain',
         'failures' => 'failures',
@@ -222,11 +222,11 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'reason' => 'reason',
         'reference' => 'reference',
         'source' => 'source',
-        'source_details' => 'source_details',
+        'sourceDetails' => 'source_details',
         'status' => 'status',
-        'titan_code' => 'titan_code',
-        'transfer_code' => 'transfer_code',
-        'updated_at' => 'updatedAt',
+        'titanCode' => 'titan_code',
+        'transferCode' => 'transfer_code',
+        'updatedAt' => 'updatedAt',
         'recipient' => 'recipient'
     ];
 
@@ -237,7 +237,7 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'amount' => 'setAmount',
-        'created_at' => 'setCreatedAt',
+        'createdAt' => 'setCreatedAt',
         'currency' => 'setCurrency',
         'domain' => 'setDomain',
         'failures' => 'setFailures',
@@ -246,11 +246,11 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'reason' => 'setReason',
         'reference' => 'setReference',
         'source' => 'setSource',
-        'source_details' => 'setSourceDetails',
+        'sourceDetails' => 'setSourceDetails',
         'status' => 'setStatus',
-        'titan_code' => 'setTitanCode',
-        'transfer_code' => 'setTransferCode',
-        'updated_at' => 'setUpdatedAt',
+        'titanCode' => 'setTitanCode',
+        'transferCode' => 'setTransferCode',
+        'updatedAt' => 'setUpdatedAt',
         'recipient' => 'setRecipient'
     ];
 
@@ -261,7 +261,7 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'amount' => 'getAmount',
-        'created_at' => 'getCreatedAt',
+        'createdAt' => 'getCreatedAt',
         'currency' => 'getCurrency',
         'domain' => 'getDomain',
         'failures' => 'getFailures',
@@ -270,11 +270,11 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'reason' => 'getReason',
         'reference' => 'getReference',
         'source' => 'getSource',
-        'source_details' => 'getSourceDetails',
+        'sourceDetails' => 'getSourceDetails',
         'status' => 'getStatus',
-        'titan_code' => 'getTitanCode',
-        'transfer_code' => 'getTransferCode',
-        'updated_at' => 'getUpdatedAt',
+        'titanCode' => 'getTitanCode',
+        'transferCode' => 'getTransferCode',
+        'updatedAt' => 'getUpdatedAt',
         'recipient' => 'getRecipient'
     ];
 
@@ -336,7 +336,7 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('failures', $data ?? [], null);
@@ -345,11 +345,11 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('reason', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('source', $data ?? [], null);
-        $this->setIfExists('source_details', $data ?? [], null);
+        $this->setIfExists('sourceDetails', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('titan_code', $data ?? [], null);
-        $this->setIfExists('transfer_code', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('titanCode', $data ?? [], null);
+        $this->setIfExists('transferCode', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
         $this->setIfExists('recipient', $data ?? [], null);
     }
 
@@ -383,8 +383,8 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
@@ -410,20 +410,20 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['source'] === null) {
             $invalidProperties[] = "'source' can't be null";
         }
-        if ($this->container['source_details'] === null && !$this->isNullableSetToNull('source_details')) {
-            $invalidProperties[] = "'source_details' can't be null";
+        if ($this->container['sourceDetails'] === null && !$this->isNullableSetToNull('sourceDetails')) {
+            $invalidProperties[] = "'sourceDetails' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['titan_code'] === null && !$this->isNullableSetToNull('titan_code')) {
-            $invalidProperties[] = "'titan_code' can't be null";
+        if ($this->container['titanCode'] === null && !$this->isNullableSetToNull('titanCode')) {
+            $invalidProperties[] = "'titanCode' can't be null";
         }
-        if ($this->container['transfer_code'] === null) {
-            $invalidProperties[] = "'transfer_code' can't be null";
+        if ($this->container['transferCode'] === null) {
+            $invalidProperties[] = "'transferCode' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         if ($this->container['recipient'] === null) {
             $invalidProperties[] = "'recipient' can't be null";
@@ -471,28 +471,28 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
@@ -721,35 +721,35 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets source_details
+     * Gets sourceDetails
      *
      * @return object|null
      */
     public function getSourceDetails()
     {
-        return $this->container['source_details'];
+        return $this->container['sourceDetails'];
     }
 
     /**
-     * Sets source_details
+     * Sets sourceDetails
      *
-     * @param object|null $source_details source_details
+     * @param object|null $sourceDetails sourceDetails
      *
      * @return self
      */
-    public function setSourceDetails($source_details)
+    public function setSourceDetails($sourceDetails)
     {
-        if (is_null($source_details)) {
-            array_push($this->openAPINullablesSetToNull, 'source_details');
+        if (is_null($sourceDetails)) {
+            array_push($this->openAPINullablesSetToNull, 'sourceDetails');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('source_details', $nullablesSetToNull);
+            $index = array_search('sourceDetails', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['source_details'] = $source_details;
+        $this->container['sourceDetails'] = $sourceDetails;
 
         return $this;
     }
@@ -782,89 +782,89 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets titan_code
+     * Gets titanCode
      *
      * @return string|null
      */
     public function getTitanCode()
     {
-        return $this->container['titan_code'];
+        return $this->container['titanCode'];
     }
 
     /**
-     * Sets titan_code
+     * Sets titanCode
      *
-     * @param string|null $titan_code titan_code
+     * @param string|null $titanCode titanCode
      *
      * @return self
      */
-    public function setTitanCode($titan_code)
+    public function setTitanCode($titanCode)
     {
-        if (is_null($titan_code)) {
-            array_push($this->openAPINullablesSetToNull, 'titan_code');
+        if (is_null($titanCode)) {
+            array_push($this->openAPINullablesSetToNull, 'titanCode');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('titan_code', $nullablesSetToNull);
+            $index = array_search('titanCode', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['titan_code'] = $titan_code;
+        $this->container['titanCode'] = $titanCode;
 
         return $this;
     }
 
     /**
-     * Gets transfer_code
+     * Gets transferCode
      *
      * @return string
      */
     public function getTransferCode()
     {
-        return $this->container['transfer_code'];
+        return $this->container['transferCode'];
     }
 
     /**
-     * Sets transfer_code
+     * Sets transferCode
      *
-     * @param string $transfer_code transfer_code
+     * @param string $transferCode transferCode
      *
      * @return self
      */
-    public function setTransferCode($transfer_code)
+    public function setTransferCode($transferCode)
     {
-        if (is_null($transfer_code)) {
-            throw new \InvalidArgumentException('non-nullable transfer_code cannot be null');
+        if (is_null($transferCode)) {
+            throw new \InvalidArgumentException('non-nullable transferCode cannot be null');
         }
-        $this->container['transfer_code'] = $transfer_code;
+        $this->container['transferCode'] = $transferCode;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }
@@ -872,7 +872,7 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets recipient
      *
-     * @return \Alexasomba\\Paystack\Model\TransferListResponseArrayRecipient
+     * @return \Alexasomba\Paystack\Model\TransferListResponseArrayRecipient
      */
     public function getRecipient()
     {
@@ -882,7 +882,7 @@ class TransferListResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets recipient
      *
-     * @param \Alexasomba\\Paystack\Model\TransferListResponseArrayRecipient $recipient recipient
+     * @param \Alexasomba\Paystack\Model\TransferListResponseArrayRecipient $recipient recipient
      *
      * @return self
      */

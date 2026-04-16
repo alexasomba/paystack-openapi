@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PreAuthorizationCaptureResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,11 +60,11 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'amount' => 'int',
         'status' => 'string',
-        'gateway_response' => 'string',
-        'transaction' => '\Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransaction',
-        'amount_released' => 'int',
-        'split_code' => 'string',
-        'split' => '\Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataSplit'
+        'gatewayResponse' => 'string',
+        'transaction' => '\Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransaction',
+        'amountReleased' => 'int',
+        'splitCode' => 'string',
+        'split' => '\Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataSplit'
     ];
 
     /**
@@ -77,10 +77,10 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'amount' => null,
         'status' => null,
-        'gateway_response' => null,
+        'gatewayResponse' => null,
         'transaction' => null,
-        'amount_released' => null,
-        'split_code' => null,
+        'amountReleased' => null,
+        'splitCode' => null,
         'split' => null
     ];
 
@@ -92,10 +92,10 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
     protected static array $openAPINullables = [
         'amount' => false,
         'status' => false,
-        'gateway_response' => false,
+        'gatewayResponse' => false,
         'transaction' => false,
-        'amount_released' => false,
-        'split_code' => true,
+        'amountReleased' => false,
+        'splitCode' => true,
         'split' => true
     ];
 
@@ -187,10 +187,10 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'amount' => 'amount',
         'status' => 'status',
-        'gateway_response' => 'gateway_response',
+        'gatewayResponse' => 'gateway_response',
         'transaction' => 'transaction',
-        'amount_released' => 'amount_released',
-        'split_code' => 'split_code',
+        'amountReleased' => 'amount_released',
+        'splitCode' => 'split_code',
         'split' => 'split'
     ];
 
@@ -202,10 +202,10 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
     protected static $setters = [
         'amount' => 'setAmount',
         'status' => 'setStatus',
-        'gateway_response' => 'setGatewayResponse',
+        'gatewayResponse' => 'setGatewayResponse',
         'transaction' => 'setTransaction',
-        'amount_released' => 'setAmountReleased',
-        'split_code' => 'setSplitCode',
+        'amountReleased' => 'setAmountReleased',
+        'splitCode' => 'setSplitCode',
         'split' => 'setSplit'
     ];
 
@@ -217,10 +217,10 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
     protected static $getters = [
         'amount' => 'getAmount',
         'status' => 'getStatus',
-        'gateway_response' => 'getGatewayResponse',
+        'gatewayResponse' => 'getGatewayResponse',
         'transaction' => 'getTransaction',
-        'amount_released' => 'getAmountReleased',
-        'split_code' => 'getSplitCode',
+        'amountReleased' => 'getAmountReleased',
+        'splitCode' => 'getSplitCode',
         'split' => 'getSplit'
     ];
 
@@ -283,10 +283,10 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
     {
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('gateway_response', $data ?? [], null);
+        $this->setIfExists('gatewayResponse', $data ?? [], null);
         $this->setIfExists('transaction', $data ?? [], null);
-        $this->setIfExists('amount_released', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
+        $this->setIfExists('amountReleased', $data ?? [], null);
+        $this->setIfExists('splitCode', $data ?? [], null);
         $this->setIfExists('split', $data ?? [], null);
     }
 
@@ -323,14 +323,14 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['gateway_response'] === null) {
-            $invalidProperties[] = "'gateway_response' can't be null";
+        if ($this->container['gatewayResponse'] === null) {
+            $invalidProperties[] = "'gatewayResponse' can't be null";
         }
         if ($this->container['transaction'] === null) {
             $invalidProperties[] = "'transaction' can't be null";
         }
-        if ($this->container['split_code'] === null && !$this->isNullableSetToNull('split_code')) {
-            $invalidProperties[] = "'split_code' can't be null";
+        if ($this->container['splitCode'] === null && !$this->isNullableSetToNull('splitCode')) {
+            $invalidProperties[] = "'splitCode' can't be null";
         }
         if ($this->container['split'] === null && !$this->isNullableSetToNull('split')) {
             $invalidProperties[] = "'split' can't be null";
@@ -405,28 +405,28 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets gateway_response
+     * Gets gatewayResponse
      *
      * @return string
      */
     public function getGatewayResponse()
     {
-        return $this->container['gateway_response'];
+        return $this->container['gatewayResponse'];
     }
 
     /**
-     * Sets gateway_response
+     * Sets gatewayResponse
      *
-     * @param string $gateway_response gateway_response
+     * @param string $gatewayResponse gatewayResponse
      *
      * @return self
      */
-    public function setGatewayResponse($gateway_response)
+    public function setGatewayResponse($gatewayResponse)
     {
-        if (is_null($gateway_response)) {
-            throw new \InvalidArgumentException('non-nullable gateway_response cannot be null');
+        if (is_null($gatewayResponse)) {
+            throw new \InvalidArgumentException('non-nullable gatewayResponse cannot be null');
         }
-        $this->container['gateway_response'] = $gateway_response;
+        $this->container['gatewayResponse'] = $gatewayResponse;
 
         return $this;
     }
@@ -434,7 +434,7 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
     /**
      * Gets transaction
      *
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransaction
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransaction
      */
     public function getTransaction()
     {
@@ -444,7 +444,7 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
     /**
      * Sets transaction
      *
-     * @param \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataTransaction $transaction transaction
+     * @param \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataTransaction $transaction transaction
      *
      * @return self
      */
@@ -459,62 +459,62 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets amount_released
+     * Gets amountReleased
      *
      * @return int|null
      */
     public function getAmountReleased()
     {
-        return $this->container['amount_released'];
+        return $this->container['amountReleased'];
     }
 
     /**
-     * Sets amount_released
+     * Sets amountReleased
      *
-     * @param int|null $amount_released amount_released
+     * @param int|null $amountReleased amountReleased
      *
      * @return self
      */
-    public function setAmountReleased($amount_released)
+    public function setAmountReleased($amountReleased)
     {
-        if (is_null($amount_released)) {
-            throw new \InvalidArgumentException('non-nullable amount_released cannot be null');
+        if (is_null($amountReleased)) {
+            throw new \InvalidArgumentException('non-nullable amountReleased cannot be null');
         }
-        $this->container['amount_released'] = $amount_released;
+        $this->container['amountReleased'] = $amountReleased;
 
         return $this;
     }
 
     /**
-     * Gets split_code
+     * Gets splitCode
      *
      * @return string|null
      */
     public function getSplitCode()
     {
-        return $this->container['split_code'];
+        return $this->container['splitCode'];
     }
 
     /**
-     * Sets split_code
+     * Sets splitCode
      *
-     * @param string|null $split_code split_code
+     * @param string|null $splitCode splitCode
      *
      * @return self
      */
-    public function setSplitCode($split_code)
+    public function setSplitCode($splitCode)
     {
-        if (is_null($split_code)) {
-            array_push($this->openAPINullablesSetToNull, 'split_code');
+        if (is_null($splitCode)) {
+            array_push($this->openAPINullablesSetToNull, 'splitCode');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('split_code', $nullablesSetToNull);
+            $index = array_search('splitCode', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['split_code'] = $split_code;
+        $this->container['splitCode'] = $splitCode;
 
         return $this;
     }
@@ -522,7 +522,7 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
     /**
      * Gets split
      *
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataSplit|null
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataSplit|null
      */
     public function getSplit()
     {
@@ -532,7 +532,7 @@ class PreAuthorizationCaptureResponseData implements ModelInterface, ArrayAccess
     /**
      * Sets split
      *
-     * @param \Alexasomba\\Paystack\Model\PreAuthorizationCaptureResponseDataSplit|null $split split
+     * @param \Alexasomba\Paystack\Model\PreAuthorizationCaptureResponseDataSplit|null $split split
      *
      * @return self
      */

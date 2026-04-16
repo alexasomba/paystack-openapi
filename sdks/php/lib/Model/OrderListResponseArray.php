@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * OrderListResponseArray Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,8 +63,8 @@ class OrderListResponseArray implements ModelInterface, ArrayAccess, \JsonSerial
         'amount' => 'int',
         'currency' => 'string',
         'status' => 'string',
-        'customer' => '\Alexasomba\\Paystack\Model\OrderListResponseArrayCustomer',
-        'created_at' => 'string'
+        'customer' => '\Alexasomba\Paystack\Model\OrderListResponseArrayCustomer',
+        'createdAt' => 'string'
     ];
 
     /**
@@ -81,7 +81,7 @@ class OrderListResponseArray implements ModelInterface, ArrayAccess, \JsonSerial
         'currency' => null,
         'status' => null,
         'customer' => null,
-        'created_at' => null
+        'createdAt' => null
     ];
 
     /**
@@ -96,7 +96,7 @@ class OrderListResponseArray implements ModelInterface, ArrayAccess, \JsonSerial
         'currency' => false,
         'status' => false,
         'customer' => false,
-        'created_at' => false
+        'createdAt' => false
     ];
 
     /**
@@ -191,7 +191,7 @@ class OrderListResponseArray implements ModelInterface, ArrayAccess, \JsonSerial
         'currency' => 'currency',
         'status' => 'status',
         'customer' => 'customer',
-        'created_at' => 'createdAt'
+        'createdAt' => 'createdAt'
     ];
 
     /**
@@ -206,7 +206,7 @@ class OrderListResponseArray implements ModelInterface, ArrayAccess, \JsonSerial
         'currency' => 'setCurrency',
         'status' => 'setStatus',
         'customer' => 'setCustomer',
-        'created_at' => 'setCreatedAt'
+        'createdAt' => 'setCreatedAt'
     ];
 
     /**
@@ -221,7 +221,7 @@ class OrderListResponseArray implements ModelInterface, ArrayAccess, \JsonSerial
         'currency' => 'getCurrency',
         'status' => 'getStatus',
         'customer' => 'getCustomer',
-        'created_at' => 'getCreatedAt'
+        'createdAt' => 'getCreatedAt'
     ];
 
     /**
@@ -287,7 +287,7 @@ class OrderListResponseArray implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('customer', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
     }
 
     /**
@@ -335,8 +335,8 @@ class OrderListResponseArray implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['customer'] === null) {
             $invalidProperties[] = "'customer' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -491,7 +491,7 @@ class OrderListResponseArray implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets customer
      *
-     * @return \Alexasomba\\Paystack\Model\OrderListResponseArrayCustomer
+     * @return \Alexasomba\Paystack\Model\OrderListResponseArrayCustomer
      */
     public function getCustomer()
     {
@@ -501,7 +501,7 @@ class OrderListResponseArray implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets customer
      *
-     * @param \Alexasomba\\Paystack\Model\OrderListResponseArrayCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\OrderListResponseArrayCustomer $customer customer
      *
      * @return self
      */
@@ -516,28 +516,28 @@ class OrderListResponseArray implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }

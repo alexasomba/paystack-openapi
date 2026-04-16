@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * VirtualTerminalCreate Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,10 +59,10 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'destinations' => '\Alexasomba\\Paystack\Model\VirtualTerminalCreateDestinationsInner[]',
+        'destinations' => '\Alexasomba\Paystack\Model\VirtualTerminalCreateDestinationsInner[]',
         'metadata' => 'object',
         'currency' => 'string',
-        'custom_fields' => '\Alexasomba\\Paystack\Model\VirtualTerminalCreateCustomFieldsInner[]'
+        'customFields' => '\Alexasomba\Paystack\Model\VirtualTerminalCreateCustomFieldsInner[]'
     ];
 
     /**
@@ -77,7 +77,7 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
         'destinations' => null,
         'metadata' => null,
         'currency' => null,
-        'custom_fields' => null
+        'customFields' => null
     ];
 
     /**
@@ -90,7 +90,7 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
         'destinations' => false,
         'metadata' => false,
         'currency' => false,
-        'custom_fields' => false
+        'customFields' => false
     ];
 
     /**
@@ -183,7 +183,7 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
         'destinations' => 'destinations',
         'metadata' => 'metadata',
         'currency' => 'currency',
-        'custom_fields' => 'custom_fields'
+        'customFields' => 'custom_fields'
     ];
 
     /**
@@ -196,7 +196,7 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
         'destinations' => 'setDestinations',
         'metadata' => 'setMetadata',
         'currency' => 'setCurrency',
-        'custom_fields' => 'setCustomFields'
+        'customFields' => 'setCustomFields'
     ];
 
     /**
@@ -209,7 +209,7 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
         'destinations' => 'getDestinations',
         'metadata' => 'getMetadata',
         'currency' => 'getCurrency',
-        'custom_fields' => 'getCustomFields'
+        'customFields' => 'getCustomFields'
     ];
 
     /**
@@ -273,7 +273,7 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('destinations', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('custom_fields', $data ?? [], null);
+        $this->setIfExists('customFields', $data ?? [], null);
     }
 
     /**
@@ -354,7 +354,7 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets destinations
      *
-     * @return \Alexasomba\\Paystack\Model\VirtualTerminalCreateDestinationsInner[]
+     * @return \Alexasomba\Paystack\Model\VirtualTerminalCreateDestinationsInner[]
      */
     public function getDestinations()
     {
@@ -364,7 +364,7 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets destinations
      *
-     * @param \Alexasomba\\Paystack\Model\VirtualTerminalCreateDestinationsInner[] $destinations An array of objects containing the notification recipients for payments to the Virtual Terminal. Each object includes a target parameter for the Whatsapp phone number to send notifications to, and a name parameter for a descriptive label.
+     * @param \Alexasomba\Paystack\Model\VirtualTerminalCreateDestinationsInner[] $destinations An array of objects containing the notification recipients for payments to the Virtual Terminal. Each object includes a target parameter for the Whatsapp phone number to send notifications to, and a name parameter for a descriptive label.
      *
      * @return self
      */
@@ -433,28 +433,28 @@ class VirtualTerminalCreate implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets custom_fields
+     * Gets customFields
      *
-     * @return \Alexasomba\\Paystack\Model\VirtualTerminalCreateCustomFieldsInner[]|null
+     * @return \Alexasomba\Paystack\Model\VirtualTerminalCreateCustomFieldsInner[]|null
      */
     public function getCustomFields()
     {
-        return $this->container['custom_fields'];
+        return $this->container['customFields'];
     }
 
     /**
-     * Sets custom_fields
+     * Sets customFields
      *
-     * @param \Alexasomba\\Paystack\Model\VirtualTerminalCreateCustomFieldsInner[]|null $custom_fields An array of objects representing custom fields to display on the form. Each object contains a display_name parameter, representing what will be displayed on the Virtual Terminal page, and variable_name parameter for referencing the custom field programmatically
+     * @param \Alexasomba\Paystack\Model\VirtualTerminalCreateCustomFieldsInner[]|null $customFields An array of objects representing custom fields to display on the form. Each object contains a display_name parameter, representing what will be displayed on the Virtual Terminal page, and variable_name parameter for referencing the custom field programmatically
      *
      * @return self
      */
-    public function setCustomFields($custom_fields)
+    public function setCustomFields($customFields)
     {
-        if (is_null($custom_fields)) {
-            throw new \InvalidArgumentException('non-nullable custom_fields cannot be null');
+        if (is_null($customFields)) {
+            throw new \InvalidArgumentException('non-nullable customFields cannot be null');
         }
-        $this->container['custom_fields'] = $custom_fields;
+        $this->container['customFields'] = $customFields;
 
         return $this;
     }

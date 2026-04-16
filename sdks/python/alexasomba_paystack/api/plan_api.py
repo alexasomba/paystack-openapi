@@ -46,7 +46,7 @@ class PlanApi:
 
 
     @validate_call
-    def plan_create(
+    def create(
         self,
         plan_create: Optional[PlanCreate] = None,
         _request_timeout: Union[
@@ -90,7 +90,7 @@ class PlanApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._plan_create_serialize(
+        _param = self._create_serialize(
             plan_create=plan_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -114,7 +114,7 @@ class PlanApi:
 
 
     @validate_call
-    def plan_create_with_http_info(
+    def create_with_http_info(
         self,
         plan_create: Optional[PlanCreate] = None,
         _request_timeout: Union[
@@ -158,7 +158,7 @@ class PlanApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._plan_create_serialize(
+        _param = self._create_serialize(
             plan_create=plan_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -182,7 +182,7 @@ class PlanApi:
 
 
     @validate_call
-    def plan_create_without_preload_content(
+    def create_without_preload_content(
         self,
         plan_create: Optional[PlanCreate] = None,
         _request_timeout: Union[
@@ -226,7 +226,7 @@ class PlanApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._plan_create_serialize(
+        _param = self._create_serialize(
             plan_create=plan_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -245,7 +245,7 @@ class PlanApi:
         return response_data.response
 
 
-    def _plan_create_serialize(
+    def _create_serialize(
         self,
         plan_create,
         _request_auth,
@@ -324,7 +324,7 @@ class PlanApi:
 
 
     @validate_call
-    def plan_fetch(
+    def fetch(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The plan ID or code you want to fetch")],
         _request_timeout: Union[
@@ -368,7 +368,7 @@ class PlanApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._plan_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -393,7 +393,7 @@ class PlanApi:
 
 
     @validate_call
-    def plan_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The plan ID or code you want to fetch")],
         _request_timeout: Union[
@@ -437,7 +437,7 @@ class PlanApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._plan_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -462,7 +462,7 @@ class PlanApi:
 
 
     @validate_call
-    def plan_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The plan ID or code you want to fetch")],
         _request_timeout: Union[
@@ -506,7 +506,7 @@ class PlanApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._plan_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -526,7 +526,7 @@ class PlanApi:
         return response_data.response
 
 
-    def _plan_fetch_serialize(
+    def _fetch_serialize(
         self,
         id_or_code,
         _request_auth,
@@ -591,7 +591,7 @@ class PlanApi:
 
 
     @validate_call
-    def plan_list(
+    def list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -647,7 +647,7 @@ class PlanApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._plan_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             status=status,
@@ -676,7 +676,7 @@ class PlanApi:
 
 
     @validate_call
-    def plan_list_with_http_info(
+    def list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -732,7 +732,7 @@ class PlanApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._plan_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             status=status,
@@ -761,7 +761,7 @@ class PlanApi:
 
 
     @validate_call
-    def plan_list_without_preload_content(
+    def list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -817,7 +817,7 @@ class PlanApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._plan_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             status=status,
@@ -841,7 +841,7 @@ class PlanApi:
         return response_data.response
 
 
-    def _plan_list_serialize(
+    def _list_serialize(
         self,
         per_page,
         page,
@@ -928,7 +928,7 @@ class PlanApi:
 
 
     @validate_call
-    def plan_update(
+    def update(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The plan ID or code you want to fetch")],
         plan_update: Optional[PlanUpdate] = None,
@@ -975,7 +975,7 @@ class PlanApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._plan_update_serialize(
+        _param = self._update_serialize(
             id_or_code=id_or_code,
             plan_update=plan_update,
             _request_auth=_request_auth,
@@ -1001,7 +1001,7 @@ class PlanApi:
 
 
     @validate_call
-    def plan_update_with_http_info(
+    def update_with_http_info(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The plan ID or code you want to fetch")],
         plan_update: Optional[PlanUpdate] = None,
@@ -1048,7 +1048,7 @@ class PlanApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._plan_update_serialize(
+        _param = self._update_serialize(
             id_or_code=id_or_code,
             plan_update=plan_update,
             _request_auth=_request_auth,
@@ -1074,7 +1074,7 @@ class PlanApi:
 
 
     @validate_call
-    def plan_update_without_preload_content(
+    def update_without_preload_content(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The plan ID or code you want to fetch")],
         plan_update: Optional[PlanUpdate] = None,
@@ -1121,7 +1121,7 @@ class PlanApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._plan_update_serialize(
+        _param = self._update_serialize(
             id_or_code=id_or_code,
             plan_update=plan_update,
             _request_auth=_request_auth,
@@ -1142,7 +1142,7 @@ class PlanApi:
         return response_data.response
 
 
-    def _plan_update_serialize(
+    def _update_serialize(
         self,
         id_or_code,
         plan_update,

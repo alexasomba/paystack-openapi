@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -47,8 +47,8 @@ class PageListResponseArray(BaseModel):
     metadata: Optional[Dict[str, Any]]
     split_code: Optional[Any]
     id: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     __properties: ClassVar[List[str]] = ["integration", "plan", "domain", "name", "description", "amount", "currency", "slug", "custom_fields", "type", "redirect_url", "success_message", "collect_phone", "active", "published", "migrate", "notification_email", "metadata", "split_code", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
@@ -167,7 +167,7 @@ class PageListResponseArray(BaseModel):
             "metadata": obj.get("metadata"),
             "split_code": obj.get("split_code"),
             "id": obj.get("id"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })
         return _obj

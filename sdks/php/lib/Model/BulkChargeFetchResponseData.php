@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * BulkChargeFetchResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,14 +58,14 @@ class BulkChargeFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'batch_code' => 'string',
+        'batchCode' => 'string',
         'id' => 'int',
         'domain' => 'string',
         'status' => 'string',
-        'total_charges' => 'int',
-        'pending_charges' => 'int',
-        'created_at' => 'string',
-        'updated_at' => 'string'
+        'totalCharges' => 'int',
+        'pendingCharges' => 'int',
+        'createdAt' => 'string',
+        'updatedAt' => 'string'
     ];
 
     /**
@@ -76,14 +76,14 @@ class BulkChargeFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'batch_code' => null,
+        'batchCode' => null,
         'id' => null,
         'domain' => null,
         'status' => null,
-        'total_charges' => null,
-        'pending_charges' => null,
-        'created_at' => null,
-        'updated_at' => null
+        'totalCharges' => null,
+        'pendingCharges' => null,
+        'createdAt' => null,
+        'updatedAt' => null
     ];
 
     /**
@@ -92,14 +92,14 @@ class BulkChargeFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'batch_code' => false,
+        'batchCode' => false,
         'id' => false,
         'domain' => false,
         'status' => false,
-        'total_charges' => false,
-        'pending_charges' => false,
-        'created_at' => false,
-        'updated_at' => false
+        'totalCharges' => false,
+        'pendingCharges' => false,
+        'createdAt' => false,
+        'updatedAt' => false
     ];
 
     /**
@@ -188,14 +188,14 @@ class BulkChargeFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'batch_code' => 'batch_code',
+        'batchCode' => 'batch_code',
         'id' => 'id',
         'domain' => 'domain',
         'status' => 'status',
-        'total_charges' => 'total_charges',
-        'pending_charges' => 'pending_charges',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'totalCharges' => 'total_charges',
+        'pendingCharges' => 'pending_charges',
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt'
     ];
 
     /**
@@ -204,14 +204,14 @@ class BulkChargeFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'batch_code' => 'setBatchCode',
+        'batchCode' => 'setBatchCode',
         'id' => 'setId',
         'domain' => 'setDomain',
         'status' => 'setStatus',
-        'total_charges' => 'setTotalCharges',
-        'pending_charges' => 'setPendingCharges',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'totalCharges' => 'setTotalCharges',
+        'pendingCharges' => 'setPendingCharges',
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
@@ -220,14 +220,14 @@ class BulkChargeFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'batch_code' => 'getBatchCode',
+        'batchCode' => 'getBatchCode',
         'id' => 'getId',
         'domain' => 'getDomain',
         'status' => 'getStatus',
-        'total_charges' => 'getTotalCharges',
-        'pending_charges' => 'getPendingCharges',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'totalCharges' => 'getTotalCharges',
+        'pendingCharges' => 'getPendingCharges',
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
@@ -287,14 +287,14 @@ class BulkChargeFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('batch_code', $data ?? [], null);
+        $this->setIfExists('batchCode', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('total_charges', $data ?? [], null);
-        $this->setIfExists('pending_charges', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('totalCharges', $data ?? [], null);
+        $this->setIfExists('pendingCharges', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
     }
 
     /**
@@ -324,8 +324,8 @@ class BulkChargeFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['batch_code'] === null) {
-            $invalidProperties[] = "'batch_code' can't be null";
+        if ($this->container['batchCode'] === null) {
+            $invalidProperties[] = "'batchCode' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
@@ -336,17 +336,17 @@ class BulkChargeFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['total_charges'] === null) {
-            $invalidProperties[] = "'total_charges' can't be null";
+        if ($this->container['totalCharges'] === null) {
+            $invalidProperties[] = "'totalCharges' can't be null";
         }
-        if ($this->container['pending_charges'] === null) {
-            $invalidProperties[] = "'pending_charges' can't be null";
+        if ($this->container['pendingCharges'] === null) {
+            $invalidProperties[] = "'pendingCharges' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -364,28 +364,28 @@ class BulkChargeFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets batch_code
+     * Gets batchCode
      *
      * @return string
      */
     public function getBatchCode()
     {
-        return $this->container['batch_code'];
+        return $this->container['batchCode'];
     }
 
     /**
-     * Sets batch_code
+     * Sets batchCode
      *
-     * @param string $batch_code batch_code
+     * @param string $batchCode batchCode
      *
      * @return self
      */
-    public function setBatchCode($batch_code)
+    public function setBatchCode($batchCode)
     {
-        if (is_null($batch_code)) {
-            throw new \InvalidArgumentException('non-nullable batch_code cannot be null');
+        if (is_null($batchCode)) {
+            throw new \InvalidArgumentException('non-nullable batchCode cannot be null');
         }
-        $this->container['batch_code'] = $batch_code;
+        $this->container['batchCode'] = $batchCode;
 
         return $this;
     }
@@ -472,109 +472,109 @@ class BulkChargeFetchResponseData implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets total_charges
+     * Gets totalCharges
      *
      * @return int
      */
     public function getTotalCharges()
     {
-        return $this->container['total_charges'];
+        return $this->container['totalCharges'];
     }
 
     /**
-     * Sets total_charges
+     * Sets totalCharges
      *
-     * @param int $total_charges total_charges
+     * @param int $totalCharges totalCharges
      *
      * @return self
      */
-    public function setTotalCharges($total_charges)
+    public function setTotalCharges($totalCharges)
     {
-        if (is_null($total_charges)) {
-            throw new \InvalidArgumentException('non-nullable total_charges cannot be null');
+        if (is_null($totalCharges)) {
+            throw new \InvalidArgumentException('non-nullable totalCharges cannot be null');
         }
-        $this->container['total_charges'] = $total_charges;
+        $this->container['totalCharges'] = $totalCharges;
 
         return $this;
     }
 
     /**
-     * Gets pending_charges
+     * Gets pendingCharges
      *
      * @return int
      */
     public function getPendingCharges()
     {
-        return $this->container['pending_charges'];
+        return $this->container['pendingCharges'];
     }
 
     /**
-     * Sets pending_charges
+     * Sets pendingCharges
      *
-     * @param int $pending_charges pending_charges
+     * @param int $pendingCharges pendingCharges
      *
      * @return self
      */
-    public function setPendingCharges($pending_charges)
+    public function setPendingCharges($pendingCharges)
     {
-        if (is_null($pending_charges)) {
-            throw new \InvalidArgumentException('non-nullable pending_charges cannot be null');
+        if (is_null($pendingCharges)) {
+            throw new \InvalidArgumentException('non-nullable pendingCharges cannot be null');
         }
-        $this->container['pending_charges'] = $pending_charges;
+        $this->container['pendingCharges'] = $pendingCharges;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

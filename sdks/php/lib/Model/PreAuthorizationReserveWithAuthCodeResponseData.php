@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PreAuthorizationReserveWithAuthCodeResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,19 +64,19 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
         'reference' => 'string',
         'amount' => 'int',
         'message' => 'string',
-        'created_at' => 'string',
-        'released_at' => 'string',
-        'authorized_at' => 'string',
-        'expiry_date' => 'string',
+        'createdAt' => 'string',
+        'releasedAt' => 'string',
+        'authorizedAt' => 'string',
+        'expiryDate' => 'string',
         'currency' => 'string',
         'metadata' => 'object',
         'fees' => 'int',
-        'authorization' => '\Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataAuthorization',
-        'customer' => '\Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataCustomer',
-        'merchant_id' => 'int',
-        'merchant_name' => 'string',
-        'expire_action' => 'string',
-        'split_code' => 'string',
+        'authorization' => '\Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataAuthorization',
+        'customer' => '\Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataCustomer',
+        'merchantId' => 'int',
+        'merchantName' => 'string',
+        'expireAction' => 'string',
+        'splitCode' => 'string',
         'split' => 'object'
     ];
 
@@ -94,19 +94,19 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
         'reference' => null,
         'amount' => null,
         'message' => null,
-        'created_at' => null,
-        'released_at' => null,
-        'authorized_at' => null,
-        'expiry_date' => null,
+        'createdAt' => null,
+        'releasedAt' => null,
+        'authorizedAt' => null,
+        'expiryDate' => null,
         'currency' => null,
         'metadata' => null,
         'fees' => null,
         'authorization' => null,
         'customer' => null,
-        'merchant_id' => null,
-        'merchant_name' => null,
-        'expire_action' => null,
-        'split_code' => null,
+        'merchantId' => null,
+        'merchantName' => null,
+        'expireAction' => null,
+        'splitCode' => null,
         'split' => null
     ];
 
@@ -122,19 +122,19 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
         'reference' => false,
         'amount' => false,
         'message' => false,
-        'created_at' => false,
-        'released_at' => true,
-        'authorized_at' => true,
-        'expiry_date' => true,
+        'createdAt' => false,
+        'releasedAt' => true,
+        'authorizedAt' => true,
+        'expiryDate' => true,
         'currency' => false,
         'metadata' => true,
         'fees' => false,
         'authorization' => false,
         'customer' => false,
-        'merchant_id' => false,
-        'merchant_name' => false,
-        'expire_action' => false,
-        'split_code' => true,
+        'merchantId' => false,
+        'merchantName' => false,
+        'expireAction' => false,
+        'splitCode' => true,
         'split' => true
     ];
 
@@ -230,19 +230,19 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
         'reference' => 'reference',
         'amount' => 'amount',
         'message' => 'message',
-        'created_at' => 'created_at',
-        'released_at' => 'released_at',
-        'authorized_at' => 'authorized_at',
-        'expiry_date' => 'expiry_date',
+        'createdAt' => 'created_at',
+        'releasedAt' => 'released_at',
+        'authorizedAt' => 'authorized_at',
+        'expiryDate' => 'expiry_date',
         'currency' => 'currency',
         'metadata' => 'metadata',
         'fees' => 'fees',
         'authorization' => 'authorization',
         'customer' => 'customer',
-        'merchant_id' => 'merchant_id',
-        'merchant_name' => 'merchant_name',
-        'expire_action' => 'expire_action',
-        'split_code' => 'split_code',
+        'merchantId' => 'merchant_id',
+        'merchantName' => 'merchant_name',
+        'expireAction' => 'expire_action',
+        'splitCode' => 'split_code',
         'split' => 'split'
     ];
 
@@ -258,19 +258,19 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
         'reference' => 'setReference',
         'amount' => 'setAmount',
         'message' => 'setMessage',
-        'created_at' => 'setCreatedAt',
-        'released_at' => 'setReleasedAt',
-        'authorized_at' => 'setAuthorizedAt',
-        'expiry_date' => 'setExpiryDate',
+        'createdAt' => 'setCreatedAt',
+        'releasedAt' => 'setReleasedAt',
+        'authorizedAt' => 'setAuthorizedAt',
+        'expiryDate' => 'setExpiryDate',
         'currency' => 'setCurrency',
         'metadata' => 'setMetadata',
         'fees' => 'setFees',
         'authorization' => 'setAuthorization',
         'customer' => 'setCustomer',
-        'merchant_id' => 'setMerchantId',
-        'merchant_name' => 'setMerchantName',
-        'expire_action' => 'setExpireAction',
-        'split_code' => 'setSplitCode',
+        'merchantId' => 'setMerchantId',
+        'merchantName' => 'setMerchantName',
+        'expireAction' => 'setExpireAction',
+        'splitCode' => 'setSplitCode',
         'split' => 'setSplit'
     ];
 
@@ -286,19 +286,19 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
         'reference' => 'getReference',
         'amount' => 'getAmount',
         'message' => 'getMessage',
-        'created_at' => 'getCreatedAt',
-        'released_at' => 'getReleasedAt',
-        'authorized_at' => 'getAuthorizedAt',
-        'expiry_date' => 'getExpiryDate',
+        'createdAt' => 'getCreatedAt',
+        'releasedAt' => 'getReleasedAt',
+        'authorizedAt' => 'getAuthorizedAt',
+        'expiryDate' => 'getExpiryDate',
         'currency' => 'getCurrency',
         'metadata' => 'getMetadata',
         'fees' => 'getFees',
         'authorization' => 'getAuthorization',
         'customer' => 'getCustomer',
-        'merchant_id' => 'getMerchantId',
-        'merchant_name' => 'getMerchantName',
-        'expire_action' => 'getExpireAction',
-        'split_code' => 'getSplitCode',
+        'merchantId' => 'getMerchantId',
+        'merchantName' => 'getMerchantName',
+        'expireAction' => 'getExpireAction',
+        'splitCode' => 'getSplitCode',
         'split' => 'getSplit'
     ];
 
@@ -365,19 +365,19 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('released_at', $data ?? [], null);
-        $this->setIfExists('authorized_at', $data ?? [], null);
-        $this->setIfExists('expiry_date', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('releasedAt', $data ?? [], null);
+        $this->setIfExists('authorizedAt', $data ?? [], null);
+        $this->setIfExists('expiryDate', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('fees', $data ?? [], null);
         $this->setIfExists('authorization', $data ?? [], null);
         $this->setIfExists('customer', $data ?? [], null);
-        $this->setIfExists('merchant_id', $data ?? [], null);
-        $this->setIfExists('merchant_name', $data ?? [], null);
-        $this->setIfExists('expire_action', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
+        $this->setIfExists('merchantId', $data ?? [], null);
+        $this->setIfExists('merchantName', $data ?? [], null);
+        $this->setIfExists('expireAction', $data ?? [], null);
+        $this->setIfExists('splitCode', $data ?? [], null);
         $this->setIfExists('split', $data ?? [], null);
     }
 
@@ -426,17 +426,17 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
         if ($this->container['message'] === null) {
             $invalidProperties[] = "'message' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['released_at'] === null && !$this->isNullableSetToNull('released_at')) {
-            $invalidProperties[] = "'released_at' can't be null";
+        if ($this->container['releasedAt'] === null && !$this->isNullableSetToNull('releasedAt')) {
+            $invalidProperties[] = "'releasedAt' can't be null";
         }
-        if ($this->container['authorized_at'] === null && !$this->isNullableSetToNull('authorized_at')) {
-            $invalidProperties[] = "'authorized_at' can't be null";
+        if ($this->container['authorizedAt'] === null && !$this->isNullableSetToNull('authorizedAt')) {
+            $invalidProperties[] = "'authorizedAt' can't be null";
         }
-        if ($this->container['expiry_date'] === null && !$this->isNullableSetToNull('expiry_date')) {
-            $invalidProperties[] = "'expiry_date' can't be null";
+        if ($this->container['expiryDate'] === null && !$this->isNullableSetToNull('expiryDate')) {
+            $invalidProperties[] = "'expiryDate' can't be null";
         }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
@@ -453,17 +453,17 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
         if ($this->container['customer'] === null) {
             $invalidProperties[] = "'customer' can't be null";
         }
-        if ($this->container['merchant_id'] === null) {
-            $invalidProperties[] = "'merchant_id' can't be null";
+        if ($this->container['merchantId'] === null) {
+            $invalidProperties[] = "'merchantId' can't be null";
         }
-        if ($this->container['merchant_name'] === null) {
-            $invalidProperties[] = "'merchant_name' can't be null";
+        if ($this->container['merchantName'] === null) {
+            $invalidProperties[] = "'merchantName' can't be null";
         }
-        if ($this->container['expire_action'] === null) {
-            $invalidProperties[] = "'expire_action' can't be null";
+        if ($this->container['expireAction'] === null) {
+            $invalidProperties[] = "'expireAction' can't be null";
         }
-        if ($this->container['split_code'] === null && !$this->isNullableSetToNull('split_code')) {
-            $invalidProperties[] = "'split_code' can't be null";
+        if ($this->container['splitCode'] === null && !$this->isNullableSetToNull('splitCode')) {
+            $invalidProperties[] = "'splitCode' can't be null";
         }
         if ($this->container['split'] === null && !$this->isNullableSetToNull('split')) {
             $invalidProperties[] = "'split' can't be null";
@@ -646,130 +646,130 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets released_at
+     * Gets releasedAt
      *
      * @return string|null
      */
     public function getReleasedAt()
     {
-        return $this->container['released_at'];
+        return $this->container['releasedAt'];
     }
 
     /**
-     * Sets released_at
+     * Sets releasedAt
      *
-     * @param string|null $released_at released_at
+     * @param string|null $releasedAt releasedAt
      *
      * @return self
      */
-    public function setReleasedAt($released_at)
+    public function setReleasedAt($releasedAt)
     {
-        if (is_null($released_at)) {
-            array_push($this->openAPINullablesSetToNull, 'released_at');
+        if (is_null($releasedAt)) {
+            array_push($this->openAPINullablesSetToNull, 'releasedAt');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('released_at', $nullablesSetToNull);
+            $index = array_search('releasedAt', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['released_at'] = $released_at;
+        $this->container['releasedAt'] = $releasedAt;
 
         return $this;
     }
 
     /**
-     * Gets authorized_at
+     * Gets authorizedAt
      *
      * @return string|null
      */
     public function getAuthorizedAt()
     {
-        return $this->container['authorized_at'];
+        return $this->container['authorizedAt'];
     }
 
     /**
-     * Sets authorized_at
+     * Sets authorizedAt
      *
-     * @param string|null $authorized_at authorized_at
+     * @param string|null $authorizedAt authorizedAt
      *
      * @return self
      */
-    public function setAuthorizedAt($authorized_at)
+    public function setAuthorizedAt($authorizedAt)
     {
-        if (is_null($authorized_at)) {
-            array_push($this->openAPINullablesSetToNull, 'authorized_at');
+        if (is_null($authorizedAt)) {
+            array_push($this->openAPINullablesSetToNull, 'authorizedAt');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('authorized_at', $nullablesSetToNull);
+            $index = array_search('authorizedAt', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['authorized_at'] = $authorized_at;
+        $this->container['authorizedAt'] = $authorizedAt;
 
         return $this;
     }
 
     /**
-     * Gets expiry_date
+     * Gets expiryDate
      *
      * @return string|null
      */
     public function getExpiryDate()
     {
-        return $this->container['expiry_date'];
+        return $this->container['expiryDate'];
     }
 
     /**
-     * Sets expiry_date
+     * Sets expiryDate
      *
-     * @param string|null $expiry_date expiry_date
+     * @param string|null $expiryDate expiryDate
      *
      * @return self
      */
-    public function setExpiryDate($expiry_date)
+    public function setExpiryDate($expiryDate)
     {
-        if (is_null($expiry_date)) {
-            array_push($this->openAPINullablesSetToNull, 'expiry_date');
+        if (is_null($expiryDate)) {
+            array_push($this->openAPINullablesSetToNull, 'expiryDate');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expiry_date', $nullablesSetToNull);
+            $index = array_search('expiryDate', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['expiry_date'] = $expiry_date;
+        $this->container['expiryDate'] = $expiryDate;
 
         return $this;
     }
@@ -865,7 +865,7 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
     /**
      * Gets authorization
      *
-     * @return \Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataAuthorization
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataAuthorization
      */
     public function getAuthorization()
     {
@@ -875,7 +875,7 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
     /**
      * Sets authorization
      *
-     * @param \Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataAuthorization $authorization authorization
+     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataAuthorization $authorization authorization
      *
      * @return self
      */
@@ -892,7 +892,7 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
     /**
      * Gets customer
      *
-     * @return \Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -902,7 +902,7 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
     /**
      * Sets customer
      *
-     * @param \Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataCustomer $customer customer
      *
      * @return self
      */
@@ -917,116 +917,116 @@ class PreAuthorizationReserveWithAuthCodeResponseData implements ModelInterface,
     }
 
     /**
-     * Gets merchant_id
+     * Gets merchantId
      *
      * @return int
      */
     public function getMerchantId()
     {
-        return $this->container['merchant_id'];
+        return $this->container['merchantId'];
     }
 
     /**
-     * Sets merchant_id
+     * Sets merchantId
      *
-     * @param int $merchant_id merchant_id
+     * @param int $merchantId merchantId
      *
      * @return self
      */
-    public function setMerchantId($merchant_id)
+    public function setMerchantId($merchantId)
     {
-        if (is_null($merchant_id)) {
-            throw new \InvalidArgumentException('non-nullable merchant_id cannot be null');
+        if (is_null($merchantId)) {
+            throw new \InvalidArgumentException('non-nullable merchantId cannot be null');
         }
-        $this->container['merchant_id'] = $merchant_id;
+        $this->container['merchantId'] = $merchantId;
 
         return $this;
     }
 
     /**
-     * Gets merchant_name
+     * Gets merchantName
      *
      * @return string
      */
     public function getMerchantName()
     {
-        return $this->container['merchant_name'];
+        return $this->container['merchantName'];
     }
 
     /**
-     * Sets merchant_name
+     * Sets merchantName
      *
-     * @param string $merchant_name merchant_name
+     * @param string $merchantName merchantName
      *
      * @return self
      */
-    public function setMerchantName($merchant_name)
+    public function setMerchantName($merchantName)
     {
-        if (is_null($merchant_name)) {
-            throw new \InvalidArgumentException('non-nullable merchant_name cannot be null');
+        if (is_null($merchantName)) {
+            throw new \InvalidArgumentException('non-nullable merchantName cannot be null');
         }
-        $this->container['merchant_name'] = $merchant_name;
+        $this->container['merchantName'] = $merchantName;
 
         return $this;
     }
 
     /**
-     * Gets expire_action
+     * Gets expireAction
      *
      * @return string
      */
     public function getExpireAction()
     {
-        return $this->container['expire_action'];
+        return $this->container['expireAction'];
     }
 
     /**
-     * Sets expire_action
+     * Sets expireAction
      *
-     * @param string $expire_action expire_action
+     * @param string $expireAction expireAction
      *
      * @return self
      */
-    public function setExpireAction($expire_action)
+    public function setExpireAction($expireAction)
     {
-        if (is_null($expire_action)) {
-            throw new \InvalidArgumentException('non-nullable expire_action cannot be null');
+        if (is_null($expireAction)) {
+            throw new \InvalidArgumentException('non-nullable expireAction cannot be null');
         }
-        $this->container['expire_action'] = $expire_action;
+        $this->container['expireAction'] = $expireAction;
 
         return $this;
     }
 
     /**
-     * Gets split_code
+     * Gets splitCode
      *
      * @return string|null
      */
     public function getSplitCode()
     {
-        return $this->container['split_code'];
+        return $this->container['splitCode'];
     }
 
     /**
-     * Sets split_code
+     * Sets splitCode
      *
-     * @param string|null $split_code split_code
+     * @param string|null $splitCode splitCode
      *
      * @return self
      */
-    public function setSplitCode($split_code)
+    public function setSplitCode($splitCode)
     {
-        if (is_null($split_code)) {
-            array_push($this->openAPINullablesSetToNull, 'split_code');
+        if (is_null($splitCode)) {
+            array_push($this->openAPINullablesSetToNull, 'splitCode');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('split_code', $nullablesSetToNull);
+            $index = array_search('splitCode', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['split_code'] = $split_code;
+        $this->container['splitCode'] = $splitCode;
 
         return $this;
     }

@@ -23,7 +23,7 @@ import (
 // ApplePayAPIService ApplePayAPI service
 type ApplePayAPIService service
 
-type ApiApplePayListDomainRequest struct {
+type ApiListDomainRequest struct {
 	ctx context.Context
 	ApiService *ApplePayAPIService
 	useCursor *bool
@@ -32,37 +32,37 @@ type ApiApplePayListDomainRequest struct {
 }
 
 // Flag to enable cursor pagination on the endpoint
-func (r ApiApplePayListDomainRequest) UseCursor(useCursor bool) ApiApplePayListDomainRequest {
+func (r ApiListDomainRequest) UseCursor(useCursor bool) ApiListDomainRequest {
 	r.useCursor = &useCursor
 	return r
 }
 
 // A cursor that indicates your place in the list. It can be used to fetch the next page of the list
-func (r ApiApplePayListDomainRequest) Next(next string) ApiApplePayListDomainRequest {
+func (r ApiListDomainRequest) Next(next string) ApiListDomainRequest {
 	r.next = &next
 	return r
 }
 
 // A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request
-func (r ApiApplePayListDomainRequest) Previous(previous string) ApiApplePayListDomainRequest {
+func (r ApiListDomainRequest) Previous(previous string) ApiListDomainRequest {
 	r.previous = &previous
 	return r
 }
 
-func (r ApiApplePayListDomainRequest) Execute() (*ApplePayDomainsResponse, *http.Response, error) {
-	return r.ApiService.ApplePayListDomainExecute(r)
+func (r ApiListDomainRequest) Execute() (*ApplePayDomainsResponse, *http.Response, error) {
+	return r.ApiService.ListDomainExecute(r)
 }
 
 /*
-ApplePayListDomain List Domains
+ListDomain List Domains
 
 Lists all registered domains on your integration. Returns an empty array if no domains have been added.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApplePayListDomainRequest
+ @return ApiListDomainRequest
 */
-func (a *ApplePayAPIService) ApplePayListDomain(ctx context.Context) ApiApplePayListDomainRequest {
-	return ApiApplePayListDomainRequest{
+func (a *ApplePayAPIService) ListDomain(ctx context.Context) ApiListDomainRequest {
+	return ApiListDomainRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -70,7 +70,7 @@ func (a *ApplePayAPIService) ApplePayListDomain(ctx context.Context) ApiApplePay
 
 // Execute executes the request
 //  @return ApplePayDomainsResponse
-func (a *ApplePayAPIService) ApplePayListDomainExecute(r ApiApplePayListDomainRequest) (*ApplePayDomainsResponse, *http.Response, error) {
+func (a *ApplePayAPIService) ListDomainExecute(r ApiListDomainRequest) (*ApplePayDomainsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -78,7 +78,7 @@ func (a *ApplePayAPIService) ApplePayListDomainExecute(r ApiApplePayListDomainRe
 		localVarReturnValue  *ApplePayDomainsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplePayAPIService.ApplePayListDomain")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplePayAPIService.ListDomain")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -174,23 +174,23 @@ func (a *ApplePayAPIService) ApplePayListDomainExecute(r ApiApplePayListDomainRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApplePayRegisterDomainRequest struct {
+type ApiRegisterDomainRequest struct {
 	ctx context.Context
 	ApiService *ApplePayAPIService
 	applePayParam *ApplePayParam
 }
 
-func (r ApiApplePayRegisterDomainRequest) ApplePayParam(applePayParam ApplePayParam) ApiApplePayRegisterDomainRequest {
+func (r ApiRegisterDomainRequest) ApplePayParam(applePayParam ApplePayParam) ApiRegisterDomainRequest {
 	r.applePayParam = &applePayParam
 	return r
 }
 
-func (r ApiApplePayRegisterDomainRequest) Execute() (*ApplePayCreateOkModel, *http.Response, error) {
-	return r.ApiService.ApplePayRegisterDomainExecute(r)
+func (r ApiRegisterDomainRequest) Execute() (*ApplePayCreateOkModel, *http.Response, error) {
+	return r.ApiService.RegisterDomainExecute(r)
 }
 
 /*
-ApplePayRegisterDomain Register Domain
+RegisterDomain Register Domain
 
 Register a top-level domain or subdomain for your Apple Pay integration.
 
@@ -198,10 +198,10 @@ Register a top-level domain or subdomain for your Apple Pay integration.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApplePayRegisterDomainRequest
+ @return ApiRegisterDomainRequest
 */
-func (a *ApplePayAPIService) ApplePayRegisterDomain(ctx context.Context) ApiApplePayRegisterDomainRequest {
-	return ApiApplePayRegisterDomainRequest{
+func (a *ApplePayAPIService) RegisterDomain(ctx context.Context) ApiRegisterDomainRequest {
+	return ApiRegisterDomainRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -209,7 +209,7 @@ func (a *ApplePayAPIService) ApplePayRegisterDomain(ctx context.Context) ApiAppl
 
 // Execute executes the request
 //  @return ApplePayCreateOkModel
-func (a *ApplePayAPIService) ApplePayRegisterDomainExecute(r ApiApplePayRegisterDomainRequest) (*ApplePayCreateOkModel, *http.Response, error) {
+func (a *ApplePayAPIService) RegisterDomainExecute(r ApiRegisterDomainRequest) (*ApplePayCreateOkModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -217,7 +217,7 @@ func (a *ApplePayAPIService) ApplePayRegisterDomainExecute(r ApiApplePayRegister
 		localVarReturnValue  *ApplePayCreateOkModel
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplePayAPIService.ApplePayRegisterDomain")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplePayAPIService.RegisterDomain")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -295,33 +295,33 @@ func (a *ApplePayAPIService) ApplePayRegisterDomainExecute(r ApiApplePayRegister
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApplePayUnregisterDomainRequest struct {
+type ApiUnregisterDomainRequest struct {
 	ctx context.Context
 	ApiService *ApplePayAPIService
 	applePayParam *ApplePayParam
 }
 
-func (r ApiApplePayUnregisterDomainRequest) ApplePayParam(applePayParam ApplePayParam) ApiApplePayUnregisterDomainRequest {
+func (r ApiUnregisterDomainRequest) ApplePayParam(applePayParam ApplePayParam) ApiUnregisterDomainRequest {
 	r.applePayParam = &applePayParam
 	return r
 }
 
-func (r ApiApplePayUnregisterDomainRequest) Execute() (*Response, *http.Response, error) {
-	return r.ApiService.ApplePayUnregisterDomainExecute(r)
+func (r ApiUnregisterDomainRequest) Execute() (*Response, *http.Response, error) {
+	return r.ApiService.UnregisterDomainExecute(r)
 }
 
 /*
-ApplePayUnregisterDomain Unregister Domain
+UnregisterDomain Unregister Domain
 
 Unregister a top-level domain or subdomain previously used for your Apple
 Pay integration.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApplePayUnregisterDomainRequest
+ @return ApiUnregisterDomainRequest
 */
-func (a *ApplePayAPIService) ApplePayUnregisterDomain(ctx context.Context) ApiApplePayUnregisterDomainRequest {
-	return ApiApplePayUnregisterDomainRequest{
+func (a *ApplePayAPIService) UnregisterDomain(ctx context.Context) ApiUnregisterDomainRequest {
+	return ApiUnregisterDomainRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -329,7 +329,7 @@ func (a *ApplePayAPIService) ApplePayUnregisterDomain(ctx context.Context) ApiAp
 
 // Execute executes the request
 //  @return Response
-func (a *ApplePayAPIService) ApplePayUnregisterDomainExecute(r ApiApplePayUnregisterDomainRequest) (*Response, *http.Response, error) {
+func (a *ApplePayAPIService) UnregisterDomainExecute(r ApiUnregisterDomainRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -337,7 +337,7 @@ func (a *ApplePayAPIService) ApplePayUnregisterDomainExecute(r ApiApplePayUnregi
 		localVarReturnValue  *Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplePayAPIService.ApplePayUnregisterDomain")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplePayAPIService.UnregisterDomain")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

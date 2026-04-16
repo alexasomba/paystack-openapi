@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * ErrorMeta Class Doc Comment
  *
  * @category Class
  * @description Extra diagnostic information to help resolve an error
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class ErrorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'next_step' => 'string'
+        'nextStep' => 'string'
     ];
 
     /**
@@ -70,7 +70,7 @@ class ErrorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'next_step' => null
+        'nextStep' => null
     ];
 
     /**
@@ -79,7 +79,7 @@ class ErrorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'next_step' => false
+        'nextStep' => false
     ];
 
     /**
@@ -168,7 +168,7 @@ class ErrorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'next_step' => 'nextStep'
+        'nextStep' => 'nextStep'
     ];
 
     /**
@@ -177,7 +177,7 @@ class ErrorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'next_step' => 'setNextStep'
+        'nextStep' => 'setNextStep'
     ];
 
     /**
@@ -186,7 +186,7 @@ class ErrorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'next_step' => 'getNextStep'
+        'nextStep' => 'getNextStep'
     ];
 
     /**
@@ -246,7 +246,7 @@ class ErrorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('next_step', $data ?? [], null);
+        $this->setIfExists('nextStep', $data ?? [], null);
     }
 
     /**
@@ -292,28 +292,28 @@ class ErrorMeta implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets next_step
+     * Gets nextStep
      *
      * @return string|null
      */
     public function getNextStep()
     {
-        return $this->container['next_step'];
+        return $this->container['nextStep'];
     }
 
     /**
-     * Sets next_step
+     * Sets nextStep
      *
-     * @param string|null $next_step A suggested next action to take to resolve the error
+     * @param string|null $nextStep A suggested next action to take to resolve the error
      *
      * @return self
      */
-    public function setNextStep($next_step)
+    public function setNextStep($nextStep)
     {
-        if (is_null($next_step)) {
-            throw new \InvalidArgumentException('non-nullable next_step cannot be null');
+        if (is_null($nextStep)) {
+            throw new \InvalidArgumentException('non-nullable nextStep cannot be null');
         }
-        $this->container['next_step'] = $next_step;
+        $this->container['nextStep'] = $nextStep;
 
         return $this;
     }

@@ -8,3 +8,5 @@ gitHost: github.com
 gitUserId: alexasomba
 gitRepoId: paystack-php
 hideGenerationTimestamp: true
+removeOperationIdPrefix: true
+variableNamingConvention: camelCase

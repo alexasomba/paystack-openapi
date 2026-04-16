@@ -10,3 +10,4 @@ gitRepoId: paystack-python
 # Keep it small and broadly compatible
 library: urllib3
 hideGenerationTimestamp: true
+removeOperationIdPrefix: true

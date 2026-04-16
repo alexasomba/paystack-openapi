@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Api;
+namespace Alexasomba\Paystack\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Alexasomba\\Paystack\ApiException;
-use Alexasomba\\Paystack\Configuration;
-use Alexasomba\\Paystack\FormDataProcessor;
-use Alexasomba\\Paystack\HeaderSelector;
-use Alexasomba\\Paystack\ObjectSerializer;
+use Alexasomba\Paystack\ApiException;
+use Alexasomba\Paystack\Configuration;
+use Alexasomba\Paystack\FormDataProcessor;
+use Alexasomba\Paystack\HeaderSelector;
+use Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * DirectDebitApi Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -75,10 +75,10 @@ class DirectDebitApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'directdebitListMandateAuthorizations' => [
+        'listMandateAuthorizations' => [
             'application/json',
         ],
-        'directdebitTriggerActivationCharge' => [
+        'triggerActivationCharge' => [
             'application/json',
         ],
     ];
@@ -130,42 +130,42 @@ class DirectDebitApi
     }
 
     /**
-     * Operation directdebitListMandateAuthorizations
+     * Operation listMandateAuthorizations
      *
      * List Mandate Authorizations
      *
      * @param  string|null $cursor The cursor value of the next set of authorizations to fetch. You can get this from the meta object of the response (optional)
      * @param  string|null $status Filter by the authorization status (optional)
-     * @param  int|null $per_page The number of authorizations to fetch per request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['directdebitListMandateAuthorizations'] to see the possible values for this operation
+     * @param  int|null $perPage The number of authorizations to fetch per request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listMandateAuthorizations'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\CustomerFetchMandateAuthorizationsResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\CustomerFetchMandateAuthorizationsResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function directdebitListMandateAuthorizations($cursor = null, $status = null, $per_page = null, string $contentType = self::contentTypes['directdebitListMandateAuthorizations'][0])
+    public function listMandateAuthorizations($cursor = null, $status = null, $perPage = null, string $contentType = self::contentTypes['listMandateAuthorizations'][0])
     {
-        list($response) = $this->directdebitListMandateAuthorizationsWithHttpInfo($cursor, $status, $per_page, $contentType);
+        list($response) = $this->listMandateAuthorizationsWithHttpInfo($cursor, $status, $perPage, $contentType);
         return $response;
     }
 
     /**
-     * Operation directdebitListMandateAuthorizationsWithHttpInfo
+     * Operation listMandateAuthorizationsWithHttpInfo
      *
      * List Mandate Authorizations
      *
      * @param  string|null $cursor The cursor value of the next set of authorizations to fetch. You can get this from the meta object of the response (optional)
      * @param  string|null $status Filter by the authorization status (optional)
-     * @param  int|null $per_page The number of authorizations to fetch per request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['directdebitListMandateAuthorizations'] to see the possible values for this operation
+     * @param  int|null $perPage The number of authorizations to fetch per request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listMandateAuthorizations'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\CustomerFetchMandateAuthorizationsResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\CustomerFetchMandateAuthorizationsResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function directdebitListMandateAuthorizationsWithHttpInfo($cursor = null, $status = null, $per_page = null, string $contentType = self::contentTypes['directdebitListMandateAuthorizations'][0])
+    public function listMandateAuthorizationsWithHttpInfo($cursor = null, $status = null, $perPage = null, string $contentType = self::contentTypes['listMandateAuthorizations'][0])
     {
-        $request = $this->directdebitListMandateAuthorizationsRequest($cursor, $status, $per_page, $contentType);
+        $request = $this->listMandateAuthorizationsRequest($cursor, $status, $perPage, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -193,13 +193,13 @@ class DirectDebitApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\CustomerFetchMandateAuthorizationsResponse',
+                        '\Alexasomba\Paystack\Model\CustomerFetchMandateAuthorizationsResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -221,7 +221,7 @@ class DirectDebitApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\CustomerFetchMandateAuthorizationsResponse',
+                '\Alexasomba\Paystack\Model\CustomerFetchMandateAuthorizationsResponse',
                 $request,
                 $response,
             );
@@ -230,7 +230,7 @@ class DirectDebitApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\CustomerFetchMandateAuthorizationsResponse',
+                        '\Alexasomba\Paystack\Model\CustomerFetchMandateAuthorizationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -238,7 +238,7 @@ class DirectDebitApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -251,21 +251,21 @@ class DirectDebitApi
     }
 
     /**
-     * Operation directdebitListMandateAuthorizationsAsync
+     * Operation listMandateAuthorizationsAsync
      *
      * List Mandate Authorizations
      *
      * @param  string|null $cursor The cursor value of the next set of authorizations to fetch. You can get this from the meta object of the response (optional)
      * @param  string|null $status Filter by the authorization status (optional)
-     * @param  int|null $per_page The number of authorizations to fetch per request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['directdebitListMandateAuthorizations'] to see the possible values for this operation
+     * @param  int|null $perPage The number of authorizations to fetch per request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listMandateAuthorizations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function directdebitListMandateAuthorizationsAsync($cursor = null, $status = null, $per_page = null, string $contentType = self::contentTypes['directdebitListMandateAuthorizations'][0])
+    public function listMandateAuthorizationsAsync($cursor = null, $status = null, $perPage = null, string $contentType = self::contentTypes['listMandateAuthorizations'][0])
     {
-        return $this->directdebitListMandateAuthorizationsAsyncWithHttpInfo($cursor, $status, $per_page, $contentType)
+        return $this->listMandateAuthorizationsAsyncWithHttpInfo($cursor, $status, $perPage, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -274,22 +274,22 @@ class DirectDebitApi
     }
 
     /**
-     * Operation directdebitListMandateAuthorizationsAsyncWithHttpInfo
+     * Operation listMandateAuthorizationsAsyncWithHttpInfo
      *
      * List Mandate Authorizations
      *
      * @param  string|null $cursor The cursor value of the next set of authorizations to fetch. You can get this from the meta object of the response (optional)
      * @param  string|null $status Filter by the authorization status (optional)
-     * @param  int|null $per_page The number of authorizations to fetch per request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['directdebitListMandateAuthorizations'] to see the possible values for this operation
+     * @param  int|null $perPage The number of authorizations to fetch per request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listMandateAuthorizations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function directdebitListMandateAuthorizationsAsyncWithHttpInfo($cursor = null, $status = null, $per_page = null, string $contentType = self::contentTypes['directdebitListMandateAuthorizations'][0])
+    public function listMandateAuthorizationsAsyncWithHttpInfo($cursor = null, $status = null, $perPage = null, string $contentType = self::contentTypes['listMandateAuthorizations'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\CustomerFetchMandateAuthorizationsResponse';
-        $request = $this->directdebitListMandateAuthorizationsRequest($cursor, $status, $per_page, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\CustomerFetchMandateAuthorizationsResponse';
+        $request = $this->listMandateAuthorizationsRequest($cursor, $status, $perPage, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -328,17 +328,17 @@ class DirectDebitApi
     }
 
     /**
-     * Create request for operation 'directdebitListMandateAuthorizations'
+     * Create request for operation 'listMandateAuthorizations'
      *
      * @param  string|null $cursor The cursor value of the next set of authorizations to fetch. You can get this from the meta object of the response (optional)
      * @param  string|null $status Filter by the authorization status (optional)
-     * @param  int|null $per_page The number of authorizations to fetch per request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['directdebitListMandateAuthorizations'] to see the possible values for this operation
+     * @param  int|null $perPage The number of authorizations to fetch per request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listMandateAuthorizations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function directdebitListMandateAuthorizationsRequest($cursor = null, $status = null, $per_page = null, string $contentType = self::contentTypes['directdebitListMandateAuthorizations'][0])
+    public function listMandateAuthorizationsRequest($cursor = null, $status = null, $perPage = null, string $contentType = self::contentTypes['listMandateAuthorizations'][0])
     {
 
 
@@ -372,7 +372,7 @@ class DirectDebitApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
+            $perPage,
             'per_page', // param base name
             'integer', // openApiType
             'form', // style
@@ -441,38 +441,38 @@ class DirectDebitApi
     }
 
     /**
-     * Operation directdebitTriggerActivationCharge
+     * Operation triggerActivationCharge
      *
      * Trigger Activation Charge
      *
-     * @param  \Alexasomba\\Paystack\Model\DirectDebitActivationChargeRequest $direct_debit_activation_charge_request direct_debit_activation_charge_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['directdebitTriggerActivationCharge'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\DirectDebitActivationChargeRequest $directDebitActivationChargeRequest directDebitActivationChargeRequest (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerActivationCharge'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\DirectDebitActivationChargeResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\DirectDebitActivationChargeResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function directdebitTriggerActivationCharge($direct_debit_activation_charge_request, string $contentType = self::contentTypes['directdebitTriggerActivationCharge'][0])
+    public function triggerActivationCharge($directDebitActivationChargeRequest, string $contentType = self::contentTypes['triggerActivationCharge'][0])
     {
-        list($response) = $this->directdebitTriggerActivationChargeWithHttpInfo($direct_debit_activation_charge_request, $contentType);
+        list($response) = $this->triggerActivationChargeWithHttpInfo($directDebitActivationChargeRequest, $contentType);
         return $response;
     }
 
     /**
-     * Operation directdebitTriggerActivationChargeWithHttpInfo
+     * Operation triggerActivationChargeWithHttpInfo
      *
      * Trigger Activation Charge
      *
-     * @param  \Alexasomba\\Paystack\Model\DirectDebitActivationChargeRequest $direct_debit_activation_charge_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['directdebitTriggerActivationCharge'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\DirectDebitActivationChargeRequest $directDebitActivationChargeRequest (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerActivationCharge'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\DirectDebitActivationChargeResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\DirectDebitActivationChargeResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function directdebitTriggerActivationChargeWithHttpInfo($direct_debit_activation_charge_request, string $contentType = self::contentTypes['directdebitTriggerActivationCharge'][0])
+    public function triggerActivationChargeWithHttpInfo($directDebitActivationChargeRequest, string $contentType = self::contentTypes['triggerActivationCharge'][0])
     {
-        $request = $this->directdebitTriggerActivationChargeRequest($direct_debit_activation_charge_request, $contentType);
+        $request = $this->triggerActivationChargeRequest($directDebitActivationChargeRequest, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -500,13 +500,13 @@ class DirectDebitApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\DirectDebitActivationChargeResponse',
+                        '\Alexasomba\Paystack\Model\DirectDebitActivationChargeResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -528,7 +528,7 @@ class DirectDebitApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\DirectDebitActivationChargeResponse',
+                '\Alexasomba\Paystack\Model\DirectDebitActivationChargeResponse',
                 $request,
                 $response,
             );
@@ -537,7 +537,7 @@ class DirectDebitApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\DirectDebitActivationChargeResponse',
+                        '\Alexasomba\Paystack\Model\DirectDebitActivationChargeResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -545,7 +545,7 @@ class DirectDebitApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -558,19 +558,19 @@ class DirectDebitApi
     }
 
     /**
-     * Operation directdebitTriggerActivationChargeAsync
+     * Operation triggerActivationChargeAsync
      *
      * Trigger Activation Charge
      *
-     * @param  \Alexasomba\\Paystack\Model\DirectDebitActivationChargeRequest $direct_debit_activation_charge_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['directdebitTriggerActivationCharge'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\DirectDebitActivationChargeRequest $directDebitActivationChargeRequest (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerActivationCharge'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function directdebitTriggerActivationChargeAsync($direct_debit_activation_charge_request, string $contentType = self::contentTypes['directdebitTriggerActivationCharge'][0])
+    public function triggerActivationChargeAsync($directDebitActivationChargeRequest, string $contentType = self::contentTypes['triggerActivationCharge'][0])
     {
-        return $this->directdebitTriggerActivationChargeAsyncWithHttpInfo($direct_debit_activation_charge_request, $contentType)
+        return $this->triggerActivationChargeAsyncWithHttpInfo($directDebitActivationChargeRequest, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -579,20 +579,20 @@ class DirectDebitApi
     }
 
     /**
-     * Operation directdebitTriggerActivationChargeAsyncWithHttpInfo
+     * Operation triggerActivationChargeAsyncWithHttpInfo
      *
      * Trigger Activation Charge
      *
-     * @param  \Alexasomba\\Paystack\Model\DirectDebitActivationChargeRequest $direct_debit_activation_charge_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['directdebitTriggerActivationCharge'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\DirectDebitActivationChargeRequest $directDebitActivationChargeRequest (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerActivationCharge'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function directdebitTriggerActivationChargeAsyncWithHttpInfo($direct_debit_activation_charge_request, string $contentType = self::contentTypes['directdebitTriggerActivationCharge'][0])
+    public function triggerActivationChargeAsyncWithHttpInfo($directDebitActivationChargeRequest, string $contentType = self::contentTypes['triggerActivationCharge'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\DirectDebitActivationChargeResponse';
-        $request = $this->directdebitTriggerActivationChargeRequest($direct_debit_activation_charge_request, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\DirectDebitActivationChargeResponse';
+        $request = $this->triggerActivationChargeRequest($directDebitActivationChargeRequest, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -631,21 +631,21 @@ class DirectDebitApi
     }
 
     /**
-     * Create request for operation 'directdebitTriggerActivationCharge'
+     * Create request for operation 'triggerActivationCharge'
      *
-     * @param  \Alexasomba\\Paystack\Model\DirectDebitActivationChargeRequest $direct_debit_activation_charge_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['directdebitTriggerActivationCharge'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\DirectDebitActivationChargeRequest $directDebitActivationChargeRequest (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerActivationCharge'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function directdebitTriggerActivationChargeRequest($direct_debit_activation_charge_request, string $contentType = self::contentTypes['directdebitTriggerActivationCharge'][0])
+    public function triggerActivationChargeRequest($directDebitActivationChargeRequest, string $contentType = self::contentTypes['triggerActivationCharge'][0])
     {
 
-        // verify the required parameter 'direct_debit_activation_charge_request' is set
-        if ($direct_debit_activation_charge_request === null || (is_array($direct_debit_activation_charge_request) && count($direct_debit_activation_charge_request) === 0)) {
+        // verify the required parameter 'directDebitActivationChargeRequest' is set
+        if ($directDebitActivationChargeRequest === null || (is_array($directDebitActivationChargeRequest) && count($directDebitActivationChargeRequest) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $direct_debit_activation_charge_request when calling directdebitTriggerActivationCharge'
+                'Missing the required parameter $directDebitActivationChargeRequest when calling triggerActivationCharge'
             );
         }
 
@@ -668,12 +668,12 @@ class DirectDebitApi
         );
 
         // for model (json/xml)
-        if (isset($direct_debit_activation_charge_request)) {
+        if (isset($directDebitActivationChargeRequest)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($direct_debit_activation_charge_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($directDebitActivationChargeRequest));
             } else {
-                $httpBody = $direct_debit_activation_charge_request;
+                $httpBody = $directDebitActivationChargeRequest;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

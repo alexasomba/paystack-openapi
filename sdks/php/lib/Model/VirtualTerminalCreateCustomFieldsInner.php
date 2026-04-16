@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * VirtualTerminalCreateCustomFieldsInner Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class VirtualTerminalCreateCustomFieldsInner implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'display_name' => 'string',
-        'variable_name' => 'string'
+        'displayName' => 'string',
+        'variableName' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class VirtualTerminalCreateCustomFieldsInner implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'display_name' => null,
-        'variable_name' => null
+        'displayName' => null,
+        'variableName' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class VirtualTerminalCreateCustomFieldsInner implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'display_name' => false,
-        'variable_name' => false
+        'displayName' => false,
+        'variableName' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class VirtualTerminalCreateCustomFieldsInner implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'display_name' => 'display_name',
-        'variable_name' => 'variable_name'
+        'displayName' => 'display_name',
+        'variableName' => 'variable_name'
     ];
 
     /**
@@ -180,8 +180,8 @@ class VirtualTerminalCreateCustomFieldsInner implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'display_name' => 'setDisplayName',
-        'variable_name' => 'setVariableName'
+        'displayName' => 'setDisplayName',
+        'variableName' => 'setVariableName'
     ];
 
     /**
@@ -190,8 +190,8 @@ class VirtualTerminalCreateCustomFieldsInner implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'display_name' => 'getDisplayName',
-        'variable_name' => 'getVariableName'
+        'displayName' => 'getDisplayName',
+        'variableName' => 'getVariableName'
     ];
 
     /**
@@ -251,8 +251,8 @@ class VirtualTerminalCreateCustomFieldsInner implements ModelInterface, ArrayAcc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('display_name', $data ?? [], null);
-        $this->setIfExists('variable_name', $data ?? [], null);
+        $this->setIfExists('displayName', $data ?? [], null);
+        $this->setIfExists('variableName', $data ?? [], null);
     }
 
     /**
@@ -298,55 +298,55 @@ class VirtualTerminalCreateCustomFieldsInner implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets display_name
+     * Gets displayName
      *
      * @return string|null
      */
     public function getDisplayName()
     {
-        return $this->container['display_name'];
+        return $this->container['displayName'];
     }
 
     /**
-     * Sets display_name
+     * Sets displayName
      *
-     * @param string|null $display_name display_name
+     * @param string|null $displayName displayName
      *
      * @return self
      */
-    public function setDisplayName($display_name)
+    public function setDisplayName($displayName)
     {
-        if (is_null($display_name)) {
-            throw new \InvalidArgumentException('non-nullable display_name cannot be null');
+        if (is_null($displayName)) {
+            throw new \InvalidArgumentException('non-nullable displayName cannot be null');
         }
-        $this->container['display_name'] = $display_name;
+        $this->container['displayName'] = $displayName;
 
         return $this;
     }
 
     /**
-     * Gets variable_name
+     * Gets variableName
      *
      * @return string|null
      */
     public function getVariableName()
     {
-        return $this->container['variable_name'];
+        return $this->container['variableName'];
     }
 
     /**
-     * Sets variable_name
+     * Sets variableName
      *
-     * @param string|null $variable_name variable_name
+     * @param string|null $variableName variableName
      *
      * @return self
      */
-    public function setVariableName($variable_name)
+    public function setVariableName($variableName)
     {
-        if (is_null($variable_name)) {
-            throw new \InvalidArgumentException('non-nullable variable_name cannot be null');
+        if (is_null($variableName)) {
+            throw new \InvalidArgumentException('non-nullable variableName cannot be null');
         }
-        $this->container['variable_name'] = $variable_name;
+        $this->container['variableName'] = $variableName;
 
         return $this;
     }

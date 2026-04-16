@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Api;
+namespace Alexasomba\Paystack\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Alexasomba\\Paystack\ApiException;
-use Alexasomba\\Paystack\Configuration;
-use Alexasomba\\Paystack\FormDataProcessor;
-use Alexasomba\\Paystack\HeaderSelector;
-use Alexasomba\\Paystack\ObjectSerializer;
+use Alexasomba\Paystack\ApiException;
+use Alexasomba\Paystack\Configuration;
+use Alexasomba\Paystack\FormDataProcessor;
+use Alexasomba\Paystack\HeaderSelector;
+use Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * SubscriptionApi Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -75,28 +75,28 @@ class SubscriptionApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'subscriptionCreate' => [
+        'callList' => [
+            'application/json',
+        ],
+        'create' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'subscriptionDisable' => [
+        'disable' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'subscriptionEnable' => [
+        'enable' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'subscriptionFetch' => [
+        'fetch' => [
             'application/json',
         ],
-        'subscriptionList' => [
+        'manageEmail' => [
             'application/json',
         ],
-        'subscriptionManageEmail' => [
-            'application/json',
-        ],
-        'subscriptionManageLink' => [
+        'manageLink' => [
             'application/json',
         ],
     ];
@@ -148,38 +148,44 @@ class SubscriptionApi
     }
 
     /**
-     * Operation subscriptionCreate
+     * Operation callList
      *
-     * Create Subscription
+     * List Subscriptions
      *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionCreate|null $subscription_create subscription_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionCreate'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  int|null $plan Plan ID (optional)
+     * @param  int|null $customer Filter by Customer ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\SubscriptionCreateResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\SubscriptionListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function subscriptionCreate($subscription_create = null, string $contentType = self::contentTypes['subscriptionCreate'][0])
+    public function callList($perPage = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['callList'][0])
     {
-        list($response) = $this->subscriptionCreateWithHttpInfo($subscription_create, $contentType);
+        list($response) = $this->callListWithHttpInfo($perPage, $page, $plan, $customer, $contentType);
         return $response;
     }
 
     /**
-     * Operation subscriptionCreateWithHttpInfo
+     * Operation callListWithHttpInfo
      *
-     * Create Subscription
+     * List Subscriptions
      *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionCreate|null $subscription_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionCreate'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  int|null $plan Plan ID (optional)
+     * @param  int|null $customer Filter by Customer ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\SubscriptionCreateResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\SubscriptionListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function subscriptionCreateWithHttpInfo($subscription_create = null, string $contentType = self::contentTypes['subscriptionCreate'][0])
+    public function callListWithHttpInfo($perPage = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $request = $this->subscriptionCreateRequest($subscription_create, $contentType);
+        $request = $this->callListRequest($perPage, $page, $plan, $customer, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -207,856 +213,19 @@ class SubscriptionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\SubscriptionCreateResponse',
+                        '\Alexasomba\Paystack\Model\SubscriptionListResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\SubscriptionCreateResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\SubscriptionCreateResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation subscriptionCreateAsync
-     *
-     * Create Subscription
-     *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionCreate|null $subscription_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionCreate'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function subscriptionCreateAsync($subscription_create = null, string $contentType = self::contentTypes['subscriptionCreate'][0])
-    {
-        return $this->subscriptionCreateAsyncWithHttpInfo($subscription_create, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation subscriptionCreateAsyncWithHttpInfo
-     *
-     * Create Subscription
-     *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionCreate|null $subscription_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionCreate'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function subscriptionCreateAsyncWithHttpInfo($subscription_create = null, string $contentType = self::contentTypes['subscriptionCreate'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\SubscriptionCreateResponse';
-        $request = $this->subscriptionCreateRequest($subscription_create, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'subscriptionCreate'
-     *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionCreate|null $subscription_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionCreate'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function subscriptionCreateRequest($subscription_create = null, string $contentType = self::contentTypes['subscriptionCreate'][0])
-    {
-
-
-
-        $resourcePath = '/subscription';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($subscription_create)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($subscription_create));
-            } else {
-                $httpBody = $subscription_create;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation subscriptionDisable
-     *
-     * Disable Subscription
-     *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionToggle|null $subscription_toggle subscription_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionDisable'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\SubscriptionDisableResponse|\Alexasomba\\Paystack\Model\Error
-     */
-    public function subscriptionDisable($subscription_toggle = null, string $contentType = self::contentTypes['subscriptionDisable'][0])
-    {
-        list($response) = $this->subscriptionDisableWithHttpInfo($subscription_toggle, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation subscriptionDisableWithHttpInfo
-     *
-     * Disable Subscription
-     *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionToggle|null $subscription_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionDisable'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\SubscriptionDisableResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function subscriptionDisableWithHttpInfo($subscription_toggle = null, string $contentType = self::contentTypes['subscriptionDisable'][0])
-    {
-        $request = $this->subscriptionDisableRequest($subscription_toggle, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\SubscriptionDisableResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\SubscriptionDisableResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\SubscriptionDisableResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation subscriptionDisableAsync
-     *
-     * Disable Subscription
-     *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionToggle|null $subscription_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionDisable'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function subscriptionDisableAsync($subscription_toggle = null, string $contentType = self::contentTypes['subscriptionDisable'][0])
-    {
-        return $this->subscriptionDisableAsyncWithHttpInfo($subscription_toggle, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation subscriptionDisableAsyncWithHttpInfo
-     *
-     * Disable Subscription
-     *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionToggle|null $subscription_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionDisable'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function subscriptionDisableAsyncWithHttpInfo($subscription_toggle = null, string $contentType = self::contentTypes['subscriptionDisable'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\SubscriptionDisableResponse';
-        $request = $this->subscriptionDisableRequest($subscription_toggle, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'subscriptionDisable'
-     *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionToggle|null $subscription_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionDisable'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function subscriptionDisableRequest($subscription_toggle = null, string $contentType = self::contentTypes['subscriptionDisable'][0])
-    {
-
-
-
-        $resourcePath = '/subscription/disable';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($subscription_toggle)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($subscription_toggle));
-            } else {
-                $httpBody = $subscription_toggle;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation subscriptionEnable
-     *
-     * Enable Subscription
-     *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionToggle|null $subscription_toggle subscription_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionEnable'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error
-     */
-    public function subscriptionEnable($subscription_toggle = null, string $contentType = self::contentTypes['subscriptionEnable'][0])
-    {
-        list($response) = $this->subscriptionEnableWithHttpInfo($subscription_toggle, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation subscriptionEnableWithHttpInfo
-     *
-     * Enable Subscription
-     *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionToggle|null $subscription_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionEnable'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function subscriptionEnableWithHttpInfo($subscription_toggle = null, string $contentType = self::contentTypes['subscriptionEnable'][0])
-    {
-        $request = $this->subscriptionEnableRequest($subscription_toggle, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Response',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\Response',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation subscriptionEnableAsync
-     *
-     * Enable Subscription
-     *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionToggle|null $subscription_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionEnable'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function subscriptionEnableAsync($subscription_toggle = null, string $contentType = self::contentTypes['subscriptionEnable'][0])
-    {
-        return $this->subscriptionEnableAsyncWithHttpInfo($subscription_toggle, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation subscriptionEnableAsyncWithHttpInfo
-     *
-     * Enable Subscription
-     *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionToggle|null $subscription_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionEnable'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function subscriptionEnableAsyncWithHttpInfo($subscription_toggle = null, string $contentType = self::contentTypes['subscriptionEnable'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\Response';
-        $request = $this->subscriptionEnableRequest($subscription_toggle, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'subscriptionEnable'
-     *
-     * @param  \Alexasomba\\Paystack\Model\SubscriptionToggle|null $subscription_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionEnable'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function subscriptionEnableRequest($subscription_toggle = null, string $contentType = self::contentTypes['subscriptionEnable'][0])
-    {
-
-
-
-        $resourcePath = '/subscription/enable';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($subscription_toggle)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($subscription_toggle));
-            } else {
-                $httpBody = $subscription_toggle;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation subscriptionFetch
-     *
-     * Fetch Subscription
-     *
-     * @param  string $id_or_code The subscription ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionFetch'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\SubscriptionFetchResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
-     */
-    public function subscriptionFetch($id_or_code, string $contentType = self::contentTypes['subscriptionFetch'][0])
-    {
-        list($response) = $this->subscriptionFetchWithHttpInfo($id_or_code, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation subscriptionFetchWithHttpInfo
-     *
-     * Fetch Subscription
-     *
-     * @param  string $id_or_code The subscription ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionFetch'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\SubscriptionFetchResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function subscriptionFetchWithHttpInfo($id_or_code, string $contentType = self::contentTypes['subscriptionFetch'][0])
-    {
-        $request = $this->subscriptionFetchRequest($id_or_code, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\SubscriptionFetchResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1078,7 +247,7 @@ class SubscriptionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\SubscriptionFetchResponse',
+                '\Alexasomba\Paystack\Model\SubscriptionListResponse',
                 $request,
                 $response,
             );
@@ -1087,7 +256,7 @@ class SubscriptionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\SubscriptionFetchResponse',
+                        '\Alexasomba\Paystack\Model\SubscriptionListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1095,7 +264,7 @@ class SubscriptionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1103,7 +272,7 @@ class SubscriptionApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1116,19 +285,22 @@ class SubscriptionApi
     }
 
     /**
-     * Operation subscriptionFetchAsync
+     * Operation callListAsync
      *
-     * Fetch Subscription
+     * List Subscriptions
      *
-     * @param  string $id_or_code The subscription ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionFetch'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  int|null $plan Plan ID (optional)
+     * @param  int|null $customer Filter by Customer ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscriptionFetchAsync($id_or_code, string $contentType = self::contentTypes['subscriptionFetch'][0])
+    public function callListAsync($perPage = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['callList'][0])
     {
-        return $this->subscriptionFetchAsyncWithHttpInfo($id_or_code, $contentType)
+        return $this->callListAsyncWithHttpInfo($perPage, $page, $plan, $customer, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1137,20 +309,23 @@ class SubscriptionApi
     }
 
     /**
-     * Operation subscriptionFetchAsyncWithHttpInfo
+     * Operation callListAsyncWithHttpInfo
      *
-     * Fetch Subscription
+     * List Subscriptions
      *
-     * @param  string $id_or_code The subscription ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionFetch'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  int|null $plan Plan ID (optional)
+     * @param  int|null $customer Filter by Customer ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscriptionFetchAsyncWithHttpInfo($id_or_code, string $contentType = self::contentTypes['subscriptionFetch'][0])
+    public function callListAsyncWithHttpInfo($perPage = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\SubscriptionFetchResponse';
-        $request = $this->subscriptionFetchRequest($id_or_code, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\SubscriptionListResponse';
+        $request = $this->callListRequest($perPage, $page, $plan, $customer, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1189,330 +364,18 @@ class SubscriptionApi
     }
 
     /**
-     * Create request for operation 'subscriptionFetch'
+     * Create request for operation 'callList'
      *
-     * @param  string $id_or_code The subscription ID or code you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionFetch'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  int|null $plan Plan ID (optional)
+     * @param  int|null $customer Filter by Customer ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function subscriptionFetchRequest($id_or_code, string $contentType = self::contentTypes['subscriptionFetch'][0])
-    {
-
-        // verify the required parameter 'id_or_code' is set
-        if ($id_or_code === null || (is_array($id_or_code) && count($id_or_code) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id_or_code when calling subscriptionFetch'
-            );
-        }
-
-
-        $resourcePath = '/subscription/{id_or_code}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id_or_code !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id_or_code' . '}',
-                ObjectSerializer::toPathValue($id_or_code),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation subscriptionList
-     *
-     * List Subscriptions
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  int|null $plan Plan ID (optional)
-     * @param  int|null $customer Filter by Customer ID (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionList'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\SubscriptionListResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
-     */
-    public function subscriptionList($per_page = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['subscriptionList'][0])
-    {
-        list($response) = $this->subscriptionListWithHttpInfo($per_page, $page, $plan, $customer, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation subscriptionListWithHttpInfo
-     *
-     * List Subscriptions
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  int|null $plan Plan ID (optional)
-     * @param  int|null $customer Filter by Customer ID (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionList'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\SubscriptionListResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function subscriptionListWithHttpInfo($per_page = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['subscriptionList'][0])
-    {
-        $request = $this->subscriptionListRequest($per_page, $page, $plan, $customer, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\SubscriptionListResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\SubscriptionListResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\SubscriptionListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation subscriptionListAsync
-     *
-     * List Subscriptions
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  int|null $plan Plan ID (optional)
-     * @param  int|null $customer Filter by Customer ID (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function subscriptionListAsync($per_page = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['subscriptionList'][0])
-    {
-        return $this->subscriptionListAsyncWithHttpInfo($per_page, $page, $plan, $customer, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation subscriptionListAsyncWithHttpInfo
-     *
-     * List Subscriptions
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  int|null $plan Plan ID (optional)
-     * @param  int|null $customer Filter by Customer ID (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function subscriptionListAsyncWithHttpInfo($per_page = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['subscriptionList'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\SubscriptionListResponse';
-        $request = $this->subscriptionListRequest($per_page, $page, $plan, $customer, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'subscriptionList'
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  int|null $plan Plan ID (optional)
-     * @param  int|null $customer Filter by Customer ID (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function subscriptionListRequest($per_page = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['subscriptionList'][0])
+    public function callListRequest($perPage = null, $page = null, $plan = null, $customer = null, string $contentType = self::contentTypes['callList'][0])
     {
 
 
@@ -1529,7 +392,7 @@ class SubscriptionApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
+            $perPage,
             'perPage', // param base name
             'integer', // openApiType
             'form', // style
@@ -1625,38 +488,38 @@ class SubscriptionApi
     }
 
     /**
-     * Operation subscriptionManageEmail
+     * Operation create
      *
-     * Send Update Subscription Link
+     * Create Subscription
      *
-     * @param  string $code Subscription code (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionManageEmail'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\SubscriptionCreate|null $subscriptionCreate subscriptionCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\SubscriptionCreateResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function subscriptionManageEmail($code, string $contentType = self::contentTypes['subscriptionManageEmail'][0])
+    public function create($subscriptionCreate = null, string $contentType = self::contentTypes['create'][0])
     {
-        list($response) = $this->subscriptionManageEmailWithHttpInfo($code, $contentType);
+        list($response) = $this->createWithHttpInfo($subscriptionCreate, $contentType);
         return $response;
     }
 
     /**
-     * Operation subscriptionManageEmailWithHttpInfo
+     * Operation createWithHttpInfo
      *
-     * Send Update Subscription Link
+     * Create Subscription
      *
-     * @param  string $code Subscription code (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionManageEmail'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\SubscriptionCreate|null $subscriptionCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\SubscriptionCreateResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function subscriptionManageEmailWithHttpInfo($code, string $contentType = self::contentTypes['subscriptionManageEmail'][0])
+    public function createWithHttpInfo($subscriptionCreate = null, string $contentType = self::contentTypes['create'][0])
     {
-        $request = $this->subscriptionManageEmailRequest($code, $contentType);
+        $request = $this->createRequest($subscriptionCreate, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1684,13 +547,13 @@ class SubscriptionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\SubscriptionCreateResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1712,7 +575,7 @@ class SubscriptionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\Response',
+                '\Alexasomba\Paystack\Model\SubscriptionCreateResponse',
                 $request,
                 $response,
             );
@@ -1721,7 +584,7 @@ class SubscriptionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\SubscriptionCreateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1729,7 +592,7 @@ class SubscriptionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1742,19 +605,19 @@ class SubscriptionApi
     }
 
     /**
-     * Operation subscriptionManageEmailAsync
+     * Operation createAsync
      *
-     * Send Update Subscription Link
+     * Create Subscription
      *
-     * @param  string $code Subscription code (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionManageEmail'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\SubscriptionCreate|null $subscriptionCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscriptionManageEmailAsync($code, string $contentType = self::contentTypes['subscriptionManageEmail'][0])
+    public function createAsync($subscriptionCreate = null, string $contentType = self::contentTypes['create'][0])
     {
-        return $this->subscriptionManageEmailAsyncWithHttpInfo($code, $contentType)
+        return $this->createAsyncWithHttpInfo($subscriptionCreate, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1763,20 +626,20 @@ class SubscriptionApi
     }
 
     /**
-     * Operation subscriptionManageEmailAsyncWithHttpInfo
+     * Operation createAsyncWithHttpInfo
      *
-     * Send Update Subscription Link
+     * Create Subscription
      *
-     * @param  string $code Subscription code (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionManageEmail'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\SubscriptionCreate|null $subscriptionCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscriptionManageEmailAsyncWithHttpInfo($code, string $contentType = self::contentTypes['subscriptionManageEmail'][0])
+    public function createAsyncWithHttpInfo($subscriptionCreate = null, string $contentType = self::contentTypes['create'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\Response';
-        $request = $this->subscriptionManageEmailRequest($code, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\SubscriptionCreateResponse';
+        $request = $this->createRequest($subscriptionCreate, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1815,21 +678,1158 @@ class SubscriptionApi
     }
 
     /**
-     * Create request for operation 'subscriptionManageEmail'
+     * Create request for operation 'create'
      *
-     * @param  string $code Subscription code (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionManageEmail'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\SubscriptionCreate|null $subscriptionCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function subscriptionManageEmailRequest($code, string $contentType = self::contentTypes['subscriptionManageEmail'][0])
+    public function createRequest($subscriptionCreate = null, string $contentType = self::contentTypes['create'][0])
+    {
+
+
+
+        $resourcePath = '/subscription';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($subscriptionCreate)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($subscriptionCreate));
+            } else {
+                $httpBody = $subscriptionCreate;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation disable
+     *
+     * Disable Subscription
+     *
+     * @param  \Alexasomba\Paystack\Model\SubscriptionToggle|null $subscriptionToggle subscriptionToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disable'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\SubscriptionDisableResponse|\Alexasomba\Paystack\Model\Error
+     */
+    public function disable($subscriptionToggle = null, string $contentType = self::contentTypes['disable'][0])
+    {
+        list($response) = $this->disableWithHttpInfo($subscriptionToggle, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation disableWithHttpInfo
+     *
+     * Disable Subscription
+     *
+     * @param  \Alexasomba\Paystack\Model\SubscriptionToggle|null $subscriptionToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disable'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\SubscriptionDisableResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function disableWithHttpInfo($subscriptionToggle = null, string $contentType = self::contentTypes['disable'][0])
+    {
+        $request = $this->disableRequest($subscriptionToggle, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\SubscriptionDisableResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\SubscriptionDisableResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\SubscriptionDisableResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation disableAsync
+     *
+     * Disable Subscription
+     *
+     * @param  \Alexasomba\Paystack\Model\SubscriptionToggle|null $subscriptionToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disable'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function disableAsync($subscriptionToggle = null, string $contentType = self::contentTypes['disable'][0])
+    {
+        return $this->disableAsyncWithHttpInfo($subscriptionToggle, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation disableAsyncWithHttpInfo
+     *
+     * Disable Subscription
+     *
+     * @param  \Alexasomba\Paystack\Model\SubscriptionToggle|null $subscriptionToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disable'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function disableAsyncWithHttpInfo($subscriptionToggle = null, string $contentType = self::contentTypes['disable'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\SubscriptionDisableResponse';
+        $request = $this->disableRequest($subscriptionToggle, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'disable'
+     *
+     * @param  \Alexasomba\Paystack\Model\SubscriptionToggle|null $subscriptionToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disable'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function disableRequest($subscriptionToggle = null, string $contentType = self::contentTypes['disable'][0])
+    {
+
+
+
+        $resourcePath = '/subscription/disable';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($subscriptionToggle)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($subscriptionToggle));
+            } else {
+                $httpBody = $subscriptionToggle;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation enable
+     *
+     * Enable Subscription
+     *
+     * @param  \Alexasomba\Paystack\Model\SubscriptionToggle|null $subscriptionToggle subscriptionToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enable'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error
+     */
+    public function enable($subscriptionToggle = null, string $contentType = self::contentTypes['enable'][0])
+    {
+        list($response) = $this->enableWithHttpInfo($subscriptionToggle, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation enableWithHttpInfo
+     *
+     * Enable Subscription
+     *
+     * @param  \Alexasomba\Paystack\Model\SubscriptionToggle|null $subscriptionToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enable'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function enableWithHttpInfo($subscriptionToggle = null, string $contentType = self::contentTypes['enable'][0])
+    {
+        $request = $this->enableRequest($subscriptionToggle, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation enableAsync
+     *
+     * Enable Subscription
+     *
+     * @param  \Alexasomba\Paystack\Model\SubscriptionToggle|null $subscriptionToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enable'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function enableAsync($subscriptionToggle = null, string $contentType = self::contentTypes['enable'][0])
+    {
+        return $this->enableAsyncWithHttpInfo($subscriptionToggle, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation enableAsyncWithHttpInfo
+     *
+     * Enable Subscription
+     *
+     * @param  \Alexasomba\Paystack\Model\SubscriptionToggle|null $subscriptionToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enable'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function enableAsyncWithHttpInfo($subscriptionToggle = null, string $contentType = self::contentTypes['enable'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\Response';
+        $request = $this->enableRequest($subscriptionToggle, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'enable'
+     *
+     * @param  \Alexasomba\Paystack\Model\SubscriptionToggle|null $subscriptionToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enable'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function enableRequest($subscriptionToggle = null, string $contentType = self::contentTypes['enable'][0])
+    {
+
+
+
+        $resourcePath = '/subscription/enable';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($subscriptionToggle)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($subscriptionToggle));
+            } else {
+                $httpBody = $subscriptionToggle;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation fetch
+     *
+     * Fetch Subscription
+     *
+     * @param  string $idOrCode The subscription ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\SubscriptionFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
+     */
+    public function fetch($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+        list($response) = $this->fetchWithHttpInfo($idOrCode, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation fetchWithHttpInfo
+     *
+     * Fetch Subscription
+     *
+     * @param  string $idOrCode The subscription ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\SubscriptionFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function fetchWithHttpInfo($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+        $request = $this->fetchRequest($idOrCode, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\SubscriptionFetchResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\SubscriptionFetchResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\SubscriptionFetchResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation fetchAsync
+     *
+     * Fetch Subscription
+     *
+     * @param  string $idOrCode The subscription ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchAsync($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+        return $this->fetchAsyncWithHttpInfo($idOrCode, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation fetchAsyncWithHttpInfo
+     *
+     * Fetch Subscription
+     *
+     * @param  string $idOrCode The subscription ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchAsyncWithHttpInfo($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\SubscriptionFetchResponse';
+        $request = $this->fetchRequest($idOrCode, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'fetch'
+     *
+     * @param  string $idOrCode The subscription ID or code you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function fetchRequest($idOrCode, string $contentType = self::contentTypes['fetch'][0])
+    {
+
+        // verify the required parameter 'idOrCode' is set
+        if ($idOrCode === null || (is_array($idOrCode) && count($idOrCode) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $idOrCode when calling fetch'
+            );
+        }
+
+
+        $resourcePath = '/subscription/{id_or_code}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($idOrCode !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id_or_code' . '}',
+                ObjectSerializer::toPathValue($idOrCode),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation manageEmail
+     *
+     * Send Update Subscription Link
+     *
+     * @param  string $code Subscription code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageEmail'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error
+     */
+    public function manageEmail($code, string $contentType = self::contentTypes['manageEmail'][0])
+    {
+        list($response) = $this->manageEmailWithHttpInfo($code, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation manageEmailWithHttpInfo
+     *
+     * Send Update Subscription Link
+     *
+     * @param  string $code Subscription code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageEmail'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function manageEmailWithHttpInfo($code, string $contentType = self::contentTypes['manageEmail'][0])
+    {
+        $request = $this->manageEmailRequest($code, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation manageEmailAsync
+     *
+     * Send Update Subscription Link
+     *
+     * @param  string $code Subscription code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageEmail'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function manageEmailAsync($code, string $contentType = self::contentTypes['manageEmail'][0])
+    {
+        return $this->manageEmailAsyncWithHttpInfo($code, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation manageEmailAsyncWithHttpInfo
+     *
+     * Send Update Subscription Link
+     *
+     * @param  string $code Subscription code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageEmail'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function manageEmailAsyncWithHttpInfo($code, string $contentType = self::contentTypes['manageEmail'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\Response';
+        $request = $this->manageEmailRequest($code, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'manageEmail'
+     *
+     * @param  string $code Subscription code (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageEmail'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function manageEmailRequest($code, string $contentType = self::contentTypes['manageEmail'][0])
     {
 
         // verify the required parameter 'code' is set
         if ($code === null || (is_array($code) && count($code) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $code when calling subscriptionManageEmail'
+                'Missing the required parameter $code when calling manageEmail'
             );
         }
 
@@ -1911,38 +1911,38 @@ class SubscriptionApi
     }
 
     /**
-     * Operation subscriptionManageLink
+     * Operation manageLink
      *
      * Generate Update Subscription Link
      *
      * @param  string $code Subscription code (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionManageLink'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageLink'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error
      */
-    public function subscriptionManageLink($code, string $contentType = self::contentTypes['subscriptionManageLink'][0])
+    public function manageLink($code, string $contentType = self::contentTypes['manageLink'][0])
     {
-        list($response) = $this->subscriptionManageLinkWithHttpInfo($code, $contentType);
+        list($response) = $this->manageLinkWithHttpInfo($code, $contentType);
         return $response;
     }
 
     /**
-     * Operation subscriptionManageLinkWithHttpInfo
+     * Operation manageLinkWithHttpInfo
      *
      * Generate Update Subscription Link
      *
      * @param  string $code Subscription code (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionManageLink'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageLink'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function subscriptionManageLinkWithHttpInfo($code, string $contentType = self::contentTypes['subscriptionManageLink'][0])
+    public function manageLinkWithHttpInfo($code, string $contentType = self::contentTypes['manageLink'][0])
     {
-        $request = $this->subscriptionManageLinkRequest($code, $contentType);
+        $request = $this->manageLinkRequest($code, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1970,13 +1970,13 @@ class SubscriptionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1998,7 +1998,7 @@ class SubscriptionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\Response',
+                '\Alexasomba\Paystack\Model\Response',
                 $request,
                 $response,
             );
@@ -2007,7 +2007,7 @@ class SubscriptionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2015,7 +2015,7 @@ class SubscriptionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2028,19 +2028,19 @@ class SubscriptionApi
     }
 
     /**
-     * Operation subscriptionManageLinkAsync
+     * Operation manageLinkAsync
      *
      * Generate Update Subscription Link
      *
      * @param  string $code Subscription code (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionManageLink'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscriptionManageLinkAsync($code, string $contentType = self::contentTypes['subscriptionManageLink'][0])
+    public function manageLinkAsync($code, string $contentType = self::contentTypes['manageLink'][0])
     {
-        return $this->subscriptionManageLinkAsyncWithHttpInfo($code, $contentType)
+        return $this->manageLinkAsyncWithHttpInfo($code, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2049,20 +2049,20 @@ class SubscriptionApi
     }
 
     /**
-     * Operation subscriptionManageLinkAsyncWithHttpInfo
+     * Operation manageLinkAsyncWithHttpInfo
      *
      * Generate Update Subscription Link
      *
      * @param  string $code Subscription code (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionManageLink'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscriptionManageLinkAsyncWithHttpInfo($code, string $contentType = self::contentTypes['subscriptionManageLink'][0])
+    public function manageLinkAsyncWithHttpInfo($code, string $contentType = self::contentTypes['manageLink'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\Response';
-        $request = $this->subscriptionManageLinkRequest($code, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\Response';
+        $request = $this->manageLinkRequest($code, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2101,21 +2101,21 @@ class SubscriptionApi
     }
 
     /**
-     * Create request for operation 'subscriptionManageLink'
+     * Create request for operation 'manageLink'
      *
      * @param  string $code Subscription code (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscriptionManageLink'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function subscriptionManageLinkRequest($code, string $contentType = self::contentTypes['subscriptionManageLink'][0])
+    public function manageLinkRequest($code, string $contentType = self::contentTypes['manageLink'][0])
     {
 
         // verify the required parameter 'code' is set
         if ($code === null || (is_array($code) && count($code) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $code when calling subscriptionManageLink'
+                'Missing the required parameter $code when calling manageLink'
             );
         }
 

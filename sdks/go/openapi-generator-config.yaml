@@ -7,3 +7,5 @@ gitHost: github.com
 gitUserId: alexasomba
 gitRepoId: paystack-go
 hideGenerationTimestamp: true
+removeOperationIdPrefix: true
+enumClassPrefix: true

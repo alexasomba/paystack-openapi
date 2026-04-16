@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from alexasomba_paystack.models.order_list_response_array_customer import OrderListResponseArrayCustomer
 from typing import Optional, Set
@@ -34,7 +34,7 @@ class OrderListResponseArray(BaseModel):
     currency: StrictStr
     status: StrictStr
     customer: OrderListResponseArrayCustomer
-    created_at: StrictStr = Field(alias="createdAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     __properties: ClassVar[List[str]] = ["id", "code", "amount", "currency", "status", "customer", "createdAt"]
 
     model_config = ConfigDict(

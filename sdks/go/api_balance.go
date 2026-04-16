@@ -24,25 +24,25 @@ import (
 // BalanceAPIService BalanceAPI service
 type BalanceAPIService service
 
-type ApiBalanceFetchRequest struct {
+type ApiFetchRequest struct {
 	ctx context.Context
 	ApiService *BalanceAPIService
 }
 
-func (r ApiBalanceFetchRequest) Execute() (*BalanceCheckResponse, *http.Response, error) {
-	return r.ApiService.BalanceFetchExecute(r)
+func (r ApiFetchRequest) Execute() (*BalanceCheckResponse, *http.Response, error) {
+	return r.ApiService.FetchExecute(r)
 }
 
 /*
-BalanceFetch Fetch Balance
+Fetch Fetch Balance
 
 Fetch the available balance on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiBalanceFetchRequest
+ @return ApiFetchRequest
 */
-func (a *BalanceAPIService) BalanceFetch(ctx context.Context) ApiBalanceFetchRequest {
-	return ApiBalanceFetchRequest{
+func (a *BalanceAPIService) Fetch(ctx context.Context) ApiFetchRequest {
+	return ApiFetchRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -50,7 +50,7 @@ func (a *BalanceAPIService) BalanceFetch(ctx context.Context) ApiBalanceFetchReq
 
 // Execute executes the request
 //  @return BalanceCheckResponse
-func (a *BalanceAPIService) BalanceFetchExecute(r ApiBalanceFetchRequest) (*BalanceCheckResponse, *http.Response, error) {
+func (a *BalanceAPIService) FetchExecute(r ApiFetchRequest) (*BalanceCheckResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -58,7 +58,7 @@ func (a *BalanceAPIService) BalanceFetchExecute(r ApiBalanceFetchRequest) (*Bala
 		localVarReturnValue  *BalanceCheckResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BalanceAPIService.BalanceFetch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BalanceAPIService.Fetch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -145,7 +145,7 @@ func (a *BalanceAPIService) BalanceFetchExecute(r ApiBalanceFetchRequest) (*Bala
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiBalanceLedgerRequest struct {
+type ApiLedgerRequest struct {
 	ctx context.Context
 	ApiService *BalanceAPIService
 	perPage *int32
@@ -155,43 +155,43 @@ type ApiBalanceLedgerRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiBalanceLedgerRequest) PerPage(perPage int32) ApiBalanceLedgerRequest {
+func (r ApiLedgerRequest) PerPage(perPage int32) ApiLedgerRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiBalanceLedgerRequest) Page(page int32) ApiBalanceLedgerRequest {
+func (r ApiLedgerRequest) Page(page int32) ApiLedgerRequest {
 	r.page = &page
 	return r
 }
 
 // The start date
-func (r ApiBalanceLedgerRequest) From(from time.Time) ApiBalanceLedgerRequest {
+func (r ApiLedgerRequest) From(from time.Time) ApiLedgerRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiBalanceLedgerRequest) To(to time.Time) ApiBalanceLedgerRequest {
+func (r ApiLedgerRequest) To(to time.Time) ApiLedgerRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiBalanceLedgerRequest) Execute() (*BalanceFetchLedgerResponse, *http.Response, error) {
-	return r.ApiService.BalanceLedgerExecute(r)
+func (r ApiLedgerRequest) Execute() (*BalanceFetchLedgerResponse, *http.Response, error) {
+	return r.ApiService.LedgerExecute(r)
 }
 
 /*
-BalanceLedger Balance Ledger
+Ledger Balance Ledger
 
 Fetch all pay-ins and pay-outs that occured on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiBalanceLedgerRequest
+ @return ApiLedgerRequest
 */
-func (a *BalanceAPIService) BalanceLedger(ctx context.Context) ApiBalanceLedgerRequest {
-	return ApiBalanceLedgerRequest{
+func (a *BalanceAPIService) Ledger(ctx context.Context) ApiLedgerRequest {
+	return ApiLedgerRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -199,7 +199,7 @@ func (a *BalanceAPIService) BalanceLedger(ctx context.Context) ApiBalanceLedgerR
 
 // Execute executes the request
 //  @return BalanceFetchLedgerResponse
-func (a *BalanceAPIService) BalanceLedgerExecute(r ApiBalanceLedgerRequest) (*BalanceFetchLedgerResponse, *http.Response, error) {
+func (a *BalanceAPIService) LedgerExecute(r ApiLedgerRequest) (*BalanceFetchLedgerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -207,7 +207,7 @@ func (a *BalanceAPIService) BalanceLedgerExecute(r ApiBalanceLedgerRequest) (*Ba
 		localVarReturnValue  *BalanceFetchLedgerResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BalanceAPIService.BalanceLedger")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BalanceAPIService.Ledger")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

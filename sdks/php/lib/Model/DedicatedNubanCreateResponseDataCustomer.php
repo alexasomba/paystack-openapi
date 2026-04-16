@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * DedicatedNubanCreateResponseDataCustomer Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,14 +59,14 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
       */
     protected static $openAPITypes = [
         'id' => 'int',
-        'first_name' => 'string',
-        'last_name' => 'string',
+        'firstName' => 'string',
+        'lastName' => 'string',
         'email' => 'string',
-        'customer_code' => 'string',
+        'customerCode' => 'string',
         'phone' => 'string',
         'metadata' => 'object',
-        'risk_action' => 'string',
-        'international_format_phone' => 'string'
+        'riskAction' => 'string',
+        'internationalFormatPhone' => 'string'
     ];
 
     /**
@@ -78,14 +78,14 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'first_name' => null,
-        'last_name' => null,
+        'firstName' => null,
+        'lastName' => null,
         'email' => null,
-        'customer_code' => null,
+        'customerCode' => null,
         'phone' => null,
         'metadata' => null,
-        'risk_action' => null,
-        'international_format_phone' => null
+        'riskAction' => null,
+        'internationalFormatPhone' => null
     ];
 
     /**
@@ -95,14 +95,14 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'first_name' => false,
-        'last_name' => false,
+        'firstName' => false,
+        'lastName' => false,
         'email' => false,
-        'customer_code' => false,
+        'customerCode' => false,
         'phone' => true,
         'metadata' => true,
-        'risk_action' => false,
-        'international_format_phone' => true
+        'riskAction' => false,
+        'internationalFormatPhone' => true
     ];
 
     /**
@@ -192,14 +192,14 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'first_name' => 'first_name',
-        'last_name' => 'last_name',
+        'firstName' => 'first_name',
+        'lastName' => 'last_name',
         'email' => 'email',
-        'customer_code' => 'customer_code',
+        'customerCode' => 'customer_code',
         'phone' => 'phone',
         'metadata' => 'metadata',
-        'risk_action' => 'risk_action',
-        'international_format_phone' => 'international_format_phone'
+        'riskAction' => 'risk_action',
+        'internationalFormatPhone' => 'international_format_phone'
     ];
 
     /**
@@ -209,14 +209,14 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
      */
     protected static $setters = [
         'id' => 'setId',
-        'first_name' => 'setFirstName',
-        'last_name' => 'setLastName',
+        'firstName' => 'setFirstName',
+        'lastName' => 'setLastName',
         'email' => 'setEmail',
-        'customer_code' => 'setCustomerCode',
+        'customerCode' => 'setCustomerCode',
         'phone' => 'setPhone',
         'metadata' => 'setMetadata',
-        'risk_action' => 'setRiskAction',
-        'international_format_phone' => 'setInternationalFormatPhone'
+        'riskAction' => 'setRiskAction',
+        'internationalFormatPhone' => 'setInternationalFormatPhone'
     ];
 
     /**
@@ -226,14 +226,14 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
      */
     protected static $getters = [
         'id' => 'getId',
-        'first_name' => 'getFirstName',
-        'last_name' => 'getLastName',
+        'firstName' => 'getFirstName',
+        'lastName' => 'getLastName',
         'email' => 'getEmail',
-        'customer_code' => 'getCustomerCode',
+        'customerCode' => 'getCustomerCode',
         'phone' => 'getPhone',
         'metadata' => 'getMetadata',
-        'risk_action' => 'getRiskAction',
-        'international_format_phone' => 'getInternationalFormatPhone'
+        'riskAction' => 'getRiskAction',
+        'internationalFormatPhone' => 'getInternationalFormatPhone'
     ];
 
     /**
@@ -294,14 +294,14 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('first_name', $data ?? [], null);
-        $this->setIfExists('last_name', $data ?? [], null);
+        $this->setIfExists('firstName', $data ?? [], null);
+        $this->setIfExists('lastName', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
-        $this->setIfExists('customer_code', $data ?? [], null);
+        $this->setIfExists('customerCode', $data ?? [], null);
         $this->setIfExists('phone', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('risk_action', $data ?? [], null);
-        $this->setIfExists('international_format_phone', $data ?? [], null);
+        $this->setIfExists('riskAction', $data ?? [], null);
+        $this->setIfExists('internationalFormatPhone', $data ?? [], null);
     }
 
     /**
@@ -334,17 +334,17 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['first_name'] === null) {
-            $invalidProperties[] = "'first_name' can't be null";
+        if ($this->container['firstName'] === null) {
+            $invalidProperties[] = "'firstName' can't be null";
         }
-        if ($this->container['last_name'] === null) {
-            $invalidProperties[] = "'last_name' can't be null";
+        if ($this->container['lastName'] === null) {
+            $invalidProperties[] = "'lastName' can't be null";
         }
         if ($this->container['email'] === null) {
             $invalidProperties[] = "'email' can't be null";
         }
-        if ($this->container['customer_code'] === null) {
-            $invalidProperties[] = "'customer_code' can't be null";
+        if ($this->container['customerCode'] === null) {
+            $invalidProperties[] = "'customerCode' can't be null";
         }
         if ($this->container['phone'] === null && !$this->isNullableSetToNull('phone')) {
             $invalidProperties[] = "'phone' can't be null";
@@ -352,8 +352,8 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
         if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
         }
-        if ($this->container['risk_action'] === null) {
-            $invalidProperties[] = "'risk_action' can't be null";
+        if ($this->container['riskAction'] === null) {
+            $invalidProperties[] = "'riskAction' can't be null";
         }
         return $invalidProperties;
     }
@@ -398,55 +398,55 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
     }
 
     /**
-     * Gets first_name
+     * Gets firstName
      *
      * @return string
      */
     public function getFirstName()
     {
-        return $this->container['first_name'];
+        return $this->container['firstName'];
     }
 
     /**
-     * Sets first_name
+     * Sets firstName
      *
-     * @param string $first_name first_name
+     * @param string $firstName firstName
      *
      * @return self
      */
-    public function setFirstName($first_name)
+    public function setFirstName($firstName)
     {
-        if (is_null($first_name)) {
-            throw new \InvalidArgumentException('non-nullable first_name cannot be null');
+        if (is_null($firstName)) {
+            throw new \InvalidArgumentException('non-nullable firstName cannot be null');
         }
-        $this->container['first_name'] = $first_name;
+        $this->container['firstName'] = $firstName;
 
         return $this;
     }
 
     /**
-     * Gets last_name
+     * Gets lastName
      *
      * @return string
      */
     public function getLastName()
     {
-        return $this->container['last_name'];
+        return $this->container['lastName'];
     }
 
     /**
-     * Sets last_name
+     * Sets lastName
      *
-     * @param string $last_name last_name
+     * @param string $lastName lastName
      *
      * @return self
      */
-    public function setLastName($last_name)
+    public function setLastName($lastName)
     {
-        if (is_null($last_name)) {
-            throw new \InvalidArgumentException('non-nullable last_name cannot be null');
+        if (is_null($lastName)) {
+            throw new \InvalidArgumentException('non-nullable lastName cannot be null');
         }
-        $this->container['last_name'] = $last_name;
+        $this->container['lastName'] = $lastName;
 
         return $this;
     }
@@ -479,28 +479,28 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
     }
 
     /**
-     * Gets customer_code
+     * Gets customerCode
      *
      * @return string
      */
     public function getCustomerCode()
     {
-        return $this->container['customer_code'];
+        return $this->container['customerCode'];
     }
 
     /**
-     * Sets customer_code
+     * Sets customerCode
      *
-     * @param string $customer_code customer_code
+     * @param string $customerCode customerCode
      *
      * @return self
      */
-    public function setCustomerCode($customer_code)
+    public function setCustomerCode($customerCode)
     {
-        if (is_null($customer_code)) {
-            throw new \InvalidArgumentException('non-nullable customer_code cannot be null');
+        if (is_null($customerCode)) {
+            throw new \InvalidArgumentException('non-nullable customerCode cannot be null');
         }
-        $this->container['customer_code'] = $customer_code;
+        $this->container['customerCode'] = $customerCode;
 
         return $this;
     }
@@ -574,62 +574,62 @@ class DedicatedNubanCreateResponseDataCustomer implements ModelInterface, ArrayA
     }
 
     /**
-     * Gets risk_action
+     * Gets riskAction
      *
      * @return string
      */
     public function getRiskAction()
     {
-        return $this->container['risk_action'];
+        return $this->container['riskAction'];
     }
 
     /**
-     * Sets risk_action
+     * Sets riskAction
      *
-     * @param string $risk_action risk_action
+     * @param string $riskAction riskAction
      *
      * @return self
      */
-    public function setRiskAction($risk_action)
+    public function setRiskAction($riskAction)
     {
-        if (is_null($risk_action)) {
-            throw new \InvalidArgumentException('non-nullable risk_action cannot be null');
+        if (is_null($riskAction)) {
+            throw new \InvalidArgumentException('non-nullable riskAction cannot be null');
         }
-        $this->container['risk_action'] = $risk_action;
+        $this->container['riskAction'] = $riskAction;
 
         return $this;
     }
 
     /**
-     * Gets international_format_phone
+     * Gets internationalFormatPhone
      *
      * @return string|null
      */
     public function getInternationalFormatPhone()
     {
-        return $this->container['international_format_phone'];
+        return $this->container['internationalFormatPhone'];
     }
 
     /**
-     * Sets international_format_phone
+     * Sets internationalFormatPhone
      *
-     * @param string|null $international_format_phone international_format_phone
+     * @param string|null $internationalFormatPhone internationalFormatPhone
      *
      * @return self
      */
-    public function setInternationalFormatPhone($international_format_phone)
+    public function setInternationalFormatPhone($internationalFormatPhone)
     {
-        if (is_null($international_format_phone)) {
-            array_push($this->openAPINullablesSetToNull, 'international_format_phone');
+        if (is_null($internationalFormatPhone)) {
+            array_push($this->openAPINullablesSetToNull, 'internationalFormatPhone');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('international_format_phone', $nullablesSetToNull);
+            $index = array_search('internationalFormatPhone', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['international_format_phone'] = $international_format_phone;
+        $this->container['internationalFormatPhone'] = $internationalFormatPhone;
 
         return $this;
     }

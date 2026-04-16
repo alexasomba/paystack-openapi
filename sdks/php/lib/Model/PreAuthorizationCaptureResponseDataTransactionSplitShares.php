@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PreAuthorizationCaptureResponseDataTransactionSplitShares Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,9 +59,9 @@ class PreAuthorizationCaptureResponseDataTransactionSplitShares implements Model
       */
     protected static $openAPITypes = [
         'paystack' => 'int',
-        'subaccounts' => '\Alexasomba\\Paystack\Model\ShareSubaccountsArray[]',
+        'subaccounts' => '\Alexasomba\Paystack\Model\ShareSubaccountsArray[]',
         'integration' => 'float',
-        'original_share' => 'int',
+        'originalShare' => 'int',
         'fees' => 'float'
     ];
 
@@ -76,7 +76,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplitShares implements Model
         'paystack' => null,
         'subaccounts' => null,
         'integration' => null,
-        'original_share' => null,
+        'originalShare' => null,
         'fees' => null
     ];
 
@@ -89,7 +89,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplitShares implements Model
         'paystack' => false,
         'subaccounts' => false,
         'integration' => false,
-        'original_share' => false,
+        'originalShare' => false,
         'fees' => false
     ];
 
@@ -182,7 +182,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplitShares implements Model
         'paystack' => 'paystack',
         'subaccounts' => 'subaccounts',
         'integration' => 'integration',
-        'original_share' => 'original_share',
+        'originalShare' => 'original_share',
         'fees' => 'fees'
     ];
 
@@ -195,7 +195,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplitShares implements Model
         'paystack' => 'setPaystack',
         'subaccounts' => 'setSubaccounts',
         'integration' => 'setIntegration',
-        'original_share' => 'setOriginalShare',
+        'originalShare' => 'setOriginalShare',
         'fees' => 'setFees'
     ];
 
@@ -208,7 +208,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplitShares implements Model
         'paystack' => 'getPaystack',
         'subaccounts' => 'getSubaccounts',
         'integration' => 'getIntegration',
-        'original_share' => 'getOriginalShare',
+        'originalShare' => 'getOriginalShare',
         'fees' => 'getFees'
     ];
 
@@ -272,7 +272,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplitShares implements Model
         $this->setIfExists('paystack', $data ?? [], null);
         $this->setIfExists('subaccounts', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
-        $this->setIfExists('original_share', $data ?? [], null);
+        $this->setIfExists('originalShare', $data ?? [], null);
         $this->setIfExists('fees', $data ?? [], null);
     }
 
@@ -312,8 +312,8 @@ class PreAuthorizationCaptureResponseDataTransactionSplitShares implements Model
         if ($this->container['integration'] === null) {
             $invalidProperties[] = "'integration' can't be null";
         }
-        if ($this->container['original_share'] === null) {
-            $invalidProperties[] = "'original_share' can't be null";
+        if ($this->container['originalShare'] === null) {
+            $invalidProperties[] = "'originalShare' can't be null";
         }
         if ($this->container['fees'] === null) {
             $invalidProperties[] = "'fees' can't be null";
@@ -363,7 +363,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplitShares implements Model
     /**
      * Gets subaccounts
      *
-     * @return \Alexasomba\\Paystack\Model\ShareSubaccountsArray[]
+     * @return \Alexasomba\Paystack\Model\ShareSubaccountsArray[]
      */
     public function getSubaccounts()
     {
@@ -373,7 +373,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplitShares implements Model
     /**
      * Sets subaccounts
      *
-     * @param \Alexasomba\\Paystack\Model\ShareSubaccountsArray[] $subaccounts subaccounts
+     * @param \Alexasomba\Paystack\Model\ShareSubaccountsArray[] $subaccounts subaccounts
      *
      * @return self
      */
@@ -415,28 +415,28 @@ class PreAuthorizationCaptureResponseDataTransactionSplitShares implements Model
     }
 
     /**
-     * Gets original_share
+     * Gets originalShare
      *
      * @return int
      */
     public function getOriginalShare()
     {
-        return $this->container['original_share'];
+        return $this->container['originalShare'];
     }
 
     /**
-     * Sets original_share
+     * Sets originalShare
      *
-     * @param int $original_share original_share
+     * @param int $originalShare originalShare
      *
      * @return self
      */
-    public function setOriginalShare($original_share)
+    public function setOriginalShare($originalShare)
     {
-        if (is_null($original_share)) {
-            throw new \InvalidArgumentException('non-nullable original_share cannot be null');
+        if (is_null($originalShare)) {
+            throw new \InvalidArgumentException('non-nullable originalShare cannot be null');
         }
-        $this->container['original_share'] = $original_share;
+        $this->container['originalShare'] = $originalShare;
 
         return $this;
     }

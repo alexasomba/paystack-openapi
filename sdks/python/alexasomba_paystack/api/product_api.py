@@ -48,7 +48,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_create(
+    def create(
         self,
         product_create: Optional[ProductCreate] = None,
         _request_timeout: Union[
@@ -92,7 +92,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_create_serialize(
+        _param = self._create_serialize(
             product_create=product_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -116,7 +116,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_create_with_http_info(
+    def create_with_http_info(
         self,
         product_create: Optional[ProductCreate] = None,
         _request_timeout: Union[
@@ -160,7 +160,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_create_serialize(
+        _param = self._create_serialize(
             product_create=product_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -184,7 +184,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_create_without_preload_content(
+    def create_without_preload_content(
         self,
         product_create: Optional[ProductCreate] = None,
         _request_timeout: Union[
@@ -228,7 +228,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_create_serialize(
+        _param = self._create_serialize(
             product_create=product_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -247,7 +247,7 @@ class ProductApi:
         return response_data.response
 
 
-    def _product_create_serialize(
+    def _create_serialize(
         self,
         product_create,
         _request_auth,
@@ -326,7 +326,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_delete(
+    def delete(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         _request_timeout: Union[
@@ -370,7 +370,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_delete_serialize(
+        _param = self._delete_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -395,7 +395,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_delete_with_http_info(
+    def delete_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         _request_timeout: Union[
@@ -439,7 +439,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_delete_serialize(
+        _param = self._delete_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -464,7 +464,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_delete_without_preload_content(
+    def delete_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         _request_timeout: Union[
@@ -508,7 +508,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_delete_serialize(
+        _param = self._delete_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -528,7 +528,7 @@ class ProductApi:
         return response_data.response
 
 
-    def _product_delete_serialize(
+    def _delete_serialize(
         self,
         id,
         _request_auth,
@@ -593,7 +593,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_fetch(
+    def fetch(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         _request_timeout: Union[
@@ -637,7 +637,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -662,7 +662,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         _request_timeout: Union[
@@ -706,7 +706,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -731,7 +731,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         _request_timeout: Union[
@@ -775,7 +775,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -795,7 +795,7 @@ class ProductApi:
         return response_data.response
 
 
-    def _product_fetch_serialize(
+    def _fetch_serialize(
         self,
         id,
         _request_auth,
@@ -860,7 +860,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_list(
+    def list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -916,7 +916,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             active=active,
@@ -945,7 +945,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_list_with_http_info(
+    def list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1001,7 +1001,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             active=active,
@@ -1030,7 +1030,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_list_without_preload_content(
+    def list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1086,7 +1086,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             active=active,
@@ -1110,7 +1110,7 @@ class ProductApi:
         return response_data.response
 
 
-    def _product_list_serialize(
+    def _list_serialize(
         self,
         per_page,
         page,
@@ -1215,7 +1215,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_update(
+    def update(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         product_update: Optional[ProductUpdate] = None,
@@ -1262,7 +1262,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_update_serialize(
+        _param = self._update_serialize(
             id=id,
             product_update=product_update,
             _request_auth=_request_auth,
@@ -1288,7 +1288,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_update_with_http_info(
+    def update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         product_update: Optional[ProductUpdate] = None,
@@ -1335,7 +1335,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_update_serialize(
+        _param = self._update_serialize(
             id=id,
             product_update=product_update,
             _request_auth=_request_auth,
@@ -1361,7 +1361,7 @@ class ProductApi:
 
 
     @validate_call
-    def product_update_without_preload_content(
+    def update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the product")],
         product_update: Optional[ProductUpdate] = None,
@@ -1408,7 +1408,7 @@ class ProductApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._product_update_serialize(
+        _param = self._update_serialize(
             id=id,
             product_update=product_update,
             _request_auth=_request_auth,
@@ -1429,7 +1429,7 @@ class ProductApi:
         return response_data.response
 
 
-    def _product_update_serialize(
+    def _update_serialize(
         self,
         id,
         product_update,

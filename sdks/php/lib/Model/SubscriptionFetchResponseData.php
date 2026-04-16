@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * SubscriptionFetchResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,17 +61,17 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         'id' => 'int',
         'domain' => 'string',
         'status' => 'string',
-        'subscription_code' => 'string',
-        'email_token' => 'string',
+        'subscriptionCode' => 'string',
+        'emailToken' => 'string',
         'amount' => 'int',
-        'cron_expression' => 'string',
-        'next_payment_date' => 'string',
-        'open_invoice' => 'mixed',
-        'created_at' => 'string',
+        'cronExpression' => 'string',
+        'nextPaymentDate' => 'string',
+        'openInvoice' => 'mixed',
+        'createdAt' => 'string',
         'integration' => 'int',
-        'plan' => '\Alexasomba\\Paystack\Model\SubscriptionFetchResponseDataPlan',
-        'authorization' => '\Alexasomba\\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayAuthorization',
-        'customer' => '\Alexasomba\\Paystack\Model\SubscriptionFetchResponseDataCustomer',
+        'plan' => '\Alexasomba\Paystack\Model\SubscriptionFetchResponseDataPlan',
+        'authorization' => '\Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayAuthorization',
+        'customer' => '\Alexasomba\Paystack\Model\SubscriptionFetchResponseDataCustomer',
         'start' => 'int',
         'quantity' => 'int',
         'invoices' => 'mixed[]'
@@ -88,13 +88,13 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         'id' => null,
         'domain' => null,
         'status' => null,
-        'subscription_code' => null,
-        'email_token' => null,
+        'subscriptionCode' => null,
+        'emailToken' => null,
         'amount' => null,
-        'cron_expression' => null,
-        'next_payment_date' => null,
-        'open_invoice' => null,
-        'created_at' => null,
+        'cronExpression' => null,
+        'nextPaymentDate' => null,
+        'openInvoice' => null,
+        'createdAt' => null,
         'integration' => null,
         'plan' => null,
         'authorization' => null,
@@ -113,13 +113,13 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         'id' => false,
         'domain' => false,
         'status' => false,
-        'subscription_code' => false,
-        'email_token' => false,
+        'subscriptionCode' => false,
+        'emailToken' => false,
         'amount' => false,
-        'cron_expression' => false,
-        'next_payment_date' => false,
-        'open_invoice' => true,
-        'created_at' => false,
+        'cronExpression' => false,
+        'nextPaymentDate' => false,
+        'openInvoice' => true,
+        'createdAt' => false,
         'integration' => false,
         'plan' => false,
         'authorization' => false,
@@ -218,13 +218,13 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         'id' => 'id',
         'domain' => 'domain',
         'status' => 'status',
-        'subscription_code' => 'subscription_code',
-        'email_token' => 'email_token',
+        'subscriptionCode' => 'subscription_code',
+        'emailToken' => 'email_token',
         'amount' => 'amount',
-        'cron_expression' => 'cron_expression',
-        'next_payment_date' => 'next_payment_date',
-        'open_invoice' => 'open_invoice',
-        'created_at' => 'createdAt',
+        'cronExpression' => 'cron_expression',
+        'nextPaymentDate' => 'next_payment_date',
+        'openInvoice' => 'open_invoice',
+        'createdAt' => 'createdAt',
         'integration' => 'integration',
         'plan' => 'plan',
         'authorization' => 'authorization',
@@ -243,13 +243,13 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         'id' => 'setId',
         'domain' => 'setDomain',
         'status' => 'setStatus',
-        'subscription_code' => 'setSubscriptionCode',
-        'email_token' => 'setEmailToken',
+        'subscriptionCode' => 'setSubscriptionCode',
+        'emailToken' => 'setEmailToken',
         'amount' => 'setAmount',
-        'cron_expression' => 'setCronExpression',
-        'next_payment_date' => 'setNextPaymentDate',
-        'open_invoice' => 'setOpenInvoice',
-        'created_at' => 'setCreatedAt',
+        'cronExpression' => 'setCronExpression',
+        'nextPaymentDate' => 'setNextPaymentDate',
+        'openInvoice' => 'setOpenInvoice',
+        'createdAt' => 'setCreatedAt',
         'integration' => 'setIntegration',
         'plan' => 'setPlan',
         'authorization' => 'setAuthorization',
@@ -268,13 +268,13 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         'id' => 'getId',
         'domain' => 'getDomain',
         'status' => 'getStatus',
-        'subscription_code' => 'getSubscriptionCode',
-        'email_token' => 'getEmailToken',
+        'subscriptionCode' => 'getSubscriptionCode',
+        'emailToken' => 'getEmailToken',
         'amount' => 'getAmount',
-        'cron_expression' => 'getCronExpression',
-        'next_payment_date' => 'getNextPaymentDate',
-        'open_invoice' => 'getOpenInvoice',
-        'created_at' => 'getCreatedAt',
+        'cronExpression' => 'getCronExpression',
+        'nextPaymentDate' => 'getNextPaymentDate',
+        'openInvoice' => 'getOpenInvoice',
+        'createdAt' => 'getCreatedAt',
         'integration' => 'getIntegration',
         'plan' => 'getPlan',
         'authorization' => 'getAuthorization',
@@ -344,13 +344,13 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('subscription_code', $data ?? [], null);
-        $this->setIfExists('email_token', $data ?? [], null);
+        $this->setIfExists('subscriptionCode', $data ?? [], null);
+        $this->setIfExists('emailToken', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('cron_expression', $data ?? [], null);
-        $this->setIfExists('next_payment_date', $data ?? [], null);
-        $this->setIfExists('open_invoice', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('cronExpression', $data ?? [], null);
+        $this->setIfExists('nextPaymentDate', $data ?? [], null);
+        $this->setIfExists('openInvoice', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('plan', $data ?? [], null);
         $this->setIfExists('authorization', $data ?? [], null);
@@ -396,26 +396,26 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['subscription_code'] === null) {
-            $invalidProperties[] = "'subscription_code' can't be null";
+        if ($this->container['subscriptionCode'] === null) {
+            $invalidProperties[] = "'subscriptionCode' can't be null";
         }
-        if ($this->container['email_token'] === null) {
-            $invalidProperties[] = "'email_token' can't be null";
+        if ($this->container['emailToken'] === null) {
+            $invalidProperties[] = "'emailToken' can't be null";
         }
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
-        if ($this->container['cron_expression'] === null) {
-            $invalidProperties[] = "'cron_expression' can't be null";
+        if ($this->container['cronExpression'] === null) {
+            $invalidProperties[] = "'cronExpression' can't be null";
         }
-        if ($this->container['next_payment_date'] === null) {
-            $invalidProperties[] = "'next_payment_date' can't be null";
+        if ($this->container['nextPaymentDate'] === null) {
+            $invalidProperties[] = "'nextPaymentDate' can't be null";
         }
-        if ($this->container['open_invoice'] === null && !$this->isNullableSetToNull('open_invoice')) {
-            $invalidProperties[] = "'open_invoice' can't be null";
+        if ($this->container['openInvoice'] === null && !$this->isNullableSetToNull('openInvoice')) {
+            $invalidProperties[] = "'openInvoice' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
         if ($this->container['integration'] === null) {
             $invalidProperties[] = "'integration' can't be null";
@@ -535,55 +535,55 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets subscription_code
+     * Gets subscriptionCode
      *
      * @return string
      */
     public function getSubscriptionCode()
     {
-        return $this->container['subscription_code'];
+        return $this->container['subscriptionCode'];
     }
 
     /**
-     * Sets subscription_code
+     * Sets subscriptionCode
      *
-     * @param string $subscription_code subscription_code
+     * @param string $subscriptionCode subscriptionCode
      *
      * @return self
      */
-    public function setSubscriptionCode($subscription_code)
+    public function setSubscriptionCode($subscriptionCode)
     {
-        if (is_null($subscription_code)) {
-            throw new \InvalidArgumentException('non-nullable subscription_code cannot be null');
+        if (is_null($subscriptionCode)) {
+            throw new \InvalidArgumentException('non-nullable subscriptionCode cannot be null');
         }
-        $this->container['subscription_code'] = $subscription_code;
+        $this->container['subscriptionCode'] = $subscriptionCode;
 
         return $this;
     }
 
     /**
-     * Gets email_token
+     * Gets emailToken
      *
      * @return string
      */
     public function getEmailToken()
     {
-        return $this->container['email_token'];
+        return $this->container['emailToken'];
     }
 
     /**
-     * Sets email_token
+     * Sets emailToken
      *
-     * @param string $email_token email_token
+     * @param string $emailToken emailToken
      *
      * @return self
      */
-    public function setEmailToken($email_token)
+    public function setEmailToken($emailToken)
     {
-        if (is_null($email_token)) {
-            throw new \InvalidArgumentException('non-nullable email_token cannot be null');
+        if (is_null($emailToken)) {
+            throw new \InvalidArgumentException('non-nullable emailToken cannot be null');
         }
-        $this->container['email_token'] = $email_token;
+        $this->container['emailToken'] = $emailToken;
 
         return $this;
     }
@@ -616,116 +616,116 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets cron_expression
+     * Gets cronExpression
      *
      * @return string
      */
     public function getCronExpression()
     {
-        return $this->container['cron_expression'];
+        return $this->container['cronExpression'];
     }
 
     /**
-     * Sets cron_expression
+     * Sets cronExpression
      *
-     * @param string $cron_expression cron_expression
+     * @param string $cronExpression cronExpression
      *
      * @return self
      */
-    public function setCronExpression($cron_expression)
+    public function setCronExpression($cronExpression)
     {
-        if (is_null($cron_expression)) {
-            throw new \InvalidArgumentException('non-nullable cron_expression cannot be null');
+        if (is_null($cronExpression)) {
+            throw new \InvalidArgumentException('non-nullable cronExpression cannot be null');
         }
-        $this->container['cron_expression'] = $cron_expression;
+        $this->container['cronExpression'] = $cronExpression;
 
         return $this;
     }
 
     /**
-     * Gets next_payment_date
+     * Gets nextPaymentDate
      *
      * @return string
      */
     public function getNextPaymentDate()
     {
-        return $this->container['next_payment_date'];
+        return $this->container['nextPaymentDate'];
     }
 
     /**
-     * Sets next_payment_date
+     * Sets nextPaymentDate
      *
-     * @param string $next_payment_date next_payment_date
+     * @param string $nextPaymentDate nextPaymentDate
      *
      * @return self
      */
-    public function setNextPaymentDate($next_payment_date)
+    public function setNextPaymentDate($nextPaymentDate)
     {
-        if (is_null($next_payment_date)) {
-            throw new \InvalidArgumentException('non-nullable next_payment_date cannot be null');
+        if (is_null($nextPaymentDate)) {
+            throw new \InvalidArgumentException('non-nullable nextPaymentDate cannot be null');
         }
-        $this->container['next_payment_date'] = $next_payment_date;
+        $this->container['nextPaymentDate'] = $nextPaymentDate;
 
         return $this;
     }
 
     /**
-     * Gets open_invoice
+     * Gets openInvoice
      *
      * @return mixed|null
      */
     public function getOpenInvoice()
     {
-        return $this->container['open_invoice'];
+        return $this->container['openInvoice'];
     }
 
     /**
-     * Sets open_invoice
+     * Sets openInvoice
      *
-     * @param mixed|null $open_invoice open_invoice
+     * @param mixed|null $openInvoice openInvoice
      *
      * @return self
      */
-    public function setOpenInvoice($open_invoice)
+    public function setOpenInvoice($openInvoice)
     {
-        if (is_null($open_invoice)) {
-            array_push($this->openAPINullablesSetToNull, 'open_invoice');
+        if (is_null($openInvoice)) {
+            array_push($this->openAPINullablesSetToNull, 'openInvoice');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('open_invoice', $nullablesSetToNull);
+            $index = array_search('openInvoice', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['open_invoice'] = $open_invoice;
+        $this->container['openInvoice'] = $openInvoice;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
@@ -760,7 +760,7 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets plan
      *
-     * @return \Alexasomba\\Paystack\Model\SubscriptionFetchResponseDataPlan
+     * @return \Alexasomba\Paystack\Model\SubscriptionFetchResponseDataPlan
      */
     public function getPlan()
     {
@@ -770,7 +770,7 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets plan
      *
-     * @param \Alexasomba\\Paystack\Model\SubscriptionFetchResponseDataPlan $plan plan
+     * @param \Alexasomba\Paystack\Model\SubscriptionFetchResponseDataPlan $plan plan
      *
      * @return self
      */
@@ -787,7 +787,7 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets authorization
      *
-     * @return \Alexasomba\\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayAuthorization
+     * @return \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayAuthorization
      */
     public function getAuthorization()
     {
@@ -797,7 +797,7 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets authorization
      *
-     * @param \Alexasomba\\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayAuthorization $authorization authorization
+     * @param \Alexasomba\Paystack\Model\BulkChargeFetchBulkBatchChargesResponseArrayAuthorization $authorization authorization
      *
      * @return self
      */
@@ -814,7 +814,7 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets customer
      *
-     * @return \Alexasomba\\Paystack\Model\SubscriptionFetchResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\SubscriptionFetchResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -824,7 +824,7 @@ class SubscriptionFetchResponseData implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets customer
      *
-     * @param \Alexasomba\\Paystack\Model\SubscriptionFetchResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\SubscriptionFetchResponseDataCustomer $customer customer
      *
      * @return self
      */

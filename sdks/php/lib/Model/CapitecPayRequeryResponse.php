@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * CapitecPayRequeryResponse Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class CapitecPayRequeryResponse implements ModelInterface, ArrayAccess, \JsonSer
         'status' => 'bool',
         'type' => 'string',
         'code' => 'string',
-        'data' => '\Alexasomba\\Paystack\Model\CapitecPayRequeryResponseData',
+        'data' => '\Alexasomba\Paystack\Model\CapitecPayRequeryResponseData',
         'message' => 'string'
     ];
 
@@ -417,7 +417,7 @@ class CapitecPayRequeryResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets data
      *
-     * @return \Alexasomba\\Paystack\Model\CapitecPayRequeryResponseData
+     * @return \Alexasomba\Paystack\Model\CapitecPayRequeryResponseData
      */
     public function getData()
     {
@@ -427,7 +427,7 @@ class CapitecPayRequeryResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets data
      *
-     * @param \Alexasomba\\Paystack\Model\CapitecPayRequeryResponseData $data data
+     * @param \Alexasomba\Paystack\Model\CapitecPayRequeryResponseData $data data
      *
      * @return self
      */

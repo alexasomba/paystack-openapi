@@ -52,7 +52,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_download(
+    def download(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -108,7 +108,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_download_serialize(
+        _param = self._download_serialize(
             per_page=per_page,
             page=page,
             status=status,
@@ -137,7 +137,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_download_with_http_info(
+    def download_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -193,7 +193,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_download_serialize(
+        _param = self._download_serialize(
             per_page=per_page,
             page=page,
             status=status,
@@ -222,7 +222,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_download_without_preload_content(
+    def download_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -278,7 +278,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_download_serialize(
+        _param = self._download_serialize(
             per_page=per_page,
             page=page,
             status=status,
@@ -302,7 +302,7 @@ class DisputeApi:
         return response_data.response
 
 
-    def _dispute_download_serialize(
+    def _download_serialize(
         self,
         per_page,
         page,
@@ -407,7 +407,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_evidence(
+    def evidence(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         dispute_evidence: Optional[DisputeEvidence] = None,
@@ -454,7 +454,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_evidence_serialize(
+        _param = self._evidence_serialize(
             id=id,
             dispute_evidence=dispute_evidence,
             _request_auth=_request_auth,
@@ -479,7 +479,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_evidence_with_http_info(
+    def evidence_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         dispute_evidence: Optional[DisputeEvidence] = None,
@@ -526,7 +526,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_evidence_serialize(
+        _param = self._evidence_serialize(
             id=id,
             dispute_evidence=dispute_evidence,
             _request_auth=_request_auth,
@@ -551,7 +551,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_evidence_without_preload_content(
+    def evidence_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         dispute_evidence: Optional[DisputeEvidence] = None,
@@ -598,7 +598,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_evidence_serialize(
+        _param = self._evidence_serialize(
             id=id,
             dispute_evidence=dispute_evidence,
             _request_auth=_request_auth,
@@ -618,7 +618,7 @@ class DisputeApi:
         return response_data.response
 
 
-    def _dispute_evidence_serialize(
+    def _evidence_serialize(
         self,
         id,
         dispute_evidence,
@@ -700,7 +700,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_fetch(
+    def fetch(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         _request_timeout: Union[
@@ -744,7 +744,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -769,7 +769,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         _request_timeout: Union[
@@ -813,7 +813,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -838,7 +838,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         _request_timeout: Union[
@@ -882,7 +882,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -902,7 +902,7 @@ class DisputeApi:
         return response_data.response
 
 
-    def _dispute_fetch_serialize(
+    def _fetch_serialize(
         self,
         id,
         _request_auth,
@@ -967,7 +967,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_list(
+    def list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1026,7 +1026,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             status=status,
@@ -1056,7 +1056,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_list_with_http_info(
+    def list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1115,7 +1115,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             status=status,
@@ -1145,7 +1145,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_list_without_preload_content(
+    def list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1204,7 +1204,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             status=status,
@@ -1229,7 +1229,7 @@ class DisputeApi:
         return response_data.response
 
 
-    def _dispute_list_serialize(
+    def _list_serialize(
         self,
         per_page,
         page,
@@ -1339,7 +1339,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_resolve(
+    def resolve(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         dispute_resolve: Optional[DisputeResolve] = None,
@@ -1386,7 +1386,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_resolve_serialize(
+        _param = self._resolve_serialize(
             id=id,
             dispute_resolve=dispute_resolve,
             _request_auth=_request_auth,
@@ -1412,7 +1412,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_resolve_with_http_info(
+    def resolve_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         dispute_resolve: Optional[DisputeResolve] = None,
@@ -1459,7 +1459,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_resolve_serialize(
+        _param = self._resolve_serialize(
             id=id,
             dispute_resolve=dispute_resolve,
             _request_auth=_request_auth,
@@ -1485,7 +1485,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_resolve_without_preload_content(
+    def resolve_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         dispute_resolve: Optional[DisputeResolve] = None,
@@ -1532,7 +1532,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_resolve_serialize(
+        _param = self._resolve_serialize(
             id=id,
             dispute_resolve=dispute_resolve,
             _request_auth=_request_auth,
@@ -1553,7 +1553,7 @@ class DisputeApi:
         return response_data.response
 
 
-    def _dispute_resolve_serialize(
+    def _resolve_serialize(
         self,
         id,
         dispute_resolve,
@@ -1635,7 +1635,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_transaction(
+    def transaction(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the transaction")],
         _request_timeout: Union[
@@ -1679,7 +1679,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_transaction_serialize(
+        _param = self._transaction_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1704,7 +1704,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_transaction_with_http_info(
+    def transaction_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the transaction")],
         _request_timeout: Union[
@@ -1748,7 +1748,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_transaction_serialize(
+        _param = self._transaction_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1773,7 +1773,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_transaction_without_preload_content(
+    def transaction_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the transaction")],
         _request_timeout: Union[
@@ -1817,7 +1817,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_transaction_serialize(
+        _param = self._transaction_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1837,7 +1837,7 @@ class DisputeApi:
         return response_data.response
 
 
-    def _dispute_transaction_serialize(
+    def _transaction_serialize(
         self,
         id,
         _request_auth,
@@ -1902,7 +1902,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_update(
+    def update(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         dispute_update: Optional[DisputeUpdate] = None,
@@ -1949,7 +1949,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_update_serialize(
+        _param = self._update_serialize(
             id=id,
             dispute_update=dispute_update,
             _request_auth=_request_auth,
@@ -1975,7 +1975,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_update_with_http_info(
+    def update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         dispute_update: Optional[DisputeUpdate] = None,
@@ -2022,7 +2022,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_update_serialize(
+        _param = self._update_serialize(
             id=id,
             dispute_update=dispute_update,
             _request_auth=_request_auth,
@@ -2048,7 +2048,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_update_without_preload_content(
+    def update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         dispute_update: Optional[DisputeUpdate] = None,
@@ -2095,7 +2095,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_update_serialize(
+        _param = self._update_serialize(
             id=id,
             dispute_update=dispute_update,
             _request_auth=_request_auth,
@@ -2116,7 +2116,7 @@ class DisputeApi:
         return response_data.response
 
 
-    def _dispute_update_serialize(
+    def _update_serialize(
         self,
         id,
         dispute_update,
@@ -2198,7 +2198,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_upload_url(
+    def upload_url(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         _request_timeout: Union[
@@ -2242,7 +2242,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_upload_url_serialize(
+        _param = self._upload_url_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2267,7 +2267,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_upload_url_with_http_info(
+    def upload_url_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         _request_timeout: Union[
@@ -2311,7 +2311,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_upload_url_serialize(
+        _param = self._upload_url_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2336,7 +2336,7 @@ class DisputeApi:
 
 
     @validate_call
-    def dispute_upload_url_without_preload_content(
+    def upload_url_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the dispute")],
         _request_timeout: Union[
@@ -2380,7 +2380,7 @@ class DisputeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dispute_upload_url_serialize(
+        _param = self._upload_url_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2400,7 +2400,7 @@ class DisputeApi:
         return response_data.response
 
 
-    def _dispute_upload_url_serialize(
+    def _upload_url_serialize(
         self,
         id,
         _request_auth,

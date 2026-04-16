@@ -21,12 +21,12 @@ type Currency string
 
 // List of Currency
 const (
-	GHS Currency = "GHS"
-	KES Currency = "KES"
-	NGN Currency = "NGN"
-	ZAR Currency = "ZAR"
-	USD Currency = "USD"
-	XOF Currency = "XOF"
+	CURRENCY_GHS Currency = "GHS"
+	CURRENCY_KES Currency = "KES"
+	CURRENCY_NGN Currency = "NGN"
+	CURRENCY_ZAR Currency = "ZAR"
+	CURRENCY_USD Currency = "USD"
+	CURRENCY_XOF Currency = "XOF"
 )
 
 // All allowed values of Currency enum

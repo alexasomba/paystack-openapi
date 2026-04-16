@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PaymentRequestTotalResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class PaymentRequestTotalResponseData implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pending' => '\Alexasomba\\Paystack\Model\PaymentRequestPendingArray[]',
-        'successful' => '\Alexasomba\\Paystack\Model\PaymentRequestSuccessfulArray[]',
-        'total' => '\Alexasomba\\Paystack\Model\PaymentRequestTotalArray[]'
+        'pending' => '\Alexasomba\Paystack\Model\PaymentRequestPendingArray[]',
+        'successful' => '\Alexasomba\Paystack\Model\PaymentRequestSuccessfulArray[]',
+        'total' => '\Alexasomba\Paystack\Model\PaymentRequestTotalArray[]'
     ];
 
     /**
@@ -316,7 +316,7 @@ class PaymentRequestTotalResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Gets pending
      *
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestPendingArray[]
+     * @return \Alexasomba\Paystack\Model\PaymentRequestPendingArray[]
      */
     public function getPending()
     {
@@ -326,7 +326,7 @@ class PaymentRequestTotalResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Sets pending
      *
-     * @param \Alexasomba\\Paystack\Model\PaymentRequestPendingArray[] $pending pending
+     * @param \Alexasomba\Paystack\Model\PaymentRequestPendingArray[] $pending pending
      *
      * @return self
      */
@@ -343,7 +343,7 @@ class PaymentRequestTotalResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Gets successful
      *
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestSuccessfulArray[]
+     * @return \Alexasomba\Paystack\Model\PaymentRequestSuccessfulArray[]
      */
     public function getSuccessful()
     {
@@ -353,7 +353,7 @@ class PaymentRequestTotalResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Sets successful
      *
-     * @param \Alexasomba\\Paystack\Model\PaymentRequestSuccessfulArray[] $successful successful
+     * @param \Alexasomba\Paystack\Model\PaymentRequestSuccessfulArray[] $successful successful
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class PaymentRequestTotalResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Gets total
      *
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestTotalArray[]
+     * @return \Alexasomba\Paystack\Model\PaymentRequestTotalArray[]
      */
     public function getTotal()
     {
@@ -380,7 +380,7 @@ class PaymentRequestTotalResponseData implements ModelInterface, ArrayAccess, \J
     /**
      * Sets total
      *
-     * @param \Alexasomba\\Paystack\Model\PaymentRequestTotalArray[] $total total
+     * @param \Alexasomba\Paystack\Model\PaymentRequestTotalArray[] $total total
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * BulkChargeInitiate Class Doc Comment
  *
  * @category Class
  * @description A list of charge object
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class BulkChargeInitiate implements ModelInterface, ArrayAccess, \JsonSerializab
         'authorization' => 'string',
         'amount' => 'int',
         'reference' => 'string',
-        'attempt_partial_debit' => 'bool',
-        'at_least' => 'int',
+        'attemptPartialDebit' => 'bool',
+        'atLeast' => 'int',
         'metadata' => 'object'
     ];
 
@@ -78,8 +78,8 @@ class BulkChargeInitiate implements ModelInterface, ArrayAccess, \JsonSerializab
         'authorization' => null,
         'amount' => null,
         'reference' => null,
-        'attempt_partial_debit' => null,
-        'at_least' => null,
+        'attemptPartialDebit' => null,
+        'atLeast' => null,
         'metadata' => null
     ];
 
@@ -92,8 +92,8 @@ class BulkChargeInitiate implements ModelInterface, ArrayAccess, \JsonSerializab
         'authorization' => false,
         'amount' => false,
         'reference' => false,
-        'attempt_partial_debit' => false,
-        'at_least' => false,
+        'attemptPartialDebit' => false,
+        'atLeast' => false,
         'metadata' => false
     ];
 
@@ -186,8 +186,8 @@ class BulkChargeInitiate implements ModelInterface, ArrayAccess, \JsonSerializab
         'authorization' => 'authorization',
         'amount' => 'amount',
         'reference' => 'reference',
-        'attempt_partial_debit' => 'attempt_partial_debit',
-        'at_least' => 'at_least',
+        'attemptPartialDebit' => 'attempt_partial_debit',
+        'atLeast' => 'at_least',
         'metadata' => 'metadata'
     ];
 
@@ -200,8 +200,8 @@ class BulkChargeInitiate implements ModelInterface, ArrayAccess, \JsonSerializab
         'authorization' => 'setAuthorization',
         'amount' => 'setAmount',
         'reference' => 'setReference',
-        'attempt_partial_debit' => 'setAttemptPartialDebit',
-        'at_least' => 'setAtLeast',
+        'attemptPartialDebit' => 'setAttemptPartialDebit',
+        'atLeast' => 'setAtLeast',
         'metadata' => 'setMetadata'
     ];
 
@@ -214,8 +214,8 @@ class BulkChargeInitiate implements ModelInterface, ArrayAccess, \JsonSerializab
         'authorization' => 'getAuthorization',
         'amount' => 'getAmount',
         'reference' => 'getReference',
-        'attempt_partial_debit' => 'getAttemptPartialDebit',
-        'at_least' => 'getAtLeast',
+        'attemptPartialDebit' => 'getAttemptPartialDebit',
+        'atLeast' => 'getAtLeast',
         'metadata' => 'getMetadata'
     ];
 
@@ -279,8 +279,8 @@ class BulkChargeInitiate implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('authorization', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
-        $this->setIfExists('attempt_partial_debit', $data ?? [], null);
-        $this->setIfExists('at_least', $data ?? [], null);
+        $this->setIfExists('attemptPartialDebit', $data ?? [], null);
+        $this->setIfExists('atLeast', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
     }
 
@@ -414,55 +414,55 @@ class BulkChargeInitiate implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets attempt_partial_debit
+     * Gets attemptPartialDebit
      *
      * @return bool|null
      */
     public function getAttemptPartialDebit()
     {
-        return $this->container['attempt_partial_debit'];
+        return $this->container['attemptPartialDebit'];
     }
 
     /**
-     * Sets attempt_partial_debit
+     * Sets attemptPartialDebit
      *
-     * @param bool|null $attempt_partial_debit A flag to indicate if you want us to try recouping lower amounts when the customer has insufficient fund
+     * @param bool|null $attemptPartialDebit A flag to indicate if you want us to try recouping lower amounts when the customer has insufficient fund
      *
      * @return self
      */
-    public function setAttemptPartialDebit($attempt_partial_debit)
+    public function setAttemptPartialDebit($attemptPartialDebit)
     {
-        if (is_null($attempt_partial_debit)) {
-            throw new \InvalidArgumentException('non-nullable attempt_partial_debit cannot be null');
+        if (is_null($attemptPartialDebit)) {
+            throw new \InvalidArgumentException('non-nullable attemptPartialDebit cannot be null');
         }
-        $this->container['attempt_partial_debit'] = $attempt_partial_debit;
+        $this->container['attemptPartialDebit'] = $attemptPartialDebit;
 
         return $this;
     }
 
     /**
-     * Gets at_least
+     * Gets atLeast
      *
      * @return int|null
      */
     public function getAtLeast()
     {
-        return $this->container['at_least'];
+        return $this->container['atLeast'];
     }
 
     /**
-     * Sets at_least
+     * Sets atLeast
      *
-     * @param int|null $at_least Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Minimum amount to charge if the attempt_partial_debit flag is set.
+     * @param int|null $atLeast Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Minimum amount to charge if the attempt_partial_debit flag is set.
      *
      * @return self
      */
-    public function setAtLeast($at_least)
+    public function setAtLeast($atLeast)
     {
-        if (is_null($at_least)) {
-            throw new \InvalidArgumentException('non-nullable at_least cannot be null');
+        if (is_null($atLeast)) {
+            throw new \InvalidArgumentException('non-nullable atLeast cannot be null');
         }
-        $this->container['at_least'] = $at_least;
+        $this->container['atLeast'] = $atLeast;
 
         return $this;
     }

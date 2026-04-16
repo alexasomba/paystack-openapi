@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * OrderFetchResponseDataLineItemsInner Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class OrderFetchResponseDataLineItemsInner implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'product' => '\Alexasomba\\Paystack\Model\OrderFetchResponseDataLineItemsInnerProduct',
+        'product' => '\Alexasomba\Paystack\Model\OrderFetchResponseDataLineItemsInnerProduct',
         'quantity' => 'int',
         'amount' => 'int'
     ];
@@ -316,7 +316,7 @@ class OrderFetchResponseDataLineItemsInner implements ModelInterface, ArrayAcces
     /**
      * Gets product
      *
-     * @return \Alexasomba\\Paystack\Model\OrderFetchResponseDataLineItemsInnerProduct
+     * @return \Alexasomba\Paystack\Model\OrderFetchResponseDataLineItemsInnerProduct
      */
     public function getProduct()
     {
@@ -326,7 +326,7 @@ class OrderFetchResponseDataLineItemsInner implements ModelInterface, ArrayAcces
     /**
      * Sets product
      *
-     * @param \Alexasomba\\Paystack\Model\OrderFetchResponseDataLineItemsInnerProduct $product product
+     * @param \Alexasomba\Paystack\Model\OrderFetchResponseDataLineItemsInnerProduct $product product
      *
      * @return self
      */

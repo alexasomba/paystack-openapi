@@ -47,7 +47,7 @@ class RefundApi:
 
 
     @validate_call
-    def refund_create(
+    def create(
         self,
         refund_create: Optional[RefundCreate] = None,
         _request_timeout: Union[
@@ -91,7 +91,7 @@ class RefundApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refund_create_serialize(
+        _param = self._create_serialize(
             refund_create=refund_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -115,7 +115,7 @@ class RefundApi:
 
 
     @validate_call
-    def refund_create_with_http_info(
+    def create_with_http_info(
         self,
         refund_create: Optional[RefundCreate] = None,
         _request_timeout: Union[
@@ -159,7 +159,7 @@ class RefundApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refund_create_serialize(
+        _param = self._create_serialize(
             refund_create=refund_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -183,7 +183,7 @@ class RefundApi:
 
 
     @validate_call
-    def refund_create_without_preload_content(
+    def create_without_preload_content(
         self,
         refund_create: Optional[RefundCreate] = None,
         _request_timeout: Union[
@@ -227,7 +227,7 @@ class RefundApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refund_create_serialize(
+        _param = self._create_serialize(
             refund_create=refund_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -246,7 +246,7 @@ class RefundApi:
         return response_data.response
 
 
-    def _refund_create_serialize(
+    def _create_serialize(
         self,
         refund_create,
         _request_auth,
@@ -325,7 +325,7 @@ class RefundApi:
 
 
     @validate_call
-    def refund_fetch(
+    def fetch(
         self,
         id: Annotated[StrictInt, Field(description="The identifier of the refund")],
         _request_timeout: Union[
@@ -369,7 +369,7 @@ class RefundApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refund_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -394,7 +394,7 @@ class RefundApi:
 
 
     @validate_call
-    def refund_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The identifier of the refund")],
         _request_timeout: Union[
@@ -438,7 +438,7 @@ class RefundApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refund_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -463,7 +463,7 @@ class RefundApi:
 
 
     @validate_call
-    def refund_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The identifier of the refund")],
         _request_timeout: Union[
@@ -507,7 +507,7 @@ class RefundApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refund_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -527,7 +527,7 @@ class RefundApi:
         return response_data.response
 
 
-    def _refund_fetch_serialize(
+    def _fetch_serialize(
         self,
         id,
         _request_auth,
@@ -592,7 +592,7 @@ class RefundApi:
 
 
     @validate_call
-    def refund_list(
+    def list(
         self,
         transaction: Annotated[Optional[StrictStr], Field(description="The transaction ID of the refunded transaction")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="Any of the supported currency")] = None,
@@ -651,7 +651,7 @@ class RefundApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refund_list_serialize(
+        _param = self._list_serialize(
             transaction=transaction,
             currency=currency,
             per_page=per_page,
@@ -681,7 +681,7 @@ class RefundApi:
 
 
     @validate_call
-    def refund_list_with_http_info(
+    def list_with_http_info(
         self,
         transaction: Annotated[Optional[StrictStr], Field(description="The transaction ID of the refunded transaction")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="Any of the supported currency")] = None,
@@ -740,7 +740,7 @@ class RefundApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refund_list_serialize(
+        _param = self._list_serialize(
             transaction=transaction,
             currency=currency,
             per_page=per_page,
@@ -770,7 +770,7 @@ class RefundApi:
 
 
     @validate_call
-    def refund_list_without_preload_content(
+    def list_without_preload_content(
         self,
         transaction: Annotated[Optional[StrictStr], Field(description="The transaction ID of the refunded transaction")] = None,
         currency: Annotated[Optional[StrictStr], Field(description="Any of the supported currency")] = None,
@@ -829,7 +829,7 @@ class RefundApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refund_list_serialize(
+        _param = self._list_serialize(
             transaction=transaction,
             currency=currency,
             per_page=per_page,
@@ -854,7 +854,7 @@ class RefundApi:
         return response_data.response
 
 
-    def _refund_list_serialize(
+    def _list_serialize(
         self,
         transaction,
         currency,
@@ -964,7 +964,7 @@ class RefundApi:
 
 
     @validate_call
-    def refund_retry(
+    def retry(
         self,
         id: Annotated[StrictInt, Field(description="The identifier of the refund")],
         refund_retry: Optional[RefundRetry] = None,
@@ -1011,7 +1011,7 @@ class RefundApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refund_retry_serialize(
+        _param = self._retry_serialize(
             id=id,
             refund_retry=refund_retry,
             _request_auth=_request_auth,
@@ -1036,7 +1036,7 @@ class RefundApi:
 
 
     @validate_call
-    def refund_retry_with_http_info(
+    def retry_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The identifier of the refund")],
         refund_retry: Optional[RefundRetry] = None,
@@ -1083,7 +1083,7 @@ class RefundApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refund_retry_serialize(
+        _param = self._retry_serialize(
             id=id,
             refund_retry=refund_retry,
             _request_auth=_request_auth,
@@ -1108,7 +1108,7 @@ class RefundApi:
 
 
     @validate_call
-    def refund_retry_without_preload_content(
+    def retry_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The identifier of the refund")],
         refund_retry: Optional[RefundRetry] = None,
@@ -1155,7 +1155,7 @@ class RefundApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._refund_retry_serialize(
+        _param = self._retry_serialize(
             id=id,
             refund_retry=refund_retry,
             _request_auth=_request_auth,
@@ -1175,7 +1175,7 @@ class RefundApi:
         return response_data.response
 
 
-    def _refund_retry_serialize(
+    def _retry_serialize(
         self,
         id,
         refund_retry,

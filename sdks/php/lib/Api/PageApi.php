@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Api;
+namespace Alexasomba\Paystack\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Alexasomba\\Paystack\ApiException;
-use Alexasomba\\Paystack\Configuration;
-use Alexasomba\\Paystack\FormDataProcessor;
-use Alexasomba\\Paystack\HeaderSelector;
-use Alexasomba\\Paystack\ObjectSerializer;
+use Alexasomba\Paystack\ApiException;
+use Alexasomba\Paystack\Configuration;
+use Alexasomba\Paystack\FormDataProcessor;
+use Alexasomba\Paystack\HeaderSelector;
+use Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PageApi Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -75,24 +75,24 @@ class PageApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'pageAddProducts' => [
+        'addProducts' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'pageCheckSlugAvailability' => [
+        'callList' => [
             'application/json',
         ],
-        'pageCreate' => [
+        'checkSlugAvailability' => [
+            'application/json',
+        ],
+        'create' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'pageFetch' => [
+        'fetch' => [
             'application/json',
         ],
-        'pageList' => [
-            'application/json',
-        ],
-        'pageUpdate' => [
+        'update' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
@@ -145,40 +145,40 @@ class PageApi
     }
 
     /**
-     * Operation pageAddProducts
+     * Operation addProducts
      *
      * Add Products
      *
      * @param  string $id id (required)
-     * @param  \Alexasomba\\Paystack\Model\PageProduct|null $page_product page_product (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageAddProducts'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PageProduct|null $pageProduct pageProduct (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addProducts'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PageAddProductsResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PageAddProductsResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function pageAddProducts($id, $page_product = null, string $contentType = self::contentTypes['pageAddProducts'][0])
+    public function addProducts($id, $pageProduct = null, string $contentType = self::contentTypes['addProducts'][0])
     {
-        list($response) = $this->pageAddProductsWithHttpInfo($id, $page_product, $contentType);
+        list($response) = $this->addProductsWithHttpInfo($id, $pageProduct, $contentType);
         return $response;
     }
 
     /**
-     * Operation pageAddProductsWithHttpInfo
+     * Operation addProductsWithHttpInfo
      *
      * Add Products
      *
      * @param  string $id (required)
-     * @param  \Alexasomba\\Paystack\Model\PageProduct|null $page_product (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageAddProducts'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PageProduct|null $pageProduct (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addProducts'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PageAddProductsResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PageAddProductsResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function pageAddProductsWithHttpInfo($id, $page_product = null, string $contentType = self::contentTypes['pageAddProducts'][0])
+    public function addProductsWithHttpInfo($id, $pageProduct = null, string $contentType = self::contentTypes['addProducts'][0])
     {
-        $request = $this->pageAddProductsRequest($id, $page_product, $contentType);
+        $request = $this->addProductsRequest($id, $pageProduct, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -206,13 +206,13 @@ class PageApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PageAddProductsResponse',
+                        '\Alexasomba\Paystack\Model\PageAddProductsResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -234,7 +234,7 @@ class PageApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PageAddProductsResponse',
+                '\Alexasomba\Paystack\Model\PageAddProductsResponse',
                 $request,
                 $response,
             );
@@ -243,7 +243,7 @@ class PageApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PageAddProductsResponse',
+                        '\Alexasomba\Paystack\Model\PageAddProductsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -251,7 +251,7 @@ class PageApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -264,20 +264,20 @@ class PageApi
     }
 
     /**
-     * Operation pageAddProductsAsync
+     * Operation addProductsAsync
      *
      * Add Products
      *
      * @param  string $id (required)
-     * @param  \Alexasomba\\Paystack\Model\PageProduct|null $page_product (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageAddProducts'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PageProduct|null $pageProduct (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pageAddProductsAsync($id, $page_product = null, string $contentType = self::contentTypes['pageAddProducts'][0])
+    public function addProductsAsync($id, $pageProduct = null, string $contentType = self::contentTypes['addProducts'][0])
     {
-        return $this->pageAddProductsAsyncWithHttpInfo($id, $page_product, $contentType)
+        return $this->addProductsAsyncWithHttpInfo($id, $pageProduct, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -286,21 +286,21 @@ class PageApi
     }
 
     /**
-     * Operation pageAddProductsAsyncWithHttpInfo
+     * Operation addProductsAsyncWithHttpInfo
      *
      * Add Products
      *
      * @param  string $id (required)
-     * @param  \Alexasomba\\Paystack\Model\PageProduct|null $page_product (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageAddProducts'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PageProduct|null $pageProduct (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pageAddProductsAsyncWithHttpInfo($id, $page_product = null, string $contentType = self::contentTypes['pageAddProducts'][0])
+    public function addProductsAsyncWithHttpInfo($id, $pageProduct = null, string $contentType = self::contentTypes['addProducts'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PageAddProductsResponse';
-        $request = $this->pageAddProductsRequest($id, $page_product, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PageAddProductsResponse';
+        $request = $this->addProductsRequest($id, $pageProduct, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -339,22 +339,22 @@ class PageApi
     }
 
     /**
-     * Create request for operation 'pageAddProducts'
+     * Create request for operation 'addProducts'
      *
      * @param  string $id (required)
-     * @param  \Alexasomba\\Paystack\Model\PageProduct|null $page_product (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageAddProducts'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\PageProduct|null $pageProduct (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function pageAddProductsRequest($id, $page_product = null, string $contentType = self::contentTypes['pageAddProducts'][0])
+    public function addProductsRequest($id, $pageProduct = null, string $contentType = self::contentTypes['addProducts'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling pageAddProducts'
+                'Missing the required parameter $id when calling addProducts'
             );
         }
 
@@ -386,12 +386,12 @@ class PageApi
         );
 
         // for model (json/xml)
-        if (isset($page_product)) {
+        if (isset($pageProduct)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($page_product));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($pageProduct));
             } else {
-                $httpBody = $page_product;
+                $httpBody = $pageProduct;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -444,38 +444,44 @@ class PageApi
     }
 
     /**
-     * Operation pageCheckSlugAvailability
+     * Operation callList
      *
-     * Check Slug Availability
+     * List Pages
      *
-     * @param  string $slug The custom slug to check (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageCheckSlugAvailability'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional, default to 50)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PageCheckSlugAvailabilityResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PageListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function pageCheckSlugAvailability($slug, string $contentType = self::contentTypes['pageCheckSlugAvailability'][0])
+    public function callList($perPage = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['callList'][0])
     {
-        list($response) = $this->pageCheckSlugAvailabilityWithHttpInfo($slug, $contentType);
+        list($response) = $this->callListWithHttpInfo($perPage, $page, $from, $to, $contentType);
         return $response;
     }
 
     /**
-     * Operation pageCheckSlugAvailabilityWithHttpInfo
+     * Operation callListWithHttpInfo
      *
-     * Check Slug Availability
+     * List Pages
      *
-     * @param  string $slug The custom slug to check (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageCheckSlugAvailability'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional, default to 50)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PageCheckSlugAvailabilityResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PageListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function pageCheckSlugAvailabilityWithHttpInfo($slug, string $contentType = self::contentTypes['pageCheckSlugAvailability'][0])
+    public function callListWithHttpInfo($perPage = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $request = $this->pageCheckSlugAvailabilityRequest($slug, $contentType);
+        $request = $this->callListRequest($perPage, $page, $from, $to, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -503,19 +509,19 @@ class PageApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PageCheckSlugAvailabilityResponse',
+                        '\Alexasomba\Paystack\Model\PageListResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -537,7 +543,7 @@ class PageApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PageCheckSlugAvailabilityResponse',
+                '\Alexasomba\Paystack\Model\PageListResponse',
                 $request,
                 $response,
             );
@@ -546,7 +552,7 @@ class PageApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PageCheckSlugAvailabilityResponse',
+                        '\Alexasomba\Paystack\Model\PageListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -554,7 +560,7 @@ class PageApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -562,7 +568,7 @@ class PageApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -575,19 +581,22 @@ class PageApi
     }
 
     /**
-     * Operation pageCheckSlugAvailabilityAsync
+     * Operation callListAsync
      *
-     * Check Slug Availability
+     * List Pages
      *
-     * @param  string $slug The custom slug to check (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageCheckSlugAvailability'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional, default to 50)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pageCheckSlugAvailabilityAsync($slug, string $contentType = self::contentTypes['pageCheckSlugAvailability'][0])
+    public function callListAsync($perPage = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['callList'][0])
     {
-        return $this->pageCheckSlugAvailabilityAsyncWithHttpInfo($slug, $contentType)
+        return $this->callListAsyncWithHttpInfo($perPage, $page, $from, $to, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -596,20 +605,23 @@ class PageApi
     }
 
     /**
-     * Operation pageCheckSlugAvailabilityAsyncWithHttpInfo
+     * Operation callListAsyncWithHttpInfo
      *
-     * Check Slug Availability
+     * List Pages
      *
-     * @param  string $slug The custom slug to check (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageCheckSlugAvailability'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional, default to 50)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pageCheckSlugAvailabilityAsyncWithHttpInfo($slug, string $contentType = self::contentTypes['pageCheckSlugAvailability'][0])
+    public function callListAsyncWithHttpInfo($perPage = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PageCheckSlugAvailabilityResponse';
-        $request = $this->pageCheckSlugAvailabilityRequest($slug, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PageListResponse';
+        $request = $this->callListRequest($perPage, $page, $from, $to, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -648,909 +660,18 @@ class PageApi
     }
 
     /**
-     * Create request for operation 'pageCheckSlugAvailability'
+     * Create request for operation 'callList'
      *
-     * @param  string $slug The custom slug to check (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageCheckSlugAvailability'] to see the possible values for this operation
+     * @param  int|null $perPage Number of records to fetch per page (optional, default to 50)
+     * @param  int|null $page The section to retrieve (optional)
+     * @param  \DateTime|null $from The start date (optional)
+     * @param  \DateTime|null $to The end date (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function pageCheckSlugAvailabilityRequest($slug, string $contentType = self::contentTypes['pageCheckSlugAvailability'][0])
-    {
-
-        // verify the required parameter 'slug' is set
-        if ($slug === null || (is_array($slug) && count($slug) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $slug when calling pageCheckSlugAvailability'
-            );
-        }
-
-
-        $resourcePath = '/page/check_slug_availability/{slug}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($slug !== null) {
-            $resourcePath = str_replace(
-                '{' . 'slug' . '}',
-                ObjectSerializer::toPathValue($slug),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation pageCreate
-     *
-     * Create Page
-     *
-     * @param  \Alexasomba\\Paystack\Model\PageCreate|null $page_create page_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageCreate'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PageCreateResponse|\Alexasomba\\Paystack\Model\Error
-     */
-    public function pageCreate($page_create = null, string $contentType = self::contentTypes['pageCreate'][0])
-    {
-        list($response) = $this->pageCreateWithHttpInfo($page_create, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation pageCreateWithHttpInfo
-     *
-     * Create Page
-     *
-     * @param  \Alexasomba\\Paystack\Model\PageCreate|null $page_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageCreate'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PageCreateResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function pageCreateWithHttpInfo($page_create = null, string $contentType = self::contentTypes['pageCreate'][0])
-    {
-        $request = $this->pageCreateRequest($page_create, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PageCreateResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PageCreateResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PageCreateResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation pageCreateAsync
-     *
-     * Create Page
-     *
-     * @param  \Alexasomba\\Paystack\Model\PageCreate|null $page_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageCreate'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function pageCreateAsync($page_create = null, string $contentType = self::contentTypes['pageCreate'][0])
-    {
-        return $this->pageCreateAsyncWithHttpInfo($page_create, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation pageCreateAsyncWithHttpInfo
-     *
-     * Create Page
-     *
-     * @param  \Alexasomba\\Paystack\Model\PageCreate|null $page_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageCreate'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function pageCreateAsyncWithHttpInfo($page_create = null, string $contentType = self::contentTypes['pageCreate'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\PageCreateResponse';
-        $request = $this->pageCreateRequest($page_create, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'pageCreate'
-     *
-     * @param  \Alexasomba\\Paystack\Model\PageCreate|null $page_create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageCreate'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function pageCreateRequest($page_create = null, string $contentType = self::contentTypes['pageCreate'][0])
-    {
-
-
-
-        $resourcePath = '/page';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($page_create)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($page_create));
-            } else {
-                $httpBody = $page_create;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation pageFetch
-     *
-     * Fetch Page
-     *
-     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageFetch'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PageFetchResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
-     */
-    public function pageFetch($id_or_slug, string $contentType = self::contentTypes['pageFetch'][0])
-    {
-        list($response) = $this->pageFetchWithHttpInfo($id_or_slug, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation pageFetchWithHttpInfo
-     *
-     * Fetch Page
-     *
-     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageFetch'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PageFetchResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function pageFetchWithHttpInfo($id_or_slug, string $contentType = self::contentTypes['pageFetch'][0])
-    {
-        $request = $this->pageFetchRequest($id_or_slug, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PageFetchResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PageFetchResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PageFetchResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation pageFetchAsync
-     *
-     * Fetch Page
-     *
-     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageFetch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function pageFetchAsync($id_or_slug, string $contentType = self::contentTypes['pageFetch'][0])
-    {
-        return $this->pageFetchAsyncWithHttpInfo($id_or_slug, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation pageFetchAsyncWithHttpInfo
-     *
-     * Fetch Page
-     *
-     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageFetch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function pageFetchAsyncWithHttpInfo($id_or_slug, string $contentType = self::contentTypes['pageFetch'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\PageFetchResponse';
-        $request = $this->pageFetchRequest($id_or_slug, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'pageFetch'
-     *
-     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageFetch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function pageFetchRequest($id_or_slug, string $contentType = self::contentTypes['pageFetch'][0])
-    {
-
-        // verify the required parameter 'id_or_slug' is set
-        if ($id_or_slug === null || (is_array($id_or_slug) && count($id_or_slug) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id_or_slug when calling pageFetch'
-            );
-        }
-
-
-        $resourcePath = '/page/{id_or_slug}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id_or_slug !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id_or_slug' . '}',
-                ObjectSerializer::toPathValue($id_or_slug),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation pageList
-     *
-     * List Pages
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional, default to 50)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageList'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PageListResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
-     */
-    public function pageList($per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['pageList'][0])
-    {
-        list($response) = $this->pageListWithHttpInfo($per_page, $page, $from, $to, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation pageListWithHttpInfo
-     *
-     * List Pages
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional, default to 50)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageList'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PageListResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function pageListWithHttpInfo($per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['pageList'][0])
-    {
-        $request = $this->pageListRequest($per_page, $page, $from, $to, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PageListResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PageListResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PageListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation pageListAsync
-     *
-     * List Pages
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional, default to 50)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function pageListAsync($per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['pageList'][0])
-    {
-        return $this->pageListAsyncWithHttpInfo($per_page, $page, $from, $to, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation pageListAsyncWithHttpInfo
-     *
-     * List Pages
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional, default to 50)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function pageListAsyncWithHttpInfo($per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['pageList'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\PageListResponse';
-        $request = $this->pageListRequest($per_page, $page, $from, $to, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'pageList'
-     *
-     * @param  int|null $per_page Number of records to fetch per page (optional, default to 50)
-     * @param  int|null $page The section to retrieve (optional)
-     * @param  \DateTime|null $from The start date (optional)
-     * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageList'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function pageListRequest($per_page = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['pageList'][0])
+    public function callListRequest($perPage = 50, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['callList'][0])
     {
 
 
@@ -1567,7 +688,7 @@ class PageApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
+            $perPage,
             'perPage', // param base name
             'integer', // openApiType
             'form', // style
@@ -1663,40 +784,38 @@ class PageApi
     }
 
     /**
-     * Operation pageUpdate
+     * Operation checkSlugAvailability
      *
-     * Update Page
+     * Check Slug Availability
      *
-     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PageUpdate|null $page_update page_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageUpdate'] to see the possible values for this operation
+     * @param  string $slug The custom slug to check (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkSlugAvailability'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\PageUpdateResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\PageCheckSlugAvailabilityResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function pageUpdate($id_or_slug, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
+    public function checkSlugAvailability($slug, string $contentType = self::contentTypes['checkSlugAvailability'][0])
     {
-        list($response) = $this->pageUpdateWithHttpInfo($id_or_slug, $page_update, $contentType);
+        list($response) = $this->checkSlugAvailabilityWithHttpInfo($slug, $contentType);
         return $response;
     }
 
     /**
-     * Operation pageUpdateWithHttpInfo
+     * Operation checkSlugAvailabilityWithHttpInfo
      *
-     * Update Page
+     * Check Slug Availability
      *
-     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PageUpdate|null $page_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageUpdate'] to see the possible values for this operation
+     * @param  string $slug The custom slug to check (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkSlugAvailability'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\PageUpdateResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\PageCheckSlugAvailabilityResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function pageUpdateWithHttpInfo($id_or_slug, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
+    public function checkSlugAvailabilityWithHttpInfo($slug, string $contentType = self::contentTypes['checkSlugAvailability'][0])
     {
-        $request = $this->pageUpdateRequest($id_or_slug, $page_update, $contentType);
+        $request = $this->checkSlugAvailabilityRequest($slug, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1724,19 +843,19 @@ class PageApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\PageUpdateResponse',
+                        '\Alexasomba\Paystack\Model\PageCheckSlugAvailabilityResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1758,7 +877,7 @@ class PageApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\PageUpdateResponse',
+                '\Alexasomba\Paystack\Model\PageCheckSlugAvailabilityResponse',
                 $request,
                 $response,
             );
@@ -1767,7 +886,7 @@ class PageApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\PageUpdateResponse',
+                        '\Alexasomba\Paystack\Model\PageCheckSlugAvailabilityResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1775,7 +894,7 @@ class PageApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1783,7 +902,7 @@ class PageApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1796,20 +915,19 @@ class PageApi
     }
 
     /**
-     * Operation pageUpdateAsync
+     * Operation checkSlugAvailabilityAsync
      *
-     * Update Page
+     * Check Slug Availability
      *
-     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PageUpdate|null $page_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageUpdate'] to see the possible values for this operation
+     * @param  string $slug The custom slug to check (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkSlugAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pageUpdateAsync($id_or_slug, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
+    public function checkSlugAvailabilityAsync($slug, string $contentType = self::contentTypes['checkSlugAvailability'][0])
     {
-        return $this->pageUpdateAsyncWithHttpInfo($id_or_slug, $page_update, $contentType)
+        return $this->checkSlugAvailabilityAsyncWithHttpInfo($slug, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1818,21 +936,20 @@ class PageApi
     }
 
     /**
-     * Operation pageUpdateAsyncWithHttpInfo
+     * Operation checkSlugAvailabilityAsyncWithHttpInfo
      *
-     * Update Page
+     * Check Slug Availability
      *
-     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PageUpdate|null $page_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageUpdate'] to see the possible values for this operation
+     * @param  string $slug The custom slug to check (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkSlugAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pageUpdateAsyncWithHttpInfo($id_or_slug, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
+    public function checkSlugAvailabilityAsyncWithHttpInfo($slug, string $contentType = self::contentTypes['checkSlugAvailability'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\PageUpdateResponse';
-        $request = $this->pageUpdateRequest($id_or_slug, $page_update, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\PageCheckSlugAvailabilityResponse';
+        $request = $this->checkSlugAvailabilityRequest($slug, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1871,22 +988,905 @@ class PageApi
     }
 
     /**
-     * Create request for operation 'pageUpdate'
+     * Create request for operation 'checkSlugAvailability'
      *
-     * @param  string $id_or_slug The page ID or slug you want to fetch (required)
-     * @param  \Alexasomba\\Paystack\Model\PageUpdate|null $page_update (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pageUpdate'] to see the possible values for this operation
+     * @param  string $slug The custom slug to check (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkSlugAvailability'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function pageUpdateRequest($id_or_slug, $page_update = null, string $contentType = self::contentTypes['pageUpdate'][0])
+    public function checkSlugAvailabilityRequest($slug, string $contentType = self::contentTypes['checkSlugAvailability'][0])
     {
 
-        // verify the required parameter 'id_or_slug' is set
-        if ($id_or_slug === null || (is_array($id_or_slug) && count($id_or_slug) === 0)) {
+        // verify the required parameter 'slug' is set
+        if ($slug === null || (is_array($slug) && count($slug) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id_or_slug when calling pageUpdate'
+                'Missing the required parameter $slug when calling checkSlugAvailability'
+            );
+        }
+
+
+        $resourcePath = '/page/check_slug_availability/{slug}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($slug !== null) {
+            $resourcePath = str_replace(
+                '{' . 'slug' . '}',
+                ObjectSerializer::toPathValue($slug),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation create
+     *
+     * Create Page
+     *
+     * @param  \Alexasomba\Paystack\Model\PageCreate|null $pageCreate pageCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\PageCreateResponse|\Alexasomba\Paystack\Model\Error
+     */
+    public function create($pageCreate = null, string $contentType = self::contentTypes['create'][0])
+    {
+        list($response) = $this->createWithHttpInfo($pageCreate, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createWithHttpInfo
+     *
+     * Create Page
+     *
+     * @param  \Alexasomba\Paystack\Model\PageCreate|null $pageCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\PageCreateResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createWithHttpInfo($pageCreate = null, string $contentType = self::contentTypes['create'][0])
+    {
+        $request = $this->createRequest($pageCreate, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\PageCreateResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\PageCreateResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\PageCreateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAsync
+     *
+     * Create Page
+     *
+     * @param  \Alexasomba\Paystack\Model\PageCreate|null $pageCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsync($pageCreate = null, string $contentType = self::contentTypes['create'][0])
+    {
+        return $this->createAsyncWithHttpInfo($pageCreate, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAsyncWithHttpInfo
+     *
+     * Create Page
+     *
+     * @param  \Alexasomba\Paystack\Model\PageCreate|null $pageCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsyncWithHttpInfo($pageCreate = null, string $contentType = self::contentTypes['create'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\PageCreateResponse';
+        $request = $this->createRequest($pageCreate, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'create'
+     *
+     * @param  \Alexasomba\Paystack\Model\PageCreate|null $pageCreate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createRequest($pageCreate = null, string $contentType = self::contentTypes['create'][0])
+    {
+
+
+
+        $resourcePath = '/page';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($pageCreate)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($pageCreate));
+            } else {
+                $httpBody = $pageCreate;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation fetch
+     *
+     * Fetch Page
+     *
+     * @param  string $idOrSlug The page ID or slug you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\PageFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
+     */
+    public function fetch($idOrSlug, string $contentType = self::contentTypes['fetch'][0])
+    {
+        list($response) = $this->fetchWithHttpInfo($idOrSlug, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation fetchWithHttpInfo
+     *
+     * Fetch Page
+     *
+     * @param  string $idOrSlug The page ID or slug you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\PageFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function fetchWithHttpInfo($idOrSlug, string $contentType = self::contentTypes['fetch'][0])
+    {
+        $request = $this->fetchRequest($idOrSlug, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\PageFetchResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\PageFetchResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\PageFetchResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation fetchAsync
+     *
+     * Fetch Page
+     *
+     * @param  string $idOrSlug The page ID or slug you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchAsync($idOrSlug, string $contentType = self::contentTypes['fetch'][0])
+    {
+        return $this->fetchAsyncWithHttpInfo($idOrSlug, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation fetchAsyncWithHttpInfo
+     *
+     * Fetch Page
+     *
+     * @param  string $idOrSlug The page ID or slug you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchAsyncWithHttpInfo($idOrSlug, string $contentType = self::contentTypes['fetch'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\PageFetchResponse';
+        $request = $this->fetchRequest($idOrSlug, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'fetch'
+     *
+     * @param  string $idOrSlug The page ID or slug you want to fetch (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function fetchRequest($idOrSlug, string $contentType = self::contentTypes['fetch'][0])
+    {
+
+        // verify the required parameter 'idOrSlug' is set
+        if ($idOrSlug === null || (is_array($idOrSlug) && count($idOrSlug) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $idOrSlug when calling fetch'
+            );
+        }
+
+
+        $resourcePath = '/page/{id_or_slug}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($idOrSlug !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id_or_slug' . '}',
+                ObjectSerializer::toPathValue($idOrSlug),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation update
+     *
+     * Update Page
+     *
+     * @param  string $idOrSlug The page ID or slug you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PageUpdate|null $pageUpdate pageUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\PageUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
+     */
+    public function update($idOrSlug, $pageUpdate = null, string $contentType = self::contentTypes['update'][0])
+    {
+        list($response) = $this->updateWithHttpInfo($idOrSlug, $pageUpdate, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateWithHttpInfo
+     *
+     * Update Page
+     *
+     * @param  string $idOrSlug The page ID or slug you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PageUpdate|null $pageUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\PageUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateWithHttpInfo($idOrSlug, $pageUpdate = null, string $contentType = self::contentTypes['update'][0])
+    {
+        $request = $this->updateRequest($idOrSlug, $pageUpdate, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\PageUpdateResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\PageUpdateResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\PageUpdateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAsync
+     *
+     * Update Page
+     *
+     * @param  string $idOrSlug The page ID or slug you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PageUpdate|null $pageUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAsync($idOrSlug, $pageUpdate = null, string $contentType = self::contentTypes['update'][0])
+    {
+        return $this->updateAsyncWithHttpInfo($idOrSlug, $pageUpdate, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAsyncWithHttpInfo
+     *
+     * Update Page
+     *
+     * @param  string $idOrSlug The page ID or slug you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PageUpdate|null $pageUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAsyncWithHttpInfo($idOrSlug, $pageUpdate = null, string $contentType = self::contentTypes['update'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\PageUpdateResponse';
+        $request = $this->updateRequest($idOrSlug, $pageUpdate, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'update'
+     *
+     * @param  string $idOrSlug The page ID or slug you want to fetch (required)
+     * @param  \Alexasomba\Paystack\Model\PageUpdate|null $pageUpdate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateRequest($idOrSlug, $pageUpdate = null, string $contentType = self::contentTypes['update'][0])
+    {
+
+        // verify the required parameter 'idOrSlug' is set
+        if ($idOrSlug === null || (is_array($idOrSlug) && count($idOrSlug) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $idOrSlug when calling update'
             );
         }
 
@@ -1902,10 +1902,10 @@ class PageApi
 
 
         // path params
-        if ($id_or_slug !== null) {
+        if ($idOrSlug !== null) {
             $resourcePath = str_replace(
                 '{' . 'id_or_slug' . '}',
-                ObjectSerializer::toPathValue($id_or_slug),
+                ObjectSerializer::toPathValue($idOrSlug),
                 $resourcePath
             );
         }
@@ -1918,12 +1918,12 @@ class PageApi
         );
 
         // for model (json/xml)
-        if (isset($page_update)) {
+        if (isset($pageUpdate)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($page_update));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($pageUpdate));
             } else {
-                $httpBody = $page_update;
+                $httpBody = $pageUpdate;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

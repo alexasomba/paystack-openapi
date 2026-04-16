@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PaymentRequestUpdateResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,24 +62,24 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
         'domain' => 'string',
         'amount' => 'int',
         'currency' => 'string',
-        'due_date' => 'string',
-        'has_invoice' => 'bool',
-        'invoice_number' => 'int',
+        'dueDate' => 'string',
+        'hasInvoice' => 'bool',
+        'invoiceNumber' => 'int',
         'description' => 'string',
-        'pdf_url' => 'string',
-        'line_items' => 'mixed[]',
+        'pdfUrl' => 'string',
+        'lineItems' => 'mixed[]',
         'tax' => 'mixed[]',
-        'request_code' => 'string',
+        'requestCode' => 'string',
         'status' => 'string',
         'paid' => 'bool',
-        'paid_at' => 'string',
+        'paidAt' => 'string',
         'metadata' => 'object',
-        'notifications' => '\Alexasomba\\Paystack\Model\PaymentRequestNotificationsArray[]',
-        'offline_reference' => 'string',
-        'customer' => '\Alexasomba\\Paystack\Model\DedicatedNubanCreateResponseDataCustomer',
-        'created_at' => 'string',
+        'notifications' => '\Alexasomba\Paystack\Model\PaymentRequestNotificationsArray[]',
+        'offlineReference' => 'string',
+        'customer' => '\Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer',
+        'createdAt' => 'string',
         'discount' => 'object',
-        'split_code' => 'string'
+        'splitCode' => 'string'
     ];
 
     /**
@@ -94,24 +94,24 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
         'domain' => null,
         'amount' => null,
         'currency' => null,
-        'due_date' => null,
-        'has_invoice' => null,
-        'invoice_number' => null,
+        'dueDate' => null,
+        'hasInvoice' => null,
+        'invoiceNumber' => null,
         'description' => null,
-        'pdf_url' => null,
-        'line_items' => null,
+        'pdfUrl' => null,
+        'lineItems' => null,
         'tax' => null,
-        'request_code' => null,
+        'requestCode' => null,
         'status' => null,
         'paid' => null,
-        'paid_at' => null,
+        'paidAt' => null,
         'metadata' => null,
         'notifications' => null,
-        'offline_reference' => null,
+        'offlineReference' => null,
         'customer' => null,
-        'created_at' => null,
+        'createdAt' => null,
         'discount' => null,
-        'split_code' => null
+        'splitCode' => null
     ];
 
     /**
@@ -124,24 +124,24 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
         'domain' => false,
         'amount' => false,
         'currency' => false,
-        'due_date' => true,
-        'has_invoice' => false,
-        'invoice_number' => true,
+        'dueDate' => true,
+        'hasInvoice' => false,
+        'invoiceNumber' => true,
         'description' => true,
-        'pdf_url' => true,
-        'line_items' => false,
+        'pdfUrl' => true,
+        'lineItems' => false,
         'tax' => false,
-        'request_code' => false,
+        'requestCode' => false,
         'status' => false,
         'paid' => false,
-        'paid_at' => true,
+        'paidAt' => true,
         'metadata' => true,
         'notifications' => false,
-        'offline_reference' => false,
+        'offlineReference' => false,
         'customer' => false,
-        'created_at' => false,
+        'createdAt' => false,
         'discount' => true,
-        'split_code' => true
+        'splitCode' => true
     ];
 
     /**
@@ -234,24 +234,24 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
         'domain' => 'domain',
         'amount' => 'amount',
         'currency' => 'currency',
-        'due_date' => 'due_date',
-        'has_invoice' => 'has_invoice',
-        'invoice_number' => 'invoice_number',
+        'dueDate' => 'due_date',
+        'hasInvoice' => 'has_invoice',
+        'invoiceNumber' => 'invoice_number',
         'description' => 'description',
-        'pdf_url' => 'pdf_url',
-        'line_items' => 'line_items',
+        'pdfUrl' => 'pdf_url',
+        'lineItems' => 'line_items',
         'tax' => 'tax',
-        'request_code' => 'request_code',
+        'requestCode' => 'request_code',
         'status' => 'status',
         'paid' => 'paid',
-        'paid_at' => 'paid_at',
+        'paidAt' => 'paid_at',
         'metadata' => 'metadata',
         'notifications' => 'notifications',
-        'offline_reference' => 'offline_reference',
+        'offlineReference' => 'offline_reference',
         'customer' => 'customer',
-        'created_at' => 'created_at',
+        'createdAt' => 'created_at',
         'discount' => 'discount',
-        'split_code' => 'split_code'
+        'splitCode' => 'split_code'
     ];
 
     /**
@@ -264,24 +264,24 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
         'domain' => 'setDomain',
         'amount' => 'setAmount',
         'currency' => 'setCurrency',
-        'due_date' => 'setDueDate',
-        'has_invoice' => 'setHasInvoice',
-        'invoice_number' => 'setInvoiceNumber',
+        'dueDate' => 'setDueDate',
+        'hasInvoice' => 'setHasInvoice',
+        'invoiceNumber' => 'setInvoiceNumber',
         'description' => 'setDescription',
-        'pdf_url' => 'setPdfUrl',
-        'line_items' => 'setLineItems',
+        'pdfUrl' => 'setPdfUrl',
+        'lineItems' => 'setLineItems',
         'tax' => 'setTax',
-        'request_code' => 'setRequestCode',
+        'requestCode' => 'setRequestCode',
         'status' => 'setStatus',
         'paid' => 'setPaid',
-        'paid_at' => 'setPaidAt',
+        'paidAt' => 'setPaidAt',
         'metadata' => 'setMetadata',
         'notifications' => 'setNotifications',
-        'offline_reference' => 'setOfflineReference',
+        'offlineReference' => 'setOfflineReference',
         'customer' => 'setCustomer',
-        'created_at' => 'setCreatedAt',
+        'createdAt' => 'setCreatedAt',
         'discount' => 'setDiscount',
-        'split_code' => 'setSplitCode'
+        'splitCode' => 'setSplitCode'
     ];
 
     /**
@@ -294,24 +294,24 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
         'domain' => 'getDomain',
         'amount' => 'getAmount',
         'currency' => 'getCurrency',
-        'due_date' => 'getDueDate',
-        'has_invoice' => 'getHasInvoice',
-        'invoice_number' => 'getInvoiceNumber',
+        'dueDate' => 'getDueDate',
+        'hasInvoice' => 'getHasInvoice',
+        'invoiceNumber' => 'getInvoiceNumber',
         'description' => 'getDescription',
-        'pdf_url' => 'getPdfUrl',
-        'line_items' => 'getLineItems',
+        'pdfUrl' => 'getPdfUrl',
+        'lineItems' => 'getLineItems',
         'tax' => 'getTax',
-        'request_code' => 'getRequestCode',
+        'requestCode' => 'getRequestCode',
         'status' => 'getStatus',
         'paid' => 'getPaid',
-        'paid_at' => 'getPaidAt',
+        'paidAt' => 'getPaidAt',
         'metadata' => 'getMetadata',
         'notifications' => 'getNotifications',
-        'offline_reference' => 'getOfflineReference',
+        'offlineReference' => 'getOfflineReference',
         'customer' => 'getCustomer',
-        'created_at' => 'getCreatedAt',
+        'createdAt' => 'getCreatedAt',
         'discount' => 'getDiscount',
-        'split_code' => 'getSplitCode'
+        'splitCode' => 'getSplitCode'
     ];
 
     /**
@@ -375,24 +375,24 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('due_date', $data ?? [], null);
-        $this->setIfExists('has_invoice', $data ?? [], null);
-        $this->setIfExists('invoice_number', $data ?? [], null);
+        $this->setIfExists('dueDate', $data ?? [], null);
+        $this->setIfExists('hasInvoice', $data ?? [], null);
+        $this->setIfExists('invoiceNumber', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('pdf_url', $data ?? [], null);
-        $this->setIfExists('line_items', $data ?? [], null);
+        $this->setIfExists('pdfUrl', $data ?? [], null);
+        $this->setIfExists('lineItems', $data ?? [], null);
         $this->setIfExists('tax', $data ?? [], null);
-        $this->setIfExists('request_code', $data ?? [], null);
+        $this->setIfExists('requestCode', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('paid', $data ?? [], null);
-        $this->setIfExists('paid_at', $data ?? [], null);
+        $this->setIfExists('paidAt', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('notifications', $data ?? [], null);
-        $this->setIfExists('offline_reference', $data ?? [], null);
+        $this->setIfExists('offlineReference', $data ?? [], null);
         $this->setIfExists('customer', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
         $this->setIfExists('discount', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
+        $this->setIfExists('splitCode', $data ?? [], null);
     }
 
     /**
@@ -434,29 +434,29 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['due_date'] === null && !$this->isNullableSetToNull('due_date')) {
-            $invalidProperties[] = "'due_date' can't be null";
+        if ($this->container['dueDate'] === null && !$this->isNullableSetToNull('dueDate')) {
+            $invalidProperties[] = "'dueDate' can't be null";
         }
-        if ($this->container['has_invoice'] === null) {
-            $invalidProperties[] = "'has_invoice' can't be null";
+        if ($this->container['hasInvoice'] === null) {
+            $invalidProperties[] = "'hasInvoice' can't be null";
         }
-        if ($this->container['invoice_number'] === null && !$this->isNullableSetToNull('invoice_number')) {
-            $invalidProperties[] = "'invoice_number' can't be null";
+        if ($this->container['invoiceNumber'] === null && !$this->isNullableSetToNull('invoiceNumber')) {
+            $invalidProperties[] = "'invoiceNumber' can't be null";
         }
         if ($this->container['description'] === null && !$this->isNullableSetToNull('description')) {
             $invalidProperties[] = "'description' can't be null";
         }
-        if ($this->container['pdf_url'] === null && !$this->isNullableSetToNull('pdf_url')) {
-            $invalidProperties[] = "'pdf_url' can't be null";
+        if ($this->container['pdfUrl'] === null && !$this->isNullableSetToNull('pdfUrl')) {
+            $invalidProperties[] = "'pdfUrl' can't be null";
         }
-        if ($this->container['line_items'] === null) {
-            $invalidProperties[] = "'line_items' can't be null";
+        if ($this->container['lineItems'] === null) {
+            $invalidProperties[] = "'lineItems' can't be null";
         }
         if ($this->container['tax'] === null) {
             $invalidProperties[] = "'tax' can't be null";
         }
-        if ($this->container['request_code'] === null) {
-            $invalidProperties[] = "'request_code' can't be null";
+        if ($this->container['requestCode'] === null) {
+            $invalidProperties[] = "'requestCode' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
@@ -464,8 +464,8 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
         if ($this->container['paid'] === null) {
             $invalidProperties[] = "'paid' can't be null";
         }
-        if ($this->container['paid_at'] === null && !$this->isNullableSetToNull('paid_at')) {
-            $invalidProperties[] = "'paid_at' can't be null";
+        if ($this->container['paidAt'] === null && !$this->isNullableSetToNull('paidAt')) {
+            $invalidProperties[] = "'paidAt' can't be null";
         }
         if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
@@ -473,14 +473,14 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
         if ($this->container['notifications'] === null) {
             $invalidProperties[] = "'notifications' can't be null";
         }
-        if ($this->container['offline_reference'] === null) {
-            $invalidProperties[] = "'offline_reference' can't be null";
+        if ($this->container['offlineReference'] === null) {
+            $invalidProperties[] = "'offlineReference' can't be null";
         }
         if ($this->container['customer'] === null) {
             $invalidProperties[] = "'customer' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -606,96 +606,96 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets due_date
+     * Gets dueDate
      *
      * @return string|null
      */
     public function getDueDate()
     {
-        return $this->container['due_date'];
+        return $this->container['dueDate'];
     }
 
     /**
-     * Sets due_date
+     * Sets dueDate
      *
-     * @param string|null $due_date due_date
+     * @param string|null $dueDate dueDate
      *
      * @return self
      */
-    public function setDueDate($due_date)
+    public function setDueDate($dueDate)
     {
-        if (is_null($due_date)) {
-            array_push($this->openAPINullablesSetToNull, 'due_date');
+        if (is_null($dueDate)) {
+            array_push($this->openAPINullablesSetToNull, 'dueDate');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('due_date', $nullablesSetToNull);
+            $index = array_search('dueDate', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['due_date'] = $due_date;
+        $this->container['dueDate'] = $dueDate;
 
         return $this;
     }
 
     /**
-     * Gets has_invoice
+     * Gets hasInvoice
      *
      * @return bool
      */
     public function getHasInvoice()
     {
-        return $this->container['has_invoice'];
+        return $this->container['hasInvoice'];
     }
 
     /**
-     * Sets has_invoice
+     * Sets hasInvoice
      *
-     * @param bool $has_invoice has_invoice
+     * @param bool $hasInvoice hasInvoice
      *
      * @return self
      */
-    public function setHasInvoice($has_invoice)
+    public function setHasInvoice($hasInvoice)
     {
-        if (is_null($has_invoice)) {
-            throw new \InvalidArgumentException('non-nullable has_invoice cannot be null');
+        if (is_null($hasInvoice)) {
+            throw new \InvalidArgumentException('non-nullable hasInvoice cannot be null');
         }
-        $this->container['has_invoice'] = $has_invoice;
+        $this->container['hasInvoice'] = $hasInvoice;
 
         return $this;
     }
 
     /**
-     * Gets invoice_number
+     * Gets invoiceNumber
      *
      * @return int|null
      */
     public function getInvoiceNumber()
     {
-        return $this->container['invoice_number'];
+        return $this->container['invoiceNumber'];
     }
 
     /**
-     * Sets invoice_number
+     * Sets invoiceNumber
      *
-     * @param int|null $invoice_number invoice_number
+     * @param int|null $invoiceNumber invoiceNumber
      *
      * @return self
      */
-    public function setInvoiceNumber($invoice_number)
+    public function setInvoiceNumber($invoiceNumber)
     {
-        if (is_null($invoice_number)) {
-            array_push($this->openAPINullablesSetToNull, 'invoice_number');
+        if (is_null($invoiceNumber)) {
+            array_push($this->openAPINullablesSetToNull, 'invoiceNumber');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('invoice_number', $nullablesSetToNull);
+            $index = array_search('invoiceNumber', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['invoice_number'] = $invoice_number;
+        $this->container['invoiceNumber'] = $invoiceNumber;
 
         return $this;
     }
@@ -735,62 +735,62 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets pdf_url
+     * Gets pdfUrl
      *
      * @return string|null
      */
     public function getPdfUrl()
     {
-        return $this->container['pdf_url'];
+        return $this->container['pdfUrl'];
     }
 
     /**
-     * Sets pdf_url
+     * Sets pdfUrl
      *
-     * @param string|null $pdf_url pdf_url
+     * @param string|null $pdfUrl pdfUrl
      *
      * @return self
      */
-    public function setPdfUrl($pdf_url)
+    public function setPdfUrl($pdfUrl)
     {
-        if (is_null($pdf_url)) {
-            array_push($this->openAPINullablesSetToNull, 'pdf_url');
+        if (is_null($pdfUrl)) {
+            array_push($this->openAPINullablesSetToNull, 'pdfUrl');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('pdf_url', $nullablesSetToNull);
+            $index = array_search('pdfUrl', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['pdf_url'] = $pdf_url;
+        $this->container['pdfUrl'] = $pdfUrl;
 
         return $this;
     }
 
     /**
-     * Gets line_items
+     * Gets lineItems
      *
      * @return mixed[]
      */
     public function getLineItems()
     {
-        return $this->container['line_items'];
+        return $this->container['lineItems'];
     }
 
     /**
-     * Sets line_items
+     * Sets lineItems
      *
-     * @param mixed[] $line_items line_items
+     * @param mixed[] $lineItems lineItems
      *
      * @return self
      */
-    public function setLineItems($line_items)
+    public function setLineItems($lineItems)
     {
-        if (is_null($line_items)) {
-            throw new \InvalidArgumentException('non-nullable line_items cannot be null');
+        if (is_null($lineItems)) {
+            throw new \InvalidArgumentException('non-nullable lineItems cannot be null');
         }
-        $this->container['line_items'] = $line_items;
+        $this->container['lineItems'] = $lineItems;
 
         return $this;
     }
@@ -823,28 +823,28 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets request_code
+     * Gets requestCode
      *
      * @return string
      */
     public function getRequestCode()
     {
-        return $this->container['request_code'];
+        return $this->container['requestCode'];
     }
 
     /**
-     * Sets request_code
+     * Sets requestCode
      *
-     * @param string $request_code request_code
+     * @param string $requestCode requestCode
      *
      * @return self
      */
-    public function setRequestCode($request_code)
+    public function setRequestCode($requestCode)
     {
-        if (is_null($request_code)) {
-            throw new \InvalidArgumentException('non-nullable request_code cannot be null');
+        if (is_null($requestCode)) {
+            throw new \InvalidArgumentException('non-nullable requestCode cannot be null');
         }
-        $this->container['request_code'] = $request_code;
+        $this->container['requestCode'] = $requestCode;
 
         return $this;
     }
@@ -904,35 +904,35 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets paid_at
+     * Gets paidAt
      *
      * @return string|null
      */
     public function getPaidAt()
     {
-        return $this->container['paid_at'];
+        return $this->container['paidAt'];
     }
 
     /**
-     * Sets paid_at
+     * Sets paidAt
      *
-     * @param string|null $paid_at paid_at
+     * @param string|null $paidAt paidAt
      *
      * @return self
      */
-    public function setPaidAt($paid_at)
+    public function setPaidAt($paidAt)
     {
-        if (is_null($paid_at)) {
-            array_push($this->openAPINullablesSetToNull, 'paid_at');
+        if (is_null($paidAt)) {
+            array_push($this->openAPINullablesSetToNull, 'paidAt');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('paid_at', $nullablesSetToNull);
+            $index = array_search('paidAt', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['paid_at'] = $paid_at;
+        $this->container['paidAt'] = $paidAt;
 
         return $this;
     }
@@ -974,7 +974,7 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Gets notifications
      *
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestNotificationsArray[]
+     * @return \Alexasomba\Paystack\Model\PaymentRequestNotificationsArray[]
      */
     public function getNotifications()
     {
@@ -984,7 +984,7 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Sets notifications
      *
-     * @param \Alexasomba\\Paystack\Model\PaymentRequestNotificationsArray[] $notifications notifications
+     * @param \Alexasomba\Paystack\Model\PaymentRequestNotificationsArray[] $notifications notifications
      *
      * @return self
      */
@@ -999,28 +999,28 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets offline_reference
+     * Gets offlineReference
      *
      * @return string
      */
     public function getOfflineReference()
     {
-        return $this->container['offline_reference'];
+        return $this->container['offlineReference'];
     }
 
     /**
-     * Sets offline_reference
+     * Sets offlineReference
      *
-     * @param string $offline_reference offline_reference
+     * @param string $offlineReference offlineReference
      *
      * @return self
      */
-    public function setOfflineReference($offline_reference)
+    public function setOfflineReference($offlineReference)
     {
-        if (is_null($offline_reference)) {
-            throw new \InvalidArgumentException('non-nullable offline_reference cannot be null');
+        if (is_null($offlineReference)) {
+            throw new \InvalidArgumentException('non-nullable offlineReference cannot be null');
         }
-        $this->container['offline_reference'] = $offline_reference;
+        $this->container['offlineReference'] = $offlineReference;
 
         return $this;
     }
@@ -1028,7 +1028,7 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Gets customer
      *
-     * @return \Alexasomba\\Paystack\Model\DedicatedNubanCreateResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -1038,7 +1038,7 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Sets customer
      *
-     * @param \Alexasomba\\Paystack\Model\DedicatedNubanCreateResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer $customer customer
      *
      * @return self
      */
@@ -1053,28 +1053,28 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
@@ -1114,35 +1114,35 @@ class PaymentRequestUpdateResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets split_code
+     * Gets splitCode
      *
      * @return string|null
      */
     public function getSplitCode()
     {
-        return $this->container['split_code'];
+        return $this->container['splitCode'];
     }
 
     /**
-     * Sets split_code
+     * Sets splitCode
      *
-     * @param string|null $split_code split_code
+     * @param string|null $splitCode splitCode
      *
      * @return self
      */
-    public function setSplitCode($split_code)
+    public function setSplitCode($splitCode)
     {
-        if (is_null($split_code)) {
-            array_push($this->openAPINullablesSetToNull, 'split_code');
+        if (is_null($splitCode)) {
+            array_push($this->openAPINullablesSetToNull, 'splitCode');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('split_code', $nullablesSetToNull);
+            $index = array_search('splitCode', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['split_code'] = $split_code;
+        $this->container['splitCode'] = $splitCode;
 
         return $this;
     }

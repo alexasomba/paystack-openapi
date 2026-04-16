@@ -40,7 +40,7 @@ class CapitecPayApi:
 
 
     @validate_call
-    def capitec_pay_requery(
+    def requery(
         self,
         ref: Annotated[StrictStr, Field(description="The transaction reference from the previously initiated charge request")],
         _request_timeout: Union[
@@ -84,7 +84,7 @@ class CapitecPayApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._capitec_pay_requery_serialize(
+        _param = self._requery_serialize(
             ref=ref,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -108,7 +108,7 @@ class CapitecPayApi:
 
 
     @validate_call
-    def capitec_pay_requery_with_http_info(
+    def requery_with_http_info(
         self,
         ref: Annotated[StrictStr, Field(description="The transaction reference from the previously initiated charge request")],
         _request_timeout: Union[
@@ -152,7 +152,7 @@ class CapitecPayApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._capitec_pay_requery_serialize(
+        _param = self._requery_serialize(
             ref=ref,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -176,7 +176,7 @@ class CapitecPayApi:
 
 
     @validate_call
-    def capitec_pay_requery_without_preload_content(
+    def requery_without_preload_content(
         self,
         ref: Annotated[StrictStr, Field(description="The transaction reference from the previously initiated charge request")],
         _request_timeout: Union[
@@ -220,7 +220,7 @@ class CapitecPayApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._capitec_pay_requery_serialize(
+        _param = self._requery_serialize(
             ref=ref,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -239,7 +239,7 @@ class CapitecPayApi:
         return response_data.response
 
 
-    def _capitec_pay_requery_serialize(
+    def _requery_serialize(
         self,
         ref,
         _request_auth,

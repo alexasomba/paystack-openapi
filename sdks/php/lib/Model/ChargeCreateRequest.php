@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * ChargeCreateRequest Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,16 +60,16 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPITypes = [
         'email' => 'string',
         'amount' => 'int',
-        'authorization_code' => 'string',
+        'authorizationCode' => 'string',
         'pin' => 'string',
         'reference' => 'string',
         'birthday' => '\DateTime',
-        'device_id' => 'string',
-        'metadata' => '\Alexasomba\\Paystack\Model\ChargeCreateMetadata',
-        'bank' => '\Alexasomba\\Paystack\Model\Bank',
-        'mobile_money' => '\Alexasomba\\Paystack\Model\MobileMoney',
-        'ussd' => '\Alexasomba\\Paystack\Model\USSD',
-        'eft' => '\Alexasomba\\Paystack\Model\EFT'
+        'deviceId' => 'string',
+        'metadata' => '\Alexasomba\Paystack\Model\ChargeCreateMetadata',
+        'bank' => '\Alexasomba\Paystack\Model\Bank',
+        'mobileMoney' => '\Alexasomba\Paystack\Model\MobileMoney',
+        'ussd' => '\Alexasomba\Paystack\Model\USSD',
+        'eft' => '\Alexasomba\Paystack\Model\EFT'
     ];
 
     /**
@@ -82,14 +82,14 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPIFormats = [
         'email' => null,
         'amount' => null,
-        'authorization_code' => null,
+        'authorizationCode' => null,
         'pin' => null,
         'reference' => null,
         'birthday' => 'date',
-        'device_id' => null,
+        'deviceId' => null,
         'metadata' => null,
         'bank' => null,
-        'mobile_money' => null,
+        'mobileMoney' => null,
         'ussd' => null,
         'eft' => null
     ];
@@ -102,14 +102,14 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPINullables = [
         'email' => false,
         'amount' => false,
-        'authorization_code' => false,
+        'authorizationCode' => false,
         'pin' => false,
         'reference' => false,
         'birthday' => false,
-        'device_id' => false,
+        'deviceId' => false,
         'metadata' => false,
         'bank' => false,
-        'mobile_money' => false,
+        'mobileMoney' => false,
         'ussd' => false,
         'eft' => false
     ];
@@ -202,14 +202,14 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $attributeMap = [
         'email' => 'email',
         'amount' => 'amount',
-        'authorization_code' => 'authorization_code',
+        'authorizationCode' => 'authorization_code',
         'pin' => 'pin',
         'reference' => 'reference',
         'birthday' => 'birthday',
-        'device_id' => 'device_id',
+        'deviceId' => 'device_id',
         'metadata' => 'metadata',
         'bank' => 'bank',
-        'mobile_money' => 'mobile_money',
+        'mobileMoney' => 'mobile_money',
         'ussd' => 'ussd',
         'eft' => 'eft'
     ];
@@ -222,14 +222,14 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $setters = [
         'email' => 'setEmail',
         'amount' => 'setAmount',
-        'authorization_code' => 'setAuthorizationCode',
+        'authorizationCode' => 'setAuthorizationCode',
         'pin' => 'setPin',
         'reference' => 'setReference',
         'birthday' => 'setBirthday',
-        'device_id' => 'setDeviceId',
+        'deviceId' => 'setDeviceId',
         'metadata' => 'setMetadata',
         'bank' => 'setBank',
-        'mobile_money' => 'setMobileMoney',
+        'mobileMoney' => 'setMobileMoney',
         'ussd' => 'setUssd',
         'eft' => 'setEft'
     ];
@@ -242,14 +242,14 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $getters = [
         'email' => 'getEmail',
         'amount' => 'getAmount',
-        'authorization_code' => 'getAuthorizationCode',
+        'authorizationCode' => 'getAuthorizationCode',
         'pin' => 'getPin',
         'reference' => 'getReference',
         'birthday' => 'getBirthday',
-        'device_id' => 'getDeviceId',
+        'deviceId' => 'getDeviceId',
         'metadata' => 'getMetadata',
         'bank' => 'getBank',
-        'mobile_money' => 'getMobileMoney',
+        'mobileMoney' => 'getMobileMoney',
         'ussd' => 'getUssd',
         'eft' => 'getEft'
     ];
@@ -313,14 +313,14 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('authorization_code', $data ?? [], null);
+        $this->setIfExists('authorizationCode', $data ?? [], null);
         $this->setIfExists('pin', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('birthday', $data ?? [], null);
-        $this->setIfExists('device_id', $data ?? [], null);
+        $this->setIfExists('deviceId', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('bank', $data ?? [], null);
-        $this->setIfExists('mobile_money', $data ?? [], null);
+        $this->setIfExists('mobileMoney', $data ?? [], null);
         $this->setIfExists('ussd', $data ?? [], null);
         $this->setIfExists('eft', $data ?? [], null);
     }
@@ -428,28 +428,28 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets authorization_code
+     * Gets authorizationCode
      *
      * @return string|null
      */
     public function getAuthorizationCode()
     {
-        return $this->container['authorization_code'];
+        return $this->container['authorizationCode'];
     }
 
     /**
-     * Sets authorization_code
+     * Sets authorizationCode
      *
-     * @param string|null $authorization_code An authorization code to charge.
+     * @param string|null $authorizationCode An authorization code to charge.
      *
      * @return self
      */
-    public function setAuthorizationCode($authorization_code)
+    public function setAuthorizationCode($authorizationCode)
     {
-        if (is_null($authorization_code)) {
-            throw new \InvalidArgumentException('non-nullable authorization_code cannot be null');
+        if (is_null($authorizationCode)) {
+            throw new \InvalidArgumentException('non-nullable authorizationCode cannot be null');
         }
-        $this->container['authorization_code'] = $authorization_code;
+        $this->container['authorizationCode'] = $authorizationCode;
 
         return $this;
     }
@@ -536,28 +536,28 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets device_id
+     * Gets deviceId
      *
      * @return string|null
      */
     public function getDeviceId()
     {
-        return $this->container['device_id'];
+        return $this->container['deviceId'];
     }
 
     /**
-     * Sets device_id
+     * Sets deviceId
      *
-     * @param string|null $device_id This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.
+     * @param string|null $deviceId This is the unique identifier of the device a user uses in making payment.  Only -, .`, = and alphanumeric characters are allowed.
      *
      * @return self
      */
-    public function setDeviceId($device_id)
+    public function setDeviceId($deviceId)
     {
-        if (is_null($device_id)) {
-            throw new \InvalidArgumentException('non-nullable device_id cannot be null');
+        if (is_null($deviceId)) {
+            throw new \InvalidArgumentException('non-nullable deviceId cannot be null');
         }
-        $this->container['device_id'] = $device_id;
+        $this->container['deviceId'] = $deviceId;
 
         return $this;
     }
@@ -565,7 +565,7 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\\Paystack\Model\ChargeCreateMetadata|null
+     * @return \Alexasomba\Paystack\Model\ChargeCreateMetadata|null
      */
     public function getMetadata()
     {
@@ -575,7 +575,7 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\\Paystack\Model\ChargeCreateMetadata|null $metadata metadata
+     * @param \Alexasomba\Paystack\Model\ChargeCreateMetadata|null $metadata metadata
      *
      * @return self
      */
@@ -592,7 +592,7 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets bank
      *
-     * @return \Alexasomba\\Paystack\Model\Bank|null
+     * @return \Alexasomba\Paystack\Model\Bank|null
      */
     public function getBank()
     {
@@ -602,7 +602,7 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets bank
      *
-     * @param \Alexasomba\\Paystack\Model\Bank|null $bank bank
+     * @param \Alexasomba\Paystack\Model\Bank|null $bank bank
      *
      * @return self
      */
@@ -617,28 +617,28 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets mobile_money
+     * Gets mobileMoney
      *
-     * @return \Alexasomba\\Paystack\Model\MobileMoney|null
+     * @return \Alexasomba\Paystack\Model\MobileMoney|null
      */
     public function getMobileMoney()
     {
-        return $this->container['mobile_money'];
+        return $this->container['mobileMoney'];
     }
 
     /**
-     * Sets mobile_money
+     * Sets mobileMoney
      *
-     * @param \Alexasomba\\Paystack\Model\MobileMoney|null $mobile_money mobile_money
+     * @param \Alexasomba\Paystack\Model\MobileMoney|null $mobileMoney mobileMoney
      *
      * @return self
      */
-    public function setMobileMoney($mobile_money)
+    public function setMobileMoney($mobileMoney)
     {
-        if (is_null($mobile_money)) {
-            throw new \InvalidArgumentException('non-nullable mobile_money cannot be null');
+        if (is_null($mobileMoney)) {
+            throw new \InvalidArgumentException('non-nullable mobileMoney cannot be null');
         }
-        $this->container['mobile_money'] = $mobile_money;
+        $this->container['mobileMoney'] = $mobileMoney;
 
         return $this;
     }
@@ -646,7 +646,7 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets ussd
      *
-     * @return \Alexasomba\\Paystack\Model\USSD|null
+     * @return \Alexasomba\Paystack\Model\USSD|null
      */
     public function getUssd()
     {
@@ -656,7 +656,7 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets ussd
      *
-     * @param \Alexasomba\\Paystack\Model\USSD|null $ussd ussd
+     * @param \Alexasomba\Paystack\Model\USSD|null $ussd ussd
      *
      * @return self
      */
@@ -673,7 +673,7 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets eft
      *
-     * @return \Alexasomba\\Paystack\Model\EFT|null
+     * @return \Alexasomba\Paystack\Model\EFT|null
      */
     public function getEft()
     {
@@ -683,7 +683,7 @@ class ChargeCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets eft
      *
-     * @param \Alexasomba\\Paystack\Model\EFT|null $eft eft
+     * @param \Alexasomba\Paystack\Model\EFT|null $eft eft
      *
      * @return self
      */

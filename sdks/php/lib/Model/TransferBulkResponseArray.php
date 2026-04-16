@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransferBulkResponseArray Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class TransferBulkResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'reference' => 'string',
         'recipient' => 'string',
         'amount' => 'int',
-        'transfer_code' => 'string',
+        'transferCode' => 'string',
         'currency' => 'string',
         'status' => 'string'
     ];
@@ -77,7 +77,7 @@ class TransferBulkResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'reference' => null,
         'recipient' => null,
         'amount' => null,
-        'transfer_code' => null,
+        'transferCode' => null,
         'currency' => null,
         'status' => null
     ];
@@ -91,7 +91,7 @@ class TransferBulkResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'reference' => false,
         'recipient' => false,
         'amount' => false,
-        'transfer_code' => false,
+        'transferCode' => false,
         'currency' => false,
         'status' => false
     ];
@@ -185,7 +185,7 @@ class TransferBulkResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'reference' => 'reference',
         'recipient' => 'recipient',
         'amount' => 'amount',
-        'transfer_code' => 'transfer_code',
+        'transferCode' => 'transfer_code',
         'currency' => 'currency',
         'status' => 'status'
     ];
@@ -199,7 +199,7 @@ class TransferBulkResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'reference' => 'setReference',
         'recipient' => 'setRecipient',
         'amount' => 'setAmount',
-        'transfer_code' => 'setTransferCode',
+        'transferCode' => 'setTransferCode',
         'currency' => 'setCurrency',
         'status' => 'setStatus'
     ];
@@ -213,7 +213,7 @@ class TransferBulkResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         'reference' => 'getReference',
         'recipient' => 'getRecipient',
         'amount' => 'getAmount',
-        'transfer_code' => 'getTransferCode',
+        'transferCode' => 'getTransferCode',
         'currency' => 'getCurrency',
         'status' => 'getStatus'
     ];
@@ -278,7 +278,7 @@ class TransferBulkResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('recipient', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('transfer_code', $data ?? [], null);
+        $this->setIfExists('transferCode', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
     }
@@ -319,8 +319,8 @@ class TransferBulkResponseArray implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
-        if ($this->container['transfer_code'] === null) {
-            $invalidProperties[] = "'transfer_code' can't be null";
+        if ($this->container['transferCode'] === null) {
+            $invalidProperties[] = "'transferCode' can't be null";
         }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
@@ -425,28 +425,28 @@ class TransferBulkResponseArray implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets transfer_code
+     * Gets transferCode
      *
      * @return string
      */
     public function getTransferCode()
     {
-        return $this->container['transfer_code'];
+        return $this->container['transferCode'];
     }
 
     /**
-     * Sets transfer_code
+     * Sets transferCode
      *
-     * @param string $transfer_code transfer_code
+     * @param string $transferCode transferCode
      *
      * @return self
      */
-    public function setTransferCode($transfer_code)
+    public function setTransferCode($transferCode)
     {
-        if (is_null($transfer_code)) {
-            throw new \InvalidArgumentException('non-nullable transfer_code cannot be null');
+        if (is_null($transferCode)) {
+            throw new \InvalidArgumentException('non-nullable transferCode cannot be null');
         }
-        $this->container['transfer_code'] = $transfer_code;
+        $this->container['transferCode'] = $transferCode;
 
         return $this;
     }

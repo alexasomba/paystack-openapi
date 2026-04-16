@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * OrderFetchResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,9 +63,9 @@ class OrderFetchResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'amount' => 'int',
         'currency' => 'string',
         'status' => 'string',
-        'customer' => '\Alexasomba\\Paystack\Model\OrderFetchResponseDataCustomer',
-        'line_items' => '\Alexasomba\\Paystack\Model\OrderFetchResponseDataLineItemsInner[]',
-        'created_at' => 'string'
+        'customer' => '\Alexasomba\Paystack\Model\OrderFetchResponseDataCustomer',
+        'lineItems' => '\Alexasomba\Paystack\Model\OrderFetchResponseDataLineItemsInner[]',
+        'createdAt' => 'string'
     ];
 
     /**
@@ -82,8 +82,8 @@ class OrderFetchResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'currency' => null,
         'status' => null,
         'customer' => null,
-        'line_items' => null,
-        'created_at' => null
+        'lineItems' => null,
+        'createdAt' => null
     ];
 
     /**
@@ -98,8 +98,8 @@ class OrderFetchResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'currency' => false,
         'status' => false,
         'customer' => false,
-        'line_items' => false,
-        'created_at' => false
+        'lineItems' => false,
+        'createdAt' => false
     ];
 
     /**
@@ -194,8 +194,8 @@ class OrderFetchResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'currency' => 'currency',
         'status' => 'status',
         'customer' => 'customer',
-        'line_items' => 'line_items',
-        'created_at' => 'createdAt'
+        'lineItems' => 'line_items',
+        'createdAt' => 'createdAt'
     ];
 
     /**
@@ -210,8 +210,8 @@ class OrderFetchResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'currency' => 'setCurrency',
         'status' => 'setStatus',
         'customer' => 'setCustomer',
-        'line_items' => 'setLineItems',
-        'created_at' => 'setCreatedAt'
+        'lineItems' => 'setLineItems',
+        'createdAt' => 'setCreatedAt'
     ];
 
     /**
@@ -226,8 +226,8 @@ class OrderFetchResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'currency' => 'getCurrency',
         'status' => 'getStatus',
         'customer' => 'getCustomer',
-        'line_items' => 'getLineItems',
-        'created_at' => 'getCreatedAt'
+        'lineItems' => 'getLineItems',
+        'createdAt' => 'getCreatedAt'
     ];
 
     /**
@@ -293,8 +293,8 @@ class OrderFetchResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('customer', $data ?? [], null);
-        $this->setIfExists('line_items', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('lineItems', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
     }
 
     /**
@@ -342,11 +342,11 @@ class OrderFetchResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['customer'] === null) {
             $invalidProperties[] = "'customer' can't be null";
         }
-        if ($this->container['line_items'] === null) {
-            $invalidProperties[] = "'line_items' can't be null";
+        if ($this->container['lineItems'] === null) {
+            $invalidProperties[] = "'lineItems' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -501,7 +501,7 @@ class OrderFetchResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets customer
      *
-     * @return \Alexasomba\\Paystack\Model\OrderFetchResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\OrderFetchResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -511,7 +511,7 @@ class OrderFetchResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets customer
      *
-     * @param \Alexasomba\\Paystack\Model\OrderFetchResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\OrderFetchResponseDataCustomer $customer customer
      *
      * @return self
      */
@@ -526,55 +526,55 @@ class OrderFetchResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets line_items
+     * Gets lineItems
      *
-     * @return \Alexasomba\\Paystack\Model\OrderFetchResponseDataLineItemsInner[]
+     * @return \Alexasomba\Paystack\Model\OrderFetchResponseDataLineItemsInner[]
      */
     public function getLineItems()
     {
-        return $this->container['line_items'];
+        return $this->container['lineItems'];
     }
 
     /**
-     * Sets line_items
+     * Sets lineItems
      *
-     * @param \Alexasomba\\Paystack\Model\OrderFetchResponseDataLineItemsInner[] $line_items line_items
+     * @param \Alexasomba\Paystack\Model\OrderFetchResponseDataLineItemsInner[] $lineItems lineItems
      *
      * @return self
      */
-    public function setLineItems($line_items)
+    public function setLineItems($lineItems)
     {
-        if (is_null($line_items)) {
-            throw new \InvalidArgumentException('non-nullable line_items cannot be null');
+        if (is_null($lineItems)) {
+            throw new \InvalidArgumentException('non-nullable lineItems cannot be null');
         }
-        $this->container['line_items'] = $line_items;
+        $this->container['lineItems'] = $lineItems;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }

@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Api;
+namespace Alexasomba\Paystack\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Alexasomba\\Paystack\ApiException;
-use Alexasomba\\Paystack\Configuration;
-use Alexasomba\\Paystack\FormDataProcessor;
-use Alexasomba\\Paystack\HeaderSelector;
-use Alexasomba\\Paystack\ObjectSerializer;
+use Alexasomba\Paystack\ApiException;
+use Alexasomba\Paystack\Configuration;
+use Alexasomba\Paystack\FormDataProcessor;
+use Alexasomba\Paystack\HeaderSelector;
+use Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransactionApi Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -75,44 +75,44 @@ class TransactionApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'transactionChargeAuthorization' => [
+        'callList' => [
+            'application/json',
+        ],
+        'chargeAuthorization' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'transactionCheckAuthorization' => [
+        'checkAuthorization' => [
             'application/x-www-form-urlencoded',
             'application/json',
         ],
-        'transactionEvent' => [
+        'event' => [
             'application/json',
         ],
-        'transactionExport' => [
+        'export' => [
             'application/json',
         ],
-        'transactionFetch' => [
+        'fetch' => [
             'application/json',
         ],
-        'transactionInitialize' => [
-            'application/json',
-            'application/x-www-form-urlencoded',
-        ],
-        'transactionList' => [
-            'application/json',
-        ],
-        'transactionPartialDebit' => [
+        'initialize' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'transactionSession' => [
+        'partialDebit' => [
+            'application/json',
+            'application/x-www-form-urlencoded',
+        ],
+        'session' => [
             'application/json',
         ],
-        'transactionTimeline' => [
+        'timeline' => [
             'application/json',
         ],
-        'transactionTotals' => [
+        'totals' => [
             'application/json',
         ],
-        'transactionVerify' => [
+        'verify' => [
             'application/json',
         ],
     ];
@@ -164,38 +164,70 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionChargeAuthorization
+     * Operation callList
      *
-     * Charge Authorization
+     * List Transactions
      *
-     * @param  \Alexasomba\\Paystack\Model\TransactionChargeAuthorization|null $transaction_charge_authorization transaction_charge_authorization (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionChargeAuthorization'] to see the possible values for this operation
+     * @param  bool|null $useCursor A flag to indicate if cursor based pagination should be used (optional)
+     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
+     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  string|null $status Filter transaction by status (optional)
+     * @param  string|null $source The origin of the payment (optional)
+     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
+     * @param  string|null $virtualAccountNumber Filter transactions by a virtual account number (optional)
+     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
+     * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
+     * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
+     * @param  string|null $subaccountCode Filter transaction by subaccount code (optional)
+     * @param  string|null $splitCode Filter transaction by split code (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\ChargeAuthorizationResponse|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransactionListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionChargeAuthorization($transaction_charge_authorization = null, string $contentType = self::contentTypes['transactionChargeAuthorization'][0])
+    public function callList($useCursor = null, $next = null, $previous = null, $perPage = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtualAccountNumber = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccountCode = null, $splitCode = null, string $contentType = self::contentTypes['callList'][0])
     {
-        list($response) = $this->transactionChargeAuthorizationWithHttpInfo($transaction_charge_authorization, $contentType);
+        list($response) = $this->callListWithHttpInfo($useCursor, $next, $previous, $perPage, $page, $from, $to, $status, $source, $terminalid, $virtualAccountNumber, $customer, $amount, $settlement, $channel, $subaccountCode, $splitCode, $contentType);
         return $response;
     }
 
     /**
-     * Operation transactionChargeAuthorizationWithHttpInfo
+     * Operation callListWithHttpInfo
      *
-     * Charge Authorization
+     * List Transactions
      *
-     * @param  \Alexasomba\\Paystack\Model\TransactionChargeAuthorization|null $transaction_charge_authorization (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionChargeAuthorization'] to see the possible values for this operation
+     * @param  bool|null $useCursor A flag to indicate if cursor based pagination should be used (optional)
+     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
+     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  string|null $status Filter transaction by status (optional)
+     * @param  string|null $source The origin of the payment (optional)
+     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
+     * @param  string|null $virtualAccountNumber Filter transactions by a virtual account number (optional)
+     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
+     * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
+     * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
+     * @param  string|null $subaccountCode Filter transaction by subaccount code (optional)
+     * @param  string|null $splitCode Filter transaction by split code (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\ChargeAuthorizationResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransactionListResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionChargeAuthorizationWithHttpInfo($transaction_charge_authorization = null, string $contentType = self::contentTypes['transactionChargeAuthorization'][0])
+    public function callListWithHttpInfo($useCursor = null, $next = null, $previous = null, $perPage = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtualAccountNumber = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccountCode = null, $splitCode = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $request = $this->transactionChargeAuthorizationRequest($transaction_charge_authorization, $contentType);
+        $request = $this->callListRequest($useCursor, $next, $previous, $perPage, $page, $from, $to, $status, $source, $terminalid, $virtualAccountNumber, $customer, $amount, $settlement, $channel, $subaccountCode, $splitCode, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -223,13 +255,19 @@ class TransactionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\ChargeAuthorizationResponse',
+                        '\Alexasomba\Paystack\Model\TransactionListResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -251,7 +289,7 @@ class TransactionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\ChargeAuthorizationResponse',
+                '\Alexasomba\Paystack\Model\TransactionListResponse',
                 $request,
                 $response,
             );
@@ -260,7 +298,7 @@ class TransactionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\ChargeAuthorizationResponse',
+                        '\Alexasomba\Paystack\Model\TransactionListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -268,7 +306,15 @@ class TransactionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -281,19 +327,35 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionChargeAuthorizationAsync
+     * Operation callListAsync
      *
-     * Charge Authorization
+     * List Transactions
      *
-     * @param  \Alexasomba\\Paystack\Model\TransactionChargeAuthorization|null $transaction_charge_authorization (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionChargeAuthorization'] to see the possible values for this operation
+     * @param  bool|null $useCursor A flag to indicate if cursor based pagination should be used (optional)
+     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
+     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  string|null $status Filter transaction by status (optional)
+     * @param  string|null $source The origin of the payment (optional)
+     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
+     * @param  string|null $virtualAccountNumber Filter transactions by a virtual account number (optional)
+     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
+     * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
+     * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
+     * @param  string|null $subaccountCode Filter transaction by subaccount code (optional)
+     * @param  string|null $splitCode Filter transaction by split code (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionChargeAuthorizationAsync($transaction_charge_authorization = null, string $contentType = self::contentTypes['transactionChargeAuthorization'][0])
+    public function callListAsync($useCursor = null, $next = null, $previous = null, $perPage = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtualAccountNumber = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccountCode = null, $splitCode = null, string $contentType = self::contentTypes['callList'][0])
     {
-        return $this->transactionChargeAuthorizationAsyncWithHttpInfo($transaction_charge_authorization, $contentType)
+        return $this->callListAsyncWithHttpInfo($useCursor, $next, $previous, $perPage, $page, $from, $to, $status, $source, $terminalid, $virtualAccountNumber, $customer, $amount, $settlement, $channel, $subaccountCode, $splitCode, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -302,20 +364,36 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionChargeAuthorizationAsyncWithHttpInfo
+     * Operation callListAsyncWithHttpInfo
      *
-     * Charge Authorization
+     * List Transactions
      *
-     * @param  \Alexasomba\\Paystack\Model\TransactionChargeAuthorization|null $transaction_charge_authorization (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionChargeAuthorization'] to see the possible values for this operation
+     * @param  bool|null $useCursor A flag to indicate if cursor based pagination should be used (optional)
+     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
+     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  string|null $status Filter transaction by status (optional)
+     * @param  string|null $source The origin of the payment (optional)
+     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
+     * @param  string|null $virtualAccountNumber Filter transactions by a virtual account number (optional)
+     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
+     * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
+     * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
+     * @param  string|null $subaccountCode Filter transaction by subaccount code (optional)
+     * @param  string|null $splitCode Filter transaction by split code (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionChargeAuthorizationAsyncWithHttpInfo($transaction_charge_authorization = null, string $contentType = self::contentTypes['transactionChargeAuthorization'][0])
+    public function callListAsyncWithHttpInfo($useCursor = null, $next = null, $previous = null, $perPage = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtualAccountNumber = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccountCode = null, $splitCode = null, string $contentType = self::contentTypes['callList'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\ChargeAuthorizationResponse';
-        $request = $this->transactionChargeAuthorizationRequest($transaction_charge_authorization, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransactionListResponse';
+        $request = $this->callListRequest($useCursor, $next, $previous, $perPage, $page, $from, $to, $status, $source, $terminalid, $virtualAccountNumber, $customer, $amount, $settlement, $channel, $subaccountCode, $splitCode, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -354,15 +432,472 @@ class TransactionApi
     }
 
     /**
-     * Create request for operation 'transactionChargeAuthorization'
+     * Create request for operation 'callList'
      *
-     * @param  \Alexasomba\\Paystack\Model\TransactionChargeAuthorization|null $transaction_charge_authorization (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionChargeAuthorization'] to see the possible values for this operation
+     * @param  bool|null $useCursor A flag to indicate if cursor based pagination should be used (optional)
+     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
+     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
+     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
+     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
+     * @param  string|null $status Filter transaction by status (optional)
+     * @param  string|null $source The origin of the payment (optional)
+     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
+     * @param  string|null $virtualAccountNumber Filter transactions by a virtual account number (optional)
+     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
+     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
+     * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
+     * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
+     * @param  string|null $subaccountCode Filter transaction by subaccount code (optional)
+     * @param  string|null $splitCode Filter transaction by split code (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionChargeAuthorizationRequest($transaction_charge_authorization = null, string $contentType = self::contentTypes['transactionChargeAuthorization'][0])
+    public function callListRequest($useCursor = null, $next = null, $previous = null, $perPage = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtualAccountNumber = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccountCode = null, $splitCode = null, string $contentType = self::contentTypes['callList'][0])
+    {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $resourcePath = '/transaction';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $useCursor,
+            'use_cursor', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $next,
+            'next', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $previous,
+            'previous', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $perPage,
+            'perPage', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from,
+            'from', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to,
+            'to', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $status,
+            'status', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $source,
+            'source', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $terminalid,
+            'terminalid', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $virtualAccountNumber,
+            'virtual_account_number', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $customer,
+            'customer', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $amount,
+            'amount', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $settlement,
+            'settlement', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $channel,
+            'channel', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $subaccountCode,
+            'subaccount_code', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $splitCode,
+            'split_code', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation chargeAuthorization
+     *
+     * Charge Authorization
+     *
+     * @param  \Alexasomba\Paystack\Model\TransactionChargeAuthorization|null $transactionChargeAuthorization transactionChargeAuthorization (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['chargeAuthorization'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\ChargeAuthorizationResponse|\Alexasomba\Paystack\Model\Error
+     */
+    public function chargeAuthorization($transactionChargeAuthorization = null, string $contentType = self::contentTypes['chargeAuthorization'][0])
+    {
+        list($response) = $this->chargeAuthorizationWithHttpInfo($transactionChargeAuthorization, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation chargeAuthorizationWithHttpInfo
+     *
+     * Charge Authorization
+     *
+     * @param  \Alexasomba\Paystack\Model\TransactionChargeAuthorization|null $transactionChargeAuthorization (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['chargeAuthorization'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\ChargeAuthorizationResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function chargeAuthorizationWithHttpInfo($transactionChargeAuthorization = null, string $contentType = self::contentTypes['chargeAuthorization'][0])
+    {
+        $request = $this->chargeAuthorizationRequest($transactionChargeAuthorization, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\ChargeAuthorizationResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\ChargeAuthorizationResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\ChargeAuthorizationResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation chargeAuthorizationAsync
+     *
+     * Charge Authorization
+     *
+     * @param  \Alexasomba\Paystack\Model\TransactionChargeAuthorization|null $transactionChargeAuthorization (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['chargeAuthorization'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function chargeAuthorizationAsync($transactionChargeAuthorization = null, string $contentType = self::contentTypes['chargeAuthorization'][0])
+    {
+        return $this->chargeAuthorizationAsyncWithHttpInfo($transactionChargeAuthorization, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation chargeAuthorizationAsyncWithHttpInfo
+     *
+     * Charge Authorization
+     *
+     * @param  \Alexasomba\Paystack\Model\TransactionChargeAuthorization|null $transactionChargeAuthorization (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['chargeAuthorization'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function chargeAuthorizationAsyncWithHttpInfo($transactionChargeAuthorization = null, string $contentType = self::contentTypes['chargeAuthorization'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\ChargeAuthorizationResponse';
+        $request = $this->chargeAuthorizationRequest($transactionChargeAuthorization, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'chargeAuthorization'
+     *
+     * @param  \Alexasomba\Paystack\Model\TransactionChargeAuthorization|null $transactionChargeAuthorization (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['chargeAuthorization'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function chargeAuthorizationRequest($transactionChargeAuthorization = null, string $contentType = self::contentTypes['chargeAuthorization'][0])
     {
 
 
@@ -385,12 +920,12 @@ class TransactionApi
         );
 
         // for model (json/xml)
-        if (isset($transaction_charge_authorization)) {
+        if (isset($transactionChargeAuthorization)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transaction_charge_authorization));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transactionChargeAuthorization));
             } else {
-                $httpBody = $transaction_charge_authorization;
+                $httpBody = $transactionChargeAuthorization;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -443,44 +978,44 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionCheckAuthorization
+     * Operation checkAuthorization
      *
      * Check Authorization
      *
      * @param  string $email Customer&#39;s email address (required)
      * @param  int $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount multiplied by 100 even though the currency does not use fractional subunits. (required)
-     * @param  string|null $authorization_code Valid authorization code to charge (optional)
+     * @param  string|null $authorizationCode Valid authorization code to charge (optional)
      * @param  string|null $currency The transaction currency (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionCheckAuthorization'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkAuthorization'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionCheckAuthorization($email, $amount, $authorization_code = null, $currency = null, string $contentType = self::contentTypes['transactionCheckAuthorization'][0])
+    public function checkAuthorization($email, $amount, $authorizationCode = null, $currency = null, string $contentType = self::contentTypes['checkAuthorization'][0])
     {
-        list($response) = $this->transactionCheckAuthorizationWithHttpInfo($email, $amount, $authorization_code, $currency, $contentType);
+        list($response) = $this->checkAuthorizationWithHttpInfo($email, $amount, $authorizationCode, $currency, $contentType);
         return $response;
     }
 
     /**
-     * Operation transactionCheckAuthorizationWithHttpInfo
+     * Operation checkAuthorizationWithHttpInfo
      *
      * Check Authorization
      *
      * @param  string $email Customer&#39;s email address (required)
      * @param  int $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount multiplied by 100 even though the currency does not use fractional subunits. (required)
-     * @param  string|null $authorization_code Valid authorization code to charge (optional)
+     * @param  string|null $authorizationCode Valid authorization code to charge (optional)
      * @param  string|null $currency The transaction currency (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionCheckAuthorization'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkAuthorization'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionCheckAuthorizationWithHttpInfo($email, $amount, $authorization_code = null, $currency = null, string $contentType = self::contentTypes['transactionCheckAuthorization'][0])
+    public function checkAuthorizationWithHttpInfo($email, $amount, $authorizationCode = null, $currency = null, string $contentType = self::contentTypes['checkAuthorization'][0])
     {
-        $request = $this->transactionCheckAuthorizationRequest($email, $amount, $authorization_code, $currency, $contentType);
+        $request = $this->checkAuthorizationRequest($email, $amount, $authorizationCode, $currency, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -508,13 +1043,13 @@ class TransactionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -536,7 +1071,7 @@ class TransactionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\Response',
+                '\Alexasomba\Paystack\Model\Response',
                 $request,
                 $response,
             );
@@ -545,7 +1080,7 @@ class TransactionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -553,7 +1088,7 @@ class TransactionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -566,22 +1101,22 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionCheckAuthorizationAsync
+     * Operation checkAuthorizationAsync
      *
      * Check Authorization
      *
      * @param  string $email Customer&#39;s email address (required)
      * @param  int $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount multiplied by 100 even though the currency does not use fractional subunits. (required)
-     * @param  string|null $authorization_code Valid authorization code to charge (optional)
+     * @param  string|null $authorizationCode Valid authorization code to charge (optional)
      * @param  string|null $currency The transaction currency (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionCheckAuthorization'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkAuthorization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionCheckAuthorizationAsync($email, $amount, $authorization_code = null, $currency = null, string $contentType = self::contentTypes['transactionCheckAuthorization'][0])
+    public function checkAuthorizationAsync($email, $amount, $authorizationCode = null, $currency = null, string $contentType = self::contentTypes['checkAuthorization'][0])
     {
-        return $this->transactionCheckAuthorizationAsyncWithHttpInfo($email, $amount, $authorization_code, $currency, $contentType)
+        return $this->checkAuthorizationAsyncWithHttpInfo($email, $amount, $authorizationCode, $currency, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -590,23 +1125,23 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionCheckAuthorizationAsyncWithHttpInfo
+     * Operation checkAuthorizationAsyncWithHttpInfo
      *
      * Check Authorization
      *
      * @param  string $email Customer&#39;s email address (required)
      * @param  int $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount multiplied by 100 even though the currency does not use fractional subunits. (required)
-     * @param  string|null $authorization_code Valid authorization code to charge (optional)
+     * @param  string|null $authorizationCode Valid authorization code to charge (optional)
      * @param  string|null $currency The transaction currency (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionCheckAuthorization'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkAuthorization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionCheckAuthorizationAsyncWithHttpInfo($email, $amount, $authorization_code = null, $currency = null, string $contentType = self::contentTypes['transactionCheckAuthorization'][0])
+    public function checkAuthorizationAsyncWithHttpInfo($email, $amount, $authorizationCode = null, $currency = null, string $contentType = self::contentTypes['checkAuthorization'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\Response';
-        $request = $this->transactionCheckAuthorizationRequest($email, $amount, $authorization_code, $currency, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\Response';
+        $request = $this->checkAuthorizationRequest($email, $amount, $authorizationCode, $currency, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -645,31 +1180,31 @@ class TransactionApi
     }
 
     /**
-     * Create request for operation 'transactionCheckAuthorization'
+     * Create request for operation 'checkAuthorization'
      *
      * @param  string $email Customer&#39;s email address (required)
      * @param  int $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount multiplied by 100 even though the currency does not use fractional subunits. (required)
-     * @param  string|null $authorization_code Valid authorization code to charge (optional)
+     * @param  string|null $authorizationCode Valid authorization code to charge (optional)
      * @param  string|null $currency The transaction currency (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionCheckAuthorization'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkAuthorization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionCheckAuthorizationRequest($email, $amount, $authorization_code = null, $currency = null, string $contentType = self::contentTypes['transactionCheckAuthorization'][0])
+    public function checkAuthorizationRequest($email, $amount, $authorizationCode = null, $currency = null, string $contentType = self::contentTypes['checkAuthorization'][0])
     {
 
         // verify the required parameter 'email' is set
         if ($email === null || (is_array($email) && count($email) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $email when calling transactionCheckAuthorization'
+                'Missing the required parameter $email when calling checkAuthorization'
             );
         }
 
         // verify the required parameter 'amount' is set
         if ($amount === null || (is_array($amount) && count($amount) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $amount when calling transactionCheckAuthorization'
+                'Missing the required parameter $amount when calling checkAuthorization'
             );
         }
 
@@ -692,7 +1227,7 @@ class TransactionApi
         $formData = $formDataProcessor->prepare([
             'email' => $email,
             'amount' => $amount,
-            'authorization_code' => $authorization_code,
+            'authorizationCode' => $authorizationCode,
             'currency' => $currency,
         ]);
 
@@ -757,38 +1292,38 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionEvent
+     * Operation event
      *
      * Get Transaction Event
      *
      * @param  int $id The ID of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionEvent'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['event'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionEvent($id, string $contentType = self::contentTypes['transactionEvent'][0])
+    public function event($id, string $contentType = self::contentTypes['event'][0])
     {
-        list($response) = $this->transactionEventWithHttpInfo($id, $contentType);
+        list($response) = $this->eventWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation transactionEventWithHttpInfo
+     * Operation eventWithHttpInfo
      *
      * Get Transaction Event
      *
      * @param  int $id The ID of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionEvent'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['event'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionEventWithHttpInfo($id, string $contentType = self::contentTypes['transactionEvent'][0])
+    public function eventWithHttpInfo($id, string $contentType = self::contentTypes['event'][0])
     {
-        $request = $this->transactionEventRequest($id, $contentType);
+        $request = $this->eventRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -816,19 +1351,19 @@ class TransactionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -850,7 +1385,7 @@ class TransactionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\Response',
+                '\Alexasomba\Paystack\Model\Response',
                 $request,
                 $response,
             );
@@ -859,7 +1394,7 @@ class TransactionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -867,7 +1402,7 @@ class TransactionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -875,7 +1410,7 @@ class TransactionApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -888,19 +1423,19 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionEventAsync
+     * Operation eventAsync
      *
      * Get Transaction Event
      *
      * @param  int $id The ID of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionEvent'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['event'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionEventAsync($id, string $contentType = self::contentTypes['transactionEvent'][0])
+    public function eventAsync($id, string $contentType = self::contentTypes['event'][0])
     {
-        return $this->transactionEventAsyncWithHttpInfo($id, $contentType)
+        return $this->eventAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -909,20 +1444,20 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionEventAsyncWithHttpInfo
+     * Operation eventAsyncWithHttpInfo
      *
      * Get Transaction Event
      *
      * @param  int $id The ID of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionEvent'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['event'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionEventAsyncWithHttpInfo($id, string $contentType = self::contentTypes['transactionEvent'][0])
+    public function eventAsyncWithHttpInfo($id, string $contentType = self::contentTypes['event'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\Response';
-        $request = $this->transactionEventRequest($id, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\Response';
+        $request = $this->eventRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -961,21 +1496,21 @@ class TransactionApi
     }
 
     /**
-     * Create request for operation 'transactionEvent'
+     * Create request for operation 'event'
      *
      * @param  int $id The ID of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionEvent'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['event'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionEventRequest($id, string $contentType = self::contentTypes['transactionEvent'][0])
+    public function eventRequest($id, string $contentType = self::contentTypes['event'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling transactionEvent'
+                'Missing the required parameter $id when calling event'
             );
         }
 
@@ -1057,11 +1592,11 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionExport
+     * Operation export
      *
      * Export Transactions
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
@@ -1071,26 +1606,26 @@ class TransactionApi
      * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. (optional)
      * @param  bool|null $settled Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions (optional)
      * @param  int|null $settlement Filter by the settlement ID (optional)
-     * @param  int|null $payment_page Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
-     * @param  string|null $subaccount_code Filter by subaccount code (optional) (deprecated)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionExport'] to see the possible values for this operation
+     * @param  int|null $paymentPage Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
+     * @param  string|null $subaccountCode Filter by subaccount code (optional) (deprecated)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['export'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransactionExportResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransactionExportResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionExport($per_page = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $payment_page = null, $subaccount_code = null, string $contentType = self::contentTypes['transactionExport'][0])
+    public function export($perPage = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $paymentPage = null, $subaccountCode = null, string $contentType = self::contentTypes['export'][0])
     {
-        list($response) = $this->transactionExportWithHttpInfo($per_page, $page, $from, $to, $status, $customer, $currency, $amount, $settled, $settlement, $payment_page, $subaccount_code, $contentType);
+        list($response) = $this->exportWithHttpInfo($perPage, $page, $from, $to, $status, $customer, $currency, $amount, $settled, $settlement, $paymentPage, $subaccountCode, $contentType);
         return $response;
     }
 
     /**
-     * Operation transactionExportWithHttpInfo
+     * Operation exportWithHttpInfo
      *
      * Export Transactions
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
@@ -1100,17 +1635,17 @@ class TransactionApi
      * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. (optional)
      * @param  bool|null $settled Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions (optional)
      * @param  int|null $settlement Filter by the settlement ID (optional)
-     * @param  int|null $payment_page Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
-     * @param  string|null $subaccount_code Filter by subaccount code (optional) (deprecated)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionExport'] to see the possible values for this operation
+     * @param  int|null $paymentPage Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
+     * @param  string|null $subaccountCode Filter by subaccount code (optional) (deprecated)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['export'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransactionExportResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransactionExportResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionExportWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $payment_page = null, $subaccount_code = null, string $contentType = self::contentTypes['transactionExport'][0])
+    public function exportWithHttpInfo($perPage = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $paymentPage = null, $subaccountCode = null, string $contentType = self::contentTypes['export'][0])
     {
-        $request = $this->transactionExportRequest($per_page, $page, $from, $to, $status, $customer, $currency, $amount, $settled, $settlement, $payment_page, $subaccount_code, $contentType);
+        $request = $this->exportRequest($perPage, $page, $from, $to, $status, $customer, $currency, $amount, $settled, $settlement, $paymentPage, $subaccountCode, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1138,19 +1673,19 @@ class TransactionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransactionExportResponse',
+                        '\Alexasomba\Paystack\Model\TransactionExportResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1172,7 +1707,7 @@ class TransactionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransactionExportResponse',
+                '\Alexasomba\Paystack\Model\TransactionExportResponse',
                 $request,
                 $response,
             );
@@ -1181,7 +1716,7 @@ class TransactionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransactionExportResponse',
+                        '\Alexasomba\Paystack\Model\TransactionExportResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1189,7 +1724,7 @@ class TransactionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1197,7 +1732,7 @@ class TransactionApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1210,11 +1745,11 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionExportAsync
+     * Operation exportAsync
      *
      * Export Transactions
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
@@ -1224,16 +1759,16 @@ class TransactionApi
      * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. (optional)
      * @param  bool|null $settled Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions (optional)
      * @param  int|null $settlement Filter by the settlement ID (optional)
-     * @param  int|null $payment_page Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
-     * @param  string|null $subaccount_code Filter by subaccount code (optional) (deprecated)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionExport'] to see the possible values for this operation
+     * @param  int|null $paymentPage Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
+     * @param  string|null $subaccountCode Filter by subaccount code (optional) (deprecated)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['export'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionExportAsync($per_page = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $payment_page = null, $subaccount_code = null, string $contentType = self::contentTypes['transactionExport'][0])
+    public function exportAsync($perPage = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $paymentPage = null, $subaccountCode = null, string $contentType = self::contentTypes['export'][0])
     {
-        return $this->transactionExportAsyncWithHttpInfo($per_page, $page, $from, $to, $status, $customer, $currency, $amount, $settled, $settlement, $payment_page, $subaccount_code, $contentType)
+        return $this->exportAsyncWithHttpInfo($perPage, $page, $from, $to, $status, $customer, $currency, $amount, $settled, $settlement, $paymentPage, $subaccountCode, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1242,11 +1777,11 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionExportAsyncWithHttpInfo
+     * Operation exportAsyncWithHttpInfo
      *
      * Export Transactions
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
@@ -1256,17 +1791,17 @@ class TransactionApi
      * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. (optional)
      * @param  bool|null $settled Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions (optional)
      * @param  int|null $settlement Filter by the settlement ID (optional)
-     * @param  int|null $payment_page Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
-     * @param  string|null $subaccount_code Filter by subaccount code (optional) (deprecated)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionExport'] to see the possible values for this operation
+     * @param  int|null $paymentPage Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
+     * @param  string|null $subaccountCode Filter by subaccount code (optional) (deprecated)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['export'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionExportAsyncWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $payment_page = null, $subaccount_code = null, string $contentType = self::contentTypes['transactionExport'][0])
+    public function exportAsyncWithHttpInfo($perPage = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $paymentPage = null, $subaccountCode = null, string $contentType = self::contentTypes['export'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransactionExportResponse';
-        $request = $this->transactionExportRequest($per_page, $page, $from, $to, $status, $customer, $currency, $amount, $settled, $settlement, $payment_page, $subaccount_code, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransactionExportResponse';
+        $request = $this->exportRequest($perPage, $page, $from, $to, $status, $customer, $currency, $amount, $settled, $settlement, $paymentPage, $subaccountCode, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1305,9 +1840,9 @@ class TransactionApi
     }
 
     /**
-     * Create request for operation 'transactionExport'
+     * Create request for operation 'export'
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
@@ -1317,14 +1852,14 @@ class TransactionApi
      * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. (optional)
      * @param  bool|null $settled Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions (optional)
      * @param  int|null $settlement Filter by the settlement ID (optional)
-     * @param  int|null $payment_page Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
-     * @param  string|null $subaccount_code Filter by subaccount code (optional) (deprecated)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionExport'] to see the possible values for this operation
+     * @param  int|null $paymentPage Specify a payment page&#39;s id to export only transactions conducted on said page (optional)
+     * @param  string|null $subaccountCode Filter by subaccount code (optional) (deprecated)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['export'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionExportRequest($per_page = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $payment_page = null, $subaccount_code = null, string $contentType = self::contentTypes['transactionExport'][0])
+    public function exportRequest($perPage = null, $page = null, $from = null, $to = null, $status = null, $customer = null, $currency = null, $amount = null, $settled = null, $settlement = null, $paymentPage = null, $subaccountCode = null, string $contentType = self::contentTypes['export'][0])
     {
 
 
@@ -1349,7 +1884,7 @@ class TransactionApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
+            $perPage,
             'perPage', // param base name
             'integer', // openApiType
             'form', // style
@@ -1439,7 +1974,7 @@ class TransactionApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $payment_page,
+            $paymentPage,
             'payment_page', // param base name
             'integer', // openApiType
             'form', // style
@@ -1448,7 +1983,7 @@ class TransactionApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $subaccount_code,
+            $subaccountCode,
             'subaccount_code', // param base name
             'string', // openApiType
             'form', // style
@@ -1517,38 +2052,38 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionFetch
+     * Operation fetch
      *
      * Fetch Transaction
      *
      * @param  int $id The ID of the transaction to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionFetch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransactionFetchResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransactionFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionFetch($id, string $contentType = self::contentTypes['transactionFetch'][0])
+    public function fetch($id, string $contentType = self::contentTypes['fetch'][0])
     {
-        list($response) = $this->transactionFetchWithHttpInfo($id, $contentType);
+        list($response) = $this->fetchWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation transactionFetchWithHttpInfo
+     * Operation fetchWithHttpInfo
      *
      * Fetch Transaction
      *
      * @param  int $id The ID of the transaction to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionFetch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransactionFetchResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransactionFetchResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionFetchWithHttpInfo($id, string $contentType = self::contentTypes['transactionFetch'][0])
+    public function fetchWithHttpInfo($id, string $contentType = self::contentTypes['fetch'][0])
     {
-        $request = $this->transactionFetchRequest($id, $contentType);
+        $request = $this->fetchRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1576,19 +2111,19 @@ class TransactionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransactionFetchResponse',
+                        '\Alexasomba\Paystack\Model\TransactionFetchResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1610,7 +2145,7 @@ class TransactionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransactionFetchResponse',
+                '\Alexasomba\Paystack\Model\TransactionFetchResponse',
                 $request,
                 $response,
             );
@@ -1619,7 +2154,7 @@ class TransactionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransactionFetchResponse',
+                        '\Alexasomba\Paystack\Model\TransactionFetchResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1627,7 +2162,7 @@ class TransactionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1635,7 +2170,7 @@ class TransactionApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1648,19 +2183,19 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionFetchAsync
+     * Operation fetchAsync
      *
      * Fetch Transaction
      *
      * @param  int $id The ID of the transaction to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionFetch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionFetchAsync($id, string $contentType = self::contentTypes['transactionFetch'][0])
+    public function fetchAsync($id, string $contentType = self::contentTypes['fetch'][0])
     {
-        return $this->transactionFetchAsyncWithHttpInfo($id, $contentType)
+        return $this->fetchAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1669,20 +2204,20 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionFetchAsyncWithHttpInfo
+     * Operation fetchAsyncWithHttpInfo
      *
      * Fetch Transaction
      *
      * @param  int $id The ID of the transaction to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionFetch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionFetchAsyncWithHttpInfo($id, string $contentType = self::contentTypes['transactionFetch'][0])
+    public function fetchAsyncWithHttpInfo($id, string $contentType = self::contentTypes['fetch'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransactionFetchResponse';
-        $request = $this->transactionFetchRequest($id, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransactionFetchResponse';
+        $request = $this->fetchRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1721,21 +2256,21 @@ class TransactionApi
     }
 
     /**
-     * Create request for operation 'transactionFetch'
+     * Create request for operation 'fetch'
      *
      * @param  int $id The ID of the transaction to fetch (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionFetch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionFetchRequest($id, string $contentType = self::contentTypes['transactionFetch'][0])
+    public function fetchRequest($id, string $contentType = self::contentTypes['fetch'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling transactionFetch'
+                'Missing the required parameter $id when calling fetch'
             );
         }
 
@@ -1817,38 +2352,38 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionInitialize
+     * Operation initialize
      *
      * Initialize Transaction
      *
-     * @param  \Alexasomba\\Paystack\Model\TransactionInitialize|null $transaction_initialize transaction_initialize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionInitialize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransactionInitialize|null $transactionInitialize transactionInitialize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initialize'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransactionInitializeResponse|\Alexasomba\\Paystack\Model\TransactionInitializeBadRequestModel|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransactionInitializeResponse|\Alexasomba\Paystack\Model\TransactionInitializeBadRequestModel|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionInitialize($transaction_initialize = null, string $contentType = self::contentTypes['transactionInitialize'][0])
+    public function initialize($transactionInitialize = null, string $contentType = self::contentTypes['initialize'][0])
     {
-        list($response) = $this->transactionInitializeWithHttpInfo($transaction_initialize, $contentType);
+        list($response) = $this->initializeWithHttpInfo($transactionInitialize, $contentType);
         return $response;
     }
 
     /**
-     * Operation transactionInitializeWithHttpInfo
+     * Operation initializeWithHttpInfo
      *
      * Initialize Transaction
      *
-     * @param  \Alexasomba\\Paystack\Model\TransactionInitialize|null $transaction_initialize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionInitialize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransactionInitialize|null $transactionInitialize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initialize'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransactionInitializeResponse|\Alexasomba\\Paystack\Model\TransactionInitializeBadRequestModel|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransactionInitializeResponse|\Alexasomba\Paystack\Model\TransactionInitializeBadRequestModel|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionInitializeWithHttpInfo($transaction_initialize = null, string $contentType = self::contentTypes['transactionInitialize'][0])
+    public function initializeWithHttpInfo($transactionInitialize = null, string $contentType = self::contentTypes['initialize'][0])
     {
-        $request = $this->transactionInitializeRequest($transaction_initialize, $contentType);
+        $request = $this->initializeRequest($transactionInitialize, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1876,19 +2411,19 @@ class TransactionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransactionInitializeResponse',
+                        '\Alexasomba\Paystack\Model\TransactionInitializeResponse',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransactionInitializeBadRequestModel',
+                        '\Alexasomba\Paystack\Model\TransactionInitializeBadRequestModel',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1910,7 +2445,7 @@ class TransactionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransactionInitializeResponse',
+                '\Alexasomba\Paystack\Model\TransactionInitializeResponse',
                 $request,
                 $response,
             );
@@ -1919,7 +2454,7 @@ class TransactionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransactionInitializeResponse',
+                        '\Alexasomba\Paystack\Model\TransactionInitializeResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1927,7 +2462,7 @@ class TransactionApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransactionInitializeBadRequestModel',
+                        '\Alexasomba\Paystack\Model\TransactionInitializeBadRequestModel',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1935,7 +2470,7 @@ class TransactionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1948,19 +2483,19 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionInitializeAsync
+     * Operation initializeAsync
      *
      * Initialize Transaction
      *
-     * @param  \Alexasomba\\Paystack\Model\TransactionInitialize|null $transaction_initialize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionInitialize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransactionInitialize|null $transactionInitialize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initialize'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionInitializeAsync($transaction_initialize = null, string $contentType = self::contentTypes['transactionInitialize'][0])
+    public function initializeAsync($transactionInitialize = null, string $contentType = self::contentTypes['initialize'][0])
     {
-        return $this->transactionInitializeAsyncWithHttpInfo($transaction_initialize, $contentType)
+        return $this->initializeAsyncWithHttpInfo($transactionInitialize, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1969,20 +2504,20 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionInitializeAsyncWithHttpInfo
+     * Operation initializeAsyncWithHttpInfo
      *
      * Initialize Transaction
      *
-     * @param  \Alexasomba\\Paystack\Model\TransactionInitialize|null $transaction_initialize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionInitialize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransactionInitialize|null $transactionInitialize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initialize'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionInitializeAsyncWithHttpInfo($transaction_initialize = null, string $contentType = self::contentTypes['transactionInitialize'][0])
+    public function initializeAsyncWithHttpInfo($transactionInitialize = null, string $contentType = self::contentTypes['initialize'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransactionInitializeResponse';
-        $request = $this->transactionInitializeRequest($transaction_initialize, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransactionInitializeResponse';
+        $request = $this->initializeRequest($transactionInitialize, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2021,15 +2556,15 @@ class TransactionApi
     }
 
     /**
-     * Create request for operation 'transactionInitialize'
+     * Create request for operation 'initialize'
      *
-     * @param  \Alexasomba\\Paystack\Model\TransactionInitialize|null $transaction_initialize (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionInitialize'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransactionInitialize|null $transactionInitialize (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initialize'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionInitializeRequest($transaction_initialize = null, string $contentType = self::contentTypes['transactionInitialize'][0])
+    public function initializeRequest($transactionInitialize = null, string $contentType = self::contentTypes['initialize'][0])
     {
 
 
@@ -2052,12 +2587,12 @@ class TransactionApi
         );
 
         // for model (json/xml)
-        if (isset($transaction_initialize)) {
+        if (isset($transactionInitialize)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transaction_initialize));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transactionInitialize));
             } else {
-                $httpBody = $transaction_initialize;
+                $httpBody = $transactionInitialize;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2110,70 +2645,38 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionList
+     * Operation partialDebit
      *
-     * List Transactions
+     * Partial Debit
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  string|null $status Filter transaction by status (optional)
-     * @param  string|null $source The origin of the payment (optional)
-     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
-     * @param  string|null $virtual_account_number Filter transactions by a virtual account number (optional)
-     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
-     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
-     * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
-     * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
-     * @param  string|null $subaccount_code Filter transaction by subaccount code (optional)
-     * @param  string|null $split_code Filter transaction by split code (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionList'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransactionPartialDebit|null $transactionPartialDebit transactionPartialDebit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['partialDebit'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransactionListResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionList($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtual_account_number = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
+    public function partialDebit($transactionPartialDebit = null, string $contentType = self::contentTypes['partialDebit'][0])
     {
-        list($response) = $this->transactionListWithHttpInfo($use_cursor, $next, $previous, $per_page, $page, $from, $to, $status, $source, $terminalid, $virtual_account_number, $customer, $amount, $settlement, $channel, $subaccount_code, $split_code, $contentType);
+        list($response) = $this->partialDebitWithHttpInfo($transactionPartialDebit, $contentType);
         return $response;
     }
 
     /**
-     * Operation transactionListWithHttpInfo
+     * Operation partialDebitWithHttpInfo
      *
-     * List Transactions
+     * Partial Debit
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  string|null $status Filter transaction by status (optional)
-     * @param  string|null $source The origin of the payment (optional)
-     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
-     * @param  string|null $virtual_account_number Filter transactions by a virtual account number (optional)
-     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
-     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
-     * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
-     * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
-     * @param  string|null $subaccount_code Filter transaction by subaccount code (optional)
-     * @param  string|null $split_code Filter transaction by split code (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionList'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransactionPartialDebit|null $transactionPartialDebit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['partialDebit'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransactionListResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransactionPartialDebitResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionListWithHttpInfo($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtual_account_number = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
+    public function partialDebitWithHttpInfo($transactionPartialDebit = null, string $contentType = self::contentTypes['partialDebit'][0])
     {
-        $request = $this->transactionListRequest($use_cursor, $next, $previous, $per_page, $page, $from, $to, $status, $source, $terminalid, $virtual_account_number, $customer, $amount, $settlement, $channel, $subaccount_code, $split_code, $contentType);
+        $request = $this->partialDebitRequest($transactionPartialDebit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2201,19 +2704,13 @@ class TransactionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransactionListResponse',
+                        '\Alexasomba\Paystack\Model\TransactionPartialDebitResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -2235,7 +2732,7 @@ class TransactionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransactionListResponse',
+                '\Alexasomba\Paystack\Model\TransactionPartialDebitResponse',
                 $request,
                 $response,
             );
@@ -2244,7 +2741,7 @@ class TransactionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransactionListResponse',
+                        '\Alexasomba\Paystack\Model\TransactionPartialDebitResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2252,15 +2749,7 @@ class TransactionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2273,35 +2762,19 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionListAsync
+     * Operation partialDebitAsync
      *
-     * List Transactions
+     * Partial Debit
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  string|null $status Filter transaction by status (optional)
-     * @param  string|null $source The origin of the payment (optional)
-     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
-     * @param  string|null $virtual_account_number Filter transactions by a virtual account number (optional)
-     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
-     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
-     * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
-     * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
-     * @param  string|null $subaccount_code Filter transaction by subaccount code (optional)
-     * @param  string|null $split_code Filter transaction by split code (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionList'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransactionPartialDebit|null $transactionPartialDebit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['partialDebit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionListAsync($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtual_account_number = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
+    public function partialDebitAsync($transactionPartialDebit = null, string $contentType = self::contentTypes['partialDebit'][0])
     {
-        return $this->transactionListAsyncWithHttpInfo($use_cursor, $next, $previous, $per_page, $page, $from, $to, $status, $source, $terminalid, $virtual_account_number, $customer, $amount, $settlement, $channel, $subaccount_code, $split_code, $contentType)
+        return $this->partialDebitAsyncWithHttpInfo($transactionPartialDebit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2310,36 +2783,20 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionListAsyncWithHttpInfo
+     * Operation partialDebitAsyncWithHttpInfo
      *
-     * List Transactions
+     * Partial Debit
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  string|null $status Filter transaction by status (optional)
-     * @param  string|null $source The origin of the payment (optional)
-     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
-     * @param  string|null $virtual_account_number Filter transactions by a virtual account number (optional)
-     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
-     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
-     * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
-     * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
-     * @param  string|null $subaccount_code Filter transaction by subaccount code (optional)
-     * @param  string|null $split_code Filter transaction by split code (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionList'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransactionPartialDebit|null $transactionPartialDebit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['partialDebit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionListAsyncWithHttpInfo($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtual_account_number = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
+    public function partialDebitAsyncWithHttpInfo($transactionPartialDebit = null, string $contentType = self::contentTypes['partialDebit'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransactionListResponse';
-        $request = $this->transactionListRequest($use_cursor, $next, $previous, $per_page, $page, $from, $to, $status, $source, $terminalid, $virtual_account_number, $customer, $amount, $settlement, $channel, $subaccount_code, $split_code, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransactionPartialDebitResponse';
+        $request = $this->partialDebitRequest($transactionPartialDebit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2378,472 +2835,15 @@ class TransactionApi
     }
 
     /**
-     * Create request for operation 'transactionList'
+     * Create request for operation 'partialDebit'
      *
-     * @param  bool|null $use_cursor A flag to indicate if cursor based pagination should be used (optional)
-     * @param  string|null $next An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data (optional)
-     * @param  string|null $previous An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional)
-     * @param  int|null $page Specify exactly what page you want to retrieve. If not specified, we use a default value of 1. (optional)
-     * @param  \DateTime|null $from A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  \DateTime|null $to A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21 (optional)
-     * @param  string|null $status Filter transaction by status (optional)
-     * @param  string|null $source The origin of the payment (optional)
-     * @param  string|null $terminalid The Terminal ID for the transactions you want to retrieve (optional)
-     * @param  string|null $virtual_account_number Filter transactions by a virtual account number (optional)
-     * @param  int|null $customer Specify an ID for the customer whose transactions you want to retrieve (optional)
-     * @param  int|null $amount Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. (optional)
-     * @param  int|null $settlement The settlement ID to filter for settled transactions (optional)
-     * @param  string|null $channel The payment method the customer used to complete the transaction (optional)
-     * @param  string|null $subaccount_code Filter transaction by subaccount code (optional)
-     * @param  string|null $split_code Filter transaction by split code (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionList'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TransactionPartialDebit|null $transactionPartialDebit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['partialDebit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionListRequest($use_cursor = null, $next = null, $previous = null, $per_page = null, $page = null, $from = null, $to = null, $status = null, $source = null, $terminalid = null, $virtual_account_number = null, $customer = null, $amount = null, $settlement = null, $channel = null, $subaccount_code = null, $split_code = null, string $contentType = self::contentTypes['transactionList'][0])
-    {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $resourcePath = '/transaction';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $use_cursor,
-            'use_cursor', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $next,
-            'next', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $previous,
-            'previous', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
-            'perPage', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $from,
-            'from', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $to,
-            'to', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $status,
-            'status', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $source,
-            'source', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $terminalid,
-            'terminalid', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $virtual_account_number,
-            'virtual_account_number', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $customer,
-            'customer', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $amount,
-            'amount', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $settlement,
-            'settlement', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $channel,
-            'channel', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $subaccount_code,
-            'subaccount_code', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $split_code,
-            'split_code', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation transactionPartialDebit
-     *
-     * Partial Debit
-     *
-     * @param  \Alexasomba\\Paystack\Model\TransactionPartialDebit|null $transaction_partial_debit transaction_partial_debit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionPartialDebit'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransactionPartialDebitResponse|\Alexasomba\\Paystack\Model\Error
-     */
-    public function transactionPartialDebit($transaction_partial_debit = null, string $contentType = self::contentTypes['transactionPartialDebit'][0])
-    {
-        list($response) = $this->transactionPartialDebitWithHttpInfo($transaction_partial_debit, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation transactionPartialDebitWithHttpInfo
-     *
-     * Partial Debit
-     *
-     * @param  \Alexasomba\\Paystack\Model\TransactionPartialDebit|null $transaction_partial_debit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionPartialDebit'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransactionPartialDebitResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function transactionPartialDebitWithHttpInfo($transaction_partial_debit = null, string $contentType = self::contentTypes['transactionPartialDebit'][0])
-    {
-        $request = $this->transactionPartialDebitRequest($transaction_partial_debit, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransactionPartialDebitResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransactionPartialDebitResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransactionPartialDebitResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation transactionPartialDebitAsync
-     *
-     * Partial Debit
-     *
-     * @param  \Alexasomba\\Paystack\Model\TransactionPartialDebit|null $transaction_partial_debit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionPartialDebit'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function transactionPartialDebitAsync($transaction_partial_debit = null, string $contentType = self::contentTypes['transactionPartialDebit'][0])
-    {
-        return $this->transactionPartialDebitAsyncWithHttpInfo($transaction_partial_debit, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation transactionPartialDebitAsyncWithHttpInfo
-     *
-     * Partial Debit
-     *
-     * @param  \Alexasomba\\Paystack\Model\TransactionPartialDebit|null $transaction_partial_debit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionPartialDebit'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function transactionPartialDebitAsyncWithHttpInfo($transaction_partial_debit = null, string $contentType = self::contentTypes['transactionPartialDebit'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\TransactionPartialDebitResponse';
-        $request = $this->transactionPartialDebitRequest($transaction_partial_debit, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'transactionPartialDebit'
-     *
-     * @param  \Alexasomba\\Paystack\Model\TransactionPartialDebit|null $transaction_partial_debit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionPartialDebit'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function transactionPartialDebitRequest($transaction_partial_debit = null, string $contentType = self::contentTypes['transactionPartialDebit'][0])
+    public function partialDebitRequest($transactionPartialDebit = null, string $contentType = self::contentTypes['partialDebit'][0])
     {
 
 
@@ -2866,12 +2866,12 @@ class TransactionApi
         );
 
         // for model (json/xml)
-        if (isset($transaction_partial_debit)) {
+        if (isset($transactionPartialDebit)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transaction_partial_debit));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($transactionPartialDebit));
             } else {
-                $httpBody = $transaction_partial_debit;
+                $httpBody = $transactionPartialDebit;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2924,38 +2924,38 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionSession
+     * Operation session
      *
      * Get Transaction Session
      *
      * @param  int $id The ID of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionSession'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['session'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionSession($id, string $contentType = self::contentTypes['transactionSession'][0])
+    public function session($id, string $contentType = self::contentTypes['session'][0])
     {
-        list($response) = $this->transactionSessionWithHttpInfo($id, $contentType);
+        list($response) = $this->sessionWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation transactionSessionWithHttpInfo
+     * Operation sessionWithHttpInfo
      *
      * Get Transaction Session
      *
      * @param  int $id The ID of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionSession'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['session'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionSessionWithHttpInfo($id, string $contentType = self::contentTypes['transactionSession'][0])
+    public function sessionWithHttpInfo($id, string $contentType = self::contentTypes['session'][0])
     {
-        $request = $this->transactionSessionRequest($id, $contentType);
+        $request = $this->sessionRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2983,19 +2983,19 @@ class TransactionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -3017,7 +3017,7 @@ class TransactionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\Response',
+                '\Alexasomba\Paystack\Model\Response',
                 $request,
                 $response,
             );
@@ -3026,7 +3026,7 @@ class TransactionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3034,7 +3034,7 @@ class TransactionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3042,7 +3042,7 @@ class TransactionApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3055,19 +3055,19 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionSessionAsync
+     * Operation sessionAsync
      *
      * Get Transaction Session
      *
      * @param  int $id The ID of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionSession'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['session'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionSessionAsync($id, string $contentType = self::contentTypes['transactionSession'][0])
+    public function sessionAsync($id, string $contentType = self::contentTypes['session'][0])
     {
-        return $this->transactionSessionAsyncWithHttpInfo($id, $contentType)
+        return $this->sessionAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3076,20 +3076,20 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionSessionAsyncWithHttpInfo
+     * Operation sessionAsyncWithHttpInfo
      *
      * Get Transaction Session
      *
      * @param  int $id The ID of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionSession'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['session'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionSessionAsyncWithHttpInfo($id, string $contentType = self::contentTypes['transactionSession'][0])
+    public function sessionAsyncWithHttpInfo($id, string $contentType = self::contentTypes['session'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\Response';
-        $request = $this->transactionSessionRequest($id, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\Response';
+        $request = $this->sessionRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3128,21 +3128,21 @@ class TransactionApi
     }
 
     /**
-     * Create request for operation 'transactionSession'
+     * Create request for operation 'session'
      *
      * @param  int $id The ID of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionSession'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['session'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionSessionRequest($id, string $contentType = self::contentTypes['transactionSession'][0])
+    public function sessionRequest($id, string $contentType = self::contentTypes['session'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling transactionSession'
+                'Missing the required parameter $id when calling session'
             );
         }
 
@@ -3224,38 +3224,38 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionTimeline
+     * Operation timeline
      *
      * Fetch Transaction Timeline
      *
-     * @param  string $id_or_reference The ID or the reference of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTimeline'] to see the possible values for this operation
+     * @param  string $idOrReference The ID or the reference of the transaction (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['timeline'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransactionTimelineResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransactionTimelineResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionTimeline($id_or_reference, string $contentType = self::contentTypes['transactionTimeline'][0])
+    public function timeline($idOrReference, string $contentType = self::contentTypes['timeline'][0])
     {
-        list($response) = $this->transactionTimelineWithHttpInfo($id_or_reference, $contentType);
+        list($response) = $this->timelineWithHttpInfo($idOrReference, $contentType);
         return $response;
     }
 
     /**
-     * Operation transactionTimelineWithHttpInfo
+     * Operation timelineWithHttpInfo
      *
      * Fetch Transaction Timeline
      *
-     * @param  string $id_or_reference The ID or the reference of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTimeline'] to see the possible values for this operation
+     * @param  string $idOrReference The ID or the reference of the transaction (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['timeline'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransactionTimelineResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransactionTimelineResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionTimelineWithHttpInfo($id_or_reference, string $contentType = self::contentTypes['transactionTimeline'][0])
+    public function timelineWithHttpInfo($idOrReference, string $contentType = self::contentTypes['timeline'][0])
     {
-        $request = $this->transactionTimelineRequest($id_or_reference, $contentType);
+        $request = $this->timelineRequest($idOrReference, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3283,19 +3283,19 @@ class TransactionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransactionTimelineResponse',
+                        '\Alexasomba\Paystack\Model\TransactionTimelineResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -3317,7 +3317,7 @@ class TransactionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransactionTimelineResponse',
+                '\Alexasomba\Paystack\Model\TransactionTimelineResponse',
                 $request,
                 $response,
             );
@@ -3326,7 +3326,7 @@ class TransactionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransactionTimelineResponse',
+                        '\Alexasomba\Paystack\Model\TransactionTimelineResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3334,7 +3334,7 @@ class TransactionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3342,7 +3342,7 @@ class TransactionApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3355,19 +3355,19 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionTimelineAsync
+     * Operation timelineAsync
      *
      * Fetch Transaction Timeline
      *
-     * @param  string $id_or_reference The ID or the reference of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTimeline'] to see the possible values for this operation
+     * @param  string $idOrReference The ID or the reference of the transaction (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['timeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionTimelineAsync($id_or_reference, string $contentType = self::contentTypes['transactionTimeline'][0])
+    public function timelineAsync($idOrReference, string $contentType = self::contentTypes['timeline'][0])
     {
-        return $this->transactionTimelineAsyncWithHttpInfo($id_or_reference, $contentType)
+        return $this->timelineAsyncWithHttpInfo($idOrReference, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3376,20 +3376,20 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionTimelineAsyncWithHttpInfo
+     * Operation timelineAsyncWithHttpInfo
      *
      * Fetch Transaction Timeline
      *
-     * @param  string $id_or_reference The ID or the reference of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTimeline'] to see the possible values for this operation
+     * @param  string $idOrReference The ID or the reference of the transaction (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['timeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionTimelineAsyncWithHttpInfo($id_or_reference, string $contentType = self::contentTypes['transactionTimeline'][0])
+    public function timelineAsyncWithHttpInfo($idOrReference, string $contentType = self::contentTypes['timeline'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransactionTimelineResponse';
-        $request = $this->transactionTimelineRequest($id_or_reference, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransactionTimelineResponse';
+        $request = $this->timelineRequest($idOrReference, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3428,21 +3428,21 @@ class TransactionApi
     }
 
     /**
-     * Create request for operation 'transactionTimeline'
+     * Create request for operation 'timeline'
      *
-     * @param  string $id_or_reference The ID or the reference of the transaction (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTimeline'] to see the possible values for this operation
+     * @param  string $idOrReference The ID or the reference of the transaction (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['timeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionTimelineRequest($id_or_reference, string $contentType = self::contentTypes['transactionTimeline'][0])
+    public function timelineRequest($idOrReference, string $contentType = self::contentTypes['timeline'][0])
     {
 
-        // verify the required parameter 'id_or_reference' is set
-        if ($id_or_reference === null || (is_array($id_or_reference) && count($id_or_reference) === 0)) {
+        // verify the required parameter 'idOrReference' is set
+        if ($idOrReference === null || (is_array($idOrReference) && count($idOrReference) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id_or_reference when calling transactionTimeline'
+                'Missing the required parameter $idOrReference when calling timeline'
             );
         }
 
@@ -3457,10 +3457,10 @@ class TransactionApi
 
 
         // path params
-        if ($id_or_reference !== null) {
+        if ($idOrReference !== null) {
             $resourcePath = str_replace(
                 '{' . 'id_or_reference' . '}',
-                ObjectSerializer::toPathValue($id_or_reference),
+                ObjectSerializer::toPathValue($idOrReference),
                 $resourcePath
             );
         }
@@ -3524,44 +3524,44 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionTotals
+     * Operation totals
      *
      * Transaction Totals
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTotals'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['totals'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TransactionTotalsResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TransactionTotalsResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionTotals($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
+    public function totals($perPage = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['totals'][0])
     {
-        list($response) = $this->transactionTotalsWithHttpInfo($per_page, $page, $from, $to, $contentType);
+        list($response) = $this->totalsWithHttpInfo($perPage, $page, $from, $to, $contentType);
         return $response;
     }
 
     /**
-     * Operation transactionTotalsWithHttpInfo
+     * Operation totalsWithHttpInfo
      *
      * Transaction Totals
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTotals'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['totals'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TransactionTotalsResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TransactionTotalsResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionTotalsWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
+    public function totalsWithHttpInfo($perPage = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['totals'][0])
     {
-        $request = $this->transactionTotalsRequest($per_page, $page, $from, $to, $contentType);
+        $request = $this->totalsRequest($perPage, $page, $from, $to, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3589,19 +3589,19 @@ class TransactionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TransactionTotalsResponse',
+                        '\Alexasomba\Paystack\Model\TransactionTotalsResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -3623,7 +3623,7 @@ class TransactionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TransactionTotalsResponse',
+                '\Alexasomba\Paystack\Model\TransactionTotalsResponse',
                 $request,
                 $response,
             );
@@ -3632,7 +3632,7 @@ class TransactionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TransactionTotalsResponse',
+                        '\Alexasomba\Paystack\Model\TransactionTotalsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3640,7 +3640,7 @@ class TransactionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3648,7 +3648,7 @@ class TransactionApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3661,22 +3661,22 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionTotalsAsync
+     * Operation totalsAsync
      *
      * Transaction Totals
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTotals'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['totals'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionTotalsAsync($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
+    public function totalsAsync($perPage = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['totals'][0])
     {
-        return $this->transactionTotalsAsyncWithHttpInfo($per_page, $page, $from, $to, $contentType)
+        return $this->totalsAsyncWithHttpInfo($perPage, $page, $from, $to, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3685,23 +3685,23 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionTotalsAsyncWithHttpInfo
+     * Operation totalsAsyncWithHttpInfo
      *
      * Transaction Totals
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTotals'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['totals'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionTotalsAsyncWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
+    public function totalsAsyncWithHttpInfo($perPage = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['totals'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TransactionTotalsResponse';
-        $request = $this->transactionTotalsRequest($per_page, $page, $from, $to, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TransactionTotalsResponse';
+        $request = $this->totalsRequest($perPage, $page, $from, $to, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3740,18 +3740,18 @@ class TransactionApi
     }
 
     /**
-     * Create request for operation 'transactionTotals'
+     * Create request for operation 'totals'
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionTotals'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['totals'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionTotalsRequest($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['transactionTotals'][0])
+    public function totalsRequest($perPage = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['totals'][0])
     {
 
 
@@ -3768,7 +3768,7 @@ class TransactionApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
+            $perPage,
             'perPage', // param base name
             'integer', // openApiType
             'form', // style
@@ -3864,38 +3864,38 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionVerify
+     * Operation verify
      *
      * Verify Transaction
      *
      * @param  string $reference The transaction reference to verify (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\VerifyResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\VerifyResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function transactionVerify($reference, string $contentType = self::contentTypes['transactionVerify'][0])
+    public function verify($reference, string $contentType = self::contentTypes['verify'][0])
     {
-        list($response) = $this->transactionVerifyWithHttpInfo($reference, $contentType);
+        list($response) = $this->verifyWithHttpInfo($reference, $contentType);
         return $response;
     }
 
     /**
-     * Operation transactionVerifyWithHttpInfo
+     * Operation verifyWithHttpInfo
      *
      * Verify Transaction
      *
      * @param  string $reference The transaction reference to verify (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\VerifyResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\VerifyResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function transactionVerifyWithHttpInfo($reference, string $contentType = self::contentTypes['transactionVerify'][0])
+    public function verifyWithHttpInfo($reference, string $contentType = self::contentTypes['verify'][0])
     {
-        $request = $this->transactionVerifyRequest($reference, $contentType);
+        $request = $this->verifyRequest($reference, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3923,19 +3923,19 @@ class TransactionApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\VerifyResponse',
+                        '\Alexasomba\Paystack\Model\VerifyResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -3957,7 +3957,7 @@ class TransactionApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\VerifyResponse',
+                '\Alexasomba\Paystack\Model\VerifyResponse',
                 $request,
                 $response,
             );
@@ -3966,7 +3966,7 @@ class TransactionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\VerifyResponse',
+                        '\Alexasomba\Paystack\Model\VerifyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3974,7 +3974,7 @@ class TransactionApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3982,7 +3982,7 @@ class TransactionApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3995,19 +3995,19 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionVerifyAsync
+     * Operation verifyAsync
      *
      * Verify Transaction
      *
      * @param  string $reference The transaction reference to verify (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionVerifyAsync($reference, string $contentType = self::contentTypes['transactionVerify'][0])
+    public function verifyAsync($reference, string $contentType = self::contentTypes['verify'][0])
     {
-        return $this->transactionVerifyAsyncWithHttpInfo($reference, $contentType)
+        return $this->verifyAsyncWithHttpInfo($reference, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4016,20 +4016,20 @@ class TransactionApi
     }
 
     /**
-     * Operation transactionVerifyAsyncWithHttpInfo
+     * Operation verifyAsyncWithHttpInfo
      *
      * Verify Transaction
      *
      * @param  string $reference The transaction reference to verify (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function transactionVerifyAsyncWithHttpInfo($reference, string $contentType = self::contentTypes['transactionVerify'][0])
+    public function verifyAsyncWithHttpInfo($reference, string $contentType = self::contentTypes['verify'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\VerifyResponse';
-        $request = $this->transactionVerifyRequest($reference, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\VerifyResponse';
+        $request = $this->verifyRequest($reference, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4068,21 +4068,21 @@ class TransactionApi
     }
 
     /**
-     * Create request for operation 'transactionVerify'
+     * Create request for operation 'verify'
      *
      * @param  string $reference The transaction reference to verify (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['transactionVerify'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['verify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function transactionVerifyRequest($reference, string $contentType = self::contentTypes['transactionVerify'][0])
+    public function verifyRequest($reference, string $contentType = self::contentTypes['verify'][0])
     {
 
         // verify the required parameter 'reference' is set
         if ($reference === null || (is_array($reference) && count($reference) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $reference when calling transactionVerify'
+                'Missing the required parameter $reference when calling verify'
             );
         }
 

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransferRecipientUpdateResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,13 +62,13 @@ class TransferRecipientUpdateResponseData implements ModelInterface, ArrayAccess
         'name' => 'string',
         'metadata' => 'object',
         'domain' => 'string',
-        'details' => '\Alexasomba\\Paystack\Model\TransferRecipientUpdateResponseDataDetails',
+        'details' => '\Alexasomba\Paystack\Model\TransferRecipientUpdateResponseDataDetails',
         'currency' => 'string',
-        'recipient_code' => 'string',
+        'recipientCode' => 'string',
         'active' => 'bool',
         'id' => 'int',
-        'created_at' => 'string',
-        'updated_at' => 'string'
+        'createdAt' => 'string',
+        'updatedAt' => 'string'
     ];
 
     /**
@@ -85,11 +85,11 @@ class TransferRecipientUpdateResponseData implements ModelInterface, ArrayAccess
         'domain' => null,
         'details' => null,
         'currency' => null,
-        'recipient_code' => null,
+        'recipientCode' => null,
         'active' => null,
         'id' => null,
-        'created_at' => null,
-        'updated_at' => null
+        'createdAt' => null,
+        'updatedAt' => null
     ];
 
     /**
@@ -104,11 +104,11 @@ class TransferRecipientUpdateResponseData implements ModelInterface, ArrayAccess
         'domain' => false,
         'details' => false,
         'currency' => false,
-        'recipient_code' => false,
+        'recipientCode' => false,
         'active' => false,
         'id' => false,
-        'created_at' => false,
-        'updated_at' => false
+        'createdAt' => false,
+        'updatedAt' => false
     ];
 
     /**
@@ -203,11 +203,11 @@ class TransferRecipientUpdateResponseData implements ModelInterface, ArrayAccess
         'domain' => 'domain',
         'details' => 'details',
         'currency' => 'currency',
-        'recipient_code' => 'recipient_code',
+        'recipientCode' => 'recipient_code',
         'active' => 'active',
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt'
     ];
 
     /**
@@ -222,11 +222,11 @@ class TransferRecipientUpdateResponseData implements ModelInterface, ArrayAccess
         'domain' => 'setDomain',
         'details' => 'setDetails',
         'currency' => 'setCurrency',
-        'recipient_code' => 'setRecipientCode',
+        'recipientCode' => 'setRecipientCode',
         'active' => 'setActive',
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
@@ -241,11 +241,11 @@ class TransferRecipientUpdateResponseData implements ModelInterface, ArrayAccess
         'domain' => 'getDomain',
         'details' => 'getDetails',
         'currency' => 'getCurrency',
-        'recipient_code' => 'getRecipientCode',
+        'recipientCode' => 'getRecipientCode',
         'active' => 'getActive',
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
@@ -311,11 +311,11 @@ class TransferRecipientUpdateResponseData implements ModelInterface, ArrayAccess
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('details', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('recipient_code', $data ?? [], null);
+        $this->setIfExists('recipientCode', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
     }
 
     /**
@@ -363,8 +363,8 @@ class TransferRecipientUpdateResponseData implements ModelInterface, ArrayAccess
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['recipient_code'] === null) {
-            $invalidProperties[] = "'recipient_code' can't be null";
+        if ($this->container['recipientCode'] === null) {
+            $invalidProperties[] = "'recipientCode' can't be null";
         }
         if ($this->container['active'] === null) {
             $invalidProperties[] = "'active' can't be null";
@@ -372,11 +372,11 @@ class TransferRecipientUpdateResponseData implements ModelInterface, ArrayAccess
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -511,7 +511,7 @@ class TransferRecipientUpdateResponseData implements ModelInterface, ArrayAccess
     /**
      * Gets details
      *
-     * @return \Alexasomba\\Paystack\Model\TransferRecipientUpdateResponseDataDetails
+     * @return \Alexasomba\Paystack\Model\TransferRecipientUpdateResponseDataDetails
      */
     public function getDetails()
     {
@@ -521,7 +521,7 @@ class TransferRecipientUpdateResponseData implements ModelInterface, ArrayAccess
     /**
      * Sets details
      *
-     * @param \Alexasomba\\Paystack\Model\TransferRecipientUpdateResponseDataDetails $details details
+     * @param \Alexasomba\Paystack\Model\TransferRecipientUpdateResponseDataDetails $details details
      *
      * @return self
      */
@@ -563,28 +563,28 @@ class TransferRecipientUpdateResponseData implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets recipient_code
+     * Gets recipientCode
      *
      * @return string
      */
     public function getRecipientCode()
     {
-        return $this->container['recipient_code'];
+        return $this->container['recipientCode'];
     }
 
     /**
-     * Sets recipient_code
+     * Sets recipientCode
      *
-     * @param string $recipient_code recipient_code
+     * @param string $recipientCode recipientCode
      *
      * @return self
      */
-    public function setRecipientCode($recipient_code)
+    public function setRecipientCode($recipientCode)
     {
-        if (is_null($recipient_code)) {
-            throw new \InvalidArgumentException('non-nullable recipient_code cannot be null');
+        if (is_null($recipientCode)) {
+            throw new \InvalidArgumentException('non-nullable recipientCode cannot be null');
         }
-        $this->container['recipient_code'] = $recipient_code;
+        $this->container['recipientCode'] = $recipientCode;
 
         return $this;
     }
@@ -644,55 +644,55 @@ class TransferRecipientUpdateResponseData implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

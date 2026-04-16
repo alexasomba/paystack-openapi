@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * FormulaSubaccountsArray Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,10 +58,10 @@ class FormulaSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'original_share' => 'float',
+        'originalShare' => 'float',
         'fees' => 'int',
         'share' => 'int',
-        'subaccount_code' => 'string',
+        'subaccountCode' => 'string',
         'id' => 'int',
         'name' => 'string',
         'integration' => 'string'
@@ -75,10 +75,10 @@ class FormulaSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'original_share' => null,
+        'originalShare' => null,
         'fees' => null,
         'share' => null,
-        'subaccount_code' => null,
+        'subaccountCode' => null,
         'id' => null,
         'name' => null,
         'integration' => null
@@ -90,10 +90,10 @@ class FormulaSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'original_share' => false,
+        'originalShare' => false,
         'fees' => false,
         'share' => false,
-        'subaccount_code' => false,
+        'subaccountCode' => false,
         'id' => false,
         'name' => false,
         'integration' => false
@@ -185,10 +185,10 @@ class FormulaSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'original_share' => 'original_share',
+        'originalShare' => 'original_share',
         'fees' => 'fees',
         'share' => 'share',
-        'subaccount_code' => 'subaccount_code',
+        'subaccountCode' => 'subaccount_code',
         'id' => 'id',
         'name' => 'name',
         'integration' => 'integration'
@@ -200,10 +200,10 @@ class FormulaSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'original_share' => 'setOriginalShare',
+        'originalShare' => 'setOriginalShare',
         'fees' => 'setFees',
         'share' => 'setShare',
-        'subaccount_code' => 'setSubaccountCode',
+        'subaccountCode' => 'setSubaccountCode',
         'id' => 'setId',
         'name' => 'setName',
         'integration' => 'setIntegration'
@@ -215,10 +215,10 @@ class FormulaSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'original_share' => 'getOriginalShare',
+        'originalShare' => 'getOriginalShare',
         'fees' => 'getFees',
         'share' => 'getShare',
-        'subaccount_code' => 'getSubaccountCode',
+        'subaccountCode' => 'getSubaccountCode',
         'id' => 'getId',
         'name' => 'getName',
         'integration' => 'getIntegration'
@@ -281,10 +281,10 @@ class FormulaSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('original_share', $data ?? [], null);
+        $this->setIfExists('originalShare', $data ?? [], null);
         $this->setIfExists('fees', $data ?? [], null);
         $this->setIfExists('share', $data ?? [], null);
-        $this->setIfExists('subaccount_code', $data ?? [], null);
+        $this->setIfExists('subaccountCode', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
@@ -317,8 +317,8 @@ class FormulaSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['original_share'] === null) {
-            $invalidProperties[] = "'original_share' can't be null";
+        if ($this->container['originalShare'] === null) {
+            $invalidProperties[] = "'originalShare' can't be null";
         }
         if ($this->container['fees'] === null) {
             $invalidProperties[] = "'fees' can't be null";
@@ -326,8 +326,8 @@ class FormulaSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['share'] === null) {
             $invalidProperties[] = "'share' can't be null";
         }
-        if ($this->container['subaccount_code'] === null) {
-            $invalidProperties[] = "'subaccount_code' can't be null";
+        if ($this->container['subaccountCode'] === null) {
+            $invalidProperties[] = "'subaccountCode' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
@@ -354,28 +354,28 @@ class FormulaSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets original_share
+     * Gets originalShare
      *
      * @return float
      */
     public function getOriginalShare()
     {
-        return $this->container['original_share'];
+        return $this->container['originalShare'];
     }
 
     /**
-     * Sets original_share
+     * Sets originalShare
      *
-     * @param float $original_share original_share
+     * @param float $originalShare originalShare
      *
      * @return self
      */
-    public function setOriginalShare($original_share)
+    public function setOriginalShare($originalShare)
     {
-        if (is_null($original_share)) {
-            throw new \InvalidArgumentException('non-nullable original_share cannot be null');
+        if (is_null($originalShare)) {
+            throw new \InvalidArgumentException('non-nullable originalShare cannot be null');
         }
-        $this->container['original_share'] = $original_share;
+        $this->container['originalShare'] = $originalShare;
 
         return $this;
     }
@@ -435,28 +435,28 @@ class FormulaSubaccountsArray implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets subaccount_code
+     * Gets subaccountCode
      *
      * @return string
      */
     public function getSubaccountCode()
     {
-        return $this->container['subaccount_code'];
+        return $this->container['subaccountCode'];
     }
 
     /**
-     * Sets subaccount_code
+     * Sets subaccountCode
      *
-     * @param string $subaccount_code subaccount_code
+     * @param string $subaccountCode subaccountCode
      *
      * @return self
      */
-    public function setSubaccountCode($subaccount_code)
+    public function setSubaccountCode($subaccountCode)
     {
-        if (is_null($subaccount_code)) {
-            throw new \InvalidArgumentException('non-nullable subaccount_code cannot be null');
+        if (is_null($subaccountCode)) {
+            throw new \InvalidArgumentException('non-nullable subaccountCode cannot be null');
         }
-        $this->container['subaccount_code'] = $subaccount_code;
+        $this->container['subaccountCode'] = $subaccountCode;
 
         return $this;
     }

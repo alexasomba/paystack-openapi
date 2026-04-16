@@ -50,7 +50,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_bulk(
+    def bulk(
         self,
         transfer_recipient_bulk: Optional[TransferRecipientBulk] = None,
         _request_timeout: Union[
@@ -94,7 +94,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_bulk_serialize(
+        _param = self._bulk_serialize(
             transfer_recipient_bulk=transfer_recipient_bulk,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -118,7 +118,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_bulk_with_http_info(
+    def bulk_with_http_info(
         self,
         transfer_recipient_bulk: Optional[TransferRecipientBulk] = None,
         _request_timeout: Union[
@@ -162,7 +162,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_bulk_serialize(
+        _param = self._bulk_serialize(
             transfer_recipient_bulk=transfer_recipient_bulk,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -186,7 +186,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_bulk_without_preload_content(
+    def bulk_without_preload_content(
         self,
         transfer_recipient_bulk: Optional[TransferRecipientBulk] = None,
         _request_timeout: Union[
@@ -230,7 +230,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_bulk_serialize(
+        _param = self._bulk_serialize(
             transfer_recipient_bulk=transfer_recipient_bulk,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -249,7 +249,7 @@ class TransferRecipientApi:
         return response_data.response
 
 
-    def _transferrecipient_bulk_serialize(
+    def _bulk_serialize(
         self,
         transfer_recipient_bulk,
         _request_auth,
@@ -328,7 +328,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_create(
+    def create(
         self,
         transfer_recipient_create: Optional[TransferRecipientCreate] = None,
         _request_timeout: Union[
@@ -372,7 +372,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_create_serialize(
+        _param = self._create_serialize(
             transfer_recipient_create=transfer_recipient_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -396,7 +396,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_create_with_http_info(
+    def create_with_http_info(
         self,
         transfer_recipient_create: Optional[TransferRecipientCreate] = None,
         _request_timeout: Union[
@@ -440,7 +440,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_create_serialize(
+        _param = self._create_serialize(
             transfer_recipient_create=transfer_recipient_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -464,7 +464,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_create_without_preload_content(
+    def create_without_preload_content(
         self,
         transfer_recipient_create: Optional[TransferRecipientCreate] = None,
         _request_timeout: Union[
@@ -508,7 +508,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_create_serialize(
+        _param = self._create_serialize(
             transfer_recipient_create=transfer_recipient_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -527,7 +527,7 @@ class TransferRecipientApi:
         return response_data.response
 
 
-    def _transferrecipient_create_serialize(
+    def _create_serialize(
         self,
         transfer_recipient_create,
         _request_auth,
@@ -606,7 +606,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_delete(
+    def delete(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         _request_timeout: Union[
@@ -650,7 +650,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_delete_serialize(
+        _param = self._delete_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -675,7 +675,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_delete_with_http_info(
+    def delete_with_http_info(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         _request_timeout: Union[
@@ -719,7 +719,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_delete_serialize(
+        _param = self._delete_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -744,7 +744,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_delete_without_preload_content(
+    def delete_without_preload_content(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         _request_timeout: Union[
@@ -788,7 +788,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_delete_serialize(
+        _param = self._delete_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -808,7 +808,7 @@ class TransferRecipientApi:
         return response_data.response
 
 
-    def _transferrecipient_delete_serialize(
+    def _delete_serialize(
         self,
         id_or_code,
         _request_auth,
@@ -873,7 +873,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_fetch(
+    def fetch(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         _request_timeout: Union[
@@ -917,7 +917,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -942,7 +942,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         _request_timeout: Union[
@@ -986,7 +986,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1011,7 +1011,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         _request_timeout: Union[
@@ -1055,7 +1055,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1075,7 +1075,7 @@ class TransferRecipientApi:
         return response_data.response
 
 
-    def _transferrecipient_fetch_serialize(
+    def _fetch_serialize(
         self,
         id_or_code,
         _request_auth,
@@ -1140,7 +1140,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_list(
+    def list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
@@ -1193,7 +1193,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1221,7 +1221,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_list_with_http_info(
+    def list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
@@ -1274,7 +1274,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1302,7 +1302,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_list_without_preload_content(
+    def list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.")] = None,
         page: Annotated[Optional[StrictInt], Field(description="Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.")] = None,
@@ -1355,7 +1355,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1378,7 +1378,7 @@ class TransferRecipientApi:
         return response_data.response
 
 
-    def _transferrecipient_list_serialize(
+    def _list_serialize(
         self,
         per_page,
         page,
@@ -1478,7 +1478,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_update(
+    def update(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         transfer_recipient_update: Optional[TransferRecipientUpdate] = None,
@@ -1525,7 +1525,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_update_serialize(
+        _param = self._update_serialize(
             id_or_code=id_or_code,
             transfer_recipient_update=transfer_recipient_update,
             _request_auth=_request_auth,
@@ -1551,7 +1551,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_update_with_http_info(
+    def update_with_http_info(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         transfer_recipient_update: Optional[TransferRecipientUpdate] = None,
@@ -1598,7 +1598,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_update_serialize(
+        _param = self._update_serialize(
             id_or_code=id_or_code,
             transfer_recipient_update=transfer_recipient_update,
             _request_auth=_request_auth,
@@ -1624,7 +1624,7 @@ class TransferRecipientApi:
 
 
     @validate_call
-    def transferrecipient_update_without_preload_content(
+    def update_without_preload_content(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the recipient whose details you want to receive.")],
         transfer_recipient_update: Optional[TransferRecipientUpdate] = None,
@@ -1671,7 +1671,7 @@ class TransferRecipientApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transferrecipient_update_serialize(
+        _param = self._update_serialize(
             id_or_code=id_or_code,
             transfer_recipient_update=transfer_recipient_update,
             _request_auth=_request_auth,
@@ -1692,7 +1692,7 @@ class TransferRecipientApi:
         return response_data.response
 
 
-    def _transferrecipient_update_serialize(
+    def _update_serialize(
         self,
         id_or_code,
         transfer_recipient_update,

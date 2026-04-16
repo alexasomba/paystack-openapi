@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.charge_submit_pin_response_data_authorization import ChargeSubmitPinResponseDataAuthorization
 from alexasomba_paystack.models.charge_submit_pin_response_data_customer import ChargeSubmitPinResponseDataCustomer
@@ -48,8 +48,8 @@ class ChargeSubmitPinResponseData(BaseModel):
     plan: Optional[Dict[str, Any]]
     split: Optional[Dict[str, Any]]
     order_id: Optional[StrictStr]
-    paid_at: Optional[StrictStr] = Field(alias="paidAt")
-    created_at: StrictStr = Field(alias="createdAt")
+    paid_at: Optional[StrictStr] = Field(default=None, validation_alias=AliasChoices('paid_at', 'paidAt'), serialization_alias='paidAt')
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     requested_amount: StrictInt
     pos_transaction_data: Optional[Any]
     source: Optional[Any]
@@ -206,8 +206,8 @@ class ChargeSubmitPinResponseData(BaseModel):
             "plan": obj.get("plan"),
             "split": obj.get("split"),
             "order_id": obj.get("order_id"),
-            "paidAt": obj.get("paidAt"),
-            "createdAt": obj.get("createdAt"),
+            "paid_at": obj.get("paid_at") if obj.get("paid_at") is not None else obj.get("paidAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "requested_amount": obj.get("requested_amount"),
             "pos_transaction_data": obj.get("pos_transaction_data"),
             "source": obj.get("source"),

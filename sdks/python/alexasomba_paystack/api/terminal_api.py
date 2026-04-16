@@ -50,7 +50,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_commission(
+    def commission(
         self,
         terminal_activation_toggle: Optional[TerminalActivationToggle] = None,
         _request_timeout: Union[
@@ -94,7 +94,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_commission_serialize(
+        _param = self._commission_serialize(
             terminal_activation_toggle=terminal_activation_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -118,7 +118,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_commission_with_http_info(
+    def commission_with_http_info(
         self,
         terminal_activation_toggle: Optional[TerminalActivationToggle] = None,
         _request_timeout: Union[
@@ -162,7 +162,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_commission_serialize(
+        _param = self._commission_serialize(
             terminal_activation_toggle=terminal_activation_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -186,7 +186,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_commission_without_preload_content(
+    def commission_without_preload_content(
         self,
         terminal_activation_toggle: Optional[TerminalActivationToggle] = None,
         _request_timeout: Union[
@@ -230,7 +230,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_commission_serialize(
+        _param = self._commission_serialize(
             terminal_activation_toggle=terminal_activation_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -249,7 +249,7 @@ class TerminalApi:
         return response_data.response
 
 
-    def _terminal_commission_serialize(
+    def _commission_serialize(
         self,
         terminal_activation_toggle,
         _request_auth,
@@ -328,7 +328,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_decommission(
+    def decommission(
         self,
         terminal_activation_toggle: Optional[TerminalActivationToggle] = None,
         _request_timeout: Union[
@@ -372,7 +372,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_decommission_serialize(
+        _param = self._decommission_serialize(
             terminal_activation_toggle=terminal_activation_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -396,7 +396,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_decommission_with_http_info(
+    def decommission_with_http_info(
         self,
         terminal_activation_toggle: Optional[TerminalActivationToggle] = None,
         _request_timeout: Union[
@@ -440,7 +440,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_decommission_serialize(
+        _param = self._decommission_serialize(
             terminal_activation_toggle=terminal_activation_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -464,7 +464,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_decommission_without_preload_content(
+    def decommission_without_preload_content(
         self,
         terminal_activation_toggle: Optional[TerminalActivationToggle] = None,
         _request_timeout: Union[
@@ -508,7 +508,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_decommission_serialize(
+        _param = self._decommission_serialize(
             terminal_activation_toggle=terminal_activation_toggle,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -527,7 +527,7 @@ class TerminalApi:
         return response_data.response
 
 
-    def _terminal_decommission_serialize(
+    def _decommission_serialize(
         self,
         terminal_activation_toggle,
         _request_auth,
@@ -606,7 +606,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_fetch(
+    def fetch(
         self,
         terminal_id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         _request_timeout: Union[
@@ -650,7 +650,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_fetch_serialize(
+        _param = self._fetch_serialize(
             terminal_id=terminal_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -675,7 +675,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         terminal_id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         _request_timeout: Union[
@@ -719,7 +719,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_fetch_serialize(
+        _param = self._fetch_serialize(
             terminal_id=terminal_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -744,7 +744,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         terminal_id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         _request_timeout: Union[
@@ -788,7 +788,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_fetch_serialize(
+        _param = self._fetch_serialize(
             terminal_id=terminal_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -808,7 +808,7 @@ class TerminalApi:
         return response_data.response
 
 
-    def _terminal_fetch_serialize(
+    def _fetch_serialize(
         self,
         terminal_id,
         _request_auth,
@@ -873,7 +873,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_fetch_event_status(
+    def fetch_event_status(
         self,
         terminal_id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         event_id: Annotated[StrictStr, Field(description="The ID of the event that was sent to the Terminal")],
@@ -920,7 +920,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_fetch_event_status_serialize(
+        _param = self._fetch_event_status_serialize(
             terminal_id=terminal_id,
             event_id=event_id,
             _request_auth=_request_auth,
@@ -946,7 +946,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_fetch_event_status_with_http_info(
+    def fetch_event_status_with_http_info(
         self,
         terminal_id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         event_id: Annotated[StrictStr, Field(description="The ID of the event that was sent to the Terminal")],
@@ -993,7 +993,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_fetch_event_status_serialize(
+        _param = self._fetch_event_status_serialize(
             terminal_id=terminal_id,
             event_id=event_id,
             _request_auth=_request_auth,
@@ -1019,7 +1019,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_fetch_event_status_without_preload_content(
+    def fetch_event_status_without_preload_content(
         self,
         terminal_id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         event_id: Annotated[StrictStr, Field(description="The ID of the event that was sent to the Terminal")],
@@ -1066,7 +1066,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_fetch_event_status_serialize(
+        _param = self._fetch_event_status_serialize(
             terminal_id=terminal_id,
             event_id=event_id,
             _request_auth=_request_auth,
@@ -1087,7 +1087,7 @@ class TerminalApi:
         return response_data.response
 
 
-    def _terminal_fetch_event_status_serialize(
+    def _fetch_event_status_serialize(
         self,
         terminal_id,
         event_id,
@@ -1155,7 +1155,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_fetch_terminal_status(
+    def fetch_terminal_status(
         self,
         terminal_id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         _request_timeout: Union[
@@ -1199,7 +1199,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_fetch_terminal_status_serialize(
+        _param = self._fetch_terminal_status_serialize(
             terminal_id=terminal_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1224,7 +1224,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_fetch_terminal_status_with_http_info(
+    def fetch_terminal_status_with_http_info(
         self,
         terminal_id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         _request_timeout: Union[
@@ -1268,7 +1268,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_fetch_terminal_status_serialize(
+        _param = self._fetch_terminal_status_serialize(
             terminal_id=terminal_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1293,7 +1293,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_fetch_terminal_status_without_preload_content(
+    def fetch_terminal_status_without_preload_content(
         self,
         terminal_id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         _request_timeout: Union[
@@ -1337,7 +1337,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_fetch_terminal_status_serialize(
+        _param = self._fetch_terminal_status_serialize(
             terminal_id=terminal_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1357,7 +1357,7 @@ class TerminalApi:
         return response_data.response
 
 
-    def _terminal_fetch_terminal_status_serialize(
+    def _fetch_terminal_status_serialize(
         self,
         terminal_id,
         _request_auth,
@@ -1422,7 +1422,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_list(
+    def list(
         self,
         next: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It can be used to fetch the next page of the list")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request")] = None,
@@ -1472,7 +1472,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_list_serialize(
+        _param = self._list_serialize(
             next=next,
             previous=previous,
             per_page=per_page,
@@ -1499,7 +1499,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_list_with_http_info(
+    def list_with_http_info(
         self,
         next: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It can be used to fetch the next page of the list")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request")] = None,
@@ -1549,7 +1549,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_list_serialize(
+        _param = self._list_serialize(
             next=next,
             previous=previous,
             per_page=per_page,
@@ -1576,7 +1576,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_list_without_preload_content(
+    def list_without_preload_content(
         self,
         next: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It can be used to fetch the next page of the list")] = None,
         previous: Annotated[Optional[StrictStr], Field(description="A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request")] = None,
@@ -1626,7 +1626,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_list_serialize(
+        _param = self._list_serialize(
             next=next,
             previous=previous,
             per_page=per_page,
@@ -1648,7 +1648,7 @@ class TerminalApi:
         return response_data.response
 
 
-    def _terminal_list_serialize(
+    def _list_serialize(
         self,
         next,
         previous,
@@ -1725,7 +1725,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_send_event(
+    def send_event(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         terminal_send_event: Optional[TerminalSendEvent] = None,
@@ -1772,7 +1772,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_send_event_serialize(
+        _param = self._send_event_serialize(
             id=id,
             terminal_send_event=terminal_send_event,
             _request_auth=_request_auth,
@@ -1797,7 +1797,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_send_event_with_http_info(
+    def send_event_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         terminal_send_event: Optional[TerminalSendEvent] = None,
@@ -1844,7 +1844,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_send_event_serialize(
+        _param = self._send_event_serialize(
             id=id,
             terminal_send_event=terminal_send_event,
             _request_auth=_request_auth,
@@ -1869,7 +1869,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_send_event_without_preload_content(
+    def send_event_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         terminal_send_event: Optional[TerminalSendEvent] = None,
@@ -1916,7 +1916,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_send_event_serialize(
+        _param = self._send_event_serialize(
             id=id,
             terminal_send_event=terminal_send_event,
             _request_auth=_request_auth,
@@ -1936,7 +1936,7 @@ class TerminalApi:
         return response_data.response
 
 
-    def _terminal_send_event_serialize(
+    def _send_event_serialize(
         self,
         id,
         terminal_send_event,
@@ -2018,7 +2018,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_update(
+    def update(
         self,
         terminal_id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         terminal_upate: Optional[TerminalUpate] = None,
@@ -2065,7 +2065,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_update_serialize(
+        _param = self._update_serialize(
             terminal_id=terminal_id,
             terminal_upate=terminal_upate,
             _request_auth=_request_auth,
@@ -2091,7 +2091,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_update_with_http_info(
+    def update_with_http_info(
         self,
         terminal_id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         terminal_upate: Optional[TerminalUpate] = None,
@@ -2138,7 +2138,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_update_serialize(
+        _param = self._update_serialize(
             terminal_id=terminal_id,
             terminal_upate=terminal_upate,
             _request_auth=_request_auth,
@@ -2164,7 +2164,7 @@ class TerminalApi:
 
 
     @validate_call
-    def terminal_update_without_preload_content(
+    def update_without_preload_content(
         self,
         terminal_id: Annotated[StrictStr, Field(description="The ID of the Terminal the event should be sent to.")],
         terminal_upate: Optional[TerminalUpate] = None,
@@ -2211,7 +2211,7 @@ class TerminalApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._terminal_update_serialize(
+        _param = self._update_serialize(
             terminal_id=terminal_id,
             terminal_upate=terminal_upate,
             _request_auth=_request_auth,
@@ -2232,7 +2232,7 @@ class TerminalApi:
         return response_data.response
 
 
-    def _terminal_update_serialize(
+    def _update_serialize(
         self,
         terminal_id,
         terminal_upate,

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PageCreateResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,19 +61,19 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => 'string',
         'description' => 'string',
         'amount' => 'int',
-        'split_code' => 'string',
+        'splitCode' => 'string',
         'integration' => 'int',
         'domain' => 'string',
         'slug' => 'string',
         'currency' => 'string',
         'type' => 'string',
-        'collect_phone' => 'bool',
+        'collectPhone' => 'bool',
         'active' => 'bool',
         'published' => 'bool',
         'migrate' => 'bool',
         'id' => 'int',
-        'created_at' => 'string',
-        'updated_at' => 'string'
+        'createdAt' => 'string',
+        'updatedAt' => 'string'
     ];
 
     /**
@@ -87,19 +87,19 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => null,
         'description' => null,
         'amount' => null,
-        'split_code' => null,
+        'splitCode' => null,
         'integration' => null,
         'domain' => null,
         'slug' => null,
         'currency' => null,
         'type' => null,
-        'collect_phone' => null,
+        'collectPhone' => null,
         'active' => null,
         'published' => null,
         'migrate' => null,
         'id' => null,
-        'created_at' => null,
-        'updated_at' => null
+        'createdAt' => null,
+        'updatedAt' => null
     ];
 
     /**
@@ -111,19 +111,19 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => false,
         'description' => true,
         'amount' => true,
-        'split_code' => true,
+        'splitCode' => true,
         'integration' => false,
         'domain' => false,
         'slug' => false,
         'currency' => false,
         'type' => false,
-        'collect_phone' => false,
+        'collectPhone' => false,
         'active' => false,
         'published' => false,
         'migrate' => false,
         'id' => false,
-        'created_at' => false,
-        'updated_at' => false
+        'createdAt' => false,
+        'updatedAt' => false
     ];
 
     /**
@@ -215,19 +215,19 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => 'name',
         'description' => 'description',
         'amount' => 'amount',
-        'split_code' => 'split_code',
+        'splitCode' => 'split_code',
         'integration' => 'integration',
         'domain' => 'domain',
         'slug' => 'slug',
         'currency' => 'currency',
         'type' => 'type',
-        'collect_phone' => 'collect_phone',
+        'collectPhone' => 'collect_phone',
         'active' => 'active',
         'published' => 'published',
         'migrate' => 'migrate',
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt'
     ];
 
     /**
@@ -239,19 +239,19 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => 'setName',
         'description' => 'setDescription',
         'amount' => 'setAmount',
-        'split_code' => 'setSplitCode',
+        'splitCode' => 'setSplitCode',
         'integration' => 'setIntegration',
         'domain' => 'setDomain',
         'slug' => 'setSlug',
         'currency' => 'setCurrency',
         'type' => 'setType',
-        'collect_phone' => 'setCollectPhone',
+        'collectPhone' => 'setCollectPhone',
         'active' => 'setActive',
         'published' => 'setPublished',
         'migrate' => 'setMigrate',
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
@@ -263,19 +263,19 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'name' => 'getName',
         'description' => 'getDescription',
         'amount' => 'getAmount',
-        'split_code' => 'getSplitCode',
+        'splitCode' => 'getSplitCode',
         'integration' => 'getIntegration',
         'domain' => 'getDomain',
         'slug' => 'getSlug',
         'currency' => 'getCurrency',
         'type' => 'getType',
-        'collect_phone' => 'getCollectPhone',
+        'collectPhone' => 'getCollectPhone',
         'active' => 'getActive',
         'published' => 'getPublished',
         'migrate' => 'getMigrate',
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
@@ -338,19 +338,19 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
+        $this->setIfExists('splitCode', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('collect_phone', $data ?? [], null);
+        $this->setIfExists('collectPhone', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('published', $data ?? [], null);
         $this->setIfExists('migrate', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
     }
 
     /**
@@ -401,8 +401,8 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['collect_phone'] === null) {
-            $invalidProperties[] = "'collect_phone' can't be null";
+        if ($this->container['collectPhone'] === null) {
+            $invalidProperties[] = "'collectPhone' can't be null";
         }
         if ($this->container['active'] === null) {
             $invalidProperties[] = "'active' can't be null";
@@ -416,11 +416,11 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -533,35 +533,35 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets split_code
+     * Gets splitCode
      *
      * @return string|null
      */
     public function getSplitCode()
     {
-        return $this->container['split_code'];
+        return $this->container['splitCode'];
     }
 
     /**
-     * Sets split_code
+     * Sets splitCode
      *
-     * @param string|null $split_code split_code
+     * @param string|null $splitCode splitCode
      *
      * @return self
      */
-    public function setSplitCode($split_code)
+    public function setSplitCode($splitCode)
     {
-        if (is_null($split_code)) {
-            array_push($this->openAPINullablesSetToNull, 'split_code');
+        if (is_null($splitCode)) {
+            array_push($this->openAPINullablesSetToNull, 'splitCode');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('split_code', $nullablesSetToNull);
+            $index = array_search('splitCode', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['split_code'] = $split_code;
+        $this->container['splitCode'] = $splitCode;
 
         return $this;
     }
@@ -702,28 +702,28 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets collect_phone
+     * Gets collectPhone
      *
      * @return bool
      */
     public function getCollectPhone()
     {
-        return $this->container['collect_phone'];
+        return $this->container['collectPhone'];
     }
 
     /**
-     * Sets collect_phone
+     * Sets collectPhone
      *
-     * @param bool $collect_phone collect_phone
+     * @param bool $collectPhone collectPhone
      *
      * @return self
      */
-    public function setCollectPhone($collect_phone)
+    public function setCollectPhone($collectPhone)
     {
-        if (is_null($collect_phone)) {
-            throw new \InvalidArgumentException('non-nullable collect_phone cannot be null');
+        if (is_null($collectPhone)) {
+            throw new \InvalidArgumentException('non-nullable collectPhone cannot be null');
         }
-        $this->container['collect_phone'] = $collect_phone;
+        $this->container['collectPhone'] = $collectPhone;
 
         return $this;
     }
@@ -837,55 +837,55 @@ class PageCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

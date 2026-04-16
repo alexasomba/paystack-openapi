@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PaymentRequestViewResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,35 +59,35 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPITypes = [
         'domain' => 'string',
-        'request_code' => 'string',
+        'requestCode' => 'string',
         'description' => 'string',
-        'line_items' => '\Alexasomba\\Paystack\Model\PaymentRequestLineItemsArray[]',
-        'tax' => '\Alexasomba\\Paystack\Model\PaymentRequestTaxArray[]',
+        'lineItems' => '\Alexasomba\Paystack\Model\PaymentRequestLineItemsArray[]',
+        'tax' => '\Alexasomba\Paystack\Model\PaymentRequestTaxArray[]',
         'amount' => 'int',
         'discount' => 'int',
         'currency' => 'string',
-        'due_date' => 'string',
+        'dueDate' => 'string',
         'status' => 'string',
         'paid' => 'bool',
-        'paid_at' => 'string',
+        'paidAt' => 'string',
         'metadata' => 'object',
-        'has_invoice' => 'bool',
-        'invoice_number' => 'int',
-        'offline_reference' => 'string',
-        'pdf_url' => 'string',
-        'notifications' => '\Alexasomba\\Paystack\Model\PaymentRequestNotificationsArray[]',
+        'hasInvoice' => 'bool',
+        'invoiceNumber' => 'int',
+        'offlineReference' => 'string',
+        'pdfUrl' => 'string',
+        'notifications' => '\Alexasomba\Paystack\Model\PaymentRequestNotificationsArray[]',
         'archived' => 'bool',
         'source' => 'string',
-        'payment_method' => 'string',
+        'paymentMethod' => 'string',
         'note' => 'string',
-        'amount_paid' => 'int',
-        'split_code' => 'string',
+        'amountPaid' => 'int',
+        'splitCode' => 'string',
         'id' => 'int',
         'integration' => 'int',
-        'customer' => '\Alexasomba\\Paystack\Model\PaymentRequestViewResponseDataCustomer',
-        'created_at' => 'string',
-        'updated_at' => 'string',
-        'pending_amount' => 'int'
+        'customer' => '\Alexasomba\Paystack\Model\PaymentRequestViewResponseDataCustomer',
+        'createdAt' => 'string',
+        'updatedAt' => 'string',
+        'pendingAmount' => 'int'
     ];
 
     /**
@@ -99,35 +99,35 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPIFormats = [
         'domain' => null,
-        'request_code' => null,
+        'requestCode' => null,
         'description' => null,
-        'line_items' => null,
+        'lineItems' => null,
         'tax' => null,
         'amount' => null,
         'discount' => null,
         'currency' => null,
-        'due_date' => null,
+        'dueDate' => null,
         'status' => null,
         'paid' => null,
-        'paid_at' => null,
+        'paidAt' => null,
         'metadata' => null,
-        'has_invoice' => null,
-        'invoice_number' => null,
-        'offline_reference' => null,
-        'pdf_url' => null,
+        'hasInvoice' => null,
+        'invoiceNumber' => null,
+        'offlineReference' => null,
+        'pdfUrl' => null,
         'notifications' => null,
         'archived' => null,
         'source' => null,
-        'payment_method' => null,
+        'paymentMethod' => null,
         'note' => null,
-        'amount_paid' => null,
-        'split_code' => null,
+        'amountPaid' => null,
+        'splitCode' => null,
         'id' => null,
         'integration' => null,
         'customer' => null,
-        'created_at' => null,
-        'updated_at' => null,
-        'pending_amount' => null
+        'createdAt' => null,
+        'updatedAt' => null,
+        'pendingAmount' => null
     ];
 
     /**
@@ -137,35 +137,35 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPINullables = [
         'domain' => false,
-        'request_code' => false,
+        'requestCode' => false,
         'description' => true,
-        'line_items' => false,
+        'lineItems' => false,
         'tax' => false,
         'amount' => false,
         'discount' => true,
         'currency' => false,
-        'due_date' => true,
+        'dueDate' => true,
         'status' => false,
         'paid' => false,
-        'paid_at' => true,
+        'paidAt' => true,
         'metadata' => true,
-        'has_invoice' => false,
-        'invoice_number' => true,
-        'offline_reference' => false,
-        'pdf_url' => true,
+        'hasInvoice' => false,
+        'invoiceNumber' => true,
+        'offlineReference' => false,
+        'pdfUrl' => true,
         'notifications' => false,
         'archived' => false,
         'source' => false,
-        'payment_method' => true,
+        'paymentMethod' => true,
         'note' => true,
-        'amount_paid' => true,
-        'split_code' => true,
+        'amountPaid' => true,
+        'splitCode' => true,
         'id' => false,
         'integration' => false,
         'customer' => false,
-        'created_at' => false,
-        'updated_at' => false,
-        'pending_amount' => false
+        'createdAt' => false,
+        'updatedAt' => false,
+        'pendingAmount' => false
     ];
 
     /**
@@ -255,35 +255,35 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
      */
     protected static $attributeMap = [
         'domain' => 'domain',
-        'request_code' => 'request_code',
+        'requestCode' => 'request_code',
         'description' => 'description',
-        'line_items' => 'line_items',
+        'lineItems' => 'line_items',
         'tax' => 'tax',
         'amount' => 'amount',
         'discount' => 'discount',
         'currency' => 'currency',
-        'due_date' => 'due_date',
+        'dueDate' => 'due_date',
         'status' => 'status',
         'paid' => 'paid',
-        'paid_at' => 'paid_at',
+        'paidAt' => 'paid_at',
         'metadata' => 'metadata',
-        'has_invoice' => 'has_invoice',
-        'invoice_number' => 'invoice_number',
-        'offline_reference' => 'offline_reference',
-        'pdf_url' => 'pdf_url',
+        'hasInvoice' => 'has_invoice',
+        'invoiceNumber' => 'invoice_number',
+        'offlineReference' => 'offline_reference',
+        'pdfUrl' => 'pdf_url',
         'notifications' => 'notifications',
         'archived' => 'archived',
         'source' => 'source',
-        'payment_method' => 'payment_method',
+        'paymentMethod' => 'payment_method',
         'note' => 'note',
-        'amount_paid' => 'amount_paid',
-        'split_code' => 'split_code',
+        'amountPaid' => 'amount_paid',
+        'splitCode' => 'split_code',
         'id' => 'id',
         'integration' => 'integration',
         'customer' => 'customer',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'pending_amount' => 'pending_amount'
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt',
+        'pendingAmount' => 'pending_amount'
     ];
 
     /**
@@ -293,35 +293,35 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
      */
     protected static $setters = [
         'domain' => 'setDomain',
-        'request_code' => 'setRequestCode',
+        'requestCode' => 'setRequestCode',
         'description' => 'setDescription',
-        'line_items' => 'setLineItems',
+        'lineItems' => 'setLineItems',
         'tax' => 'setTax',
         'amount' => 'setAmount',
         'discount' => 'setDiscount',
         'currency' => 'setCurrency',
-        'due_date' => 'setDueDate',
+        'dueDate' => 'setDueDate',
         'status' => 'setStatus',
         'paid' => 'setPaid',
-        'paid_at' => 'setPaidAt',
+        'paidAt' => 'setPaidAt',
         'metadata' => 'setMetadata',
-        'has_invoice' => 'setHasInvoice',
-        'invoice_number' => 'setInvoiceNumber',
-        'offline_reference' => 'setOfflineReference',
-        'pdf_url' => 'setPdfUrl',
+        'hasInvoice' => 'setHasInvoice',
+        'invoiceNumber' => 'setInvoiceNumber',
+        'offlineReference' => 'setOfflineReference',
+        'pdfUrl' => 'setPdfUrl',
         'notifications' => 'setNotifications',
         'archived' => 'setArchived',
         'source' => 'setSource',
-        'payment_method' => 'setPaymentMethod',
+        'paymentMethod' => 'setPaymentMethod',
         'note' => 'setNote',
-        'amount_paid' => 'setAmountPaid',
-        'split_code' => 'setSplitCode',
+        'amountPaid' => 'setAmountPaid',
+        'splitCode' => 'setSplitCode',
         'id' => 'setId',
         'integration' => 'setIntegration',
         'customer' => 'setCustomer',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'pending_amount' => 'setPendingAmount'
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt',
+        'pendingAmount' => 'setPendingAmount'
     ];
 
     /**
@@ -331,35 +331,35 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
      */
     protected static $getters = [
         'domain' => 'getDomain',
-        'request_code' => 'getRequestCode',
+        'requestCode' => 'getRequestCode',
         'description' => 'getDescription',
-        'line_items' => 'getLineItems',
+        'lineItems' => 'getLineItems',
         'tax' => 'getTax',
         'amount' => 'getAmount',
         'discount' => 'getDiscount',
         'currency' => 'getCurrency',
-        'due_date' => 'getDueDate',
+        'dueDate' => 'getDueDate',
         'status' => 'getStatus',
         'paid' => 'getPaid',
-        'paid_at' => 'getPaidAt',
+        'paidAt' => 'getPaidAt',
         'metadata' => 'getMetadata',
-        'has_invoice' => 'getHasInvoice',
-        'invoice_number' => 'getInvoiceNumber',
-        'offline_reference' => 'getOfflineReference',
-        'pdf_url' => 'getPdfUrl',
+        'hasInvoice' => 'getHasInvoice',
+        'invoiceNumber' => 'getInvoiceNumber',
+        'offlineReference' => 'getOfflineReference',
+        'pdfUrl' => 'getPdfUrl',
         'notifications' => 'getNotifications',
         'archived' => 'getArchived',
         'source' => 'getSource',
-        'payment_method' => 'getPaymentMethod',
+        'paymentMethod' => 'getPaymentMethod',
         'note' => 'getNote',
-        'amount_paid' => 'getAmountPaid',
-        'split_code' => 'getSplitCode',
+        'amountPaid' => 'getAmountPaid',
+        'splitCode' => 'getSplitCode',
         'id' => 'getId',
         'integration' => 'getIntegration',
         'customer' => 'getCustomer',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'pending_amount' => 'getPendingAmount'
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt',
+        'pendingAmount' => 'getPendingAmount'
     ];
 
     /**
@@ -420,35 +420,35 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     public function __construct(?array $data = null)
     {
         $this->setIfExists('domain', $data ?? [], null);
-        $this->setIfExists('request_code', $data ?? [], null);
+        $this->setIfExists('requestCode', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('line_items', $data ?? [], null);
+        $this->setIfExists('lineItems', $data ?? [], null);
         $this->setIfExists('tax', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('discount', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('due_date', $data ?? [], null);
+        $this->setIfExists('dueDate', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('paid', $data ?? [], null);
-        $this->setIfExists('paid_at', $data ?? [], null);
+        $this->setIfExists('paidAt', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('has_invoice', $data ?? [], null);
-        $this->setIfExists('invoice_number', $data ?? [], null);
-        $this->setIfExists('offline_reference', $data ?? [], null);
-        $this->setIfExists('pdf_url', $data ?? [], null);
+        $this->setIfExists('hasInvoice', $data ?? [], null);
+        $this->setIfExists('invoiceNumber', $data ?? [], null);
+        $this->setIfExists('offlineReference', $data ?? [], null);
+        $this->setIfExists('pdfUrl', $data ?? [], null);
         $this->setIfExists('notifications', $data ?? [], null);
         $this->setIfExists('archived', $data ?? [], null);
         $this->setIfExists('source', $data ?? [], null);
-        $this->setIfExists('payment_method', $data ?? [], null);
+        $this->setIfExists('paymentMethod', $data ?? [], null);
         $this->setIfExists('note', $data ?? [], null);
-        $this->setIfExists('amount_paid', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
+        $this->setIfExists('amountPaid', $data ?? [], null);
+        $this->setIfExists('splitCode', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('customer', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
-        $this->setIfExists('pending_amount', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
+        $this->setIfExists('pendingAmount', $data ?? [], null);
     }
 
     /**
@@ -481,14 +481,14 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
         if ($this->container['domain'] === null) {
             $invalidProperties[] = "'domain' can't be null";
         }
-        if ($this->container['request_code'] === null) {
-            $invalidProperties[] = "'request_code' can't be null";
+        if ($this->container['requestCode'] === null) {
+            $invalidProperties[] = "'requestCode' can't be null";
         }
         if ($this->container['description'] === null && !$this->isNullableSetToNull('description')) {
             $invalidProperties[] = "'description' can't be null";
         }
-        if ($this->container['line_items'] === null) {
-            $invalidProperties[] = "'line_items' can't be null";
+        if ($this->container['lineItems'] === null) {
+            $invalidProperties[] = "'lineItems' can't be null";
         }
         if ($this->container['tax'] === null) {
             $invalidProperties[] = "'tax' can't be null";
@@ -502,8 +502,8 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
         }
-        if ($this->container['due_date'] === null && !$this->isNullableSetToNull('due_date')) {
-            $invalidProperties[] = "'due_date' can't be null";
+        if ($this->container['dueDate'] === null && !$this->isNullableSetToNull('dueDate')) {
+            $invalidProperties[] = "'dueDate' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
@@ -511,23 +511,23 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
         if ($this->container['paid'] === null) {
             $invalidProperties[] = "'paid' can't be null";
         }
-        if ($this->container['paid_at'] === null && !$this->isNullableSetToNull('paid_at')) {
-            $invalidProperties[] = "'paid_at' can't be null";
+        if ($this->container['paidAt'] === null && !$this->isNullableSetToNull('paidAt')) {
+            $invalidProperties[] = "'paidAt' can't be null";
         }
         if ($this->container['metadata'] === null && !$this->isNullableSetToNull('metadata')) {
             $invalidProperties[] = "'metadata' can't be null";
         }
-        if ($this->container['has_invoice'] === null) {
-            $invalidProperties[] = "'has_invoice' can't be null";
+        if ($this->container['hasInvoice'] === null) {
+            $invalidProperties[] = "'hasInvoice' can't be null";
         }
-        if ($this->container['invoice_number'] === null && !$this->isNullableSetToNull('invoice_number')) {
-            $invalidProperties[] = "'invoice_number' can't be null";
+        if ($this->container['invoiceNumber'] === null && !$this->isNullableSetToNull('invoiceNumber')) {
+            $invalidProperties[] = "'invoiceNumber' can't be null";
         }
-        if ($this->container['offline_reference'] === null) {
-            $invalidProperties[] = "'offline_reference' can't be null";
+        if ($this->container['offlineReference'] === null) {
+            $invalidProperties[] = "'offlineReference' can't be null";
         }
-        if ($this->container['pdf_url'] === null && !$this->isNullableSetToNull('pdf_url')) {
-            $invalidProperties[] = "'pdf_url' can't be null";
+        if ($this->container['pdfUrl'] === null && !$this->isNullableSetToNull('pdfUrl')) {
+            $invalidProperties[] = "'pdfUrl' can't be null";
         }
         if ($this->container['notifications'] === null) {
             $invalidProperties[] = "'notifications' can't be null";
@@ -538,17 +538,17 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
         if ($this->container['source'] === null) {
             $invalidProperties[] = "'source' can't be null";
         }
-        if ($this->container['payment_method'] === null && !$this->isNullableSetToNull('payment_method')) {
-            $invalidProperties[] = "'payment_method' can't be null";
+        if ($this->container['paymentMethod'] === null && !$this->isNullableSetToNull('paymentMethod')) {
+            $invalidProperties[] = "'paymentMethod' can't be null";
         }
         if ($this->container['note'] === null && !$this->isNullableSetToNull('note')) {
             $invalidProperties[] = "'note' can't be null";
         }
-        if ($this->container['amount_paid'] === null && !$this->isNullableSetToNull('amount_paid')) {
-            $invalidProperties[] = "'amount_paid' can't be null";
+        if ($this->container['amountPaid'] === null && !$this->isNullableSetToNull('amountPaid')) {
+            $invalidProperties[] = "'amountPaid' can't be null";
         }
-        if ($this->container['split_code'] === null && !$this->isNullableSetToNull('split_code')) {
-            $invalidProperties[] = "'split_code' can't be null";
+        if ($this->container['splitCode'] === null && !$this->isNullableSetToNull('splitCode')) {
+            $invalidProperties[] = "'splitCode' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
@@ -559,14 +559,14 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
         if ($this->container['customer'] === null) {
             $invalidProperties[] = "'customer' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
-        if ($this->container['pending_amount'] === null) {
-            $invalidProperties[] = "'pending_amount' can't be null";
+        if ($this->container['pendingAmount'] === null) {
+            $invalidProperties[] = "'pendingAmount' can't be null";
         }
         return $invalidProperties;
     }
@@ -611,28 +611,28 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets request_code
+     * Gets requestCode
      *
      * @return string
      */
     public function getRequestCode()
     {
-        return $this->container['request_code'];
+        return $this->container['requestCode'];
     }
 
     /**
-     * Sets request_code
+     * Sets requestCode
      *
-     * @param string $request_code request_code
+     * @param string $requestCode requestCode
      *
      * @return self
      */
-    public function setRequestCode($request_code)
+    public function setRequestCode($requestCode)
     {
-        if (is_null($request_code)) {
-            throw new \InvalidArgumentException('non-nullable request_code cannot be null');
+        if (is_null($requestCode)) {
+            throw new \InvalidArgumentException('non-nullable requestCode cannot be null');
         }
-        $this->container['request_code'] = $request_code;
+        $this->container['requestCode'] = $requestCode;
 
         return $this;
     }
@@ -672,28 +672,28 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets line_items
+     * Gets lineItems
      *
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestLineItemsArray[]
+     * @return \Alexasomba\Paystack\Model\PaymentRequestLineItemsArray[]
      */
     public function getLineItems()
     {
-        return $this->container['line_items'];
+        return $this->container['lineItems'];
     }
 
     /**
-     * Sets line_items
+     * Sets lineItems
      *
-     * @param \Alexasomba\\Paystack\Model\PaymentRequestLineItemsArray[] $line_items line_items
+     * @param \Alexasomba\Paystack\Model\PaymentRequestLineItemsArray[] $lineItems lineItems
      *
      * @return self
      */
-    public function setLineItems($line_items)
+    public function setLineItems($lineItems)
     {
-        if (is_null($line_items)) {
-            throw new \InvalidArgumentException('non-nullable line_items cannot be null');
+        if (is_null($lineItems)) {
+            throw new \InvalidArgumentException('non-nullable lineItems cannot be null');
         }
-        $this->container['line_items'] = $line_items;
+        $this->container['lineItems'] = $lineItems;
 
         return $this;
     }
@@ -701,7 +701,7 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets tax
      *
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestTaxArray[]
+     * @return \Alexasomba\Paystack\Model\PaymentRequestTaxArray[]
      */
     public function getTax()
     {
@@ -711,7 +711,7 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets tax
      *
-     * @param \Alexasomba\\Paystack\Model\PaymentRequestTaxArray[] $tax tax
+     * @param \Alexasomba\Paystack\Model\PaymentRequestTaxArray[] $tax tax
      *
      * @return self
      */
@@ -814,35 +814,35 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets due_date
+     * Gets dueDate
      *
      * @return string|null
      */
     public function getDueDate()
     {
-        return $this->container['due_date'];
+        return $this->container['dueDate'];
     }
 
     /**
-     * Sets due_date
+     * Sets dueDate
      *
-     * @param string|null $due_date due_date
+     * @param string|null $dueDate dueDate
      *
      * @return self
      */
-    public function setDueDate($due_date)
+    public function setDueDate($dueDate)
     {
-        if (is_null($due_date)) {
-            array_push($this->openAPINullablesSetToNull, 'due_date');
+        if (is_null($dueDate)) {
+            array_push($this->openAPINullablesSetToNull, 'dueDate');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('due_date', $nullablesSetToNull);
+            $index = array_search('dueDate', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['due_date'] = $due_date;
+        $this->container['dueDate'] = $dueDate;
 
         return $this;
     }
@@ -902,35 +902,35 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets paid_at
+     * Gets paidAt
      *
      * @return string|null
      */
     public function getPaidAt()
     {
-        return $this->container['paid_at'];
+        return $this->container['paidAt'];
     }
 
     /**
-     * Sets paid_at
+     * Sets paidAt
      *
-     * @param string|null $paid_at paid_at
+     * @param string|null $paidAt paidAt
      *
      * @return self
      */
-    public function setPaidAt($paid_at)
+    public function setPaidAt($paidAt)
     {
-        if (is_null($paid_at)) {
-            array_push($this->openAPINullablesSetToNull, 'paid_at');
+        if (is_null($paidAt)) {
+            array_push($this->openAPINullablesSetToNull, 'paidAt');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('paid_at', $nullablesSetToNull);
+            $index = array_search('paidAt', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['paid_at'] = $paid_at;
+        $this->container['paidAt'] = $paidAt;
 
         return $this;
     }
@@ -970,123 +970,123 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets has_invoice
+     * Gets hasInvoice
      *
      * @return bool
      */
     public function getHasInvoice()
     {
-        return $this->container['has_invoice'];
+        return $this->container['hasInvoice'];
     }
 
     /**
-     * Sets has_invoice
+     * Sets hasInvoice
      *
-     * @param bool $has_invoice has_invoice
+     * @param bool $hasInvoice hasInvoice
      *
      * @return self
      */
-    public function setHasInvoice($has_invoice)
+    public function setHasInvoice($hasInvoice)
     {
-        if (is_null($has_invoice)) {
-            throw new \InvalidArgumentException('non-nullable has_invoice cannot be null');
+        if (is_null($hasInvoice)) {
+            throw new \InvalidArgumentException('non-nullable hasInvoice cannot be null');
         }
-        $this->container['has_invoice'] = $has_invoice;
+        $this->container['hasInvoice'] = $hasInvoice;
 
         return $this;
     }
 
     /**
-     * Gets invoice_number
+     * Gets invoiceNumber
      *
      * @return int|null
      */
     public function getInvoiceNumber()
     {
-        return $this->container['invoice_number'];
+        return $this->container['invoiceNumber'];
     }
 
     /**
-     * Sets invoice_number
+     * Sets invoiceNumber
      *
-     * @param int|null $invoice_number invoice_number
+     * @param int|null $invoiceNumber invoiceNumber
      *
      * @return self
      */
-    public function setInvoiceNumber($invoice_number)
+    public function setInvoiceNumber($invoiceNumber)
     {
-        if (is_null($invoice_number)) {
-            array_push($this->openAPINullablesSetToNull, 'invoice_number');
+        if (is_null($invoiceNumber)) {
+            array_push($this->openAPINullablesSetToNull, 'invoiceNumber');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('invoice_number', $nullablesSetToNull);
+            $index = array_search('invoiceNumber', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['invoice_number'] = $invoice_number;
+        $this->container['invoiceNumber'] = $invoiceNumber;
 
         return $this;
     }
 
     /**
-     * Gets offline_reference
+     * Gets offlineReference
      *
      * @return string
      */
     public function getOfflineReference()
     {
-        return $this->container['offline_reference'];
+        return $this->container['offlineReference'];
     }
 
     /**
-     * Sets offline_reference
+     * Sets offlineReference
      *
-     * @param string $offline_reference offline_reference
+     * @param string $offlineReference offlineReference
      *
      * @return self
      */
-    public function setOfflineReference($offline_reference)
+    public function setOfflineReference($offlineReference)
     {
-        if (is_null($offline_reference)) {
-            throw new \InvalidArgumentException('non-nullable offline_reference cannot be null');
+        if (is_null($offlineReference)) {
+            throw new \InvalidArgumentException('non-nullable offlineReference cannot be null');
         }
-        $this->container['offline_reference'] = $offline_reference;
+        $this->container['offlineReference'] = $offlineReference;
 
         return $this;
     }
 
     /**
-     * Gets pdf_url
+     * Gets pdfUrl
      *
      * @return string|null
      */
     public function getPdfUrl()
     {
-        return $this->container['pdf_url'];
+        return $this->container['pdfUrl'];
     }
 
     /**
-     * Sets pdf_url
+     * Sets pdfUrl
      *
-     * @param string|null $pdf_url pdf_url
+     * @param string|null $pdfUrl pdfUrl
      *
      * @return self
      */
-    public function setPdfUrl($pdf_url)
+    public function setPdfUrl($pdfUrl)
     {
-        if (is_null($pdf_url)) {
-            array_push($this->openAPINullablesSetToNull, 'pdf_url');
+        if (is_null($pdfUrl)) {
+            array_push($this->openAPINullablesSetToNull, 'pdfUrl');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('pdf_url', $nullablesSetToNull);
+            $index = array_search('pdfUrl', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['pdf_url'] = $pdf_url;
+        $this->container['pdfUrl'] = $pdfUrl;
 
         return $this;
     }
@@ -1094,7 +1094,7 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets notifications
      *
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestNotificationsArray[]
+     * @return \Alexasomba\Paystack\Model\PaymentRequestNotificationsArray[]
      */
     public function getNotifications()
     {
@@ -1104,7 +1104,7 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets notifications
      *
-     * @param \Alexasomba\\Paystack\Model\PaymentRequestNotificationsArray[] $notifications notifications
+     * @param \Alexasomba\Paystack\Model\PaymentRequestNotificationsArray[] $notifications notifications
      *
      * @return self
      */
@@ -1173,35 +1173,35 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets payment_method
+     * Gets paymentMethod
      *
      * @return string|null
      */
     public function getPaymentMethod()
     {
-        return $this->container['payment_method'];
+        return $this->container['paymentMethod'];
     }
 
     /**
-     * Sets payment_method
+     * Sets paymentMethod
      *
-     * @param string|null $payment_method payment_method
+     * @param string|null $paymentMethod paymentMethod
      *
      * @return self
      */
-    public function setPaymentMethod($payment_method)
+    public function setPaymentMethod($paymentMethod)
     {
-        if (is_null($payment_method)) {
-            array_push($this->openAPINullablesSetToNull, 'payment_method');
+        if (is_null($paymentMethod)) {
+            array_push($this->openAPINullablesSetToNull, 'paymentMethod');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('payment_method', $nullablesSetToNull);
+            $index = array_search('paymentMethod', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['payment_method'] = $payment_method;
+        $this->container['paymentMethod'] = $paymentMethod;
 
         return $this;
     }
@@ -1241,69 +1241,69 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets amount_paid
+     * Gets amountPaid
      *
      * @return int|null
      */
     public function getAmountPaid()
     {
-        return $this->container['amount_paid'];
+        return $this->container['amountPaid'];
     }
 
     /**
-     * Sets amount_paid
+     * Sets amountPaid
      *
-     * @param int|null $amount_paid amount_paid
+     * @param int|null $amountPaid amountPaid
      *
      * @return self
      */
-    public function setAmountPaid($amount_paid)
+    public function setAmountPaid($amountPaid)
     {
-        if (is_null($amount_paid)) {
-            array_push($this->openAPINullablesSetToNull, 'amount_paid');
+        if (is_null($amountPaid)) {
+            array_push($this->openAPINullablesSetToNull, 'amountPaid');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('amount_paid', $nullablesSetToNull);
+            $index = array_search('amountPaid', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['amount_paid'] = $amount_paid;
+        $this->container['amountPaid'] = $amountPaid;
 
         return $this;
     }
 
     /**
-     * Gets split_code
+     * Gets splitCode
      *
      * @return string|null
      */
     public function getSplitCode()
     {
-        return $this->container['split_code'];
+        return $this->container['splitCode'];
     }
 
     /**
-     * Sets split_code
+     * Sets splitCode
      *
-     * @param string|null $split_code split_code
+     * @param string|null $splitCode splitCode
      *
      * @return self
      */
-    public function setSplitCode($split_code)
+    public function setSplitCode($splitCode)
     {
-        if (is_null($split_code)) {
-            array_push($this->openAPINullablesSetToNull, 'split_code');
+        if (is_null($splitCode)) {
+            array_push($this->openAPINullablesSetToNull, 'splitCode');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('split_code', $nullablesSetToNull);
+            $index = array_search('splitCode', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['split_code'] = $split_code;
+        $this->container['splitCode'] = $splitCode;
 
         return $this;
     }
@@ -1365,7 +1365,7 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets customer
      *
-     * @return \Alexasomba\\Paystack\Model\PaymentRequestViewResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\PaymentRequestViewResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -1375,7 +1375,7 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets customer
      *
-     * @param \Alexasomba\\Paystack\Model\PaymentRequestViewResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\PaymentRequestViewResponseDataCustomer $customer customer
      *
      * @return self
      */
@@ -1390,82 +1390,82 @@ class PaymentRequestViewResponseData implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Gets pending_amount
+     * Gets pendingAmount
      *
      * @return int
      */
     public function getPendingAmount()
     {
-        return $this->container['pending_amount'];
+        return $this->container['pendingAmount'];
     }
 
     /**
-     * Sets pending_amount
+     * Sets pendingAmount
      *
-     * @param int $pending_amount pending_amount
+     * @param int $pendingAmount pendingAmount
      *
      * @return self
      */
-    public function setPendingAmount($pending_amount)
+    public function setPendingAmount($pendingAmount)
     {
-        if (is_null($pending_amount)) {
-            throw new \InvalidArgumentException('non-nullable pending_amount cannot be null');
+        if (is_null($pendingAmount)) {
+            throw new \InvalidArgumentException('non-nullable pendingAmount cannot be null');
         }
-        $this->container['pending_amount'] = $pending_amount;
+        $this->container['pendingAmount'] = $pendingAmount;
 
         return $this;
     }

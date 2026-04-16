@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * CustomerFetchMandateAuthorizationsResponseMeta Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class CustomerFetchMandateAuthorizationsResponseMeta implements ModelInterface, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'per_page' => 'int',
+        'perPage' => 'int',
         'next' => 'string',
         'count' => 'int',
         'total' => 'int'
@@ -72,7 +72,7 @@ class CustomerFetchMandateAuthorizationsResponseMeta implements ModelInterface, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'per_page' => null,
+        'perPage' => null,
         'next' => null,
         'count' => null,
         'total' => null
@@ -84,7 +84,7 @@ class CustomerFetchMandateAuthorizationsResponseMeta implements ModelInterface, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'per_page' => false,
+        'perPage' => false,
         'next' => true,
         'count' => false,
         'total' => false
@@ -176,7 +176,7 @@ class CustomerFetchMandateAuthorizationsResponseMeta implements ModelInterface, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'per_page' => 'per_page',
+        'perPage' => 'per_page',
         'next' => 'next',
         'count' => 'count',
         'total' => 'total'
@@ -188,7 +188,7 @@ class CustomerFetchMandateAuthorizationsResponseMeta implements ModelInterface, 
      * @var string[]
      */
     protected static $setters = [
-        'per_page' => 'setPerPage',
+        'perPage' => 'setPerPage',
         'next' => 'setNext',
         'count' => 'setCount',
         'total' => 'setTotal'
@@ -200,7 +200,7 @@ class CustomerFetchMandateAuthorizationsResponseMeta implements ModelInterface, 
      * @var string[]
      */
     protected static $getters = [
-        'per_page' => 'getPerPage',
+        'perPage' => 'getPerPage',
         'next' => 'getNext',
         'count' => 'getCount',
         'total' => 'getTotal'
@@ -263,7 +263,7 @@ class CustomerFetchMandateAuthorizationsResponseMeta implements ModelInterface, 
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('per_page', $data ?? [], null);
+        $this->setIfExists('perPage', $data ?? [], null);
         $this->setIfExists('next', $data ?? [], null);
         $this->setIfExists('count', $data ?? [], null);
         $this->setIfExists('total', $data ?? [], null);
@@ -296,8 +296,8 @@ class CustomerFetchMandateAuthorizationsResponseMeta implements ModelInterface, 
     {
         $invalidProperties = [];
 
-        if ($this->container['per_page'] === null) {
-            $invalidProperties[] = "'per_page' can't be null";
+        if ($this->container['perPage'] === null) {
+            $invalidProperties[] = "'perPage' can't be null";
         }
         if ($this->container['count'] === null) {
             $invalidProperties[] = "'count' can't be null";
@@ -321,28 +321,28 @@ class CustomerFetchMandateAuthorizationsResponseMeta implements ModelInterface, 
 
 
     /**
-     * Gets per_page
+     * Gets perPage
      *
      * @return int
      */
     public function getPerPage()
     {
-        return $this->container['per_page'];
+        return $this->container['perPage'];
     }
 
     /**
-     * Sets per_page
+     * Sets perPage
      *
-     * @param int $per_page per_page
+     * @param int $perPage perPage
      *
      * @return self
      */
-    public function setPerPage($per_page)
+    public function setPerPage($perPage)
     {
-        if (is_null($per_page)) {
-            throw new \InvalidArgumentException('non-nullable per_page cannot be null');
+        if (is_null($perPage)) {
+            throw new \InvalidArgumentException('non-nullable perPage cannot be null');
         }
-        $this->container['per_page'] = $per_page;
+        $this->container['perPage'] = $perPage;
 
         return $this;
     }

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * DisputeResolveResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'currency' => 'string',
         'last4' => 'string',
         'bin' => 'string',
-        'transaction_reference' => 'string',
-        'merchant_transaction_reference' => 'string',
-        'refund_amount' => 'int',
+        'transactionReference' => 'string',
+        'merchantTransactionReference' => 'string',
+        'refundAmount' => 'int',
         'status' => 'string',
         'domain' => 'string',
         'resolution' => 'string',
@@ -73,13 +73,13 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'id' => 'int',
         'integration' => 'int',
         'transaction' => 'object',
-        'created_by' => 'int',
+        'createdBy' => 'int',
         'evidence' => 'int',
-        'resolved_at' => 'string',
-        'created_at' => 'string',
-        'updated_at' => 'string',
-        'due_at' => 'mixed',
-        'message' => '\Alexasomba\\Paystack\Model\DisputeResolveResponseDataMessage'
+        'resolvedAt' => 'string',
+        'createdAt' => 'string',
+        'updatedAt' => 'string',
+        'dueAt' => 'mixed',
+        'message' => '\Alexasomba\Paystack\Model\DisputeResolveResponseDataMessage'
     ];
 
     /**
@@ -93,9 +93,9 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'currency' => null,
         'last4' => null,
         'bin' => null,
-        'transaction_reference' => null,
-        'merchant_transaction_reference' => null,
-        'refund_amount' => null,
+        'transactionReference' => null,
+        'merchantTransactionReference' => null,
+        'refundAmount' => null,
         'status' => null,
         'domain' => null,
         'resolution' => null,
@@ -105,12 +105,12 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'id' => null,
         'integration' => null,
         'transaction' => null,
-        'created_by' => null,
+        'createdBy' => null,
         'evidence' => null,
-        'resolved_at' => null,
-        'created_at' => null,
-        'updated_at' => null,
-        'due_at' => null,
+        'resolvedAt' => null,
+        'createdAt' => null,
+        'updatedAt' => null,
+        'dueAt' => null,
         'message' => null
     ];
 
@@ -123,9 +123,9 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'currency' => false,
         'last4' => true,
         'bin' => true,
-        'transaction_reference' => true,
-        'merchant_transaction_reference' => true,
-        'refund_amount' => false,
+        'transactionReference' => true,
+        'merchantTransactionReference' => true,
+        'refundAmount' => false,
         'status' => false,
         'domain' => false,
         'resolution' => false,
@@ -135,12 +135,12 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'id' => false,
         'integration' => false,
         'transaction' => false,
-        'created_by' => false,
+        'createdBy' => false,
         'evidence' => true,
-        'resolved_at' => false,
-        'created_at' => false,
-        'updated_at' => false,
-        'due_at' => true,
+        'resolvedAt' => false,
+        'createdAt' => false,
+        'updatedAt' => false,
+        'dueAt' => true,
         'message' => false
     ];
 
@@ -233,9 +233,9 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'currency' => 'currency',
         'last4' => 'last4',
         'bin' => 'bin',
-        'transaction_reference' => 'transaction_reference',
-        'merchant_transaction_reference' => 'merchant_transaction_reference',
-        'refund_amount' => 'refund_amount',
+        'transactionReference' => 'transaction_reference',
+        'merchantTransactionReference' => 'merchant_transaction_reference',
+        'refundAmount' => 'refund_amount',
         'status' => 'status',
         'domain' => 'domain',
         'resolution' => 'resolution',
@@ -245,12 +245,12 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'id' => 'id',
         'integration' => 'integration',
         'transaction' => 'transaction',
-        'created_by' => 'created_by',
+        'createdBy' => 'created_by',
         'evidence' => 'evidence',
-        'resolved_at' => 'resolvedAt',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'due_at' => 'dueAt',
+        'resolvedAt' => 'resolvedAt',
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt',
+        'dueAt' => 'dueAt',
         'message' => 'message'
     ];
 
@@ -263,9 +263,9 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'currency' => 'setCurrency',
         'last4' => 'setLast4',
         'bin' => 'setBin',
-        'transaction_reference' => 'setTransactionReference',
-        'merchant_transaction_reference' => 'setMerchantTransactionReference',
-        'refund_amount' => 'setRefundAmount',
+        'transactionReference' => 'setTransactionReference',
+        'merchantTransactionReference' => 'setMerchantTransactionReference',
+        'refundAmount' => 'setRefundAmount',
         'status' => 'setStatus',
         'domain' => 'setDomain',
         'resolution' => 'setResolution',
@@ -275,12 +275,12 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'id' => 'setId',
         'integration' => 'setIntegration',
         'transaction' => 'setTransaction',
-        'created_by' => 'setCreatedBy',
+        'createdBy' => 'setCreatedBy',
         'evidence' => 'setEvidence',
-        'resolved_at' => 'setResolvedAt',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'due_at' => 'setDueAt',
+        'resolvedAt' => 'setResolvedAt',
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt',
+        'dueAt' => 'setDueAt',
         'message' => 'setMessage'
     ];
 
@@ -293,9 +293,9 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'currency' => 'getCurrency',
         'last4' => 'getLast4',
         'bin' => 'getBin',
-        'transaction_reference' => 'getTransactionReference',
-        'merchant_transaction_reference' => 'getMerchantTransactionReference',
-        'refund_amount' => 'getRefundAmount',
+        'transactionReference' => 'getTransactionReference',
+        'merchantTransactionReference' => 'getMerchantTransactionReference',
+        'refundAmount' => 'getRefundAmount',
         'status' => 'getStatus',
         'domain' => 'getDomain',
         'resolution' => 'getResolution',
@@ -305,12 +305,12 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         'id' => 'getId',
         'integration' => 'getIntegration',
         'transaction' => 'getTransaction',
-        'created_by' => 'getCreatedBy',
+        'createdBy' => 'getCreatedBy',
         'evidence' => 'getEvidence',
-        'resolved_at' => 'getResolvedAt',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'due_at' => 'getDueAt',
+        'resolvedAt' => 'getResolvedAt',
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt',
+        'dueAt' => 'getDueAt',
         'message' => 'getMessage'
     ];
 
@@ -374,9 +374,9 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('last4', $data ?? [], null);
         $this->setIfExists('bin', $data ?? [], null);
-        $this->setIfExists('transaction_reference', $data ?? [], null);
-        $this->setIfExists('merchant_transaction_reference', $data ?? [], null);
-        $this->setIfExists('refund_amount', $data ?? [], null);
+        $this->setIfExists('transactionReference', $data ?? [], null);
+        $this->setIfExists('merchantTransactionReference', $data ?? [], null);
+        $this->setIfExists('refundAmount', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('resolution', $data ?? [], null);
@@ -386,12 +386,12 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('transaction', $data ?? [], null);
-        $this->setIfExists('created_by', $data ?? [], null);
+        $this->setIfExists('createdBy', $data ?? [], null);
         $this->setIfExists('evidence', $data ?? [], null);
-        $this->setIfExists('resolved_at', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
-        $this->setIfExists('due_at', $data ?? [], null);
+        $this->setIfExists('resolvedAt', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
+        $this->setIfExists('dueAt', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
     }
 
@@ -431,11 +431,11 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['bin'] === null && !$this->isNullableSetToNull('bin')) {
             $invalidProperties[] = "'bin' can't be null";
         }
-        if ($this->container['merchant_transaction_reference'] === null && !$this->isNullableSetToNull('merchant_transaction_reference')) {
-            $invalidProperties[] = "'merchant_transaction_reference' can't be null";
+        if ($this->container['merchantTransactionReference'] === null && !$this->isNullableSetToNull('merchantTransactionReference')) {
+            $invalidProperties[] = "'merchantTransactionReference' can't be null";
         }
-        if ($this->container['refund_amount'] === null) {
-            $invalidProperties[] = "'refund_amount' can't be null";
+        if ($this->container['refundAmount'] === null) {
+            $invalidProperties[] = "'refundAmount' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
@@ -458,20 +458,20 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
         if ($this->container['transaction'] === null) {
             $invalidProperties[] = "'transaction' can't be null";
         }
-        if ($this->container['created_by'] === null) {
-            $invalidProperties[] = "'created_by' can't be null";
+        if ($this->container['createdBy'] === null) {
+            $invalidProperties[] = "'createdBy' can't be null";
         }
         if ($this->container['evidence'] === null && !$this->isNullableSetToNull('evidence')) {
             $invalidProperties[] = "'evidence' can't be null";
         }
-        if ($this->container['resolved_at'] === null) {
-            $invalidProperties[] = "'resolved_at' can't be null";
+        if ($this->container['resolvedAt'] === null) {
+            $invalidProperties[] = "'resolvedAt' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         if ($this->container['message'] === null) {
             $invalidProperties[] = "'message' can't be null";
@@ -587,96 +587,96 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets transaction_reference
+     * Gets transactionReference
      *
      * @return string|null
      */
     public function getTransactionReference()
     {
-        return $this->container['transaction_reference'];
+        return $this->container['transactionReference'];
     }
 
     /**
-     * Sets transaction_reference
+     * Sets transactionReference
      *
-     * @param string|null $transaction_reference transaction_reference
+     * @param string|null $transactionReference transactionReference
      *
      * @return self
      */
-    public function setTransactionReference($transaction_reference)
+    public function setTransactionReference($transactionReference)
     {
-        if (is_null($transaction_reference)) {
-            array_push($this->openAPINullablesSetToNull, 'transaction_reference');
+        if (is_null($transactionReference)) {
+            array_push($this->openAPINullablesSetToNull, 'transactionReference');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('transaction_reference', $nullablesSetToNull);
+            $index = array_search('transactionReference', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['transaction_reference'] = $transaction_reference;
+        $this->container['transactionReference'] = $transactionReference;
 
         return $this;
     }
 
     /**
-     * Gets merchant_transaction_reference
+     * Gets merchantTransactionReference
      *
      * @return string|null
      */
     public function getMerchantTransactionReference()
     {
-        return $this->container['merchant_transaction_reference'];
+        return $this->container['merchantTransactionReference'];
     }
 
     /**
-     * Sets merchant_transaction_reference
+     * Sets merchantTransactionReference
      *
-     * @param string|null $merchant_transaction_reference merchant_transaction_reference
+     * @param string|null $merchantTransactionReference merchantTransactionReference
      *
      * @return self
      */
-    public function setMerchantTransactionReference($merchant_transaction_reference)
+    public function setMerchantTransactionReference($merchantTransactionReference)
     {
-        if (is_null($merchant_transaction_reference)) {
-            array_push($this->openAPINullablesSetToNull, 'merchant_transaction_reference');
+        if (is_null($merchantTransactionReference)) {
+            array_push($this->openAPINullablesSetToNull, 'merchantTransactionReference');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('merchant_transaction_reference', $nullablesSetToNull);
+            $index = array_search('merchantTransactionReference', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['merchant_transaction_reference'] = $merchant_transaction_reference;
+        $this->container['merchantTransactionReference'] = $merchantTransactionReference;
 
         return $this;
     }
 
     /**
-     * Gets refund_amount
+     * Gets refundAmount
      *
      * @return int
      */
     public function getRefundAmount()
     {
-        return $this->container['refund_amount'];
+        return $this->container['refundAmount'];
     }
 
     /**
-     * Sets refund_amount
+     * Sets refundAmount
      *
-     * @param int $refund_amount refund_amount
+     * @param int $refundAmount refundAmount
      *
      * @return self
      */
-    public function setRefundAmount($refund_amount)
+    public function setRefundAmount($refundAmount)
     {
-        if (is_null($refund_amount)) {
-            throw new \InvalidArgumentException('non-nullable refund_amount cannot be null');
+        if (is_null($refundAmount)) {
+            throw new \InvalidArgumentException('non-nullable refundAmount cannot be null');
         }
-        $this->container['refund_amount'] = $refund_amount;
+        $this->container['refundAmount'] = $refundAmount;
 
         return $this;
     }
@@ -932,28 +932,28 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets created_by
+     * Gets createdBy
      *
      * @return int
      */
     public function getCreatedBy()
     {
-        return $this->container['created_by'];
+        return $this->container['createdBy'];
     }
 
     /**
-     * Sets created_by
+     * Sets createdBy
      *
-     * @param int $created_by created_by
+     * @param int $createdBy createdBy
      *
      * @return self
      */
-    public function setCreatedBy($created_by)
+    public function setCreatedBy($createdBy)
     {
-        if (is_null($created_by)) {
-            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
+        if (is_null($createdBy)) {
+            throw new \InvalidArgumentException('non-nullable createdBy cannot be null');
         }
-        $this->container['created_by'] = $created_by;
+        $this->container['createdBy'] = $createdBy;
 
         return $this;
     }
@@ -993,116 +993,116 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets resolved_at
+     * Gets resolvedAt
      *
      * @return string
      */
     public function getResolvedAt()
     {
-        return $this->container['resolved_at'];
+        return $this->container['resolvedAt'];
     }
 
     /**
-     * Sets resolved_at
+     * Sets resolvedAt
      *
-     * @param string $resolved_at resolved_at
+     * @param string $resolvedAt resolvedAt
      *
      * @return self
      */
-    public function setResolvedAt($resolved_at)
+    public function setResolvedAt($resolvedAt)
     {
-        if (is_null($resolved_at)) {
-            throw new \InvalidArgumentException('non-nullable resolved_at cannot be null');
+        if (is_null($resolvedAt)) {
+            throw new \InvalidArgumentException('non-nullable resolvedAt cannot be null');
         }
-        $this->container['resolved_at'] = $resolved_at;
+        $this->container['resolvedAt'] = $resolvedAt;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Gets due_at
+     * Gets dueAt
      *
      * @return mixed|null
      */
     public function getDueAt()
     {
-        return $this->container['due_at'];
+        return $this->container['dueAt'];
     }
 
     /**
-     * Sets due_at
+     * Sets dueAt
      *
-     * @param mixed|null $due_at due_at
+     * @param mixed|null $dueAt dueAt
      *
      * @return self
      */
-    public function setDueAt($due_at)
+    public function setDueAt($dueAt)
     {
-        if (is_null($due_at)) {
-            array_push($this->openAPINullablesSetToNull, 'due_at');
+        if (is_null($dueAt)) {
+            array_push($this->openAPINullablesSetToNull, 'dueAt');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('due_at', $nullablesSetToNull);
+            $index = array_search('dueAt', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['due_at'] = $due_at;
+        $this->container['dueAt'] = $dueAt;
 
         return $this;
     }
@@ -1110,7 +1110,7 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets message
      *
-     * @return \Alexasomba\\Paystack\Model\DisputeResolveResponseDataMessage
+     * @return \Alexasomba\Paystack\Model\DisputeResolveResponseDataMessage
      */
     public function getMessage()
     {
@@ -1120,7 +1120,7 @@ class DisputeResolveResponseData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets message
      *
-     * @param \Alexasomba\\Paystack\Model\DisputeResolveResponseDataMessage $message message
+     * @param \Alexasomba\Paystack\Model\DisputeResolveResponseDataMessage $message message
      *
      * @return self
      */

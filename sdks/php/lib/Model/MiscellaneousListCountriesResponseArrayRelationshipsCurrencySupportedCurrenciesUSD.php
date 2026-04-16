@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSD Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurre
       * @var string[]
       */
     protected static $openAPITypes = [
-        'bank' => '\Alexasomba\\Paystack\Model\MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank'
+        'bank' => '\Alexasomba\Paystack\Model\MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank'
     ];
 
     /**
@@ -296,7 +296,7 @@ class MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurre
     /**
      * Gets bank
      *
-     * @return \Alexasomba\\Paystack\Model\MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank
+     * @return \Alexasomba\Paystack\Model\MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank
      */
     public function getBank()
     {
@@ -306,7 +306,7 @@ class MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurre
     /**
      * Sets bank
      *
-     * @param \Alexasomba\\Paystack\Model\MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank $bank bank
+     * @param \Alexasomba\Paystack\Model\MiscellaneousListCountriesResponseArrayRelationshipsCurrencySupportedCurrenciesUSDBank $bank bank
      *
      * @return self
      */

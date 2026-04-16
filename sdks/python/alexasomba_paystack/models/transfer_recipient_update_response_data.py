@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.transfer_recipient_update_response_data_details import TransferRecipientUpdateResponseDataDetails
 from typing import Optional, Set
@@ -37,8 +37,8 @@ class TransferRecipientUpdateResponseData(BaseModel):
     recipient_code: StrictStr
     active: StrictBool
     id: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     __properties: ClassVar[List[str]] = ["type", "name", "metadata", "domain", "details", "currency", "recipient_code", "active", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
@@ -109,7 +109,7 @@ class TransferRecipientUpdateResponseData(BaseModel):
             "recipient_code": obj.get("recipient_code"),
             "active": obj.get("active"),
             "id": obj.get("id"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })
         return _obj

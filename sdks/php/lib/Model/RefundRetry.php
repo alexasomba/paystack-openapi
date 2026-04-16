@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * RefundRetry Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class RefundRetry implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'refund_account_details' => '\Alexasomba\\Paystack\Model\RefundRetryAccountDetails'
+        'refundAccountDetails' => '\Alexasomba\Paystack\Model\RefundRetryAccountDetails'
     ];
 
     /**
@@ -69,7 +69,7 @@ class RefundRetry implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'refund_account_details' => null
+        'refundAccountDetails' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class RefundRetry implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'refund_account_details' => false
+        'refundAccountDetails' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class RefundRetry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'refund_account_details' => 'refund_account_details'
+        'refundAccountDetails' => 'refund_account_details'
     ];
 
     /**
@@ -176,7 +176,7 @@ class RefundRetry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'refund_account_details' => 'setRefundAccountDetails'
+        'refundAccountDetails' => 'setRefundAccountDetails'
     ];
 
     /**
@@ -185,7 +185,7 @@ class RefundRetry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'refund_account_details' => 'getRefundAccountDetails'
+        'refundAccountDetails' => 'getRefundAccountDetails'
     ];
 
     /**
@@ -245,7 +245,7 @@ class RefundRetry implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('refund_account_details', $data ?? [], null);
+        $this->setIfExists('refundAccountDetails', $data ?? [], null);
     }
 
     /**
@@ -275,8 +275,8 @@ class RefundRetry implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['refund_account_details'] === null) {
-            $invalidProperties[] = "'refund_account_details' can't be null";
+        if ($this->container['refundAccountDetails'] === null) {
+            $invalidProperties[] = "'refundAccountDetails' can't be null";
         }
         return $invalidProperties;
     }
@@ -294,28 +294,28 @@ class RefundRetry implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets refund_account_details
+     * Gets refundAccountDetails
      *
-     * @return \Alexasomba\\Paystack\Model\RefundRetryAccountDetails
+     * @return \Alexasomba\Paystack\Model\RefundRetryAccountDetails
      */
     public function getRefundAccountDetails()
     {
-        return $this->container['refund_account_details'];
+        return $this->container['refundAccountDetails'];
     }
 
     /**
-     * Sets refund_account_details
+     * Sets refundAccountDetails
      *
-     * @param \Alexasomba\\Paystack\Model\RefundRetryAccountDetails $refund_account_details refund_account_details
+     * @param \Alexasomba\Paystack\Model\RefundRetryAccountDetails $refundAccountDetails refundAccountDetails
      *
      * @return self
      */
-    public function setRefundAccountDetails($refund_account_details)
+    public function setRefundAccountDetails($refundAccountDetails)
     {
-        if (is_null($refund_account_details)) {
-            throw new \InvalidArgumentException('non-nullable refund_account_details cannot be null');
+        if (is_null($refundAccountDetails)) {
+            throw new \InvalidArgumentException('non-nullable refundAccountDetails cannot be null');
         }
-        $this->container['refund_account_details'] = $refund_account_details;
+        $this->container['refundAccountDetails'] = $refundAccountDetails;
 
         return $this;
     }

@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Api;
+namespace Alexasomba\Paystack\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Alexasomba\\Paystack\ApiException;
-use Alexasomba\\Paystack\Configuration;
-use Alexasomba\\Paystack\FormDataProcessor;
-use Alexasomba\\Paystack\HeaderSelector;
-use Alexasomba\\Paystack\ObjectSerializer;
+use Alexasomba\Paystack\ApiException;
+use Alexasomba\Paystack\Configuration;
+use Alexasomba\Paystack\FormDataProcessor;
+use Alexasomba\Paystack\HeaderSelector;
+use Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * ApplePayApi Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -75,14 +75,14 @@ class ApplePayApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'applePayListDomain' => [
+        'listDomain' => [
             'application/json',
         ],
-        'applePayRegisterDomain' => [
+        'registerDomain' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'applePayUnregisterDomain' => [
+        'unregisterDomain' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
@@ -135,42 +135,42 @@ class ApplePayApi
     }
 
     /**
-     * Operation applePayListDomain
+     * Operation listDomain
      *
      * List Domains
      *
-     * @param  bool|null $use_cursor Flag to enable cursor pagination on the endpoint (optional)
+     * @param  bool|null $useCursor Flag to enable cursor pagination on the endpoint (optional)
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayListDomain'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDomain'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\ApplePayDomainsResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\ApplePayDomainsResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function applePayListDomain($use_cursor = null, $next = null, $previous = null, string $contentType = self::contentTypes['applePayListDomain'][0])
+    public function listDomain($useCursor = null, $next = null, $previous = null, string $contentType = self::contentTypes['listDomain'][0])
     {
-        list($response) = $this->applePayListDomainWithHttpInfo($use_cursor, $next, $previous, $contentType);
+        list($response) = $this->listDomainWithHttpInfo($useCursor, $next, $previous, $contentType);
         return $response;
     }
 
     /**
-     * Operation applePayListDomainWithHttpInfo
+     * Operation listDomainWithHttpInfo
      *
      * List Domains
      *
-     * @param  bool|null $use_cursor Flag to enable cursor pagination on the endpoint (optional)
+     * @param  bool|null $useCursor Flag to enable cursor pagination on the endpoint (optional)
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayListDomain'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDomain'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\ApplePayDomainsResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\ApplePayDomainsResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function applePayListDomainWithHttpInfo($use_cursor = null, $next = null, $previous = null, string $contentType = self::contentTypes['applePayListDomain'][0])
+    public function listDomainWithHttpInfo($useCursor = null, $next = null, $previous = null, string $contentType = self::contentTypes['listDomain'][0])
     {
-        $request = $this->applePayListDomainRequest($use_cursor, $next, $previous, $contentType);
+        $request = $this->listDomainRequest($useCursor, $next, $previous, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -198,19 +198,19 @@ class ApplePayApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\ApplePayDomainsResponse',
+                        '\Alexasomba\Paystack\Model\ApplePayDomainsResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -232,7 +232,7 @@ class ApplePayApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\ApplePayDomainsResponse',
+                '\Alexasomba\Paystack\Model\ApplePayDomainsResponse',
                 $request,
                 $response,
             );
@@ -241,7 +241,7 @@ class ApplePayApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\ApplePayDomainsResponse',
+                        '\Alexasomba\Paystack\Model\ApplePayDomainsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -249,7 +249,7 @@ class ApplePayApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -257,7 +257,7 @@ class ApplePayApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -270,21 +270,21 @@ class ApplePayApi
     }
 
     /**
-     * Operation applePayListDomainAsync
+     * Operation listDomainAsync
      *
      * List Domains
      *
-     * @param  bool|null $use_cursor Flag to enable cursor pagination on the endpoint (optional)
+     * @param  bool|null $useCursor Flag to enable cursor pagination on the endpoint (optional)
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayListDomain'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDomain'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function applePayListDomainAsync($use_cursor = null, $next = null, $previous = null, string $contentType = self::contentTypes['applePayListDomain'][0])
+    public function listDomainAsync($useCursor = null, $next = null, $previous = null, string $contentType = self::contentTypes['listDomain'][0])
     {
-        return $this->applePayListDomainAsyncWithHttpInfo($use_cursor, $next, $previous, $contentType)
+        return $this->listDomainAsyncWithHttpInfo($useCursor, $next, $previous, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -293,22 +293,22 @@ class ApplePayApi
     }
 
     /**
-     * Operation applePayListDomainAsyncWithHttpInfo
+     * Operation listDomainAsyncWithHttpInfo
      *
      * List Domains
      *
-     * @param  bool|null $use_cursor Flag to enable cursor pagination on the endpoint (optional)
+     * @param  bool|null $useCursor Flag to enable cursor pagination on the endpoint (optional)
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayListDomain'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDomain'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function applePayListDomainAsyncWithHttpInfo($use_cursor = null, $next = null, $previous = null, string $contentType = self::contentTypes['applePayListDomain'][0])
+    public function listDomainAsyncWithHttpInfo($useCursor = null, $next = null, $previous = null, string $contentType = self::contentTypes['listDomain'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\ApplePayDomainsResponse';
-        $request = $this->applePayListDomainRequest($use_cursor, $next, $previous, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\ApplePayDomainsResponse';
+        $request = $this->listDomainRequest($useCursor, $next, $previous, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -347,17 +347,17 @@ class ApplePayApi
     }
 
     /**
-     * Create request for operation 'applePayListDomain'
+     * Create request for operation 'listDomain'
      *
-     * @param  bool|null $use_cursor Flag to enable cursor pagination on the endpoint (optional)
+     * @param  bool|null $useCursor Flag to enable cursor pagination on the endpoint (optional)
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayListDomain'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDomain'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function applePayListDomainRequest($use_cursor = null, $next = null, $previous = null, string $contentType = self::contentTypes['applePayListDomain'][0])
+    public function listDomainRequest($useCursor = null, $next = null, $previous = null, string $contentType = self::contentTypes['listDomain'][0])
     {
 
 
@@ -373,7 +373,7 @@ class ApplePayApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $use_cursor,
+            $useCursor,
             'use_cursor', // param base name
             'boolean', // openApiType
             'form', // style
@@ -460,38 +460,38 @@ class ApplePayApi
     }
 
     /**
-     * Operation applePayRegisterDomain
+     * Operation registerDomain
      *
      * Register Domain
      *
-     * @param  \Alexasomba\\Paystack\Model\ApplePayParam|null $apple_pay_param apple_pay_param (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayRegisterDomain'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\ApplePayParam|null $applePayParam applePayParam (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerDomain'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\ApplePayCreateOkModel|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\ApplePayCreateOkModel|\Alexasomba\Paystack\Model\Error
      */
-    public function applePayRegisterDomain($apple_pay_param = null, string $contentType = self::contentTypes['applePayRegisterDomain'][0])
+    public function registerDomain($applePayParam = null, string $contentType = self::contentTypes['registerDomain'][0])
     {
-        list($response) = $this->applePayRegisterDomainWithHttpInfo($apple_pay_param, $contentType);
+        list($response) = $this->registerDomainWithHttpInfo($applePayParam, $contentType);
         return $response;
     }
 
     /**
-     * Operation applePayRegisterDomainWithHttpInfo
+     * Operation registerDomainWithHttpInfo
      *
      * Register Domain
      *
-     * @param  \Alexasomba\\Paystack\Model\ApplePayParam|null $apple_pay_param (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayRegisterDomain'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\ApplePayParam|null $applePayParam (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerDomain'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\ApplePayCreateOkModel|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\ApplePayCreateOkModel|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function applePayRegisterDomainWithHttpInfo($apple_pay_param = null, string $contentType = self::contentTypes['applePayRegisterDomain'][0])
+    public function registerDomainWithHttpInfo($applePayParam = null, string $contentType = self::contentTypes['registerDomain'][0])
     {
-        $request = $this->applePayRegisterDomainRequest($apple_pay_param, $contentType);
+        $request = $this->registerDomainRequest($applePayParam, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -519,13 +519,13 @@ class ApplePayApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\ApplePayCreateOkModel',
+                        '\Alexasomba\Paystack\Model\ApplePayCreateOkModel',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -547,7 +547,7 @@ class ApplePayApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\ApplePayCreateOkModel',
+                '\Alexasomba\Paystack\Model\ApplePayCreateOkModel',
                 $request,
                 $response,
             );
@@ -556,7 +556,7 @@ class ApplePayApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\ApplePayCreateOkModel',
+                        '\Alexasomba\Paystack\Model\ApplePayCreateOkModel',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -564,7 +564,7 @@ class ApplePayApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -577,19 +577,19 @@ class ApplePayApi
     }
 
     /**
-     * Operation applePayRegisterDomainAsync
+     * Operation registerDomainAsync
      *
      * Register Domain
      *
-     * @param  \Alexasomba\\Paystack\Model\ApplePayParam|null $apple_pay_param (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayRegisterDomain'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\ApplePayParam|null $applePayParam (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerDomain'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function applePayRegisterDomainAsync($apple_pay_param = null, string $contentType = self::contentTypes['applePayRegisterDomain'][0])
+    public function registerDomainAsync($applePayParam = null, string $contentType = self::contentTypes['registerDomain'][0])
     {
-        return $this->applePayRegisterDomainAsyncWithHttpInfo($apple_pay_param, $contentType)
+        return $this->registerDomainAsyncWithHttpInfo($applePayParam, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -598,20 +598,20 @@ class ApplePayApi
     }
 
     /**
-     * Operation applePayRegisterDomainAsyncWithHttpInfo
+     * Operation registerDomainAsyncWithHttpInfo
      *
      * Register Domain
      *
-     * @param  \Alexasomba\\Paystack\Model\ApplePayParam|null $apple_pay_param (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayRegisterDomain'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\ApplePayParam|null $applePayParam (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerDomain'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function applePayRegisterDomainAsyncWithHttpInfo($apple_pay_param = null, string $contentType = self::contentTypes['applePayRegisterDomain'][0])
+    public function registerDomainAsyncWithHttpInfo($applePayParam = null, string $contentType = self::contentTypes['registerDomain'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\ApplePayCreateOkModel';
-        $request = $this->applePayRegisterDomainRequest($apple_pay_param, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\ApplePayCreateOkModel';
+        $request = $this->registerDomainRequest($applePayParam, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -650,15 +650,15 @@ class ApplePayApi
     }
 
     /**
-     * Create request for operation 'applePayRegisterDomain'
+     * Create request for operation 'registerDomain'
      *
-     * @param  \Alexasomba\\Paystack\Model\ApplePayParam|null $apple_pay_param (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayRegisterDomain'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\ApplePayParam|null $applePayParam (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['registerDomain'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function applePayRegisterDomainRequest($apple_pay_param = null, string $contentType = self::contentTypes['applePayRegisterDomain'][0])
+    public function registerDomainRequest($applePayParam = null, string $contentType = self::contentTypes['registerDomain'][0])
     {
 
 
@@ -681,12 +681,12 @@ class ApplePayApi
         );
 
         // for model (json/xml)
-        if (isset($apple_pay_param)) {
+        if (isset($applePayParam)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($apple_pay_param));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($applePayParam));
             } else {
-                $httpBody = $apple_pay_param;
+                $httpBody = $applePayParam;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -739,38 +739,38 @@ class ApplePayApi
     }
 
     /**
-     * Operation applePayUnregisterDomain
+     * Operation unregisterDomain
      *
      * Unregister Domain
      *
-     * @param  \Alexasomba\\Paystack\Model\ApplePayParam|null $apple_pay_param apple_pay_param (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayUnregisterDomain'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\ApplePayParam|null $applePayParam applePayParam (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unregisterDomain'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function applePayUnregisterDomain($apple_pay_param = null, string $contentType = self::contentTypes['applePayUnregisterDomain'][0])
+    public function unregisterDomain($applePayParam = null, string $contentType = self::contentTypes['unregisterDomain'][0])
     {
-        list($response) = $this->applePayUnregisterDomainWithHttpInfo($apple_pay_param, $contentType);
+        list($response) = $this->unregisterDomainWithHttpInfo($applePayParam, $contentType);
         return $response;
     }
 
     /**
-     * Operation applePayUnregisterDomainWithHttpInfo
+     * Operation unregisterDomainWithHttpInfo
      *
      * Unregister Domain
      *
-     * @param  \Alexasomba\\Paystack\Model\ApplePayParam|null $apple_pay_param (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayUnregisterDomain'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\ApplePayParam|null $applePayParam (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unregisterDomain'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function applePayUnregisterDomainWithHttpInfo($apple_pay_param = null, string $contentType = self::contentTypes['applePayUnregisterDomain'][0])
+    public function unregisterDomainWithHttpInfo($applePayParam = null, string $contentType = self::contentTypes['unregisterDomain'][0])
     {
-        $request = $this->applePayUnregisterDomainRequest($apple_pay_param, $contentType);
+        $request = $this->unregisterDomainRequest($applePayParam, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -798,19 +798,19 @@ class ApplePayApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -832,7 +832,7 @@ class ApplePayApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\Response',
+                '\Alexasomba\Paystack\Model\Response',
                 $request,
                 $response,
             );
@@ -841,7 +841,7 @@ class ApplePayApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -849,7 +849,7 @@ class ApplePayApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -857,7 +857,7 @@ class ApplePayApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -870,19 +870,19 @@ class ApplePayApi
     }
 
     /**
-     * Operation applePayUnregisterDomainAsync
+     * Operation unregisterDomainAsync
      *
      * Unregister Domain
      *
-     * @param  \Alexasomba\\Paystack\Model\ApplePayParam|null $apple_pay_param (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayUnregisterDomain'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\ApplePayParam|null $applePayParam (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unregisterDomain'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function applePayUnregisterDomainAsync($apple_pay_param = null, string $contentType = self::contentTypes['applePayUnregisterDomain'][0])
+    public function unregisterDomainAsync($applePayParam = null, string $contentType = self::contentTypes['unregisterDomain'][0])
     {
-        return $this->applePayUnregisterDomainAsyncWithHttpInfo($apple_pay_param, $contentType)
+        return $this->unregisterDomainAsyncWithHttpInfo($applePayParam, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -891,20 +891,20 @@ class ApplePayApi
     }
 
     /**
-     * Operation applePayUnregisterDomainAsyncWithHttpInfo
+     * Operation unregisterDomainAsyncWithHttpInfo
      *
      * Unregister Domain
      *
-     * @param  \Alexasomba\\Paystack\Model\ApplePayParam|null $apple_pay_param (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayUnregisterDomain'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\ApplePayParam|null $applePayParam (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unregisterDomain'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function applePayUnregisterDomainAsyncWithHttpInfo($apple_pay_param = null, string $contentType = self::contentTypes['applePayUnregisterDomain'][0])
+    public function unregisterDomainAsyncWithHttpInfo($applePayParam = null, string $contentType = self::contentTypes['unregisterDomain'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\Response';
-        $request = $this->applePayUnregisterDomainRequest($apple_pay_param, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\Response';
+        $request = $this->unregisterDomainRequest($applePayParam, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -943,15 +943,15 @@ class ApplePayApi
     }
 
     /**
-     * Create request for operation 'applePayUnregisterDomain'
+     * Create request for operation 'unregisterDomain'
      *
-     * @param  \Alexasomba\\Paystack\Model\ApplePayParam|null $apple_pay_param (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applePayUnregisterDomain'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\ApplePayParam|null $applePayParam (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unregisterDomain'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function applePayUnregisterDomainRequest($apple_pay_param = null, string $contentType = self::contentTypes['applePayUnregisterDomain'][0])
+    public function unregisterDomainRequest($applePayParam = null, string $contentType = self::contentTypes['unregisterDomain'][0])
     {
 
 
@@ -974,12 +974,12 @@ class ApplePayApi
         );
 
         // for model (json/xml)
-        if (isset($apple_pay_param)) {
+        if (isset($applePayParam)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($apple_pay_param));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($applePayParam));
             } else {
-                $httpBody = $apple_pay_param;
+                $httpBody = $applePayParam;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

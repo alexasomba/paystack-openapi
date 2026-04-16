@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PreAuthorizationListResponseArray Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,13 +62,13 @@ class PreAuthorizationListResponseArray implements ModelInterface, ArrayAccess, 
         'status' => 'string',
         'reference' => 'string',
         'amount' => 'int',
-        'created_at' => 'string',
-        'transaction_id' => 'string',
-        'captured_at' => 'string',
-        'released_at' => 'string',
+        'createdAt' => 'string',
+        'transactionId' => 'string',
+        'capturedAt' => 'string',
+        'releasedAt' => 'string',
         'currency' => 'string',
         'fees' => 'int',
-        'customer' => '\Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataCustomer',
+        'customer' => '\Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataCustomer',
         'id' => 'int'
     ];
 
@@ -84,10 +84,10 @@ class PreAuthorizationListResponseArray implements ModelInterface, ArrayAccess, 
         'status' => null,
         'reference' => null,
         'amount' => null,
-        'created_at' => null,
-        'transaction_id' => null,
-        'captured_at' => null,
-        'released_at' => null,
+        'createdAt' => null,
+        'transactionId' => null,
+        'capturedAt' => null,
+        'releasedAt' => null,
         'currency' => null,
         'fees' => null,
         'customer' => null,
@@ -104,10 +104,10 @@ class PreAuthorizationListResponseArray implements ModelInterface, ArrayAccess, 
         'status' => false,
         'reference' => false,
         'amount' => false,
-        'created_at' => false,
-        'transaction_id' => true,
-        'captured_at' => true,
-        'released_at' => true,
+        'createdAt' => false,
+        'transactionId' => true,
+        'capturedAt' => true,
+        'releasedAt' => true,
         'currency' => false,
         'fees' => false,
         'customer' => false,
@@ -204,10 +204,10 @@ class PreAuthorizationListResponseArray implements ModelInterface, ArrayAccess, 
         'status' => 'status',
         'reference' => 'reference',
         'amount' => 'amount',
-        'created_at' => 'created_at',
-        'transaction_id' => 'transaction_id',
-        'captured_at' => 'captured_at',
-        'released_at' => 'released_at',
+        'createdAt' => 'created_at',
+        'transactionId' => 'transaction_id',
+        'capturedAt' => 'captured_at',
+        'releasedAt' => 'released_at',
         'currency' => 'currency',
         'fees' => 'fees',
         'customer' => 'customer',
@@ -224,10 +224,10 @@ class PreAuthorizationListResponseArray implements ModelInterface, ArrayAccess, 
         'status' => 'setStatus',
         'reference' => 'setReference',
         'amount' => 'setAmount',
-        'created_at' => 'setCreatedAt',
-        'transaction_id' => 'setTransactionId',
-        'captured_at' => 'setCapturedAt',
-        'released_at' => 'setReleasedAt',
+        'createdAt' => 'setCreatedAt',
+        'transactionId' => 'setTransactionId',
+        'capturedAt' => 'setCapturedAt',
+        'releasedAt' => 'setReleasedAt',
         'currency' => 'setCurrency',
         'fees' => 'setFees',
         'customer' => 'setCustomer',
@@ -244,10 +244,10 @@ class PreAuthorizationListResponseArray implements ModelInterface, ArrayAccess, 
         'status' => 'getStatus',
         'reference' => 'getReference',
         'amount' => 'getAmount',
-        'created_at' => 'getCreatedAt',
-        'transaction_id' => 'getTransactionId',
-        'captured_at' => 'getCapturedAt',
-        'released_at' => 'getReleasedAt',
+        'createdAt' => 'getCreatedAt',
+        'transactionId' => 'getTransactionId',
+        'capturedAt' => 'getCapturedAt',
+        'releasedAt' => 'getReleasedAt',
         'currency' => 'getCurrency',
         'fees' => 'getFees',
         'customer' => 'getCustomer',
@@ -315,10 +315,10 @@ class PreAuthorizationListResponseArray implements ModelInterface, ArrayAccess, 
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('transaction_id', $data ?? [], null);
-        $this->setIfExists('captured_at', $data ?? [], null);
-        $this->setIfExists('released_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('transactionId', $data ?? [], null);
+        $this->setIfExists('capturedAt', $data ?? [], null);
+        $this->setIfExists('releasedAt', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('fees', $data ?? [], null);
         $this->setIfExists('customer', $data ?? [], null);
@@ -364,17 +364,17 @@ class PreAuthorizationListResponseArray implements ModelInterface, ArrayAccess, 
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['transaction_id'] === null && !$this->isNullableSetToNull('transaction_id')) {
-            $invalidProperties[] = "'transaction_id' can't be null";
+        if ($this->container['transactionId'] === null && !$this->isNullableSetToNull('transactionId')) {
+            $invalidProperties[] = "'transactionId' can't be null";
         }
-        if ($this->container['captured_at'] === null && !$this->isNullableSetToNull('captured_at')) {
-            $invalidProperties[] = "'captured_at' can't be null";
+        if ($this->container['capturedAt'] === null && !$this->isNullableSetToNull('capturedAt')) {
+            $invalidProperties[] = "'capturedAt' can't be null";
         }
-        if ($this->container['released_at'] === null && !$this->isNullableSetToNull('released_at')) {
-            $invalidProperties[] = "'released_at' can't be null";
+        if ($this->container['releasedAt'] === null && !$this->isNullableSetToNull('releasedAt')) {
+            $invalidProperties[] = "'releasedAt' can't be null";
         }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
@@ -512,130 +512,130 @@ class PreAuthorizationListResponseArray implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets transaction_id
+     * Gets transactionId
      *
      * @return string|null
      */
     public function getTransactionId()
     {
-        return $this->container['transaction_id'];
+        return $this->container['transactionId'];
     }
 
     /**
-     * Sets transaction_id
+     * Sets transactionId
      *
-     * @param string|null $transaction_id transaction_id
+     * @param string|null $transactionId transactionId
      *
      * @return self
      */
-    public function setTransactionId($transaction_id)
+    public function setTransactionId($transactionId)
     {
-        if (is_null($transaction_id)) {
-            array_push($this->openAPINullablesSetToNull, 'transaction_id');
+        if (is_null($transactionId)) {
+            array_push($this->openAPINullablesSetToNull, 'transactionId');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('transaction_id', $nullablesSetToNull);
+            $index = array_search('transactionId', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['transaction_id'] = $transaction_id;
+        $this->container['transactionId'] = $transactionId;
 
         return $this;
     }
 
     /**
-     * Gets captured_at
+     * Gets capturedAt
      *
      * @return string|null
      */
     public function getCapturedAt()
     {
-        return $this->container['captured_at'];
+        return $this->container['capturedAt'];
     }
 
     /**
-     * Sets captured_at
+     * Sets capturedAt
      *
-     * @param string|null $captured_at captured_at
+     * @param string|null $capturedAt capturedAt
      *
      * @return self
      */
-    public function setCapturedAt($captured_at)
+    public function setCapturedAt($capturedAt)
     {
-        if (is_null($captured_at)) {
-            array_push($this->openAPINullablesSetToNull, 'captured_at');
+        if (is_null($capturedAt)) {
+            array_push($this->openAPINullablesSetToNull, 'capturedAt');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('captured_at', $nullablesSetToNull);
+            $index = array_search('capturedAt', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['captured_at'] = $captured_at;
+        $this->container['capturedAt'] = $capturedAt;
 
         return $this;
     }
 
     /**
-     * Gets released_at
+     * Gets releasedAt
      *
      * @return string|null
      */
     public function getReleasedAt()
     {
-        return $this->container['released_at'];
+        return $this->container['releasedAt'];
     }
 
     /**
-     * Sets released_at
+     * Sets releasedAt
      *
-     * @param string|null $released_at released_at
+     * @param string|null $releasedAt releasedAt
      *
      * @return self
      */
-    public function setReleasedAt($released_at)
+    public function setReleasedAt($releasedAt)
     {
-        if (is_null($released_at)) {
-            array_push($this->openAPINullablesSetToNull, 'released_at');
+        if (is_null($releasedAt)) {
+            array_push($this->openAPINullablesSetToNull, 'releasedAt');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('released_at', $nullablesSetToNull);
+            $index = array_search('releasedAt', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['released_at'] = $released_at;
+        $this->container['releasedAt'] = $releasedAt;
 
         return $this;
     }
@@ -697,7 +697,7 @@ class PreAuthorizationListResponseArray implements ModelInterface, ArrayAccess, 
     /**
      * Gets customer
      *
-     * @return \Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -707,7 +707,7 @@ class PreAuthorizationListResponseArray implements ModelInterface, ArrayAccess, 
     /**
      * Sets customer
      *
-     * @param \Alexasomba\\Paystack\Model\TransactionPartialDebitResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\TransactionPartialDebitResponseDataCustomer $customer customer
      *
      * @return self
      */

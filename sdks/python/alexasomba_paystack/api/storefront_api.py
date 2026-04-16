@@ -49,7 +49,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_add_products(
+    def add_products(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         storefront_add_products: Optional[StorefrontAddProducts] = None,
@@ -96,7 +96,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_add_products_serialize(
+        _param = self._add_products_serialize(
             id=id,
             storefront_add_products=storefront_add_products,
             _request_auth=_request_auth,
@@ -122,7 +122,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_add_products_with_http_info(
+    def add_products_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         storefront_add_products: Optional[StorefrontAddProducts] = None,
@@ -169,7 +169,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_add_products_serialize(
+        _param = self._add_products_serialize(
             id=id,
             storefront_add_products=storefront_add_products,
             _request_auth=_request_auth,
@@ -195,7 +195,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_add_products_without_preload_content(
+    def add_products_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         storefront_add_products: Optional[StorefrontAddProducts] = None,
@@ -242,7 +242,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_add_products_serialize(
+        _param = self._add_products_serialize(
             id=id,
             storefront_add_products=storefront_add_products,
             _request_auth=_request_auth,
@@ -263,7 +263,7 @@ class StorefrontApi:
         return response_data.response
 
 
-    def _storefront_add_products_serialize(
+    def _add_products_serialize(
         self,
         id,
         storefront_add_products,
@@ -345,7 +345,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_create(
+    def create(
         self,
         storefront_create: Optional[StorefrontCreate] = None,
         _request_timeout: Union[
@@ -389,7 +389,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_create_serialize(
+        _param = self._create_serialize(
             storefront_create=storefront_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -413,7 +413,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_create_with_http_info(
+    def create_with_http_info(
         self,
         storefront_create: Optional[StorefrontCreate] = None,
         _request_timeout: Union[
@@ -457,7 +457,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_create_serialize(
+        _param = self._create_serialize(
             storefront_create=storefront_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -481,7 +481,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_create_without_preload_content(
+    def create_without_preload_content(
         self,
         storefront_create: Optional[StorefrontCreate] = None,
         _request_timeout: Union[
@@ -525,7 +525,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_create_serialize(
+        _param = self._create_serialize(
             storefront_create=storefront_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -544,7 +544,7 @@ class StorefrontApi:
         return response_data.response
 
 
-    def _storefront_create_serialize(
+    def _create_serialize(
         self,
         storefront_create,
         _request_auth,
@@ -623,7 +623,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_delete(
+    def delete(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -667,7 +667,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_delete_serialize(
+        _param = self._delete_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -692,7 +692,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_delete_with_http_info(
+    def delete_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -736,7 +736,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_delete_serialize(
+        _param = self._delete_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -761,7 +761,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_delete_without_preload_content(
+    def delete_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -805,7 +805,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_delete_serialize(
+        _param = self._delete_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -825,7 +825,7 @@ class StorefrontApi:
         return response_data.response
 
 
-    def _storefront_delete_serialize(
+    def _delete_serialize(
         self,
         id,
         _request_auth,
@@ -890,7 +890,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_duplicate(
+    def duplicate(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -934,7 +934,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_duplicate_serialize(
+        _param = self._duplicate_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -959,7 +959,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_duplicate_with_http_info(
+    def duplicate_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -1003,7 +1003,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_duplicate_serialize(
+        _param = self._duplicate_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1028,7 +1028,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_duplicate_without_preload_content(
+    def duplicate_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -1072,7 +1072,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_duplicate_serialize(
+        _param = self._duplicate_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1092,7 +1092,7 @@ class StorefrontApi:
         return response_data.response
 
 
-    def _storefront_duplicate_serialize(
+    def _duplicate_serialize(
         self,
         id,
         _request_auth,
@@ -1157,7 +1157,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_fetch(
+    def fetch(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -1201,7 +1201,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1226,7 +1226,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -1270,7 +1270,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1295,7 +1295,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -1339,7 +1339,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1359,7 +1359,7 @@ class StorefrontApi:
         return response_data.response
 
 
-    def _storefront_fetch_serialize(
+    def _fetch_serialize(
         self,
         id,
         _request_auth,
@@ -1424,7 +1424,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_fetch_orders(
+    def fetch_orders(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -1468,7 +1468,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_fetch_orders_serialize(
+        _param = self._fetch_orders_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1492,7 +1492,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_fetch_orders_with_http_info(
+    def fetch_orders_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -1536,7 +1536,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_fetch_orders_serialize(
+        _param = self._fetch_orders_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1560,7 +1560,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_fetch_orders_without_preload_content(
+    def fetch_orders_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -1604,7 +1604,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_fetch_orders_serialize(
+        _param = self._fetch_orders_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1623,7 +1623,7 @@ class StorefrontApi:
         return response_data.response
 
 
-    def _storefront_fetch_orders_serialize(
+    def _fetch_orders_serialize(
         self,
         id,
         _request_auth,
@@ -1688,7 +1688,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_list(
+    def list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per request")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
@@ -1738,7 +1738,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             status=status,
@@ -1765,7 +1765,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_list_with_http_info(
+    def list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per request")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
@@ -1815,7 +1815,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             status=status,
@@ -1842,7 +1842,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_list_without_preload_content(
+    def list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per request")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
@@ -1892,7 +1892,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             status=status,
@@ -1914,7 +1914,7 @@ class StorefrontApi:
         return response_data.response
 
 
-    def _storefront_list_serialize(
+    def _list_serialize(
         self,
         per_page,
         page,
@@ -1991,7 +1991,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_list_products(
+    def list_products(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -2035,7 +2035,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_list_products_serialize(
+        _param = self._list_products_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2060,7 +2060,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_list_products_with_http_info(
+    def list_products_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -2104,7 +2104,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_list_products_serialize(
+        _param = self._list_products_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2129,7 +2129,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_list_products_without_preload_content(
+    def list_products_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -2173,7 +2173,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_list_products_serialize(
+        _param = self._list_products_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2193,7 +2193,7 @@ class StorefrontApi:
         return response_data.response
 
 
-    def _storefront_list_products_serialize(
+    def _list_products_serialize(
         self,
         id,
         _request_auth,
@@ -2258,7 +2258,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_publish(
+    def publish(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -2302,7 +2302,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_publish_serialize(
+        _param = self._publish_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2327,7 +2327,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_publish_with_http_info(
+    def publish_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -2371,7 +2371,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_publish_serialize(
+        _param = self._publish_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2396,7 +2396,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_publish_without_preload_content(
+    def publish_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         _request_timeout: Union[
@@ -2440,7 +2440,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_publish_serialize(
+        _param = self._publish_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2460,7 +2460,7 @@ class StorefrontApi:
         return response_data.response
 
 
-    def _storefront_publish_serialize(
+    def _publish_serialize(
         self,
         id,
         _request_auth,
@@ -2525,7 +2525,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_update(
+    def update(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         storefront_update: Optional[StorefrontUpdate] = None,
@@ -2572,7 +2572,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_update_serialize(
+        _param = self._update_serialize(
             id=id,
             storefront_update=storefront_update,
             _request_auth=_request_auth,
@@ -2598,7 +2598,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_update_with_http_info(
+    def update_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         storefront_update: Optional[StorefrontUpdate] = None,
@@ -2645,7 +2645,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_update_serialize(
+        _param = self._update_serialize(
             id=id,
             storefront_update=storefront_update,
             _request_auth=_request_auth,
@@ -2671,7 +2671,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_update_without_preload_content(
+    def update_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of the Storefront")],
         storefront_update: Optional[StorefrontUpdate] = None,
@@ -2718,7 +2718,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_update_serialize(
+        _param = self._update_serialize(
             id=id,
             storefront_update=storefront_update,
             _request_auth=_request_auth,
@@ -2739,7 +2739,7 @@ class StorefrontApi:
         return response_data.response
 
 
-    def _storefront_update_serialize(
+    def _update_serialize(
         self,
         id,
         storefront_update,
@@ -2821,7 +2821,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_verify_slug(
+    def verify_slug(
         self,
         slug: Annotated[StrictStr, Field(description="The custom slug to check")],
         _request_timeout: Union[
@@ -2865,7 +2865,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_verify_slug_serialize(
+        _param = self._verify_slug_serialize(
             slug=slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2890,7 +2890,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_verify_slug_with_http_info(
+    def verify_slug_with_http_info(
         self,
         slug: Annotated[StrictStr, Field(description="The custom slug to check")],
         _request_timeout: Union[
@@ -2934,7 +2934,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_verify_slug_serialize(
+        _param = self._verify_slug_serialize(
             slug=slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2959,7 +2959,7 @@ class StorefrontApi:
 
 
     @validate_call
-    def storefront_verify_slug_without_preload_content(
+    def verify_slug_without_preload_content(
         self,
         slug: Annotated[StrictStr, Field(description="The custom slug to check")],
         _request_timeout: Union[
@@ -3003,7 +3003,7 @@ class StorefrontApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._storefront_verify_slug_serialize(
+        _param = self._verify_slug_serialize(
             slug=slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3023,7 +3023,7 @@ class StorefrontApi:
         return response_data.response
 
 
-    def _storefront_verify_slug_serialize(
+    def _verify_slug_serialize(
         self,
         slug,
         _request_auth,

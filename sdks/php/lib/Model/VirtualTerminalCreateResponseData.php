@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * VirtualTerminalCreateResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,10 +63,10 @@ class VirtualTerminalCreateResponseData implements ModelInterface, ArrayAccess, 
         'integration' => 'int',
         'domain' => 'string',
         'code' => 'string',
-        'payment_methods' => 'mixed[]',
+        'paymentMethods' => 'mixed[]',
         'active' => 'bool',
         'metadata' => 'mixed',
-        'destinations' => '\Alexasomba\\Paystack\Model\VirtualTerminalCreateResponseDataDestinationsInner[]',
+        'destinations' => '\Alexasomba\Paystack\Model\VirtualTerminalCreateResponseDataDestinationsInner[]',
         'currency' => 'string'
     ];
 
@@ -83,7 +83,7 @@ class VirtualTerminalCreateResponseData implements ModelInterface, ArrayAccess, 
         'integration' => null,
         'domain' => null,
         'code' => null,
-        'payment_methods' => null,
+        'paymentMethods' => null,
         'active' => null,
         'metadata' => null,
         'destinations' => null,
@@ -101,7 +101,7 @@ class VirtualTerminalCreateResponseData implements ModelInterface, ArrayAccess, 
         'integration' => false,
         'domain' => false,
         'code' => false,
-        'payment_methods' => false,
+        'paymentMethods' => false,
         'active' => false,
         'metadata' => true,
         'destinations' => false,
@@ -199,7 +199,7 @@ class VirtualTerminalCreateResponseData implements ModelInterface, ArrayAccess, 
         'integration' => 'integration',
         'domain' => 'domain',
         'code' => 'code',
-        'payment_methods' => 'paymentMethods',
+        'paymentMethods' => 'paymentMethods',
         'active' => 'active',
         'metadata' => 'metadata',
         'destinations' => 'destinations',
@@ -217,7 +217,7 @@ class VirtualTerminalCreateResponseData implements ModelInterface, ArrayAccess, 
         'integration' => 'setIntegration',
         'domain' => 'setDomain',
         'code' => 'setCode',
-        'payment_methods' => 'setPaymentMethods',
+        'paymentMethods' => 'setPaymentMethods',
         'active' => 'setActive',
         'metadata' => 'setMetadata',
         'destinations' => 'setDestinations',
@@ -235,7 +235,7 @@ class VirtualTerminalCreateResponseData implements ModelInterface, ArrayAccess, 
         'integration' => 'getIntegration',
         'domain' => 'getDomain',
         'code' => 'getCode',
-        'payment_methods' => 'getPaymentMethods',
+        'paymentMethods' => 'getPaymentMethods',
         'active' => 'getActive',
         'metadata' => 'getMetadata',
         'destinations' => 'getDestinations',
@@ -304,7 +304,7 @@ class VirtualTerminalCreateResponseData implements ModelInterface, ArrayAccess, 
         $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('payment_methods', $data ?? [], null);
+        $this->setIfExists('paymentMethods', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('destinations', $data ?? [], null);
@@ -353,8 +353,8 @@ class VirtualTerminalCreateResponseData implements ModelInterface, ArrayAccess, 
         if ($this->container['code'] === null) {
             $invalidProperties[] = "'code' can't be null";
         }
-        if ($this->container['payment_methods'] === null) {
-            $invalidProperties[] = "'payment_methods' can't be null";
+        if ($this->container['paymentMethods'] === null) {
+            $invalidProperties[] = "'paymentMethods' can't be null";
         }
         if ($this->container['active'] === null) {
             $invalidProperties[] = "'active' can't be null";
@@ -519,28 +519,28 @@ class VirtualTerminalCreateResponseData implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets payment_methods
+     * Gets paymentMethods
      *
      * @return mixed[]
      */
     public function getPaymentMethods()
     {
-        return $this->container['payment_methods'];
+        return $this->container['paymentMethods'];
     }
 
     /**
-     * Sets payment_methods
+     * Sets paymentMethods
      *
-     * @param mixed[] $payment_methods payment_methods
+     * @param mixed[] $paymentMethods paymentMethods
      *
      * @return self
      */
-    public function setPaymentMethods($payment_methods)
+    public function setPaymentMethods($paymentMethods)
     {
-        if (is_null($payment_methods)) {
-            throw new \InvalidArgumentException('non-nullable payment_methods cannot be null');
+        if (is_null($paymentMethods)) {
+            throw new \InvalidArgumentException('non-nullable paymentMethods cannot be null');
         }
-        $this->container['payment_methods'] = $payment_methods;
+        $this->container['paymentMethods'] = $paymentMethods;
 
         return $this;
     }
@@ -609,7 +609,7 @@ class VirtualTerminalCreateResponseData implements ModelInterface, ArrayAccess, 
     /**
      * Gets destinations
      *
-     * @return \Alexasomba\\Paystack\Model\VirtualTerminalCreateResponseDataDestinationsInner[]
+     * @return \Alexasomba\Paystack\Model\VirtualTerminalCreateResponseDataDestinationsInner[]
      */
     public function getDestinations()
     {
@@ -619,7 +619,7 @@ class VirtualTerminalCreateResponseData implements ModelInterface, ArrayAccess, 
     /**
      * Sets destinations
      *
-     * @param \Alexasomba\\Paystack\Model\VirtualTerminalCreateResponseDataDestinationsInner[] $destinations destinations
+     * @param \Alexasomba\Paystack\Model\VirtualTerminalCreateResponseDataDestinationsInner[] $destinations destinations
      *
      * @return self
      */

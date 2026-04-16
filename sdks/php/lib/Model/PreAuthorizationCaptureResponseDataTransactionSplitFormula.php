@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PreAuthorizationCaptureResponseDataTransactionSplitFormula Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,9 +59,9 @@ class PreAuthorizationCaptureResponseDataTransactionSplitFormula implements Mode
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'bearer_type' => 'string',
-        'bearer_subaccount' => 'int',
-        'subaccounts' => '\Alexasomba\\Paystack\Model\FormulaSubaccountsArray[]',
+        'bearerType' => 'string',
+        'bearerSubaccount' => 'int',
+        'subaccounts' => '\Alexasomba\Paystack\Model\FormulaSubaccountsArray[]',
         'integration' => 'int'
     ];
 
@@ -74,8 +74,8 @@ class PreAuthorizationCaptureResponseDataTransactionSplitFormula implements Mode
       */
     protected static $openAPIFormats = [
         'type' => null,
-        'bearer_type' => null,
-        'bearer_subaccount' => null,
+        'bearerType' => null,
+        'bearerSubaccount' => null,
         'subaccounts' => null,
         'integration' => null
     ];
@@ -87,8 +87,8 @@ class PreAuthorizationCaptureResponseDataTransactionSplitFormula implements Mode
       */
     protected static array $openAPINullables = [
         'type' => false,
-        'bearer_type' => false,
-        'bearer_subaccount' => false,
+        'bearerType' => false,
+        'bearerSubaccount' => false,
         'subaccounts' => false,
         'integration' => false
     ];
@@ -180,8 +180,8 @@ class PreAuthorizationCaptureResponseDataTransactionSplitFormula implements Mode
      */
     protected static $attributeMap = [
         'type' => 'type',
-        'bearer_type' => 'bearer_type',
-        'bearer_subaccount' => 'bearer_subaccount',
+        'bearerType' => 'bearer_type',
+        'bearerSubaccount' => 'bearer_subaccount',
         'subaccounts' => 'subaccounts',
         'integration' => 'integration'
     ];
@@ -193,8 +193,8 @@ class PreAuthorizationCaptureResponseDataTransactionSplitFormula implements Mode
      */
     protected static $setters = [
         'type' => 'setType',
-        'bearer_type' => 'setBearerType',
-        'bearer_subaccount' => 'setBearerSubaccount',
+        'bearerType' => 'setBearerType',
+        'bearerSubaccount' => 'setBearerSubaccount',
         'subaccounts' => 'setSubaccounts',
         'integration' => 'setIntegration'
     ];
@@ -206,8 +206,8 @@ class PreAuthorizationCaptureResponseDataTransactionSplitFormula implements Mode
      */
     protected static $getters = [
         'type' => 'getType',
-        'bearer_type' => 'getBearerType',
-        'bearer_subaccount' => 'getBearerSubaccount',
+        'bearerType' => 'getBearerType',
+        'bearerSubaccount' => 'getBearerSubaccount',
         'subaccounts' => 'getSubaccounts',
         'integration' => 'getIntegration'
     ];
@@ -270,8 +270,8 @@ class PreAuthorizationCaptureResponseDataTransactionSplitFormula implements Mode
     public function __construct(?array $data = null)
     {
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('bearer_type', $data ?? [], null);
-        $this->setIfExists('bearer_subaccount', $data ?? [], null);
+        $this->setIfExists('bearerType', $data ?? [], null);
+        $this->setIfExists('bearerSubaccount', $data ?? [], null);
         $this->setIfExists('subaccounts', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
     }
@@ -306,11 +306,11 @@ class PreAuthorizationCaptureResponseDataTransactionSplitFormula implements Mode
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['bearer_type'] === null) {
-            $invalidProperties[] = "'bearer_type' can't be null";
+        if ($this->container['bearerType'] === null) {
+            $invalidProperties[] = "'bearerType' can't be null";
         }
-        if ($this->container['bearer_subaccount'] === null) {
-            $invalidProperties[] = "'bearer_subaccount' can't be null";
+        if ($this->container['bearerSubaccount'] === null) {
+            $invalidProperties[] = "'bearerSubaccount' can't be null";
         }
         if ($this->container['subaccounts'] === null) {
             $invalidProperties[] = "'subaccounts' can't be null";
@@ -361,55 +361,55 @@ class PreAuthorizationCaptureResponseDataTransactionSplitFormula implements Mode
     }
 
     /**
-     * Gets bearer_type
+     * Gets bearerType
      *
      * @return string
      */
     public function getBearerType()
     {
-        return $this->container['bearer_type'];
+        return $this->container['bearerType'];
     }
 
     /**
-     * Sets bearer_type
+     * Sets bearerType
      *
-     * @param string $bearer_type bearer_type
+     * @param string $bearerType bearerType
      *
      * @return self
      */
-    public function setBearerType($bearer_type)
+    public function setBearerType($bearerType)
     {
-        if (is_null($bearer_type)) {
-            throw new \InvalidArgumentException('non-nullable bearer_type cannot be null');
+        if (is_null($bearerType)) {
+            throw new \InvalidArgumentException('non-nullable bearerType cannot be null');
         }
-        $this->container['bearer_type'] = $bearer_type;
+        $this->container['bearerType'] = $bearerType;
 
         return $this;
     }
 
     /**
-     * Gets bearer_subaccount
+     * Gets bearerSubaccount
      *
      * @return int
      */
     public function getBearerSubaccount()
     {
-        return $this->container['bearer_subaccount'];
+        return $this->container['bearerSubaccount'];
     }
 
     /**
-     * Sets bearer_subaccount
+     * Sets bearerSubaccount
      *
-     * @param int $bearer_subaccount bearer_subaccount
+     * @param int $bearerSubaccount bearerSubaccount
      *
      * @return self
      */
-    public function setBearerSubaccount($bearer_subaccount)
+    public function setBearerSubaccount($bearerSubaccount)
     {
-        if (is_null($bearer_subaccount)) {
-            throw new \InvalidArgumentException('non-nullable bearer_subaccount cannot be null');
+        if (is_null($bearerSubaccount)) {
+            throw new \InvalidArgumentException('non-nullable bearerSubaccount cannot be null');
         }
-        $this->container['bearer_subaccount'] = $bearer_subaccount;
+        $this->container['bearerSubaccount'] = $bearerSubaccount;
 
         return $this;
     }
@@ -417,7 +417,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplitFormula implements Mode
     /**
      * Gets subaccounts
      *
-     * @return \Alexasomba\\Paystack\Model\FormulaSubaccountsArray[]
+     * @return \Alexasomba\Paystack\Model\FormulaSubaccountsArray[]
      */
     public function getSubaccounts()
     {
@@ -427,7 +427,7 @@ class PreAuthorizationCaptureResponseDataTransactionSplitFormula implements Mode
     /**
      * Sets subaccounts
      *
-     * @param \Alexasomba\\Paystack\Model\FormulaSubaccountsArray[] $subaccounts subaccounts
+     * @param \Alexasomba\Paystack\Model\FormulaSubaccountsArray[] $subaccounts subaccounts
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * ProductCreateResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,24 +63,24 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         'currency' => 'string',
         'price' => 'int',
         'quantity' => 'int',
-        'is_shippable' => 'bool',
+        'isShippable' => 'bool',
         'unlimited' => 'bool',
         'integration' => 'int',
         'domain' => 'string',
-        'metadata' => '\Alexasomba\\Paystack\Model\ProductListsResponseArrayMetadata',
+        'metadata' => '\Alexasomba\Paystack\Model\ProductListsResponseArrayMetadata',
         'slug' => 'string',
-        'product_code' => 'string',
-        'quantity_sold' => 'int',
+        'productCode' => 'string',
+        'quantitySold' => 'int',
         'type' => 'string',
-        'shipping_fields' => '\Alexasomba\\Paystack\Model\ProductCreateResponseDataShippingFields',
+        'shippingFields' => '\Alexasomba\Paystack\Model\ProductCreateResponseDataShippingFields',
         'active' => 'bool',
-        'in_stock' => 'bool',
-        'minimum_orderable' => 'int',
-        'maximum_orderable' => 'mixed',
-        'low_stock_alert' => 'bool',
+        'inStock' => 'bool',
+        'minimumOrderable' => 'int',
+        'maximumOrderable' => 'mixed',
+        'lowStockAlert' => 'bool',
         'id' => 'int',
-        'created_at' => 'string',
-        'updated_at' => 'string'
+        'createdAt' => 'string',
+        'updatedAt' => 'string'
     ];
 
     /**
@@ -96,24 +96,24 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         'currency' => null,
         'price' => null,
         'quantity' => null,
-        'is_shippable' => null,
+        'isShippable' => null,
         'unlimited' => null,
         'integration' => null,
         'domain' => null,
         'metadata' => null,
         'slug' => null,
-        'product_code' => null,
-        'quantity_sold' => null,
+        'productCode' => null,
+        'quantitySold' => null,
         'type' => null,
-        'shipping_fields' => null,
+        'shippingFields' => null,
         'active' => null,
-        'in_stock' => null,
-        'minimum_orderable' => null,
-        'maximum_orderable' => null,
-        'low_stock_alert' => null,
+        'inStock' => null,
+        'minimumOrderable' => null,
+        'maximumOrderable' => null,
+        'lowStockAlert' => null,
         'id' => null,
-        'created_at' => null,
-        'updated_at' => null
+        'createdAt' => null,
+        'updatedAt' => null
     ];
 
     /**
@@ -127,24 +127,24 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         'currency' => false,
         'price' => false,
         'quantity' => false,
-        'is_shippable' => false,
+        'isShippable' => false,
         'unlimited' => false,
         'integration' => false,
         'domain' => false,
         'metadata' => false,
         'slug' => false,
-        'product_code' => false,
-        'quantity_sold' => false,
+        'productCode' => false,
+        'quantitySold' => false,
         'type' => false,
-        'shipping_fields' => false,
+        'shippingFields' => false,
         'active' => false,
-        'in_stock' => false,
-        'minimum_orderable' => false,
-        'maximum_orderable' => true,
-        'low_stock_alert' => false,
+        'inStock' => false,
+        'minimumOrderable' => false,
+        'maximumOrderable' => true,
+        'lowStockAlert' => false,
         'id' => false,
-        'created_at' => false,
-        'updated_at' => false
+        'createdAt' => false,
+        'updatedAt' => false
     ];
 
     /**
@@ -238,24 +238,24 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         'currency' => 'currency',
         'price' => 'price',
         'quantity' => 'quantity',
-        'is_shippable' => 'is_shippable',
+        'isShippable' => 'is_shippable',
         'unlimited' => 'unlimited',
         'integration' => 'integration',
         'domain' => 'domain',
         'metadata' => 'metadata',
         'slug' => 'slug',
-        'product_code' => 'product_code',
-        'quantity_sold' => 'quantity_sold',
+        'productCode' => 'product_code',
+        'quantitySold' => 'quantity_sold',
         'type' => 'type',
-        'shipping_fields' => 'shipping_fields',
+        'shippingFields' => 'shipping_fields',
         'active' => 'active',
-        'in_stock' => 'in_stock',
-        'minimum_orderable' => 'minimum_orderable',
-        'maximum_orderable' => 'maximum_orderable',
-        'low_stock_alert' => 'low_stock_alert',
+        'inStock' => 'in_stock',
+        'minimumOrderable' => 'minimum_orderable',
+        'maximumOrderable' => 'maximum_orderable',
+        'lowStockAlert' => 'low_stock_alert',
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt'
     ];
 
     /**
@@ -269,24 +269,24 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         'currency' => 'setCurrency',
         'price' => 'setPrice',
         'quantity' => 'setQuantity',
-        'is_shippable' => 'setIsShippable',
+        'isShippable' => 'setIsShippable',
         'unlimited' => 'setUnlimited',
         'integration' => 'setIntegration',
         'domain' => 'setDomain',
         'metadata' => 'setMetadata',
         'slug' => 'setSlug',
-        'product_code' => 'setProductCode',
-        'quantity_sold' => 'setQuantitySold',
+        'productCode' => 'setProductCode',
+        'quantitySold' => 'setQuantitySold',
         'type' => 'setType',
-        'shipping_fields' => 'setShippingFields',
+        'shippingFields' => 'setShippingFields',
         'active' => 'setActive',
-        'in_stock' => 'setInStock',
-        'minimum_orderable' => 'setMinimumOrderable',
-        'maximum_orderable' => 'setMaximumOrderable',
-        'low_stock_alert' => 'setLowStockAlert',
+        'inStock' => 'setInStock',
+        'minimumOrderable' => 'setMinimumOrderable',
+        'maximumOrderable' => 'setMaximumOrderable',
+        'lowStockAlert' => 'setLowStockAlert',
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
@@ -300,24 +300,24 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         'currency' => 'getCurrency',
         'price' => 'getPrice',
         'quantity' => 'getQuantity',
-        'is_shippable' => 'getIsShippable',
+        'isShippable' => 'getIsShippable',
         'unlimited' => 'getUnlimited',
         'integration' => 'getIntegration',
         'domain' => 'getDomain',
         'metadata' => 'getMetadata',
         'slug' => 'getSlug',
-        'product_code' => 'getProductCode',
-        'quantity_sold' => 'getQuantitySold',
+        'productCode' => 'getProductCode',
+        'quantitySold' => 'getQuantitySold',
         'type' => 'getType',
-        'shipping_fields' => 'getShippingFields',
+        'shippingFields' => 'getShippingFields',
         'active' => 'getActive',
-        'in_stock' => 'getInStock',
-        'minimum_orderable' => 'getMinimumOrderable',
-        'maximum_orderable' => 'getMaximumOrderable',
-        'low_stock_alert' => 'getLowStockAlert',
+        'inStock' => 'getInStock',
+        'minimumOrderable' => 'getMinimumOrderable',
+        'maximumOrderable' => 'getMaximumOrderable',
+        'lowStockAlert' => 'getLowStockAlert',
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
@@ -382,24 +382,24 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
-        $this->setIfExists('is_shippable', $data ?? [], null);
+        $this->setIfExists('isShippable', $data ?? [], null);
         $this->setIfExists('unlimited', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('slug', $data ?? [], null);
-        $this->setIfExists('product_code', $data ?? [], null);
-        $this->setIfExists('quantity_sold', $data ?? [], null);
+        $this->setIfExists('productCode', $data ?? [], null);
+        $this->setIfExists('quantitySold', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('shipping_fields', $data ?? [], null);
+        $this->setIfExists('shippingFields', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
-        $this->setIfExists('in_stock', $data ?? [], null);
-        $this->setIfExists('minimum_orderable', $data ?? [], null);
-        $this->setIfExists('maximum_orderable', $data ?? [], null);
-        $this->setIfExists('low_stock_alert', $data ?? [], null);
+        $this->setIfExists('inStock', $data ?? [], null);
+        $this->setIfExists('minimumOrderable', $data ?? [], null);
+        $this->setIfExists('maximumOrderable', $data ?? [], null);
+        $this->setIfExists('lowStockAlert', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
     }
 
     /**
@@ -444,8 +444,8 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['quantity'] === null) {
             $invalidProperties[] = "'quantity' can't be null";
         }
-        if ($this->container['is_shippable'] === null) {
-            $invalidProperties[] = "'is_shippable' can't be null";
+        if ($this->container['isShippable'] === null) {
+            $invalidProperties[] = "'isShippable' can't be null";
         }
         if ($this->container['unlimited'] === null) {
             $invalidProperties[] = "'unlimited' can't be null";
@@ -462,41 +462,41 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['slug'] === null) {
             $invalidProperties[] = "'slug' can't be null";
         }
-        if ($this->container['product_code'] === null) {
-            $invalidProperties[] = "'product_code' can't be null";
+        if ($this->container['productCode'] === null) {
+            $invalidProperties[] = "'productCode' can't be null";
         }
-        if ($this->container['quantity_sold'] === null) {
-            $invalidProperties[] = "'quantity_sold' can't be null";
+        if ($this->container['quantitySold'] === null) {
+            $invalidProperties[] = "'quantitySold' can't be null";
         }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['shipping_fields'] === null) {
-            $invalidProperties[] = "'shipping_fields' can't be null";
+        if ($this->container['shippingFields'] === null) {
+            $invalidProperties[] = "'shippingFields' can't be null";
         }
         if ($this->container['active'] === null) {
             $invalidProperties[] = "'active' can't be null";
         }
-        if ($this->container['in_stock'] === null) {
-            $invalidProperties[] = "'in_stock' can't be null";
+        if ($this->container['inStock'] === null) {
+            $invalidProperties[] = "'inStock' can't be null";
         }
-        if ($this->container['minimum_orderable'] === null) {
-            $invalidProperties[] = "'minimum_orderable' can't be null";
+        if ($this->container['minimumOrderable'] === null) {
+            $invalidProperties[] = "'minimumOrderable' can't be null";
         }
-        if ($this->container['maximum_orderable'] === null && !$this->isNullableSetToNull('maximum_orderable')) {
-            $invalidProperties[] = "'maximum_orderable' can't be null";
+        if ($this->container['maximumOrderable'] === null && !$this->isNullableSetToNull('maximumOrderable')) {
+            $invalidProperties[] = "'maximumOrderable' can't be null";
         }
-        if ($this->container['low_stock_alert'] === null) {
-            $invalidProperties[] = "'low_stock_alert' can't be null";
+        if ($this->container['lowStockAlert'] === null) {
+            $invalidProperties[] = "'lowStockAlert' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -649,28 +649,28 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets is_shippable
+     * Gets isShippable
      *
      * @return bool
      */
     public function getIsShippable()
     {
-        return $this->container['is_shippable'];
+        return $this->container['isShippable'];
     }
 
     /**
-     * Sets is_shippable
+     * Sets isShippable
      *
-     * @param bool $is_shippable is_shippable
+     * @param bool $isShippable isShippable
      *
      * @return self
      */
-    public function setIsShippable($is_shippable)
+    public function setIsShippable($isShippable)
     {
-        if (is_null($is_shippable)) {
-            throw new \InvalidArgumentException('non-nullable is_shippable cannot be null');
+        if (is_null($isShippable)) {
+            throw new \InvalidArgumentException('non-nullable isShippable cannot be null');
         }
-        $this->container['is_shippable'] = $is_shippable;
+        $this->container['isShippable'] = $isShippable;
 
         return $this;
     }
@@ -759,7 +759,7 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\\Paystack\Model\ProductListsResponseArrayMetadata
+     * @return \Alexasomba\Paystack\Model\ProductListsResponseArrayMetadata
      */
     public function getMetadata()
     {
@@ -769,7 +769,7 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\\Paystack\Model\ProductListsResponseArrayMetadata $metadata metadata
+     * @param \Alexasomba\Paystack\Model\ProductListsResponseArrayMetadata $metadata metadata
      *
      * @return self
      */
@@ -811,55 +811,55 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets product_code
+     * Gets productCode
      *
      * @return string
      */
     public function getProductCode()
     {
-        return $this->container['product_code'];
+        return $this->container['productCode'];
     }
 
     /**
-     * Sets product_code
+     * Sets productCode
      *
-     * @param string $product_code product_code
+     * @param string $productCode productCode
      *
      * @return self
      */
-    public function setProductCode($product_code)
+    public function setProductCode($productCode)
     {
-        if (is_null($product_code)) {
-            throw new \InvalidArgumentException('non-nullable product_code cannot be null');
+        if (is_null($productCode)) {
+            throw new \InvalidArgumentException('non-nullable productCode cannot be null');
         }
-        $this->container['product_code'] = $product_code;
+        $this->container['productCode'] = $productCode;
 
         return $this;
     }
 
     /**
-     * Gets quantity_sold
+     * Gets quantitySold
      *
      * @return int
      */
     public function getQuantitySold()
     {
-        return $this->container['quantity_sold'];
+        return $this->container['quantitySold'];
     }
 
     /**
-     * Sets quantity_sold
+     * Sets quantitySold
      *
-     * @param int $quantity_sold quantity_sold
+     * @param int $quantitySold quantitySold
      *
      * @return self
      */
-    public function setQuantitySold($quantity_sold)
+    public function setQuantitySold($quantitySold)
     {
-        if (is_null($quantity_sold)) {
-            throw new \InvalidArgumentException('non-nullable quantity_sold cannot be null');
+        if (is_null($quantitySold)) {
+            throw new \InvalidArgumentException('non-nullable quantitySold cannot be null');
         }
-        $this->container['quantity_sold'] = $quantity_sold;
+        $this->container['quantitySold'] = $quantitySold;
 
         return $this;
     }
@@ -892,28 +892,28 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets shipping_fields
+     * Gets shippingFields
      *
-     * @return \Alexasomba\\Paystack\Model\ProductCreateResponseDataShippingFields
+     * @return \Alexasomba\Paystack\Model\ProductCreateResponseDataShippingFields
      */
     public function getShippingFields()
     {
-        return $this->container['shipping_fields'];
+        return $this->container['shippingFields'];
     }
 
     /**
-     * Sets shipping_fields
+     * Sets shippingFields
      *
-     * @param \Alexasomba\\Paystack\Model\ProductCreateResponseDataShippingFields $shipping_fields shipping_fields
+     * @param \Alexasomba\Paystack\Model\ProductCreateResponseDataShippingFields $shippingFields shippingFields
      *
      * @return self
      */
-    public function setShippingFields($shipping_fields)
+    public function setShippingFields($shippingFields)
     {
-        if (is_null($shipping_fields)) {
-            throw new \InvalidArgumentException('non-nullable shipping_fields cannot be null');
+        if (is_null($shippingFields)) {
+            throw new \InvalidArgumentException('non-nullable shippingFields cannot be null');
         }
-        $this->container['shipping_fields'] = $shipping_fields;
+        $this->container['shippingFields'] = $shippingFields;
 
         return $this;
     }
@@ -946,116 +946,116 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets in_stock
+     * Gets inStock
      *
      * @return bool
      */
     public function getInStock()
     {
-        return $this->container['in_stock'];
+        return $this->container['inStock'];
     }
 
     /**
-     * Sets in_stock
+     * Sets inStock
      *
-     * @param bool $in_stock in_stock
+     * @param bool $inStock inStock
      *
      * @return self
      */
-    public function setInStock($in_stock)
+    public function setInStock($inStock)
     {
-        if (is_null($in_stock)) {
-            throw new \InvalidArgumentException('non-nullable in_stock cannot be null');
+        if (is_null($inStock)) {
+            throw new \InvalidArgumentException('non-nullable inStock cannot be null');
         }
-        $this->container['in_stock'] = $in_stock;
+        $this->container['inStock'] = $inStock;
 
         return $this;
     }
 
     /**
-     * Gets minimum_orderable
+     * Gets minimumOrderable
      *
      * @return int
      */
     public function getMinimumOrderable()
     {
-        return $this->container['minimum_orderable'];
+        return $this->container['minimumOrderable'];
     }
 
     /**
-     * Sets minimum_orderable
+     * Sets minimumOrderable
      *
-     * @param int $minimum_orderable minimum_orderable
+     * @param int $minimumOrderable minimumOrderable
      *
      * @return self
      */
-    public function setMinimumOrderable($minimum_orderable)
+    public function setMinimumOrderable($minimumOrderable)
     {
-        if (is_null($minimum_orderable)) {
-            throw new \InvalidArgumentException('non-nullable minimum_orderable cannot be null');
+        if (is_null($minimumOrderable)) {
+            throw new \InvalidArgumentException('non-nullable minimumOrderable cannot be null');
         }
-        $this->container['minimum_orderable'] = $minimum_orderable;
+        $this->container['minimumOrderable'] = $minimumOrderable;
 
         return $this;
     }
 
     /**
-     * Gets maximum_orderable
+     * Gets maximumOrderable
      *
      * @return mixed|null
      */
     public function getMaximumOrderable()
     {
-        return $this->container['maximum_orderable'];
+        return $this->container['maximumOrderable'];
     }
 
     /**
-     * Sets maximum_orderable
+     * Sets maximumOrderable
      *
-     * @param mixed|null $maximum_orderable maximum_orderable
+     * @param mixed|null $maximumOrderable maximumOrderable
      *
      * @return self
      */
-    public function setMaximumOrderable($maximum_orderable)
+    public function setMaximumOrderable($maximumOrderable)
     {
-        if (is_null($maximum_orderable)) {
-            array_push($this->openAPINullablesSetToNull, 'maximum_orderable');
+        if (is_null($maximumOrderable)) {
+            array_push($this->openAPINullablesSetToNull, 'maximumOrderable');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('maximum_orderable', $nullablesSetToNull);
+            $index = array_search('maximumOrderable', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['maximum_orderable'] = $maximum_orderable;
+        $this->container['maximumOrderable'] = $maximumOrderable;
 
         return $this;
     }
 
     /**
-     * Gets low_stock_alert
+     * Gets lowStockAlert
      *
      * @return bool
      */
     public function getLowStockAlert()
     {
-        return $this->container['low_stock_alert'];
+        return $this->container['lowStockAlert'];
     }
 
     /**
-     * Sets low_stock_alert
+     * Sets lowStockAlert
      *
-     * @param bool $low_stock_alert low_stock_alert
+     * @param bool $lowStockAlert lowStockAlert
      *
      * @return self
      */
-    public function setLowStockAlert($low_stock_alert)
+    public function setLowStockAlert($lowStockAlert)
     {
-        if (is_null($low_stock_alert)) {
-            throw new \InvalidArgumentException('non-nullable low_stock_alert cannot be null');
+        if (is_null($lowStockAlert)) {
+            throw new \InvalidArgumentException('non-nullable lowStockAlert cannot be null');
         }
-        $this->container['low_stock_alert'] = $low_stock_alert;
+        $this->container['lowStockAlert'] = $lowStockAlert;
 
         return $this;
     }
@@ -1088,55 +1088,55 @@ class ProductCreateResponseData implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

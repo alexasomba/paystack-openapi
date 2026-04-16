@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransferRecipientBulkCreateResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class TransferRecipientBulkCreateResponseData implements ModelInterface, ArrayAc
       */
     protected static $openAPITypes = [
         'success' => 'mixed[]',
-        'errors' => '\Alexasomba\\Paystack\Model\TransferRecipientErrorsArray[]'
+        'errors' => '\Alexasomba\Paystack\Model\TransferRecipientErrorsArray[]'
     ];
 
     /**
@@ -333,7 +333,7 @@ class TransferRecipientBulkCreateResponseData implements ModelInterface, ArrayAc
     /**
      * Gets errors
      *
-     * @return \Alexasomba\\Paystack\Model\TransferRecipientErrorsArray[]
+     * @return \Alexasomba\Paystack\Model\TransferRecipientErrorsArray[]
      */
     public function getErrors()
     {
@@ -343,7 +343,7 @@ class TransferRecipientBulkCreateResponseData implements ModelInterface, ArrayAc
     /**
      * Sets errors
      *
-     * @param \Alexasomba\\Paystack\Model\TransferRecipientErrorsArray[] $errors errors
+     * @param \Alexasomba\Paystack\Model\TransferRecipientErrorsArray[] $errors errors
      *
      * @return self
      */

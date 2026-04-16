@@ -43,7 +43,7 @@ class SettlementApi:
 
 
     @validate_call
-    def settlements_fetch(
+    def fetch(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -102,7 +102,7 @@ class SettlementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._settlements_fetch_serialize(
+        _param = self._fetch_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -132,7 +132,7 @@ class SettlementApi:
 
 
     @validate_call
-    def settlements_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -191,7 +191,7 @@ class SettlementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._settlements_fetch_serialize(
+        _param = self._fetch_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -221,7 +221,7 @@ class SettlementApi:
 
 
     @validate_call
-    def settlements_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -280,7 +280,7 @@ class SettlementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._settlements_fetch_serialize(
+        _param = self._fetch_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -305,7 +305,7 @@ class SettlementApi:
         return response_data.response
 
 
-    def _settlements_fetch_serialize(
+    def _fetch_serialize(
         self,
         per_page,
         page,
@@ -415,7 +415,7 @@ class SettlementApi:
 
 
     @validate_call
-    def settlements_transaction(
+    def transaction(
         self,
         id: Annotated[StrictInt, Field(description="The settlement ID in which you want to fetch its transactions")],
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
@@ -471,7 +471,7 @@ class SettlementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._settlements_transaction_serialize(
+        _param = self._transaction_serialize(
             id=id,
             per_page=per_page,
             page=page,
@@ -500,7 +500,7 @@ class SettlementApi:
 
 
     @validate_call
-    def settlements_transaction_with_http_info(
+    def transaction_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The settlement ID in which you want to fetch its transactions")],
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
@@ -556,7 +556,7 @@ class SettlementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._settlements_transaction_serialize(
+        _param = self._transaction_serialize(
             id=id,
             per_page=per_page,
             page=page,
@@ -585,7 +585,7 @@ class SettlementApi:
 
 
     @validate_call
-    def settlements_transaction_without_preload_content(
+    def transaction_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The settlement ID in which you want to fetch its transactions")],
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
@@ -641,7 +641,7 @@ class SettlementApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._settlements_transaction_serialize(
+        _param = self._transaction_serialize(
             id=id,
             per_page=per_page,
             page=page,
@@ -665,7 +665,7 @@ class SettlementApi:
         return response_data.response
 
 
-    def _settlements_transaction_serialize(
+    def _transaction_serialize(
         self,
         id,
         per_page,

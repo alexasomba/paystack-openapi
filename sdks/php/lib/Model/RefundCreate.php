@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * RefundCreate Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class RefundCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'transaction' => 'string',
         'amount' => 'int',
         'currency' => 'string',
-        'customer_note' => 'string',
-        'merchant_note' => 'string'
+        'customerNote' => 'string',
+        'merchantNote' => 'string'
     ];
 
     /**
@@ -76,8 +76,8 @@ class RefundCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'transaction' => null,
         'amount' => null,
         'currency' => null,
-        'customer_note' => null,
-        'merchant_note' => null
+        'customerNote' => null,
+        'merchantNote' => null
     ];
 
     /**
@@ -89,8 +89,8 @@ class RefundCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'transaction' => false,
         'amount' => false,
         'currency' => false,
-        'customer_note' => false,
-        'merchant_note' => false
+        'customerNote' => false,
+        'merchantNote' => false
     ];
 
     /**
@@ -182,8 +182,8 @@ class RefundCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'transaction' => 'transaction',
         'amount' => 'amount',
         'currency' => 'currency',
-        'customer_note' => 'customer_note',
-        'merchant_note' => 'merchant_note'
+        'customerNote' => 'customer_note',
+        'merchantNote' => 'merchant_note'
     ];
 
     /**
@@ -195,8 +195,8 @@ class RefundCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'transaction' => 'setTransaction',
         'amount' => 'setAmount',
         'currency' => 'setCurrency',
-        'customer_note' => 'setCustomerNote',
-        'merchant_note' => 'setMerchantNote'
+        'customerNote' => 'setCustomerNote',
+        'merchantNote' => 'setMerchantNote'
     ];
 
     /**
@@ -208,8 +208,8 @@ class RefundCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'transaction' => 'getTransaction',
         'amount' => 'getAmount',
         'currency' => 'getCurrency',
-        'customer_note' => 'getCustomerNote',
-        'merchant_note' => 'getMerchantNote'
+        'customerNote' => 'getCustomerNote',
+        'merchantNote' => 'getMerchantNote'
     ];
 
     /**
@@ -295,8 +295,8 @@ class RefundCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('transaction', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('customer_note', $data ?? [], null);
-        $this->setIfExists('merchant_note', $data ?? [], null);
+        $this->setIfExists('customerNote', $data ?? [], null);
+        $this->setIfExists('merchantNote', $data ?? [], null);
     }
 
     /**
@@ -445,55 +445,55 @@ class RefundCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets customer_note
+     * Gets customerNote
      *
      * @return string|null
      */
     public function getCustomerNote()
     {
-        return $this->container['customer_note'];
+        return $this->container['customerNote'];
     }
 
     /**
-     * Sets customer_note
+     * Sets customerNote
      *
-     * @param string|null $customer_note Customer reason
+     * @param string|null $customerNote Customer reason
      *
      * @return self
      */
-    public function setCustomerNote($customer_note)
+    public function setCustomerNote($customerNote)
     {
-        if (is_null($customer_note)) {
-            throw new \InvalidArgumentException('non-nullable customer_note cannot be null');
+        if (is_null($customerNote)) {
+            throw new \InvalidArgumentException('non-nullable customerNote cannot be null');
         }
-        $this->container['customer_note'] = $customer_note;
+        $this->container['customerNote'] = $customerNote;
 
         return $this;
     }
 
     /**
-     * Gets merchant_note
+     * Gets merchantNote
      *
      * @return string|null
      */
     public function getMerchantNote()
     {
-        return $this->container['merchant_note'];
+        return $this->container['merchantNote'];
     }
 
     /**
-     * Sets merchant_note
+     * Sets merchantNote
      *
-     * @param string|null $merchant_note Merchant reason
+     * @param string|null $merchantNote Merchant reason
      *
      * @return self
      */
-    public function setMerchantNote($merchant_note)
+    public function setMerchantNote($merchantNote)
     {
-        if (is_null($merchant_note)) {
-            throw new \InvalidArgumentException('non-nullable merchant_note cannot be null');
+        if (is_null($merchantNote)) {
+            throw new \InvalidArgumentException('non-nullable merchantNote cannot be null');
         }
-        $this->container['merchant_note'] = $merchant_note;
+        $this->container['merchantNote'] = $merchantNote;
 
         return $this;
     }

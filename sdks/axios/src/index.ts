@@ -4,6 +4,7 @@ export * from "./operations.js";
 export * from "./webhooks.js";
 export * from "./idempotency.js";
 export * from "./errors.js";
+export type { paths, operations, components } from "./openapi-types.js";
 
 import { createPaystackClient, type PaystackAxiosClientOptions } from "./client.js";
 import { bindOperations } from "./operations.js";

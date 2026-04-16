@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * SettlementListResponseArray Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,15 +63,15 @@ class SettlementListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         'status' => 'string',
         'currency' => 'string',
         'integration' => 'int',
-        'total_amount' => 'int',
-        'effective_amount' => 'int',
-        'total_fees' => 'int',
-        'total_processed' => 'int',
+        'totalAmount' => 'int',
+        'effectiveAmount' => 'int',
+        'totalFees' => 'int',
+        'totalProcessed' => 'int',
         'deductions' => 'int',
-        'settlement_date' => '\DateTime',
-        'settled_by' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'settlementDate' => '\DateTime',
+        'settledBy' => 'string',
+        'createdAt' => '\DateTime',
+        'updatedAt' => '\DateTime'
     ];
 
     /**
@@ -87,15 +87,15 @@ class SettlementListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         'status' => null,
         'currency' => null,
         'integration' => null,
-        'total_amount' => null,
-        'effective_amount' => null,
-        'total_fees' => null,
-        'total_processed' => null,
+        'totalAmount' => null,
+        'effectiveAmount' => null,
+        'totalFees' => null,
+        'totalProcessed' => null,
         'deductions' => null,
-        'settlement_date' => 'date-time',
-        'settled_by' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'settlementDate' => 'date-time',
+        'settledBy' => null,
+        'createdAt' => 'date-time',
+        'updatedAt' => 'date-time'
     ];
 
     /**
@@ -109,15 +109,15 @@ class SettlementListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         'status' => false,
         'currency' => false,
         'integration' => false,
-        'total_amount' => false,
-        'effective_amount' => false,
-        'total_fees' => false,
-        'total_processed' => false,
+        'totalAmount' => false,
+        'effectiveAmount' => false,
+        'totalFees' => false,
+        'totalProcessed' => false,
         'deductions' => true,
-        'settlement_date' => false,
-        'settled_by' => true,
-        'created_at' => false,
-        'updated_at' => false
+        'settlementDate' => false,
+        'settledBy' => true,
+        'createdAt' => false,
+        'updatedAt' => false
     ];
 
     /**
@@ -211,15 +211,15 @@ class SettlementListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         'status' => 'status',
         'currency' => 'currency',
         'integration' => 'integration',
-        'total_amount' => 'total_amount',
-        'effective_amount' => 'effective_amount',
-        'total_fees' => 'total_fees',
-        'total_processed' => 'total_processed',
+        'totalAmount' => 'total_amount',
+        'effectiveAmount' => 'effective_amount',
+        'totalFees' => 'total_fees',
+        'totalProcessed' => 'total_processed',
         'deductions' => 'deductions',
-        'settlement_date' => 'settlement_date',
-        'settled_by' => 'settled_by',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'settlementDate' => 'settlement_date',
+        'settledBy' => 'settled_by',
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt'
     ];
 
     /**
@@ -233,15 +233,15 @@ class SettlementListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         'status' => 'setStatus',
         'currency' => 'setCurrency',
         'integration' => 'setIntegration',
-        'total_amount' => 'setTotalAmount',
-        'effective_amount' => 'setEffectiveAmount',
-        'total_fees' => 'setTotalFees',
-        'total_processed' => 'setTotalProcessed',
+        'totalAmount' => 'setTotalAmount',
+        'effectiveAmount' => 'setEffectiveAmount',
+        'totalFees' => 'setTotalFees',
+        'totalProcessed' => 'setTotalProcessed',
         'deductions' => 'setDeductions',
-        'settlement_date' => 'setSettlementDate',
-        'settled_by' => 'setSettledBy',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'settlementDate' => 'setSettlementDate',
+        'settledBy' => 'setSettledBy',
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
@@ -255,15 +255,15 @@ class SettlementListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         'status' => 'getStatus',
         'currency' => 'getCurrency',
         'integration' => 'getIntegration',
-        'total_amount' => 'getTotalAmount',
-        'effective_amount' => 'getEffectiveAmount',
-        'total_fees' => 'getTotalFees',
-        'total_processed' => 'getTotalProcessed',
+        'totalAmount' => 'getTotalAmount',
+        'effectiveAmount' => 'getEffectiveAmount',
+        'totalFees' => 'getTotalFees',
+        'totalProcessed' => 'getTotalProcessed',
         'deductions' => 'getDeductions',
-        'settlement_date' => 'getSettlementDate',
-        'settled_by' => 'getSettledBy',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'settlementDate' => 'getSettlementDate',
+        'settledBy' => 'getSettledBy',
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
@@ -328,15 +328,15 @@ class SettlementListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
-        $this->setIfExists('total_amount', $data ?? [], null);
-        $this->setIfExists('effective_amount', $data ?? [], null);
-        $this->setIfExists('total_fees', $data ?? [], null);
-        $this->setIfExists('total_processed', $data ?? [], null);
+        $this->setIfExists('totalAmount', $data ?? [], null);
+        $this->setIfExists('effectiveAmount', $data ?? [], null);
+        $this->setIfExists('totalFees', $data ?? [], null);
+        $this->setIfExists('totalProcessed', $data ?? [], null);
         $this->setIfExists('deductions', $data ?? [], null);
-        $this->setIfExists('settlement_date', $data ?? [], null);
-        $this->setIfExists('settled_by', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('settlementDate', $data ?? [], null);
+        $this->setIfExists('settledBy', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
     }
 
     /**
@@ -381,32 +381,32 @@ class SettlementListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['integration'] === null) {
             $invalidProperties[] = "'integration' can't be null";
         }
-        if ($this->container['total_amount'] === null) {
-            $invalidProperties[] = "'total_amount' can't be null";
+        if ($this->container['totalAmount'] === null) {
+            $invalidProperties[] = "'totalAmount' can't be null";
         }
-        if ($this->container['effective_amount'] === null) {
-            $invalidProperties[] = "'effective_amount' can't be null";
+        if ($this->container['effectiveAmount'] === null) {
+            $invalidProperties[] = "'effectiveAmount' can't be null";
         }
-        if ($this->container['total_fees'] === null) {
-            $invalidProperties[] = "'total_fees' can't be null";
+        if ($this->container['totalFees'] === null) {
+            $invalidProperties[] = "'totalFees' can't be null";
         }
-        if ($this->container['total_processed'] === null) {
-            $invalidProperties[] = "'total_processed' can't be null";
+        if ($this->container['totalProcessed'] === null) {
+            $invalidProperties[] = "'totalProcessed' can't be null";
         }
         if ($this->container['deductions'] === null && !$this->isNullableSetToNull('deductions')) {
             $invalidProperties[] = "'deductions' can't be null";
         }
-        if ($this->container['settlement_date'] === null) {
-            $invalidProperties[] = "'settlement_date' can't be null";
+        if ($this->container['settlementDate'] === null) {
+            $invalidProperties[] = "'settlementDate' can't be null";
         }
-        if ($this->container['settled_by'] === null && !$this->isNullableSetToNull('settled_by')) {
-            $invalidProperties[] = "'settled_by' can't be null";
+        if ($this->container['settledBy'] === null && !$this->isNullableSetToNull('settledBy')) {
+            $invalidProperties[] = "'settledBy' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -559,109 +559,109 @@ class SettlementListResponseArray implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets total_amount
+     * Gets totalAmount
      *
      * @return int
      */
     public function getTotalAmount()
     {
-        return $this->container['total_amount'];
+        return $this->container['totalAmount'];
     }
 
     /**
-     * Sets total_amount
+     * Sets totalAmount
      *
-     * @param int $total_amount total_amount
+     * @param int $totalAmount totalAmount
      *
      * @return self
      */
-    public function setTotalAmount($total_amount)
+    public function setTotalAmount($totalAmount)
     {
-        if (is_null($total_amount)) {
-            throw new \InvalidArgumentException('non-nullable total_amount cannot be null');
+        if (is_null($totalAmount)) {
+            throw new \InvalidArgumentException('non-nullable totalAmount cannot be null');
         }
-        $this->container['total_amount'] = $total_amount;
+        $this->container['totalAmount'] = $totalAmount;
 
         return $this;
     }
 
     /**
-     * Gets effective_amount
+     * Gets effectiveAmount
      *
      * @return int
      */
     public function getEffectiveAmount()
     {
-        return $this->container['effective_amount'];
+        return $this->container['effectiveAmount'];
     }
 
     /**
-     * Sets effective_amount
+     * Sets effectiveAmount
      *
-     * @param int $effective_amount effective_amount
+     * @param int $effectiveAmount effectiveAmount
      *
      * @return self
      */
-    public function setEffectiveAmount($effective_amount)
+    public function setEffectiveAmount($effectiveAmount)
     {
-        if (is_null($effective_amount)) {
-            throw new \InvalidArgumentException('non-nullable effective_amount cannot be null');
+        if (is_null($effectiveAmount)) {
+            throw new \InvalidArgumentException('non-nullable effectiveAmount cannot be null');
         }
-        $this->container['effective_amount'] = $effective_amount;
+        $this->container['effectiveAmount'] = $effectiveAmount;
 
         return $this;
     }
 
     /**
-     * Gets total_fees
+     * Gets totalFees
      *
      * @return int
      */
     public function getTotalFees()
     {
-        return $this->container['total_fees'];
+        return $this->container['totalFees'];
     }
 
     /**
-     * Sets total_fees
+     * Sets totalFees
      *
-     * @param int $total_fees total_fees
+     * @param int $totalFees totalFees
      *
      * @return self
      */
-    public function setTotalFees($total_fees)
+    public function setTotalFees($totalFees)
     {
-        if (is_null($total_fees)) {
-            throw new \InvalidArgumentException('non-nullable total_fees cannot be null');
+        if (is_null($totalFees)) {
+            throw new \InvalidArgumentException('non-nullable totalFees cannot be null');
         }
-        $this->container['total_fees'] = $total_fees;
+        $this->container['totalFees'] = $totalFees;
 
         return $this;
     }
 
     /**
-     * Gets total_processed
+     * Gets totalProcessed
      *
      * @return int
      */
     public function getTotalProcessed()
     {
-        return $this->container['total_processed'];
+        return $this->container['totalProcessed'];
     }
 
     /**
-     * Sets total_processed
+     * Sets totalProcessed
      *
-     * @param int $total_processed total_processed
+     * @param int $totalProcessed totalProcessed
      *
      * @return self
      */
-    public function setTotalProcessed($total_processed)
+    public function setTotalProcessed($totalProcessed)
     {
-        if (is_null($total_processed)) {
-            throw new \InvalidArgumentException('non-nullable total_processed cannot be null');
+        if (is_null($totalProcessed)) {
+            throw new \InvalidArgumentException('non-nullable totalProcessed cannot be null');
         }
-        $this->container['total_processed'] = $total_processed;
+        $this->container['totalProcessed'] = $totalProcessed;
 
         return $this;
     }
@@ -701,116 +701,116 @@ class SettlementListResponseArray implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets settlement_date
+     * Gets settlementDate
      *
      * @return \DateTime
      */
     public function getSettlementDate()
     {
-        return $this->container['settlement_date'];
+        return $this->container['settlementDate'];
     }
 
     /**
-     * Sets settlement_date
+     * Sets settlementDate
      *
-     * @param \DateTime $settlement_date settlement_date
+     * @param \DateTime $settlementDate settlementDate
      *
      * @return self
      */
-    public function setSettlementDate($settlement_date)
+    public function setSettlementDate($settlementDate)
     {
-        if (is_null($settlement_date)) {
-            throw new \InvalidArgumentException('non-nullable settlement_date cannot be null');
+        if (is_null($settlementDate)) {
+            throw new \InvalidArgumentException('non-nullable settlementDate cannot be null');
         }
-        $this->container['settlement_date'] = $settlement_date;
+        $this->container['settlementDate'] = $settlementDate;
 
         return $this;
     }
 
     /**
-     * Gets settled_by
+     * Gets settledBy
      *
      * @return string|null
      */
     public function getSettledBy()
     {
-        return $this->container['settled_by'];
+        return $this->container['settledBy'];
     }
 
     /**
-     * Sets settled_by
+     * Sets settledBy
      *
-     * @param string|null $settled_by settled_by
+     * @param string|null $settledBy settledBy
      *
      * @return self
      */
-    public function setSettledBy($settled_by)
+    public function setSettledBy($settledBy)
     {
-        if (is_null($settled_by)) {
-            array_push($this->openAPINullablesSetToNull, 'settled_by');
+        if (is_null($settledBy)) {
+            array_push($this->openAPINullablesSetToNull, 'settledBy');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('settled_by', $nullablesSetToNull);
+            $index = array_search('settledBy', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['settled_by'] = $settled_by;
+        $this->container['settledBy'] = $settledBy;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return \DateTime
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param \DateTime $created_at created_at
+     * @param \DateTime $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return \DateTime
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param \DateTime $updated_at updated_at
+     * @param \DateTime $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

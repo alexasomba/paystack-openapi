@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Api;
+namespace Alexasomba\Paystack\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Alexasomba\\Paystack\ApiException;
-use Alexasomba\\Paystack\Configuration;
-use Alexasomba\\Paystack\FormDataProcessor;
-use Alexasomba\\Paystack\HeaderSelector;
-use Alexasomba\\Paystack\ObjectSerializer;
+use Alexasomba\Paystack\ApiException;
+use Alexasomba\Paystack\Configuration;
+use Alexasomba\Paystack\FormDataProcessor;
+use Alexasomba\Paystack\HeaderSelector;
+use Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TerminalApi Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -75,31 +75,31 @@ class TerminalApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'terminalCommission' => [
+        'callList' => [
+            'application/json',
+        ],
+        'commission' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'terminalDecommission' => [
+        'decommission' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'terminalFetch' => [
+        'fetch' => [
             'application/json',
         ],
-        'terminalFetchEventStatus' => [
+        'fetchEventStatus' => [
             'application/json',
         ],
-        'terminalFetchTerminalStatus' => [
+        'fetchTerminalStatus' => [
             'application/json',
         ],
-        'terminalList' => [
-            'application/json',
-        ],
-        'terminalSendEvent' => [
+        'sendEvent' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
-        'terminalUpdate' => [
+        'update' => [
             'application/json',
             'application/x-www-form-urlencoded',
         ],
@@ -152,1520 +152,42 @@ class TerminalApi
     }
 
     /**
-     * Operation terminalCommission
-     *
-     * Commission Terminal
-     *
-     * @param  \Alexasomba\\Paystack\Model\TerminalActivationToggle|null $terminal_activation_toggle terminal_activation_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalCommission'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TerminalCommissionDeviceResponse|\Alexasomba\\Paystack\Model\Error
-     */
-    public function terminalCommission($terminal_activation_toggle = null, string $contentType = self::contentTypes['terminalCommission'][0])
-    {
-        list($response) = $this->terminalCommissionWithHttpInfo($terminal_activation_toggle, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation terminalCommissionWithHttpInfo
-     *
-     * Commission Terminal
-     *
-     * @param  \Alexasomba\\Paystack\Model\TerminalActivationToggle|null $terminal_activation_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalCommission'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TerminalCommissionDeviceResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function terminalCommissionWithHttpInfo($terminal_activation_toggle = null, string $contentType = self::contentTypes['terminalCommission'][0])
-    {
-        $request = $this->terminalCommissionRequest($terminal_activation_toggle, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TerminalCommissionDeviceResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TerminalCommissionDeviceResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TerminalCommissionDeviceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation terminalCommissionAsync
-     *
-     * Commission Terminal
-     *
-     * @param  \Alexasomba\\Paystack\Model\TerminalActivationToggle|null $terminal_activation_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalCommission'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function terminalCommissionAsync($terminal_activation_toggle = null, string $contentType = self::contentTypes['terminalCommission'][0])
-    {
-        return $this->terminalCommissionAsyncWithHttpInfo($terminal_activation_toggle, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation terminalCommissionAsyncWithHttpInfo
-     *
-     * Commission Terminal
-     *
-     * @param  \Alexasomba\\Paystack\Model\TerminalActivationToggle|null $terminal_activation_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalCommission'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function terminalCommissionAsyncWithHttpInfo($terminal_activation_toggle = null, string $contentType = self::contentTypes['terminalCommission'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\TerminalCommissionDeviceResponse';
-        $request = $this->terminalCommissionRequest($terminal_activation_toggle, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'terminalCommission'
-     *
-     * @param  \Alexasomba\\Paystack\Model\TerminalActivationToggle|null $terminal_activation_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalCommission'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function terminalCommissionRequest($terminal_activation_toggle = null, string $contentType = self::contentTypes['terminalCommission'][0])
-    {
-
-
-
-        $resourcePath = '/terminal/commission_device';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($terminal_activation_toggle)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($terminal_activation_toggle));
-            } else {
-                $httpBody = $terminal_activation_toggle;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation terminalDecommission
-     *
-     * Decommission Terminal
-     *
-     * @param  \Alexasomba\\Paystack\Model\TerminalActivationToggle|null $terminal_activation_toggle terminal_activation_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalDecommission'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TerminalDecommissionDeviceResponse|\Alexasomba\\Paystack\Model\Error
-     */
-    public function terminalDecommission($terminal_activation_toggle = null, string $contentType = self::contentTypes['terminalDecommission'][0])
-    {
-        list($response) = $this->terminalDecommissionWithHttpInfo($terminal_activation_toggle, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation terminalDecommissionWithHttpInfo
-     *
-     * Decommission Terminal
-     *
-     * @param  \Alexasomba\\Paystack\Model\TerminalActivationToggle|null $terminal_activation_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalDecommission'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TerminalDecommissionDeviceResponse|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function terminalDecommissionWithHttpInfo($terminal_activation_toggle = null, string $contentType = self::contentTypes['terminalDecommission'][0])
-    {
-        $request = $this->terminalDecommissionRequest($terminal_activation_toggle, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TerminalDecommissionDeviceResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TerminalDecommissionDeviceResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TerminalDecommissionDeviceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation terminalDecommissionAsync
-     *
-     * Decommission Terminal
-     *
-     * @param  \Alexasomba\\Paystack\Model\TerminalActivationToggle|null $terminal_activation_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalDecommission'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function terminalDecommissionAsync($terminal_activation_toggle = null, string $contentType = self::contentTypes['terminalDecommission'][0])
-    {
-        return $this->terminalDecommissionAsyncWithHttpInfo($terminal_activation_toggle, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation terminalDecommissionAsyncWithHttpInfo
-     *
-     * Decommission Terminal
-     *
-     * @param  \Alexasomba\\Paystack\Model\TerminalActivationToggle|null $terminal_activation_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalDecommission'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function terminalDecommissionAsyncWithHttpInfo($terminal_activation_toggle = null, string $contentType = self::contentTypes['terminalDecommission'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\TerminalDecommissionDeviceResponse';
-        $request = $this->terminalDecommissionRequest($terminal_activation_toggle, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'terminalDecommission'
-     *
-     * @param  \Alexasomba\\Paystack\Model\TerminalActivationToggle|null $terminal_activation_toggle (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalDecommission'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function terminalDecommissionRequest($terminal_activation_toggle = null, string $contentType = self::contentTypes['terminalDecommission'][0])
-    {
-
-
-
-        $resourcePath = '/terminal/decommission_device';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($terminal_activation_toggle)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($terminal_activation_toggle));
-            } else {
-                $httpBody = $terminal_activation_toggle;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation terminalFetch
-     *
-     * Fetch Terminal
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetch'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TerminalGetResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
-     */
-    public function terminalFetch($terminal_id, string $contentType = self::contentTypes['terminalFetch'][0])
-    {
-        list($response) = $this->terminalFetchWithHttpInfo($terminal_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation terminalFetchWithHttpInfo
-     *
-     * Fetch Terminal
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetch'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TerminalGetResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function terminalFetchWithHttpInfo($terminal_id, string $contentType = self::contentTypes['terminalFetch'][0])
-    {
-        $request = $this->terminalFetchRequest($terminal_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TerminalGetResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TerminalGetResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TerminalGetResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation terminalFetchAsync
-     *
-     * Fetch Terminal
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function terminalFetchAsync($terminal_id, string $contentType = self::contentTypes['terminalFetch'][0])
-    {
-        return $this->terminalFetchAsyncWithHttpInfo($terminal_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation terminalFetchAsyncWithHttpInfo
-     *
-     * Fetch Terminal
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function terminalFetchAsyncWithHttpInfo($terminal_id, string $contentType = self::contentTypes['terminalFetch'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\TerminalGetResponse';
-        $request = $this->terminalFetchRequest($terminal_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'terminalFetch'
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function terminalFetchRequest($terminal_id, string $contentType = self::contentTypes['terminalFetch'][0])
-    {
-
-        // verify the required parameter 'terminal_id' is set
-        if ($terminal_id === null || (is_array($terminal_id) && count($terminal_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $terminal_id when calling terminalFetch'
-            );
-        }
-
-
-        $resourcePath = '/terminal/{terminal_id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($terminal_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'terminal_id' . '}',
-                ObjectSerializer::toPathValue($terminal_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation terminalFetchEventStatus
-     *
-     * Fetch Event Status
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $event_id The ID of the event that was sent to the Terminal (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetchEventStatus'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
-     */
-    public function terminalFetchEventStatus($terminal_id, $event_id, string $contentType = self::contentTypes['terminalFetchEventStatus'][0])
-    {
-        list($response) = $this->terminalFetchEventStatusWithHttpInfo($terminal_id, $event_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation terminalFetchEventStatusWithHttpInfo
-     *
-     * Fetch Event Status
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $event_id The ID of the event that was sent to the Terminal (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetchEventStatus'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function terminalFetchEventStatusWithHttpInfo($terminal_id, $event_id, string $contentType = self::contentTypes['terminalFetchEventStatus'][0])
-    {
-        $request = $this->terminalFetchEventStatusRequest($terminal_id, $event_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Response',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\Response',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation terminalFetchEventStatusAsync
-     *
-     * Fetch Event Status
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $event_id The ID of the event that was sent to the Terminal (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetchEventStatus'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function terminalFetchEventStatusAsync($terminal_id, $event_id, string $contentType = self::contentTypes['terminalFetchEventStatus'][0])
-    {
-        return $this->terminalFetchEventStatusAsyncWithHttpInfo($terminal_id, $event_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation terminalFetchEventStatusAsyncWithHttpInfo
-     *
-     * Fetch Event Status
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $event_id The ID of the event that was sent to the Terminal (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetchEventStatus'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function terminalFetchEventStatusAsyncWithHttpInfo($terminal_id, $event_id, string $contentType = self::contentTypes['terminalFetchEventStatus'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\Response';
-        $request = $this->terminalFetchEventStatusRequest($terminal_id, $event_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'terminalFetchEventStatus'
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $event_id The ID of the event that was sent to the Terminal (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetchEventStatus'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function terminalFetchEventStatusRequest($terminal_id, $event_id, string $contentType = self::contentTypes['terminalFetchEventStatus'][0])
-    {
-
-        // verify the required parameter 'terminal_id' is set
-        if ($terminal_id === null || (is_array($terminal_id) && count($terminal_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $terminal_id when calling terminalFetchEventStatus'
-            );
-        }
-
-        // verify the required parameter 'event_id' is set
-        if ($event_id === null || (is_array($event_id) && count($event_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $event_id when calling terminalFetchEventStatus'
-            );
-        }
-
-
-        $resourcePath = '/terminal/{terminal_id}/event/{event_id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($terminal_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'terminal_id' . '}',
-                ObjectSerializer::toPathValue($terminal_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($event_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'event_id' . '}',
-                ObjectSerializer::toPathValue($event_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation terminalFetchTerminalStatus
-     *
-     * Fetch Terminal Status
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetchTerminalStatus'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TerminalGetStatusResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
-     */
-    public function terminalFetchTerminalStatus($terminal_id, string $contentType = self::contentTypes['terminalFetchTerminalStatus'][0])
-    {
-        list($response) = $this->terminalFetchTerminalStatusWithHttpInfo($terminal_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation terminalFetchTerminalStatusWithHttpInfo
-     *
-     * Fetch Terminal Status
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetchTerminalStatus'] to see the possible values for this operation
-     *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TerminalGetStatusResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function terminalFetchTerminalStatusWithHttpInfo($terminal_id, string $contentType = self::contentTypes['terminalFetchTerminalStatus'][0])
-    {
-        $request = $this->terminalFetchTerminalStatusRequest($terminal_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TerminalGetStatusResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TerminalGetStatusResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TerminalGetStatusResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation terminalFetchTerminalStatusAsync
-     *
-     * Fetch Terminal Status
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetchTerminalStatus'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function terminalFetchTerminalStatusAsync($terminal_id, string $contentType = self::contentTypes['terminalFetchTerminalStatus'][0])
-    {
-        return $this->terminalFetchTerminalStatusAsyncWithHttpInfo($terminal_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation terminalFetchTerminalStatusAsyncWithHttpInfo
-     *
-     * Fetch Terminal Status
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetchTerminalStatus'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function terminalFetchTerminalStatusAsyncWithHttpInfo($terminal_id, string $contentType = self::contentTypes['terminalFetchTerminalStatus'][0])
-    {
-        $returnType = '\Alexasomba\\Paystack\Model\TerminalGetStatusResponse';
-        $request = $this->terminalFetchTerminalStatusRequest($terminal_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'terminalFetchTerminalStatus'
-     *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalFetchTerminalStatus'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function terminalFetchTerminalStatusRequest($terminal_id, string $contentType = self::contentTypes['terminalFetchTerminalStatus'][0])
-    {
-
-        // verify the required parameter 'terminal_id' is set
-        if ($terminal_id === null || (is_array($terminal_id) && count($terminal_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $terminal_id when calling terminalFetchTerminalStatus'
-            );
-        }
-
-
-        $resourcePath = '/terminal/{terminal_id}/presence';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($terminal_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'terminal_id' . '}',
-                ObjectSerializer::toPathValue($terminal_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation terminalList
+     * Operation callList
      *
      * List Terminals
      *
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalList'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TerminalListsResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TerminalListsResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function terminalList($next = null, $previous = null, $per_page = 50, string $contentType = self::contentTypes['terminalList'][0])
+    public function callList($next = null, $previous = null, $perPage = 50, string $contentType = self::contentTypes['callList'][0])
     {
-        list($response) = $this->terminalListWithHttpInfo($next, $previous, $per_page, $contentType);
+        list($response) = $this->callListWithHttpInfo($next, $previous, $perPage, $contentType);
         return $response;
     }
 
     /**
-     * Operation terminalListWithHttpInfo
+     * Operation callListWithHttpInfo
      *
      * List Terminals
      *
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalList'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TerminalListsResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TerminalListsResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function terminalListWithHttpInfo($next = null, $previous = null, $per_page = 50, string $contentType = self::contentTypes['terminalList'][0])
+    public function callListWithHttpInfo($next = null, $previous = null, $perPage = 50, string $contentType = self::contentTypes['callList'][0])
     {
-        $request = $this->terminalListRequest($next, $previous, $per_page, $contentType);
+        $request = $this->callListRequest($next, $previous, $perPage, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1693,19 +215,19 @@ class TerminalApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TerminalListsResponse',
+                        '\Alexasomba\Paystack\Model\TerminalListsResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -1727,7 +249,7 @@ class TerminalApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TerminalListsResponse',
+                '\Alexasomba\Paystack\Model\TerminalListsResponse',
                 $request,
                 $response,
             );
@@ -1736,7 +258,7 @@ class TerminalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TerminalListsResponse',
+                        '\Alexasomba\Paystack\Model\TerminalListsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1744,7 +266,7 @@ class TerminalApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1752,7 +274,7 @@ class TerminalApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1765,21 +287,21 @@ class TerminalApi
     }
 
     /**
-     * Operation terminalListAsync
+     * Operation callListAsync
      *
      * List Terminals
      *
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalList'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function terminalListAsync($next = null, $previous = null, $per_page = 50, string $contentType = self::contentTypes['terminalList'][0])
+    public function callListAsync($next = null, $previous = null, $perPage = 50, string $contentType = self::contentTypes['callList'][0])
     {
-        return $this->terminalListAsyncWithHttpInfo($next, $previous, $per_page, $contentType)
+        return $this->callListAsyncWithHttpInfo($next, $previous, $perPage, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1788,22 +310,22 @@ class TerminalApi
     }
 
     /**
-     * Operation terminalListAsyncWithHttpInfo
+     * Operation callListAsyncWithHttpInfo
      *
      * List Terminals
      *
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalList'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function terminalListAsyncWithHttpInfo($next = null, $previous = null, $per_page = 50, string $contentType = self::contentTypes['terminalList'][0])
+    public function callListAsyncWithHttpInfo($next = null, $previous = null, $perPage = 50, string $contentType = self::contentTypes['callList'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TerminalListsResponse';
-        $request = $this->terminalListRequest($next, $previous, $per_page, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TerminalListsResponse';
+        $request = $this->callListRequest($next, $previous, $perPage, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1842,17 +364,17 @@ class TerminalApi
     }
 
     /**
-     * Create request for operation 'terminalList'
+     * Create request for operation 'callList'
      *
      * @param  string|null $next A cursor that indicates your place in the list. It can be used to fetch the next page of the list (optional)
      * @param  string|null $previous A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request (optional)
-     * @param  int|null $per_page Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalList'] to see the possible values for this operation
+     * @param  int|null $perPage Specify how many records you want to retrieve per page. If not specified, we use a default value of 50. (optional, default to 50)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['callList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function terminalListRequest($next = null, $previous = null, $per_page = 50, string $contentType = self::contentTypes['terminalList'][0])
+    public function callListRequest($next = null, $previous = null, $perPage = 50, string $contentType = self::contentTypes['callList'][0])
     {
 
 
@@ -1886,7 +408,7 @@ class TerminalApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
+            $perPage,
             'perPage', // param base name
             'integer', // openApiType
             'form', // style
@@ -1955,40 +477,38 @@ class TerminalApi
     }
 
     /**
-     * Operation terminalSendEvent
+     * Operation commission
      *
-     * Send Event
+     * Commission Terminal
      *
-     * @param  string $id The ID of the Terminal the event should be sent to. (required)
-     * @param  \Alexasomba\\Paystack\Model\TerminalSendEvent|null $terminal_send_event terminal_send_event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalSendEvent'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TerminalActivationToggle|null $terminalActivationToggle terminalActivationToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['commission'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TerminalCommissionDeviceResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function terminalSendEvent($id, $terminal_send_event = null, string $contentType = self::contentTypes['terminalSendEvent'][0])
+    public function commission($terminalActivationToggle = null, string $contentType = self::contentTypes['commission'][0])
     {
-        list($response) = $this->terminalSendEventWithHttpInfo($id, $terminal_send_event, $contentType);
+        list($response) = $this->commissionWithHttpInfo($terminalActivationToggle, $contentType);
         return $response;
     }
 
     /**
-     * Operation terminalSendEventWithHttpInfo
+     * Operation commissionWithHttpInfo
      *
-     * Send Event
+     * Commission Terminal
      *
-     * @param  string $id The ID of the Terminal the event should be sent to. (required)
-     * @param  \Alexasomba\\Paystack\Model\TerminalSendEvent|null $terminal_send_event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalSendEvent'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TerminalActivationToggle|null $terminalActivationToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['commission'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\Response|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TerminalCommissionDeviceResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function terminalSendEventWithHttpInfo($id, $terminal_send_event = null, string $contentType = self::contentTypes['terminalSendEvent'][0])
+    public function commissionWithHttpInfo($terminalActivationToggle = null, string $contentType = self::contentTypes['commission'][0])
     {
-        $request = $this->terminalSendEventRequest($id, $terminal_send_event, $contentType);
+        $request = $this->commissionRequest($terminalActivationToggle, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2016,13 +536,13 @@ class TerminalApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\TerminalCommissionDeviceResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -2044,7 +564,7 @@ class TerminalApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\Response',
+                '\Alexasomba\Paystack\Model\TerminalCommissionDeviceResponse',
                 $request,
                 $response,
             );
@@ -2053,7 +573,7 @@ class TerminalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Response',
+                        '\Alexasomba\Paystack\Model\TerminalCommissionDeviceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2061,7 +581,7 @@ class TerminalApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2074,20 +594,19 @@ class TerminalApi
     }
 
     /**
-     * Operation terminalSendEventAsync
+     * Operation commissionAsync
      *
-     * Send Event
+     * Commission Terminal
      *
-     * @param  string $id The ID of the Terminal the event should be sent to. (required)
-     * @param  \Alexasomba\\Paystack\Model\TerminalSendEvent|null $terminal_send_event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalSendEvent'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TerminalActivationToggle|null $terminalActivationToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['commission'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function terminalSendEventAsync($id, $terminal_send_event = null, string $contentType = self::contentTypes['terminalSendEvent'][0])
+    public function commissionAsync($terminalActivationToggle = null, string $contentType = self::contentTypes['commission'][0])
     {
-        return $this->terminalSendEventAsyncWithHttpInfo($id, $terminal_send_event, $contentType)
+        return $this->commissionAsyncWithHttpInfo($terminalActivationToggle, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2096,21 +615,20 @@ class TerminalApi
     }
 
     /**
-     * Operation terminalSendEventAsyncWithHttpInfo
+     * Operation commissionAsyncWithHttpInfo
      *
-     * Send Event
+     * Commission Terminal
      *
-     * @param  string $id The ID of the Terminal the event should be sent to. (required)
-     * @param  \Alexasomba\\Paystack\Model\TerminalSendEvent|null $terminal_send_event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalSendEvent'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TerminalActivationToggle|null $terminalActivationToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['commission'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function terminalSendEventAsyncWithHttpInfo($id, $terminal_send_event = null, string $contentType = self::contentTypes['terminalSendEvent'][0])
+    public function commissionAsyncWithHttpInfo($terminalActivationToggle = null, string $contentType = self::contentTypes['commission'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\Response';
-        $request = $this->terminalSendEventRequest($id, $terminal_send_event, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TerminalCommissionDeviceResponse';
+        $request = $this->commissionRequest($terminalActivationToggle, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2149,28 +667,20 @@ class TerminalApi
     }
 
     /**
-     * Create request for operation 'terminalSendEvent'
+     * Create request for operation 'commission'
      *
-     * @param  string $id The ID of the Terminal the event should be sent to. (required)
-     * @param  \Alexasomba\\Paystack\Model\TerminalSendEvent|null $terminal_send_event (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalSendEvent'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TerminalActivationToggle|null $terminalActivationToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['commission'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function terminalSendEventRequest($id, $terminal_send_event = null, string $contentType = self::contentTypes['terminalSendEvent'][0])
+    public function commissionRequest($terminalActivationToggle = null, string $contentType = self::contentTypes['commission'][0])
     {
 
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling terminalSendEvent'
-            );
-        }
 
 
-
-        $resourcePath = '/terminal/{id}/event';
+        $resourcePath = '/terminal/commission_device';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2179,14 +689,6 @@ class TerminalApi
 
 
 
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -2196,12 +698,12 @@ class TerminalApi
         );
 
         // for model (json/xml)
-        if (isset($terminal_send_event)) {
+        if (isset($terminalActivationToggle)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($terminal_send_event));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($terminalActivationToggle));
             } else {
-                $httpBody = $terminal_send_event;
+                $httpBody = $terminalActivationToggle;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2254,40 +756,38 @@ class TerminalApi
     }
 
     /**
-     * Operation terminalUpdate
+     * Operation decommission
      *
-     * Update Terminal
+     * Decommission Terminal
      *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  \Alexasomba\\Paystack\Model\TerminalUpate|null $terminal_upate terminal_upate (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalUpdate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TerminalActivationToggle|null $terminalActivationToggle terminalActivationToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['decommission'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\TerminalUpdateResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\TerminalDecommissionDeviceResponse|\Alexasomba\Paystack\Model\Error
      */
-    public function terminalUpdate($terminal_id, $terminal_upate = null, string $contentType = self::contentTypes['terminalUpdate'][0])
+    public function decommission($terminalActivationToggle = null, string $contentType = self::contentTypes['decommission'][0])
     {
-        list($response) = $this->terminalUpdateWithHttpInfo($terminal_id, $terminal_upate, $contentType);
+        list($response) = $this->decommissionWithHttpInfo($terminalActivationToggle, $contentType);
         return $response;
     }
 
     /**
-     * Operation terminalUpdateWithHttpInfo
+     * Operation decommissionWithHttpInfo
      *
-     * Update Terminal
+     * Decommission Terminal
      *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  \Alexasomba\\Paystack\Model\TerminalUpate|null $terminal_upate (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalUpdate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TerminalActivationToggle|null $terminalActivationToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['decommission'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\TerminalUpdateResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\TerminalDecommissionDeviceResponse|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function terminalUpdateWithHttpInfo($terminal_id, $terminal_upate = null, string $contentType = self::contentTypes['terminalUpdate'][0])
+    public function decommissionWithHttpInfo($terminalActivationToggle = null, string $contentType = self::contentTypes['decommission'][0])
     {
-        $request = $this->terminalUpdateRequest($terminal_id, $terminal_upate, $contentType);
+        $request = $this->decommissionRequest($terminalActivationToggle, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2315,19 +815,13 @@ class TerminalApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\TerminalUpdateResponse',
+                        '\Alexasomba\Paystack\Model\TerminalDecommissionDeviceResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -2349,7 +843,7 @@ class TerminalApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\TerminalUpdateResponse',
+                '\Alexasomba\Paystack\Model\TerminalDecommissionDeviceResponse',
                 $request,
                 $response,
             );
@@ -2358,7 +852,7 @@ class TerminalApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\TerminalUpdateResponse',
+                        '\Alexasomba\Paystack\Model\TerminalDecommissionDeviceResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2366,15 +860,7 @@ class TerminalApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2387,20 +873,19 @@ class TerminalApi
     }
 
     /**
-     * Operation terminalUpdateAsync
+     * Operation decommissionAsync
      *
-     * Update Terminal
+     * Decommission Terminal
      *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  \Alexasomba\\Paystack\Model\TerminalUpate|null $terminal_upate (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalUpdate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TerminalActivationToggle|null $terminalActivationToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['decommission'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function terminalUpdateAsync($terminal_id, $terminal_upate = null, string $contentType = self::contentTypes['terminalUpdate'][0])
+    public function decommissionAsync($terminalActivationToggle = null, string $contentType = self::contentTypes['decommission'][0])
     {
-        return $this->terminalUpdateAsyncWithHttpInfo($terminal_id, $terminal_upate, $contentType)
+        return $this->decommissionAsyncWithHttpInfo($terminalActivationToggle, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2409,21 +894,20 @@ class TerminalApi
     }
 
     /**
-     * Operation terminalUpdateAsyncWithHttpInfo
+     * Operation decommissionAsyncWithHttpInfo
      *
-     * Update Terminal
+     * Decommission Terminal
      *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  \Alexasomba\\Paystack\Model\TerminalUpate|null $terminal_upate (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalUpdate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TerminalActivationToggle|null $terminalActivationToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['decommission'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function terminalUpdateAsyncWithHttpInfo($terminal_id, $terminal_upate = null, string $contentType = self::contentTypes['terminalUpdate'][0])
+    public function decommissionAsyncWithHttpInfo($terminalActivationToggle = null, string $contentType = self::contentTypes['decommission'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\TerminalUpdateResponse';
-        $request = $this->terminalUpdateRequest($terminal_id, $terminal_upate, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\TerminalDecommissionDeviceResponse';
+        $request = $this->decommissionRequest($terminalActivationToggle, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2462,22 +946,1538 @@ class TerminalApi
     }
 
     /**
-     * Create request for operation 'terminalUpdate'
+     * Create request for operation 'decommission'
      *
-     * @param  string $terminal_id The ID of the Terminal the event should be sent to. (required)
-     * @param  \Alexasomba\\Paystack\Model\TerminalUpate|null $terminal_upate (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminalUpdate'] to see the possible values for this operation
+     * @param  \Alexasomba\Paystack\Model\TerminalActivationToggle|null $terminalActivationToggle (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['decommission'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function terminalUpdateRequest($terminal_id, $terminal_upate = null, string $contentType = self::contentTypes['terminalUpdate'][0])
+    public function decommissionRequest($terminalActivationToggle = null, string $contentType = self::contentTypes['decommission'][0])
     {
 
-        // verify the required parameter 'terminal_id' is set
-        if ($terminal_id === null || (is_array($terminal_id) && count($terminal_id) === 0)) {
+
+
+        $resourcePath = '/terminal/decommission_device';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($terminalActivationToggle)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($terminalActivationToggle));
+            } else {
+                $httpBody = $terminalActivationToggle;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation fetch
+     *
+     * Fetch Terminal
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\TerminalGetResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
+     */
+    public function fetch($terminalId, string $contentType = self::contentTypes['fetch'][0])
+    {
+        list($response) = $this->fetchWithHttpInfo($terminalId, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation fetchWithHttpInfo
+     *
+     * Fetch Terminal
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\TerminalGetResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function fetchWithHttpInfo($terminalId, string $contentType = self::contentTypes['fetch'][0])
+    {
+        $request = $this->fetchRequest($terminalId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\TerminalGetResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\TerminalGetResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\TerminalGetResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation fetchAsync
+     *
+     * Fetch Terminal
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchAsync($terminalId, string $contentType = self::contentTypes['fetch'][0])
+    {
+        return $this->fetchAsyncWithHttpInfo($terminalId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation fetchAsyncWithHttpInfo
+     *
+     * Fetch Terminal
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchAsyncWithHttpInfo($terminalId, string $contentType = self::contentTypes['fetch'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\TerminalGetResponse';
+        $request = $this->fetchRequest($terminalId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'fetch'
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function fetchRequest($terminalId, string $contentType = self::contentTypes['fetch'][0])
+    {
+
+        // verify the required parameter 'terminalId' is set
+        if ($terminalId === null || (is_array($terminalId) && count($terminalId) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $terminal_id when calling terminalUpdate'
+                'Missing the required parameter $terminalId when calling fetch'
+            );
+        }
+
+
+        $resourcePath = '/terminal/{terminal_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($terminalId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'terminal_id' . '}',
+                ObjectSerializer::toPathValue($terminalId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation fetchEventStatus
+     *
+     * Fetch Event Status
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $eventId The ID of the event that was sent to the Terminal (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchEventStatus'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
+     */
+    public function fetchEventStatus($terminalId, $eventId, string $contentType = self::contentTypes['fetchEventStatus'][0])
+    {
+        list($response) = $this->fetchEventStatusWithHttpInfo($terminalId, $eventId, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation fetchEventStatusWithHttpInfo
+     *
+     * Fetch Event Status
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $eventId The ID of the event that was sent to the Terminal (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchEventStatus'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function fetchEventStatusWithHttpInfo($terminalId, $eventId, string $contentType = self::contentTypes['fetchEventStatus'][0])
+    {
+        $request = $this->fetchEventStatusRequest($terminalId, $eventId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation fetchEventStatusAsync
+     *
+     * Fetch Event Status
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $eventId The ID of the event that was sent to the Terminal (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchEventStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchEventStatusAsync($terminalId, $eventId, string $contentType = self::contentTypes['fetchEventStatus'][0])
+    {
+        return $this->fetchEventStatusAsyncWithHttpInfo($terminalId, $eventId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation fetchEventStatusAsyncWithHttpInfo
+     *
+     * Fetch Event Status
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $eventId The ID of the event that was sent to the Terminal (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchEventStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchEventStatusAsyncWithHttpInfo($terminalId, $eventId, string $contentType = self::contentTypes['fetchEventStatus'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\Response';
+        $request = $this->fetchEventStatusRequest($terminalId, $eventId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'fetchEventStatus'
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $eventId The ID of the event that was sent to the Terminal (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchEventStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function fetchEventStatusRequest($terminalId, $eventId, string $contentType = self::contentTypes['fetchEventStatus'][0])
+    {
+
+        // verify the required parameter 'terminalId' is set
+        if ($terminalId === null || (is_array($terminalId) && count($terminalId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $terminalId when calling fetchEventStatus'
+            );
+        }
+
+        // verify the required parameter 'eventId' is set
+        if ($eventId === null || (is_array($eventId) && count($eventId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $eventId when calling fetchEventStatus'
+            );
+        }
+
+
+        $resourcePath = '/terminal/{terminal_id}/event/{event_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($terminalId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'terminal_id' . '}',
+                ObjectSerializer::toPathValue($terminalId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($eventId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'event_id' . '}',
+                ObjectSerializer::toPathValue($eventId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation fetchTerminalStatus
+     *
+     * Fetch Terminal Status
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchTerminalStatus'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\TerminalGetStatusResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
+     */
+    public function fetchTerminalStatus($terminalId, string $contentType = self::contentTypes['fetchTerminalStatus'][0])
+    {
+        list($response) = $this->fetchTerminalStatusWithHttpInfo($terminalId, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation fetchTerminalStatusWithHttpInfo
+     *
+     * Fetch Terminal Status
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchTerminalStatus'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\TerminalGetStatusResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function fetchTerminalStatusWithHttpInfo($terminalId, string $contentType = self::contentTypes['fetchTerminalStatus'][0])
+    {
+        $request = $this->fetchTerminalStatusRequest($terminalId, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\TerminalGetStatusResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\TerminalGetStatusResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\TerminalGetStatusResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation fetchTerminalStatusAsync
+     *
+     * Fetch Terminal Status
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchTerminalStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchTerminalStatusAsync($terminalId, string $contentType = self::contentTypes['fetchTerminalStatus'][0])
+    {
+        return $this->fetchTerminalStatusAsyncWithHttpInfo($terminalId, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation fetchTerminalStatusAsyncWithHttpInfo
+     *
+     * Fetch Terminal Status
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchTerminalStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function fetchTerminalStatusAsyncWithHttpInfo($terminalId, string $contentType = self::contentTypes['fetchTerminalStatus'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\TerminalGetStatusResponse';
+        $request = $this->fetchTerminalStatusRequest($terminalId, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'fetchTerminalStatus'
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchTerminalStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function fetchTerminalStatusRequest($terminalId, string $contentType = self::contentTypes['fetchTerminalStatus'][0])
+    {
+
+        // verify the required parameter 'terminalId' is set
+        if ($terminalId === null || (is_array($terminalId) && count($terminalId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $terminalId when calling fetchTerminalStatus'
+            );
+        }
+
+
+        $resourcePath = '/terminal/{terminal_id}/presence';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($terminalId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'terminal_id' . '}',
+                ObjectSerializer::toPathValue($terminalId),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation sendEvent
+     *
+     * Send Event
+     *
+     * @param  string $id The ID of the Terminal the event should be sent to. (required)
+     * @param  \Alexasomba\Paystack\Model\TerminalSendEvent|null $terminalSendEvent terminalSendEvent (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEvent'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error
+     */
+    public function sendEvent($id, $terminalSendEvent = null, string $contentType = self::contentTypes['sendEvent'][0])
+    {
+        list($response) = $this->sendEventWithHttpInfo($id, $terminalSendEvent, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation sendEventWithHttpInfo
+     *
+     * Send Event
+     *
+     * @param  string $id The ID of the Terminal the event should be sent to. (required)
+     * @param  \Alexasomba\Paystack\Model\TerminalSendEvent|null $terminalSendEvent (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEvent'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\Response|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function sendEventWithHttpInfo($id, $terminalSendEvent = null, string $contentType = self::contentTypes['sendEvent'][0])
+    {
+        $request = $this->sendEventRequest($id, $terminalSendEvent, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation sendEventAsync
+     *
+     * Send Event
+     *
+     * @param  string $id The ID of the Terminal the event should be sent to. (required)
+     * @param  \Alexasomba\Paystack\Model\TerminalSendEvent|null $terminalSendEvent (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sendEventAsync($id, $terminalSendEvent = null, string $contentType = self::contentTypes['sendEvent'][0])
+    {
+        return $this->sendEventAsyncWithHttpInfo($id, $terminalSendEvent, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation sendEventAsyncWithHttpInfo
+     *
+     * Send Event
+     *
+     * @param  string $id The ID of the Terminal the event should be sent to. (required)
+     * @param  \Alexasomba\Paystack\Model\TerminalSendEvent|null $terminalSendEvent (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sendEventAsyncWithHttpInfo($id, $terminalSendEvent = null, string $contentType = self::contentTypes['sendEvent'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\Response';
+        $request = $this->sendEventRequest($id, $terminalSendEvent, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'sendEvent'
+     *
+     * @param  string $id The ID of the Terminal the event should be sent to. (required)
+     * @param  \Alexasomba\Paystack\Model\TerminalSendEvent|null $terminalSendEvent (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function sendEventRequest($id, $terminalSendEvent = null, string $contentType = self::contentTypes['sendEvent'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling sendEvent'
+            );
+        }
+
+
+
+        $resourcePath = '/terminal/{id}/event';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($terminalSendEvent)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($terminalSendEvent));
+            } else {
+                $httpBody = $terminalSendEvent;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation update
+     *
+     * Update Terminal
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  \Alexasomba\Paystack\Model\TerminalUpate|null $terminalUpate terminalUpate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Alexasomba\Paystack\Model\TerminalUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
+     */
+    public function update($terminalId, $terminalUpate = null, string $contentType = self::contentTypes['update'][0])
+    {
+        list($response) = $this->updateWithHttpInfo($terminalId, $terminalUpate, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateWithHttpInfo
+     *
+     * Update Terminal
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  \Alexasomba\Paystack\Model\TerminalUpate|null $terminalUpate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Alexasomba\Paystack\Model\TerminalUpdateResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateWithHttpInfo($terminalId, $terminalUpate = null, string $contentType = self::contentTypes['update'][0])
+    {
+        $request = $this->updateRequest($terminalId, $terminalUpate, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\TerminalUpdateResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Alexasomba\Paystack\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Alexasomba\Paystack\Model\TerminalUpdateResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\TerminalUpdateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Alexasomba\Paystack\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAsync
+     *
+     * Update Terminal
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  \Alexasomba\Paystack\Model\TerminalUpate|null $terminalUpate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAsync($terminalId, $terminalUpate = null, string $contentType = self::contentTypes['update'][0])
+    {
+        return $this->updateAsyncWithHttpInfo($terminalId, $terminalUpate, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAsyncWithHttpInfo
+     *
+     * Update Terminal
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  \Alexasomba\Paystack\Model\TerminalUpate|null $terminalUpate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAsyncWithHttpInfo($terminalId, $terminalUpate = null, string $contentType = self::contentTypes['update'][0])
+    {
+        $returnType = '\Alexasomba\Paystack\Model\TerminalUpdateResponse';
+        $request = $this->updateRequest($terminalId, $terminalUpate, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'update'
+     *
+     * @param  string $terminalId The ID of the Terminal the event should be sent to. (required)
+     * @param  \Alexasomba\Paystack\Model\TerminalUpate|null $terminalUpate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateRequest($terminalId, $terminalUpate = null, string $contentType = self::contentTypes['update'][0])
+    {
+
+        // verify the required parameter 'terminalId' is set
+        if ($terminalId === null || (is_array($terminalId) && count($terminalId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $terminalId when calling update'
             );
         }
 
@@ -2493,10 +2493,10 @@ class TerminalApi
 
 
         // path params
-        if ($terminal_id !== null) {
+        if ($terminalId !== null) {
             $resourcePath = str_replace(
                 '{' . 'terminal_id' . '}',
-                ObjectSerializer::toPathValue($terminal_id),
+                ObjectSerializer::toPathValue($terminalId),
                 $resourcePath
             );
         }
@@ -2509,12 +2509,12 @@ class TerminalApi
         );
 
         // for model (json/xml)
-        if (isset($terminal_upate)) {
+        if (isset($terminalUpate)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($terminal_upate));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($terminalUpate));
             } else {
-                $httpBody = $terminal_upate;
+                $httpBody = $terminalUpate;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

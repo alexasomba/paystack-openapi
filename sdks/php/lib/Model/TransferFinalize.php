@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * TransferFinalize Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class TransferFinalize implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'transfer_code' => 'string',
+        'transferCode' => 'string',
         'otp' => 'string'
     ];
 
@@ -70,7 +70,7 @@ class TransferFinalize implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'transfer_code' => null,
+        'transferCode' => null,
         'otp' => null
     ];
 
@@ -80,7 +80,7 @@ class TransferFinalize implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'transfer_code' => false,
+        'transferCode' => false,
         'otp' => false
     ];
 
@@ -170,7 +170,7 @@ class TransferFinalize implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'transfer_code' => 'transfer_code',
+        'transferCode' => 'transfer_code',
         'otp' => 'otp'
     ];
 
@@ -180,7 +180,7 @@ class TransferFinalize implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'transfer_code' => 'setTransferCode',
+        'transferCode' => 'setTransferCode',
         'otp' => 'setOtp'
     ];
 
@@ -190,7 +190,7 @@ class TransferFinalize implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'transfer_code' => 'getTransferCode',
+        'transferCode' => 'getTransferCode',
         'otp' => 'getOtp'
     ];
 
@@ -251,7 +251,7 @@ class TransferFinalize implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('transfer_code', $data ?? [], null);
+        $this->setIfExists('transferCode', $data ?? [], null);
         $this->setIfExists('otp', $data ?? [], null);
     }
 
@@ -282,8 +282,8 @@ class TransferFinalize implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['transfer_code'] === null) {
-            $invalidProperties[] = "'transfer_code' can't be null";
+        if ($this->container['transferCode'] === null) {
+            $invalidProperties[] = "'transferCode' can't be null";
         }
         if ($this->container['otp'] === null) {
             $invalidProperties[] = "'otp' can't be null";
@@ -304,28 +304,28 @@ class TransferFinalize implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets transfer_code
+     * Gets transferCode
      *
      * @return string
      */
     public function getTransferCode()
     {
-        return $this->container['transfer_code'];
+        return $this->container['transferCode'];
     }
 
     /**
-     * Sets transfer_code
+     * Sets transferCode
      *
-     * @param string $transfer_code The transfer code you want to finalize
+     * @param string $transferCode The transfer code you want to finalize
      *
      * @return self
      */
-    public function setTransferCode($transfer_code)
+    public function setTransferCode($transferCode)
     {
-        if (is_null($transfer_code)) {
-            throw new \InvalidArgumentException('non-nullable transfer_code cannot be null');
+        if (is_null($transferCode)) {
+            throw new \InvalidArgumentException('non-nullable transferCode cannot be null');
         }
-        $this->container['transfer_code'] = $transfer_code;
+        $this->container['transferCode'] = $transferCode;
 
         return $this;
     }

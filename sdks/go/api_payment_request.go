@@ -25,18 +25,18 @@ import (
 // PaymentRequestAPIService PaymentRequestAPI service
 type PaymentRequestAPIService service
 
-type ApiPaymentRequestArchiveRequest struct {
+type ApiArchiveRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
 	id int32
 }
 
-func (r ApiPaymentRequestArchiveRequest) Execute() (*PaymentRequestArchiveResponse, *http.Response, error) {
-	return r.ApiService.PaymentRequestArchiveExecute(r)
+func (r ApiArchiveRequest) Execute() (*PaymentRequestArchiveResponse, *http.Response, error) {
+	return r.ApiService.ArchiveExecute(r)
 }
 
 /*
-PaymentRequestArchive Archive Payment Request
+Archive Archive Payment Request
 
 Archive a payment request to clean up your records. An archived payment request cannot be verified and will not 
 be returned when listing all previously created payment requests.
@@ -44,10 +44,10 @@ be returned when listing all previously created payment requests.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of a previously created payment request
- @return ApiPaymentRequestArchiveRequest
+ @return ApiArchiveRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestArchive(ctx context.Context, id int32) ApiPaymentRequestArchiveRequest {
-	return ApiPaymentRequestArchiveRequest{
+func (a *PaymentRequestAPIService) Archive(ctx context.Context, id int32) ApiArchiveRequest {
+	return ApiArchiveRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -56,7 +56,7 @@ func (a *PaymentRequestAPIService) PaymentRequestArchive(ctx context.Context, id
 
 // Execute executes the request
 //  @return PaymentRequestArchiveResponse
-func (a *PaymentRequestAPIService) PaymentRequestArchiveExecute(r ApiPaymentRequestArchiveRequest) (*PaymentRequestArchiveResponse, *http.Response, error) {
+func (a *PaymentRequestAPIService) ArchiveExecute(r ApiArchiveRequest) (*PaymentRequestArchiveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -64,7 +64,7 @@ func (a *PaymentRequestAPIService) PaymentRequestArchiveExecute(r ApiPaymentRequ
 		localVarReturnValue  *PaymentRequestArchiveResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestArchive")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.Archive")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -141,31 +141,31 @@ func (a *PaymentRequestAPIService) PaymentRequestArchiveExecute(r ApiPaymentRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPaymentRequestCreateRequest struct {
+type ApiCreateRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
 	paymentRequestCreate *PaymentRequestCreate
 }
 
-func (r ApiPaymentRequestCreateRequest) PaymentRequestCreate(paymentRequestCreate PaymentRequestCreate) ApiPaymentRequestCreateRequest {
+func (r ApiCreateRequest) PaymentRequestCreate(paymentRequestCreate PaymentRequestCreate) ApiCreateRequest {
 	r.paymentRequestCreate = &paymentRequestCreate
 	return r
 }
 
-func (r ApiPaymentRequestCreateRequest) Execute() (*PaymentRequestCreateResponse, *http.Response, error) {
-	return r.ApiService.PaymentRequestCreateExecute(r)
+func (r ApiCreateRequest) Execute() (*PaymentRequestCreateResponse, *http.Response, error) {
+	return r.ApiService.CreateExecute(r)
 }
 
 /*
-PaymentRequestCreate Create Payment Request
+Create Create Payment Request
 
 Create a new payment request by issuing an invoice to a customer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPaymentRequestCreateRequest
+ @return ApiCreateRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestCreate(ctx context.Context) ApiPaymentRequestCreateRequest {
-	return ApiPaymentRequestCreateRequest{
+func (a *PaymentRequestAPIService) Create(ctx context.Context) ApiCreateRequest {
+	return ApiCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -173,7 +173,7 @@ func (a *PaymentRequestAPIService) PaymentRequestCreate(ctx context.Context) Api
 
 // Execute executes the request
 //  @return PaymentRequestCreateResponse
-func (a *PaymentRequestAPIService) PaymentRequestCreateExecute(r ApiPaymentRequestCreateRequest) (*PaymentRequestCreateResponse, *http.Response, error) {
+func (a *PaymentRequestAPIService) CreateExecute(r ApiCreateRequest) (*PaymentRequestCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -181,7 +181,7 @@ func (a *PaymentRequestAPIService) PaymentRequestCreateExecute(r ApiPaymentReque
 		localVarReturnValue  *PaymentRequestCreateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.Create")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -259,27 +259,27 @@ func (a *PaymentRequestAPIService) PaymentRequestCreateExecute(r ApiPaymentReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPaymentRequestFetchRequest struct {
+type ApiFetchRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
 	idOrCode string
 }
 
-func (r ApiPaymentRequestFetchRequest) Execute() (*PaymentRequestViewResponse, *http.Response, error) {
-	return r.ApiService.PaymentRequestFetchExecute(r)
+func (r ApiFetchRequest) Execute() (*PaymentRequestViewResponse, *http.Response, error) {
+	return r.ApiService.FetchExecute(r)
 }
 
 /*
-PaymentRequestFetch Fetch Payment Request
+Fetch Fetch Payment Request
 
 Fetch a previously created payment request
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param idOrCode The payment request ID or code you want to fetch
- @return ApiPaymentRequestFetchRequest
+ @return ApiFetchRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestFetch(ctx context.Context, idOrCode string) ApiPaymentRequestFetchRequest {
-	return ApiPaymentRequestFetchRequest{
+func (a *PaymentRequestAPIService) Fetch(ctx context.Context, idOrCode string) ApiFetchRequest {
+	return ApiFetchRequest{
 		ApiService: a,
 		ctx: ctx,
 		idOrCode: idOrCode,
@@ -288,7 +288,7 @@ func (a *PaymentRequestAPIService) PaymentRequestFetch(ctx context.Context, idOr
 
 // Execute executes the request
 //  @return PaymentRequestViewResponse
-func (a *PaymentRequestAPIService) PaymentRequestFetchExecute(r ApiPaymentRequestFetchRequest) (*PaymentRequestViewResponse, *http.Response, error) {
+func (a *PaymentRequestAPIService) FetchExecute(r ApiFetchRequest) (*PaymentRequestViewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -296,7 +296,7 @@ func (a *PaymentRequestAPIService) PaymentRequestFetchExecute(r ApiPaymentReques
 		localVarReturnValue  *PaymentRequestViewResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestFetch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.Fetch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -384,27 +384,27 @@ func (a *PaymentRequestAPIService) PaymentRequestFetchExecute(r ApiPaymentReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPaymentRequestFinalizeRequest struct {
+type ApiFinalizeRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
 	id int32
 }
 
-func (r ApiPaymentRequestFinalizeRequest) Execute() (*PaymentRequestFinalizeResponse, *http.Response, error) {
-	return r.ApiService.PaymentRequestFinalizeExecute(r)
+func (r ApiFinalizeRequest) Execute() (*PaymentRequestFinalizeResponse, *http.Response, error) {
+	return r.ApiService.FinalizeExecute(r)
 }
 
 /*
-PaymentRequestFinalize Finalize Payment Request
+Finalize Finalize Payment Request
 
 Finalise the creation of a draft payment request for a customer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of a draft payment request
- @return ApiPaymentRequestFinalizeRequest
+ @return ApiFinalizeRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestFinalize(ctx context.Context, id int32) ApiPaymentRequestFinalizeRequest {
-	return ApiPaymentRequestFinalizeRequest{
+func (a *PaymentRequestAPIService) Finalize(ctx context.Context, id int32) ApiFinalizeRequest {
+	return ApiFinalizeRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -413,7 +413,7 @@ func (a *PaymentRequestAPIService) PaymentRequestFinalize(ctx context.Context, i
 
 // Execute executes the request
 //  @return PaymentRequestFinalizeResponse
-func (a *PaymentRequestAPIService) PaymentRequestFinalizeExecute(r ApiPaymentRequestFinalizeRequest) (*PaymentRequestFinalizeResponse, *http.Response, error) {
+func (a *PaymentRequestAPIService) FinalizeExecute(r ApiFinalizeRequest) (*PaymentRequestFinalizeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -421,7 +421,7 @@ func (a *PaymentRequestAPIService) PaymentRequestFinalizeExecute(r ApiPaymentReq
 		localVarReturnValue  *PaymentRequestFinalizeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestFinalize")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.Finalize")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -498,7 +498,7 @@ func (a *PaymentRequestAPIService) PaymentRequestFinalizeExecute(r ApiPaymentReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPaymentRequestListRequest struct {
+type ApiListRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
 	perPage *int32
@@ -511,61 +511,61 @@ type ApiPaymentRequestListRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiPaymentRequestListRequest) PerPage(perPage int32) ApiPaymentRequestListRequest {
+func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiPaymentRequestListRequest) Page(page int32) ApiPaymentRequestListRequest {
+func (r ApiListRequest) Page(page int32) ApiListRequest {
 	r.page = &page
 	return r
 }
 
 // Customer ID
-func (r ApiPaymentRequestListRequest) Customer(customer string) ApiPaymentRequestListRequest {
+func (r ApiListRequest) Customer(customer string) ApiListRequest {
 	r.customer = &customer
 	return r
 }
 
 // Invoice status to filter
-func (r ApiPaymentRequestListRequest) Status(status string) ApiPaymentRequestListRequest {
+func (r ApiListRequest) Status(status string) ApiListRequest {
 	r.status = &status
 	return r
 }
 
 // If your integration supports more than one currency, choose the one to filter
-func (r ApiPaymentRequestListRequest) Currency(currency string) ApiPaymentRequestListRequest {
+func (r ApiListRequest) Currency(currency string) ApiListRequest {
 	r.currency = &currency
 	return r
 }
 
 // The start date
-func (r ApiPaymentRequestListRequest) From(from time.Time) ApiPaymentRequestListRequest {
+func (r ApiListRequest) From(from time.Time) ApiListRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiPaymentRequestListRequest) To(to time.Time) ApiPaymentRequestListRequest {
+func (r ApiListRequest) To(to time.Time) ApiListRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiPaymentRequestListRequest) Execute() (*PaymentRequestListResponse, *http.Response, error) {
-	return r.ApiService.PaymentRequestListExecute(r)
+func (r ApiListRequest) Execute() (*PaymentRequestListResponse, *http.Response, error) {
+	return r.ApiService.ListExecute(r)
 }
 
 /*
-PaymentRequestList List Payment Request
+List List Payment Request
 
 List all previously created payment requests to your customers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPaymentRequestListRequest
+ @return ApiListRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestList(ctx context.Context) ApiPaymentRequestListRequest {
-	return ApiPaymentRequestListRequest{
+func (a *PaymentRequestAPIService) List(ctx context.Context) ApiListRequest {
+	return ApiListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -573,7 +573,7 @@ func (a *PaymentRequestAPIService) PaymentRequestList(ctx context.Context) ApiPa
 
 // Execute executes the request
 //  @return PaymentRequestListResponse
-func (a *PaymentRequestAPIService) PaymentRequestListExecute(r ApiPaymentRequestListRequest) (*PaymentRequestListResponse, *http.Response, error) {
+func (a *PaymentRequestAPIService) ListExecute(r ApiListRequest) (*PaymentRequestListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -581,7 +581,7 @@ func (a *PaymentRequestAPIService) PaymentRequestListExecute(r ApiPaymentRequest
 		localVarReturnValue  *PaymentRequestListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.List")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -689,27 +689,27 @@ func (a *PaymentRequestAPIService) PaymentRequestListExecute(r ApiPaymentRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPaymentRequestNotifyRequest struct {
+type ApiNotifyRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
 	id int32
 }
 
-func (r ApiPaymentRequestNotifyRequest) Execute() (*PaymentRequestSendNotificationResponse, *http.Response, error) {
-	return r.ApiService.PaymentRequestNotifyExecute(r)
+func (r ApiNotifyRequest) Execute() (*PaymentRequestSendNotificationResponse, *http.Response, error) {
+	return r.ApiService.NotifyExecute(r)
 }
 
 /*
-PaymentRequestNotify Send Notification
+Notify Send Notification
 
 Trigger an email reminder to a customer for a previously created payment request
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of a previously created payment request
- @return ApiPaymentRequestNotifyRequest
+ @return ApiNotifyRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestNotify(ctx context.Context, id int32) ApiPaymentRequestNotifyRequest {
-	return ApiPaymentRequestNotifyRequest{
+func (a *PaymentRequestAPIService) Notify(ctx context.Context, id int32) ApiNotifyRequest {
+	return ApiNotifyRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -718,7 +718,7 @@ func (a *PaymentRequestAPIService) PaymentRequestNotify(ctx context.Context, id 
 
 // Execute executes the request
 //  @return PaymentRequestSendNotificationResponse
-func (a *PaymentRequestAPIService) PaymentRequestNotifyExecute(r ApiPaymentRequestNotifyRequest) (*PaymentRequestSendNotificationResponse, *http.Response, error) {
+func (a *PaymentRequestAPIService) NotifyExecute(r ApiNotifyRequest) (*PaymentRequestSendNotificationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -726,7 +726,7 @@ func (a *PaymentRequestAPIService) PaymentRequestNotifyExecute(r ApiPaymentReque
 		localVarReturnValue  *PaymentRequestSendNotificationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestNotify")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.Notify")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -803,25 +803,25 @@ func (a *PaymentRequestAPIService) PaymentRequestNotifyExecute(r ApiPaymentReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPaymentRequestTotalsRequest struct {
+type ApiTotalsRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
 }
 
-func (r ApiPaymentRequestTotalsRequest) Execute() (*PaymentRequestTotalResponse, *http.Response, error) {
-	return r.ApiService.PaymentRequestTotalsExecute(r)
+func (r ApiTotalsRequest) Execute() (*PaymentRequestTotalResponse, *http.Response, error) {
+	return r.ApiService.TotalsExecute(r)
 }
 
 /*
-PaymentRequestTotals Payment Request Total
+Totals Payment Request Total
 
 Get the metric of all pending and successful payment requests
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPaymentRequestTotalsRequest
+ @return ApiTotalsRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestTotals(ctx context.Context) ApiPaymentRequestTotalsRequest {
-	return ApiPaymentRequestTotalsRequest{
+func (a *PaymentRequestAPIService) Totals(ctx context.Context) ApiTotalsRequest {
+	return ApiTotalsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -829,7 +829,7 @@ func (a *PaymentRequestAPIService) PaymentRequestTotals(ctx context.Context) Api
 
 // Execute executes the request
 //  @return PaymentRequestTotalResponse
-func (a *PaymentRequestAPIService) PaymentRequestTotalsExecute(r ApiPaymentRequestTotalsRequest) (*PaymentRequestTotalResponse, *http.Response, error) {
+func (a *PaymentRequestAPIService) TotalsExecute(r ApiTotalsRequest) (*PaymentRequestTotalResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -837,7 +837,7 @@ func (a *PaymentRequestAPIService) PaymentRequestTotalsExecute(r ApiPaymentReque
 		localVarReturnValue  *PaymentRequestTotalResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestTotals")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.Totals")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -924,33 +924,33 @@ func (a *PaymentRequestAPIService) PaymentRequestTotalsExecute(r ApiPaymentReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPaymentRequestUpdateRequest struct {
+type ApiUpdateRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
 	idOrCode string
 	paymentRequestUpdate *PaymentRequestUpdate
 }
 
-func (r ApiPaymentRequestUpdateRequest) PaymentRequestUpdate(paymentRequestUpdate PaymentRequestUpdate) ApiPaymentRequestUpdateRequest {
+func (r ApiUpdateRequest) PaymentRequestUpdate(paymentRequestUpdate PaymentRequestUpdate) ApiUpdateRequest {
 	r.paymentRequestUpdate = &paymentRequestUpdate
 	return r
 }
 
-func (r ApiPaymentRequestUpdateRequest) Execute() (*PaymentRequestUpdateResponse, *http.Response, error) {
-	return r.ApiService.PaymentRequestUpdateExecute(r)
+func (r ApiUpdateRequest) Execute() (*PaymentRequestUpdateResponse, *http.Response, error) {
+	return r.ApiService.UpdateExecute(r)
 }
 
 /*
-PaymentRequestUpdate Update Payment Request
+Update Update Payment Request
 
 Update a previously created payment request
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param idOrCode The payment request ID or code you want to fetch
- @return ApiPaymentRequestUpdateRequest
+ @return ApiUpdateRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestUpdate(ctx context.Context, idOrCode string) ApiPaymentRequestUpdateRequest {
-	return ApiPaymentRequestUpdateRequest{
+func (a *PaymentRequestAPIService) Update(ctx context.Context, idOrCode string) ApiUpdateRequest {
+	return ApiUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
 		idOrCode: idOrCode,
@@ -959,7 +959,7 @@ func (a *PaymentRequestAPIService) PaymentRequestUpdate(ctx context.Context, idO
 
 // Execute executes the request
 //  @return PaymentRequestUpdateResponse
-func (a *PaymentRequestAPIService) PaymentRequestUpdateExecute(r ApiPaymentRequestUpdateRequest) (*PaymentRequestUpdateResponse, *http.Response, error) {
+func (a *PaymentRequestAPIService) UpdateExecute(r ApiUpdateRequest) (*PaymentRequestUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -967,7 +967,7 @@ func (a *PaymentRequestAPIService) PaymentRequestUpdateExecute(r ApiPaymentReque
 		localVarReturnValue  *PaymentRequestUpdateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.Update")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1057,27 +1057,27 @@ func (a *PaymentRequestAPIService) PaymentRequestUpdateExecute(r ApiPaymentReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPaymentRequestVerifyRequest struct {
+type ApiVerifyRequest struct {
 	ctx context.Context
 	ApiService *PaymentRequestAPIService
 	id int32
 }
 
-func (r ApiPaymentRequestVerifyRequest) Execute() (*PaymentRequestVerifyResponse, *http.Response, error) {
-	return r.ApiService.PaymentRequestVerifyExecute(r)
+func (r ApiVerifyRequest) Execute() (*PaymentRequestVerifyResponse, *http.Response, error) {
+	return r.ApiService.VerifyExecute(r)
 }
 
 /*
-PaymentRequestVerify Verify Payment Request
+Verify Verify Payment Request
 
 Verify the status of a previously created payment request
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of a previously created payment request
- @return ApiPaymentRequestVerifyRequest
+ @return ApiVerifyRequest
 */
-func (a *PaymentRequestAPIService) PaymentRequestVerify(ctx context.Context, id int32) ApiPaymentRequestVerifyRequest {
-	return ApiPaymentRequestVerifyRequest{
+func (a *PaymentRequestAPIService) Verify(ctx context.Context, id int32) ApiVerifyRequest {
+	return ApiVerifyRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1086,7 +1086,7 @@ func (a *PaymentRequestAPIService) PaymentRequestVerify(ctx context.Context, id 
 
 // Execute executes the request
 //  @return PaymentRequestVerifyResponse
-func (a *PaymentRequestAPIService) PaymentRequestVerifyExecute(r ApiPaymentRequestVerifyRequest) (*PaymentRequestVerifyResponse, *http.Response, error) {
+func (a *PaymentRequestAPIService) VerifyExecute(r ApiVerifyRequest) (*PaymentRequestVerifyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1094,7 +1094,7 @@ func (a *PaymentRequestAPIService) PaymentRequestVerifyExecute(r ApiPaymentReque
 		localVarReturnValue  *PaymentRequestVerifyResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.PaymentRequestVerify")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PaymentRequestAPIService.Verify")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

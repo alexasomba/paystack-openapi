@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PreAuthorizationCaptureResponseDataSplit Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class PreAuthorizationCaptureResponseDataSplit implements ModelInterface, ArrayA
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'bearer_type' => 'string',
-        'subaccounts' => '\Alexasomba\\Paystack\Model\SplitSubaccountsArray[]'
+        'bearerType' => 'string',
+        'subaccounts' => '\Alexasomba\Paystack\Model\SplitSubaccountsArray[]'
     ];
 
     /**
@@ -72,7 +72,7 @@ class PreAuthorizationCaptureResponseDataSplit implements ModelInterface, ArrayA
       */
     protected static $openAPIFormats = [
         'type' => null,
-        'bearer_type' => null,
+        'bearerType' => null,
         'subaccounts' => null
     ];
 
@@ -83,7 +83,7 @@ class PreAuthorizationCaptureResponseDataSplit implements ModelInterface, ArrayA
       */
     protected static array $openAPINullables = [
         'type' => false,
-        'bearer_type' => false,
+        'bearerType' => false,
         'subaccounts' => false
     ];
 
@@ -174,7 +174,7 @@ class PreAuthorizationCaptureResponseDataSplit implements ModelInterface, ArrayA
      */
     protected static $attributeMap = [
         'type' => 'type',
-        'bearer_type' => 'bearer_type',
+        'bearerType' => 'bearer_type',
         'subaccounts' => 'subaccounts'
     ];
 
@@ -185,7 +185,7 @@ class PreAuthorizationCaptureResponseDataSplit implements ModelInterface, ArrayA
      */
     protected static $setters = [
         'type' => 'setType',
-        'bearer_type' => 'setBearerType',
+        'bearerType' => 'setBearerType',
         'subaccounts' => 'setSubaccounts'
     ];
 
@@ -196,7 +196,7 @@ class PreAuthorizationCaptureResponseDataSplit implements ModelInterface, ArrayA
      */
     protected static $getters = [
         'type' => 'getType',
-        'bearer_type' => 'getBearerType',
+        'bearerType' => 'getBearerType',
         'subaccounts' => 'getSubaccounts'
     ];
 
@@ -258,7 +258,7 @@ class PreAuthorizationCaptureResponseDataSplit implements ModelInterface, ArrayA
     public function __construct(?array $data = null)
     {
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('bearer_type', $data ?? [], null);
+        $this->setIfExists('bearerType', $data ?? [], null);
         $this->setIfExists('subaccounts', $data ?? [], null);
     }
 
@@ -292,8 +292,8 @@ class PreAuthorizationCaptureResponseDataSplit implements ModelInterface, ArrayA
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['bearer_type'] === null) {
-            $invalidProperties[] = "'bearer_type' can't be null";
+        if ($this->container['bearerType'] === null) {
+            $invalidProperties[] = "'bearerType' can't be null";
         }
         if ($this->container['subaccounts'] === null) {
             $invalidProperties[] = "'subaccounts' can't be null";
@@ -341,28 +341,28 @@ class PreAuthorizationCaptureResponseDataSplit implements ModelInterface, ArrayA
     }
 
     /**
-     * Gets bearer_type
+     * Gets bearerType
      *
      * @return string
      */
     public function getBearerType()
     {
-        return $this->container['bearer_type'];
+        return $this->container['bearerType'];
     }
 
     /**
-     * Sets bearer_type
+     * Sets bearerType
      *
-     * @param string $bearer_type bearer_type
+     * @param string $bearerType bearerType
      *
      * @return self
      */
-    public function setBearerType($bearer_type)
+    public function setBearerType($bearerType)
     {
-        if (is_null($bearer_type)) {
-            throw new \InvalidArgumentException('non-nullable bearer_type cannot be null');
+        if (is_null($bearerType)) {
+            throw new \InvalidArgumentException('non-nullable bearerType cannot be null');
         }
-        $this->container['bearer_type'] = $bearer_type;
+        $this->container['bearerType'] = $bearerType;
 
         return $this;
     }
@@ -370,7 +370,7 @@ class PreAuthorizationCaptureResponseDataSplit implements ModelInterface, ArrayA
     /**
      * Gets subaccounts
      *
-     * @return \Alexasomba\\Paystack\Model\SplitSubaccountsArray[]
+     * @return \Alexasomba\Paystack\Model\SplitSubaccountsArray[]
      */
     public function getSubaccounts()
     {
@@ -380,7 +380,7 @@ class PreAuthorizationCaptureResponseDataSplit implements ModelInterface, ArrayA
     /**
      * Sets subaccounts
      *
-     * @param \Alexasomba\\Paystack\Model\SplitSubaccountsArray[] $subaccounts subaccounts
+     * @param \Alexasomba\Paystack\Model\SplitSubaccountsArray[] $subaccounts subaccounts
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * VirtualTerminalFetchResponseDataDestinationsInner Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class VirtualTerminalFetchResponseDataDestinationsInner implements ModelInterfac
         'target' => 'string',
         'type' => 'string',
         'name' => 'string',
-        'created_at' => 'string'
+        'createdAt' => 'string'
     ];
 
     /**
@@ -75,7 +75,7 @@ class VirtualTerminalFetchResponseDataDestinationsInner implements ModelInterfac
         'target' => null,
         'type' => null,
         'name' => null,
-        'created_at' => null
+        'createdAt' => null
     ];
 
     /**
@@ -87,7 +87,7 @@ class VirtualTerminalFetchResponseDataDestinationsInner implements ModelInterfac
         'target' => false,
         'type' => false,
         'name' => false,
-        'created_at' => false
+        'createdAt' => false
     ];
 
     /**
@@ -179,7 +179,7 @@ class VirtualTerminalFetchResponseDataDestinationsInner implements ModelInterfac
         'target' => 'target',
         'type' => 'type',
         'name' => 'name',
-        'created_at' => 'created_at'
+        'createdAt' => 'created_at'
     ];
 
     /**
@@ -191,7 +191,7 @@ class VirtualTerminalFetchResponseDataDestinationsInner implements ModelInterfac
         'target' => 'setTarget',
         'type' => 'setType',
         'name' => 'setName',
-        'created_at' => 'setCreatedAt'
+        'createdAt' => 'setCreatedAt'
     ];
 
     /**
@@ -203,7 +203,7 @@ class VirtualTerminalFetchResponseDataDestinationsInner implements ModelInterfac
         'target' => 'getTarget',
         'type' => 'getType',
         'name' => 'getName',
-        'created_at' => 'getCreatedAt'
+        'createdAt' => 'getCreatedAt'
     ];
 
     /**
@@ -266,7 +266,7 @@ class VirtualTerminalFetchResponseDataDestinationsInner implements ModelInterfac
         $this->setIfExists('target', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
     }
 
     /**
@@ -393,28 +393,28 @@ class VirtualTerminalFetchResponseDataDestinationsInner implements ModelInterfac
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string|null
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string|null $created_at created_at
+     * @param string|null $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }

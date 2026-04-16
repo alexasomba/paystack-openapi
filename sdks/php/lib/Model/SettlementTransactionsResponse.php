@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * SettlementTransactionsResponse Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class SettlementTransactionsResponse implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'status' => 'bool',
         'message' => 'string',
-        'data' => '\Alexasomba\\Paystack\Model\TransactionListResponseArray[]',
-        'meta' => '\Alexasomba\\Paystack\Model\MetaWithVolume'
+        'data' => '\Alexasomba\Paystack\Model\TransactionListResponseArray[]',
+        'meta' => '\Alexasomba\Paystack\Model\MetaWithVolume'
     ];
 
     /**
@@ -380,7 +380,7 @@ class SettlementTransactionsResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets data
      *
-     * @return \Alexasomba\\Paystack\Model\TransactionListResponseArray[]
+     * @return \Alexasomba\Paystack\Model\TransactionListResponseArray[]
      */
     public function getData()
     {
@@ -390,7 +390,7 @@ class SettlementTransactionsResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets data
      *
-     * @param \Alexasomba\\Paystack\Model\TransactionListResponseArray[] $data data
+     * @param \Alexasomba\Paystack\Model\TransactionListResponseArray[] $data data
      *
      * @return self
      */
@@ -407,7 +407,7 @@ class SettlementTransactionsResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets meta
      *
-     * @return \Alexasomba\\Paystack\Model\MetaWithVolume
+     * @return \Alexasomba\Paystack\Model\MetaWithVolume
      */
     public function getMeta()
     {
@@ -417,7 +417,7 @@ class SettlementTransactionsResponse implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets meta
      *
-     * @param \Alexasomba\\Paystack\Model\MetaWithVolume $meta meta
+     * @param \Alexasomba\Paystack\Model\MetaWithVolume $meta meta
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PlanCreateResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,13 +64,13 @@ class PlanCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'interval' => 'string',
         'integration' => 'int',
         'domain' => 'string',
-        'plan_code' => 'string',
-        'send_invoices' => 'bool',
-        'send_sms' => 'bool',
-        'hosted_page' => 'bool',
+        'planCode' => 'string',
+        'sendInvoices' => 'bool',
+        'sendSms' => 'bool',
+        'hostedPage' => 'bool',
         'id' => 'int',
-        'created_at' => 'string',
-        'updated_at' => 'string'
+        'createdAt' => 'string',
+        'updatedAt' => 'string'
     ];
 
     /**
@@ -87,13 +87,13 @@ class PlanCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'interval' => null,
         'integration' => null,
         'domain' => null,
-        'plan_code' => null,
-        'send_invoices' => null,
-        'send_sms' => null,
-        'hosted_page' => null,
+        'planCode' => null,
+        'sendInvoices' => null,
+        'sendSms' => null,
+        'hostedPage' => null,
         'id' => null,
-        'created_at' => null,
-        'updated_at' => null
+        'createdAt' => null,
+        'updatedAt' => null
     ];
 
     /**
@@ -108,13 +108,13 @@ class PlanCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'interval' => false,
         'integration' => false,
         'domain' => false,
-        'plan_code' => false,
-        'send_invoices' => false,
-        'send_sms' => false,
-        'hosted_page' => false,
+        'planCode' => false,
+        'sendInvoices' => false,
+        'sendSms' => false,
+        'hostedPage' => false,
         'id' => false,
-        'created_at' => false,
-        'updated_at' => false
+        'createdAt' => false,
+        'updatedAt' => false
     ];
 
     /**
@@ -209,13 +209,13 @@ class PlanCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'interval' => 'interval',
         'integration' => 'integration',
         'domain' => 'domain',
-        'plan_code' => 'plan_code',
-        'send_invoices' => 'send_invoices',
-        'send_sms' => 'send_sms',
-        'hosted_page' => 'hosted_page',
+        'planCode' => 'plan_code',
+        'sendInvoices' => 'send_invoices',
+        'sendSms' => 'send_sms',
+        'hostedPage' => 'hosted_page',
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt'
     ];
 
     /**
@@ -230,13 +230,13 @@ class PlanCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'interval' => 'setInterval',
         'integration' => 'setIntegration',
         'domain' => 'setDomain',
-        'plan_code' => 'setPlanCode',
-        'send_invoices' => 'setSendInvoices',
-        'send_sms' => 'setSendSms',
-        'hosted_page' => 'setHostedPage',
+        'planCode' => 'setPlanCode',
+        'sendInvoices' => 'setSendInvoices',
+        'sendSms' => 'setSendSms',
+        'hostedPage' => 'setHostedPage',
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
@@ -251,13 +251,13 @@ class PlanCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         'interval' => 'getInterval',
         'integration' => 'getIntegration',
         'domain' => 'getDomain',
-        'plan_code' => 'getPlanCode',
-        'send_invoices' => 'getSendInvoices',
-        'send_sms' => 'getSendSms',
-        'hosted_page' => 'getHostedPage',
+        'planCode' => 'getPlanCode',
+        'sendInvoices' => 'getSendInvoices',
+        'sendSms' => 'getSendSms',
+        'hostedPage' => 'getHostedPage',
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
@@ -323,13 +323,13 @@ class PlanCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('interval', $data ?? [], null);
         $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
-        $this->setIfExists('plan_code', $data ?? [], null);
-        $this->setIfExists('send_invoices', $data ?? [], null);
-        $this->setIfExists('send_sms', $data ?? [], null);
-        $this->setIfExists('hosted_page', $data ?? [], null);
+        $this->setIfExists('planCode', $data ?? [], null);
+        $this->setIfExists('sendInvoices', $data ?? [], null);
+        $this->setIfExists('sendSms', $data ?? [], null);
+        $this->setIfExists('hostedPage', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
     }
 
     /**
@@ -377,26 +377,26 @@ class PlanCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['domain'] === null) {
             $invalidProperties[] = "'domain' can't be null";
         }
-        if ($this->container['plan_code'] === null) {
-            $invalidProperties[] = "'plan_code' can't be null";
+        if ($this->container['planCode'] === null) {
+            $invalidProperties[] = "'planCode' can't be null";
         }
-        if ($this->container['send_invoices'] === null) {
-            $invalidProperties[] = "'send_invoices' can't be null";
+        if ($this->container['sendInvoices'] === null) {
+            $invalidProperties[] = "'sendInvoices' can't be null";
         }
-        if ($this->container['send_sms'] === null) {
-            $invalidProperties[] = "'send_sms' can't be null";
+        if ($this->container['sendSms'] === null) {
+            $invalidProperties[] = "'sendSms' can't be null";
         }
-        if ($this->container['hosted_page'] === null) {
-            $invalidProperties[] = "'hosted_page' can't be null";
+        if ($this->container['hostedPage'] === null) {
+            $invalidProperties[] = "'hostedPage' can't be null";
         }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -576,109 +576,109 @@ class PlanCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets plan_code
+     * Gets planCode
      *
      * @return string
      */
     public function getPlanCode()
     {
-        return $this->container['plan_code'];
+        return $this->container['planCode'];
     }
 
     /**
-     * Sets plan_code
+     * Sets planCode
      *
-     * @param string $plan_code plan_code
+     * @param string $planCode planCode
      *
      * @return self
      */
-    public function setPlanCode($plan_code)
+    public function setPlanCode($planCode)
     {
-        if (is_null($plan_code)) {
-            throw new \InvalidArgumentException('non-nullable plan_code cannot be null');
+        if (is_null($planCode)) {
+            throw new \InvalidArgumentException('non-nullable planCode cannot be null');
         }
-        $this->container['plan_code'] = $plan_code;
+        $this->container['planCode'] = $planCode;
 
         return $this;
     }
 
     /**
-     * Gets send_invoices
+     * Gets sendInvoices
      *
      * @return bool
      */
     public function getSendInvoices()
     {
-        return $this->container['send_invoices'];
+        return $this->container['sendInvoices'];
     }
 
     /**
-     * Sets send_invoices
+     * Sets sendInvoices
      *
-     * @param bool $send_invoices send_invoices
+     * @param bool $sendInvoices sendInvoices
      *
      * @return self
      */
-    public function setSendInvoices($send_invoices)
+    public function setSendInvoices($sendInvoices)
     {
-        if (is_null($send_invoices)) {
-            throw new \InvalidArgumentException('non-nullable send_invoices cannot be null');
+        if (is_null($sendInvoices)) {
+            throw new \InvalidArgumentException('non-nullable sendInvoices cannot be null');
         }
-        $this->container['send_invoices'] = $send_invoices;
+        $this->container['sendInvoices'] = $sendInvoices;
 
         return $this;
     }
 
     /**
-     * Gets send_sms
+     * Gets sendSms
      *
      * @return bool
      */
     public function getSendSms()
     {
-        return $this->container['send_sms'];
+        return $this->container['sendSms'];
     }
 
     /**
-     * Sets send_sms
+     * Sets sendSms
      *
-     * @param bool $send_sms send_sms
+     * @param bool $sendSms sendSms
      *
      * @return self
      */
-    public function setSendSms($send_sms)
+    public function setSendSms($sendSms)
     {
-        if (is_null($send_sms)) {
-            throw new \InvalidArgumentException('non-nullable send_sms cannot be null');
+        if (is_null($sendSms)) {
+            throw new \InvalidArgumentException('non-nullable sendSms cannot be null');
         }
-        $this->container['send_sms'] = $send_sms;
+        $this->container['sendSms'] = $sendSms;
 
         return $this;
     }
 
     /**
-     * Gets hosted_page
+     * Gets hostedPage
      *
      * @return bool
      */
     public function getHostedPage()
     {
-        return $this->container['hosted_page'];
+        return $this->container['hostedPage'];
     }
 
     /**
-     * Sets hosted_page
+     * Sets hostedPage
      *
-     * @param bool $hosted_page hosted_page
+     * @param bool $hostedPage hostedPage
      *
      * @return self
      */
-    public function setHostedPage($hosted_page)
+    public function setHostedPage($hostedPage)
     {
-        if (is_null($hosted_page)) {
-            throw new \InvalidArgumentException('non-nullable hosted_page cannot be null');
+        if (is_null($hostedPage)) {
+            throw new \InvalidArgumentException('non-nullable hostedPage cannot be null');
         }
-        $this->container['hosted_page'] = $hosted_page;
+        $this->container['hostedPage'] = $hostedPage;
 
         return $this;
     }
@@ -711,55 +711,55 @@ class PlanCreateResponseData implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

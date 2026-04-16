@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * VerifyResponseDataLog Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,14 +58,14 @@ class VerifyResponseDataLog implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'start_time' => 'int',
-        'time_spent' => 'int',
+        'startTime' => 'int',
+        'timeSpent' => 'int',
         'attempts' => 'int',
         'errors' => 'int',
         'success' => 'bool',
         'mobile' => 'bool',
         'input' => 'mixed[]',
-        'history' => '\Alexasomba\\Paystack\Model\VerifyResponseDataLogHistoryInner[]'
+        'history' => '\Alexasomba\Paystack\Model\VerifyResponseDataLogHistoryInner[]'
     ];
 
     /**
@@ -76,8 +76,8 @@ class VerifyResponseDataLog implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'start_time' => null,
-        'time_spent' => null,
+        'startTime' => null,
+        'timeSpent' => null,
         'attempts' => null,
         'errors' => null,
         'success' => null,
@@ -92,8 +92,8 @@ class VerifyResponseDataLog implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'start_time' => false,
-        'time_spent' => false,
+        'startTime' => false,
+        'timeSpent' => false,
         'attempts' => false,
         'errors' => false,
         'success' => false,
@@ -188,8 +188,8 @@ class VerifyResponseDataLog implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'start_time' => 'start_time',
-        'time_spent' => 'time_spent',
+        'startTime' => 'start_time',
+        'timeSpent' => 'time_spent',
         'attempts' => 'attempts',
         'errors' => 'errors',
         'success' => 'success',
@@ -204,8 +204,8 @@ class VerifyResponseDataLog implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'start_time' => 'setStartTime',
-        'time_spent' => 'setTimeSpent',
+        'startTime' => 'setStartTime',
+        'timeSpent' => 'setTimeSpent',
         'attempts' => 'setAttempts',
         'errors' => 'setErrors',
         'success' => 'setSuccess',
@@ -220,8 +220,8 @@ class VerifyResponseDataLog implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'start_time' => 'getStartTime',
-        'time_spent' => 'getTimeSpent',
+        'startTime' => 'getStartTime',
+        'timeSpent' => 'getTimeSpent',
         'attempts' => 'getAttempts',
         'errors' => 'getErrors',
         'success' => 'getSuccess',
@@ -287,8 +287,8 @@ class VerifyResponseDataLog implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('start_time', $data ?? [], null);
-        $this->setIfExists('time_spent', $data ?? [], null);
+        $this->setIfExists('startTime', $data ?? [], null);
+        $this->setIfExists('timeSpent', $data ?? [], null);
         $this->setIfExists('attempts', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
         $this->setIfExists('success', $data ?? [], null);
@@ -324,11 +324,11 @@ class VerifyResponseDataLog implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['start_time'] === null) {
-            $invalidProperties[] = "'start_time' can't be null";
+        if ($this->container['startTime'] === null) {
+            $invalidProperties[] = "'startTime' can't be null";
         }
-        if ($this->container['time_spent'] === null) {
-            $invalidProperties[] = "'time_spent' can't be null";
+        if ($this->container['timeSpent'] === null) {
+            $invalidProperties[] = "'timeSpent' can't be null";
         }
         if ($this->container['attempts'] === null) {
             $invalidProperties[] = "'attempts' can't be null";
@@ -364,55 +364,55 @@ class VerifyResponseDataLog implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets start_time
+     * Gets startTime
      *
      * @return int
      */
     public function getStartTime()
     {
-        return $this->container['start_time'];
+        return $this->container['startTime'];
     }
 
     /**
-     * Sets start_time
+     * Sets startTime
      *
-     * @param int $start_time start_time
+     * @param int $startTime startTime
      *
      * @return self
      */
-    public function setStartTime($start_time)
+    public function setStartTime($startTime)
     {
-        if (is_null($start_time)) {
-            throw new \InvalidArgumentException('non-nullable start_time cannot be null');
+        if (is_null($startTime)) {
+            throw new \InvalidArgumentException('non-nullable startTime cannot be null');
         }
-        $this->container['start_time'] = $start_time;
+        $this->container['startTime'] = $startTime;
 
         return $this;
     }
 
     /**
-     * Gets time_spent
+     * Gets timeSpent
      *
      * @return int
      */
     public function getTimeSpent()
     {
-        return $this->container['time_spent'];
+        return $this->container['timeSpent'];
     }
 
     /**
-     * Sets time_spent
+     * Sets timeSpent
      *
-     * @param int $time_spent time_spent
+     * @param int $timeSpent timeSpent
      *
      * @return self
      */
-    public function setTimeSpent($time_spent)
+    public function setTimeSpent($timeSpent)
     {
-        if (is_null($time_spent)) {
-            throw new \InvalidArgumentException('non-nullable time_spent cannot be null');
+        if (is_null($timeSpent)) {
+            throw new \InvalidArgumentException('non-nullable timeSpent cannot be null');
         }
-        $this->container['time_spent'] = $time_spent;
+        $this->container['timeSpent'] = $timeSpent;
 
         return $this;
     }
@@ -555,7 +555,7 @@ class VerifyResponseDataLog implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets history
      *
-     * @return \Alexasomba\\Paystack\Model\VerifyResponseDataLogHistoryInner[]
+     * @return \Alexasomba\Paystack\Model\VerifyResponseDataLogHistoryInner[]
      */
     public function getHistory()
     {
@@ -565,7 +565,7 @@ class VerifyResponseDataLog implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets history
      *
-     * @param \Alexasomba\\Paystack\Model\VerifyResponseDataLogHistoryInner[] $history history
+     * @param \Alexasomba\Paystack\Model\VerifyResponseDataLogHistoryInner[] $history history
      *
      * @return self
      */

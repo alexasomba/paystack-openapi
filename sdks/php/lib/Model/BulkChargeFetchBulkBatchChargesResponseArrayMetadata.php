@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * BulkChargeFetchBulkBatchChargesResponseArrayMetadata Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayMetadata implements ModelInter
       * @var string[]
       */
     protected static $openAPITypes = [
-        'custom_fields' => '\Alexasomba\\Paystack\Model\MetadataCustomFieldsArray[]'
+        'customFields' => '\Alexasomba\Paystack\Model\MetadataCustomFieldsArray[]'
     ];
 
     /**
@@ -69,7 +69,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayMetadata implements ModelInter
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'custom_fields' => null
+        'customFields' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayMetadata implements ModelInter
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'custom_fields' => false
+        'customFields' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayMetadata implements ModelInter
      * @var string[]
      */
     protected static $attributeMap = [
-        'custom_fields' => 'custom_fields'
+        'customFields' => 'custom_fields'
     ];
 
     /**
@@ -176,7 +176,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayMetadata implements ModelInter
      * @var string[]
      */
     protected static $setters = [
-        'custom_fields' => 'setCustomFields'
+        'customFields' => 'setCustomFields'
     ];
 
     /**
@@ -185,7 +185,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayMetadata implements ModelInter
      * @var string[]
      */
     protected static $getters = [
-        'custom_fields' => 'getCustomFields'
+        'customFields' => 'getCustomFields'
     ];
 
     /**
@@ -245,7 +245,7 @@ class BulkChargeFetchBulkBatchChargesResponseArrayMetadata implements ModelInter
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('custom_fields', $data ?? [], null);
+        $this->setIfExists('customFields', $data ?? [], null);
     }
 
     /**
@@ -275,8 +275,8 @@ class BulkChargeFetchBulkBatchChargesResponseArrayMetadata implements ModelInter
     {
         $invalidProperties = [];
 
-        if ($this->container['custom_fields'] === null) {
-            $invalidProperties[] = "'custom_fields' can't be null";
+        if ($this->container['customFields'] === null) {
+            $invalidProperties[] = "'customFields' can't be null";
         }
         return $invalidProperties;
     }
@@ -294,28 +294,28 @@ class BulkChargeFetchBulkBatchChargesResponseArrayMetadata implements ModelInter
 
 
     /**
-     * Gets custom_fields
+     * Gets customFields
      *
-     * @return \Alexasomba\\Paystack\Model\MetadataCustomFieldsArray[]
+     * @return \Alexasomba\Paystack\Model\MetadataCustomFieldsArray[]
      */
     public function getCustomFields()
     {
-        return $this->container['custom_fields'];
+        return $this->container['customFields'];
     }
 
     /**
-     * Sets custom_fields
+     * Sets customFields
      *
-     * @param \Alexasomba\\Paystack\Model\MetadataCustomFieldsArray[] $custom_fields custom_fields
+     * @param \Alexasomba\Paystack\Model\MetadataCustomFieldsArray[] $customFields customFields
      *
      * @return self
      */
-    public function setCustomFields($custom_fields)
+    public function setCustomFields($customFields)
     {
-        if (is_null($custom_fields)) {
-            throw new \InvalidArgumentException('non-nullable custom_fields cannot be null');
+        if (is_null($customFields)) {
+            throw new \InvalidArgumentException('non-nullable customFields cannot be null');
         }
-        $this->container['custom_fields'] = $custom_fields;
+        $this->container['customFields'] = $customFields;
 
         return $this;
     }

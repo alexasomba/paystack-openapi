@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PlanCreate Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,11 +62,11 @@ class PlanCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount' => 'int',
         'interval' => 'string',
         'description' => 'string',
-        'send_invoices' => 'bool',
-        'send_sms' => 'bool',
+        'sendInvoices' => 'bool',
+        'sendSms' => 'bool',
         'currency' => 'string',
-        'invoice_limit' => 'int',
-        'metadata' => '\Alexasomba\\Paystack\Model\SubaccountUpdateMetadata'
+        'invoiceLimit' => 'int',
+        'metadata' => '\Alexasomba\Paystack\Model\SubaccountUpdateMetadata'
     ];
 
     /**
@@ -81,10 +81,10 @@ class PlanCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount' => null,
         'interval' => null,
         'description' => null,
-        'send_invoices' => null,
-        'send_sms' => null,
+        'sendInvoices' => null,
+        'sendSms' => null,
         'currency' => null,
-        'invoice_limit' => null,
+        'invoiceLimit' => null,
         'metadata' => null
     ];
 
@@ -98,10 +98,10 @@ class PlanCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount' => false,
         'interval' => false,
         'description' => false,
-        'send_invoices' => false,
-        'send_sms' => false,
+        'sendInvoices' => false,
+        'sendSms' => false,
         'currency' => false,
-        'invoice_limit' => false,
+        'invoiceLimit' => false,
         'metadata' => false
     ];
 
@@ -195,10 +195,10 @@ class PlanCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount' => 'amount',
         'interval' => 'interval',
         'description' => 'description',
-        'send_invoices' => 'send_invoices',
-        'send_sms' => 'send_sms',
+        'sendInvoices' => 'send_invoices',
+        'sendSms' => 'send_sms',
         'currency' => 'currency',
-        'invoice_limit' => 'invoice_limit',
+        'invoiceLimit' => 'invoice_limit',
         'metadata' => 'metadata'
     ];
 
@@ -212,10 +212,10 @@ class PlanCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount' => 'setAmount',
         'interval' => 'setInterval',
         'description' => 'setDescription',
-        'send_invoices' => 'setSendInvoices',
-        'send_sms' => 'setSendSms',
+        'sendInvoices' => 'setSendInvoices',
+        'sendSms' => 'setSendSms',
         'currency' => 'setCurrency',
-        'invoice_limit' => 'setInvoiceLimit',
+        'invoiceLimit' => 'setInvoiceLimit',
         'metadata' => 'setMetadata'
     ];
 
@@ -229,10 +229,10 @@ class PlanCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount' => 'getAmount',
         'interval' => 'getInterval',
         'description' => 'getDescription',
-        'send_invoices' => 'getSendInvoices',
-        'send_sms' => 'getSendSms',
+        'sendInvoices' => 'getSendInvoices',
+        'sendSms' => 'getSendSms',
         'currency' => 'getCurrency',
-        'invoice_limit' => 'getInvoiceLimit',
+        'invoiceLimit' => 'getInvoiceLimit',
         'metadata' => 'getMetadata'
     ];
 
@@ -318,10 +318,10 @@ class PlanCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('interval', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('send_invoices', $data ?? [], null);
-        $this->setIfExists('send_sms', $data ?? [], null);
+        $this->setIfExists('sendInvoices', $data ?? [], null);
+        $this->setIfExists('sendSms', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('invoice_limit', $data ?? [], null);
+        $this->setIfExists('invoiceLimit', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
     }
 
@@ -504,55 +504,55 @@ class PlanCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets send_invoices
+     * Gets sendInvoices
      *
      * @return bool|null
      */
     public function getSendInvoices()
     {
-        return $this->container['send_invoices'];
+        return $this->container['sendInvoices'];
     }
 
     /**
-     * Sets send_invoices
+     * Sets sendInvoices
      *
-     * @param bool|null $send_invoices Set to false if you don't want invoices to be sent to your customers
+     * @param bool|null $sendInvoices Set to false if you don't want invoices to be sent to your customers
      *
      * @return self
      */
-    public function setSendInvoices($send_invoices)
+    public function setSendInvoices($sendInvoices)
     {
-        if (is_null($send_invoices)) {
-            throw new \InvalidArgumentException('non-nullable send_invoices cannot be null');
+        if (is_null($sendInvoices)) {
+            throw new \InvalidArgumentException('non-nullable sendInvoices cannot be null');
         }
-        $this->container['send_invoices'] = $send_invoices;
+        $this->container['sendInvoices'] = $sendInvoices;
 
         return $this;
     }
 
     /**
-     * Gets send_sms
+     * Gets sendSms
      *
      * @return bool|null
      */
     public function getSendSms()
     {
-        return $this->container['send_sms'];
+        return $this->container['sendSms'];
     }
 
     /**
-     * Sets send_sms
+     * Sets sendSms
      *
-     * @param bool|null $send_sms Set to false if you don't want text messages to be sent to your customers
+     * @param bool|null $sendSms Set to false if you don't want text messages to be sent to your customers
      *
      * @return self
      */
-    public function setSendSms($send_sms)
+    public function setSendSms($sendSms)
     {
-        if (is_null($send_sms)) {
-            throw new \InvalidArgumentException('non-nullable send_sms cannot be null');
+        if (is_null($sendSms)) {
+            throw new \InvalidArgumentException('non-nullable sendSms cannot be null');
         }
-        $this->container['send_sms'] = $send_sms;
+        $this->container['sendSms'] = $sendSms;
 
         return $this;
     }
@@ -585,28 +585,28 @@ class PlanCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets invoice_limit
+     * Gets invoiceLimit
      *
      * @return int|null
      */
     public function getInvoiceLimit()
     {
-        return $this->container['invoice_limit'];
+        return $this->container['invoiceLimit'];
     }
 
     /**
-     * Sets invoice_limit
+     * Sets invoiceLimit
      *
-     * @param int|null $invoice_limit Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.
+     * @param int|null $invoiceLimit Number of invoices to raise during subscription to this plan.  Can be overridden by specifying an invoice_limit while subscribing.
      *
      * @return self
      */
-    public function setInvoiceLimit($invoice_limit)
+    public function setInvoiceLimit($invoiceLimit)
     {
-        if (is_null($invoice_limit)) {
-            throw new \InvalidArgumentException('non-nullable invoice_limit cannot be null');
+        if (is_null($invoiceLimit)) {
+            throw new \InvalidArgumentException('non-nullable invoiceLimit cannot be null');
         }
-        $this->container['invoice_limit'] = $invoice_limit;
+        $this->container['invoiceLimit'] = $invoiceLimit;
 
         return $this;
     }
@@ -614,7 +614,7 @@ class PlanCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets metadata
      *
-     * @return \Alexasomba\\Paystack\Model\SubaccountUpdateMetadata|null
+     * @return \Alexasomba\Paystack\Model\SubaccountUpdateMetadata|null
      */
     public function getMetadata()
     {
@@ -624,7 +624,7 @@ class PlanCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets metadata
      *
-     * @param \Alexasomba\\Paystack\Model\SubaccountUpdateMetadata|null $metadata metadata
+     * @param \Alexasomba\Paystack\Model\SubaccountUpdateMetadata|null $metadata metadata
      *
      * @return self
      */

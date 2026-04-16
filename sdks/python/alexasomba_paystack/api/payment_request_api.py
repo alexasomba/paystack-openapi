@@ -52,7 +52,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_archive(
+    def archive(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
@@ -96,7 +96,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_archive_serialize(
+        _param = self._archive_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -120,7 +120,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_archive_with_http_info(
+    def archive_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
@@ -164,7 +164,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_archive_serialize(
+        _param = self._archive_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -188,7 +188,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_archive_without_preload_content(
+    def archive_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
@@ -232,7 +232,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_archive_serialize(
+        _param = self._archive_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -251,7 +251,7 @@ class PaymentRequestApi:
         return response_data.response
 
 
-    def _payment_request_archive_serialize(
+    def _archive_serialize(
         self,
         id,
         _request_auth,
@@ -316,7 +316,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_create(
+    def create(
         self,
         payment_request_create: Optional[PaymentRequestCreate] = None,
         _request_timeout: Union[
@@ -360,7 +360,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_create_serialize(
+        _param = self._create_serialize(
             payment_request_create=payment_request_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -384,7 +384,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_create_with_http_info(
+    def create_with_http_info(
         self,
         payment_request_create: Optional[PaymentRequestCreate] = None,
         _request_timeout: Union[
@@ -428,7 +428,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_create_serialize(
+        _param = self._create_serialize(
             payment_request_create=payment_request_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -452,7 +452,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_create_without_preload_content(
+    def create_without_preload_content(
         self,
         payment_request_create: Optional[PaymentRequestCreate] = None,
         _request_timeout: Union[
@@ -496,7 +496,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_create_serialize(
+        _param = self._create_serialize(
             payment_request_create=payment_request_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -515,7 +515,7 @@ class PaymentRequestApi:
         return response_data.response
 
 
-    def _payment_request_create_serialize(
+    def _create_serialize(
         self,
         payment_request_create,
         _request_auth,
@@ -594,7 +594,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_fetch(
+    def fetch(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The payment request ID or code you want to fetch")],
         _request_timeout: Union[
@@ -638,7 +638,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -663,7 +663,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The payment request ID or code you want to fetch")],
         _request_timeout: Union[
@@ -707,7 +707,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -732,7 +732,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The payment request ID or code you want to fetch")],
         _request_timeout: Union[
@@ -776,7 +776,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -796,7 +796,7 @@ class PaymentRequestApi:
         return response_data.response
 
 
-    def _payment_request_fetch_serialize(
+    def _fetch_serialize(
         self,
         id_or_code,
         _request_auth,
@@ -861,7 +861,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_finalize(
+    def finalize(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of a draft payment request")],
         _request_timeout: Union[
@@ -905,7 +905,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_finalize_serialize(
+        _param = self._finalize_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -929,7 +929,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_finalize_with_http_info(
+    def finalize_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of a draft payment request")],
         _request_timeout: Union[
@@ -973,7 +973,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_finalize_serialize(
+        _param = self._finalize_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -997,7 +997,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_finalize_without_preload_content(
+    def finalize_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of a draft payment request")],
         _request_timeout: Union[
@@ -1041,7 +1041,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_finalize_serialize(
+        _param = self._finalize_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1060,7 +1060,7 @@ class PaymentRequestApi:
         return response_data.response
 
 
-    def _payment_request_finalize_serialize(
+    def _finalize_serialize(
         self,
         id,
         _request_auth,
@@ -1125,7 +1125,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_list(
+    def list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1187,7 +1187,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             customer=customer,
@@ -1218,7 +1218,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_list_with_http_info(
+    def list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1280,7 +1280,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             customer=customer,
@@ -1311,7 +1311,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_list_without_preload_content(
+    def list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1373,7 +1373,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             customer=customer,
@@ -1399,7 +1399,7 @@ class PaymentRequestApi:
         return response_data.response
 
 
-    def _payment_request_list_serialize(
+    def _list_serialize(
         self,
         per_page,
         page,
@@ -1514,7 +1514,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_notify(
+    def notify(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
@@ -1558,7 +1558,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_notify_serialize(
+        _param = self._notify_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1582,7 +1582,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_notify_with_http_info(
+    def notify_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
@@ -1626,7 +1626,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_notify_serialize(
+        _param = self._notify_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1650,7 +1650,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_notify_without_preload_content(
+    def notify_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
@@ -1694,7 +1694,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_notify_serialize(
+        _param = self._notify_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1713,7 +1713,7 @@ class PaymentRequestApi:
         return response_data.response
 
 
-    def _payment_request_notify_serialize(
+    def _notify_serialize(
         self,
         id,
         _request_auth,
@@ -1778,7 +1778,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_totals(
+    def totals(
         self,
         _request_timeout: Union[
             None,
@@ -1819,7 +1819,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_totals_serialize(
+        _param = self._totals_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1843,7 +1843,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_totals_with_http_info(
+    def totals_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -1884,7 +1884,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_totals_serialize(
+        _param = self._totals_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1908,7 +1908,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_totals_without_preload_content(
+    def totals_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -1949,7 +1949,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_totals_serialize(
+        _param = self._totals_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1968,7 +1968,7 @@ class PaymentRequestApi:
         return response_data.response
 
 
-    def _payment_request_totals_serialize(
+    def _totals_serialize(
         self,
         _request_auth,
         _content_type,
@@ -2030,7 +2030,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_update(
+    def update(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The payment request ID or code you want to fetch")],
         payment_request_update: Optional[PaymentRequestUpdate] = None,
@@ -2077,7 +2077,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_update_serialize(
+        _param = self._update_serialize(
             id_or_code=id_or_code,
             payment_request_update=payment_request_update,
             _request_auth=_request_auth,
@@ -2103,7 +2103,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_update_with_http_info(
+    def update_with_http_info(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The payment request ID or code you want to fetch")],
         payment_request_update: Optional[PaymentRequestUpdate] = None,
@@ -2150,7 +2150,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_update_serialize(
+        _param = self._update_serialize(
             id_or_code=id_or_code,
             payment_request_update=payment_request_update,
             _request_auth=_request_auth,
@@ -2176,7 +2176,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_update_without_preload_content(
+    def update_without_preload_content(
         self,
         id_or_code: Annotated[StrictStr, Field(description="The payment request ID or code you want to fetch")],
         payment_request_update: Optional[PaymentRequestUpdate] = None,
@@ -2223,7 +2223,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_update_serialize(
+        _param = self._update_serialize(
             id_or_code=id_or_code,
             payment_request_update=payment_request_update,
             _request_auth=_request_auth,
@@ -2244,7 +2244,7 @@ class PaymentRequestApi:
         return response_data.response
 
 
-    def _payment_request_update_serialize(
+    def _update_serialize(
         self,
         id_or_code,
         payment_request_update,
@@ -2326,7 +2326,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_verify(
+    def verify(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
@@ -2370,7 +2370,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_verify_serialize(
+        _param = self._verify_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2395,7 +2395,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_verify_with_http_info(
+    def verify_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
@@ -2439,7 +2439,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_verify_serialize(
+        _param = self._verify_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2464,7 +2464,7 @@ class PaymentRequestApi:
 
 
     @validate_call
-    def payment_request_verify_without_preload_content(
+    def verify_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The unique identifier of a previously created payment request")],
         _request_timeout: Union[
@@ -2508,7 +2508,7 @@ class PaymentRequestApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._payment_request_verify_serialize(
+        _param = self._verify_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2528,7 +2528,7 @@ class PaymentRequestApi:
         return response_data.response
 
 
-    def _payment_request_verify_serialize(
+    def _verify_serialize(
         self,
         id,
         _request_auth,

@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Api;
+namespace Alexasomba\Paystack\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Alexasomba\\Paystack\ApiException;
-use Alexasomba\\Paystack\Configuration;
-use Alexasomba\\Paystack\FormDataProcessor;
-use Alexasomba\\Paystack\HeaderSelector;
-use Alexasomba\\Paystack\ObjectSerializer;
+use Alexasomba\Paystack\ApiException;
+use Alexasomba\Paystack\Configuration;
+use Alexasomba\Paystack\FormDataProcessor;
+use Alexasomba\Paystack\HeaderSelector;
+use Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * BalanceApi Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -75,10 +75,10 @@ class BalanceApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'balanceFetch' => [
+        'fetch' => [
             'application/json',
         ],
-        'balanceLedger' => [
+        'ledger' => [
             'application/json',
         ],
     ];
@@ -130,36 +130,36 @@ class BalanceApi
     }
 
     /**
-     * Operation balanceFetch
+     * Operation fetch
      *
      * Fetch Balance
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['balanceFetch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\BalanceCheckResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\BalanceCheckResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function balanceFetch(string $contentType = self::contentTypes['balanceFetch'][0])
+    public function fetch(string $contentType = self::contentTypes['fetch'][0])
     {
-        list($response) = $this->balanceFetchWithHttpInfo($contentType);
+        list($response) = $this->fetchWithHttpInfo($contentType);
         return $response;
     }
 
     /**
-     * Operation balanceFetchWithHttpInfo
+     * Operation fetchWithHttpInfo
      *
      * Fetch Balance
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['balanceFetch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\BalanceCheckResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\BalanceCheckResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function balanceFetchWithHttpInfo(string $contentType = self::contentTypes['balanceFetch'][0])
+    public function fetchWithHttpInfo(string $contentType = self::contentTypes['fetch'][0])
     {
-        $request = $this->balanceFetchRequest($contentType);
+        $request = $this->fetchRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -187,19 +187,19 @@ class BalanceApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\BalanceCheckResponse',
+                        '\Alexasomba\Paystack\Model\BalanceCheckResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -221,7 +221,7 @@ class BalanceApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\BalanceCheckResponse',
+                '\Alexasomba\Paystack\Model\BalanceCheckResponse',
                 $request,
                 $response,
             );
@@ -230,7 +230,7 @@ class BalanceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\BalanceCheckResponse',
+                        '\Alexasomba\Paystack\Model\BalanceCheckResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -238,7 +238,7 @@ class BalanceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -246,7 +246,7 @@ class BalanceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -259,18 +259,18 @@ class BalanceApi
     }
 
     /**
-     * Operation balanceFetchAsync
+     * Operation fetchAsync
      *
      * Fetch Balance
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['balanceFetch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function balanceFetchAsync(string $contentType = self::contentTypes['balanceFetch'][0])
+    public function fetchAsync(string $contentType = self::contentTypes['fetch'][0])
     {
-        return $this->balanceFetchAsyncWithHttpInfo($contentType)
+        return $this->fetchAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -279,19 +279,19 @@ class BalanceApi
     }
 
     /**
-     * Operation balanceFetchAsyncWithHttpInfo
+     * Operation fetchAsyncWithHttpInfo
      *
      * Fetch Balance
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['balanceFetch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function balanceFetchAsyncWithHttpInfo(string $contentType = self::contentTypes['balanceFetch'][0])
+    public function fetchAsyncWithHttpInfo(string $contentType = self::contentTypes['fetch'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\BalanceCheckResponse';
-        $request = $this->balanceFetchRequest($contentType);
+        $returnType = '\Alexasomba\Paystack\Model\BalanceCheckResponse';
+        $request = $this->fetchRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -330,14 +330,14 @@ class BalanceApi
     }
 
     /**
-     * Create request for operation 'balanceFetch'
+     * Create request for operation 'fetch'
      *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['balanceFetch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function balanceFetchRequest(string $contentType = self::contentTypes['balanceFetch'][0])
+    public function fetchRequest(string $contentType = self::contentTypes['fetch'][0])
     {
 
 
@@ -410,44 +410,44 @@ class BalanceApi
     }
 
     /**
-     * Operation balanceLedger
+     * Operation ledger
      *
      * Balance Ledger
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['balanceLedger'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ledger'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Alexasomba\\Paystack\Model\BalanceFetchLedgerResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error
+     * @return \Alexasomba\Paystack\Model\BalanceFetchLedgerResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error
      */
-    public function balanceLedger($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['balanceLedger'][0])
+    public function ledger($perPage = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['ledger'][0])
     {
-        list($response) = $this->balanceLedgerWithHttpInfo($per_page, $page, $from, $to, $contentType);
+        list($response) = $this->ledgerWithHttpInfo($perPage, $page, $from, $to, $contentType);
         return $response;
     }
 
     /**
-     * Operation balanceLedgerWithHttpInfo
+     * Operation ledgerWithHttpInfo
      *
      * Balance Ledger
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['balanceLedger'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ledger'] to see the possible values for this operation
      *
-     * @throws \Alexasomba\\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Alexasomba\Paystack\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Alexasomba\\Paystack\Model\BalanceFetchLedgerResponse|\Alexasomba\\Paystack\Model\Error|\Alexasomba\\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Alexasomba\Paystack\Model\BalanceFetchLedgerResponse|\Alexasomba\Paystack\Model\Error|\Alexasomba\Paystack\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function balanceLedgerWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['balanceLedger'][0])
+    public function ledgerWithHttpInfo($perPage = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['ledger'][0])
     {
-        $request = $this->balanceLedgerRequest($per_page, $page, $from, $to, $contentType);
+        $request = $this->ledgerRequest($perPage, $page, $from, $to, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -475,19 +475,19 @@ class BalanceApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\BalanceFetchLedgerResponse',
+                        '\Alexasomba\Paystack\Model\BalanceFetchLedgerResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $request,
                         $response,
                     );
@@ -509,7 +509,7 @@ class BalanceApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Alexasomba\\Paystack\Model\BalanceFetchLedgerResponse',
+                '\Alexasomba\Paystack\Model\BalanceFetchLedgerResponse',
                 $request,
                 $response,
             );
@@ -518,7 +518,7 @@ class BalanceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\BalanceFetchLedgerResponse',
+                        '\Alexasomba\Paystack\Model\BalanceFetchLedgerResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -526,7 +526,7 @@ class BalanceApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -534,7 +534,7 @@ class BalanceApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Alexasomba\\Paystack\Model\Error',
+                        '\Alexasomba\Paystack\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -547,22 +547,22 @@ class BalanceApi
     }
 
     /**
-     * Operation balanceLedgerAsync
+     * Operation ledgerAsync
      *
      * Balance Ledger
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['balanceLedger'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ledger'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function balanceLedgerAsync($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['balanceLedger'][0])
+    public function ledgerAsync($perPage = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['ledger'][0])
     {
-        return $this->balanceLedgerAsyncWithHttpInfo($per_page, $page, $from, $to, $contentType)
+        return $this->ledgerAsyncWithHttpInfo($perPage, $page, $from, $to, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -571,23 +571,23 @@ class BalanceApi
     }
 
     /**
-     * Operation balanceLedgerAsyncWithHttpInfo
+     * Operation ledgerAsyncWithHttpInfo
      *
      * Balance Ledger
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['balanceLedger'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ledger'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function balanceLedgerAsyncWithHttpInfo($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['balanceLedger'][0])
+    public function ledgerAsyncWithHttpInfo($perPage = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['ledger'][0])
     {
-        $returnType = '\Alexasomba\\Paystack\Model\BalanceFetchLedgerResponse';
-        $request = $this->balanceLedgerRequest($per_page, $page, $from, $to, $contentType);
+        $returnType = '\Alexasomba\Paystack\Model\BalanceFetchLedgerResponse';
+        $request = $this->ledgerRequest($perPage, $page, $from, $to, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -626,18 +626,18 @@ class BalanceApi
     }
 
     /**
-     * Create request for operation 'balanceLedger'
+     * Create request for operation 'ledger'
      *
-     * @param  int|null $per_page Number of records to fetch per page (optional)
+     * @param  int|null $perPage Number of records to fetch per page (optional)
      * @param  int|null $page The section to retrieve (optional)
      * @param  \DateTime|null $from The start date (optional)
      * @param  \DateTime|null $to The end date (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['balanceLedger'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['ledger'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function balanceLedgerRequest($per_page = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['balanceLedger'][0])
+    public function ledgerRequest($perPage = null, $page = null, $from = null, $to = null, string $contentType = self::contentTypes['ledger'][0])
     {
 
 
@@ -654,7 +654,7 @@ class BalanceApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
+            $perPage,
             'perPage', // param base name
             'integer', // openApiType
             'form', // style

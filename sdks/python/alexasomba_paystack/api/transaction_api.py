@@ -54,7 +54,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_charge_authorization(
+    def charge_authorization(
         self,
         transaction_charge_authorization: Optional[TransactionChargeAuthorization] = None,
         _request_timeout: Union[
@@ -98,7 +98,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_charge_authorization_serialize(
+        _param = self._charge_authorization_serialize(
             transaction_charge_authorization=transaction_charge_authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -122,7 +122,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_charge_authorization_with_http_info(
+    def charge_authorization_with_http_info(
         self,
         transaction_charge_authorization: Optional[TransactionChargeAuthorization] = None,
         _request_timeout: Union[
@@ -166,7 +166,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_charge_authorization_serialize(
+        _param = self._charge_authorization_serialize(
             transaction_charge_authorization=transaction_charge_authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -190,7 +190,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_charge_authorization_without_preload_content(
+    def charge_authorization_without_preload_content(
         self,
         transaction_charge_authorization: Optional[TransactionChargeAuthorization] = None,
         _request_timeout: Union[
@@ -234,7 +234,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_charge_authorization_serialize(
+        _param = self._charge_authorization_serialize(
             transaction_charge_authorization=transaction_charge_authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -253,7 +253,7 @@ class TransactionApi:
         return response_data.response
 
 
-    def _transaction_charge_authorization_serialize(
+    def _charge_authorization_serialize(
         self,
         transaction_charge_authorization,
         _request_auth,
@@ -332,7 +332,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_check_authorization(
+    def check_authorization(
         self,
         email: Annotated[StrictStr, Field(description="Customer's email address")],
         amount: Annotated[StrictInt, Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount multiplied by 100 even though the currency does not use fractional subunits.")],
@@ -385,7 +385,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_check_authorization_serialize(
+        _param = self._check_authorization_serialize(
             email=email,
             amount=amount,
             authorization_code=authorization_code,
@@ -412,7 +412,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_check_authorization_with_http_info(
+    def check_authorization_with_http_info(
         self,
         email: Annotated[StrictStr, Field(description="Customer's email address")],
         amount: Annotated[StrictInt, Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount multiplied by 100 even though the currency does not use fractional subunits.")],
@@ -465,7 +465,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_check_authorization_serialize(
+        _param = self._check_authorization_serialize(
             email=email,
             amount=amount,
             authorization_code=authorization_code,
@@ -492,7 +492,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_check_authorization_without_preload_content(
+    def check_authorization_without_preload_content(
         self,
         email: Annotated[StrictStr, Field(description="Customer's email address")],
         amount: Annotated[StrictInt, Field(description="Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount multiplied by 100 even though the currency does not use fractional subunits.")],
@@ -545,7 +545,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_check_authorization_serialize(
+        _param = self._check_authorization_serialize(
             email=email,
             amount=amount,
             authorization_code=authorization_code,
@@ -567,7 +567,7 @@ class TransactionApi:
         return response_data.response
 
 
-    def _transaction_check_authorization_serialize(
+    def _check_authorization_serialize(
         self,
         email,
         amount,
@@ -655,7 +655,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_event(
+    def event(
         self,
         id: Annotated[StrictInt, Field(description="The ID of the transaction")],
         _request_timeout: Union[
@@ -699,7 +699,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_event_serialize(
+        _param = self._event_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -724,7 +724,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_event_with_http_info(
+    def event_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The ID of the transaction")],
         _request_timeout: Union[
@@ -768,7 +768,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_event_serialize(
+        _param = self._event_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -793,7 +793,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_event_without_preload_content(
+    def event_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The ID of the transaction")],
         _request_timeout: Union[
@@ -837,7 +837,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_event_serialize(
+        _param = self._event_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -857,7 +857,7 @@ class TransactionApi:
         return response_data.response
 
 
-    def _transaction_event_serialize(
+    def _event_serialize(
         self,
         id,
         _request_auth,
@@ -922,7 +922,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_export(
+    def export(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -999,7 +999,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_export_serialize(
+        _param = self._export_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1035,7 +1035,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_export_with_http_info(
+    def export_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1112,7 +1112,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_export_serialize(
+        _param = self._export_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1148,7 +1148,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_export_without_preload_content(
+    def export_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -1225,7 +1225,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_export_serialize(
+        _param = self._export_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1256,7 +1256,7 @@ class TransactionApi:
         return response_data.response
 
 
-    def _transaction_export_serialize(
+    def _export_serialize(
         self,
         per_page,
         page,
@@ -1396,7 +1396,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_fetch(
+    def fetch(
         self,
         id: Annotated[StrictInt, Field(description="The ID of the transaction to fetch")],
         _request_timeout: Union[
@@ -1440,7 +1440,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1465,7 +1465,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The ID of the transaction to fetch")],
         _request_timeout: Union[
@@ -1509,7 +1509,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1534,7 +1534,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The ID of the transaction to fetch")],
         _request_timeout: Union[
@@ -1578,7 +1578,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1598,7 +1598,7 @@ class TransactionApi:
         return response_data.response
 
 
-    def _transaction_fetch_serialize(
+    def _fetch_serialize(
         self,
         id,
         _request_auth,
@@ -1663,7 +1663,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_initialize(
+    def initialize(
         self,
         transaction_initialize: Optional[TransactionInitialize] = None,
         _request_timeout: Union[
@@ -1707,7 +1707,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_initialize_serialize(
+        _param = self._initialize_serialize(
             transaction_initialize=transaction_initialize,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1732,7 +1732,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_initialize_with_http_info(
+    def initialize_with_http_info(
         self,
         transaction_initialize: Optional[TransactionInitialize] = None,
         _request_timeout: Union[
@@ -1776,7 +1776,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_initialize_serialize(
+        _param = self._initialize_serialize(
             transaction_initialize=transaction_initialize,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1801,7 +1801,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_initialize_without_preload_content(
+    def initialize_without_preload_content(
         self,
         transaction_initialize: Optional[TransactionInitialize] = None,
         _request_timeout: Union[
@@ -1845,7 +1845,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_initialize_serialize(
+        _param = self._initialize_serialize(
             transaction_initialize=transaction_initialize,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1865,7 +1865,7 @@ class TransactionApi:
         return response_data.response
 
 
-    def _transaction_initialize_serialize(
+    def _initialize_serialize(
         self,
         transaction_initialize,
         _request_auth,
@@ -1944,7 +1944,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_list(
+    def list(
         self,
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
@@ -2036,7 +2036,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_list_serialize(
+        _param = self._list_serialize(
             use_cursor=use_cursor,
             next=next,
             previous=previous,
@@ -2077,7 +2077,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_list_with_http_info(
+    def list_with_http_info(
         self,
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
@@ -2169,7 +2169,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_list_serialize(
+        _param = self._list_serialize(
             use_cursor=use_cursor,
             next=next,
             previous=previous,
@@ -2210,7 +2210,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_list_without_preload_content(
+    def list_without_preload_content(
         self,
         use_cursor: Annotated[Optional[StrictBool], Field(description="A flag to indicate if cursor based pagination should be used")] = None,
         next: Annotated[Optional[StrictStr], Field(description="An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data ")] = None,
@@ -2302,7 +2302,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_list_serialize(
+        _param = self._list_serialize(
             use_cursor=use_cursor,
             next=next,
             previous=previous,
@@ -2338,7 +2338,7 @@ class TransactionApi:
         return response_data.response
 
 
-    def _transaction_list_serialize(
+    def _list_serialize(
         self,
         use_cursor,
         next,
@@ -2503,7 +2503,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_partial_debit(
+    def partial_debit(
         self,
         transaction_partial_debit: Optional[TransactionPartialDebit] = None,
         _request_timeout: Union[
@@ -2547,7 +2547,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_partial_debit_serialize(
+        _param = self._partial_debit_serialize(
             transaction_partial_debit=transaction_partial_debit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2571,7 +2571,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_partial_debit_with_http_info(
+    def partial_debit_with_http_info(
         self,
         transaction_partial_debit: Optional[TransactionPartialDebit] = None,
         _request_timeout: Union[
@@ -2615,7 +2615,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_partial_debit_serialize(
+        _param = self._partial_debit_serialize(
             transaction_partial_debit=transaction_partial_debit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2639,7 +2639,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_partial_debit_without_preload_content(
+    def partial_debit_without_preload_content(
         self,
         transaction_partial_debit: Optional[TransactionPartialDebit] = None,
         _request_timeout: Union[
@@ -2683,7 +2683,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_partial_debit_serialize(
+        _param = self._partial_debit_serialize(
             transaction_partial_debit=transaction_partial_debit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2702,7 +2702,7 @@ class TransactionApi:
         return response_data.response
 
 
-    def _transaction_partial_debit_serialize(
+    def _partial_debit_serialize(
         self,
         transaction_partial_debit,
         _request_auth,
@@ -2781,7 +2781,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_session(
+    def session(
         self,
         id: Annotated[StrictInt, Field(description="The ID of the transaction")],
         _request_timeout: Union[
@@ -2825,7 +2825,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_session_serialize(
+        _param = self._session_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2850,7 +2850,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_session_with_http_info(
+    def session_with_http_info(
         self,
         id: Annotated[StrictInt, Field(description="The ID of the transaction")],
         _request_timeout: Union[
@@ -2894,7 +2894,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_session_serialize(
+        _param = self._session_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2919,7 +2919,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_session_without_preload_content(
+    def session_without_preload_content(
         self,
         id: Annotated[StrictInt, Field(description="The ID of the transaction")],
         _request_timeout: Union[
@@ -2963,7 +2963,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_session_serialize(
+        _param = self._session_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2983,7 +2983,7 @@ class TransactionApi:
         return response_data.response
 
 
-    def _transaction_session_serialize(
+    def _session_serialize(
         self,
         id,
         _request_auth,
@@ -3048,7 +3048,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_timeline(
+    def timeline(
         self,
         id_or_reference: Annotated[StrictStr, Field(description="The ID or the reference of the transaction")],
         _request_timeout: Union[
@@ -3092,7 +3092,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_timeline_serialize(
+        _param = self._timeline_serialize(
             id_or_reference=id_or_reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3117,7 +3117,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_timeline_with_http_info(
+    def timeline_with_http_info(
         self,
         id_or_reference: Annotated[StrictStr, Field(description="The ID or the reference of the transaction")],
         _request_timeout: Union[
@@ -3161,7 +3161,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_timeline_serialize(
+        _param = self._timeline_serialize(
             id_or_reference=id_or_reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3186,7 +3186,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_timeline_without_preload_content(
+    def timeline_without_preload_content(
         self,
         id_or_reference: Annotated[StrictStr, Field(description="The ID or the reference of the transaction")],
         _request_timeout: Union[
@@ -3230,7 +3230,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_timeline_serialize(
+        _param = self._timeline_serialize(
             id_or_reference=id_or_reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3250,7 +3250,7 @@ class TransactionApi:
         return response_data.response
 
 
-    def _transaction_timeline_serialize(
+    def _timeline_serialize(
         self,
         id_or_reference,
         _request_auth,
@@ -3315,7 +3315,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_totals(
+    def totals(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -3368,7 +3368,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_totals_serialize(
+        _param = self._totals_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -3396,7 +3396,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_totals_with_http_info(
+    def totals_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -3449,7 +3449,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_totals_serialize(
+        _param = self._totals_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -3477,7 +3477,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_totals_without_preload_content(
+    def totals_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The section to retrieve")] = None,
@@ -3530,7 +3530,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_totals_serialize(
+        _param = self._totals_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -3553,7 +3553,7 @@ class TransactionApi:
         return response_data.response
 
 
-    def _transaction_totals_serialize(
+    def _totals_serialize(
         self,
         per_page,
         page,
@@ -3653,7 +3653,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_verify(
+    def verify(
         self,
         reference: Annotated[StrictStr, Field(description="The transaction reference to verify")],
         _request_timeout: Union[
@@ -3697,7 +3697,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_verify_serialize(
+        _param = self._verify_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3722,7 +3722,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_verify_with_http_info(
+    def verify_with_http_info(
         self,
         reference: Annotated[StrictStr, Field(description="The transaction reference to verify")],
         _request_timeout: Union[
@@ -3766,7 +3766,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_verify_serialize(
+        _param = self._verify_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3791,7 +3791,7 @@ class TransactionApi:
 
 
     @validate_call
-    def transaction_verify_without_preload_content(
+    def verify_without_preload_content(
         self,
         reference: Annotated[StrictStr, Field(description="The transaction reference to verify")],
         _request_timeout: Union[
@@ -3835,7 +3835,7 @@ class TransactionApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._transaction_verify_serialize(
+        _param = self._verify_serialize(
             reference=reference,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -3855,7 +3855,7 @@ class TransactionApi:
         return response_data.response
 
 
-    def _transaction_verify_serialize(
+    def _verify_serialize(
         self,
         reference,
         _request_auth,

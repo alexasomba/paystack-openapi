@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * ProductUpdate Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class ProductUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'string',
         'unlimited' => 'bool',
         'quantity' => 'int',
-        'split_code' => 'string',
+        'splitCode' => 'string',
         'metadata' => 'object'
     ];
 
@@ -82,7 +82,7 @@ class ProductUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => null,
         'unlimited' => null,
         'quantity' => null,
-        'split_code' => null,
+        'splitCode' => null,
         'metadata' => null
     ];
 
@@ -98,7 +98,7 @@ class ProductUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => false,
         'unlimited' => false,
         'quantity' => false,
-        'split_code' => false,
+        'splitCode' => false,
         'metadata' => false
     ];
 
@@ -194,7 +194,7 @@ class ProductUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'currency',
         'unlimited' => 'unlimited',
         'quantity' => 'quantity',
-        'split_code' => 'split_code',
+        'splitCode' => 'split_code',
         'metadata' => 'metadata'
     ];
 
@@ -210,7 +210,7 @@ class ProductUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'setCurrency',
         'unlimited' => 'setUnlimited',
         'quantity' => 'setQuantity',
-        'split_code' => 'setSplitCode',
+        'splitCode' => 'setSplitCode',
         'metadata' => 'setMetadata'
     ];
 
@@ -226,7 +226,7 @@ class ProductUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'getCurrency',
         'unlimited' => 'getUnlimited',
         'quantity' => 'getQuantity',
-        'split_code' => 'getSplitCode',
+        'splitCode' => 'getSplitCode',
         'metadata' => 'getMetadata'
     ];
 
@@ -293,7 +293,7 @@ class ProductUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('unlimited', $data ?? [], null);
         $this->setIfExists('quantity', $data ?? [], null);
-        $this->setIfExists('split_code', $data ?? [], null);
+        $this->setIfExists('splitCode', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
     }
 
@@ -502,28 +502,28 @@ class ProductUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets split_code
+     * Gets splitCode
      *
      * @return string|null
      */
     public function getSplitCode()
     {
-        return $this->container['split_code'];
+        return $this->container['splitCode'];
     }
 
     /**
-     * Sets split_code
+     * Sets splitCode
      *
-     * @param string|null $split_code The split code if sharing the transaction with partners
+     * @param string|null $splitCode The split code if sharing the transaction with partners
      *
      * @return self
      */
-    public function setSplitCode($split_code)
+    public function setSplitCode($splitCode)
     {
-        if (is_null($split_code)) {
-            throw new \InvalidArgumentException('non-nullable split_code cannot be null');
+        if (is_null($splitCode)) {
+            throw new \InvalidArgumentException('non-nullable splitCode cannot be null');
         }
-        $this->container['split_code'] = $split_code;
+        $this->container['splitCode'] = $splitCode;
 
         return $this;
     }

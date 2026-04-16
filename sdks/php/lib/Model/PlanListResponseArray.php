@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PlanListResponseArray Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,20 +62,20 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         'integration' => 'int',
         'domain' => 'string',
         'name' => 'string',
-        'plan_code' => 'string',
+        'planCode' => 'string',
         'description' => 'mixed',
         'amount' => 'int',
         'interval' => 'string',
-        'invoice_limit' => 'int',
-        'send_invoices' => 'bool',
-        'send_sms' => 'bool',
-        'hosted_page' => 'bool',
-        'hosted_page_url' => 'mixed',
-        'hosted_page_summary' => 'mixed',
+        'invoiceLimit' => 'int',
+        'sendInvoices' => 'bool',
+        'sendSms' => 'bool',
+        'hostedPage' => 'bool',
+        'hostedPageUrl' => 'mixed',
+        'hostedPageSummary' => 'mixed',
         'currency' => 'string',
         'id' => 'int',
-        'created_at' => 'string',
-        'updated_at' => 'string'
+        'createdAt' => 'string',
+        'updatedAt' => 'string'
     ];
 
     /**
@@ -90,20 +90,20 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         'integration' => null,
         'domain' => null,
         'name' => null,
-        'plan_code' => null,
+        'planCode' => null,
         'description' => null,
         'amount' => null,
         'interval' => null,
-        'invoice_limit' => null,
-        'send_invoices' => null,
-        'send_sms' => null,
-        'hosted_page' => null,
-        'hosted_page_url' => null,
-        'hosted_page_summary' => null,
+        'invoiceLimit' => null,
+        'sendInvoices' => null,
+        'sendSms' => null,
+        'hostedPage' => null,
+        'hostedPageUrl' => null,
+        'hostedPageSummary' => null,
         'currency' => null,
         'id' => null,
-        'created_at' => null,
-        'updated_at' => null
+        'createdAt' => null,
+        'updatedAt' => null
     ];
 
     /**
@@ -116,20 +116,20 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         'integration' => false,
         'domain' => false,
         'name' => false,
-        'plan_code' => false,
+        'planCode' => false,
         'description' => true,
         'amount' => false,
         'interval' => false,
-        'invoice_limit' => false,
-        'send_invoices' => false,
-        'send_sms' => false,
-        'hosted_page' => false,
-        'hosted_page_url' => true,
-        'hosted_page_summary' => true,
+        'invoiceLimit' => false,
+        'sendInvoices' => false,
+        'sendSms' => false,
+        'hostedPage' => false,
+        'hostedPageUrl' => true,
+        'hostedPageSummary' => true,
         'currency' => false,
         'id' => false,
-        'created_at' => false,
-        'updated_at' => false
+        'createdAt' => false,
+        'updatedAt' => false
     ];
 
     /**
@@ -222,20 +222,20 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         'integration' => 'integration',
         'domain' => 'domain',
         'name' => 'name',
-        'plan_code' => 'plan_code',
+        'planCode' => 'plan_code',
         'description' => 'description',
         'amount' => 'amount',
         'interval' => 'interval',
-        'invoice_limit' => 'invoice_limit',
-        'send_invoices' => 'send_invoices',
-        'send_sms' => 'send_sms',
-        'hosted_page' => 'hosted_page',
-        'hosted_page_url' => 'hosted_page_url',
-        'hosted_page_summary' => 'hosted_page_summary',
+        'invoiceLimit' => 'invoice_limit',
+        'sendInvoices' => 'send_invoices',
+        'sendSms' => 'send_sms',
+        'hostedPage' => 'hosted_page',
+        'hostedPageUrl' => 'hosted_page_url',
+        'hostedPageSummary' => 'hosted_page_summary',
         'currency' => 'currency',
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt'
     ];
 
     /**
@@ -248,20 +248,20 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         'integration' => 'setIntegration',
         'domain' => 'setDomain',
         'name' => 'setName',
-        'plan_code' => 'setPlanCode',
+        'planCode' => 'setPlanCode',
         'description' => 'setDescription',
         'amount' => 'setAmount',
         'interval' => 'setInterval',
-        'invoice_limit' => 'setInvoiceLimit',
-        'send_invoices' => 'setSendInvoices',
-        'send_sms' => 'setSendSms',
-        'hosted_page' => 'setHostedPage',
-        'hosted_page_url' => 'setHostedPageUrl',
-        'hosted_page_summary' => 'setHostedPageSummary',
+        'invoiceLimit' => 'setInvoiceLimit',
+        'sendInvoices' => 'setSendInvoices',
+        'sendSms' => 'setSendSms',
+        'hostedPage' => 'setHostedPage',
+        'hostedPageUrl' => 'setHostedPageUrl',
+        'hostedPageSummary' => 'setHostedPageSummary',
         'currency' => 'setCurrency',
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
@@ -274,20 +274,20 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         'integration' => 'getIntegration',
         'domain' => 'getDomain',
         'name' => 'getName',
-        'plan_code' => 'getPlanCode',
+        'planCode' => 'getPlanCode',
         'description' => 'getDescription',
         'amount' => 'getAmount',
         'interval' => 'getInterval',
-        'invoice_limit' => 'getInvoiceLimit',
-        'send_invoices' => 'getSendInvoices',
-        'send_sms' => 'getSendSms',
-        'hosted_page' => 'getHostedPage',
-        'hosted_page_url' => 'getHostedPageUrl',
-        'hosted_page_summary' => 'getHostedPageSummary',
+        'invoiceLimit' => 'getInvoiceLimit',
+        'sendInvoices' => 'getSendInvoices',
+        'sendSms' => 'getSendSms',
+        'hostedPage' => 'getHostedPage',
+        'hostedPageUrl' => 'getHostedPageUrl',
+        'hostedPageSummary' => 'getHostedPageSummary',
         'currency' => 'getCurrency',
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
@@ -351,20 +351,20 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('integration', $data ?? [], null);
         $this->setIfExists('domain', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('plan_code', $data ?? [], null);
+        $this->setIfExists('planCode', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
         $this->setIfExists('interval', $data ?? [], null);
-        $this->setIfExists('invoice_limit', $data ?? [], null);
-        $this->setIfExists('send_invoices', $data ?? [], null);
-        $this->setIfExists('send_sms', $data ?? [], null);
-        $this->setIfExists('hosted_page', $data ?? [], null);
-        $this->setIfExists('hosted_page_url', $data ?? [], null);
-        $this->setIfExists('hosted_page_summary', $data ?? [], null);
+        $this->setIfExists('invoiceLimit', $data ?? [], null);
+        $this->setIfExists('sendInvoices', $data ?? [], null);
+        $this->setIfExists('sendSms', $data ?? [], null);
+        $this->setIfExists('hostedPage', $data ?? [], null);
+        $this->setIfExists('hostedPageUrl', $data ?? [], null);
+        $this->setIfExists('hostedPageSummary', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
     }
 
     /**
@@ -406,8 +406,8 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['plan_code'] === null) {
-            $invalidProperties[] = "'plan_code' can't be null";
+        if ($this->container['planCode'] === null) {
+            $invalidProperties[] = "'planCode' can't be null";
         }
         if ($this->container['description'] === null && !$this->isNullableSetToNull('description')) {
             $invalidProperties[] = "'description' can't be null";
@@ -418,23 +418,23 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['interval'] === null) {
             $invalidProperties[] = "'interval' can't be null";
         }
-        if ($this->container['invoice_limit'] === null) {
-            $invalidProperties[] = "'invoice_limit' can't be null";
+        if ($this->container['invoiceLimit'] === null) {
+            $invalidProperties[] = "'invoiceLimit' can't be null";
         }
-        if ($this->container['send_invoices'] === null) {
-            $invalidProperties[] = "'send_invoices' can't be null";
+        if ($this->container['sendInvoices'] === null) {
+            $invalidProperties[] = "'sendInvoices' can't be null";
         }
-        if ($this->container['send_sms'] === null) {
-            $invalidProperties[] = "'send_sms' can't be null";
+        if ($this->container['sendSms'] === null) {
+            $invalidProperties[] = "'sendSms' can't be null";
         }
-        if ($this->container['hosted_page'] === null) {
-            $invalidProperties[] = "'hosted_page' can't be null";
+        if ($this->container['hostedPage'] === null) {
+            $invalidProperties[] = "'hostedPage' can't be null";
         }
-        if ($this->container['hosted_page_url'] === null && !$this->isNullableSetToNull('hosted_page_url')) {
-            $invalidProperties[] = "'hosted_page_url' can't be null";
+        if ($this->container['hostedPageUrl'] === null && !$this->isNullableSetToNull('hostedPageUrl')) {
+            $invalidProperties[] = "'hostedPageUrl' can't be null";
         }
-        if ($this->container['hosted_page_summary'] === null && !$this->isNullableSetToNull('hosted_page_summary')) {
-            $invalidProperties[] = "'hosted_page_summary' can't be null";
+        if ($this->container['hostedPageSummary'] === null && !$this->isNullableSetToNull('hostedPageSummary')) {
+            $invalidProperties[] = "'hostedPageSummary' can't be null";
         }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
@@ -442,11 +442,11 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -572,28 +572,28 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets plan_code
+     * Gets planCode
      *
      * @return string
      */
     public function getPlanCode()
     {
-        return $this->container['plan_code'];
+        return $this->container['planCode'];
     }
 
     /**
-     * Sets plan_code
+     * Sets planCode
      *
-     * @param string $plan_code plan_code
+     * @param string $planCode planCode
      *
      * @return self
      */
-    public function setPlanCode($plan_code)
+    public function setPlanCode($planCode)
     {
-        if (is_null($plan_code)) {
-            throw new \InvalidArgumentException('non-nullable plan_code cannot be null');
+        if (is_null($planCode)) {
+            throw new \InvalidArgumentException('non-nullable planCode cannot be null');
         }
-        $this->container['plan_code'] = $plan_code;
+        $this->container['planCode'] = $planCode;
 
         return $this;
     }
@@ -687,177 +687,177 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets invoice_limit
+     * Gets invoiceLimit
      *
      * @return int
      */
     public function getInvoiceLimit()
     {
-        return $this->container['invoice_limit'];
+        return $this->container['invoiceLimit'];
     }
 
     /**
-     * Sets invoice_limit
+     * Sets invoiceLimit
      *
-     * @param int $invoice_limit invoice_limit
+     * @param int $invoiceLimit invoiceLimit
      *
      * @return self
      */
-    public function setInvoiceLimit($invoice_limit)
+    public function setInvoiceLimit($invoiceLimit)
     {
-        if (is_null($invoice_limit)) {
-            throw new \InvalidArgumentException('non-nullable invoice_limit cannot be null');
+        if (is_null($invoiceLimit)) {
+            throw new \InvalidArgumentException('non-nullable invoiceLimit cannot be null');
         }
-        $this->container['invoice_limit'] = $invoice_limit;
+        $this->container['invoiceLimit'] = $invoiceLimit;
 
         return $this;
     }
 
     /**
-     * Gets send_invoices
+     * Gets sendInvoices
      *
      * @return bool
      */
     public function getSendInvoices()
     {
-        return $this->container['send_invoices'];
+        return $this->container['sendInvoices'];
     }
 
     /**
-     * Sets send_invoices
+     * Sets sendInvoices
      *
-     * @param bool $send_invoices send_invoices
+     * @param bool $sendInvoices sendInvoices
      *
      * @return self
      */
-    public function setSendInvoices($send_invoices)
+    public function setSendInvoices($sendInvoices)
     {
-        if (is_null($send_invoices)) {
-            throw new \InvalidArgumentException('non-nullable send_invoices cannot be null');
+        if (is_null($sendInvoices)) {
+            throw new \InvalidArgumentException('non-nullable sendInvoices cannot be null');
         }
-        $this->container['send_invoices'] = $send_invoices;
+        $this->container['sendInvoices'] = $sendInvoices;
 
         return $this;
     }
 
     /**
-     * Gets send_sms
+     * Gets sendSms
      *
      * @return bool
      */
     public function getSendSms()
     {
-        return $this->container['send_sms'];
+        return $this->container['sendSms'];
     }
 
     /**
-     * Sets send_sms
+     * Sets sendSms
      *
-     * @param bool $send_sms send_sms
+     * @param bool $sendSms sendSms
      *
      * @return self
      */
-    public function setSendSms($send_sms)
+    public function setSendSms($sendSms)
     {
-        if (is_null($send_sms)) {
-            throw new \InvalidArgumentException('non-nullable send_sms cannot be null');
+        if (is_null($sendSms)) {
+            throw new \InvalidArgumentException('non-nullable sendSms cannot be null');
         }
-        $this->container['send_sms'] = $send_sms;
+        $this->container['sendSms'] = $sendSms;
 
         return $this;
     }
 
     /**
-     * Gets hosted_page
+     * Gets hostedPage
      *
      * @return bool
      */
     public function getHostedPage()
     {
-        return $this->container['hosted_page'];
+        return $this->container['hostedPage'];
     }
 
     /**
-     * Sets hosted_page
+     * Sets hostedPage
      *
-     * @param bool $hosted_page hosted_page
+     * @param bool $hostedPage hostedPage
      *
      * @return self
      */
-    public function setHostedPage($hosted_page)
+    public function setHostedPage($hostedPage)
     {
-        if (is_null($hosted_page)) {
-            throw new \InvalidArgumentException('non-nullable hosted_page cannot be null');
+        if (is_null($hostedPage)) {
+            throw new \InvalidArgumentException('non-nullable hostedPage cannot be null');
         }
-        $this->container['hosted_page'] = $hosted_page;
+        $this->container['hostedPage'] = $hostedPage;
 
         return $this;
     }
 
     /**
-     * Gets hosted_page_url
+     * Gets hostedPageUrl
      *
      * @return mixed|null
      */
     public function getHostedPageUrl()
     {
-        return $this->container['hosted_page_url'];
+        return $this->container['hostedPageUrl'];
     }
 
     /**
-     * Sets hosted_page_url
+     * Sets hostedPageUrl
      *
-     * @param mixed|null $hosted_page_url hosted_page_url
+     * @param mixed|null $hostedPageUrl hostedPageUrl
      *
      * @return self
      */
-    public function setHostedPageUrl($hosted_page_url)
+    public function setHostedPageUrl($hostedPageUrl)
     {
-        if (is_null($hosted_page_url)) {
-            array_push($this->openAPINullablesSetToNull, 'hosted_page_url');
+        if (is_null($hostedPageUrl)) {
+            array_push($this->openAPINullablesSetToNull, 'hostedPageUrl');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hosted_page_url', $nullablesSetToNull);
+            $index = array_search('hostedPageUrl', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hosted_page_url'] = $hosted_page_url;
+        $this->container['hostedPageUrl'] = $hostedPageUrl;
 
         return $this;
     }
 
     /**
-     * Gets hosted_page_summary
+     * Gets hostedPageSummary
      *
      * @return mixed|null
      */
     public function getHostedPageSummary()
     {
-        return $this->container['hosted_page_summary'];
+        return $this->container['hostedPageSummary'];
     }
 
     /**
-     * Sets hosted_page_summary
+     * Sets hostedPageSummary
      *
-     * @param mixed|null $hosted_page_summary hosted_page_summary
+     * @param mixed|null $hostedPageSummary hostedPageSummary
      *
      * @return self
      */
-    public function setHostedPageSummary($hosted_page_summary)
+    public function setHostedPageSummary($hostedPageSummary)
     {
-        if (is_null($hosted_page_summary)) {
-            array_push($this->openAPINullablesSetToNull, 'hosted_page_summary');
+        if (is_null($hostedPageSummary)) {
+            array_push($this->openAPINullablesSetToNull, 'hostedPageSummary');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hosted_page_summary', $nullablesSetToNull);
+            $index = array_search('hostedPageSummary', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hosted_page_summary'] = $hosted_page_summary;
+        $this->container['hostedPageSummary'] = $hostedPageSummary;
 
         return $this;
     }
@@ -917,55 +917,55 @@ class PlanListResponseArray implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

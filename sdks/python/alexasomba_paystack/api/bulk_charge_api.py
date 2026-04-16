@@ -48,7 +48,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_charges(
+    def charges(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the batch whose charges you want to retrieve.")],
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
@@ -107,7 +107,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_charges_serialize(
+        _param = self._charges_serialize(
             id_or_code=id_or_code,
             per_page=per_page,
             page=page,
@@ -137,7 +137,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_charges_with_http_info(
+    def charges_with_http_info(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the batch whose charges you want to retrieve.")],
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
@@ -196,7 +196,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_charges_serialize(
+        _param = self._charges_serialize(
             id_or_code=id_or_code,
             per_page=per_page,
             page=page,
@@ -226,7 +226,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_charges_without_preload_content(
+    def charges_without_preload_content(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the batch whose charges you want to retrieve.")],
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
@@ -285,7 +285,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_charges_serialize(
+        _param = self._charges_serialize(
             id_or_code=id_or_code,
             per_page=per_page,
             page=page,
@@ -310,7 +310,7 @@ class BulkChargeApi:
         return response_data.response
 
 
-    def _bulk_charge_charges_serialize(
+    def _charges_serialize(
         self,
         id_or_code,
         per_page,
@@ -418,7 +418,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_fetch(
+    def fetch(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the charge whose batches you want to retrieve.")],
         _request_timeout: Union[
@@ -462,7 +462,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -487,7 +487,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the charge whose batches you want to retrieve.")],
         _request_timeout: Union[
@@ -531,7 +531,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -556,7 +556,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id_or_code: Annotated[StrictStr, Field(description="An ID or code for the charge whose batches you want to retrieve.")],
         _request_timeout: Union[
@@ -600,7 +600,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_fetch_serialize(
+        _param = self._fetch_serialize(
             id_or_code=id_or_code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -620,7 +620,7 @@ class BulkChargeApi:
         return response_data.response
 
 
-    def _bulk_charge_fetch_serialize(
+    def _fetch_serialize(
         self,
         id_or_code,
         _request_auth,
@@ -685,7 +685,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_initiate(
+    def initiate(
         self,
         bulk_charge_initiate: Optional[List[BulkChargeInitiate]] = None,
         _request_timeout: Union[
@@ -729,7 +729,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_initiate_serialize(
+        _param = self._initiate_serialize(
             bulk_charge_initiate=bulk_charge_initiate,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -753,7 +753,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_initiate_with_http_info(
+    def initiate_with_http_info(
         self,
         bulk_charge_initiate: Optional[List[BulkChargeInitiate]] = None,
         _request_timeout: Union[
@@ -797,7 +797,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_initiate_serialize(
+        _param = self._initiate_serialize(
             bulk_charge_initiate=bulk_charge_initiate,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -821,7 +821,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_initiate_without_preload_content(
+    def initiate_without_preload_content(
         self,
         bulk_charge_initiate: Optional[List[BulkChargeInitiate]] = None,
         _request_timeout: Union[
@@ -865,7 +865,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_initiate_serialize(
+        _param = self._initiate_serialize(
             bulk_charge_initiate=bulk_charge_initiate,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -884,7 +884,7 @@ class BulkChargeApi:
         return response_data.response
 
 
-    def _bulk_charge_initiate_serialize(
+    def _initiate_serialize(
         self,
         bulk_charge_initiate,
         _request_auth,
@@ -964,7 +964,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_list(
+    def list(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
@@ -1017,7 +1017,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1045,7 +1045,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_list_with_http_info(
+    def list_with_http_info(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
@@ -1098,7 +1098,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1126,7 +1126,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_list_without_preload_content(
+    def list_without_preload_content(
         self,
         per_page: Annotated[Optional[StrictInt], Field(description="Number of records to fetch per page")] = None,
         page: Annotated[Optional[StrictInt], Field(description="The offset to retrieve data from")] = None,
@@ -1179,7 +1179,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_list_serialize(
+        _param = self._list_serialize(
             per_page=per_page,
             page=page,
             var_from=var_from,
@@ -1202,7 +1202,7 @@ class BulkChargeApi:
         return response_data.response
 
 
-    def _bulk_charge_list_serialize(
+    def _list_serialize(
         self,
         per_page,
         page,
@@ -1302,7 +1302,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_pause(
+    def pause(
         self,
         code: Annotated[StrictStr, Field(description="The batch code for the bulk charge you want to pause")],
         _request_timeout: Union[
@@ -1346,7 +1346,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_pause_serialize(
+        _param = self._pause_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1371,7 +1371,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_pause_with_http_info(
+    def pause_with_http_info(
         self,
         code: Annotated[StrictStr, Field(description="The batch code for the bulk charge you want to pause")],
         _request_timeout: Union[
@@ -1415,7 +1415,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_pause_serialize(
+        _param = self._pause_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1440,7 +1440,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_pause_without_preload_content(
+    def pause_without_preload_content(
         self,
         code: Annotated[StrictStr, Field(description="The batch code for the bulk charge you want to pause")],
         _request_timeout: Union[
@@ -1484,7 +1484,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_pause_serialize(
+        _param = self._pause_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1504,7 +1504,7 @@ class BulkChargeApi:
         return response_data.response
 
 
-    def _bulk_charge_pause_serialize(
+    def _pause_serialize(
         self,
         code,
         _request_auth,
@@ -1569,7 +1569,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_resume(
+    def resume(
         self,
         code: Annotated[StrictStr, Field(description="The batch code for the bulk charge you want to pause")],
         _request_timeout: Union[
@@ -1613,7 +1613,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_resume_serialize(
+        _param = self._resume_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1638,7 +1638,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_resume_with_http_info(
+    def resume_with_http_info(
         self,
         code: Annotated[StrictStr, Field(description="The batch code for the bulk charge you want to pause")],
         _request_timeout: Union[
@@ -1682,7 +1682,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_resume_serialize(
+        _param = self._resume_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1707,7 +1707,7 @@ class BulkChargeApi:
 
 
     @validate_call
-    def bulk_charge_resume_without_preload_content(
+    def resume_without_preload_content(
         self,
         code: Annotated[StrictStr, Field(description="The batch code for the bulk charge you want to pause")],
         _request_timeout: Union[
@@ -1751,7 +1751,7 @@ class BulkChargeApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._bulk_charge_resume_serialize(
+        _param = self._resume_serialize(
             code=code,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1771,7 +1771,7 @@ class BulkChargeApi:
         return response_data.response
 
 
-    def _bulk_charge_resume_serialize(
+    def _resume_serialize(
         self,
         code,
         _request_auth,

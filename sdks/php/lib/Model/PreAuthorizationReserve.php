@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PreAuthorizationReserve Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class PreAuthorizationReserve implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'email' => 'string',
         'amount' => 'string',
-        'authorization_code' => 'string',
+        'authorizationCode' => 'string',
         'currency' => 'string',
         'reference' => 'string'
     ];
@@ -75,7 +75,7 @@ class PreAuthorizationReserve implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPIFormats = [
         'email' => null,
         'amount' => null,
-        'authorization_code' => null,
+        'authorizationCode' => null,
         'currency' => null,
         'reference' => null
     ];
@@ -88,7 +88,7 @@ class PreAuthorizationReserve implements ModelInterface, ArrayAccess, \JsonSeria
     protected static array $openAPINullables = [
         'email' => false,
         'amount' => false,
-        'authorization_code' => false,
+        'authorizationCode' => false,
         'currency' => false,
         'reference' => false
     ];
@@ -181,7 +181,7 @@ class PreAuthorizationReserve implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $attributeMap = [
         'email' => 'email',
         'amount' => 'amount',
-        'authorization_code' => 'authorization_code',
+        'authorizationCode' => 'authorization_code',
         'currency' => 'currency',
         'reference' => 'reference'
     ];
@@ -194,7 +194,7 @@ class PreAuthorizationReserve implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $setters = [
         'email' => 'setEmail',
         'amount' => 'setAmount',
-        'authorization_code' => 'setAuthorizationCode',
+        'authorizationCode' => 'setAuthorizationCode',
         'currency' => 'setCurrency',
         'reference' => 'setReference'
     ];
@@ -207,7 +207,7 @@ class PreAuthorizationReserve implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $getters = [
         'email' => 'getEmail',
         'amount' => 'getAmount',
-        'authorization_code' => 'getAuthorizationCode',
+        'authorizationCode' => 'getAuthorizationCode',
         'currency' => 'getCurrency',
         'reference' => 'getReference'
     ];
@@ -284,7 +284,7 @@ class PreAuthorizationReserve implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('authorization_code', $data ?? [], null);
+        $this->setIfExists('authorizationCode', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('reference', $data ?? [], null);
     }
@@ -322,8 +322,8 @@ class PreAuthorizationReserve implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
-        if ($this->container['authorization_code'] === null) {
-            $invalidProperties[] = "'authorization_code' can't be null";
+        if ($this->container['authorizationCode'] === null) {
+            $invalidProperties[] = "'authorizationCode' can't be null";
         }
         if ($this->container['currency'] === null) {
             $invalidProperties[] = "'currency' can't be null";
@@ -407,28 +407,28 @@ class PreAuthorizationReserve implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets authorization_code
+     * Gets authorizationCode
      *
      * @return string
      */
     public function getAuthorizationCode()
     {
-        return $this->container['authorization_code'];
+        return $this->container['authorizationCode'];
     }
 
     /**
-     * Sets authorization_code
+     * Sets authorizationCode
      *
-     * @param string $authorization_code This is the code that is used to charge and identify a customer's previously used card
+     * @param string $authorizationCode This is the code that is used to charge and identify a customer's previously used card
      *
      * @return self
      */
-    public function setAuthorizationCode($authorization_code)
+    public function setAuthorizationCode($authorizationCode)
     {
-        if (is_null($authorization_code)) {
-            throw new \InvalidArgumentException('non-nullable authorization_code cannot be null');
+        if (is_null($authorizationCode)) {
+            throw new \InvalidArgumentException('non-nullable authorizationCode cannot be null');
         }
-        $this->container['authorization_code'] = $authorization_code;
+        $this->container['authorizationCode'] = $authorizationCode;
 
         return $this;
     }

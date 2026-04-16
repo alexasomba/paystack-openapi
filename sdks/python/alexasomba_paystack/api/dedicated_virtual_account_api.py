@@ -50,7 +50,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_add_split(
+    def add_split(
         self,
         dedicated_virtual_account_split: Optional[DedicatedVirtualAccountSplit] = None,
         _request_timeout: Union[
@@ -94,7 +94,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_add_split_serialize(
+        _param = self._add_split_serialize(
             dedicated_virtual_account_split=dedicated_virtual_account_split,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -118,7 +118,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_add_split_with_http_info(
+    def add_split_with_http_info(
         self,
         dedicated_virtual_account_split: Optional[DedicatedVirtualAccountSplit] = None,
         _request_timeout: Union[
@@ -162,7 +162,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_add_split_serialize(
+        _param = self._add_split_serialize(
             dedicated_virtual_account_split=dedicated_virtual_account_split,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -186,7 +186,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_add_split_without_preload_content(
+    def add_split_without_preload_content(
         self,
         dedicated_virtual_account_split: Optional[DedicatedVirtualAccountSplit] = None,
         _request_timeout: Union[
@@ -230,7 +230,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_add_split_serialize(
+        _param = self._add_split_serialize(
             dedicated_virtual_account_split=dedicated_virtual_account_split,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -249,7 +249,7 @@ class DedicatedVirtualAccountApi:
         return response_data.response
 
 
-    def _dedicated_account_add_split_serialize(
+    def _add_split_serialize(
         self,
         dedicated_virtual_account_split,
         _request_auth,
@@ -328,7 +328,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_assign(
+    def assign(
         self,
         dedicated_virtual_account_assign: Optional[DedicatedVirtualAccountAssign] = None,
         _request_timeout: Union[
@@ -372,7 +372,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_assign_serialize(
+        _param = self._assign_serialize(
             dedicated_virtual_account_assign=dedicated_virtual_account_assign,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -396,7 +396,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_assign_with_http_info(
+    def assign_with_http_info(
         self,
         dedicated_virtual_account_assign: Optional[DedicatedVirtualAccountAssign] = None,
         _request_timeout: Union[
@@ -440,7 +440,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_assign_serialize(
+        _param = self._assign_serialize(
             dedicated_virtual_account_assign=dedicated_virtual_account_assign,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -464,7 +464,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_assign_without_preload_content(
+    def assign_without_preload_content(
         self,
         dedicated_virtual_account_assign: Optional[DedicatedVirtualAccountAssign] = None,
         _request_timeout: Union[
@@ -508,7 +508,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_assign_serialize(
+        _param = self._assign_serialize(
             dedicated_virtual_account_assign=dedicated_virtual_account_assign,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -527,7 +527,7 @@ class DedicatedVirtualAccountApi:
         return response_data.response
 
 
-    def _dedicated_account_assign_serialize(
+    def _assign_serialize(
         self,
         dedicated_virtual_account_assign,
         _request_auth,
@@ -606,7 +606,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_available_providers(
+    def available_providers(
         self,
         _request_timeout: Union[
             None,
@@ -647,7 +647,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_available_providers_serialize(
+        _param = self._available_providers_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -671,7 +671,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_available_providers_with_http_info(
+    def available_providers_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -712,7 +712,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_available_providers_serialize(
+        _param = self._available_providers_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -736,7 +736,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_available_providers_without_preload_content(
+    def available_providers_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -777,7 +777,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_available_providers_serialize(
+        _param = self._available_providers_serialize(
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -796,7 +796,7 @@ class DedicatedVirtualAccountApi:
         return response_data.response
 
 
-    def _dedicated_account_available_providers_serialize(
+    def _available_providers_serialize(
         self,
         _request_auth,
         _content_type,
@@ -858,7 +858,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_create(
+    def create(
         self,
         dedicated_virtual_account_create: Optional[DedicatedVirtualAccountCreate] = None,
         _request_timeout: Union[
@@ -902,7 +902,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_create_serialize(
+        _param = self._create_serialize(
             dedicated_virtual_account_create=dedicated_virtual_account_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -926,7 +926,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_create_with_http_info(
+    def create_with_http_info(
         self,
         dedicated_virtual_account_create: Optional[DedicatedVirtualAccountCreate] = None,
         _request_timeout: Union[
@@ -970,7 +970,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_create_serialize(
+        _param = self._create_serialize(
             dedicated_virtual_account_create=dedicated_virtual_account_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -994,7 +994,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_create_without_preload_content(
+    def create_without_preload_content(
         self,
         dedicated_virtual_account_create: Optional[DedicatedVirtualAccountCreate] = None,
         _request_timeout: Union[
@@ -1038,7 +1038,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_create_serialize(
+        _param = self._create_serialize(
             dedicated_virtual_account_create=dedicated_virtual_account_create,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1057,7 +1057,7 @@ class DedicatedVirtualAccountApi:
         return response_data.response
 
 
-    def _dedicated_account_create_serialize(
+    def _create_serialize(
         self,
         dedicated_virtual_account_create,
         _request_auth,
@@ -1136,7 +1136,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_deactivate(
+    def deactivate(
         self,
         id: Annotated[StrictStr, Field(description="ID of dedicated virtual account")],
         _request_timeout: Union[
@@ -1180,7 +1180,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_deactivate_serialize(
+        _param = self._deactivate_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1205,7 +1205,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_deactivate_with_http_info(
+    def deactivate_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of dedicated virtual account")],
         _request_timeout: Union[
@@ -1249,7 +1249,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_deactivate_serialize(
+        _param = self._deactivate_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1274,7 +1274,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_deactivate_without_preload_content(
+    def deactivate_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of dedicated virtual account")],
         _request_timeout: Union[
@@ -1318,7 +1318,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_deactivate_serialize(
+        _param = self._deactivate_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1338,7 +1338,7 @@ class DedicatedVirtualAccountApi:
         return response_data.response
 
 
-    def _dedicated_account_deactivate_serialize(
+    def _deactivate_serialize(
         self,
         id,
         _request_auth,
@@ -1403,7 +1403,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_fetch(
+    def fetch(
         self,
         id: Annotated[StrictStr, Field(description="ID of dedicated virtual account")],
         _request_timeout: Union[
@@ -1447,7 +1447,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1472,7 +1472,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_fetch_with_http_info(
+    def fetch_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="ID of dedicated virtual account")],
         _request_timeout: Union[
@@ -1516,7 +1516,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1541,7 +1541,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_fetch_without_preload_content(
+    def fetch_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="ID of dedicated virtual account")],
         _request_timeout: Union[
@@ -1585,7 +1585,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_fetch_serialize(
+        _param = self._fetch_serialize(
             id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1605,7 +1605,7 @@ class DedicatedVirtualAccountApi:
         return response_data.response
 
 
-    def _dedicated_account_fetch_serialize(
+    def _fetch_serialize(
         self,
         id,
         _request_auth,
@@ -1670,7 +1670,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_list(
+    def list(
         self,
         active: Annotated[Optional[StrictBool], Field(description="Status of the dedicated virtual account")] = None,
         customer: Annotated[Optional[StrictInt], Field(description="The customer's ID")] = None,
@@ -1732,7 +1732,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_list_serialize(
+        _param = self._list_serialize(
             active=active,
             customer=customer,
             currency=currency,
@@ -1763,7 +1763,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_list_with_http_info(
+    def list_with_http_info(
         self,
         active: Annotated[Optional[StrictBool], Field(description="Status of the dedicated virtual account")] = None,
         customer: Annotated[Optional[StrictInt], Field(description="The customer's ID")] = None,
@@ -1825,7 +1825,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_list_serialize(
+        _param = self._list_serialize(
             active=active,
             customer=customer,
             currency=currency,
@@ -1856,7 +1856,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_list_without_preload_content(
+    def list_without_preload_content(
         self,
         active: Annotated[Optional[StrictBool], Field(description="Status of the dedicated virtual account")] = None,
         customer: Annotated[Optional[StrictInt], Field(description="The customer's ID")] = None,
@@ -1918,7 +1918,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_list_serialize(
+        _param = self._list_serialize(
             active=active,
             customer=customer,
             currency=currency,
@@ -1944,7 +1944,7 @@ class DedicatedVirtualAccountApi:
         return response_data.response
 
 
-    def _dedicated_account_list_serialize(
+    def _list_serialize(
         self,
         active,
         customer,
@@ -2041,7 +2041,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_remove_split(
+    def remove_split(
         self,
         dedicated_virtual_account_remove_split: Optional[DedicatedVirtualAccountRemoveSplit] = None,
         _request_timeout: Union[
@@ -2085,7 +2085,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_remove_split_serialize(
+        _param = self._remove_split_serialize(
             dedicated_virtual_account_remove_split=dedicated_virtual_account_remove_split,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2110,7 +2110,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_remove_split_with_http_info(
+    def remove_split_with_http_info(
         self,
         dedicated_virtual_account_remove_split: Optional[DedicatedVirtualAccountRemoveSplit] = None,
         _request_timeout: Union[
@@ -2154,7 +2154,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_remove_split_serialize(
+        _param = self._remove_split_serialize(
             dedicated_virtual_account_remove_split=dedicated_virtual_account_remove_split,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2179,7 +2179,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_remove_split_without_preload_content(
+    def remove_split_without_preload_content(
         self,
         dedicated_virtual_account_remove_split: Optional[DedicatedVirtualAccountRemoveSplit] = None,
         _request_timeout: Union[
@@ -2223,7 +2223,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_remove_split_serialize(
+        _param = self._remove_split_serialize(
             dedicated_virtual_account_remove_split=dedicated_virtual_account_remove_split,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -2243,7 +2243,7 @@ class DedicatedVirtualAccountApi:
         return response_data.response
 
 
-    def _dedicated_account_remove_split_serialize(
+    def _remove_split_serialize(
         self,
         dedicated_virtual_account_remove_split,
         _request_auth,
@@ -2322,7 +2322,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_requery(
+    def requery(
         self,
         account_number: Annotated[Optional[StrictStr], Field(description="Virtual account number to requery")] = None,
         provider_slug: Annotated[Optional[StrictStr], Field(description="The bank's slug in lowercase, without spaces.")] = None,
@@ -2372,7 +2372,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_requery_serialize(
+        _param = self._requery_serialize(
             account_number=account_number,
             provider_slug=provider_slug,
             var_date=var_date,
@@ -2399,7 +2399,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_requery_with_http_info(
+    def requery_with_http_info(
         self,
         account_number: Annotated[Optional[StrictStr], Field(description="Virtual account number to requery")] = None,
         provider_slug: Annotated[Optional[StrictStr], Field(description="The bank's slug in lowercase, without spaces.")] = None,
@@ -2449,7 +2449,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_requery_serialize(
+        _param = self._requery_serialize(
             account_number=account_number,
             provider_slug=provider_slug,
             var_date=var_date,
@@ -2476,7 +2476,7 @@ class DedicatedVirtualAccountApi:
 
 
     @validate_call
-    def dedicated_account_requery_without_preload_content(
+    def requery_without_preload_content(
         self,
         account_number: Annotated[Optional[StrictStr], Field(description="Virtual account number to requery")] = None,
         provider_slug: Annotated[Optional[StrictStr], Field(description="The bank's slug in lowercase, without spaces.")] = None,
@@ -2526,7 +2526,7 @@ class DedicatedVirtualAccountApi:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._dedicated_account_requery_serialize(
+        _param = self._requery_serialize(
             account_number=account_number,
             provider_slug=provider_slug,
             var_date=var_date,
@@ -2548,7 +2548,7 @@ class DedicatedVirtualAccountApi:
         return response_data.response
 
 
-    def _dedicated_account_requery_serialize(
+    def _requery_serialize(
         self,
         account_number,
         provider_slug,

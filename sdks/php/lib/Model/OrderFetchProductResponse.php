@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * OrderFetchProductResponse Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class OrderFetchProductResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'status' => 'bool',
         'message' => 'string',
-        'data' => '\Alexasomba\\Paystack\Model\OrderFetchProductResponseArray[]',
-        'meta' => '\Alexasomba\\Paystack\Model\OrderFetchProductResponseMeta'
+        'data' => '\Alexasomba\Paystack\Model\OrderFetchProductResponseArray[]',
+        'meta' => '\Alexasomba\Paystack\Model\OrderFetchProductResponseMeta'
     ];
 
     /**
@@ -380,7 +380,7 @@ class OrderFetchProductResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets data
      *
-     * @return \Alexasomba\\Paystack\Model\OrderFetchProductResponseArray[]
+     * @return \Alexasomba\Paystack\Model\OrderFetchProductResponseArray[]
      */
     public function getData()
     {
@@ -390,7 +390,7 @@ class OrderFetchProductResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets data
      *
-     * @param \Alexasomba\\Paystack\Model\OrderFetchProductResponseArray[] $data data
+     * @param \Alexasomba\Paystack\Model\OrderFetchProductResponseArray[] $data data
      *
      * @return self
      */
@@ -407,7 +407,7 @@ class OrderFetchProductResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets meta
      *
-     * @return \Alexasomba\\Paystack\Model\OrderFetchProductResponseMeta
+     * @return \Alexasomba\Paystack\Model\OrderFetchProductResponseMeta
      */
     public function getMeta()
     {
@@ -417,7 +417,7 @@ class OrderFetchProductResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets meta
      *
-     * @param \Alexasomba\\Paystack\Model\OrderFetchProductResponseMeta $meta meta
+     * @param \Alexasomba\Paystack\Model\OrderFetchProductResponseMeta $meta meta
      *
      * @return self
      */

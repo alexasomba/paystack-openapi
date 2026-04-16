@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * BulkChargeListResponseArray Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,11 +59,11 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'domain' => 'string',
-        'batch_code' => 'string',
+        'batchCode' => 'string',
         'status' => 'string',
         'id' => 'int',
-        'created_at' => 'string',
-        'updated_at' => 'string'
+        'createdAt' => 'string',
+        'updatedAt' => 'string'
     ];
 
     /**
@@ -75,11 +75,11 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPIFormats = [
         'domain' => null,
-        'batch_code' => null,
+        'batchCode' => null,
         'status' => null,
         'id' => null,
-        'created_at' => null,
-        'updated_at' => null
+        'createdAt' => null,
+        'updatedAt' => null
     ];
 
     /**
@@ -89,11 +89,11 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'domain' => false,
-        'batch_code' => false,
+        'batchCode' => false,
         'status' => false,
         'id' => false,
-        'created_at' => false,
-        'updated_at' => false
+        'createdAt' => false,
+        'updatedAt' => false
     ];
 
     /**
@@ -183,11 +183,11 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $attributeMap = [
         'domain' => 'domain',
-        'batch_code' => 'batch_code',
+        'batchCode' => 'batch_code',
         'status' => 'status',
         'id' => 'id',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'createdAt' => 'createdAt',
+        'updatedAt' => 'updatedAt'
     ];
 
     /**
@@ -197,11 +197,11 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $setters = [
         'domain' => 'setDomain',
-        'batch_code' => 'setBatchCode',
+        'batchCode' => 'setBatchCode',
         'status' => 'setStatus',
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt'
     ];
 
     /**
@@ -211,11 +211,11 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $getters = [
         'domain' => 'getDomain',
-        'batch_code' => 'getBatchCode',
+        'batchCode' => 'getBatchCode',
         'status' => 'getStatus',
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt'
     ];
 
     /**
@@ -276,11 +276,11 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(?array $data = null)
     {
         $this->setIfExists('domain', $data ?? [], null);
-        $this->setIfExists('batch_code', $data ?? [], null);
+        $this->setIfExists('batchCode', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
     }
 
     /**
@@ -313,8 +313,8 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['domain'] === null) {
             $invalidProperties[] = "'domain' can't be null";
         }
-        if ($this->container['batch_code'] === null) {
-            $invalidProperties[] = "'batch_code' can't be null";
+        if ($this->container['batchCode'] === null) {
+            $invalidProperties[] = "'batchCode' can't be null";
         }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
@@ -322,11 +322,11 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         return $invalidProperties;
     }
@@ -371,28 +371,28 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets batch_code
+     * Gets batchCode
      *
      * @return string
      */
     public function getBatchCode()
     {
-        return $this->container['batch_code'];
+        return $this->container['batchCode'];
     }
 
     /**
-     * Sets batch_code
+     * Sets batchCode
      *
-     * @param string $batch_code batch_code
+     * @param string $batchCode batchCode
      *
      * @return self
      */
-    public function setBatchCode($batch_code)
+    public function setBatchCode($batchCode)
     {
-        if (is_null($batch_code)) {
-            throw new \InvalidArgumentException('non-nullable batch_code cannot be null');
+        if (is_null($batchCode)) {
+            throw new \InvalidArgumentException('non-nullable batchCode cannot be null');
         }
-        $this->container['batch_code'] = $batch_code;
+        $this->container['batchCode'] = $batchCode;
 
         return $this;
     }
@@ -452,55 +452,55 @@ class BulkChargeListResponseArray implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }

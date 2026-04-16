@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * PreAuthorizationReserveWithAuthCodeResponse Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class PreAuthorizationReserveWithAuthCodeResponse implements ModelInterface, Arr
     protected static $openAPITypes = [
         'status' => 'bool',
         'message' => 'string',
-        'data' => '\Alexasomba\\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponseData'
+        'data' => '\Alexasomba\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponseData'
     ];
 
     /**
@@ -370,7 +370,7 @@ class PreAuthorizationReserveWithAuthCodeResponse implements ModelInterface, Arr
     /**
      * Gets data
      *
-     * @return \Alexasomba\\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponseData
+     * @return \Alexasomba\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponseData
      */
     public function getData()
     {
@@ -380,7 +380,7 @@ class PreAuthorizationReserveWithAuthCodeResponse implements ModelInterface, Arr
     /**
      * Sets data
      *
-     * @param \Alexasomba\\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponseData $data data
+     * @param \Alexasomba\Paystack\Model\PreAuthorizationReserveWithAuthCodeResponseData $data data
      *
      * @return self
      */

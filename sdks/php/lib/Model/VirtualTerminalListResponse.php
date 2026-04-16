@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * VirtualTerminalListResponse Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class VirtualTerminalListResponse implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'status' => 'bool',
         'message' => 'string',
-        'data' => '\Alexasomba\\Paystack\Model\VirtualTerminalListResponseArray[]',
-        'meta' => '\Alexasomba\\Paystack\Model\CursorMeta'
+        'data' => '\Alexasomba\Paystack\Model\VirtualTerminalListResponseArray[]',
+        'meta' => '\Alexasomba\Paystack\Model\CursorMeta'
     ];
 
     /**
@@ -380,7 +380,7 @@ class VirtualTerminalListResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets data
      *
-     * @return \Alexasomba\\Paystack\Model\VirtualTerminalListResponseArray[]
+     * @return \Alexasomba\Paystack\Model\VirtualTerminalListResponseArray[]
      */
     public function getData()
     {
@@ -390,7 +390,7 @@ class VirtualTerminalListResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets data
      *
-     * @param \Alexasomba\\Paystack\Model\VirtualTerminalListResponseArray[] $data data
+     * @param \Alexasomba\Paystack\Model\VirtualTerminalListResponseArray[] $data data
      *
      * @return self
      */
@@ -407,7 +407,7 @@ class VirtualTerminalListResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets meta
      *
-     * @return \Alexasomba\\Paystack\Model\CursorMeta
+     * @return \Alexasomba\Paystack\Model\CursorMeta
      */
     public function getMeta()
     {
@@ -417,7 +417,7 @@ class VirtualTerminalListResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets meta
      *
-     * @param \Alexasomba\\Paystack\Model\CursorMeta $meta meta
+     * @param \Alexasomba\Paystack\Model\CursorMeta $meta meta
      *
      * @return self
      */

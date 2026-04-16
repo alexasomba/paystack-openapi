@@ -24,27 +24,27 @@ import (
 // CapitecPayAPIService CapitecPayAPI service
 type CapitecPayAPIService service
 
-type ApiCapitecPayRequeryRequest struct {
+type ApiRequeryRequest struct {
 	ctx context.Context
 	ApiService *CapitecPayAPIService
 	ref string
 }
 
-func (r ApiCapitecPayRequeryRequest) Execute() (*CapitecPayRequeryResponse, *http.Response, error) {
-	return r.ApiService.CapitecPayRequeryExecute(r)
+func (r ApiRequeryRequest) Execute() (*CapitecPayRequeryResponse, *http.Response, error) {
+	return r.ApiService.RequeryExecute(r)
 }
 
 /*
-CapitecPayRequery Requery Transaction
+Requery Requery Transaction
 
 Check the status of a charge made with Capitec Pay. This endpoint should be used from your frontend application as it requires the use of your public key for request authorization.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param ref The transaction reference from the previously initiated charge request
- @return ApiCapitecPayRequeryRequest
+ @return ApiRequeryRequest
 */
-func (a *CapitecPayAPIService) CapitecPayRequery(ctx context.Context, ref string) ApiCapitecPayRequeryRequest {
-	return ApiCapitecPayRequeryRequest{
+func (a *CapitecPayAPIService) Requery(ctx context.Context, ref string) ApiRequeryRequest {
+	return ApiRequeryRequest{
 		ApiService: a,
 		ctx: ctx,
 		ref: ref,
@@ -53,7 +53,7 @@ func (a *CapitecPayAPIService) CapitecPayRequery(ctx context.Context, ref string
 
 // Execute executes the request
 //  @return CapitecPayRequeryResponse
-func (a *CapitecPayAPIService) CapitecPayRequeryExecute(r ApiCapitecPayRequeryRequest) (*CapitecPayRequeryResponse, *http.Response, error) {
+func (a *CapitecPayAPIService) RequeryExecute(r ApiRequeryRequest) (*CapitecPayRequeryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -61,7 +61,7 @@ func (a *CapitecPayAPIService) CapitecPayRequeryExecute(r ApiCapitecPayRequeryRe
 		localVarReturnValue  *CapitecPayRequeryResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CapitecPayAPIService.CapitecPayRequery")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CapitecPayAPIService.Requery")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

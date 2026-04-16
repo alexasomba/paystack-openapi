@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from alexasomba_paystack.models.product_create_response_data_shipping_fields import ProductCreateResponseDataShippingFields
 from alexasomba_paystack.models.product_lists_response_array_metadata import ProductListsResponseArrayMetadata
@@ -50,8 +50,8 @@ class ProductCreateResponseData(BaseModel):
     maximum_orderable: Optional[Any]
     low_stock_alert: StrictBool
     id: StrictInt
-    created_at: StrictStr = Field(alias="createdAt")
-    updated_at: StrictStr = Field(alias="updatedAt")
+    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
+    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
     __properties: ClassVar[List[str]] = ["name", "description", "currency", "price", "quantity", "is_shippable", "unlimited", "integration", "domain", "metadata", "slug", "product_code", "quantity_sold", "type", "shipping_fields", "active", "in_stock", "minimum_orderable", "maximum_orderable", "low_stock_alert", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
@@ -137,7 +137,7 @@ class ProductCreateResponseData(BaseModel):
             "maximum_orderable": obj.get("maximum_orderable"),
             "low_stock_alert": obj.get("low_stock_alert"),
             "id": obj.get("id"),
-            "createdAt": obj.get("createdAt"),
+            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })
         return _obj

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Alexasomba\\Paystack\Model;
+namespace Alexasomba\Paystack\Model;
 
 use \ArrayAccess;
-use \Alexasomba\\Paystack\ObjectSerializer;
+use \Alexasomba\Paystack\ObjectSerializer;
 
 /**
  * DedicatedNubanCreateResponseData Class Doc Comment
  *
  * @category Class
- * @package  Alexasomba\\Paystack
+ * @package  Alexasomba\Paystack
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,18 +58,18 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'bank' => '\Alexasomba\\Paystack\Model\DedicatedNubanListResponseArrayBank',
-        'account_name' => 'string',
-        'account_number' => 'string',
+        'bank' => '\Alexasomba\Paystack\Model\DedicatedNubanListResponseArrayBank',
+        'accountName' => 'string',
+        'accountNumber' => 'string',
         'assigned' => 'bool',
         'currency' => 'string',
         'metadata' => 'mixed',
         'active' => 'bool',
         'id' => 'int',
-        'created_at' => 'string',
-        'updated_at' => 'string',
-        'assignment' => '\Alexasomba\\Paystack\Model\DedicatedNubanCreateResponseDataAssignment',
-        'customer' => '\Alexasomba\\Paystack\Model\DedicatedNubanCreateResponseDataCustomer'
+        'createdAt' => 'string',
+        'updatedAt' => 'string',
+        'assignment' => '\Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataAssignment',
+        'customer' => '\Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer'
     ];
 
     /**
@@ -81,15 +81,15 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPIFormats = [
         'bank' => null,
-        'account_name' => null,
-        'account_number' => null,
+        'accountName' => null,
+        'accountNumber' => null,
         'assigned' => null,
         'currency' => null,
         'metadata' => null,
         'active' => null,
         'id' => null,
-        'created_at' => null,
-        'updated_at' => null,
+        'createdAt' => null,
+        'updatedAt' => null,
         'assignment' => null,
         'customer' => null
     ];
@@ -101,15 +101,15 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
       */
     protected static array $openAPINullables = [
         'bank' => false,
-        'account_name' => false,
-        'account_number' => false,
+        'accountName' => false,
+        'accountNumber' => false,
         'assigned' => false,
         'currency' => false,
         'metadata' => true,
         'active' => false,
         'id' => false,
-        'created_at' => false,
-        'updated_at' => false,
+        'createdAt' => false,
+        'updatedAt' => false,
         'assignment' => false,
         'customer' => false
     ];
@@ -201,15 +201,15 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
      */
     protected static $attributeMap = [
         'bank' => 'bank',
-        'account_name' => 'account_name',
-        'account_number' => 'account_number',
+        'accountName' => 'account_name',
+        'accountNumber' => 'account_number',
         'assigned' => 'assigned',
         'currency' => 'currency',
         'metadata' => 'metadata',
         'active' => 'active',
         'id' => 'id',
-        'created_at' => 'created_at',
-        'updated_at' => 'updated_at',
+        'createdAt' => 'created_at',
+        'updatedAt' => 'updated_at',
         'assignment' => 'assignment',
         'customer' => 'customer'
     ];
@@ -221,15 +221,15 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
      */
     protected static $setters = [
         'bank' => 'setBank',
-        'account_name' => 'setAccountName',
-        'account_number' => 'setAccountNumber',
+        'accountName' => 'setAccountName',
+        'accountNumber' => 'setAccountNumber',
         'assigned' => 'setAssigned',
         'currency' => 'setCurrency',
         'metadata' => 'setMetadata',
         'active' => 'setActive',
         'id' => 'setId',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
+        'createdAt' => 'setCreatedAt',
+        'updatedAt' => 'setUpdatedAt',
         'assignment' => 'setAssignment',
         'customer' => 'setCustomer'
     ];
@@ -241,15 +241,15 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
      */
     protected static $getters = [
         'bank' => 'getBank',
-        'account_name' => 'getAccountName',
-        'account_number' => 'getAccountNumber',
+        'accountName' => 'getAccountName',
+        'accountNumber' => 'getAccountNumber',
         'assigned' => 'getAssigned',
         'currency' => 'getCurrency',
         'metadata' => 'getMetadata',
         'active' => 'getActive',
         'id' => 'getId',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
+        'createdAt' => 'getCreatedAt',
+        'updatedAt' => 'getUpdatedAt',
         'assignment' => 'getAssignment',
         'customer' => 'getCustomer'
     ];
@@ -312,15 +312,15 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
     public function __construct(?array $data = null)
     {
         $this->setIfExists('bank', $data ?? [], null);
-        $this->setIfExists('account_name', $data ?? [], null);
-        $this->setIfExists('account_number', $data ?? [], null);
+        $this->setIfExists('accountName', $data ?? [], null);
+        $this->setIfExists('accountNumber', $data ?? [], null);
         $this->setIfExists('assigned', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('createdAt', $data ?? [], null);
+        $this->setIfExists('updatedAt', $data ?? [], null);
         $this->setIfExists('assignment', $data ?? [], null);
         $this->setIfExists('customer', $data ?? [], null);
     }
@@ -355,11 +355,11 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
         if ($this->container['bank'] === null) {
             $invalidProperties[] = "'bank' can't be null";
         }
-        if ($this->container['account_name'] === null) {
-            $invalidProperties[] = "'account_name' can't be null";
+        if ($this->container['accountName'] === null) {
+            $invalidProperties[] = "'accountName' can't be null";
         }
-        if ($this->container['account_number'] === null) {
-            $invalidProperties[] = "'account_number' can't be null";
+        if ($this->container['accountNumber'] === null) {
+            $invalidProperties[] = "'accountNumber' can't be null";
         }
         if ($this->container['assigned'] === null) {
             $invalidProperties[] = "'assigned' can't be null";
@@ -376,11 +376,11 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['createdAt'] === null) {
+            $invalidProperties[] = "'createdAt' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
+        if ($this->container['updatedAt'] === null) {
+            $invalidProperties[] = "'updatedAt' can't be null";
         }
         if ($this->container['assignment'] === null) {
             $invalidProperties[] = "'assignment' can't be null";
@@ -406,7 +406,7 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Gets bank
      *
-     * @return \Alexasomba\\Paystack\Model\DedicatedNubanListResponseArrayBank
+     * @return \Alexasomba\Paystack\Model\DedicatedNubanListResponseArrayBank
      */
     public function getBank()
     {
@@ -416,7 +416,7 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Sets bank
      *
-     * @param \Alexasomba\\Paystack\Model\DedicatedNubanListResponseArrayBank $bank bank
+     * @param \Alexasomba\Paystack\Model\DedicatedNubanListResponseArrayBank $bank bank
      *
      * @return self
      */
@@ -431,55 +431,55 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets account_name
+     * Gets accountName
      *
      * @return string
      */
     public function getAccountName()
     {
-        return $this->container['account_name'];
+        return $this->container['accountName'];
     }
 
     /**
-     * Sets account_name
+     * Sets accountName
      *
-     * @param string $account_name account_name
+     * @param string $accountName accountName
      *
      * @return self
      */
-    public function setAccountName($account_name)
+    public function setAccountName($accountName)
     {
-        if (is_null($account_name)) {
-            throw new \InvalidArgumentException('non-nullable account_name cannot be null');
+        if (is_null($accountName)) {
+            throw new \InvalidArgumentException('non-nullable accountName cannot be null');
         }
-        $this->container['account_name'] = $account_name;
+        $this->container['accountName'] = $accountName;
 
         return $this;
     }
 
     /**
-     * Gets account_number
+     * Gets accountNumber
      *
      * @return string
      */
     public function getAccountNumber()
     {
-        return $this->container['account_number'];
+        return $this->container['accountNumber'];
     }
 
     /**
-     * Sets account_number
+     * Sets accountNumber
      *
-     * @param string $account_number account_number
+     * @param string $accountNumber accountNumber
      *
      * @return self
      */
-    public function setAccountNumber($account_number)
+    public function setAccountNumber($accountNumber)
     {
-        if (is_null($account_number)) {
-            throw new \InvalidArgumentException('non-nullable account_number cannot be null');
+        if (is_null($accountNumber)) {
+            throw new \InvalidArgumentException('non-nullable accountNumber cannot be null');
         }
-        $this->container['account_number'] = $account_number;
+        $this->container['accountNumber'] = $accountNumber;
 
         return $this;
     }
@@ -627,55 +627,55 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets created_at
+     * Gets createdAt
      *
      * @return string
      */
     public function getCreatedAt()
     {
-        return $this->container['created_at'];
+        return $this->container['createdAt'];
     }
 
     /**
-     * Sets created_at
+     * Sets createdAt
      *
-     * @param string $created_at created_at
+     * @param string $createdAt createdAt
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setCreatedAt($createdAt)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($createdAt)) {
+            throw new \InvalidArgumentException('non-nullable createdAt cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['createdAt'] = $createdAt;
 
         return $this;
     }
 
     /**
-     * Gets updated_at
+     * Gets updatedAt
      *
      * @return string
      */
     public function getUpdatedAt()
     {
-        return $this->container['updated_at'];
+        return $this->container['updatedAt'];
     }
 
     /**
-     * Sets updated_at
+     * Sets updatedAt
      *
-     * @param string $updated_at updated_at
+     * @param string $updatedAt updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setUpdatedAt($updatedAt)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($updatedAt)) {
+            throw new \InvalidArgumentException('non-nullable updatedAt cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['updatedAt'] = $updatedAt;
 
         return $this;
     }
@@ -683,7 +683,7 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Gets assignment
      *
-     * @return \Alexasomba\\Paystack\Model\DedicatedNubanCreateResponseDataAssignment
+     * @return \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataAssignment
      */
     public function getAssignment()
     {
@@ -693,7 +693,7 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Sets assignment
      *
-     * @param \Alexasomba\\Paystack\Model\DedicatedNubanCreateResponseDataAssignment $assignment assignment
+     * @param \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataAssignment $assignment assignment
      *
      * @return self
      */
@@ -710,7 +710,7 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Gets customer
      *
-     * @return \Alexasomba\\Paystack\Model\DedicatedNubanCreateResponseDataCustomer
+     * @return \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer
      */
     public function getCustomer()
     {
@@ -720,7 +720,7 @@ class DedicatedNubanCreateResponseData implements ModelInterface, ArrayAccess, \
     /**
      * Sets customer
      *
-     * @param \Alexasomba\\Paystack\Model\DedicatedNubanCreateResponseDataCustomer $customer customer
+     * @param \Alexasomba\Paystack\Model\DedicatedNubanCreateResponseDataCustomer $customer customer
      *
      * @return self
      */
