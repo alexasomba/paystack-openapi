@@ -1,6 +1,6 @@
 {
   "name": "@alexasomba/paystack-browser",
-  "version": "1.9.3",
+  "version": "1.9.4",
   "description": "A browser-compatible Paystack SDK - Complete, Type-safe, and Fetch-ready with full OpenAPI coverage.",
   "keywords": [
     "africa",
