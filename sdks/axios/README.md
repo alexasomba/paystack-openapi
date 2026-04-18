@@ -92,44 +92,59 @@ Retries are most useful for transient failures such as `408`, `429`, and tempora
 
 ## Stable Type Exports
 
-This SDK exports a stable grouped client type and a curated set of request and response aliases for common Paystack flows. That makes it easier to build wrappers and integrations without indexing into generated OpenAPI types manually.
+This SDK exports stable grouped client slices and curated request/query/response aliases so downstream integrations do not need to reconstruct types from `ReturnType<typeof createPaystack>`, `paths`, or `operations`.
 
 ```ts
 import {
   createPaystack,
   type Paystack,
-  type PaymentRequestCreatePayload,
-  type TerminalSendEventPayload,
+  type PaystackTransactionClient,
+  type PaystackSubscriptionClient,
   type TransactionInitializePayload,
+  type TransactionChargeAuthorizationPayload,
+  type SubscriptionCreatePayload,
+  type SubscriptionListQueryParams,
+  type RefundCreatePayload,
 } from "@alexasomba/paystack-axios";
-import type { PaymentNotificationWebhookEvent } from "@alexasomba/paystack-axios/webhooks";
 
 const paystack: Paystack = createPaystack({
   secretKey: process.env.PAYSTACK_SECRET_KEY!,
 });
+
+const transactionClient: PaystackTransactionClient = paystack.transaction;
+const subscriptionClient: PaystackSubscriptionClient = paystack.subscription;
 
 const tx: TransactionInitializePayload = {
   email: "customer@example.com",
   amount: 5000,
 };
 
-const invoice: PaymentRequestCreatePayload = {
+const chargeAuthorization: TransactionChargeAuthorizationPayload = {
+  email: "customer@example.com",
+  amount: 2500,
+  authorization_code: "AUTH_123",
+};
+
+const subscriptionCreate: SubscriptionCreatePayload = {
   customer: "CUS_123",
-  amount: 10000,
+  plan: "PLN_123",
 };
 
-const terminalEvent: TerminalSendEventPayload = {
-  type: "invoice",
-  action: "process",
+const subscriptionList: SubscriptionListQueryParams = {
+  customer: 123,
 };
 
-const webhookEvent: PaymentNotificationWebhookEvent = {
-  event: "invoice.create",
-  data: {} as PaymentNotificationWebhookEvent["data"],
+const refundCreate: RefundCreatePayload = {
+  transaction: "TRX_123",
+  amount: 1000,
 };
 ```
 
-Notable aliases include transaction initialize / verify, subscription fetch / manage link / manage email, payment request create / fetch, terminal send-event, plan / product / split / subaccount / terminal / virtual terminal fetch, and verification helpers for account resolution, account validation, and card BIN lookup.
+Notable aliases include transaction initialize / charge authorization / verify; subscription create / list / disable / enable / fetch / manage link / manage email; customer fetch / create / update; plan list / create / update / fetch; product list / create / update / fetch; dispute list / fetch; refund create / fetch; payment request create / fetch; terminal send-event; and verification helpers for account resolution, account validation, and card BIN lookup.
+
+Client slices include `PaystackTransactionClient`, `PaystackCustomerClient`, `PaystackSubscriptionClient`, `PaystackPlanClient`, `PaystackProductClient`, `PaystackDisputeClient`, and `PaystackRefundClient`.
+
+Grouped methods reflect supported generated OpenAPI operations. Unsupported helpers such as `subscription.update` are intentionally not part of the public SDK surface.
 
 ## Pagination
 

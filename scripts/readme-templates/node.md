@@ -75,6 +75,8 @@ const paystack = createPaystack({
 });
 ```
 
+{{stable_type_exports}}
+
 ### Webhooks
 
 Use the webhook helper when validating server-to-server events from Paystack. Pass the raw request body, not a parsed JSON object.

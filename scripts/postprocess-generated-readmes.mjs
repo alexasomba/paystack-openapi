@@ -589,6 +589,70 @@ function renderModuleExamples(examples) {
   return examples.map(([moduleName, snippet]) => `### ${moduleName}\n\n${snippet}`).join("\n\n");
 }
 
+/**
+ * @param {string} packageName
+ * @param {string} credentialLine
+ */
+function renderStableTypeExportsSection(packageName, credentialLine) {
+  return [
+    "## Stable Type Exports",
+    "",
+    "This SDK exports stable grouped client slices and curated request/query/response aliases so downstream integrations do not need to reconstruct types from `ReturnType<typeof createPaystack>`, `paths`, or `operations`.",
+    "",
+    "```ts",
+    "import {",
+    "  createPaystack,",
+    "  type Paystack,",
+    "  type PaystackTransactionClient,",
+    "  type PaystackSubscriptionClient,",
+    "  type TransactionInitializePayload,",
+    "  type TransactionChargeAuthorizationPayload,",
+    "  type SubscriptionCreatePayload,",
+    "  type SubscriptionListQueryParams,",
+    "  type RefundCreatePayload,",
+    `} from "${packageName}";`,
+    "",
+    "const paystack: Paystack = createPaystack({",
+    `  ${credentialLine},`,
+    "});",
+    "",
+    "const transactionClient: PaystackTransactionClient = paystack.transaction;",
+    "const subscriptionClient: PaystackSubscriptionClient = paystack.subscription;",
+    "",
+    "const tx: TransactionInitializePayload = {",
+    '  email: "customer@example.com",',
+    "  amount: 5000,",
+    "};",
+    "",
+    "const chargeAuthorization: TransactionChargeAuthorizationPayload = {",
+    '  email: "customer@example.com",',
+    "  amount: 2500,",
+    '  authorization_code: "AUTH_123",',
+    "};",
+    "",
+    "const subscriptionCreate: SubscriptionCreatePayload = {",
+    '  customer: "CUS_123",',
+    '  plan: "PLN_123",',
+    "};",
+    "",
+    "const subscriptionList: SubscriptionListQueryParams = {",
+    "  customer: 123,",
+    "};",
+    "",
+    "const refundCreate: RefundCreatePayload = {",
+    '  transaction: "TRX_123",',
+    "  amount: 1000,",
+    "};",
+    "```",
+    "",
+    "Notable aliases include transaction initialize / charge authorization / verify; subscription create / list / disable / enable / fetch / manage link / manage email; customer fetch / create / update; plan list / create / update / fetch; product list / create / update / fetch; dispute list / fetch; refund create / fetch; payment request create / fetch; terminal send-event; and verification helpers for account resolution, account validation, and card BIN lookup.",
+    "",
+    "Client slices include `PaystackTransactionClient`, `PaystackCustomerClient`, `PaystackSubscriptionClient`, `PaystackPlanClient`, `PaystackProductClient`, `PaystackDisputeClient`, and `PaystackRefundClient`.",
+    "",
+    "Grouped methods reflect supported generated OpenAPI operations. Unsupported helpers such as `subscription.update` are intentionally not part of the public SDK surface.",
+  ].join("\n");
+}
+
 const TARGETS = [
   {
     name: "node",
@@ -599,6 +663,10 @@ const TARGETS = [
       package_description:
         "TypeScript-first Paystack API client for Node.js, generated from the official Paystack OpenAPI spec.",
       package_install: "pnpm add @alexasomba/paystack-node",
+      stable_type_exports: renderStableTypeExportsSection(
+        "@alexasomba/paystack-node",
+        "secretKey: process.env.PAYSTACK_SECRET_KEY!",
+      ),
       sdk_repo_url: "https://github.com/alexasomba/paystack-node",
       related_sdk_1_name: "@alexasomba/paystack-browser",
       related_sdk_1_url: "https://github.com/alexasomba/paystack-browser",
@@ -617,6 +685,10 @@ const TARGETS = [
       package_description:
         "Paystack API client backed by Axios, providing a familiar ecosystem for Axios users while remaining fully typed and spec-compliant.",
       package_install: "pnpm add @alexasomba/paystack-axios axios",
+      stable_type_exports: renderStableTypeExportsSection(
+        "@alexasomba/paystack-axios",
+        "secretKey: process.env.PAYSTACK_SECRET_KEY!",
+      ),
       sdk_repo_url: "https://github.com/alexasomba/paystack-axios",
       related_sdk_1_name: "@alexasomba/paystack-node",
       related_sdk_1_url: "https://github.com/alexasomba/paystack-node",
@@ -635,6 +707,10 @@ const TARGETS = [
       package_description:
         "Paystack API client optimized for browser environments, providing a lightweight, fully typed, and spec-compliant way to interact with the Paystack API via native fetch.",
       package_install: "pnpm add @alexasomba/paystack-browser",
+      stable_type_exports: renderStableTypeExportsSection(
+        "@alexasomba/paystack-browser",
+        'secretKey: "pk_test_..."',
+      ),
       sdk_repo_url: "https://github.com/alexasomba/paystack-browser",
       related_sdk_1_name: "@alexasomba/paystack-node",
       related_sdk_1_url: "https://github.com/alexasomba/paystack-node",

@@ -77,6 +77,8 @@ const paystack = createPaystack({
 
 Retries are most useful for transient failures such as `408`, `429`, and temporary `5xx` responses. Keep POST idempotency enabled when retrying mutating operations.
 
+{{stable_type_exports}}
+
 {{pagination_overview}}
 
 ```ts

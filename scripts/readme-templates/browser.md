@@ -72,6 +72,8 @@ const paystack = createPaystack({
 
 The SDK respects Paystack `Retry-After` headers automatically. Override retry statuses only when you want tighter browser-side behavior.
 
+{{stable_type_exports}}
+
 {{pagination_overview}}
 
 ```ts
@@ -84,9 +86,9 @@ const paystack = createPaystack({
 });
 ```
 
-## Coverage
-
 {{errors_overview}}
+
+## Coverage
 
 This SDK is generated from the SDK spec in this monorepo and currently tracks the full set of generated typed operations for the Paystack-API-aligned contract.
 
