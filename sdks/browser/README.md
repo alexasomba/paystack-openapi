@@ -96,6 +96,47 @@ const paystack = createPaystack({
 
 The SDK respects Paystack `Retry-After` headers automatically. Override retry statuses only when you want tighter browser-side behavior.
 
+## Stable Type Exports
+
+This SDK exports a stable grouped client type and curated aliases for common Paystack flows so frontend wrappers can depend on named types instead of rebuilding them from generated OpenAPI maps.
+
+```ts
+import {
+  createPaystack,
+  type Paystack,
+  type PaymentRequestCreatePayload,
+  type TerminalSendEventPayload,
+  type TransactionInitializePayload,
+} from "@alexasomba/paystack-browser";
+import type { PaymentNotificationWebhookEvent } from "@alexasomba/paystack-browser/webhooks";
+
+const paystack: Paystack = createPaystack({
+  secretKey: "pk_test_...",
+});
+
+const tx: TransactionInitializePayload = {
+  email: "customer@example.com",
+  amount: 5000,
+};
+
+const invoice: PaymentRequestCreatePayload = {
+  customer: "CUS_123",
+  amount: 10000,
+};
+
+const terminalEvent: TerminalSendEventPayload = {
+  type: "invoice",
+  action: "process",
+};
+
+const webhookEvent: PaymentNotificationWebhookEvent = {
+  event: "invoice.create",
+  data: {} as PaymentNotificationWebhookEvent["data"],
+};
+```
+
+Notable aliases include transaction initialize / verify, subscription fetch / manage link / manage email, payment request create / fetch, terminal send-event, plan / product / split / subaccount / terminal / virtual terminal fetch, and verification helpers for account resolution, account validation, and card BIN lookup.
+
 ## Pagination
 
 - Paystack supports both offset pagination and cursor pagination.

@@ -120,9 +120,21 @@ vp run typecheck
 
 - **Full Sync (Local + Remote):**
   Performs both local and remote synchronization in one step.
+
   ```bash
   vp run sdk:sync:full
   ```
+
+- **Publish TS SDKs to npm:**
+  The monorepo workflow in `.github/workflows/publish-npm.yml` publishes only on tag pushes matching `v*` or manual dispatch. A push to `main` alone does not publish to npm.
+
+  ```bash
+  git tag v1.9.2
+  git push origin v1.9.2
+  ```
+
+- **Versioning Before Publish:**
+  The `sdks/node`, `sdks/axios`, and `sdks/browser` `package.json` versions must be bumped before triggering npm publish. Syncing code alone is not enough.
 
 ## Strategic Guidance for Agents
 
@@ -130,6 +142,7 @@ vp run typecheck
 - **Docker Dependency:** The generation of Go, PHP, and Python SDKs relies on Docker. If generation fails, check the Docker daemon state.
 - **Local Dev Loop:** When working on SDK features, use `vp run sdk:sync:local` to verify changes in the `paystack-sdks` workspace before committing.
 - **Dependency Management:** If encountering cross-package errors, verify the workspace links in `pnpm-workspace.yaml`.
+- **TS SDK Releases:** For `node`, `axios`, and `browser`, bump package versions, build, push the SDK repos, and then push the matching `v*` tag in each SDK repo to trigger the release workflow.
 
 ## Conventions
 
