@@ -31,8 +31,8 @@ importers:
         specifier: ^0.25.9
         version: 0.25.9
       '@redocly/cli':
-        specifier: ^2.28.0
-        version: 2.28.0(@opentelemetry/api@1.9.1)(core-js@3.38.1)
+        specifier: ^2.28.1
+        version: 2.28.1(@opentelemetry/api@1.9.1)(core-js@3.38.1)
       '@stoplight/spectral-cli':
         specifier: ^6.15.1
         version: 6.15.1
@@ -79,7 +79,7 @@ importers:
         specifier: 'catalog:'
         version: 0.1.18(@arethetypeswrong/core@0.18.2)(@opentelemetry/api@1.9.1)(@types/node@25.6.0)(@vitest/coverage-v8@4.1.4)(esbuild@0.27.7)(jsdom@29.0.2(@noble/hashes@1.8.0))(publint@0.3.18)(typescript@5.9.3)(vite@7.3.1(@types/node@25.6.0)(lightningcss@1.32.0)(yaml@2.8.3))(yaml@2.8.3)
       vitest:
-        specifier: npm:@voidzero-dev/vite-plus-test@^0.1.18
+        specifier: npm:@voidzero-dev/vite-plus-test@latest
         version: '@voidzero-dev/vite-plus-test@0.1.18(@arethetypeswrong/core@0.18.2)(@opentelemetry/api@1.9.1)(@types/node@25.6.0)(@vitest/coverage-v8@4.1.4)(esbuild@0.27.7)(jsdom@29.0.2(@noble/hashes@1.8.0))(publint@0.3.18)(typescript@5.9.3)(vite@7.3.1(@types/node@25.6.0)(lightningcss@1.32.0)(yaml@2.8.3))(yaml@2.8.3)'
       yaml:
         specifier: ^2.8.3
@@ -1035,8 +1035,8 @@ packages:
   '@redocly/cli-otel@0.1.2':
     resolution: {integrity: sha512-Bg7BoO5t1x3lVK+KhA5aGPmeXpQmdf6WtTYHhelKJCsQ+tRMiJoFAQoKHoBHAoNxXrhlS3K9lKFLHGmtxsFQfA==}
 
-  '@redocly/cli@2.28.0':
-    resolution: {integrity: sha512-hAHtMjo4fLdLqZXtZwQqlwGnAiOzEAh7EPbE01rs9j7cewj2btOXrGQW8v6Eg3gDh+i77/DOxxazRWvZ/zAa7w==}
+  '@redocly/cli@2.28.1':
+    resolution: {integrity: sha512-gDi0+vC905YHrtGD3WCP86gW44JdXQb0fu4128tVFpgfh5T65tFZkhs2xoPqLJn7RCtkndQ+rSwyXcALKoao0A==}
     engines: {node: '>=22.12.0 || >=20.19.0 <21.0.0', npm: '>=10'}
     hasBin: true
 
@@ -1057,12 +1057,12 @@ packages:
     resolution: {integrity: sha512-2+O+riuIUgVSuLl3Lyh5AplWZyVMNuG2F98/o6NrutKJfW4/GTZdPpZlIphS0HGgcOHgmWcCSHj+dWFlZaGSHw==}
     engines: {node: '>=18.17.0', npm: '>=9.5.0'}
 
-  '@redocly/openapi-core@2.28.0':
-    resolution: {integrity: sha512-Htpp4PsjKMgEuMT9iJu4iuFFzWCDe8FylvpGaQEA5D7jZXWv+8XvnqhpGCKN2cM/n/Uri2QfqNdw0JlKIC59sg==}
+  '@redocly/openapi-core@2.28.1':
+    resolution: {integrity: sha512-PXulQY+lUJzeLWfhtJ8UPBFaMvlPDvW/dkozDhUAlYDotEYNMOaKFbJxKcrPCtRYtZ0TJsh5MohdcDLCBAJbFg==}
     engines: {node: '>=22.12.0 || >=20.19.0 <21.0.0', npm: '>=10'}
 
-  '@redocly/respect-core@2.28.0':
-    resolution: {integrity: sha512-svjCRzXsj/EyN7chfB9pTVYvWT1+hlOqMkZVlkrH6PqFKXAHYeP47YRW9+3omUSDBd1Ph4A4J4NBUW1PRph5+g==}
+  '@redocly/respect-core@2.28.1':
+    resolution: {integrity: sha512-r8sf7damvSviJwVif4hZVP/Qw7ciLgwLvHVy9AsUWxWh6JQtTZpV2/lJB681bqjn+GM9EMzhcNL1rBUo4K6Uyg==}
     engines: {node: '>=22.12.0 || >=20.19.0 <21.0.0', npm: '>=10'}
 
   '@rollup/plugin-commonjs@22.0.2':
@@ -4786,15 +4786,15 @@ snapshots:
     dependencies:
       ulid: 2.4.0
 
-  '@redocly/cli@2.28.0(@opentelemetry/api@1.9.1)(core-js@3.38.1)':
+  '@redocly/cli@2.28.1(@opentelemetry/api@1.9.1)(core-js@3.38.1)':
     dependencies:
       '@opentelemetry/exporter-trace-otlp-http': 0.202.0(@opentelemetry/api@1.9.1)
       '@opentelemetry/resources': 2.0.1(@opentelemetry/api@1.9.1)
       '@opentelemetry/sdk-trace-node': 2.0.1(@opentelemetry/api@1.9.1)
       '@opentelemetry/semantic-conventions': 1.34.0
       '@redocly/cli-otel': 0.1.2
-      '@redocly/openapi-core': 2.28.0
-      '@redocly/respect-core': 2.28.0
+      '@redocly/openapi-core': 2.28.1
+      '@redocly/respect-core': 2.28.1
       abort-controller: 3.0.0
       ajv: '@redocly/ajv@8.18.0'
       ajv-formats: 3.0.1(@redocly/ajv@8.18.0)
@@ -4876,7 +4876,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@redocly/openapi-core@2.28.0':
+  '@redocly/openapi-core@2.28.1':
     dependencies:
       '@redocly/ajv': 8.18.0
       '@redocly/config': 0.48.0
@@ -4889,12 +4889,12 @@ snapshots:
       pluralize: 8.0.0
       yaml-ast-parser: 0.0.43
 
-  '@redocly/respect-core@2.28.0':
+  '@redocly/respect-core@2.28.1':
     dependencies:
       '@faker-js/faker': 7.6.0
       '@noble/hashes': 1.8.0
       '@redocly/ajv': 8.18.0
-      '@redocly/openapi-core': 2.28.0
+      '@redocly/openapi-core': 2.28.1
       ajv: '@redocly/ajv@8.18.0'
       better-ajv-errors: 1.2.0(@redocly/ajv@8.18.0)
       colorette: 2.0.20
@@ -5458,7 +5458,7 @@ snapshots:
       obug: 2.1.1
       std-env: 4.1.0
       tinyrainbow: 3.1.0
-      vitest: '@voidzero-dev/vite-plus-test@0.1.18(@arethetypeswrong/core@0.18.2)(@opentelemetry/api@1.9.1)(@types/node@25.6.0)(@vitest/coverage-v8@4.1.4)(esbuild@0.27.7)(jsdom@29.0.2(@noble/hashes@1.8.0))(publint@0.3.18)(typescript@5.9.3)(vite@7.3.1(@types/node@25.6.0)(lightningcss@1.32.0)(yaml@2.8.3))(yaml@2.8.3)'
+      vitest: '@voidzero-dev/vite-plus-test@0.1.18(@arethetypeswrong/core@0.18.2)(@opentelemetry/api@1.9.1)(@types/node@22.19.17)(@vitest/coverage-v8@4.1.4)(esbuild@0.27.7)(jsdom@29.0.2(@noble/hashes@1.8.0))(publint@0.3.18)(typescript@5.9.3)(vite@7.3.1(@types/node@22.19.17)(lightningcss@1.32.0)(yaml@2.8.3))(yaml@2.8.3)'
 
   '@vitest/pretty-format@4.1.4':
     dependencies:
@@ -7171,7 +7171,7 @@ snapshots:
       oas-kit-common: 1.0.8
       reftools: 1.1.9
       yaml: 1.10.3
-      yargs: 17.0.1
+      yargs: 17.7.2
 
   oas-schema-walker@1.1.5: {}
 
@@ -7448,7 +7448,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 25.6.0
+      '@types/node': 22.19.17
       long: 5.3.2
 
   proxy-addr@2.0.7:
@@ -7937,7 +7937,7 @@ snapshots:
       oas-validator: 5.0.8
       reftools: 1.1.9
       yaml: 1.10.3
-      yargs: 17.0.1
+      yargs: 17.7.2
     transitivePeerDependencies:
       - encoding
 
