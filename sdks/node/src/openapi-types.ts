@@ -3670,7 +3670,7 @@ export interface components {
           send_invoices?: boolean;
           send_sms?: boolean;
           currency?: string;
-        } & ((unknown & unknown) | (unknown & unknown));
+        } & (Record<string, never> | (unknown & unknown));
         subaccount: Record<string, never> | null;
       };
     };

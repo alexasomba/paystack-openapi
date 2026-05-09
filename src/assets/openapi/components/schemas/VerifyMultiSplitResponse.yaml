@@ -223,11 +223,12 @@ properties:
             type: string
         oneOf:
           - allOf:
-              - minProperties: 0
-              - {}
+              - type: object
+                maxProperties: 0
           - allOf:
               - not:
-                  minProperties: 0
+                  type: object
+                  maxProperties: 0
               - required:
                   - id
                   - name

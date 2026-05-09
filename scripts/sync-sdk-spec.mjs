@@ -313,7 +313,7 @@ dedupeOperationIds(mergedSpec, sdkSpec);
 
 sanitizeSdkSpecForGenerators(mergedSpec);
 
-const mergedYaml = `${stringifyYaml(mergedSpec)}\n`;
+const mergedYaml = `${stringifyYaml(mergedSpec).trimEnd()}\n`;
 
 // Keep the SDK spec file in sync with what we ship into each SDK folder.
 await fs.mkdir(path.dirname(sdkSpecPath), { recursive: true });

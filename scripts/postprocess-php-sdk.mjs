@@ -4,6 +4,7 @@ import path from "node:path";
 
 const repoRoot = path.resolve(new URL(".", import.meta.url).pathname, "..");
 const phpLibDir = path.join(repoRoot, "sdks/php/lib");
+const phpTestDir = path.join(repoRoot, "sdks/php/test");
 const phpComposerJsonPath = path.join(repoRoot, "sdks/php/composer.json");
 const phpGitPushPath = path.join(repoRoot, "sdks/php/git_push.sh");
 
@@ -25,6 +26,13 @@ async function* walk(dir) {
 
 /** @param {string} line */
 function normalizePaystackNamespaceLine(line) {
+  if (line.includes("$subclass =") && line.includes("Alexasomba") && line.includes("Paystack")) {
+    return line.replace(
+      /\$subclass = .+ \$data->\{\$discriminator\};/,
+      "$subclass = '\\\\Alexasomba\\\\Paystack\\\\Model\\\\' . $data->{$discriminator};",
+    );
+  }
+
   if (line.includes("Alexasomba\\\\Paystack")) {
     // Only touch lines that reference our own namespace to avoid breaking regex strings.
     // Replace double backslashes with single backslashes.
@@ -66,6 +74,16 @@ async function postprocessComposerJson() {
       source: "https://github.com/alexasomba/paystack-php",
     },
     authors: [{ name: "alexasomba" }],
+    autoload: {
+      "psr-4": {
+        "Alexasomba\\Paystack\\": "lib/",
+      },
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Alexasomba\\Paystack\\Test\\": "test/",
+      },
+    },
   };
 
   const next = `${JSON.stringify(nextJson, null, 4)}\n`;
@@ -97,23 +115,25 @@ async function postprocessGitPush() {
 async function main() {
   let changedFiles = 0;
 
-  for await (const filePath of walk(phpLibDir)) {
-    const prev = await fs.readFile(filePath, "utf8");
-    const lines = prev.split(/\r?\n/);
+  for (const dir of [phpLibDir, phpTestDir]) {
+    for await (const filePath of walk(dir)) {
+      const prev = await fs.readFile(filePath, "utf8");
+      const lines = prev.split(/\r?\n/);
 
-    let changed = false;
-    const nextLines = lines.map((line) => {
-      const nextLine = normalizePaystackNamespaceLine(line);
-      if (nextLine !== line) changed = true;
-      return nextLine;
-    });
+      let changed = false;
+      const nextLines = lines.map((line) => {
+        const nextLine = normalizePaystackNamespaceLine(line);
+        if (nextLine !== line) changed = true;
+        return nextLine;
+      });
 
-    if (!changed) continue;
+      if (!changed) continue;
 
-    const next = nextLines.join("\n");
-    if (next !== prev.replace(/\r\n/g, "\n")) {
-      await fs.writeFile(filePath, next, "utf8");
-      changedFiles += 1;
+      const next = nextLines.join("\n");
+      if (next !== prev.replace(/\r\n/g, "\n")) {
+        await fs.writeFile(filePath, next, "utf8");
+        changedFiles += 1;
+      }
     }
   }
 

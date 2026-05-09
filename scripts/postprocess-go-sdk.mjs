@@ -6,6 +6,7 @@ const repoRoot = path.resolve(new URL(".", import.meta.url).pathname, "..");
 const goDir = path.join(repoRoot, "sdks/go");
 const goModPath = path.join(goDir, "go.mod");
 const goGitPushPath = path.join(goDir, "git_push.sh");
+const goTravisPath = path.join(goDir, ".travis.yml");
 
 async function postprocessGoMod() {
   let prev;
@@ -41,6 +42,23 @@ async function postprocessGitPush() {
   return true;
 }
 
+async function postprocessTravis() {
+  let prev;
+  try {
+    prev = await fs.readFile(goTravisPath, "utf8");
+  } catch (error) {
+    if (error instanceof Error && /** @type {any} */ (error).code === "ENOENT") return false;
+    throw error;
+  }
+
+  const next = `${prev.trimEnd()}\n`;
+
+  if (next === prev) return false;
+
+  await fs.writeFile(goTravisPath, next, "utf8");
+  return true;
+}
+
 async function main() {
   let changedCount = 0;
 
@@ -51,6 +69,10 @@ async function main() {
     }
     if (await postprocessGitPush()) {
       console.log("[sdk:go:postprocess] Updated git_push.sh");
+      changedCount++;
+    }
+    if (await postprocessTravis()) {
+      console.log("[sdk:go:postprocess] Updated .travis.yml");
       changedCount++;
     }
   } catch (error) {

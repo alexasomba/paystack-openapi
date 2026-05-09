@@ -43,6 +43,14 @@ export interface PaystackRetryOptions {
   retryOnMethods?: string[];
 }
 
+function assertPublicBrowserKey(apiKey: string) {
+  if (/^sk_(test|live)_/.test(apiKey)) {
+    throw new Error(
+      "The browser SDK only accepts Paystack public keys. Secret keys must stay on a server-side SDK.",
+    );
+  }
+}
+
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -174,6 +182,8 @@ function wrapFetch(
 }
 
 export function createPaystackClient(options: PaystackBrowserClientOptions): PaystackClient {
+  assertPublicBrowserKey(options.apiKey);
+
   const baseUrl = options.baseUrl ?? "https://api.paystack.co";
 
   const baseFetch = options.fetch ?? fetch;

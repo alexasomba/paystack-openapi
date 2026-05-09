@@ -32,12 +32,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Alexasomba\\\\Paystack\\": "lib/"
+      "Alexasomba\\Paystack\\": "lib/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Alexasomba\\\\Paystack\\Test\\": "test/"
+      "Alexasomba\\Paystack\\Test\\": "test/"
     }
   },
   "support": {

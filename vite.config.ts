@@ -9,6 +9,12 @@ export default defineConfig({
   },
   run: {
     tasks: {
+      "oas:bundle": {
+        command: "pnpm bundle:main && pnpm bundle:usecases",
+      },
+      "oas:split": {
+        command: "redocly split ./src/assets/base/paystack.yaml --outDir=./src/assets/openapi",
+      },
       "lint:spec": {
         command: "spectral lint dist/paystack.yaml",
       },
@@ -17,7 +23,7 @@ export default defineConfig({
       },
       validate: {
         command: "vp check && vp run lint:spec && vp run check:vacuum",
-        dependsOn: ["bundle"],
+        dependsOn: ["oas:bundle"],
       },
     },
   },

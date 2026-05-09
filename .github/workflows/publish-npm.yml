@@ -33,8 +33,14 @@ jobs:
         with:
           cache: true
 
+      - name: Install dependencies
+        run: vp install
+
       - name: Build All SDKs
         run: vp run build
+
+      - name: Verify SDK release readiness
+        run: vp run sdk:check:release
 
       - name: Publish to NPM
         env:

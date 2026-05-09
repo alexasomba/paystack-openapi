@@ -5,7 +5,7 @@ info:
   description: The OpenAPI specification of the Paystack API that merchants and developers
     can harness to build financial solutions in Africa.
   title: Paystack
-  version: 1.3.0
+  version: 1.3.1
 servers:
   - description: Base API endpoint
     url: https://api.paystack.co
@@ -132,6 +132,8 @@ tags:
       A collection of endpoints that provides utility functions
     name: Miscellaneous
     x-product-name: Miscellaneous
+  - description: Internal endpoints for dev use and SDK generation
+    name: Internal
 paths:
   /transaction/initialize:
     post:
@@ -8570,6 +8572,22 @@ paths:
       summary: List States (AVS)
       tags:
         - Miscellaneous
+  /___internal___:
+    get:
+      description: This path is internal and used to ensure that schemas like WebhookEvent
+        are considered 'used' for SDK generation and linting.
+      operationId: misc_generateWebhookEventTypes
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WebhookEvent"
+          description: OK
+      summary: Internal path for schema generation
+      tags:
+        - Internal
+      x-internal: true
 components:
   responses:
     TransactionInitializeBadRequestResponse:
@@ -9077,6 +9095,32 @@ components:
             $ref: "#/components/schemas/MiscellaneousListStatesResponse"
       description: Miscellaneous List States response
   schemas:
+    WebhookEvent:
+      oneOf:
+        - $ref: "#/components/schemas/WebhookEvent_oneOf"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_1"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_2"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_3"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_4"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_5"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_6"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_7"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_8"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_9"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_10"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_11"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_12"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_13"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_14"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_15"
+      properties:
+        event:
+          description: The type of event that occurred.
+          type: string
+        data:
+          description: The payload of the event.
+          type: object
+      type: object
     Currency:
       description: List of all support currencies
       enum:
@@ -21440,6 +21484,491 @@ components:
         - message
         - status
       type: object
+    data:
+      properties:
+        id:
+          type: integer
+        domain:
+          type: string
+        status:
+          type: string
+        reference:
+          type: string
+        receipt_number:
+          nullable: true
+        amount:
+          type: integer
+        message:
+          nullable: true
+        gateway_response:
+          type: string
+        helpdesk_link:
+          nullable: true
+        paid_at:
+          type: string
+        created_at:
+          type: string
+        channel:
+          type: string
+        currency:
+          type: string
+        ip_address:
+          nullable: true
+          type: string
+        metadata:
+          $ref: "#/components/schemas/TransactionListResponseArray_metadata"
+        log:
+          $ref: "#/components/schemas/ChargeAuthorizationResponse_data_log"
+        fees:
+          type: integer
+        fees_split:
+          nullable: true
+          type: integer
+        authorization:
+          $ref: "#/components/schemas/TransactionFetchResponse_data_authorization"
+        customer:
+          $ref: "#/components/schemas/TransactionPartialDebitResponse_data_customer"
+        plan:
+          nullable: true
+          type: object
+        subaccount:
+          nullable: true
+          type: object
+        split:
+          nullable: true
+          type: object
+        order_id:
+          nullable: true
+        requested_amount:
+          type: integer
+        pos_transaction_data:
+          nullable: true
+        source:
+          $ref: "#/components/schemas/TransactionFetchResponse_data_source"
+        fees_breakdown:
+          nullable: true
+        connect:
+          nullable: true
+      required:
+        - amount
+        - authorization
+        - channel
+        - connect
+        - created_at
+        - currency
+        - customer
+        - domain
+        - fees
+        - fees_breakdown
+        - fees_split
+        - gateway_response
+        - helpdesk_link
+        - id
+        - ip_address
+        - log
+        - message
+        - metadata
+        - order_id
+        - paid_at
+        - plan
+        - pos_transaction_data
+        - receipt_number
+        - reference
+        - requested_amount
+        - source
+        - split
+        - status
+        - subaccount
+      type: object
+    data-2:
+      properties:
+        amount:
+          type: integer
+        createdAt:
+          type: string
+        currency:
+          type: string
+        domain:
+          type: string
+        failures:
+          nullable: true
+          type: object
+        id:
+          type: integer
+        integration:
+          type: integer
+        reason:
+          type: string
+        reference:
+          type: string
+        source:
+          type: string
+        source_details:
+          nullable: true
+          type: object
+        status:
+          type: string
+        titan_code:
+          nullable: true
+          type: string
+        transfer_code:
+          type: string
+        request:
+          type: integer
+        transferred_at:
+          nullable: true
+          type: string
+        updatedAt:
+          type: string
+        recipient:
+          $ref: "#/components/schemas/TransferListResponseArray_recipient"
+        session:
+          $ref: "#/components/schemas/TransferFetchResponse_data_session"
+        fee_charged:
+          type: integer
+        fees_breakdown:
+          items:
+            $ref: "#/components/schemas/TransferFeesBreakdownArray"
+          nullable: true
+          type: array
+        gateway_response:
+          nullable: true
+          type: string
+      required:
+        - amount
+        - createdAt
+        - currency
+        - domain
+        - failures
+        - fee_charged
+        - fees_breakdown
+        - gateway_response
+        - id
+        - integration
+        - reason
+        - recipient
+        - reference
+        - request
+        - session
+        - source
+        - source_details
+        - status
+        - titan_code
+        - transfer_code
+        - transferred_at
+        - updatedAt
+      type: object
+    data-3:
+      properties:
+        id:
+          type: integer
+        domain:
+          type: string
+        status:
+          type: string
+        subscription_code:
+          type: string
+        email_token:
+          type: string
+        amount:
+          type: integer
+        cron_expression:
+          type: string
+        next_payment_date:
+          type: string
+        open_invoice:
+          nullable: true
+        createdAt:
+          type: string
+        integration:
+          type: integer
+        plan:
+          $ref: "#/components/schemas/SubscriptionFetchResponse_data_plan"
+        authorization:
+          $ref: "#/components/schemas/BulkChargeFetchBulkBatchChargesResponseArray_authorization"
+        customer:
+          $ref: "#/components/schemas/SubscriptionFetchResponse_data_customer"
+        start:
+          type: integer
+        quantity:
+          type: integer
+        invoices:
+          items: {}
+          type: array
+      required:
+        - amount
+        - authorization
+        - createdAt
+        - cron_expression
+        - customer
+        - domain
+        - email_token
+        - id
+        - integration
+        - invoices
+        - next_payment_date
+        - open_invoice
+        - plan
+        - quantity
+        - start
+        - status
+        - subscription_code
+      type: object
+    data-4:
+      properties:
+        id:
+          type: integer
+        integration:
+          $ref: "#/components/schemas/PaymentRequestVerifyResponse_data_integration"
+        domain:
+          type: string
+        amount:
+          type: integer
+        currency:
+          type: string
+        due_date:
+          nullable: true
+          type: string
+        has_invoice:
+          type: boolean
+        invoice_number:
+          nullable: true
+          type: integer
+        description:
+          nullable: true
+          type: string
+        pdf_url:
+          nullable: true
+          type: string
+        line_items:
+          items: {}
+          type: array
+        tax:
+          items: {}
+          type: array
+        request_code:
+          type: string
+        status:
+          type: string
+        paid:
+          type: boolean
+        paid_at:
+          nullable: true
+          type: string
+        metadata:
+          nullable: true
+          type: object
+        notifications:
+          items:
+            $ref: "#/components/schemas/PaymentRequestNotificationsArray"
+          type: array
+        offline_reference:
+          type: string
+        customer:
+          $ref: "#/components/schemas/DedicatedNubanCreateResponse_data_customer"
+        created_at:
+          type: string
+        discount:
+          nullable: true
+          type: object
+        split_code:
+          nullable: true
+          type: string
+        pending_amount:
+          type: integer
+      required:
+        - amount
+        - created_at
+        - currency
+        - customer
+        - description
+        - domain
+        - due_date
+        - has_invoice
+        - id
+        - integration
+        - invoice_number
+        - line_items
+        - metadata
+        - notifications
+        - offline_reference
+        - paid
+        - paid_at
+        - pdf_url
+        - pending_amount
+        - request_code
+        - status
+        - tax
+      type: object
+    data-5:
+      properties:
+        customer:
+          $ref: "#/components/schemas/DedicatedNubanCreateResponse_data_customer"
+        bank:
+          $ref: "#/components/schemas/DedicatedNubanListResponseArray_bank"
+        id:
+          type: integer
+        account_name:
+          type: string
+        account_number:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        currency:
+          type: string
+        split_config:
+          $ref: "#/components/schemas/TransactionPartialDebitResponse_data_metadata"
+        active:
+          type: boolean
+        assigned:
+          type: boolean
+      required:
+        - account_name
+        - account_number
+        - active
+        - assigned
+        - bank
+        - created_at
+        - currency
+        - customer
+        - id
+        - split_config
+        - updated_at
+      type: object
+    data-6:
+      properties:
+        integration:
+          type: integer
+        transaction:
+          type: integer
+        dispute:
+          nullable: true
+          type: integer
+        settlement:
+          nullable: true
+          type: integer
+        domain:
+          type: string
+        amount:
+          type: integer
+        deducted_amount:
+          type: integer
+        fully_deducted:
+          type: boolean
+        currency:
+          type: string
+        channel:
+          type: string
+        status:
+          type: string
+        refunded_by:
+          type: string
+        refunded_at:
+          type: string
+        expected_at:
+          type: string
+        customer_note:
+          type: string
+        merchant_note:
+          type: string
+        id:
+          type: integer
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - amount
+        - channel
+        - createdAt
+        - currency
+        - customer_note
+        - deducted_amount
+        - dispute
+        - domain
+        - expected_at
+        - fully_deducted
+        - id
+        - integration
+        - merchant_note
+        - refunded_at
+        - refunded_by
+        - settlement
+        - status
+        - transaction
+        - updatedAt
+      type: object
+    data-7:
+      properties:
+        id:
+          type: integer
+        refund_amount:
+          nullable: true
+          type: integer
+        currency:
+          nullable: true
+          type: string
+        status:
+          type: string
+        resolution:
+          nullable: true
+        domain:
+          type: string
+        transaction:
+          $ref: "#/components/schemas/DisputeFetchResponse_data_transaction"
+        transaction_reference:
+          nullable: true
+        category:
+          nullable: true
+          type: string
+        customer:
+          $ref: "#/components/schemas/DisputeFetchResponse_data_customer"
+        bin:
+          nullable: true
+          type: string
+        last4:
+          nullable: true
+          type: string
+        dueAt:
+          nullable: true
+        resolvedAt:
+          nullable: true
+        evidence:
+          nullable: true
+        attachments:
+          nullable: true
+        note:
+          nullable: true
+        history:
+          items:
+            $ref: "#/components/schemas/DisputeHistoryArray"
+          type: array
+        messages:
+          items:
+            $ref: "#/components/schemas/DisputeMessagesArray"
+          type: array
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - bin
+        - category
+        - createdAt
+        - currency
+        - customer
+        - domain
+        - history
+        - id
+        - last4
+        - messages
+        - refund_amount
+        - status
+        - transaction
+        - updatedAt
+      type: object
     charge_create_request:
       allOf:
         - $ref: "#/components/schemas/ChargeCreate"
@@ -21459,6 +21988,198 @@ components:
             eft:
               $ref: "#/components/schemas/EFT"
           type: object
+    WebhookEvent_oneOf:
+      properties:
+        event:
+          enum:
+            - charge.success
+          type: string
+        data:
+          $ref: "#/components/schemas/data"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_1:
+      properties:
+        event:
+          enum:
+            - transfer.success
+          type: string
+        data:
+          $ref: "#/components/schemas/data-2"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_2:
+      properties:
+        event:
+          enum:
+            - transfer.failed
+          type: string
+        data:
+          $ref: "#/components/schemas/data-2"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_3:
+      properties:
+        event:
+          enum:
+            - transfer.reversed
+          type: string
+        data:
+          $ref: "#/components/schemas/data-2"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_4:
+      properties:
+        event:
+          enum:
+            - subscription.create
+          type: string
+        data:
+          $ref: "#/components/schemas/data-3"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_5:
+      properties:
+        event:
+          enum:
+            - subscription.disable
+          type: string
+        data:
+          $ref: "#/components/schemas/data-3"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_6:
+      properties:
+        event:
+          enum:
+            - subscription.not_renew
+          type: string
+        data:
+          $ref: "#/components/schemas/data-3"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_7:
+      properties:
+        event:
+          enum:
+            - invoice.create
+          type: string
+        data:
+          $ref: "#/components/schemas/data-4"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_8:
+      properties:
+        event:
+          enum:
+            - invoice.update
+          type: string
+        data:
+          $ref: "#/components/schemas/data-4"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_9:
+      properties:
+        event:
+          enum:
+            - invoice.failed
+          type: string
+        data:
+          $ref: "#/components/schemas/data-4"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_10:
+      properties:
+        event:
+          enum:
+            - dedicatedaccount.assign.success
+          type: string
+        data:
+          $ref: "#/components/schemas/data-5"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_11:
+      properties:
+        event:
+          enum:
+            - dedicatedaccount.assign.failed
+          type: string
+        data:
+          $ref: "#/components/schemas/data-5"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_12:
+      properties:
+        event:
+          enum:
+            - refund.processed
+          type: string
+        data:
+          $ref: "#/components/schemas/data-6"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_13:
+      properties:
+        event:
+          enum:
+            - refund.failed
+          type: string
+        data:
+          $ref: "#/components/schemas/data-6"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_14:
+      properties:
+        event:
+          enum:
+            - charge.dispute.create
+          type: string
+        data:
+          $ref: "#/components/schemas/data-7"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_15:
+      properties:
+        event:
+          enum:
+            - charge.dispute.resolve
+          type: string
+        data:
+          $ref: "#/components/schemas/data-7"
+      required:
+        - data
+        - event
+      type: object
     TransactionInitialize_amount:
       description: |
         Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100).
@@ -22208,7 +22929,8 @@ components:
         send_sms: true
       oneOf:
         - allOf:
-            - {}
+            - maxProperties: 0
+              type: object
         - allOf:
             - additionalProperties: false
               required:
