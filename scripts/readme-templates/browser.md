@@ -21,6 +21,18 @@
 {{package_install}}
 ```
 
+## Agent Skills
+
+This package ships TanStack Intent skills for agent-assisted Paystack integration:
+
+```bash
+npx @tanstack/intent@latest list
+npx @tanstack/intent@latest install --map
+npx @tanstack/intent@latest load {{package_name}}#browser-safety
+```
+
+Useful skills include `client-setup`, `api-operations`, `typed-payloads`, `responses-errors`, `retries-idempotency`, `webhooks`, and `browser-safety`.
+
 Use your Paystack public key in browser environments. Do not expose a secret key in frontend code.
 
 ```ts
