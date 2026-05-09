@@ -41,7 +41,8 @@
   },
   "files": [
     "dist",
-    "skills"
+    "skills",
+    "!skills/_artifacts"
   ],
   "type": "module",
   "sideEffects": false,
