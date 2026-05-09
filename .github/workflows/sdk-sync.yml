@@ -33,4 +33,4 @@ jobs:
       - name: Sync SDKs
         env:
           GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
-        run: pnpm sdk:sync:all "Automated SDK sync from main"
+        run: vp run sdk:sync:all -- "Automated SDK sync from main"
