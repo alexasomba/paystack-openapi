@@ -84,6 +84,17 @@ async function postprocessComposerJson() {
         "Alexasomba\\Paystack\\Test\\": "test/",
       },
     },
+    "require-dev": {
+      ...json["require-dev"],
+      "phpstan/phpstan": "^2.1",
+    },
+    config: {
+      ...json.config,
+      platform: {
+        ...json.config?.platform,
+        php: "8.1.34",
+      },
+    },
   };
 
   const next = `${JSON.stringify(nextJson, null, 4)}\n`;
