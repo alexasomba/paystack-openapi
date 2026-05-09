@@ -25,7 +25,7 @@ import (
 // DisputeAPIService DisputeAPI service
 type DisputeAPIService service
 
-type ApiDownloadRequest struct {
+type DisputeDownloadAPIRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	perPage *int32
@@ -36,35 +36,35 @@ type ApiDownloadRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiDownloadRequest) PerPage(perPage int32) ApiDownloadRequest {
+func (r DisputeDownloadAPIRequest) PerPage(perPage int32) DisputeDownloadAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiDownloadRequest) Page(page int32) ApiDownloadRequest {
+func (r DisputeDownloadAPIRequest) Page(page int32) DisputeDownloadAPIRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiDownloadRequest) Status(status string) ApiDownloadRequest {
+func (r DisputeDownloadAPIRequest) Status(status string) DisputeDownloadAPIRequest {
 	r.status = &status
 	return r
 }
 
 // The start date
-func (r ApiDownloadRequest) From(from time.Time) ApiDownloadRequest {
+func (r DisputeDownloadAPIRequest) From(from time.Time) DisputeDownloadAPIRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiDownloadRequest) To(to time.Time) ApiDownloadRequest {
+func (r DisputeDownloadAPIRequest) To(to time.Time) DisputeDownloadAPIRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiDownloadRequest) Execute() (*DisputeExportResponse, *http.Response, error) {
+func (r DisputeDownloadAPIRequest) Execute() (*DisputeExportResponse, *http.Response, error) {
 	return r.ApiService.DownloadExecute(r)
 }
 
@@ -74,10 +74,10 @@ Download Export Disputes
 Export the disputes available on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiDownloadRequest
+ @return DisputeDownloadAPIRequest
 */
-func (a *DisputeAPIService) Download(ctx context.Context) ApiDownloadRequest {
-	return ApiDownloadRequest{
+func (a *DisputeAPIService) Download(ctx context.Context) DisputeDownloadAPIRequest {
+	return DisputeDownloadAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -85,7 +85,7 @@ func (a *DisputeAPIService) Download(ctx context.Context) ApiDownloadRequest {
 
 // Execute executes the request
 //  @return DisputeExportResponse
-func (a *DisputeAPIService) DownloadExecute(r ApiDownloadRequest) (*DisputeExportResponse, *http.Response, error) {
+func (a *DisputeAPIService) DownloadExecute(r DisputeDownloadAPIRequest) (*DisputeExportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -195,19 +195,19 @@ func (a *DisputeAPIService) DownloadExecute(r ApiDownloadRequest) (*DisputeExpor
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEvidenceRequest struct {
+type DisputeEvidenceAPIRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	id int32
 	disputeEvidence *DisputeEvidence
 }
 
-func (r ApiEvidenceRequest) DisputeEvidence(disputeEvidence DisputeEvidence) ApiEvidenceRequest {
+func (r DisputeEvidenceAPIRequest) DisputeEvidence(disputeEvidence DisputeEvidence) DisputeEvidenceAPIRequest {
 	r.disputeEvidence = &disputeEvidence
 	return r
 }
 
-func (r ApiEvidenceRequest) Execute() (*DisputeAddEvidenceResponse, *http.Response, error) {
+func (r DisputeEvidenceAPIRequest) Execute() (*DisputeAddEvidenceResponse, *http.Response, error) {
 	return r.ApiService.EvidenceExecute(r)
 }
 
@@ -218,10 +218,10 @@ Provide evidence for a dispute
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the dispute
- @return ApiEvidenceRequest
+ @return DisputeEvidenceAPIRequest
 */
-func (a *DisputeAPIService) Evidence(ctx context.Context, id int32) ApiEvidenceRequest {
-	return ApiEvidenceRequest{
+func (a *DisputeAPIService) Evidence(ctx context.Context, id int32) DisputeEvidenceAPIRequest {
+	return DisputeEvidenceAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -230,7 +230,7 @@ func (a *DisputeAPIService) Evidence(ctx context.Context, id int32) ApiEvidenceR
 
 // Execute executes the request
 //  @return DisputeAddEvidenceResponse
-func (a *DisputeAPIService) EvidenceExecute(r ApiEvidenceRequest) (*DisputeAddEvidenceResponse, *http.Response, error) {
+func (a *DisputeAPIService) EvidenceExecute(r DisputeEvidenceAPIRequest) (*DisputeAddEvidenceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -317,13 +317,13 @@ func (a *DisputeAPIService) EvidenceExecute(r ApiEvidenceRequest) (*DisputeAddEv
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchRequest struct {
+type DisputeFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	id int32
 }
 
-func (r ApiFetchRequest) Execute() (*DisputeFetchResponse, *http.Response, error) {
+func (r DisputeFetchAPIRequest) Execute() (*DisputeFetchResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -334,10 +334,10 @@ Fetch a transaction dispute
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the dispute
- @return ApiFetchRequest
+ @return DisputeFetchAPIRequest
 */
-func (a *DisputeAPIService) Fetch(ctx context.Context, id int32) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *DisputeAPIService) Fetch(ctx context.Context, id int32) DisputeFetchAPIRequest {
+	return DisputeFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -346,7 +346,7 @@ func (a *DisputeAPIService) Fetch(ctx context.Context, id int32) ApiFetchRequest
 
 // Execute executes the request
 //  @return DisputeFetchResponse
-func (a *DisputeAPIService) FetchExecute(r ApiFetchRequest) (*DisputeFetchResponse, *http.Response, error) {
+func (a *DisputeAPIService) FetchExecute(r DisputeFetchAPIRequest) (*DisputeFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -442,7 +442,7 @@ func (a *DisputeAPIService) FetchExecute(r ApiFetchRequest) (*DisputeFetchRespon
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type DisputeListAPIRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	perPage *int32
@@ -454,42 +454,42 @@ type ApiListRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r DisputeListAPIRequest) PerPage(perPage int32) DisputeListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiListRequest) Page(page int32) ApiListRequest {
+func (r DisputeListAPIRequest) Page(page int32) DisputeListAPIRequest {
 	r.page = &page
 	return r
 }
 
 // Dispute status
-func (r ApiListRequest) Status(status string) ApiListRequest {
+func (r DisputeListAPIRequest) Status(status string) DisputeListAPIRequest {
 	r.status = &status
 	return r
 }
 
 // Transaction ID
-func (r ApiListRequest) Transaction(transaction string) ApiListRequest {
+func (r DisputeListAPIRequest) Transaction(transaction string) DisputeListAPIRequest {
 	r.transaction = &transaction
 	return r
 }
 
 // The start date
-func (r ApiListRequest) From(from time.Time) ApiListRequest {
+func (r DisputeListAPIRequest) From(from time.Time) DisputeListAPIRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiListRequest) To(to time.Time) ApiListRequest {
+func (r DisputeListAPIRequest) To(to time.Time) DisputeListAPIRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiListRequest) Execute() (*DisputeListResponse, *http.Response, error) {
+func (r DisputeListAPIRequest) Execute() (*DisputeListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -499,10 +499,10 @@ List List Disputes
 List transaction disputes filed by customers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return DisputeListAPIRequest
 */
-func (a *DisputeAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *DisputeAPIService) List(ctx context.Context) DisputeListAPIRequest {
+	return DisputeListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -510,7 +510,7 @@ func (a *DisputeAPIService) List(ctx context.Context) ApiListRequest {
 
 // Execute executes the request
 //  @return DisputeListResponse
-func (a *DisputeAPIService) ListExecute(r ApiListRequest) (*DisputeListResponse, *http.Response, error) {
+func (a *DisputeAPIService) ListExecute(r DisputeListAPIRequest) (*DisputeListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -623,19 +623,19 @@ func (a *DisputeAPIService) ListExecute(r ApiListRequest) (*DisputeListResponse,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiResolveRequest struct {
+type DisputeResolveAPIRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	id int32
 	disputeResolve *DisputeResolve
 }
 
-func (r ApiResolveRequest) DisputeResolve(disputeResolve DisputeResolve) ApiResolveRequest {
+func (r DisputeResolveAPIRequest) DisputeResolve(disputeResolve DisputeResolve) DisputeResolveAPIRequest {
 	r.disputeResolve = &disputeResolve
 	return r
 }
 
-func (r ApiResolveRequest) Execute() (*DisputeResolveResponse, *http.Response, error) {
+func (r DisputeResolveAPIRequest) Execute() (*DisputeResolveResponse, *http.Response, error) {
 	return r.ApiService.ResolveExecute(r)
 }
 
@@ -646,10 +646,10 @@ Resolve a transaction dispute
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the dispute
- @return ApiResolveRequest
+ @return DisputeResolveAPIRequest
 */
-func (a *DisputeAPIService) Resolve(ctx context.Context, id int32) ApiResolveRequest {
-	return ApiResolveRequest{
+func (a *DisputeAPIService) Resolve(ctx context.Context, id int32) DisputeResolveAPIRequest {
+	return DisputeResolveAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -658,7 +658,7 @@ func (a *DisputeAPIService) Resolve(ctx context.Context, id int32) ApiResolveReq
 
 // Execute executes the request
 //  @return DisputeResolveResponse
-func (a *DisputeAPIService) ResolveExecute(r ApiResolveRequest) (*DisputeResolveResponse, *http.Response, error) {
+func (a *DisputeAPIService) ResolveExecute(r DisputeResolveAPIRequest) (*DisputeResolveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -756,13 +756,13 @@ func (a *DisputeAPIService) ResolveExecute(r ApiResolveRequest) (*DisputeResolve
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiTransactionRequest struct {
+type DisputeTransactionAPIRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	id int32
 }
 
-func (r ApiTransactionRequest) Execute() (*DisputeListTransactionResponse, *http.Response, error) {
+func (r DisputeTransactionAPIRequest) Execute() (*DisputeListTransactionResponse, *http.Response, error) {
 	return r.ApiService.TransactionExecute(r)
 }
 
@@ -773,10 +773,10 @@ List all disputes filed for a transaction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the transaction
- @return ApiTransactionRequest
+ @return DisputeTransactionAPIRequest
 */
-func (a *DisputeAPIService) Transaction(ctx context.Context, id int32) ApiTransactionRequest {
-	return ApiTransactionRequest{
+func (a *DisputeAPIService) Transaction(ctx context.Context, id int32) DisputeTransactionAPIRequest {
+	return DisputeTransactionAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -785,7 +785,7 @@ func (a *DisputeAPIService) Transaction(ctx context.Context, id int32) ApiTransa
 
 // Execute executes the request
 //  @return DisputeListTransactionResponse
-func (a *DisputeAPIService) TransactionExecute(r ApiTransactionRequest) (*DisputeListTransactionResponse, *http.Response, error) {
+func (a *DisputeAPIService) TransactionExecute(r DisputeTransactionAPIRequest) (*DisputeListTransactionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -881,19 +881,19 @@ func (a *DisputeAPIService) TransactionExecute(r ApiTransactionRequest) (*Disput
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateRequest struct {
+type DisputeUpdateAPIRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	id int32
 	disputeUpdate *DisputeUpdate
 }
 
-func (r ApiUpdateRequest) DisputeUpdate(disputeUpdate DisputeUpdate) ApiUpdateRequest {
+func (r DisputeUpdateAPIRequest) DisputeUpdate(disputeUpdate DisputeUpdate) DisputeUpdateAPIRequest {
 	r.disputeUpdate = &disputeUpdate
 	return r
 }
 
-func (r ApiUpdateRequest) Execute() (*DisputeUpdateResponse, *http.Response, error) {
+func (r DisputeUpdateAPIRequest) Execute() (*DisputeUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -904,10 +904,10 @@ Update a transaction dispute
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the dispute
- @return ApiUpdateRequest
+ @return DisputeUpdateAPIRequest
 */
-func (a *DisputeAPIService) Update(ctx context.Context, id int32) ApiUpdateRequest {
-	return ApiUpdateRequest{
+func (a *DisputeAPIService) Update(ctx context.Context, id int32) DisputeUpdateAPIRequest {
+	return DisputeUpdateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -916,7 +916,7 @@ func (a *DisputeAPIService) Update(ctx context.Context, id int32) ApiUpdateReque
 
 // Execute executes the request
 //  @return DisputeUpdateResponse
-func (a *DisputeAPIService) UpdateExecute(r ApiUpdateRequest) (*DisputeUpdateResponse, *http.Response, error) {
+func (a *DisputeAPIService) UpdateExecute(r DisputeUpdateAPIRequest) (*DisputeUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1014,13 +1014,13 @@ func (a *DisputeAPIService) UpdateExecute(r ApiUpdateRequest) (*DisputeUpdateRes
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUploadUrlRequest struct {
+type DisputeUploadUrlAPIRequest struct {
 	ctx context.Context
 	ApiService *DisputeAPIService
 	id int32
 }
 
-func (r ApiUploadUrlRequest) Execute() (*DisputeUploadURLResponse, *http.Response, error) {
+func (r DisputeUploadUrlAPIRequest) Execute() (*DisputeUploadURLResponse, *http.Response, error) {
 	return r.ApiService.UploadUrlExecute(r)
 }
 
@@ -1031,10 +1031,10 @@ Get the URL to upload a dispute evidence
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the dispute
- @return ApiUploadUrlRequest
+ @return DisputeUploadUrlAPIRequest
 */
-func (a *DisputeAPIService) UploadUrl(ctx context.Context, id int32) ApiUploadUrlRequest {
-	return ApiUploadUrlRequest{
+func (a *DisputeAPIService) UploadUrl(ctx context.Context, id int32) DisputeUploadUrlAPIRequest {
+	return DisputeUploadUrlAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1043,7 +1043,7 @@ func (a *DisputeAPIService) UploadUrl(ctx context.Context, id int32) ApiUploadUr
 
 // Execute executes the request
 //  @return DisputeUploadURLResponse
-func (a *DisputeAPIService) UploadUrlExecute(r ApiUploadUrlRequest) (*DisputeUploadURLResponse, *http.Response, error) {
+func (a *DisputeAPIService) UploadUrlExecute(r DisputeUploadUrlAPIRequest) (*DisputeUploadURLResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

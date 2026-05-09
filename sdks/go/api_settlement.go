@@ -25,7 +25,7 @@ import (
 // SettlementAPIService SettlementAPI service
 type SettlementAPIService service
 
-type ApiFetchRequest struct {
+type SettlementFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *SettlementAPIService
 	perPage *int32
@@ -37,42 +37,42 @@ type ApiFetchRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiFetchRequest) PerPage(perPage int32) ApiFetchRequest {
+func (r SettlementFetchAPIRequest) PerPage(perPage int32) SettlementFetchAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiFetchRequest) Page(page int32) ApiFetchRequest {
+func (r SettlementFetchAPIRequest) Page(page int32) SettlementFetchAPIRequest {
 	r.page = &page
 	return r
 }
 
 // The start date
-func (r ApiFetchRequest) From(from time.Time) ApiFetchRequest {
+func (r SettlementFetchAPIRequest) From(from time.Time) SettlementFetchAPIRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiFetchRequest) To(to time.Time) ApiFetchRequest {
+func (r SettlementFetchAPIRequest) To(to time.Time) SettlementFetchAPIRequest {
 	r.to = &to
 	return r
 }
 
 // Filter by status
-func (r ApiFetchRequest) Status(status string) ApiFetchRequest {
+func (r SettlementFetchAPIRequest) Status(status string) SettlementFetchAPIRequest {
 	r.status = &status
 	return r
 }
 
 // Filter by subaccount ID. Set to &#x60;none&#x60; to return only main account settlements.
-func (r ApiFetchRequest) Subaccount(subaccount string) ApiFetchRequest {
+func (r SettlementFetchAPIRequest) Subaccount(subaccount string) SettlementFetchAPIRequest {
 	r.subaccount = &subaccount
 	return r
 }
 
-func (r ApiFetchRequest) Execute() (*SettlementListResponse, *http.Response, error) {
+func (r SettlementFetchAPIRequest) Execute() (*SettlementListResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -82,10 +82,10 @@ Fetch List Settlements
 List settlements made to your settlement accounts
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFetchRequest
+ @return SettlementFetchAPIRequest
 */
-func (a *SettlementAPIService) Fetch(ctx context.Context) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *SettlementAPIService) Fetch(ctx context.Context) SettlementFetchAPIRequest {
+	return SettlementFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -93,7 +93,7 @@ func (a *SettlementAPIService) Fetch(ctx context.Context) ApiFetchRequest {
 
 // Execute executes the request
 //  @return SettlementListResponse
-func (a *SettlementAPIService) FetchExecute(r ApiFetchRequest) (*SettlementListResponse, *http.Response, error) {
+func (a *SettlementAPIService) FetchExecute(r SettlementFetchAPIRequest) (*SettlementListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -206,7 +206,7 @@ func (a *SettlementAPIService) FetchExecute(r ApiFetchRequest) (*SettlementListR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiTransactionRequest struct {
+type SettlementTransactionAPIRequest struct {
 	ctx context.Context
 	ApiService *SettlementAPIService
 	id int32
@@ -217,30 +217,30 @@ type ApiTransactionRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiTransactionRequest) PerPage(perPage int32) ApiTransactionRequest {
+func (r SettlementTransactionAPIRequest) PerPage(perPage int32) SettlementTransactionAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiTransactionRequest) Page(page int32) ApiTransactionRequest {
+func (r SettlementTransactionAPIRequest) Page(page int32) SettlementTransactionAPIRequest {
 	r.page = &page
 	return r
 }
 
 // The start date
-func (r ApiTransactionRequest) From(from time.Time) ApiTransactionRequest {
+func (r SettlementTransactionAPIRequest) From(from time.Time) SettlementTransactionAPIRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiTransactionRequest) To(to time.Time) ApiTransactionRequest {
+func (r SettlementTransactionAPIRequest) To(to time.Time) SettlementTransactionAPIRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiTransactionRequest) Execute() (*SettlementTransactionsResponse, *http.Response, error) {
+func (r SettlementTransactionAPIRequest) Execute() (*SettlementTransactionsResponse, *http.Response, error) {
 	return r.ApiService.TransactionExecute(r)
 }
 
@@ -251,10 +251,10 @@ Get the transactions that make up a particular settlement
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The settlement ID in which you want to fetch its transactions
- @return ApiTransactionRequest
+ @return SettlementTransactionAPIRequest
 */
-func (a *SettlementAPIService) Transaction(ctx context.Context, id int32) ApiTransactionRequest {
-	return ApiTransactionRequest{
+func (a *SettlementAPIService) Transaction(ctx context.Context, id int32) SettlementTransactionAPIRequest {
+	return SettlementTransactionAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -263,7 +263,7 @@ func (a *SettlementAPIService) Transaction(ctx context.Context, id int32) ApiTra
 
 // Execute executes the request
 //  @return SettlementTransactionsResponse
-func (a *SettlementAPIService) TransactionExecute(r ApiTransactionRequest) (*SettlementTransactionsResponse, *http.Response, error) {
+func (a *SettlementAPIService) TransactionExecute(r SettlementTransactionAPIRequest) (*SettlementTransactionsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

@@ -25,18 +25,18 @@ import (
 // CustomerAPIService CustomerAPI service
 type CustomerAPIService service
 
-type ApiCreateRequest struct {
+type CustomerCreateAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	customerCreate *CustomerCreate
 }
 
-func (r ApiCreateRequest) CustomerCreate(customerCreate CustomerCreate) ApiCreateRequest {
+func (r CustomerCreateAPIRequest) CustomerCreate(customerCreate CustomerCreate) CustomerCreateAPIRequest {
 	r.customerCreate = &customerCreate
 	return r
 }
 
-func (r ApiCreateRequest) Execute() (*CustomerCreateResponse, *http.Response, error) {
+func (r CustomerCreateAPIRequest) Execute() (*CustomerCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -46,10 +46,10 @@ Create Create Customer
 Create a customer on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateRequest
+ @return CustomerCreateAPIRequest
 */
-func (a *CustomerAPIService) Create(ctx context.Context) ApiCreateRequest {
-	return ApiCreateRequest{
+func (a *CustomerAPIService) Create(ctx context.Context) CustomerCreateAPIRequest {
+	return CustomerCreateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *CustomerAPIService) Create(ctx context.Context) ApiCreateRequest {
 
 // Execute executes the request
 //  @return CustomerCreateResponse
-func (a *CustomerAPIService) CreateExecute(r ApiCreateRequest) (*CustomerCreateResponse, *http.Response, error) {
+func (a *CustomerAPIService) CreateExecute(r CustomerCreateAPIRequest) (*CustomerCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -143,18 +143,18 @@ func (a *CustomerAPIService) CreateExecute(r ApiCreateRequest) (*CustomerCreateR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeactivateAuthorizationRequest struct {
+type CustomerDeactivateAuthorizationAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	customerDeactivateAuthorization *CustomerDeactivateAuthorization
 }
 
-func (r ApiDeactivateAuthorizationRequest) CustomerDeactivateAuthorization(customerDeactivateAuthorization CustomerDeactivateAuthorization) ApiDeactivateAuthorizationRequest {
+func (r CustomerDeactivateAuthorizationAPIRequest) CustomerDeactivateAuthorization(customerDeactivateAuthorization CustomerDeactivateAuthorization) CustomerDeactivateAuthorizationAPIRequest {
 	r.customerDeactivateAuthorization = &customerDeactivateAuthorization
 	return r
 }
 
-func (r ApiDeactivateAuthorizationRequest) Execute() (*CustomerDeactivateAuthorizationResponse, *http.Response, error) {
+func (r CustomerDeactivateAuthorizationAPIRequest) Execute() (*CustomerDeactivateAuthorizationResponse, *http.Response, error) {
 	return r.ApiService.DeactivateAuthorizationExecute(r)
 }
 
@@ -164,10 +164,10 @@ DeactivateAuthorization Deactivate Authorization
 Deactivate an authorization for any payment channel.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiDeactivateAuthorizationRequest
+ @return CustomerDeactivateAuthorizationAPIRequest
 */
-func (a *CustomerAPIService) DeactivateAuthorization(ctx context.Context) ApiDeactivateAuthorizationRequest {
-	return ApiDeactivateAuthorizationRequest{
+func (a *CustomerAPIService) DeactivateAuthorization(ctx context.Context) CustomerDeactivateAuthorizationAPIRequest {
+	return CustomerDeactivateAuthorizationAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -175,7 +175,7 @@ func (a *CustomerAPIService) DeactivateAuthorization(ctx context.Context) ApiDea
 
 // Execute executes the request
 //  @return CustomerDeactivateAuthorizationResponse
-func (a *CustomerAPIService) DeactivateAuthorizationExecute(r ApiDeactivateAuthorizationRequest) (*CustomerDeactivateAuthorizationResponse, *http.Response, error) {
+func (a *CustomerAPIService) DeactivateAuthorizationExecute(r CustomerDeactivateAuthorizationAPIRequest) (*CustomerDeactivateAuthorizationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -261,19 +261,19 @@ func (a *CustomerAPIService) DeactivateAuthorizationExecute(r ApiDeactivateAutho
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDirectDebitActivationChargeRequest struct {
+type CustomerDirectDebitActivationChargeAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	id int32
-	customerDirectDebitActivationChargeRequest *CustomerDirectDebitActivationChargeRequest
+	customerDirectDebitActivationChargeRequest *CustomerDirectDebitActivationChargeAPIRequest
 }
 
-func (r ApiDirectDebitActivationChargeRequest) CustomerDirectDebitActivationChargeRequest(customerDirectDebitActivationChargeRequest CustomerDirectDebitActivationChargeRequest) ApiDirectDebitActivationChargeRequest {
+func (r CustomerDirectDebitActivationChargeAPIRequest) CustomerDirectDebitActivationChargeAPIRequest(customerDirectDebitActivationChargeRequest CustomerDirectDebitActivationChargeAPIRequest) CustomerDirectDebitActivationChargeAPIRequest {
 	r.customerDirectDebitActivationChargeRequest = &customerDirectDebitActivationChargeRequest
 	return r
 }
 
-func (r ApiDirectDebitActivationChargeRequest) Execute() (*CustomerDirectDebitActivationChargeResponse, *http.Response, error) {
+func (r CustomerDirectDebitActivationChargeAPIRequest) Execute() (*CustomerDirectDebitActivationChargeResponse, *http.Response, error) {
 	return r.ApiService.DirectDebitActivationChargeExecute(r)
 }
 
@@ -284,10 +284,10 @@ Trigger an activation charge on an inactive mandate on behalf of your customer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The customer ID attached to the authorization
- @return ApiDirectDebitActivationChargeRequest
+ @return CustomerDirectDebitActivationChargeAPIRequest
 */
-func (a *CustomerAPIService) DirectDebitActivationCharge(ctx context.Context, id int32) ApiDirectDebitActivationChargeRequest {
-	return ApiDirectDebitActivationChargeRequest{
+func (a *CustomerAPIService) DirectDebitActivationCharge(ctx context.Context, id int32) CustomerDirectDebitActivationChargeAPIRequest {
+	return CustomerDirectDebitActivationChargeAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -296,7 +296,7 @@ func (a *CustomerAPIService) DirectDebitActivationCharge(ctx context.Context, id
 
 // Execute executes the request
 //  @return CustomerDirectDebitActivationChargeResponse
-func (a *CustomerAPIService) DirectDebitActivationChargeExecute(r ApiDirectDebitActivationChargeRequest) (*CustomerDirectDebitActivationChargeResponse, *http.Response, error) {
+func (a *CustomerAPIService) DirectDebitActivationChargeExecute(r CustomerDirectDebitActivationChargeAPIRequest) (*CustomerDirectDebitActivationChargeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -383,13 +383,13 @@ func (a *CustomerAPIService) DirectDebitActivationChargeExecute(r ApiDirectDebit
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchRequest struct {
+type CustomerFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	emailOrCode string
 }
 
-func (r ApiFetchRequest) Execute() (*CustomerFetchResponse, *http.Response, error) {
+func (r CustomerFetchAPIRequest) Execute() (*CustomerFetchResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -400,10 +400,10 @@ Get details of a customer on your integration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param emailOrCode An email or customer code for the customer you want to fetch
- @return ApiFetchRequest
+ @return CustomerFetchAPIRequest
 */
-func (a *CustomerAPIService) Fetch(ctx context.Context, emailOrCode string) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *CustomerAPIService) Fetch(ctx context.Context, emailOrCode string) CustomerFetchAPIRequest {
+	return CustomerFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		emailOrCode: emailOrCode,
@@ -412,7 +412,7 @@ func (a *CustomerAPIService) Fetch(ctx context.Context, emailOrCode string) ApiF
 
 // Execute executes the request
 //  @return CustomerFetchResponse
-func (a *CustomerAPIService) FetchExecute(r ApiFetchRequest) (*CustomerFetchResponse, *http.Response, error) {
+func (a *CustomerAPIService) FetchExecute(r CustomerFetchAPIRequest) (*CustomerFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -508,13 +508,13 @@ func (a *CustomerAPIService) FetchExecute(r ApiFetchRequest) (*CustomerFetchResp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchMandateAuthorizationsRequest struct {
+type CustomerFetchMandateAuthorizationsAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	id int32
 }
 
-func (r ApiFetchMandateAuthorizationsRequest) Execute() (*CustomerFetchMandateAuthorizationsResponse, *http.Response, error) {
+func (r CustomerFetchMandateAuthorizationsAPIRequest) Execute() (*CustomerFetchMandateAuthorizationsResponse, *http.Response, error) {
 	return r.ApiService.FetchMandateAuthorizationsExecute(r)
 }
 
@@ -525,10 +525,10 @@ Get the list of direct debit mandates associated with a customer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The customer ID for the authorizations to fetch
- @return ApiFetchMandateAuthorizationsRequest
+ @return CustomerFetchMandateAuthorizationsAPIRequest
 */
-func (a *CustomerAPIService) FetchMandateAuthorizations(ctx context.Context, id int32) ApiFetchMandateAuthorizationsRequest {
-	return ApiFetchMandateAuthorizationsRequest{
+func (a *CustomerAPIService) FetchMandateAuthorizations(ctx context.Context, id int32) CustomerFetchMandateAuthorizationsAPIRequest {
+	return CustomerFetchMandateAuthorizationsAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -537,7 +537,7 @@ func (a *CustomerAPIService) FetchMandateAuthorizations(ctx context.Context, id 
 
 // Execute executes the request
 //  @return CustomerFetchMandateAuthorizationsResponse
-func (a *CustomerAPIService) FetchMandateAuthorizationsExecute(r ApiFetchMandateAuthorizationsRequest) (*CustomerFetchMandateAuthorizationsResponse, *http.Response, error) {
+func (a *CustomerAPIService) FetchMandateAuthorizationsExecute(r CustomerFetchMandateAuthorizationsAPIRequest) (*CustomerFetchMandateAuthorizationsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -622,18 +622,18 @@ func (a *CustomerAPIService) FetchMandateAuthorizationsExecute(r ApiFetchMandate
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiInitializeAuthorizationRequest struct {
+type CustomerInitializeAuthorizationAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	customerAuthorizationInitializeRequest *CustomerAuthorizationInitializeRequest
 }
 
-func (r ApiInitializeAuthorizationRequest) CustomerAuthorizationInitializeRequest(customerAuthorizationInitializeRequest CustomerAuthorizationInitializeRequest) ApiInitializeAuthorizationRequest {
+func (r CustomerInitializeAuthorizationAPIRequest) CustomerAuthorizationInitializeRequest(customerAuthorizationInitializeRequest CustomerAuthorizationInitializeRequest) CustomerInitializeAuthorizationAPIRequest {
 	r.customerAuthorizationInitializeRequest = &customerAuthorizationInitializeRequest
 	return r
 }
 
-func (r ApiInitializeAuthorizationRequest) Execute() (*CustomerAuthorizationInitializeResponse, *http.Response, error) {
+func (r CustomerInitializeAuthorizationAPIRequest) Execute() (*CustomerAuthorizationInitializeResponse, *http.Response, error) {
 	return r.ApiService.InitializeAuthorizationExecute(r)
 }
 
@@ -643,10 +643,10 @@ InitializeAuthorization Initialize Authorization
 Initiate a request to create a reusable authorization code for recurring transactions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInitializeAuthorizationRequest
+ @return CustomerInitializeAuthorizationAPIRequest
 */
-func (a *CustomerAPIService) InitializeAuthorization(ctx context.Context) ApiInitializeAuthorizationRequest {
-	return ApiInitializeAuthorizationRequest{
+func (a *CustomerAPIService) InitializeAuthorization(ctx context.Context) CustomerInitializeAuthorizationAPIRequest {
+	return CustomerInitializeAuthorizationAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -654,7 +654,7 @@ func (a *CustomerAPIService) InitializeAuthorization(ctx context.Context) ApiIni
 
 // Execute executes the request
 //  @return CustomerAuthorizationInitializeResponse
-func (a *CustomerAPIService) InitializeAuthorizationExecute(r ApiInitializeAuthorizationRequest) (*CustomerAuthorizationInitializeResponse, *http.Response, error) {
+func (a *CustomerAPIService) InitializeAuthorizationExecute(r CustomerInitializeAuthorizationAPIRequest) (*CustomerAuthorizationInitializeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -743,19 +743,19 @@ func (a *CustomerAPIService) InitializeAuthorizationExecute(r ApiInitializeAutho
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiInitializeDirectDebitRequest struct {
+type CustomerInitializeDirectDebitAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	id int32
-	customerInitializeDirectDebitRequest *CustomerInitializeDirectDebitRequest
+	customerInitializeDirectDebitRequest *CustomerInitializeDirectDebitAPIRequest
 }
 
-func (r ApiInitializeDirectDebitRequest) CustomerInitializeDirectDebitRequest(customerInitializeDirectDebitRequest CustomerInitializeDirectDebitRequest) ApiInitializeDirectDebitRequest {
+func (r CustomerInitializeDirectDebitAPIRequest) CustomerInitializeDirectDebitAPIRequest(customerInitializeDirectDebitRequest CustomerInitializeDirectDebitAPIRequest) CustomerInitializeDirectDebitAPIRequest {
 	r.customerInitializeDirectDebitRequest = &customerInitializeDirectDebitRequest
 	return r
 }
 
-func (r ApiInitializeDirectDebitRequest) Execute() (*CustomerInitializeDirectDebitResponse, *http.Response, error) {
+func (r CustomerInitializeDirectDebitAPIRequest) Execute() (*CustomerInitializeDirectDebitResponse, *http.Response, error) {
 	return r.ApiService.InitializeDirectDebitExecute(r)
 }
 
@@ -766,10 +766,10 @@ Initialize the process of linking an account to a customer for Direct Debit tran
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the customer to initialize the direct debit for
- @return ApiInitializeDirectDebitRequest
+ @return CustomerInitializeDirectDebitAPIRequest
 */
-func (a *CustomerAPIService) InitializeDirectDebit(ctx context.Context, id int32) ApiInitializeDirectDebitRequest {
-	return ApiInitializeDirectDebitRequest{
+func (a *CustomerAPIService) InitializeDirectDebit(ctx context.Context, id int32) CustomerInitializeDirectDebitAPIRequest {
+	return CustomerInitializeDirectDebitAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -778,7 +778,7 @@ func (a *CustomerAPIService) InitializeDirectDebit(ctx context.Context, id int32
 
 // Execute executes the request
 //  @return CustomerInitializeDirectDebitResponse
-func (a *CustomerAPIService) InitializeDirectDebitExecute(r ApiInitializeDirectDebitRequest) (*CustomerInitializeDirectDebitResponse, *http.Response, error) {
+func (a *CustomerAPIService) InitializeDirectDebitExecute(r CustomerInitializeDirectDebitAPIRequest) (*CustomerInitializeDirectDebitResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -865,7 +865,7 @@ func (a *CustomerAPIService) InitializeDirectDebitExecute(r ApiInitializeDirectD
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type CustomerListAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	useCursor *bool
@@ -878,48 +878,48 @@ type ApiListRequest struct {
 }
 
 // A flag to indicate if cursor based pagination should be used
-func (r ApiListRequest) UseCursor(useCursor bool) ApiListRequest {
+func (r CustomerListAPIRequest) UseCursor(useCursor bool) CustomerListAPIRequest {
 	r.useCursor = &useCursor
 	return r
 }
 
 // An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
-func (r ApiListRequest) Next(next string) ApiListRequest {
+func (r CustomerListAPIRequest) Next(next string) CustomerListAPIRequest {
 	r.next = &next
 	return r
 }
 
 // An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
-func (r ApiListRequest) Previous(previous string) ApiListRequest {
+func (r CustomerListAPIRequest) Previous(previous string) CustomerListAPIRequest {
 	r.previous = &previous
 	return r
 }
 
 // A timestamp from which to start listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
-func (r ApiListRequest) From(from time.Time) ApiListRequest {
+func (r CustomerListAPIRequest) From(from time.Time) CustomerListAPIRequest {
 	r.from = &from
 	return r
 }
 
 // A timestamp at which to stop listing customers e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
-func (r ApiListRequest) To(to time.Time) ApiListRequest {
+func (r CustomerListAPIRequest) To(to time.Time) CustomerListAPIRequest {
 	r.to = &to
 	return r
 }
 
 // Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r CustomerListAPIRequest) PerPage(perPage int32) CustomerListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
-func (r ApiListRequest) Page(page int32) ApiListRequest {
+func (r CustomerListAPIRequest) Page(page int32) CustomerListAPIRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiListRequest) Execute() (*CustomerListResponse, *http.Response, error) {
+func (r CustomerListAPIRequest) Execute() (*CustomerListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -929,10 +929,10 @@ List List Customers
 List customers available on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return CustomerListAPIRequest
 */
-func (a *CustomerAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *CustomerAPIService) List(ctx context.Context) CustomerListAPIRequest {
+	return CustomerListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -940,7 +940,7 @@ func (a *CustomerAPIService) List(ctx context.Context) ApiListRequest {
 
 // Execute executes the request
 //  @return CustomerListResponse
-func (a *CustomerAPIService) ListExecute(r ApiListRequest) (*CustomerListResponse, *http.Response, error) {
+func (a *CustomerAPIService) ListExecute(r CustomerListAPIRequest) (*CustomerListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1056,18 +1056,18 @@ func (a *CustomerAPIService) ListExecute(r ApiListRequest) (*CustomerListRespons
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRiskActionRequest struct {
+type CustomerRiskActionAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	customerRiskAction *CustomerRiskAction
 }
 
-func (r ApiRiskActionRequest) CustomerRiskAction(customerRiskAction CustomerRiskAction) ApiRiskActionRequest {
+func (r CustomerRiskActionAPIRequest) CustomerRiskAction(customerRiskAction CustomerRiskAction) CustomerRiskActionAPIRequest {
 	r.customerRiskAction = &customerRiskAction
 	return r
 }
 
-func (r ApiRiskActionRequest) Execute() (*CustomerWhitelistBlacklistResponse, *http.Response, error) {
+func (r CustomerRiskActionAPIRequest) Execute() (*CustomerWhitelistBlacklistResponse, *http.Response, error) {
 	return r.ApiService.RiskActionExecute(r)
 }
 
@@ -1077,10 +1077,10 @@ RiskAction Set Risk Action
 Set customer's risk action by whitelisting or blacklisting the customer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRiskActionRequest
+ @return CustomerRiskActionAPIRequest
 */
-func (a *CustomerAPIService) RiskAction(ctx context.Context) ApiRiskActionRequest {
-	return ApiRiskActionRequest{
+func (a *CustomerAPIService) RiskAction(ctx context.Context) CustomerRiskActionAPIRequest {
+	return CustomerRiskActionAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1088,7 +1088,7 @@ func (a *CustomerAPIService) RiskAction(ctx context.Context) ApiRiskActionReques
 
 // Execute executes the request
 //  @return CustomerWhitelistBlacklistResponse
-func (a *CustomerAPIService) RiskActionExecute(r ApiRiskActionRequest) (*CustomerWhitelistBlacklistResponse, *http.Response, error) {
+func (a *CustomerAPIService) RiskActionExecute(r CustomerRiskActionAPIRequest) (*CustomerWhitelistBlacklistResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1174,19 +1174,19 @@ func (a *CustomerAPIService) RiskActionExecute(r ApiRiskActionRequest) (*Custome
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateRequest struct {
+type CustomerUpdateAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	emailOrCode string
 	customerUpdate *CustomerUpdate
 }
 
-func (r ApiUpdateRequest) CustomerUpdate(customerUpdate CustomerUpdate) ApiUpdateRequest {
+func (r CustomerUpdateAPIRequest) CustomerUpdate(customerUpdate CustomerUpdate) CustomerUpdateAPIRequest {
 	r.customerUpdate = &customerUpdate
 	return r
 }
 
-func (r ApiUpdateRequest) Execute() (*CustomerUpdateResponse, *http.Response, error) {
+func (r CustomerUpdateAPIRequest) Execute() (*CustomerUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -1197,10 +1197,10 @@ Update a customer's details on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param emailOrCode An email or customer code for the customer you want to fetch
- @return ApiUpdateRequest
+ @return CustomerUpdateAPIRequest
 */
-func (a *CustomerAPIService) Update(ctx context.Context, emailOrCode string) ApiUpdateRequest {
-	return ApiUpdateRequest{
+func (a *CustomerAPIService) Update(ctx context.Context, emailOrCode string) CustomerUpdateAPIRequest {
+	return CustomerUpdateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		emailOrCode: emailOrCode,
@@ -1209,7 +1209,7 @@ func (a *CustomerAPIService) Update(ctx context.Context, emailOrCode string) Api
 
 // Execute executes the request
 //  @return CustomerUpdateResponse
-func (a *CustomerAPIService) UpdateExecute(r ApiUpdateRequest) (*CustomerUpdateResponse, *http.Response, error) {
+func (a *CustomerAPIService) UpdateExecute(r CustomerUpdateAPIRequest) (*CustomerUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1307,19 +1307,19 @@ func (a *CustomerAPIService) UpdateExecute(r ApiUpdateRequest) (*CustomerUpdateR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiValidateRequest struct {
+type CustomerValidateAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	customerCode string
 	customerValidate *CustomerValidate
 }
 
-func (r ApiValidateRequest) CustomerValidate(customerValidate CustomerValidate) ApiValidateRequest {
+func (r CustomerValidateAPIRequest) CustomerValidate(customerValidate CustomerValidate) CustomerValidateAPIRequest {
 	r.customerValidate = &customerValidate
 	return r
 }
 
-func (r ApiValidateRequest) Execute() (*CustomerValidateResponse, *http.Response, error) {
+func (r CustomerValidateAPIRequest) Execute() (*CustomerValidateResponse, *http.Response, error) {
 	return r.ApiService.ValidateExecute(r)
 }
 
@@ -1330,10 +1330,10 @@ Validate a customer's identity
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param customerCode Customer code
- @return ApiValidateRequest
+ @return CustomerValidateAPIRequest
 */
-func (a *CustomerAPIService) Validate(ctx context.Context, customerCode string) ApiValidateRequest {
-	return ApiValidateRequest{
+func (a *CustomerAPIService) Validate(ctx context.Context, customerCode string) CustomerValidateAPIRequest {
+	return CustomerValidateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		customerCode: customerCode,
@@ -1342,7 +1342,7 @@ func (a *CustomerAPIService) Validate(ctx context.Context, customerCode string) 
 
 // Execute executes the request
 //  @return CustomerValidateResponse
-func (a *CustomerAPIService) ValidateExecute(r ApiValidateRequest) (*CustomerValidateResponse, *http.Response, error) {
+func (a *CustomerAPIService) ValidateExecute(r CustomerValidateAPIRequest) (*CustomerValidateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1429,13 +1429,13 @@ func (a *CustomerAPIService) ValidateExecute(r ApiValidateRequest) (*CustomerVal
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiVerifyAuthorizationRequest struct {
+type CustomerVerifyAuthorizationAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	reference string
 }
 
-func (r ApiVerifyAuthorizationRequest) Execute() (*CustomerAuthorizationVerifyResponse, *http.Response, error) {
+func (r CustomerVerifyAuthorizationAPIRequest) Execute() (*CustomerAuthorizationVerifyResponse, *http.Response, error) {
 	return r.ApiService.VerifyAuthorizationExecute(r)
 }
 
@@ -1446,10 +1446,10 @@ Check the status of an authorization request
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param reference The reference returned in the initialization response
- @return ApiVerifyAuthorizationRequest
+ @return CustomerVerifyAuthorizationAPIRequest
 */
-func (a *CustomerAPIService) VerifyAuthorization(ctx context.Context, reference string) ApiVerifyAuthorizationRequest {
-	return ApiVerifyAuthorizationRequest{
+func (a *CustomerAPIService) VerifyAuthorization(ctx context.Context, reference string) CustomerVerifyAuthorizationAPIRequest {
+	return CustomerVerifyAuthorizationAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		reference: reference,
@@ -1458,7 +1458,7 @@ func (a *CustomerAPIService) VerifyAuthorization(ctx context.Context, reference 
 
 // Execute executes the request
 //  @return CustomerAuthorizationVerifyResponse
-func (a *CustomerAPIService) VerifyAuthorizationExecute(r ApiVerifyAuthorizationRequest) (*CustomerAuthorizationVerifyResponse, *http.Response, error) {
+func (a *CustomerAPIService) VerifyAuthorizationExecute(r CustomerVerifyAuthorizationAPIRequest) (*CustomerAuthorizationVerifyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

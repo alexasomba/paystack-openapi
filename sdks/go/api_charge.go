@@ -24,13 +24,13 @@ import (
 // ChargeAPIService ChargeAPI service
 type ChargeAPIService service
 
-type ApiCheckRequest struct {
+type ChargeCheckAPIRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
 	reference string
 }
 
-func (r ApiCheckRequest) Execute() (*ChargeCheckPendingResponse, *http.Response, error) {
+func (r ChargeCheckAPIRequest) Execute() (*ChargeCheckPendingResponse, *http.Response, error) {
 	return r.ApiService.CheckExecute(r)
 }
 
@@ -42,10 +42,10 @@ When you get `pending` as a charge status or if there was an exception when call
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param reference The reference of the ongoing transaction
- @return ApiCheckRequest
+ @return ChargeCheckAPIRequest
 */
-func (a *ChargeAPIService) Check(ctx context.Context, reference string) ApiCheckRequest {
-	return ApiCheckRequest{
+func (a *ChargeAPIService) Check(ctx context.Context, reference string) ChargeCheckAPIRequest {
+	return ChargeCheckAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		reference: reference,
@@ -54,7 +54,7 @@ func (a *ChargeAPIService) Check(ctx context.Context, reference string) ApiCheck
 
 // Execute executes the request
 //  @return ChargeCheckPendingResponse
-func (a *ChargeAPIService) CheckExecute(r ApiCheckRequest) (*ChargeCheckPendingResponse, *http.Response, error) {
+func (a *ChargeAPIService) CheckExecute(r ChargeCheckAPIRequest) (*ChargeCheckPendingResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -150,18 +150,18 @@ func (a *ChargeAPIService) CheckExecute(r ApiCheckRequest) (*ChargeCheckPendingR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateRequest struct {
+type ChargeCreateAPIRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
-	chargeCreateRequest *ChargeCreateRequest
+	chargeCreateRequest *ChargeCreateAPIRequest
 }
 
-func (r ApiCreateRequest) ChargeCreateRequest(chargeCreateRequest ChargeCreateRequest) ApiCreateRequest {
+func (r ChargeCreateAPIRequest) ChargeCreateAPIRequest(chargeCreateRequest ChargeCreateAPIRequest) ChargeCreateAPIRequest {
 	r.chargeCreateRequest = &chargeCreateRequest
 	return r
 }
 
-func (r ApiCreateRequest) Execute() (*ChargeCreateResponse, *http.Response, error) {
+func (r ChargeCreateAPIRequest) Execute() (*ChargeCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -171,10 +171,10 @@ Create Create Charge
 Initiate a payment by integrating the payment channel of your choice.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateRequest
+ @return ChargeCreateAPIRequest
 */
-func (a *ChargeAPIService) Create(ctx context.Context) ApiCreateRequest {
-	return ApiCreateRequest{
+func (a *ChargeAPIService) Create(ctx context.Context) ChargeCreateAPIRequest {
+	return ChargeCreateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -182,7 +182,7 @@ func (a *ChargeAPIService) Create(ctx context.Context) ApiCreateRequest {
 
 // Execute executes the request
 //  @return ChargeCreateResponse
-func (a *ChargeAPIService) CreateExecute(r ApiCreateRequest) (*ChargeCreateResponse, *http.Response, error) {
+func (a *ChargeAPIService) CreateExecute(r ChargeCreateAPIRequest) (*ChargeCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -268,18 +268,18 @@ func (a *ChargeAPIService) CreateExecute(r ApiCreateRequest) (*ChargeCreateRespo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubmitAddressRequest struct {
+type ChargeSubmitAddressAPIRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
 	chargeSubmitAddress *ChargeSubmitAddress
 }
 
-func (r ApiSubmitAddressRequest) ChargeSubmitAddress(chargeSubmitAddress ChargeSubmitAddress) ApiSubmitAddressRequest {
+func (r ChargeSubmitAddressAPIRequest) ChargeSubmitAddress(chargeSubmitAddress ChargeSubmitAddress) ChargeSubmitAddressAPIRequest {
 	r.chargeSubmitAddress = &chargeSubmitAddress
 	return r
 }
 
-func (r ApiSubmitAddressRequest) Execute() (*ChargeCheckPendingResponse, *http.Response, error) {
+func (r ChargeSubmitAddressAPIRequest) Execute() (*ChargeCheckPendingResponse, *http.Response, error) {
 	return r.ApiService.SubmitAddressExecute(r)
 }
 
@@ -289,10 +289,10 @@ SubmitAddress Submit Address
 Send the details of the customer's address for address verification
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubmitAddressRequest
+ @return ChargeSubmitAddressAPIRequest
 */
-func (a *ChargeAPIService) SubmitAddress(ctx context.Context) ApiSubmitAddressRequest {
-	return ApiSubmitAddressRequest{
+func (a *ChargeAPIService) SubmitAddress(ctx context.Context) ChargeSubmitAddressAPIRequest {
+	return ChargeSubmitAddressAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -300,7 +300,7 @@ func (a *ChargeAPIService) SubmitAddress(ctx context.Context) ApiSubmitAddressRe
 
 // Execute executes the request
 //  @return ChargeCheckPendingResponse
-func (a *ChargeAPIService) SubmitAddressExecute(r ApiSubmitAddressRequest) (*ChargeCheckPendingResponse, *http.Response, error) {
+func (a *ChargeAPIService) SubmitAddressExecute(r ChargeSubmitAddressAPIRequest) (*ChargeCheckPendingResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -386,18 +386,18 @@ func (a *ChargeAPIService) SubmitAddressExecute(r ApiSubmitAddressRequest) (*Cha
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubmitBirthdayRequest struct {
+type ChargeSubmitBirthdayAPIRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
 	chargeSubmitBirthday *ChargeSubmitBirthday
 }
 
-func (r ApiSubmitBirthdayRequest) ChargeSubmitBirthday(chargeSubmitBirthday ChargeSubmitBirthday) ApiSubmitBirthdayRequest {
+func (r ChargeSubmitBirthdayAPIRequest) ChargeSubmitBirthday(chargeSubmitBirthday ChargeSubmitBirthday) ChargeSubmitBirthdayAPIRequest {
 	r.chargeSubmitBirthday = &chargeSubmitBirthday
 	return r
 }
 
-func (r ApiSubmitBirthdayRequest) Execute() (*ChargeSubmitBirthdayResponse, *http.Response, error) {
+func (r ChargeSubmitBirthdayAPIRequest) Execute() (*ChargeSubmitBirthdayResponse, *http.Response, error) {
 	return r.ApiService.SubmitBirthdayExecute(r)
 }
 
@@ -407,10 +407,10 @@ SubmitBirthday Submit Birthday
 Submit the customer's birthday when requested
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubmitBirthdayRequest
+ @return ChargeSubmitBirthdayAPIRequest
 */
-func (a *ChargeAPIService) SubmitBirthday(ctx context.Context) ApiSubmitBirthdayRequest {
-	return ApiSubmitBirthdayRequest{
+func (a *ChargeAPIService) SubmitBirthday(ctx context.Context) ChargeSubmitBirthdayAPIRequest {
+	return ChargeSubmitBirthdayAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -418,7 +418,7 @@ func (a *ChargeAPIService) SubmitBirthday(ctx context.Context) ApiSubmitBirthday
 
 // Execute executes the request
 //  @return ChargeSubmitBirthdayResponse
-func (a *ChargeAPIService) SubmitBirthdayExecute(r ApiSubmitBirthdayRequest) (*ChargeSubmitBirthdayResponse, *http.Response, error) {
+func (a *ChargeAPIService) SubmitBirthdayExecute(r ChargeSubmitBirthdayAPIRequest) (*ChargeSubmitBirthdayResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -504,18 +504,18 @@ func (a *ChargeAPIService) SubmitBirthdayExecute(r ApiSubmitBirthdayRequest) (*C
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubmitOtpRequest struct {
+type ChargeSubmitOtpAPIRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
 	chargeSubmitOTP *ChargeSubmitOTP
 }
 
-func (r ApiSubmitOtpRequest) ChargeSubmitOTP(chargeSubmitOTP ChargeSubmitOTP) ApiSubmitOtpRequest {
+func (r ChargeSubmitOtpAPIRequest) ChargeSubmitOTP(chargeSubmitOTP ChargeSubmitOTP) ChargeSubmitOtpAPIRequest {
 	r.chargeSubmitOTP = &chargeSubmitOTP
 	return r
 }
 
-func (r ApiSubmitOtpRequest) Execute() (*ChargeSubmitOtpResponse, *http.Response, error) {
+func (r ChargeSubmitOtpAPIRequest) Execute() (*ChargeSubmitOtpResponse, *http.Response, error) {
 	return r.ApiService.SubmitOtpExecute(r)
 }
 
@@ -525,10 +525,10 @@ SubmitOtp Submit OTP
 Submit OTP to complete a charge
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubmitOtpRequest
+ @return ChargeSubmitOtpAPIRequest
 */
-func (a *ChargeAPIService) SubmitOtp(ctx context.Context) ApiSubmitOtpRequest {
-	return ApiSubmitOtpRequest{
+func (a *ChargeAPIService) SubmitOtp(ctx context.Context) ChargeSubmitOtpAPIRequest {
+	return ChargeSubmitOtpAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -536,7 +536,7 @@ func (a *ChargeAPIService) SubmitOtp(ctx context.Context) ApiSubmitOtpRequest {
 
 // Execute executes the request
 //  @return ChargeSubmitOtpResponse
-func (a *ChargeAPIService) SubmitOtpExecute(r ApiSubmitOtpRequest) (*ChargeSubmitOtpResponse, *http.Response, error) {
+func (a *ChargeAPIService) SubmitOtpExecute(r ChargeSubmitOtpAPIRequest) (*ChargeSubmitOtpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -622,18 +622,18 @@ func (a *ChargeAPIService) SubmitOtpExecute(r ApiSubmitOtpRequest) (*ChargeSubmi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubmitPhoneRequest struct {
+type ChargeSubmitPhoneAPIRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
 	chargeSubmitPhone *ChargeSubmitPhone
 }
 
-func (r ApiSubmitPhoneRequest) ChargeSubmitPhone(chargeSubmitPhone ChargeSubmitPhone) ApiSubmitPhoneRequest {
+func (r ChargeSubmitPhoneAPIRequest) ChargeSubmitPhone(chargeSubmitPhone ChargeSubmitPhone) ChargeSubmitPhoneAPIRequest {
 	r.chargeSubmitPhone = &chargeSubmitPhone
 	return r
 }
 
-func (r ApiSubmitPhoneRequest) Execute() (*ChargeSubmitPhoneResponse, *http.Response, error) {
+func (r ChargeSubmitPhoneAPIRequest) Execute() (*ChargeSubmitPhoneResponse, *http.Response, error) {
 	return r.ApiService.SubmitPhoneExecute(r)
 }
 
@@ -643,10 +643,10 @@ SubmitPhone Submit Phone
 Submit phone number when requested
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubmitPhoneRequest
+ @return ChargeSubmitPhoneAPIRequest
 */
-func (a *ChargeAPIService) SubmitPhone(ctx context.Context) ApiSubmitPhoneRequest {
-	return ApiSubmitPhoneRequest{
+func (a *ChargeAPIService) SubmitPhone(ctx context.Context) ChargeSubmitPhoneAPIRequest {
+	return ChargeSubmitPhoneAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -654,7 +654,7 @@ func (a *ChargeAPIService) SubmitPhone(ctx context.Context) ApiSubmitPhoneReques
 
 // Execute executes the request
 //  @return ChargeSubmitPhoneResponse
-func (a *ChargeAPIService) SubmitPhoneExecute(r ApiSubmitPhoneRequest) (*ChargeSubmitPhoneResponse, *http.Response, error) {
+func (a *ChargeAPIService) SubmitPhoneExecute(r ChargeSubmitPhoneAPIRequest) (*ChargeSubmitPhoneResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -740,18 +740,18 @@ func (a *ChargeAPIService) SubmitPhoneExecute(r ApiSubmitPhoneRequest) (*ChargeS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSubmitPinRequest struct {
+type ChargeSubmitPinAPIRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
 	chargeSubmitPin *ChargeSubmitPin
 }
 
-func (r ApiSubmitPinRequest) ChargeSubmitPin(chargeSubmitPin ChargeSubmitPin) ApiSubmitPinRequest {
+func (r ChargeSubmitPinAPIRequest) ChargeSubmitPin(chargeSubmitPin ChargeSubmitPin) ChargeSubmitPinAPIRequest {
 	r.chargeSubmitPin = &chargeSubmitPin
 	return r
 }
 
-func (r ApiSubmitPinRequest) Execute() (*ChargeSubmitPinResponse, *http.Response, error) {
+func (r ChargeSubmitPinAPIRequest) Execute() (*ChargeSubmitPinResponse, *http.Response, error) {
 	return r.ApiService.SubmitPinExecute(r)
 }
 
@@ -761,10 +761,10 @@ SubmitPin Submit PIN
 Submit PIN to continue a charge
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSubmitPinRequest
+ @return ChargeSubmitPinAPIRequest
 */
-func (a *ChargeAPIService) SubmitPin(ctx context.Context) ApiSubmitPinRequest {
-	return ApiSubmitPinRequest{
+func (a *ChargeAPIService) SubmitPin(ctx context.Context) ChargeSubmitPinAPIRequest {
+	return ChargeSubmitPinAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -772,7 +772,7 @@ func (a *ChargeAPIService) SubmitPin(ctx context.Context) ApiSubmitPinRequest {
 
 // Execute executes the request
 //  @return ChargeSubmitPinResponse
-func (a *ChargeAPIService) SubmitPinExecute(r ApiSubmitPinRequest) (*ChargeSubmitPinResponse, *http.Response, error) {
+func (a *ChargeAPIService) SubmitPinExecute(r ChargeSubmitPinAPIRequest) (*ChargeSubmitPinResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

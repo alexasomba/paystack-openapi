@@ -25,18 +25,18 @@ import (
 // ProductAPIService ProductAPI service
 type ProductAPIService service
 
-type ApiCreateRequest struct {
+type ProductCreateAPIRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	productCreate *ProductCreate
 }
 
-func (r ApiCreateRequest) ProductCreate(productCreate ProductCreate) ApiCreateRequest {
+func (r ProductCreateAPIRequest) ProductCreate(productCreate ProductCreate) ProductCreateAPIRequest {
 	r.productCreate = &productCreate
 	return r
 }
 
-func (r ApiCreateRequest) Execute() (*ProductCreateResponse, *http.Response, error) {
+func (r ProductCreateAPIRequest) Execute() (*ProductCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -46,10 +46,10 @@ Create Create Product
 Create a new product on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateRequest
+ @return ProductCreateAPIRequest
 */
-func (a *ProductAPIService) Create(ctx context.Context) ApiCreateRequest {
-	return ApiCreateRequest{
+func (a *ProductAPIService) Create(ctx context.Context) ProductCreateAPIRequest {
+	return ProductCreateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *ProductAPIService) Create(ctx context.Context) ApiCreateRequest {
 
 // Execute executes the request
 //  @return ProductCreateResponse
-func (a *ProductAPIService) CreateExecute(r ApiCreateRequest) (*ProductCreateResponse, *http.Response, error) {
+func (a *ProductAPIService) CreateExecute(r ProductCreateAPIRequest) (*ProductCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -143,13 +143,13 @@ func (a *ProductAPIService) CreateExecute(r ApiCreateRequest) (*ProductCreateRes
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteRequest struct {
+type ProductDeleteAPIRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	id int32
 }
 
-func (r ApiDeleteRequest) Execute() (*ProductDeleteResponse, *http.Response, error) {
+func (r ProductDeleteAPIRequest) Execute() (*ProductDeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteExecute(r)
 }
 
@@ -160,10 +160,10 @@ Delete a previously created product
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the product
- @return ApiDeleteRequest
+ @return ProductDeleteAPIRequest
 */
-func (a *ProductAPIService) Delete(ctx context.Context, id int32) ApiDeleteRequest {
-	return ApiDeleteRequest{
+func (a *ProductAPIService) Delete(ctx context.Context, id int32) ProductDeleteAPIRequest {
+	return ProductDeleteAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -172,7 +172,7 @@ func (a *ProductAPIService) Delete(ctx context.Context, id int32) ApiDeleteReque
 
 // Execute executes the request
 //  @return ProductDeleteResponse
-func (a *ProductAPIService) DeleteExecute(r ApiDeleteRequest) (*ProductDeleteResponse, *http.Response, error) {
+func (a *ProductAPIService) DeleteExecute(r ProductDeleteAPIRequest) (*ProductDeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -268,13 +268,13 @@ func (a *ProductAPIService) DeleteExecute(r ApiDeleteRequest) (*ProductDeleteRes
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchRequest struct {
+type ProductFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	id int32
 }
 
-func (r ApiFetchRequest) Execute() (*ProductFetchResponse, *http.Response, error) {
+func (r ProductFetchAPIRequest) Execute() (*ProductFetchResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -285,10 +285,10 @@ Fetch a previously created product
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the product
- @return ApiFetchRequest
+ @return ProductFetchAPIRequest
 */
-func (a *ProductAPIService) Fetch(ctx context.Context, id int32) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *ProductAPIService) Fetch(ctx context.Context, id int32) ProductFetchAPIRequest {
+	return ProductFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -297,7 +297,7 @@ func (a *ProductAPIService) Fetch(ctx context.Context, id int32) ApiFetchRequest
 
 // Execute executes the request
 //  @return ProductFetchResponse
-func (a *ProductAPIService) FetchExecute(r ApiFetchRequest) (*ProductFetchResponse, *http.Response, error) {
+func (a *ProductAPIService) FetchExecute(r ProductFetchAPIRequest) (*ProductFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -393,7 +393,7 @@ func (a *ProductAPIService) FetchExecute(r ApiFetchRequest) (*ProductFetchRespon
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type ProductListAPIRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	perPage *int32
@@ -404,36 +404,36 @@ type ApiListRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r ProductListAPIRequest) PerPage(perPage int32) ProductListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiListRequest) Page(page int32) ApiListRequest {
+func (r ProductListAPIRequest) Page(page int32) ProductListAPIRequest {
 	r.page = &page
 	return r
 }
 
 // The state of the product
-func (r ApiListRequest) Active(active bool) ApiListRequest {
+func (r ProductListAPIRequest) Active(active bool) ProductListAPIRequest {
 	r.active = &active
 	return r
 }
 
 // The start date
-func (r ApiListRequest) From(from time.Time) ApiListRequest {
+func (r ProductListAPIRequest) From(from time.Time) ProductListAPIRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiListRequest) To(to time.Time) ApiListRequest {
+func (r ProductListAPIRequest) To(to time.Time) ProductListAPIRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiListRequest) Execute() (*ProductListsResponse, *http.Response, error) {
+func (r ProductListAPIRequest) Execute() (*ProductListsResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -443,10 +443,10 @@ List List Products
 List all previously created products
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return ProductListAPIRequest
 */
-func (a *ProductAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *ProductAPIService) List(ctx context.Context) ProductListAPIRequest {
+	return ProductListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -454,7 +454,7 @@ func (a *ProductAPIService) List(ctx context.Context) ApiListRequest {
 
 // Execute executes the request
 //  @return ProductListsResponse
-func (a *ProductAPIService) ListExecute(r ApiListRequest) (*ProductListsResponse, *http.Response, error) {
+func (a *ProductAPIService) ListExecute(r ProductListAPIRequest) (*ProductListsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -564,19 +564,19 @@ func (a *ProductAPIService) ListExecute(r ApiListRequest) (*ProductListsResponse
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateRequest struct {
+type ProductUpdateAPIRequest struct {
 	ctx context.Context
 	ApiService *ProductAPIService
 	id int32
 	productUpdate *ProductUpdate
 }
 
-func (r ApiUpdateRequest) ProductUpdate(productUpdate ProductUpdate) ApiUpdateRequest {
+func (r ProductUpdateAPIRequest) ProductUpdate(productUpdate ProductUpdate) ProductUpdateAPIRequest {
 	r.productUpdate = &productUpdate
 	return r
 }
 
-func (r ApiUpdateRequest) Execute() (*ProductUpdateResponse, *http.Response, error) {
+func (r ProductUpdateAPIRequest) Execute() (*ProductUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -587,10 +587,10 @@ Update a previously created product
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the product
- @return ApiUpdateRequest
+ @return ProductUpdateAPIRequest
 */
-func (a *ProductAPIService) Update(ctx context.Context, id int32) ApiUpdateRequest {
-	return ApiUpdateRequest{
+func (a *ProductAPIService) Update(ctx context.Context, id int32) ProductUpdateAPIRequest {
+	return ProductUpdateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -599,7 +599,7 @@ func (a *ProductAPIService) Update(ctx context.Context, id int32) ApiUpdateReque
 
 // Execute executes the request
 //  @return ProductUpdateResponse
-func (a *ProductAPIService) UpdateExecute(r ApiUpdateRequest) (*ProductUpdateResponse, *http.Response, error) {
+func (a *ProductAPIService) UpdateExecute(r ProductUpdateAPIRequest) (*ProductUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

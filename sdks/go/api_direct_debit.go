@@ -23,7 +23,7 @@ import (
 // DirectDebitAPIService DirectDebitAPI service
 type DirectDebitAPIService service
 
-type ApiListMandateAuthorizationsRequest struct {
+type DirectDebitListMandateAuthorizationsAPIRequest struct {
 	ctx context.Context
 	ApiService *DirectDebitAPIService
 	cursor *string
@@ -32,24 +32,24 @@ type ApiListMandateAuthorizationsRequest struct {
 }
 
 // The cursor value of the next set of authorizations to fetch. You can get this from the meta object of the response
-func (r ApiListMandateAuthorizationsRequest) Cursor(cursor string) ApiListMandateAuthorizationsRequest {
+func (r DirectDebitListMandateAuthorizationsAPIRequest) Cursor(cursor string) DirectDebitListMandateAuthorizationsAPIRequest {
 	r.cursor = &cursor
 	return r
 }
 
 // Filter by the authorization status
-func (r ApiListMandateAuthorizationsRequest) Status(status string) ApiListMandateAuthorizationsRequest {
+func (r DirectDebitListMandateAuthorizationsAPIRequest) Status(status string) DirectDebitListMandateAuthorizationsAPIRequest {
 	r.status = &status
 	return r
 }
 
 // The number of authorizations to fetch per request
-func (r ApiListMandateAuthorizationsRequest) PerPage(perPage int32) ApiListMandateAuthorizationsRequest {
+func (r DirectDebitListMandateAuthorizationsAPIRequest) PerPage(perPage int32) DirectDebitListMandateAuthorizationsAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
-func (r ApiListMandateAuthorizationsRequest) Execute() (*CustomerFetchMandateAuthorizationsResponse, *http.Response, error) {
+func (r DirectDebitListMandateAuthorizationsAPIRequest) Execute() (*CustomerFetchMandateAuthorizationsResponse, *http.Response, error) {
 	return r.ApiService.ListMandateAuthorizationsExecute(r)
 }
 
@@ -59,10 +59,10 @@ ListMandateAuthorizations List Mandate Authorizations
 Get a list of all the direct debit mandates on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListMandateAuthorizationsRequest
+ @return DirectDebitListMandateAuthorizationsAPIRequest
 */
-func (a *DirectDebitAPIService) ListMandateAuthorizations(ctx context.Context) ApiListMandateAuthorizationsRequest {
-	return ApiListMandateAuthorizationsRequest{
+func (a *DirectDebitAPIService) ListMandateAuthorizations(ctx context.Context) DirectDebitListMandateAuthorizationsAPIRequest {
+	return DirectDebitListMandateAuthorizationsAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -70,7 +70,7 @@ func (a *DirectDebitAPIService) ListMandateAuthorizations(ctx context.Context) A
 
 // Execute executes the request
 //  @return CustomerFetchMandateAuthorizationsResponse
-func (a *DirectDebitAPIService) ListMandateAuthorizationsExecute(r ApiListMandateAuthorizationsRequest) (*CustomerFetchMandateAuthorizationsResponse, *http.Response, error) {
+func (a *DirectDebitAPIService) ListMandateAuthorizationsExecute(r DirectDebitListMandateAuthorizationsAPIRequest) (*CustomerFetchMandateAuthorizationsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -163,18 +163,18 @@ func (a *DirectDebitAPIService) ListMandateAuthorizationsExecute(r ApiListMandat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiTriggerActivationChargeRequest struct {
+type DirectDebitTriggerActivationChargeAPIRequest struct {
 	ctx context.Context
 	ApiService *DirectDebitAPIService
 	directDebitActivationChargeRequest *DirectDebitActivationChargeRequest
 }
 
-func (r ApiTriggerActivationChargeRequest) DirectDebitActivationChargeRequest(directDebitActivationChargeRequest DirectDebitActivationChargeRequest) ApiTriggerActivationChargeRequest {
+func (r DirectDebitTriggerActivationChargeAPIRequest) DirectDebitActivationChargeRequest(directDebitActivationChargeRequest DirectDebitActivationChargeRequest) DirectDebitTriggerActivationChargeAPIRequest {
 	r.directDebitActivationChargeRequest = &directDebitActivationChargeRequest
 	return r
 }
 
-func (r ApiTriggerActivationChargeRequest) Execute() (*DirectDebitActivationChargeResponse, *http.Response, error) {
+func (r DirectDebitTriggerActivationChargeAPIRequest) Execute() (*DirectDebitActivationChargeResponse, *http.Response, error) {
 	return r.ApiService.TriggerActivationChargeExecute(r)
 }
 
@@ -184,10 +184,10 @@ TriggerActivationCharge Trigger Activation Charge
 Trigger activation charge for specified customers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiTriggerActivationChargeRequest
+ @return DirectDebitTriggerActivationChargeAPIRequest
 */
-func (a *DirectDebitAPIService) TriggerActivationCharge(ctx context.Context) ApiTriggerActivationChargeRequest {
-	return ApiTriggerActivationChargeRequest{
+func (a *DirectDebitAPIService) TriggerActivationCharge(ctx context.Context) DirectDebitTriggerActivationChargeAPIRequest {
+	return DirectDebitTriggerActivationChargeAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -195,7 +195,7 @@ func (a *DirectDebitAPIService) TriggerActivationCharge(ctx context.Context) Api
 
 // Execute executes the request
 //  @return DirectDebitActivationChargeResponse
-func (a *DirectDebitAPIService) TriggerActivationChargeExecute(r ApiTriggerActivationChargeRequest) (*DirectDebitActivationChargeResponse, *http.Response, error) {
+func (a *DirectDebitAPIService) TriggerActivationChargeExecute(r DirectDebitTriggerActivationChargeAPIRequest) (*DirectDebitActivationChargeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

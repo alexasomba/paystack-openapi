@@ -25,18 +25,18 @@ import (
 // TransferAPIService TransferAPI service
 type TransferAPIService service
 
-type ApiBulkRequest struct {
+type TransferBulkAPIRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
 	transferBulk *TransferBulk
 }
 
-func (r ApiBulkRequest) TransferBulk(transferBulk TransferBulk) ApiBulkRequest {
+func (r TransferBulkAPIRequest) TransferBulk(transferBulk TransferBulk) TransferBulkAPIRequest {
 	r.transferBulk = &transferBulk
 	return r
 }
 
-func (r ApiBulkRequest) Execute() (*TransferBulkResponse, *http.Response, error) {
+func (r TransferBulkAPIRequest) Execute() (*TransferBulkResponse, *http.Response, error) {
 	return r.ApiService.BulkExecute(r)
 }
 
@@ -49,10 +49,10 @@ You need to disable the Transfers OTP requirement to use this endpoint.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiBulkRequest
+ @return TransferBulkAPIRequest
 */
-func (a *TransferAPIService) Bulk(ctx context.Context) ApiBulkRequest {
-	return ApiBulkRequest{
+func (a *TransferAPIService) Bulk(ctx context.Context) TransferBulkAPIRequest {
+	return TransferBulkAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -60,7 +60,7 @@ func (a *TransferAPIService) Bulk(ctx context.Context) ApiBulkRequest {
 
 // Execute executes the request
 //  @return TransferBulkResponse
-func (a *TransferAPIService) BulkExecute(r ApiBulkRequest) (*TransferBulkResponse, *http.Response, error) {
+func (a *TransferAPIService) BulkExecute(r TransferBulkAPIRequest) (*TransferBulkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -146,12 +146,12 @@ func (a *TransferAPIService) BulkExecute(r ApiBulkRequest) (*TransferBulkRespons
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDisableOtpRequest struct {
+type TransferDisableOtpAPIRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
 }
 
-func (r ApiDisableOtpRequest) Execute() (*TransferDisablesOtpResponse, *http.Response, error) {
+func (r TransferDisableOtpAPIRequest) Execute() (*TransferDisablesOtpResponse, *http.Response, error) {
 	return r.ApiService.DisableOtpExecute(r)
 }
 
@@ -163,10 +163,10 @@ No arguments required. You will get an OTP to complete the request.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiDisableOtpRequest
+ @return TransferDisableOtpAPIRequest
 */
-func (a *TransferAPIService) DisableOtp(ctx context.Context) ApiDisableOtpRequest {
-	return ApiDisableOtpRequest{
+func (a *TransferAPIService) DisableOtp(ctx context.Context) TransferDisableOtpAPIRequest {
+	return TransferDisableOtpAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -174,7 +174,7 @@ func (a *TransferAPIService) DisableOtp(ctx context.Context) ApiDisableOtpReques
 
 // Execute executes the request
 //  @return TransferDisablesOtpResponse
-func (a *TransferAPIService) DisableOtpExecute(r ApiDisableOtpRequest) (*TransferDisablesOtpResponse, *http.Response, error) {
+func (a *TransferAPIService) DisableOtpExecute(r TransferDisableOtpAPIRequest) (*TransferDisablesOtpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -258,18 +258,18 @@ func (a *TransferAPIService) DisableOtpExecute(r ApiDisableOtpRequest) (*Transfe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDisableOtpFinalizeRequest struct {
+type TransferDisableOtpFinalizeAPIRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
 	transferFinalizeDisableOTP *TransferFinalizeDisableOTP
 }
 
-func (r ApiDisableOtpFinalizeRequest) TransferFinalizeDisableOTP(transferFinalizeDisableOTP TransferFinalizeDisableOTP) ApiDisableOtpFinalizeRequest {
+func (r TransferDisableOtpFinalizeAPIRequest) TransferFinalizeDisableOTP(transferFinalizeDisableOTP TransferFinalizeDisableOTP) TransferDisableOtpFinalizeAPIRequest {
 	r.transferFinalizeDisableOTP = &transferFinalizeDisableOTP
 	return r
 }
 
-func (r ApiDisableOtpFinalizeRequest) Execute() (*TransferFinalizeDisablesOtpResponse, *http.Response, error) {
+func (r TransferDisableOtpFinalizeAPIRequest) Execute() (*TransferFinalizeDisablesOtpResponse, *http.Response, error) {
 	return r.ApiService.DisableOtpFinalizeExecute(r)
 }
 
@@ -279,10 +279,10 @@ DisableOtpFinalize Finalize Disabling OTP for Transfers
 Finalize the request to disable OTP on your transfers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiDisableOtpFinalizeRequest
+ @return TransferDisableOtpFinalizeAPIRequest
 */
-func (a *TransferAPIService) DisableOtpFinalize(ctx context.Context) ApiDisableOtpFinalizeRequest {
-	return ApiDisableOtpFinalizeRequest{
+func (a *TransferAPIService) DisableOtpFinalize(ctx context.Context) TransferDisableOtpFinalizeAPIRequest {
+	return TransferDisableOtpFinalizeAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -290,7 +290,7 @@ func (a *TransferAPIService) DisableOtpFinalize(ctx context.Context) ApiDisableO
 
 // Execute executes the request
 //  @return TransferFinalizeDisablesOtpResponse
-func (a *TransferAPIService) DisableOtpFinalizeExecute(r ApiDisableOtpFinalizeRequest) (*TransferFinalizeDisablesOtpResponse, *http.Response, error) {
+func (a *TransferAPIService) DisableOtpFinalizeExecute(r TransferDisableOtpFinalizeAPIRequest) (*TransferFinalizeDisablesOtpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -376,12 +376,12 @@ func (a *TransferAPIService) DisableOtpFinalizeExecute(r ApiDisableOtpFinalizeRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEnableOtpRequest struct {
+type TransferEnableOtpAPIRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
 }
 
-func (r ApiEnableOtpRequest) Execute() (*TransferEnablesOtpResponse, *http.Response, error) {
+func (r TransferEnableOtpAPIRequest) Execute() (*TransferEnablesOtpResponse, *http.Response, error) {
 	return r.ApiService.EnableOtpExecute(r)
 }
 
@@ -393,10 +393,10 @@ No arguments required.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiEnableOtpRequest
+ @return TransferEnableOtpAPIRequest
 */
-func (a *TransferAPIService) EnableOtp(ctx context.Context) ApiEnableOtpRequest {
-	return ApiEnableOtpRequest{
+func (a *TransferAPIService) EnableOtp(ctx context.Context) TransferEnableOtpAPIRequest {
+	return TransferEnableOtpAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -404,7 +404,7 @@ func (a *TransferAPIService) EnableOtp(ctx context.Context) ApiEnableOtpRequest 
 
 // Execute executes the request
 //  @return TransferEnablesOtpResponse
-func (a *TransferAPIService) EnableOtpExecute(r ApiEnableOtpRequest) (*TransferEnablesOtpResponse, *http.Response, error) {
+func (a *TransferAPIService) EnableOtpExecute(r TransferEnableOtpAPIRequest) (*TransferEnablesOtpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -488,7 +488,7 @@ func (a *TransferAPIService) EnableOtpExecute(r ApiEnableOtpRequest) (*TransferE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiExportTransferRequest struct {
+type TransferExportTransferAPIRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
 	recipient *string
@@ -498,30 +498,30 @@ type ApiExportTransferRequest struct {
 }
 
 // Export transfer by the recipient code
-func (r ApiExportTransferRequest) Recipient(recipient string) ApiExportTransferRequest {
+func (r TransferExportTransferAPIRequest) Recipient(recipient string) TransferExportTransferAPIRequest {
 	r.recipient = &recipient
 	return r
 }
 
 // Export transfer by status
-func (r ApiExportTransferRequest) Status(status string) ApiExportTransferRequest {
+func (r TransferExportTransferAPIRequest) Status(status string) TransferExportTransferAPIRequest {
 	r.status = &status
 	return r
 }
 
 // The start date
-func (r ApiExportTransferRequest) From(from time.Time) ApiExportTransferRequest {
+func (r TransferExportTransferAPIRequest) From(from time.Time) TransferExportTransferAPIRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiExportTransferRequest) To(to time.Time) ApiExportTransferRequest {
+func (r TransferExportTransferAPIRequest) To(to time.Time) TransferExportTransferAPIRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiExportTransferRequest) Execute() (*Response, *http.Response, error) {
+func (r TransferExportTransferAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.ExportTransferExecute(r)
 }
 
@@ -531,10 +531,10 @@ ExportTransfer Export Transfers
 Export a list of transfers carried out on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiExportTransferRequest
+ @return TransferExportTransferAPIRequest
 */
-func (a *TransferAPIService) ExportTransfer(ctx context.Context) ApiExportTransferRequest {
-	return ApiExportTransferRequest{
+func (a *TransferAPIService) ExportTransfer(ctx context.Context) TransferExportTransferAPIRequest {
+	return TransferExportTransferAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -542,7 +542,7 @@ func (a *TransferAPIService) ExportTransfer(ctx context.Context) ApiExportTransf
 
 // Execute executes the request
 //  @return Response
-func (a *TransferAPIService) ExportTransferExecute(r ApiExportTransferRequest) (*Response, *http.Response, error) {
+func (a *TransferAPIService) ExportTransferExecute(r TransferExportTransferAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -653,13 +653,13 @@ func (a *TransferAPIService) ExportTransferExecute(r ApiExportTransferRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchRequest struct {
+type TransferFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
 	idOrCode string
 }
 
-func (r ApiFetchRequest) Execute() (*TransferFetchResponse, *http.Response, error) {
+func (r TransferFetchAPIRequest) Execute() (*TransferFetchResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -670,10 +670,10 @@ Get details of a transfer on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param idOrCode The transfer ID or code you want to fetch
- @return ApiFetchRequest
+ @return TransferFetchAPIRequest
 */
-func (a *TransferAPIService) Fetch(ctx context.Context, idOrCode string) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *TransferAPIService) Fetch(ctx context.Context, idOrCode string) TransferFetchAPIRequest {
+	return TransferFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		idOrCode: idOrCode,
@@ -682,7 +682,7 @@ func (a *TransferAPIService) Fetch(ctx context.Context, idOrCode string) ApiFetc
 
 // Execute executes the request
 //  @return TransferFetchResponse
-func (a *TransferAPIService) FetchExecute(r ApiFetchRequest) (*TransferFetchResponse, *http.Response, error) {
+func (a *TransferAPIService) FetchExecute(r TransferFetchAPIRequest) (*TransferFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -778,18 +778,18 @@ func (a *TransferAPIService) FetchExecute(r ApiFetchRequest) (*TransferFetchResp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFinalizeRequest struct {
+type TransferFinalizeAPIRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
 	transferFinalize *TransferFinalize
 }
 
-func (r ApiFinalizeRequest) TransferFinalize(transferFinalize TransferFinalize) ApiFinalizeRequest {
+func (r TransferFinalizeAPIRequest) TransferFinalize(transferFinalize TransferFinalize) TransferFinalizeAPIRequest {
 	r.transferFinalize = &transferFinalize
 	return r
 }
 
-func (r ApiFinalizeRequest) Execute() (*Response, *http.Response, error) {
+func (r TransferFinalizeAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.FinalizeExecute(r)
 }
 
@@ -799,10 +799,10 @@ Finalize Finalize Transfer
 Finalize an initiated transfer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFinalizeRequest
+ @return TransferFinalizeAPIRequest
 */
-func (a *TransferAPIService) Finalize(ctx context.Context) ApiFinalizeRequest {
-	return ApiFinalizeRequest{
+func (a *TransferAPIService) Finalize(ctx context.Context) TransferFinalizeAPIRequest {
+	return TransferFinalizeAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -810,7 +810,7 @@ func (a *TransferAPIService) Finalize(ctx context.Context) ApiFinalizeRequest {
 
 // Execute executes the request
 //  @return Response
-func (a *TransferAPIService) FinalizeExecute(r ApiFinalizeRequest) (*Response, *http.Response, error) {
+func (a *TransferAPIService) FinalizeExecute(r TransferFinalizeAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -896,18 +896,18 @@ func (a *TransferAPIService) FinalizeExecute(r ApiFinalizeRequest) (*Response, *
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiInitiateRequest struct {
+type TransferInitiateAPIRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
 	transferInitiate *TransferInitiate
 }
 
-func (r ApiInitiateRequest) TransferInitiate(transferInitiate TransferInitiate) ApiInitiateRequest {
+func (r TransferInitiateAPIRequest) TransferInitiate(transferInitiate TransferInitiate) TransferInitiateAPIRequest {
 	r.transferInitiate = &transferInitiate
 	return r
 }
 
-func (r ApiInitiateRequest) Execute() (*TransferCreateResponse, *http.Response, error) {
+func (r TransferInitiateAPIRequest) Execute() (*TransferCreateResponse, *http.Response, error) {
 	return r.ApiService.InitiateExecute(r)
 }
 
@@ -917,10 +917,10 @@ Initiate Initiate Transfer
 Send money to your customers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInitiateRequest
+ @return TransferInitiateAPIRequest
 */
-func (a *TransferAPIService) Initiate(ctx context.Context) ApiInitiateRequest {
-	return ApiInitiateRequest{
+func (a *TransferAPIService) Initiate(ctx context.Context) TransferInitiateAPIRequest {
+	return TransferInitiateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -928,7 +928,7 @@ func (a *TransferAPIService) Initiate(ctx context.Context) ApiInitiateRequest {
 
 // Execute executes the request
 //  @return TransferCreateResponse
-func (a *TransferAPIService) InitiateExecute(r ApiInitiateRequest) (*TransferCreateResponse, *http.Response, error) {
+func (a *TransferAPIService) InitiateExecute(r TransferInitiateAPIRequest) (*TransferCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1014,7 +1014,7 @@ func (a *TransferAPIService) InitiateExecute(r ApiInitiateRequest) (*TransferCre
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type TransferListAPIRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
 	perPage *int32
@@ -1025,36 +1025,36 @@ type ApiListRequest struct {
 }
 
 // Specify how many records you want to retrieve per page. If not specify we use a default value of 50.
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r TransferListAPIRequest) PerPage(perPage int32) TransferListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // Specify exactly what transfer you want to page. If not specify we use a default value of 1.
-func (r ApiListRequest) Page(page int32) ApiListRequest {
+func (r TransferListAPIRequest) Page(page int32) TransferListAPIRequest {
 	r.page = &page
 	return r
 }
 
 // A timestamp from which to start listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
-func (r ApiListRequest) From(from time.Time) ApiListRequest {
+func (r TransferListAPIRequest) From(from time.Time) TransferListAPIRequest {
 	r.from = &from
 	return r
 }
 
 // A timestamp at which to stop listing transfer e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
-func (r ApiListRequest) To(to time.Time) ApiListRequest {
+func (r TransferListAPIRequest) To(to time.Time) TransferListAPIRequest {
 	r.to = &to
 	return r
 }
 
 // Filter by the recipient ID
-func (r ApiListRequest) Recipient(recipient int32) ApiListRequest {
+func (r TransferListAPIRequest) Recipient(recipient int32) TransferListAPIRequest {
 	r.recipient = &recipient
 	return r
 }
 
-func (r ApiListRequest) Execute() (*TransferListResponse, *http.Response, error) {
+func (r TransferListAPIRequest) Execute() (*TransferListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -1064,10 +1064,10 @@ List List Transfers
 List the transfers made on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return TransferListAPIRequest
 */
-func (a *TransferAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *TransferAPIService) List(ctx context.Context) TransferListAPIRequest {
+	return TransferListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1075,7 +1075,7 @@ func (a *TransferAPIService) List(ctx context.Context) ApiListRequest {
 
 // Execute executes the request
 //  @return TransferListResponse
-func (a *TransferAPIService) ListExecute(r ApiListRequest) (*TransferListResponse, *http.Response, error) {
+func (a *TransferAPIService) ListExecute(r TransferListAPIRequest) (*TransferListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1185,18 +1185,18 @@ func (a *TransferAPIService) ListExecute(r ApiListRequest) (*TransferListRespons
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiResendOtpRequest struct {
+type TransferResendOtpAPIRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
 	transferResendOTP *TransferResendOTP
 }
 
-func (r ApiResendOtpRequest) TransferResendOTP(transferResendOTP TransferResendOTP) ApiResendOtpRequest {
+func (r TransferResendOtpAPIRequest) TransferResendOTP(transferResendOTP TransferResendOTP) TransferResendOtpAPIRequest {
 	r.transferResendOTP = &transferResendOTP
 	return r
 }
 
-func (r ApiResendOtpRequest) Execute() (*TransferResendsOtpResponse, *http.Response, error) {
+func (r TransferResendOtpAPIRequest) Execute() (*TransferResendsOtpResponse, *http.Response, error) {
 	return r.ApiService.ResendOtpExecute(r)
 }
 
@@ -1206,10 +1206,10 @@ ResendOtp Resend OTP for Transfer
 Generates and send a new OTP to customer in the event they are having trouble receiving one.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiResendOtpRequest
+ @return TransferResendOtpAPIRequest
 */
-func (a *TransferAPIService) ResendOtp(ctx context.Context) ApiResendOtpRequest {
-	return ApiResendOtpRequest{
+func (a *TransferAPIService) ResendOtp(ctx context.Context) TransferResendOtpAPIRequest {
+	return TransferResendOtpAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1217,7 +1217,7 @@ func (a *TransferAPIService) ResendOtp(ctx context.Context) ApiResendOtpRequest 
 
 // Execute executes the request
 //  @return TransferResendsOtpResponse
-func (a *TransferAPIService) ResendOtpExecute(r ApiResendOtpRequest) (*TransferResendsOtpResponse, *http.Response, error) {
+func (a *TransferAPIService) ResendOtpExecute(r TransferResendOtpAPIRequest) (*TransferResendsOtpResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1303,13 +1303,13 @@ func (a *TransferAPIService) ResendOtpExecute(r ApiResendOtpRequest) (*TransferR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiVerifyRequest struct {
+type TransferVerifyAPIRequest struct {
 	ctx context.Context
 	ApiService *TransferAPIService
 	reference string
 }
 
-func (r ApiVerifyRequest) Execute() (*TransferVerifyResponse, *http.Response, error) {
+func (r TransferVerifyAPIRequest) Execute() (*TransferVerifyResponse, *http.Response, error) {
 	return r.ApiService.VerifyExecute(r)
 }
 
@@ -1320,10 +1320,10 @@ Verify the status of a transfer on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param reference Transfer reference
- @return ApiVerifyRequest
+ @return TransferVerifyAPIRequest
 */
-func (a *TransferAPIService) Verify(ctx context.Context, reference string) ApiVerifyRequest {
-	return ApiVerifyRequest{
+func (a *TransferAPIService) Verify(ctx context.Context, reference string) TransferVerifyAPIRequest {
+	return TransferVerifyAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		reference: reference,
@@ -1332,7 +1332,7 @@ func (a *TransferAPIService) Verify(ctx context.Context, reference string) ApiVe
 
 // Execute executes the request
 //  @return TransferVerifyResponse
-func (a *TransferAPIService) VerifyExecute(r ApiVerifyRequest) (*TransferVerifyResponse, *http.Response, error) {
+func (a *TransferAPIService) VerifyExecute(r TransferVerifyAPIRequest) (*TransferVerifyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

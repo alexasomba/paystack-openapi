@@ -24,18 +24,18 @@ import (
 // TerminalAPIService TerminalAPI service
 type TerminalAPIService service
 
-type ApiCommissionRequest struct {
+type TerminalCommissionAPIRequest struct {
 	ctx context.Context
 	ApiService *TerminalAPIService
 	terminalActivationToggle *TerminalActivationToggle
 }
 
-func (r ApiCommissionRequest) TerminalActivationToggle(terminalActivationToggle TerminalActivationToggle) ApiCommissionRequest {
+func (r TerminalCommissionAPIRequest) TerminalActivationToggle(terminalActivationToggle TerminalActivationToggle) TerminalCommissionAPIRequest {
 	r.terminalActivationToggle = &terminalActivationToggle
 	return r
 }
 
-func (r ApiCommissionRequest) Execute() (*TerminalCommissionDeviceResponse, *http.Response, error) {
+func (r TerminalCommissionAPIRequest) Execute() (*TerminalCommissionDeviceResponse, *http.Response, error) {
 	return r.ApiService.CommissionExecute(r)
 }
 
@@ -45,10 +45,10 @@ Commission Commission Terminal
 Activate your debug device by linking it to your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCommissionRequest
+ @return TerminalCommissionAPIRequest
 */
-func (a *TerminalAPIService) Commission(ctx context.Context) ApiCommissionRequest {
-	return ApiCommissionRequest{
+func (a *TerminalAPIService) Commission(ctx context.Context) TerminalCommissionAPIRequest {
+	return TerminalCommissionAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -56,7 +56,7 @@ func (a *TerminalAPIService) Commission(ctx context.Context) ApiCommissionReques
 
 // Execute executes the request
 //  @return TerminalCommissionDeviceResponse
-func (a *TerminalAPIService) CommissionExecute(r ApiCommissionRequest) (*TerminalCommissionDeviceResponse, *http.Response, error) {
+func (a *TerminalAPIService) CommissionExecute(r TerminalCommissionAPIRequest) (*TerminalCommissionDeviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -142,18 +142,18 @@ func (a *TerminalAPIService) CommissionExecute(r ApiCommissionRequest) (*Termina
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDecommissionRequest struct {
+type TerminalDecommissionAPIRequest struct {
 	ctx context.Context
 	ApiService *TerminalAPIService
 	terminalActivationToggle *TerminalActivationToggle
 }
 
-func (r ApiDecommissionRequest) TerminalActivationToggle(terminalActivationToggle TerminalActivationToggle) ApiDecommissionRequest {
+func (r TerminalDecommissionAPIRequest) TerminalActivationToggle(terminalActivationToggle TerminalActivationToggle) TerminalDecommissionAPIRequest {
 	r.terminalActivationToggle = &terminalActivationToggle
 	return r
 }
 
-func (r ApiDecommissionRequest) Execute() (*TerminalDecommissionDeviceResponse, *http.Response, error) {
+func (r TerminalDecommissionAPIRequest) Execute() (*TerminalDecommissionDeviceResponse, *http.Response, error) {
 	return r.ApiService.DecommissionExecute(r)
 }
 
@@ -163,10 +163,10 @@ Decommission Decommission Terminal
 Unlink your debug device from your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiDecommissionRequest
+ @return TerminalDecommissionAPIRequest
 */
-func (a *TerminalAPIService) Decommission(ctx context.Context) ApiDecommissionRequest {
-	return ApiDecommissionRequest{
+func (a *TerminalAPIService) Decommission(ctx context.Context) TerminalDecommissionAPIRequest {
+	return TerminalDecommissionAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -174,7 +174,7 @@ func (a *TerminalAPIService) Decommission(ctx context.Context) ApiDecommissionRe
 
 // Execute executes the request
 //  @return TerminalDecommissionDeviceResponse
-func (a *TerminalAPIService) DecommissionExecute(r ApiDecommissionRequest) (*TerminalDecommissionDeviceResponse, *http.Response, error) {
+func (a *TerminalAPIService) DecommissionExecute(r TerminalDecommissionAPIRequest) (*TerminalDecommissionDeviceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -260,13 +260,13 @@ func (a *TerminalAPIService) DecommissionExecute(r ApiDecommissionRequest) (*Ter
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchRequest struct {
+type TerminalFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *TerminalAPIService
 	terminalId string
 }
 
-func (r ApiFetchRequest) Execute() (*TerminalGetResponse, *http.Response, error) {
+func (r TerminalFetchAPIRequest) Execute() (*TerminalGetResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -277,10 +277,10 @@ Get the details of a Terminal
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param terminalId The ID of the Terminal the event should be sent to.
- @return ApiFetchRequest
+ @return TerminalFetchAPIRequest
 */
-func (a *TerminalAPIService) Fetch(ctx context.Context, terminalId string) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *TerminalAPIService) Fetch(ctx context.Context, terminalId string) TerminalFetchAPIRequest {
+	return TerminalFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		terminalId: terminalId,
@@ -289,7 +289,7 @@ func (a *TerminalAPIService) Fetch(ctx context.Context, terminalId string) ApiFe
 
 // Execute executes the request
 //  @return TerminalGetResponse
-func (a *TerminalAPIService) FetchExecute(r ApiFetchRequest) (*TerminalGetResponse, *http.Response, error) {
+func (a *TerminalAPIService) FetchExecute(r TerminalFetchAPIRequest) (*TerminalGetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -385,14 +385,14 @@ func (a *TerminalAPIService) FetchExecute(r ApiFetchRequest) (*TerminalGetRespon
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchEventStatusRequest struct {
+type TerminalFetchEventStatusAPIRequest struct {
 	ctx context.Context
 	ApiService *TerminalAPIService
 	terminalId string
 	eventId string
 }
 
-func (r ApiFetchEventStatusRequest) Execute() (*Response, *http.Response, error) {
+func (r TerminalFetchEventStatusAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.FetchEventStatusExecute(r)
 }
 
@@ -404,10 +404,10 @@ Check the status of an event sent to the Terminal
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param terminalId The ID of the Terminal the event should be sent to.
  @param eventId The ID of the event that was sent to the Terminal
- @return ApiFetchEventStatusRequest
+ @return TerminalFetchEventStatusAPIRequest
 */
-func (a *TerminalAPIService) FetchEventStatus(ctx context.Context, terminalId string, eventId string) ApiFetchEventStatusRequest {
-	return ApiFetchEventStatusRequest{
+func (a *TerminalAPIService) FetchEventStatus(ctx context.Context, terminalId string, eventId string) TerminalFetchEventStatusAPIRequest {
+	return TerminalFetchEventStatusAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		terminalId: terminalId,
@@ -417,7 +417,7 @@ func (a *TerminalAPIService) FetchEventStatus(ctx context.Context, terminalId st
 
 // Execute executes the request
 //  @return Response
-func (a *TerminalAPIService) FetchEventStatusExecute(r ApiFetchEventStatusRequest) (*Response, *http.Response, error) {
+func (a *TerminalAPIService) FetchEventStatusExecute(r TerminalFetchEventStatusAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -514,13 +514,13 @@ func (a *TerminalAPIService) FetchEventStatusExecute(r ApiFetchEventStatusReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchTerminalStatusRequest struct {
+type TerminalFetchTerminalStatusAPIRequest struct {
 	ctx context.Context
 	ApiService *TerminalAPIService
 	terminalId string
 }
 
-func (r ApiFetchTerminalStatusRequest) Execute() (*TerminalGetStatusResponse, *http.Response, error) {
+func (r TerminalFetchTerminalStatusAPIRequest) Execute() (*TerminalGetStatusResponse, *http.Response, error) {
 	return r.ApiService.FetchTerminalStatusExecute(r)
 }
 
@@ -531,10 +531,10 @@ Check the availiability of a Terminal before sending an event to it
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param terminalId The ID of the Terminal the event should be sent to.
- @return ApiFetchTerminalStatusRequest
+ @return TerminalFetchTerminalStatusAPIRequest
 */
-func (a *TerminalAPIService) FetchTerminalStatus(ctx context.Context, terminalId string) ApiFetchTerminalStatusRequest {
-	return ApiFetchTerminalStatusRequest{
+func (a *TerminalAPIService) FetchTerminalStatus(ctx context.Context, terminalId string) TerminalFetchTerminalStatusAPIRequest {
+	return TerminalFetchTerminalStatusAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		terminalId: terminalId,
@@ -543,7 +543,7 @@ func (a *TerminalAPIService) FetchTerminalStatus(ctx context.Context, terminalId
 
 // Execute executes the request
 //  @return TerminalGetStatusResponse
-func (a *TerminalAPIService) FetchTerminalStatusExecute(r ApiFetchTerminalStatusRequest) (*TerminalGetStatusResponse, *http.Response, error) {
+func (a *TerminalAPIService) FetchTerminalStatusExecute(r TerminalFetchTerminalStatusAPIRequest) (*TerminalGetStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -639,7 +639,7 @@ func (a *TerminalAPIService) FetchTerminalStatusExecute(r ApiFetchTerminalStatus
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type TerminalListAPIRequest struct {
 	ctx context.Context
 	ApiService *TerminalAPIService
 	next *string
@@ -648,24 +648,24 @@ type ApiListRequest struct {
 }
 
 // A cursor that indicates your place in the list. It can be used to fetch the next page of the list
-func (r ApiListRequest) Next(next string) ApiListRequest {
+func (r TerminalListAPIRequest) Next(next string) TerminalListAPIRequest {
 	r.next = &next
 	return r
 }
 
 // A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request
-func (r ApiListRequest) Previous(previous string) ApiListRequest {
+func (r TerminalListAPIRequest) Previous(previous string) TerminalListAPIRequest {
 	r.previous = &previous
 	return r
 }
 
 // Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r TerminalListAPIRequest) PerPage(perPage int32) TerminalListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
-func (r ApiListRequest) Execute() (*TerminalListsResponse, *http.Response, error) {
+func (r TerminalListAPIRequest) Execute() (*TerminalListsResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -675,10 +675,10 @@ List List Terminals
 List the Terminals available on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return TerminalListAPIRequest
 */
-func (a *TerminalAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *TerminalAPIService) List(ctx context.Context) TerminalListAPIRequest {
+	return TerminalListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -686,7 +686,7 @@ func (a *TerminalAPIService) List(ctx context.Context) ApiListRequest {
 
 // Execute executes the request
 //  @return TerminalListsResponse
-func (a *TerminalAPIService) ListExecute(r ApiListRequest) (*TerminalListsResponse, *http.Response, error) {
+func (a *TerminalAPIService) ListExecute(r TerminalListAPIRequest) (*TerminalListsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -794,19 +794,19 @@ func (a *TerminalAPIService) ListExecute(r ApiListRequest) (*TerminalListsRespon
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSendEventRequest struct {
+type TerminalSendEventAPIRequest struct {
 	ctx context.Context
 	ApiService *TerminalAPIService
 	id string
 	terminalSendEvent *TerminalSendEvent
 }
 
-func (r ApiSendEventRequest) TerminalSendEvent(terminalSendEvent TerminalSendEvent) ApiSendEventRequest {
+func (r TerminalSendEventAPIRequest) TerminalSendEvent(terminalSendEvent TerminalSendEvent) TerminalSendEventAPIRequest {
 	r.terminalSendEvent = &terminalSendEvent
 	return r
 }
 
-func (r ApiSendEventRequest) Execute() (*Response, *http.Response, error) {
+func (r TerminalSendEventAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.SendEventExecute(r)
 }
 
@@ -817,10 +817,10 @@ Send an event from your application to the Paystack Terminal
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the Terminal the event should be sent to.
- @return ApiSendEventRequest
+ @return TerminalSendEventAPIRequest
 */
-func (a *TerminalAPIService) SendEvent(ctx context.Context, id string) ApiSendEventRequest {
-	return ApiSendEventRequest{
+func (a *TerminalAPIService) SendEvent(ctx context.Context, id string) TerminalSendEventAPIRequest {
+	return TerminalSendEventAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -829,7 +829,7 @@ func (a *TerminalAPIService) SendEvent(ctx context.Context, id string) ApiSendEv
 
 // Execute executes the request
 //  @return Response
-func (a *TerminalAPIService) SendEventExecute(r ApiSendEventRequest) (*Response, *http.Response, error) {
+func (a *TerminalAPIService) SendEventExecute(r TerminalSendEventAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -916,19 +916,19 @@ func (a *TerminalAPIService) SendEventExecute(r ApiSendEventRequest) (*Response,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateRequest struct {
+type TerminalUpdateAPIRequest struct {
 	ctx context.Context
 	ApiService *TerminalAPIService
 	terminalId string
 	terminalUpate *TerminalUpate
 }
 
-func (r ApiUpdateRequest) TerminalUpate(terminalUpate TerminalUpate) ApiUpdateRequest {
+func (r TerminalUpdateAPIRequest) TerminalUpate(terminalUpate TerminalUpate) TerminalUpdateAPIRequest {
 	r.terminalUpate = &terminalUpate
 	return r
 }
 
-func (r ApiUpdateRequest) Execute() (*TerminalUpdateResponse, *http.Response, error) {
+func (r TerminalUpdateAPIRequest) Execute() (*TerminalUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -939,10 +939,10 @@ Update the details of a Terminal
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param terminalId The ID of the Terminal the event should be sent to.
- @return ApiUpdateRequest
+ @return TerminalUpdateAPIRequest
 */
-func (a *TerminalAPIService) Update(ctx context.Context, terminalId string) ApiUpdateRequest {
-	return ApiUpdateRequest{
+func (a *TerminalAPIService) Update(ctx context.Context, terminalId string) TerminalUpdateAPIRequest {
+	return TerminalUpdateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		terminalId: terminalId,
@@ -951,7 +951,7 @@ func (a *TerminalAPIService) Update(ctx context.Context, terminalId string) ApiU
 
 // Execute executes the request
 //  @return TerminalUpdateResponse
-func (a *TerminalAPIService) UpdateExecute(r ApiUpdateRequest) (*TerminalUpdateResponse, *http.Response, error) {
+func (a *TerminalAPIService) UpdateExecute(r TerminalUpdateAPIRequest) (*TerminalUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

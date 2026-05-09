@@ -24,19 +24,19 @@ import (
 // StorefrontAPIService StorefrontAPI service
 type StorefrontAPIService service
 
-type ApiAddProductsRequest struct {
+type StorefrontAddProductsAPIRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	id int32
 	storefrontAddProducts *StorefrontAddProducts
 }
 
-func (r ApiAddProductsRequest) StorefrontAddProducts(storefrontAddProducts StorefrontAddProducts) ApiAddProductsRequest {
+func (r StorefrontAddProductsAPIRequest) StorefrontAddProducts(storefrontAddProducts StorefrontAddProducts) StorefrontAddProductsAPIRequest {
 	r.storefrontAddProducts = &storefrontAddProducts
 	return r
 }
 
-func (r ApiAddProductsRequest) Execute() (*Response, *http.Response, error) {
+func (r StorefrontAddProductsAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.AddProductsExecute(r)
 }
 
@@ -47,10 +47,10 @@ Add previously created products to a Storefront
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the Storefront
- @return ApiAddProductsRequest
+ @return StorefrontAddProductsAPIRequest
 */
-func (a *StorefrontAPIService) AddProducts(ctx context.Context, id int32) ApiAddProductsRequest {
-	return ApiAddProductsRequest{
+func (a *StorefrontAPIService) AddProducts(ctx context.Context, id int32) StorefrontAddProductsAPIRequest {
+	return StorefrontAddProductsAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -59,7 +59,7 @@ func (a *StorefrontAPIService) AddProducts(ctx context.Context, id int32) ApiAdd
 
 // Execute executes the request
 //  @return Response
-func (a *StorefrontAPIService) AddProductsExecute(r ApiAddProductsRequest) (*Response, *http.Response, error) {
+func (a *StorefrontAPIService) AddProductsExecute(r StorefrontAddProductsAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -157,18 +157,18 @@ func (a *StorefrontAPIService) AddProductsExecute(r ApiAddProductsRequest) (*Res
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateRequest struct {
+type StorefrontCreateAPIRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	storefrontCreate *StorefrontCreate
 }
 
-func (r ApiCreateRequest) StorefrontCreate(storefrontCreate StorefrontCreate) ApiCreateRequest {
+func (r StorefrontCreateAPIRequest) StorefrontCreate(storefrontCreate StorefrontCreate) StorefrontCreateAPIRequest {
 	r.storefrontCreate = &storefrontCreate
 	return r
 }
 
-func (r ApiCreateRequest) Execute() (*StorefrontCreateResponse, *http.Response, error) {
+func (r StorefrontCreateAPIRequest) Execute() (*StorefrontCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -178,10 +178,10 @@ Create Create Storefront
 Create a digital shop to manage and display your products
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateRequest
+ @return StorefrontCreateAPIRequest
 */
-func (a *StorefrontAPIService) Create(ctx context.Context) ApiCreateRequest {
-	return ApiCreateRequest{
+func (a *StorefrontAPIService) Create(ctx context.Context) StorefrontCreateAPIRequest {
+	return StorefrontCreateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -189,7 +189,7 @@ func (a *StorefrontAPIService) Create(ctx context.Context) ApiCreateRequest {
 
 // Execute executes the request
 //  @return StorefrontCreateResponse
-func (a *StorefrontAPIService) CreateExecute(r ApiCreateRequest) (*StorefrontCreateResponse, *http.Response, error) {
+func (a *StorefrontAPIService) CreateExecute(r StorefrontCreateAPIRequest) (*StorefrontCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -275,13 +275,13 @@ func (a *StorefrontAPIService) CreateExecute(r ApiCreateRequest) (*StorefrontCre
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteRequest struct {
+type StorefrontDeleteAPIRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	id int32
 }
 
-func (r ApiDeleteRequest) Execute() (*StorefrontDeleteResponse, *http.Response, error) {
+func (r StorefrontDeleteAPIRequest) Execute() (*StorefrontDeleteResponse, *http.Response, error) {
 	return r.ApiService.DeleteExecute(r)
 }
 
@@ -292,10 +292,10 @@ Delete a previously created Storefront
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the Storefront
- @return ApiDeleteRequest
+ @return StorefrontDeleteAPIRequest
 */
-func (a *StorefrontAPIService) Delete(ctx context.Context, id int32) ApiDeleteRequest {
-	return ApiDeleteRequest{
+func (a *StorefrontAPIService) Delete(ctx context.Context, id int32) StorefrontDeleteAPIRequest {
+	return StorefrontDeleteAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -304,7 +304,7 @@ func (a *StorefrontAPIService) Delete(ctx context.Context, id int32) ApiDeleteRe
 
 // Execute executes the request
 //  @return StorefrontDeleteResponse
-func (a *StorefrontAPIService) DeleteExecute(r ApiDeleteRequest) (*StorefrontDeleteResponse, *http.Response, error) {
+func (a *StorefrontAPIService) DeleteExecute(r StorefrontDeleteAPIRequest) (*StorefrontDeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -400,13 +400,13 @@ func (a *StorefrontAPIService) DeleteExecute(r ApiDeleteRequest) (*StorefrontDel
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDuplicateRequest struct {
+type StorefrontDuplicateAPIRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	id int32
 }
 
-func (r ApiDuplicateRequest) Execute() (*Response, *http.Response, error) {
+func (r StorefrontDuplicateAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.DuplicateExecute(r)
 }
 
@@ -417,10 +417,10 @@ Duplicate a previously created Storefront
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the Storefront
- @return ApiDuplicateRequest
+ @return StorefrontDuplicateAPIRequest
 */
-func (a *StorefrontAPIService) Duplicate(ctx context.Context, id int32) ApiDuplicateRequest {
-	return ApiDuplicateRequest{
+func (a *StorefrontAPIService) Duplicate(ctx context.Context, id int32) StorefrontDuplicateAPIRequest {
+	return StorefrontDuplicateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -429,7 +429,7 @@ func (a *StorefrontAPIService) Duplicate(ctx context.Context, id int32) ApiDupli
 
 // Execute executes the request
 //  @return Response
-func (a *StorefrontAPIService) DuplicateExecute(r ApiDuplicateRequest) (*Response, *http.Response, error) {
+func (a *StorefrontAPIService) DuplicateExecute(r StorefrontDuplicateAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -525,13 +525,13 @@ func (a *StorefrontAPIService) DuplicateExecute(r ApiDuplicateRequest) (*Respons
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchRequest struct {
+type StorefrontFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	id int32
 }
 
-func (r ApiFetchRequest) Execute() (*StorefrontFetchResponse, *http.Response, error) {
+func (r StorefrontFetchAPIRequest) Execute() (*StorefrontFetchResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -542,10 +542,10 @@ Get the details of a previously created Storefront
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the Storefront
- @return ApiFetchRequest
+ @return StorefrontFetchAPIRequest
 */
-func (a *StorefrontAPIService) Fetch(ctx context.Context, id int32) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *StorefrontAPIService) Fetch(ctx context.Context, id int32) StorefrontFetchAPIRequest {
+	return StorefrontFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -554,7 +554,7 @@ func (a *StorefrontAPIService) Fetch(ctx context.Context, id int32) ApiFetchRequ
 
 // Execute executes the request
 //  @return StorefrontFetchResponse
-func (a *StorefrontAPIService) FetchExecute(r ApiFetchRequest) (*StorefrontFetchResponse, *http.Response, error) {
+func (a *StorefrontAPIService) FetchExecute(r StorefrontFetchAPIRequest) (*StorefrontFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -650,13 +650,13 @@ func (a *StorefrontAPIService) FetchExecute(r ApiFetchRequest) (*StorefrontFetch
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchOrdersRequest struct {
+type StorefrontFetchOrdersAPIRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	id int32
 }
 
-func (r ApiFetchOrdersRequest) Execute() (*Response, *http.Response, error) {
+func (r StorefrontFetchOrdersAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.FetchOrdersExecute(r)
 }
 
@@ -667,10 +667,10 @@ Fetch all orders in your Storefront
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the Storefront
- @return ApiFetchOrdersRequest
+ @return StorefrontFetchOrdersAPIRequest
 */
-func (a *StorefrontAPIService) FetchOrders(ctx context.Context, id int32) ApiFetchOrdersRequest {
-	return ApiFetchOrdersRequest{
+func (a *StorefrontAPIService) FetchOrders(ctx context.Context, id int32) StorefrontFetchOrdersAPIRequest {
+	return StorefrontFetchOrdersAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -679,7 +679,7 @@ func (a *StorefrontAPIService) FetchOrders(ctx context.Context, id int32) ApiFet
 
 // Execute executes the request
 //  @return Response
-func (a *StorefrontAPIService) FetchOrdersExecute(r ApiFetchOrdersRequest) (*Response, *http.Response, error) {
+func (a *StorefrontAPIService) FetchOrdersExecute(r StorefrontFetchOrdersAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -764,7 +764,7 @@ func (a *StorefrontAPIService) FetchOrdersExecute(r ApiFetchOrdersRequest) (*Res
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type StorefrontListAPIRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	perPage *int32
@@ -773,23 +773,23 @@ type ApiListRequest struct {
 }
 
 // Number of records to fetch per request
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r StorefrontListAPIRequest) PerPage(perPage int32) StorefrontListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The offset to retrieve data from
-func (r ApiListRequest) Page(page int32) ApiListRequest {
+func (r StorefrontListAPIRequest) Page(page int32) StorefrontListAPIRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiListRequest) Status(status string) ApiListRequest {
+func (r StorefrontListAPIRequest) Status(status string) StorefrontListAPIRequest {
 	r.status = &status
 	return r
 }
 
-func (r ApiListRequest) Execute() (*StorefrontListResponse, *http.Response, error) {
+func (r StorefrontListAPIRequest) Execute() (*StorefrontListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -799,10 +799,10 @@ List List Storefronts
 List the storefronts you previously created
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return StorefrontListAPIRequest
 */
-func (a *StorefrontAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *StorefrontAPIService) List(ctx context.Context) StorefrontListAPIRequest {
+	return StorefrontListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -810,7 +810,7 @@ func (a *StorefrontAPIService) List(ctx context.Context) ApiListRequest {
 
 // Execute executes the request
 //  @return StorefrontListResponse
-func (a *StorefrontAPIService) ListExecute(r ApiListRequest) (*StorefrontListResponse, *http.Response, error) {
+func (a *StorefrontAPIService) ListExecute(r StorefrontListAPIRequest) (*StorefrontListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -922,13 +922,13 @@ func (a *StorefrontAPIService) ListExecute(r ApiListRequest) (*StorefrontListRes
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListProductsRequest struct {
+type StorefrontListProductsAPIRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	id int32
 }
 
-func (r ApiListProductsRequest) Execute() (*Response, *http.Response, error) {
+func (r StorefrontListProductsAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.ListProductsExecute(r)
 }
 
@@ -939,10 +939,10 @@ List the products in a Storefront
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the Storefront
- @return ApiListProductsRequest
+ @return StorefrontListProductsAPIRequest
 */
-func (a *StorefrontAPIService) ListProducts(ctx context.Context, id int32) ApiListProductsRequest {
-	return ApiListProductsRequest{
+func (a *StorefrontAPIService) ListProducts(ctx context.Context, id int32) StorefrontListProductsAPIRequest {
+	return StorefrontListProductsAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -951,7 +951,7 @@ func (a *StorefrontAPIService) ListProducts(ctx context.Context, id int32) ApiLi
 
 // Execute executes the request
 //  @return Response
-func (a *StorefrontAPIService) ListProductsExecute(r ApiListProductsRequest) (*Response, *http.Response, error) {
+func (a *StorefrontAPIService) ListProductsExecute(r StorefrontListProductsAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1047,13 +1047,13 @@ func (a *StorefrontAPIService) ListProductsExecute(r ApiListProductsRequest) (*R
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPublishRequest struct {
+type StorefrontPublishAPIRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	id int32
 }
 
-func (r ApiPublishRequest) Execute() (*Response, *http.Response, error) {
+func (r StorefrontPublishAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.PublishExecute(r)
 }
 
@@ -1064,10 +1064,10 @@ Make your Storefront publicly available
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the Storefront
- @return ApiPublishRequest
+ @return StorefrontPublishAPIRequest
 */
-func (a *StorefrontAPIService) Publish(ctx context.Context, id int32) ApiPublishRequest {
-	return ApiPublishRequest{
+func (a *StorefrontAPIService) Publish(ctx context.Context, id int32) StorefrontPublishAPIRequest {
+	return StorefrontPublishAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1076,7 +1076,7 @@ func (a *StorefrontAPIService) Publish(ctx context.Context, id int32) ApiPublish
 
 // Execute executes the request
 //  @return Response
-func (a *StorefrontAPIService) PublishExecute(r ApiPublishRequest) (*Response, *http.Response, error) {
+func (a *StorefrontAPIService) PublishExecute(r StorefrontPublishAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1172,19 +1172,19 @@ func (a *StorefrontAPIService) PublishExecute(r ApiPublishRequest) (*Response, *
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateRequest struct {
+type StorefrontUpdateAPIRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	id int32
 	storefrontUpdate *StorefrontUpdate
 }
 
-func (r ApiUpdateRequest) StorefrontUpdate(storefrontUpdate StorefrontUpdate) ApiUpdateRequest {
+func (r StorefrontUpdateAPIRequest) StorefrontUpdate(storefrontUpdate StorefrontUpdate) StorefrontUpdateAPIRequest {
 	r.storefrontUpdate = &storefrontUpdate
 	return r
 }
 
-func (r ApiUpdateRequest) Execute() (*StorefrontUpdateResponse, *http.Response, error) {
+func (r StorefrontUpdateAPIRequest) Execute() (*StorefrontUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -1195,10 +1195,10 @@ Update the details of a previously created Storefront
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the Storefront
- @return ApiUpdateRequest
+ @return StorefrontUpdateAPIRequest
 */
-func (a *StorefrontAPIService) Update(ctx context.Context, id int32) ApiUpdateRequest {
-	return ApiUpdateRequest{
+func (a *StorefrontAPIService) Update(ctx context.Context, id int32) StorefrontUpdateAPIRequest {
+	return StorefrontUpdateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1207,7 +1207,7 @@ func (a *StorefrontAPIService) Update(ctx context.Context, id int32) ApiUpdateRe
 
 // Execute executes the request
 //  @return StorefrontUpdateResponse
-func (a *StorefrontAPIService) UpdateExecute(r ApiUpdateRequest) (*StorefrontUpdateResponse, *http.Response, error) {
+func (a *StorefrontAPIService) UpdateExecute(r StorefrontUpdateAPIRequest) (*StorefrontUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1305,13 +1305,13 @@ func (a *StorefrontAPIService) UpdateExecute(r ApiUpdateRequest) (*StorefrontUpd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiVerifySlugRequest struct {
+type StorefrontVerifySlugAPIRequest struct {
 	ctx context.Context
 	ApiService *StorefrontAPIService
 	slug string
 }
 
-func (r ApiVerifySlugRequest) Execute() (*Response, *http.Response, error) {
+func (r StorefrontVerifySlugAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.VerifySlugExecute(r)
 }
 
@@ -1322,10 +1322,10 @@ Verify the availability of a slug before using it for your Storefront
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug The custom slug to check
- @return ApiVerifySlugRequest
+ @return StorefrontVerifySlugAPIRequest
 */
-func (a *StorefrontAPIService) VerifySlug(ctx context.Context, slug string) ApiVerifySlugRequest {
-	return ApiVerifySlugRequest{
+func (a *StorefrontAPIService) VerifySlug(ctx context.Context, slug string) StorefrontVerifySlugAPIRequest {
+	return StorefrontVerifySlugAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		slug: slug,
@@ -1334,7 +1334,7 @@ func (a *StorefrontAPIService) VerifySlug(ctx context.Context, slug string) ApiV
 
 // Execute executes the request
 //  @return Response
-func (a *StorefrontAPIService) VerifySlugExecute(r ApiVerifySlugRequest) (*Response, *http.Response, error) {
+func (a *StorefrontAPIService) VerifySlugExecute(r StorefrontVerifySlugAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

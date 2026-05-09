@@ -25,18 +25,18 @@ import (
 // DedicatedVirtualAccountAPIService DedicatedVirtualAccountAPI service
 type DedicatedVirtualAccountAPIService service
 
-type ApiAddSplitRequest struct {
+type DedicatedVirtualAccountAddSplitAPIRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
 	dedicatedVirtualAccountSplit *DedicatedVirtualAccountSplit
 }
 
-func (r ApiAddSplitRequest) DedicatedVirtualAccountSplit(dedicatedVirtualAccountSplit DedicatedVirtualAccountSplit) ApiAddSplitRequest {
+func (r DedicatedVirtualAccountAddSplitAPIRequest) DedicatedVirtualAccountSplit(dedicatedVirtualAccountSplit DedicatedVirtualAccountSplit) DedicatedVirtualAccountAddSplitAPIRequest {
 	r.dedicatedVirtualAccountSplit = &dedicatedVirtualAccountSplit
 	return r
 }
 
-func (r ApiAddSplitRequest) Execute() (*Response, *http.Response, error) {
+func (r DedicatedVirtualAccountAddSplitAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.AddSplitExecute(r)
 }
 
@@ -46,10 +46,10 @@ AddSplit Split Dedicated Account Transaction
 Split a dedicated virtual account transaction with one or more accounts
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAddSplitRequest
+ @return DedicatedVirtualAccountAddSplitAPIRequest
 */
-func (a *DedicatedVirtualAccountAPIService) AddSplit(ctx context.Context) ApiAddSplitRequest {
-	return ApiAddSplitRequest{
+func (a *DedicatedVirtualAccountAPIService) AddSplit(ctx context.Context) DedicatedVirtualAccountAddSplitAPIRequest {
+	return DedicatedVirtualAccountAddSplitAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *DedicatedVirtualAccountAPIService) AddSplit(ctx context.Context) ApiAdd
 
 // Execute executes the request
 //  @return Response
-func (a *DedicatedVirtualAccountAPIService) AddSplitExecute(r ApiAddSplitRequest) (*Response, *http.Response, error) {
+func (a *DedicatedVirtualAccountAPIService) AddSplitExecute(r DedicatedVirtualAccountAddSplitAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -143,18 +143,18 @@ func (a *DedicatedVirtualAccountAPIService) AddSplitExecute(r ApiAddSplitRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAssignRequest struct {
+type DedicatedVirtualAccountAssignAPIRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
 	dedicatedVirtualAccountAssign *DedicatedVirtualAccountAssign
 }
 
-func (r ApiAssignRequest) DedicatedVirtualAccountAssign(dedicatedVirtualAccountAssign DedicatedVirtualAccountAssign) ApiAssignRequest {
+func (r DedicatedVirtualAccountAssignAPIRequest) DedicatedVirtualAccountAssign(dedicatedVirtualAccountAssign DedicatedVirtualAccountAssign) DedicatedVirtualAccountAssignAPIRequest {
 	r.dedicatedVirtualAccountAssign = &dedicatedVirtualAccountAssign
 	return r
 }
 
-func (r ApiAssignRequest) Execute() (*Response, *http.Response, error) {
+func (r DedicatedVirtualAccountAssignAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.AssignExecute(r)
 }
 
@@ -164,10 +164,10 @@ Assign Assign Dedicated Account
 With this endpoint, you can create a customer, validate the customer, and assign a DVA to the customer.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAssignRequest
+ @return DedicatedVirtualAccountAssignAPIRequest
 */
-func (a *DedicatedVirtualAccountAPIService) Assign(ctx context.Context) ApiAssignRequest {
-	return ApiAssignRequest{
+func (a *DedicatedVirtualAccountAPIService) Assign(ctx context.Context) DedicatedVirtualAccountAssignAPIRequest {
+	return DedicatedVirtualAccountAssignAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -175,7 +175,7 @@ func (a *DedicatedVirtualAccountAPIService) Assign(ctx context.Context) ApiAssig
 
 // Execute executes the request
 //  @return Response
-func (a *DedicatedVirtualAccountAPIService) AssignExecute(r ApiAssignRequest) (*Response, *http.Response, error) {
+func (a *DedicatedVirtualAccountAPIService) AssignExecute(r DedicatedVirtualAccountAssignAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -261,12 +261,12 @@ func (a *DedicatedVirtualAccountAPIService) AssignExecute(r ApiAssignRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAvailableProvidersRequest struct {
+type DedicatedVirtualAccountAvailableProvidersAPIRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
 }
 
-func (r ApiAvailableProvidersRequest) Execute() (*Response, *http.Response, error) {
+func (r DedicatedVirtualAccountAvailableProvidersAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.AvailableProvidersExecute(r)
 }
 
@@ -276,10 +276,10 @@ AvailableProviders Fetch Bank Providers
 Get available bank providers for a dedicated virtual account
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAvailableProvidersRequest
+ @return DedicatedVirtualAccountAvailableProvidersAPIRequest
 */
-func (a *DedicatedVirtualAccountAPIService) AvailableProviders(ctx context.Context) ApiAvailableProvidersRequest {
-	return ApiAvailableProvidersRequest{
+func (a *DedicatedVirtualAccountAPIService) AvailableProviders(ctx context.Context) DedicatedVirtualAccountAvailableProvidersAPIRequest {
+	return DedicatedVirtualAccountAvailableProvidersAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -287,7 +287,7 @@ func (a *DedicatedVirtualAccountAPIService) AvailableProviders(ctx context.Conte
 
 // Execute executes the request
 //  @return Response
-func (a *DedicatedVirtualAccountAPIService) AvailableProvidersExecute(r ApiAvailableProvidersRequest) (*Response, *http.Response, error) {
+func (a *DedicatedVirtualAccountAPIService) AvailableProvidersExecute(r DedicatedVirtualAccountAvailableProvidersAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -382,18 +382,18 @@ func (a *DedicatedVirtualAccountAPIService) AvailableProvidersExecute(r ApiAvail
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateRequest struct {
+type DedicatedVirtualAccountCreateAPIRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
 	dedicatedVirtualAccountCreate *DedicatedVirtualAccountCreate
 }
 
-func (r ApiCreateRequest) DedicatedVirtualAccountCreate(dedicatedVirtualAccountCreate DedicatedVirtualAccountCreate) ApiCreateRequest {
+func (r DedicatedVirtualAccountCreateAPIRequest) DedicatedVirtualAccountCreate(dedicatedVirtualAccountCreate DedicatedVirtualAccountCreate) DedicatedVirtualAccountCreateAPIRequest {
 	r.dedicatedVirtualAccountCreate = &dedicatedVirtualAccountCreate
 	return r
 }
 
-func (r ApiCreateRequest) Execute() (*DedicatedNubanCreateResponse, *http.Response, error) {
+func (r DedicatedVirtualAccountCreateAPIRequest) Execute() (*DedicatedNubanCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -403,10 +403,10 @@ Create Create Dedicated Account
 Create a dedicated virtual account for an existing customer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateRequest
+ @return DedicatedVirtualAccountCreateAPIRequest
 */
-func (a *DedicatedVirtualAccountAPIService) Create(ctx context.Context) ApiCreateRequest {
-	return ApiCreateRequest{
+func (a *DedicatedVirtualAccountAPIService) Create(ctx context.Context) DedicatedVirtualAccountCreateAPIRequest {
+	return DedicatedVirtualAccountCreateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -414,7 +414,7 @@ func (a *DedicatedVirtualAccountAPIService) Create(ctx context.Context) ApiCreat
 
 // Execute executes the request
 //  @return DedicatedNubanCreateResponse
-func (a *DedicatedVirtualAccountAPIService) CreateExecute(r ApiCreateRequest) (*DedicatedNubanCreateResponse, *http.Response, error) {
+func (a *DedicatedVirtualAccountAPIService) CreateExecute(r DedicatedVirtualAccountCreateAPIRequest) (*DedicatedNubanCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -500,13 +500,13 @@ func (a *DedicatedVirtualAccountAPIService) CreateExecute(r ApiCreateRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeactivateRequest struct {
+type DedicatedVirtualAccountDeactivateAPIRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
 	id string
 }
 
-func (r ApiDeactivateRequest) Execute() (*DedicatedNubanDeactivateResponse, *http.Response, error) {
+func (r DedicatedVirtualAccountDeactivateAPIRequest) Execute() (*DedicatedNubanDeactivateResponse, *http.Response, error) {
 	return r.ApiService.DeactivateExecute(r)
 }
 
@@ -517,10 +517,10 @@ Deactivate a dedicated virtual account on your integration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of dedicated virtual account
- @return ApiDeactivateRequest
+ @return DedicatedVirtualAccountDeactivateAPIRequest
 */
-func (a *DedicatedVirtualAccountAPIService) Deactivate(ctx context.Context, id string) ApiDeactivateRequest {
-	return ApiDeactivateRequest{
+func (a *DedicatedVirtualAccountAPIService) Deactivate(ctx context.Context, id string) DedicatedVirtualAccountDeactivateAPIRequest {
+	return DedicatedVirtualAccountDeactivateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -529,7 +529,7 @@ func (a *DedicatedVirtualAccountAPIService) Deactivate(ctx context.Context, id s
 
 // Execute executes the request
 //  @return DedicatedNubanDeactivateResponse
-func (a *DedicatedVirtualAccountAPIService) DeactivateExecute(r ApiDeactivateRequest) (*DedicatedNubanDeactivateResponse, *http.Response, error) {
+func (a *DedicatedVirtualAccountAPIService) DeactivateExecute(r DedicatedVirtualAccountDeactivateAPIRequest) (*DedicatedNubanDeactivateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -625,13 +625,13 @@ func (a *DedicatedVirtualAccountAPIService) DeactivateExecute(r ApiDeactivateReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchRequest struct {
+type DedicatedVirtualAccountFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
 	id string
 }
 
-func (r ApiFetchRequest) Execute() (*DedicatedNubanFetchResponse, *http.Response, error) {
+func (r DedicatedVirtualAccountFetchAPIRequest) Execute() (*DedicatedNubanFetchResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -642,10 +642,10 @@ Get details of a dedicated virtual account on your integration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of dedicated virtual account
- @return ApiFetchRequest
+ @return DedicatedVirtualAccountFetchAPIRequest
 */
-func (a *DedicatedVirtualAccountAPIService) Fetch(ctx context.Context, id string) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *DedicatedVirtualAccountAPIService) Fetch(ctx context.Context, id string) DedicatedVirtualAccountFetchAPIRequest {
+	return DedicatedVirtualAccountFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -654,7 +654,7 @@ func (a *DedicatedVirtualAccountAPIService) Fetch(ctx context.Context, id string
 
 // Execute executes the request
 //  @return DedicatedNubanFetchResponse
-func (a *DedicatedVirtualAccountAPIService) FetchExecute(r ApiFetchRequest) (*DedicatedNubanFetchResponse, *http.Response, error) {
+func (a *DedicatedVirtualAccountAPIService) FetchExecute(r DedicatedVirtualAccountFetchAPIRequest) (*DedicatedNubanFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -750,7 +750,7 @@ func (a *DedicatedVirtualAccountAPIService) FetchExecute(r ApiFetchRequest) (*De
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type DedicatedVirtualAccountListAPIRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
 	active *bool
@@ -763,48 +763,48 @@ type ApiListRequest struct {
 }
 
 // Status of the dedicated virtual account
-func (r ApiListRequest) Active(active bool) ApiListRequest {
+func (r DedicatedVirtualAccountListAPIRequest) Active(active bool) DedicatedVirtualAccountListAPIRequest {
 	r.active = &active
 	return r
 }
 
 // The customer&#39;s ID
-func (r ApiListRequest) Customer(customer int32) ApiListRequest {
+func (r DedicatedVirtualAccountListAPIRequest) Customer(customer int32) DedicatedVirtualAccountListAPIRequest {
 	r.customer = &customer
 	return r
 }
 
 // The currency of the dedicated virtual account
-func (r ApiListRequest) Currency(currency string) ApiListRequest {
+func (r DedicatedVirtualAccountListAPIRequest) Currency(currency string) DedicatedVirtualAccountListAPIRequest {
 	r.currency = &currency
 	return r
 }
 
 // The bank&#39;s slug in lowercase, without spaces
-func (r ApiListRequest) ProviderSlug(providerSlug string) ApiListRequest {
+func (r DedicatedVirtualAccountListAPIRequest) ProviderSlug(providerSlug string) DedicatedVirtualAccountListAPIRequest {
 	r.providerSlug = &providerSlug
 	return r
 }
 
 // The bank&#39;s ID
-func (r ApiListRequest) BankId(bankId string) ApiListRequest {
+func (r DedicatedVirtualAccountListAPIRequest) BankId(bankId string) DedicatedVirtualAccountListAPIRequest {
 	r.bankId = &bankId
 	return r
 }
 
 // The number of records to fetch per request
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r DedicatedVirtualAccountListAPIRequest) PerPage(perPage int32) DedicatedVirtualAccountListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The offset to retrieve data from
-func (r ApiListRequest) Page(page int32) ApiListRequest {
+func (r DedicatedVirtualAccountListAPIRequest) Page(page int32) DedicatedVirtualAccountListAPIRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiListRequest) Execute() (*DedicatedNubanListResponse, *http.Response, error) {
+func (r DedicatedVirtualAccountListAPIRequest) Execute() (*DedicatedNubanListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -814,10 +814,10 @@ List List Dedicated Accounts
 List dedicated virtual accounts available on your integration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return DedicatedVirtualAccountListAPIRequest
 */
-func (a *DedicatedVirtualAccountAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *DedicatedVirtualAccountAPIService) List(ctx context.Context) DedicatedVirtualAccountListAPIRequest {
+	return DedicatedVirtualAccountListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -825,7 +825,7 @@ func (a *DedicatedVirtualAccountAPIService) List(ctx context.Context) ApiListReq
 
 // Execute executes the request
 //  @return DedicatedNubanListResponse
-func (a *DedicatedVirtualAccountAPIService) ListExecute(r ApiListRequest) (*DedicatedNubanListResponse, *http.Response, error) {
+func (a *DedicatedVirtualAccountAPIService) ListExecute(r DedicatedVirtualAccountListAPIRequest) (*DedicatedNubanListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -949,18 +949,18 @@ func (a *DedicatedVirtualAccountAPIService) ListExecute(r ApiListRequest) (*Dedi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRemoveSplitRequest struct {
+type DedicatedVirtualAccountRemoveSplitAPIRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
 	dedicatedVirtualAccountRemoveSplit *DedicatedVirtualAccountRemoveSplit
 }
 
-func (r ApiRemoveSplitRequest) DedicatedVirtualAccountRemoveSplit(dedicatedVirtualAccountRemoveSplit DedicatedVirtualAccountRemoveSplit) ApiRemoveSplitRequest {
+func (r DedicatedVirtualAccountRemoveSplitAPIRequest) DedicatedVirtualAccountRemoveSplit(dedicatedVirtualAccountRemoveSplit DedicatedVirtualAccountRemoveSplit) DedicatedVirtualAccountRemoveSplitAPIRequest {
 	r.dedicatedVirtualAccountRemoveSplit = &dedicatedVirtualAccountRemoveSplit
 	return r
 }
 
-func (r ApiRemoveSplitRequest) Execute() (*Response, *http.Response, error) {
+func (r DedicatedVirtualAccountRemoveSplitAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.RemoveSplitExecute(r)
 }
 
@@ -970,10 +970,10 @@ RemoveSplit Remove Split from Dedicated Account
 If you've previously set up split payment for transactions on a dedicated virtual account, you can remove it with this endpoint
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRemoveSplitRequest
+ @return DedicatedVirtualAccountRemoveSplitAPIRequest
 */
-func (a *DedicatedVirtualAccountAPIService) RemoveSplit(ctx context.Context) ApiRemoveSplitRequest {
-	return ApiRemoveSplitRequest{
+func (a *DedicatedVirtualAccountAPIService) RemoveSplit(ctx context.Context) DedicatedVirtualAccountRemoveSplitAPIRequest {
+	return DedicatedVirtualAccountRemoveSplitAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -981,7 +981,7 @@ func (a *DedicatedVirtualAccountAPIService) RemoveSplit(ctx context.Context) Api
 
 // Execute executes the request
 //  @return Response
-func (a *DedicatedVirtualAccountAPIService) RemoveSplitExecute(r ApiRemoveSplitRequest) (*Response, *http.Response, error) {
+func (a *DedicatedVirtualAccountAPIService) RemoveSplitExecute(r DedicatedVirtualAccountRemoveSplitAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -1078,7 +1078,7 @@ func (a *DedicatedVirtualAccountAPIService) RemoveSplitExecute(r ApiRemoveSplitR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRequeryRequest struct {
+type DedicatedVirtualAccountRequeryAPIRequest struct {
 	ctx context.Context
 	ApiService *DedicatedVirtualAccountAPIService
 	accountNumber *string
@@ -1087,24 +1087,24 @@ type ApiRequeryRequest struct {
 }
 
 // Virtual account number to requery
-func (r ApiRequeryRequest) AccountNumber(accountNumber string) ApiRequeryRequest {
+func (r DedicatedVirtualAccountRequeryAPIRequest) AccountNumber(accountNumber string) DedicatedVirtualAccountRequeryAPIRequest {
 	r.accountNumber = &accountNumber
 	return r
 }
 
 // The bank&#39;s slug in lowercase, without spaces.
-func (r ApiRequeryRequest) ProviderSlug(providerSlug string) ApiRequeryRequest {
+func (r DedicatedVirtualAccountRequeryAPIRequest) ProviderSlug(providerSlug string) DedicatedVirtualAccountRequeryAPIRequest {
 	r.providerSlug = &providerSlug
 	return r
 }
 
 // The day the transfer was made
-func (r ApiRequeryRequest) Date(date time.Time) ApiRequeryRequest {
+func (r DedicatedVirtualAccountRequeryAPIRequest) Date(date time.Time) DedicatedVirtualAccountRequeryAPIRequest {
 	r.date = &date
 	return r
 }
 
-func (r ApiRequeryRequest) Execute() (*Response, *http.Response, error) {
+func (r DedicatedVirtualAccountRequeryAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.RequeryExecute(r)
 }
 
@@ -1114,10 +1114,10 @@ Requery Requery Dedicated Account
 Requery Dedicated Virtual Account for new transactions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRequeryRequest
+ @return DedicatedVirtualAccountRequeryAPIRequest
 */
-func (a *DedicatedVirtualAccountAPIService) Requery(ctx context.Context) ApiRequeryRequest {
-	return ApiRequeryRequest{
+func (a *DedicatedVirtualAccountAPIService) Requery(ctx context.Context) DedicatedVirtualAccountRequeryAPIRequest {
+	return DedicatedVirtualAccountRequeryAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1125,7 +1125,7 @@ func (a *DedicatedVirtualAccountAPIService) Requery(ctx context.Context) ApiRequ
 
 // Execute executes the request
 //  @return Response
-func (a *DedicatedVirtualAccountAPIService) RequeryExecute(r ApiRequeryRequest) (*Response, *http.Response, error) {
+func (a *DedicatedVirtualAccountAPIService) RequeryExecute(r DedicatedVirtualAccountRequeryAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

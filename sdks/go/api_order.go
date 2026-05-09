@@ -25,18 +25,18 @@ import (
 // OrderAPIService OrderAPI service
 type OrderAPIService service
 
-type ApiCreateRequest struct {
+type OrderCreateAPIRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
 	orderCreate *OrderCreate
 }
 
-func (r ApiCreateRequest) OrderCreate(orderCreate OrderCreate) ApiCreateRequest {
+func (r OrderCreateAPIRequest) OrderCreate(orderCreate OrderCreate) OrderCreateAPIRequest {
 	r.orderCreate = &orderCreate
 	return r
 }
 
-func (r ApiCreateRequest) Execute() (*OrderCreateResponse, *http.Response, error) {
+func (r OrderCreateAPIRequest) Execute() (*OrderCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -46,10 +46,10 @@ Create Create Order
 Create an order for selected items
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateRequest
+ @return OrderCreateAPIRequest
 */
-func (a *OrderAPIService) Create(ctx context.Context) ApiCreateRequest {
-	return ApiCreateRequest{
+func (a *OrderAPIService) Create(ctx context.Context) OrderCreateAPIRequest {
+	return OrderCreateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *OrderAPIService) Create(ctx context.Context) ApiCreateRequest {
 
 // Execute executes the request
 //  @return OrderCreateResponse
-func (a *OrderAPIService) CreateExecute(r ApiCreateRequest) (*OrderCreateResponse, *http.Response, error) {
+func (a *OrderAPIService) CreateExecute(r OrderCreateAPIRequest) (*OrderCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -143,13 +143,13 @@ func (a *OrderAPIService) CreateExecute(r ApiCreateRequest) (*OrderCreateRespons
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchRequest struct {
+type OrderFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
 	id int32
 }
 
-func (r ApiFetchRequest) Execute() (*OrderFetchResponse, *http.Response, error) {
+func (r OrderFetchAPIRequest) Execute() (*OrderFetchResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -160,10 +160,10 @@ Fetch the details of a previously created order
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the order
- @return ApiFetchRequest
+ @return OrderFetchAPIRequest
 */
-func (a *OrderAPIService) Fetch(ctx context.Context, id int32) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *OrderAPIService) Fetch(ctx context.Context, id int32) OrderFetchAPIRequest {
+	return OrderFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -172,7 +172,7 @@ func (a *OrderAPIService) Fetch(ctx context.Context, id int32) ApiFetchRequest {
 
 // Execute executes the request
 //  @return OrderFetchResponse
-func (a *OrderAPIService) FetchExecute(r ApiFetchRequest) (*OrderFetchResponse, *http.Response, error) {
+func (a *OrderAPIService) FetchExecute(r OrderFetchAPIRequest) (*OrderFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -268,7 +268,7 @@ func (a *OrderAPIService) FetchExecute(r ApiFetchRequest) (*OrderFetchResponse, 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type OrderListAPIRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
 	perPage *int32
@@ -278,30 +278,30 @@ type ApiListRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r OrderListAPIRequest) PerPage(perPage int32) OrderListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiListRequest) Page(page int32) ApiListRequest {
+func (r OrderListAPIRequest) Page(page int32) OrderListAPIRequest {
 	r.page = &page
 	return r
 }
 
 // The start date
-func (r ApiListRequest) From(from time.Time) ApiListRequest {
+func (r OrderListAPIRequest) From(from time.Time) OrderListAPIRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiListRequest) To(to time.Time) ApiListRequest {
+func (r OrderListAPIRequest) To(to time.Time) OrderListAPIRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiListRequest) Execute() (*OrderListResponse, *http.Response, error) {
+func (r OrderListAPIRequest) Execute() (*OrderListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -311,10 +311,10 @@ List List Orders
 List the previously created orders
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return OrderListAPIRequest
 */
-func (a *OrderAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *OrderAPIService) List(ctx context.Context) OrderListAPIRequest {
+	return OrderListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -322,7 +322,7 @@ func (a *OrderAPIService) List(ctx context.Context) ApiListRequest {
 
 // Execute executes the request
 //  @return OrderListResponse
-func (a *OrderAPIService) ListExecute(r ApiListRequest) (*OrderListResponse, *http.Response, error) {
+func (a *OrderAPIService) ListExecute(r OrderListAPIRequest) (*OrderListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -429,13 +429,13 @@ func (a *OrderAPIService) ListExecute(r ApiListRequest) (*OrderListResponse, *ht
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProductRequest struct {
+type OrderProductAPIRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
 	id int32
 }
 
-func (r ApiProductRequest) Execute() (*OrderFetchProductResponse, *http.Response, error) {
+func (r OrderProductAPIRequest) Execute() (*OrderFetchProductResponse, *http.Response, error) {
 	return r.ApiService.ProductExecute(r)
 }
 
@@ -446,10 +446,10 @@ Fetch all orders for a particular product
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The unique identifier of the order
- @return ApiProductRequest
+ @return OrderProductAPIRequest
 */
-func (a *OrderAPIService) Product(ctx context.Context, id int32) ApiProductRequest {
-	return ApiProductRequest{
+func (a *OrderAPIService) Product(ctx context.Context, id int32) OrderProductAPIRequest {
+	return OrderProductAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -458,7 +458,7 @@ func (a *OrderAPIService) Product(ctx context.Context, id int32) ApiProductReque
 
 // Execute executes the request
 //  @return OrderFetchProductResponse
-func (a *OrderAPIService) ProductExecute(r ApiProductRequest) (*OrderFetchProductResponse, *http.Response, error) {
+func (a *OrderAPIService) ProductExecute(r OrderProductAPIRequest) (*OrderFetchProductResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -554,13 +554,13 @@ func (a *OrderAPIService) ProductExecute(r ApiProductRequest) (*OrderFetchProduc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiValidateRequest struct {
+type OrderValidateAPIRequest struct {
 	ctx context.Context
 	ApiService *OrderAPIService
 	code string
 }
 
-func (r ApiValidateRequest) Execute() (*OrderValidateResponse, *http.Response, error) {
+func (r OrderValidateAPIRequest) Execute() (*OrderValidateResponse, *http.Response, error) {
 	return r.ApiService.ValidateExecute(r)
 }
 
@@ -571,10 +571,10 @@ Validate a pay for me order
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param code The unique code of a previously created order
- @return ApiValidateRequest
+ @return OrderValidateAPIRequest
 */
-func (a *OrderAPIService) Validate(ctx context.Context, code string) ApiValidateRequest {
-	return ApiValidateRequest{
+func (a *OrderAPIService) Validate(ctx context.Context, code string) OrderValidateAPIRequest {
+	return OrderValidateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		code: code,
@@ -583,7 +583,7 @@ func (a *OrderAPIService) Validate(ctx context.Context, code string) ApiValidate
 
 // Execute executes the request
 //  @return OrderValidateResponse
-func (a *OrderAPIService) ValidateExecute(r ApiValidateRequest) (*OrderValidateResponse, *http.Response, error) {
+func (a *OrderAPIService) ValidateExecute(r OrderValidateAPIRequest) (*OrderValidateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

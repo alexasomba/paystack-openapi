@@ -36,7 +36,6 @@ type TransferRecipientListResponseArray struct {
 	Type string `json:"type"`
 	UpdatedAt string `json:"updatedAt"`
 	IsDeleted *bool `json:"is_deleted,omitempty"`
-	IsDeleted *bool `json:"isDeleted,omitempty"`
 	Details TransferRecipientListResponseArrayDetails `json:"details"`
 }
 
@@ -467,36 +466,17 @@ func (o *TransferRecipientListResponseArray) SetIsDeleted(v bool) {
 }
 
 // GetIsDeleted returns the IsDeleted field value if set, zero value otherwise.
-func (o *TransferRecipientListResponseArray) GetIsDeleted() bool {
-	if o == nil || IsNil(o.IsDeleted) {
-		var ret bool
-		return ret
-	}
-	return *o.IsDeleted
-}
+
 
 // GetIsDeletedOk returns a tuple with the IsDeleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransferRecipientListResponseArray) GetIsDeletedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDeleted) {
-		return nil, false
-	}
-	return o.IsDeleted, true
-}
+
 
 // HasIsDeleted returns a boolean if a field has been set.
-func (o *TransferRecipientListResponseArray) HasIsDeleted() bool {
-	if o != nil && !IsNil(o.IsDeleted) {
-		return true
-	}
 
-	return false
-}
 
 // SetIsDeleted gets a reference to the given bool and assigns it to the IsDeleted field.
-func (o *TransferRecipientListResponseArray) SetIsDeleted(v bool) {
-	o.IsDeleted = &v
-}
+
 
 // GetDetails returns the Details field value
 func (o *TransferRecipientListResponseArray) GetDetails() TransferRecipientListResponseArrayDetails {

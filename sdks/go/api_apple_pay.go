@@ -23,7 +23,7 @@ import (
 // ApplePayAPIService ApplePayAPI service
 type ApplePayAPIService service
 
-type ApiListDomainRequest struct {
+type ApplePayListDomainAPIRequest struct {
 	ctx context.Context
 	ApiService *ApplePayAPIService
 	useCursor *bool
@@ -32,24 +32,24 @@ type ApiListDomainRequest struct {
 }
 
 // Flag to enable cursor pagination on the endpoint
-func (r ApiListDomainRequest) UseCursor(useCursor bool) ApiListDomainRequest {
+func (r ApplePayListDomainAPIRequest) UseCursor(useCursor bool) ApplePayListDomainAPIRequest {
 	r.useCursor = &useCursor
 	return r
 }
 
 // A cursor that indicates your place in the list. It can be used to fetch the next page of the list
-func (r ApiListDomainRequest) Next(next string) ApiListDomainRequest {
+func (r ApplePayListDomainAPIRequest) Next(next string) ApplePayListDomainAPIRequest {
 	r.next = &next
 	return r
 }
 
 // A cursor that indicates your place in the list. It should be used to fetch the previous page of the list after an intial next request
-func (r ApiListDomainRequest) Previous(previous string) ApiListDomainRequest {
+func (r ApplePayListDomainAPIRequest) Previous(previous string) ApplePayListDomainAPIRequest {
 	r.previous = &previous
 	return r
 }
 
-func (r ApiListDomainRequest) Execute() (*ApplePayDomainsResponse, *http.Response, error) {
+func (r ApplePayListDomainAPIRequest) Execute() (*ApplePayDomainsResponse, *http.Response, error) {
 	return r.ApiService.ListDomainExecute(r)
 }
 
@@ -59,10 +59,10 @@ ListDomain List Domains
 Lists all registered domains on your integration. Returns an empty array if no domains have been added.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListDomainRequest
+ @return ApplePayListDomainAPIRequest
 */
-func (a *ApplePayAPIService) ListDomain(ctx context.Context) ApiListDomainRequest {
-	return ApiListDomainRequest{
+func (a *ApplePayAPIService) ListDomain(ctx context.Context) ApplePayListDomainAPIRequest {
+	return ApplePayListDomainAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -70,7 +70,7 @@ func (a *ApplePayAPIService) ListDomain(ctx context.Context) ApiListDomainReques
 
 // Execute executes the request
 //  @return ApplePayDomainsResponse
-func (a *ApplePayAPIService) ListDomainExecute(r ApiListDomainRequest) (*ApplePayDomainsResponse, *http.Response, error) {
+func (a *ApplePayAPIService) ListDomainExecute(r ApplePayListDomainAPIRequest) (*ApplePayDomainsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -174,18 +174,18 @@ func (a *ApplePayAPIService) ListDomainExecute(r ApiListDomainRequest) (*ApplePa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRegisterDomainRequest struct {
+type ApplePayRegisterDomainAPIRequest struct {
 	ctx context.Context
 	ApiService *ApplePayAPIService
 	applePayParam *ApplePayParam
 }
 
-func (r ApiRegisterDomainRequest) ApplePayParam(applePayParam ApplePayParam) ApiRegisterDomainRequest {
+func (r ApplePayRegisterDomainAPIRequest) ApplePayParam(applePayParam ApplePayParam) ApplePayRegisterDomainAPIRequest {
 	r.applePayParam = &applePayParam
 	return r
 }
 
-func (r ApiRegisterDomainRequest) Execute() (*ApplePayCreateOkModel, *http.Response, error) {
+func (r ApplePayRegisterDomainAPIRequest) Execute() (*ApplePayCreateOkModel, *http.Response, error) {
 	return r.ApiService.RegisterDomainExecute(r)
 }
 
@@ -198,10 +198,10 @@ Register a top-level domain or subdomain for your Apple Pay integration.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRegisterDomainRequest
+ @return ApplePayRegisterDomainAPIRequest
 */
-func (a *ApplePayAPIService) RegisterDomain(ctx context.Context) ApiRegisterDomainRequest {
-	return ApiRegisterDomainRequest{
+func (a *ApplePayAPIService) RegisterDomain(ctx context.Context) ApplePayRegisterDomainAPIRequest {
+	return ApplePayRegisterDomainAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -209,7 +209,7 @@ func (a *ApplePayAPIService) RegisterDomain(ctx context.Context) ApiRegisterDoma
 
 // Execute executes the request
 //  @return ApplePayCreateOkModel
-func (a *ApplePayAPIService) RegisterDomainExecute(r ApiRegisterDomainRequest) (*ApplePayCreateOkModel, *http.Response, error) {
+func (a *ApplePayAPIService) RegisterDomainExecute(r ApplePayRegisterDomainAPIRequest) (*ApplePayCreateOkModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -295,18 +295,18 @@ func (a *ApplePayAPIService) RegisterDomainExecute(r ApiRegisterDomainRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUnregisterDomainRequest struct {
+type ApplePayUnregisterDomainAPIRequest struct {
 	ctx context.Context
 	ApiService *ApplePayAPIService
 	applePayParam *ApplePayParam
 }
 
-func (r ApiUnregisterDomainRequest) ApplePayParam(applePayParam ApplePayParam) ApiUnregisterDomainRequest {
+func (r ApplePayUnregisterDomainAPIRequest) ApplePayParam(applePayParam ApplePayParam) ApplePayUnregisterDomainAPIRequest {
 	r.applePayParam = &applePayParam
 	return r
 }
 
-func (r ApiUnregisterDomainRequest) Execute() (*Response, *http.Response, error) {
+func (r ApplePayUnregisterDomainAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.UnregisterDomainExecute(r)
 }
 
@@ -318,10 +318,10 @@ Pay integration.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUnregisterDomainRequest
+ @return ApplePayUnregisterDomainAPIRequest
 */
-func (a *ApplePayAPIService) UnregisterDomain(ctx context.Context) ApiUnregisterDomainRequest {
-	return ApiUnregisterDomainRequest{
+func (a *ApplePayAPIService) UnregisterDomain(ctx context.Context) ApplePayUnregisterDomainAPIRequest {
+	return ApplePayUnregisterDomainAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -329,7 +329,7 @@ func (a *ApplePayAPIService) UnregisterDomain(ctx context.Context) ApiUnregister
 
 // Execute executes the request
 //  @return Response
-func (a *ApplePayAPIService) UnregisterDomainExecute(r ApiUnregisterDomainRequest) (*Response, *http.Response, error) {
+func (a *ApplePayAPIService) UnregisterDomainExecute(r ApplePayUnregisterDomainAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}

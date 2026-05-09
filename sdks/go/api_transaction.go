@@ -25,18 +25,18 @@ import (
 // TransactionAPIService TransactionAPI service
 type TransactionAPIService service
 
-type ApiChargeAuthorizationRequest struct {
+type TransactionChargeAuthorizationAPIRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
 	transactionChargeAuthorization *TransactionChargeAuthorization
 }
 
-func (r ApiChargeAuthorizationRequest) TransactionChargeAuthorization(transactionChargeAuthorization TransactionChargeAuthorization) ApiChargeAuthorizationRequest {
+func (r TransactionChargeAuthorizationAPIRequest) TransactionChargeAuthorization(transactionChargeAuthorization TransactionChargeAuthorization) TransactionChargeAuthorizationAPIRequest {
 	r.transactionChargeAuthorization = &transactionChargeAuthorization
 	return r
 }
 
-func (r ApiChargeAuthorizationRequest) Execute() (*ChargeAuthorizationResponse, *http.Response, error) {
+func (r TransactionChargeAuthorizationAPIRequest) Execute() (*ChargeAuthorizationResponse, *http.Response, error) {
 	return r.ApiService.ChargeAuthorizationExecute(r)
 }
 
@@ -46,10 +46,10 @@ ChargeAuthorization Charge Authorization
 Charge all authorizations marked as reusable with this endpoint whenever you need to receive payments
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiChargeAuthorizationRequest
+ @return TransactionChargeAuthorizationAPIRequest
 */
-func (a *TransactionAPIService) ChargeAuthorization(ctx context.Context) ApiChargeAuthorizationRequest {
-	return ApiChargeAuthorizationRequest{
+func (a *TransactionAPIService) ChargeAuthorization(ctx context.Context) TransactionChargeAuthorizationAPIRequest {
+	return TransactionChargeAuthorizationAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *TransactionAPIService) ChargeAuthorization(ctx context.Context) ApiChar
 
 // Execute executes the request
 //  @return ChargeAuthorizationResponse
-func (a *TransactionAPIService) ChargeAuthorizationExecute(r ApiChargeAuthorizationRequest) (*ChargeAuthorizationResponse, *http.Response, error) {
+func (a *TransactionAPIService) ChargeAuthorizationExecute(r TransactionChargeAuthorizationAPIRequest) (*ChargeAuthorizationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -143,7 +143,7 @@ func (a *TransactionAPIService) ChargeAuthorizationExecute(r ApiChargeAuthorizat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCheckAuthorizationRequest struct {
+type TransactionCheckAuthorizationAPIRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
 	email *string
@@ -153,30 +153,30 @@ type ApiCheckAuthorizationRequest struct {
 }
 
 // Customer&#39;s email address
-func (r ApiCheckAuthorizationRequest) Email(email string) ApiCheckAuthorizationRequest {
+func (r TransactionCheckAuthorizationAPIRequest) Email(email string) TransactionCheckAuthorizationAPIRequest {
 	r.email = &email
 	return r
 }
 
 // Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, send the amount multiplied by 100 even though the currency does not use fractional subunits.
-func (r ApiCheckAuthorizationRequest) Amount(amount int32) ApiCheckAuthorizationRequest {
+func (r TransactionCheckAuthorizationAPIRequest) Amount(amount int32) TransactionCheckAuthorizationAPIRequest {
 	r.amount = &amount
 	return r
 }
 
 // Valid authorization code to charge
-func (r ApiCheckAuthorizationRequest) AuthorizationCode(authorizationCode string) ApiCheckAuthorizationRequest {
+func (r TransactionCheckAuthorizationAPIRequest) AuthorizationCode(authorizationCode string) TransactionCheckAuthorizationAPIRequest {
 	r.authorizationCode = &authorizationCode
 	return r
 }
 
 // The transaction currency
-func (r ApiCheckAuthorizationRequest) Currency(currency string) ApiCheckAuthorizationRequest {
+func (r TransactionCheckAuthorizationAPIRequest) Currency(currency string) TransactionCheckAuthorizationAPIRequest {
 	r.currency = &currency
 	return r
 }
 
-func (r ApiCheckAuthorizationRequest) Execute() (*Response, *http.Response, error) {
+func (r TransactionCheckAuthorizationAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.CheckAuthorizationExecute(r)
 }
 
@@ -186,10 +186,10 @@ CheckAuthorization Check Authorization
 Check if an authorization code can be used for a charge.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCheckAuthorizationRequest
+ @return TransactionCheckAuthorizationAPIRequest
 */
-func (a *TransactionAPIService) CheckAuthorization(ctx context.Context) ApiCheckAuthorizationRequest {
-	return ApiCheckAuthorizationRequest{
+func (a *TransactionAPIService) CheckAuthorization(ctx context.Context) TransactionCheckAuthorizationAPIRequest {
+	return TransactionCheckAuthorizationAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -197,7 +197,7 @@ func (a *TransactionAPIService) CheckAuthorization(ctx context.Context) ApiCheck
 
 // Execute executes the request
 //  @return Response
-func (a *TransactionAPIService) CheckAuthorizationExecute(r ApiCheckAuthorizationRequest) (*Response, *http.Response, error) {
+func (a *TransactionAPIService) CheckAuthorizationExecute(r TransactionCheckAuthorizationAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -295,13 +295,13 @@ func (a *TransactionAPIService) CheckAuthorizationExecute(r ApiCheckAuthorizatio
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiEventRequest struct {
+type TransactionEventAPIRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
 	id int64
 }
 
-func (r ApiEventRequest) Execute() (*Response, *http.Response, error) {
+func (r TransactionEventAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.EventExecute(r)
 }
 
@@ -312,10 +312,10 @@ Fetch the event for a specific transaction.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the transaction
- @return ApiEventRequest
+ @return TransactionEventAPIRequest
 */
-func (a *TransactionAPIService) Event(ctx context.Context, id int64) ApiEventRequest {
-	return ApiEventRequest{
+func (a *TransactionAPIService) Event(ctx context.Context, id int64) TransactionEventAPIRequest {
+	return TransactionEventAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -324,7 +324,7 @@ func (a *TransactionAPIService) Event(ctx context.Context, id int64) ApiEventReq
 
 // Execute executes the request
 //  @return Response
-func (a *TransactionAPIService) EventExecute(r ApiEventRequest) (*Response, *http.Response, error) {
+func (a *TransactionAPIService) EventExecute(r TransactionEventAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -420,7 +420,7 @@ func (a *TransactionAPIService) EventExecute(r ApiEventRequest) (*Response, *htt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiExportRequest struct {
+type TransactionExportAPIRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
 	perPage *int32
@@ -438,79 +438,79 @@ type ApiExportRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiExportRequest) PerPage(perPage int32) ApiExportRequest {
+func (r TransactionExportAPIRequest) PerPage(perPage int32) TransactionExportAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiExportRequest) Page(page int32) ApiExportRequest {
+func (r TransactionExportAPIRequest) Page(page int32) TransactionExportAPIRequest {
 	r.page = &page
 	return r
 }
 
 // The start date
-func (r ApiExportRequest) From(from time.Time) ApiExportRequest {
+func (r TransactionExportAPIRequest) From(from time.Time) TransactionExportAPIRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiExportRequest) To(to time.Time) ApiExportRequest {
+func (r TransactionExportAPIRequest) To(to time.Time) TransactionExportAPIRequest {
 	r.to = &to
 	return r
 }
 
 // Filter by the status of the transaction
-func (r ApiExportRequest) Status(status string) ApiExportRequest {
+func (r TransactionExportAPIRequest) Status(status string) TransactionExportAPIRequest {
 	r.status = &status
 	return r
 }
 
 // Filter by customer ID
-func (r ApiExportRequest) Customer(customer int32) ApiExportRequest {
+func (r TransactionExportAPIRequest) Customer(customer int32) TransactionExportAPIRequest {
 	r.customer = &customer
 	return r
 }
 
 // Specify the transaction currency to export
-func (r ApiExportRequest) Currency(currency string) ApiExportRequest {
+func (r TransactionExportAPIRequest) Currency(currency string) TransactionExportAPIRequest {
 	r.currency = &currency
 	return r
 }
 
 // Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by amount. 
-func (r ApiExportRequest) Amount(amount int32) ApiExportRequest {
+func (r TransactionExportAPIRequest) Amount(amount int32) TransactionExportAPIRequest {
 	r.amount = &amount
 	return r
 }
 
 // Set to true to export only settled transactions. false for pending transactions. Leave undefined to export all transactions
-func (r ApiExportRequest) Settled(settled bool) ApiExportRequest {
+func (r TransactionExportAPIRequest) Settled(settled bool) TransactionExportAPIRequest {
 	r.settled = &settled
 	return r
 }
 
 // Filter by the settlement ID
-func (r ApiExportRequest) Settlement(settlement int64) ApiExportRequest {
+func (r TransactionExportAPIRequest) Settlement(settlement int64) TransactionExportAPIRequest {
 	r.settlement = &settlement
 	return r
 }
 
 // Specify a payment page&#39;s id to export only transactions conducted on said page
-func (r ApiExportRequest) PaymentPage(paymentPage int32) ApiExportRequest {
+func (r TransactionExportAPIRequest) PaymentPage(paymentPage int32) TransactionExportAPIRequest {
 	r.paymentPage = &paymentPage
 	return r
 }
 
 // Filter by subaccount code
 // Deprecated
-func (r ApiExportRequest) SubaccountCode(subaccountCode string) ApiExportRequest {
+func (r TransactionExportAPIRequest) SubaccountCode(subaccountCode string) TransactionExportAPIRequest {
 	r.subaccountCode = &subaccountCode
 	return r
 }
 
-func (r ApiExportRequest) Execute() (*TransactionExportResponse, *http.Response, error) {
+func (r TransactionExportAPIRequest) Execute() (*TransactionExportResponse, *http.Response, error) {
 	return r.ApiService.ExportExecute(r)
 }
 
@@ -520,10 +520,10 @@ Export Export Transactions
 Download transactions that occurred on your integration for a specific timeframe
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiExportRequest
+ @return TransactionExportAPIRequest
 */
-func (a *TransactionAPIService) Export(ctx context.Context) ApiExportRequest {
-	return ApiExportRequest{
+func (a *TransactionAPIService) Export(ctx context.Context) TransactionExportAPIRequest {
+	return TransactionExportAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -531,7 +531,7 @@ func (a *TransactionAPIService) Export(ctx context.Context) ApiExportRequest {
 
 // Execute executes the request
 //  @return TransactionExportResponse
-func (a *TransactionAPIService) ExportExecute(r ApiExportRequest) (*TransactionExportResponse, *http.Response, error) {
+func (a *TransactionAPIService) ExportExecute(r TransactionExportAPIRequest) (*TransactionExportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -662,13 +662,13 @@ func (a *TransactionAPIService) ExportExecute(r ApiExportRequest) (*TransactionE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchRequest struct {
+type TransactionFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
 	id int64
 }
 
-func (r ApiFetchRequest) Execute() (*TransactionFetchResponse, *http.Response, error) {
+func (r TransactionFetchAPIRequest) Execute() (*TransactionFetchResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -679,10 +679,10 @@ Fetch a transaction to get its details
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the transaction to fetch
- @return ApiFetchRequest
+ @return TransactionFetchAPIRequest
 */
-func (a *TransactionAPIService) Fetch(ctx context.Context, id int64) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *TransactionAPIService) Fetch(ctx context.Context, id int64) TransactionFetchAPIRequest {
+	return TransactionFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -691,7 +691,7 @@ func (a *TransactionAPIService) Fetch(ctx context.Context, id int64) ApiFetchReq
 
 // Execute executes the request
 //  @return TransactionFetchResponse
-func (a *TransactionAPIService) FetchExecute(r ApiFetchRequest) (*TransactionFetchResponse, *http.Response, error) {
+func (a *TransactionAPIService) FetchExecute(r TransactionFetchAPIRequest) (*TransactionFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -787,18 +787,18 @@ func (a *TransactionAPIService) FetchExecute(r ApiFetchRequest) (*TransactionFet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiInitializeRequest struct {
+type TransactionInitializeAPIRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
 	transactionInitialize *TransactionInitialize
 }
 
-func (r ApiInitializeRequest) TransactionInitialize(transactionInitialize TransactionInitialize) ApiInitializeRequest {
+func (r TransactionInitializeAPIRequest) TransactionInitialize(transactionInitialize TransactionInitialize) TransactionInitializeAPIRequest {
 	r.transactionInitialize = &transactionInitialize
 	return r
 }
 
-func (r ApiInitializeRequest) Execute() (*TransactionInitializeResponse, *http.Response, error) {
+func (r TransactionInitializeAPIRequest) Execute() (*TransactionInitializeResponse, *http.Response, error) {
 	return r.ApiService.InitializeExecute(r)
 }
 
@@ -808,10 +808,10 @@ Initialize Initialize Transaction
 Create a new transaction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInitializeRequest
+ @return TransactionInitializeAPIRequest
 */
-func (a *TransactionAPIService) Initialize(ctx context.Context) ApiInitializeRequest {
-	return ApiInitializeRequest{
+func (a *TransactionAPIService) Initialize(ctx context.Context) TransactionInitializeAPIRequest {
+	return TransactionInitializeAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -819,7 +819,7 @@ func (a *TransactionAPIService) Initialize(ctx context.Context) ApiInitializeReq
 
 // Execute executes the request
 //  @return TransactionInitializeResponse
-func (a *TransactionAPIService) InitializeExecute(r ApiInitializeRequest) (*TransactionInitializeResponse, *http.Response, error) {
+func (a *TransactionAPIService) InitializeExecute(r TransactionInitializeAPIRequest) (*TransactionInitializeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -916,7 +916,7 @@ func (a *TransactionAPIService) InitializeExecute(r ApiInitializeRequest) (*Tran
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type TransactionListAPIRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
 	useCursor *bool
@@ -939,108 +939,108 @@ type ApiListRequest struct {
 }
 
 // A flag to indicate if cursor based pagination should be used
-func (r ApiListRequest) UseCursor(useCursor bool) ApiListRequest {
+func (r TransactionListAPIRequest) UseCursor(useCursor bool) TransactionListAPIRequest {
 	r.useCursor = &useCursor
 	return r
 }
 
 // An alphanumeric value returned for every cursor based retrieval, used to retrieve the next set of data 
-func (r ApiListRequest) Next(next string) ApiListRequest {
+func (r TransactionListAPIRequest) Next(next string) TransactionListAPIRequest {
 	r.next = &next
 	return r
 }
 
 // An alphanumeric value returned for every cursor based retrieval, used to retrieve the previous set of data 
-func (r ApiListRequest) Previous(previous string) ApiListRequest {
+func (r TransactionListAPIRequest) Previous(previous string) TransactionListAPIRequest {
 	r.previous = &previous
 	return r
 }
 
 // Specify how many records you want to retrieve per page. If not specified, we use a default value of 50.
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r TransactionListAPIRequest) PerPage(perPage int32) TransactionListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // Specify exactly what page you want to retrieve. If not specified, we use a default value of 1.
-func (r ApiListRequest) Page(page int32) ApiListRequest {
+func (r TransactionListAPIRequest) Page(page int32) TransactionListAPIRequest {
 	r.page = &page
 	return r
 }
 
 // A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
-func (r ApiListRequest) From(from time.Time) ApiListRequest {
+func (r TransactionListAPIRequest) From(from time.Time) TransactionListAPIRequest {
 	r.from = &from
 	return r
 }
 
 // A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
-func (r ApiListRequest) To(to time.Time) ApiListRequest {
+func (r TransactionListAPIRequest) To(to time.Time) TransactionListAPIRequest {
 	r.to = &to
 	return r
 }
 
 // Filter transaction by status
-func (r ApiListRequest) Status(status string) ApiListRequest {
+func (r TransactionListAPIRequest) Status(status string) TransactionListAPIRequest {
 	r.status = &status
 	return r
 }
 
 // The origin of the payment
-func (r ApiListRequest) Source(source string) ApiListRequest {
+func (r TransactionListAPIRequest) Source(source string) TransactionListAPIRequest {
 	r.source = &source
 	return r
 }
 
 // The Terminal ID for the transactions you want to retrieve
-func (r ApiListRequest) Terminalid(terminalid string) ApiListRequest {
+func (r TransactionListAPIRequest) Terminalid(terminalid string) TransactionListAPIRequest {
 	r.terminalid = &terminalid
 	return r
 }
 
 // Filter transactions by a virtual account number
-func (r ApiListRequest) VirtualAccountNumber(virtualAccountNumber string) ApiListRequest {
+func (r TransactionListAPIRequest) VirtualAccountNumber(virtualAccountNumber string) TransactionListAPIRequest {
 	r.virtualAccountNumber = &virtualAccountNumber
 	return r
 }
 
 // Specify an ID for the customer whose transactions you want to retrieve
-func (r ApiListRequest) Customer(customer int32) ApiListRequest {
+func (r TransactionListAPIRequest) Customer(customer int32) TransactionListAPIRequest {
 	r.customer = &customer
 	return r
 }
 
 // Amount should be in the subunit of the supported currency (e.g. kobo for NGN, pesewas for GHS, cents for ZAR/USD/KES). For XOF, the amount is the same as the base units (not multiplied by 100). Filter transactions by a specific amount. 
-func (r ApiListRequest) Amount(amount int64) ApiListRequest {
+func (r TransactionListAPIRequest) Amount(amount int64) TransactionListAPIRequest {
 	r.amount = &amount
 	return r
 }
 
 // The settlement ID to filter for settled transactions
-func (r ApiListRequest) Settlement(settlement int64) ApiListRequest {
+func (r TransactionListAPIRequest) Settlement(settlement int64) TransactionListAPIRequest {
 	r.settlement = &settlement
 	return r
 }
 
 // The payment method the customer used to complete the transaction
-func (r ApiListRequest) Channel(channel string) ApiListRequest {
+func (r TransactionListAPIRequest) Channel(channel string) TransactionListAPIRequest {
 	r.channel = &channel
 	return r
 }
 
 // Filter transaction by subaccount code
-func (r ApiListRequest) SubaccountCode(subaccountCode string) ApiListRequest {
+func (r TransactionListAPIRequest) SubaccountCode(subaccountCode string) TransactionListAPIRequest {
 	r.subaccountCode = &subaccountCode
 	return r
 }
 
 // Filter transaction by split code
-func (r ApiListRequest) SplitCode(splitCode string) ApiListRequest {
+func (r TransactionListAPIRequest) SplitCode(splitCode string) TransactionListAPIRequest {
 	r.splitCode = &splitCode
 	return r
 }
 
-func (r ApiListRequest) Execute() (*TransactionListResponse, *http.Response, error) {
+func (r TransactionListAPIRequest) Execute() (*TransactionListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -1050,10 +1050,10 @@ List List Transactions
 List transactions carried out on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return TransactionListAPIRequest
 */
-func (a *TransactionAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *TransactionAPIService) List(ctx context.Context) TransactionListAPIRequest {
+	return TransactionListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1061,7 +1061,7 @@ func (a *TransactionAPIService) List(ctx context.Context) ApiListRequest {
 
 // Execute executes the request
 //  @return TransactionListResponse
-func (a *TransactionAPIService) ListExecute(r ApiListRequest) (*TransactionListResponse, *http.Response, error) {
+func (a *TransactionAPIService) ListExecute(r TransactionListAPIRequest) (*TransactionListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1207,18 +1207,18 @@ func (a *TransactionAPIService) ListExecute(r ApiListRequest) (*TransactionListR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPartialDebitRequest struct {
+type TransactionPartialDebitAPIRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
 	transactionPartialDebit *TransactionPartialDebit
 }
 
-func (r ApiPartialDebitRequest) TransactionPartialDebit(transactionPartialDebit TransactionPartialDebit) ApiPartialDebitRequest {
+func (r TransactionPartialDebitAPIRequest) TransactionPartialDebit(transactionPartialDebit TransactionPartialDebit) TransactionPartialDebitAPIRequest {
 	r.transactionPartialDebit = &transactionPartialDebit
 	return r
 }
 
-func (r ApiPartialDebitRequest) Execute() (*TransactionPartialDebitResponse, *http.Response, error) {
+func (r TransactionPartialDebitAPIRequest) Execute() (*TransactionPartialDebitResponse, *http.Response, error) {
 	return r.ApiService.PartialDebitExecute(r)
 }
 
@@ -1228,10 +1228,10 @@ PartialDebit Partial Debit
 Retrieve part of a payment from a customer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPartialDebitRequest
+ @return TransactionPartialDebitAPIRequest
 */
-func (a *TransactionAPIService) PartialDebit(ctx context.Context) ApiPartialDebitRequest {
-	return ApiPartialDebitRequest{
+func (a *TransactionAPIService) PartialDebit(ctx context.Context) TransactionPartialDebitAPIRequest {
+	return TransactionPartialDebitAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1239,7 +1239,7 @@ func (a *TransactionAPIService) PartialDebit(ctx context.Context) ApiPartialDebi
 
 // Execute executes the request
 //  @return TransactionPartialDebitResponse
-func (a *TransactionAPIService) PartialDebitExecute(r ApiPartialDebitRequest) (*TransactionPartialDebitResponse, *http.Response, error) {
+func (a *TransactionAPIService) PartialDebitExecute(r TransactionPartialDebitAPIRequest) (*TransactionPartialDebitResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1325,13 +1325,13 @@ func (a *TransactionAPIService) PartialDebitExecute(r ApiPartialDebitRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSessionRequest struct {
+type TransactionSessionAPIRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
 	id int64
 }
 
-func (r ApiSessionRequest) Execute() (*Response, *http.Response, error) {
+func (r TransactionSessionAPIRequest) Execute() (*Response, *http.Response, error) {
 	return r.ApiService.SessionExecute(r)
 }
 
@@ -1342,10 +1342,10 @@ Fetch the session for a specific transaction.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the transaction
- @return ApiSessionRequest
+ @return TransactionSessionAPIRequest
 */
-func (a *TransactionAPIService) Session(ctx context.Context, id int64) ApiSessionRequest {
-	return ApiSessionRequest{
+func (a *TransactionAPIService) Session(ctx context.Context, id int64) TransactionSessionAPIRequest {
+	return TransactionSessionAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1354,7 +1354,7 @@ func (a *TransactionAPIService) Session(ctx context.Context, id int64) ApiSessio
 
 // Execute executes the request
 //  @return Response
-func (a *TransactionAPIService) SessionExecute(r ApiSessionRequest) (*Response, *http.Response, error) {
+func (a *TransactionAPIService) SessionExecute(r TransactionSessionAPIRequest) (*Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1450,13 +1450,13 @@ func (a *TransactionAPIService) SessionExecute(r ApiSessionRequest) (*Response, 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiTimelineRequest struct {
+type TransactionTimelineAPIRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
 	idOrReference string
 }
 
-func (r ApiTimelineRequest) Execute() (*TransactionTimelineResponse, *http.Response, error) {
+func (r TransactionTimelineAPIRequest) Execute() (*TransactionTimelineResponse, *http.Response, error) {
 	return r.ApiService.TimelineExecute(r)
 }
 
@@ -1467,10 +1467,10 @@ Fetch the steps taken from the initiation to the completion of a transaction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param idOrReference The ID or the reference of the transaction
- @return ApiTimelineRequest
+ @return TransactionTimelineAPIRequest
 */
-func (a *TransactionAPIService) Timeline(ctx context.Context, idOrReference string) ApiTimelineRequest {
-	return ApiTimelineRequest{
+func (a *TransactionAPIService) Timeline(ctx context.Context, idOrReference string) TransactionTimelineAPIRequest {
+	return TransactionTimelineAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		idOrReference: idOrReference,
@@ -1479,7 +1479,7 @@ func (a *TransactionAPIService) Timeline(ctx context.Context, idOrReference stri
 
 // Execute executes the request
 //  @return TransactionTimelineResponse
-func (a *TransactionAPIService) TimelineExecute(r ApiTimelineRequest) (*TransactionTimelineResponse, *http.Response, error) {
+func (a *TransactionAPIService) TimelineExecute(r TransactionTimelineAPIRequest) (*TransactionTimelineResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1575,7 +1575,7 @@ func (a *TransactionAPIService) TimelineExecute(r ApiTimelineRequest) (*Transact
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiTotalsRequest struct {
+type TransactionTotalsAPIRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
 	perPage *int32
@@ -1585,30 +1585,30 @@ type ApiTotalsRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiTotalsRequest) PerPage(perPage int32) ApiTotalsRequest {
+func (r TransactionTotalsAPIRequest) PerPage(perPage int32) TransactionTotalsAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiTotalsRequest) Page(page int32) ApiTotalsRequest {
+func (r TransactionTotalsAPIRequest) Page(page int32) TransactionTotalsAPIRequest {
 	r.page = &page
 	return r
 }
 
 // The start date
-func (r ApiTotalsRequest) From(from time.Time) ApiTotalsRequest {
+func (r TransactionTotalsAPIRequest) From(from time.Time) TransactionTotalsAPIRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiTotalsRequest) To(to time.Time) ApiTotalsRequest {
+func (r TransactionTotalsAPIRequest) To(to time.Time) TransactionTotalsAPIRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiTotalsRequest) Execute() (*TransactionTotalsResponse, *http.Response, error) {
+func (r TransactionTotalsAPIRequest) Execute() (*TransactionTotalsResponse, *http.Response, error) {
 	return r.ApiService.TotalsExecute(r)
 }
 
@@ -1618,10 +1618,10 @@ Totals Transaction Totals
 Get the total amount of all transactions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiTotalsRequest
+ @return TransactionTotalsAPIRequest
 */
-func (a *TransactionAPIService) Totals(ctx context.Context) ApiTotalsRequest {
-	return ApiTotalsRequest{
+func (a *TransactionAPIService) Totals(ctx context.Context) TransactionTotalsAPIRequest {
+	return TransactionTotalsAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1629,7 +1629,7 @@ func (a *TransactionAPIService) Totals(ctx context.Context) ApiTotalsRequest {
 
 // Execute executes the request
 //  @return TransactionTotalsResponse
-func (a *TransactionAPIService) TotalsExecute(r ApiTotalsRequest) (*TransactionTotalsResponse, *http.Response, error) {
+func (a *TransactionAPIService) TotalsExecute(r TransactionTotalsAPIRequest) (*TransactionTotalsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1736,13 +1736,13 @@ func (a *TransactionAPIService) TotalsExecute(r ApiTotalsRequest) (*TransactionT
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiVerifyRequest struct {
+type TransactionVerifyAPIRequest struct {
 	ctx context.Context
 	ApiService *TransactionAPIService
 	reference string
 }
 
-func (r ApiVerifyRequest) Execute() (*VerifyResponse, *http.Response, error) {
+func (r TransactionVerifyAPIRequest) Execute() (*VerifyResponse, *http.Response, error) {
 	return r.ApiService.VerifyExecute(r)
 }
 
@@ -1753,10 +1753,10 @@ Verify a previously initiated transaction using it's reference
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param reference The transaction reference to verify
- @return ApiVerifyRequest
+ @return TransactionVerifyAPIRequest
 */
-func (a *TransactionAPIService) Verify(ctx context.Context, reference string) ApiVerifyRequest {
-	return ApiVerifyRequest{
+func (a *TransactionAPIService) Verify(ctx context.Context, reference string) TransactionVerifyAPIRequest {
+	return TransactionVerifyAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		reference: reference,
@@ -1765,7 +1765,7 @@ func (a *TransactionAPIService) Verify(ctx context.Context, reference string) Ap
 
 // Execute executes the request
 //  @return VerifyResponse
-func (a *TransactionAPIService) VerifyExecute(r ApiVerifyRequest) (*VerifyResponse, *http.Response, error) {
+func (a *TransactionAPIService) VerifyExecute(r TransactionVerifyAPIRequest) (*VerifyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

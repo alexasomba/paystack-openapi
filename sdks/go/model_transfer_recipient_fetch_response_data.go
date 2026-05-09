@@ -37,7 +37,6 @@ type TransferRecipientFetchResponseData struct {
 	Email NullableString `json:"email,omitempty"`
 	Id int32 `json:"id"`
 	IsDeleted *bool `json:"isDeleted,omitempty"`
-	IsDeleted *bool `json:"is_deleted,omitempty"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 }
@@ -529,36 +528,17 @@ func (o *TransferRecipientFetchResponseData) SetIsDeleted(v bool) {
 }
 
 // GetIsDeleted returns the IsDeleted field value if set, zero value otherwise.
-func (o *TransferRecipientFetchResponseData) GetIsDeleted() bool {
-	if o == nil || IsNil(o.IsDeleted) {
-		var ret bool
-		return ret
-	}
-	return *o.IsDeleted
-}
+
 
 // GetIsDeletedOk returns a tuple with the IsDeleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransferRecipientFetchResponseData) GetIsDeletedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDeleted) {
-		return nil, false
-	}
-	return o.IsDeleted, true
-}
+
 
 // HasIsDeleted returns a boolean if a field has been set.
-func (o *TransferRecipientFetchResponseData) HasIsDeleted() bool {
-	if o != nil && !IsNil(o.IsDeleted) {
-		return true
-	}
 
-	return false
-}
 
 // SetIsDeleted gets a reference to the given bool and assigns it to the IsDeleted field.
-func (o *TransferRecipientFetchResponseData) SetIsDeleted(v bool) {
-	o.IsDeleted = &v
-}
+
 
 // GetCreatedAt returns the CreatedAt field value
 func (o *TransferRecipientFetchResponseData) GetCreatedAt() string {
