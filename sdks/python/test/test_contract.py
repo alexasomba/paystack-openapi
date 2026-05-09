@@ -92,4 +92,4 @@ def test_optional_live_smoke_skipped_by_default() -> None:
     configuration = alexasomba_paystack.Configuration(access_token=secret_key)
     with alexasomba_paystack.ApiClient(configuration) as api_client:
         api = TransactionApi(api_client)
-        assert api.call_list() is not None
+        assert api.list() is not None

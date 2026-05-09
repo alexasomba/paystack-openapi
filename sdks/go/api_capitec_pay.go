@@ -24,13 +24,13 @@ import (
 // CapitecPayAPIService CapitecPayAPI service
 type CapitecPayAPIService service
 
-type ApiRequeryRequest struct {
+type CapitecPayRequeryAPIRequest struct {
 	ctx context.Context
 	ApiService *CapitecPayAPIService
 	ref string
 }
 
-func (r ApiRequeryRequest) Execute() (*CapitecPayRequeryResponse, *http.Response, error) {
+func (r CapitecPayRequeryAPIRequest) Execute() (*CapitecPayRequeryResponse, *http.Response, error) {
 	return r.ApiService.RequeryExecute(r)
 }
 
@@ -41,10 +41,10 @@ Check the status of a charge made with Capitec Pay. This endpoint should be used
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param ref The transaction reference from the previously initiated charge request
- @return ApiRequeryRequest
+ @return CapitecPayRequeryAPIRequest
 */
-func (a *CapitecPayAPIService) Requery(ctx context.Context, ref string) ApiRequeryRequest {
-	return ApiRequeryRequest{
+func (a *CapitecPayAPIService) Requery(ctx context.Context, ref string) CapitecPayRequeryAPIRequest {
+	return CapitecPayRequeryAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		ref: ref,
@@ -53,7 +53,7 @@ func (a *CapitecPayAPIService) Requery(ctx context.Context, ref string) ApiReque
 
 // Execute executes the request
 //  @return CapitecPayRequeryResponse
-func (a *CapitecPayAPIService) RequeryExecute(r ApiRequeryRequest) (*CapitecPayRequeryResponse, *http.Response, error) {
+func (a *CapitecPayAPIService) RequeryExecute(r CapitecPayRequeryAPIRequest) (*CapitecPayRequeryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

@@ -24,7 +24,7 @@ async function main() {
     "git_push.sh",
   ]);
 
-  const removableDirs = new Set([".openapi-generator", "api"]);
+  const removableDirs = new Set([".openapi-generator", "api", "test"]);
 
   let entries;
   try {

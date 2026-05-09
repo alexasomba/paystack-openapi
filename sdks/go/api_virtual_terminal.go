@@ -24,19 +24,19 @@ import (
 // VirtualTerminalAPIService VirtualTerminalAPI service
 type VirtualTerminalAPIService service
 
-type ApiAddSplitCodeRequest struct {
+type VirtualTerminalAddSplitCodeAPIRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	code string
 	virtualTerminalAddSplitCode *VirtualTerminalAddSplitCode
 }
 
-func (r ApiAddSplitCodeRequest) VirtualTerminalAddSplitCode(virtualTerminalAddSplitCode VirtualTerminalAddSplitCode) ApiAddSplitCodeRequest {
+func (r VirtualTerminalAddSplitCodeAPIRequest) VirtualTerminalAddSplitCode(virtualTerminalAddSplitCode VirtualTerminalAddSplitCode) VirtualTerminalAddSplitCodeAPIRequest {
 	r.virtualTerminalAddSplitCode = &virtualTerminalAddSplitCode
 	return r
 }
 
-func (r ApiAddSplitCodeRequest) Execute() (*VirtualTerminalAddSplitCodeResponse, *http.Response, error) {
+func (r VirtualTerminalAddSplitCodeAPIRequest) Execute() (*VirtualTerminalAddSplitCodeResponse, *http.Response, error) {
 	return r.ApiService.AddSplitCodeExecute(r)
 }
 
@@ -47,10 +47,10 @@ Add Split Code to Virtual Terminal
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param code Code of the Virtual Terminal
- @return ApiAddSplitCodeRequest
+ @return VirtualTerminalAddSplitCodeAPIRequest
 */
-func (a *VirtualTerminalAPIService) AddSplitCode(ctx context.Context, code string) ApiAddSplitCodeRequest {
-	return ApiAddSplitCodeRequest{
+func (a *VirtualTerminalAPIService) AddSplitCode(ctx context.Context, code string) VirtualTerminalAddSplitCodeAPIRequest {
+	return VirtualTerminalAddSplitCodeAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		code: code,
@@ -59,7 +59,7 @@ func (a *VirtualTerminalAPIService) AddSplitCode(ctx context.Context, code strin
 
 // Execute executes the request
 //  @return VirtualTerminalAddSplitCodeResponse
-func (a *VirtualTerminalAPIService) AddSplitCodeExecute(r ApiAddSplitCodeRequest) (*VirtualTerminalAddSplitCodeResponse, *http.Response, error) {
+func (a *VirtualTerminalAPIService) AddSplitCodeExecute(r VirtualTerminalAddSplitCodeAPIRequest) (*VirtualTerminalAddSplitCodeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -146,18 +146,18 @@ func (a *VirtualTerminalAPIService) AddSplitCodeExecute(r ApiAddSplitCodeRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateRequest struct {
+type VirtualTerminalCreateAPIRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	virtualTerminalCreate *VirtualTerminalCreate
 }
 
-func (r ApiCreateRequest) VirtualTerminalCreate(virtualTerminalCreate VirtualTerminalCreate) ApiCreateRequest {
+func (r VirtualTerminalCreateAPIRequest) VirtualTerminalCreate(virtualTerminalCreate VirtualTerminalCreate) VirtualTerminalCreateAPIRequest {
 	r.virtualTerminalCreate = &virtualTerminalCreate
 	return r
 }
 
-func (r ApiCreateRequest) Execute() (*VirtualTerminalCreateResponse, *http.Response, error) {
+func (r VirtualTerminalCreateAPIRequest) Execute() (*VirtualTerminalCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -167,10 +167,10 @@ Create Create Virtual Terminal
 Create a Virtual Terminal on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateRequest
+ @return VirtualTerminalCreateAPIRequest
 */
-func (a *VirtualTerminalAPIService) Create(ctx context.Context) ApiCreateRequest {
-	return ApiCreateRequest{
+func (a *VirtualTerminalAPIService) Create(ctx context.Context) VirtualTerminalCreateAPIRequest {
+	return VirtualTerminalCreateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -178,7 +178,7 @@ func (a *VirtualTerminalAPIService) Create(ctx context.Context) ApiCreateRequest
 
 // Execute executes the request
 //  @return VirtualTerminalCreateResponse
-func (a *VirtualTerminalAPIService) CreateExecute(r ApiCreateRequest) (*VirtualTerminalCreateResponse, *http.Response, error) {
+func (a *VirtualTerminalAPIService) CreateExecute(r VirtualTerminalCreateAPIRequest) (*VirtualTerminalCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -264,13 +264,13 @@ func (a *VirtualTerminalAPIService) CreateExecute(r ApiCreateRequest) (*VirtualT
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeactivateRequest struct {
+type VirtualTerminalDeactivateAPIRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	code string
 }
 
-func (r ApiDeactivateRequest) Execute() (*VirtualTerminalDeactivateResponse, *http.Response, error) {
+func (r VirtualTerminalDeactivateAPIRequest) Execute() (*VirtualTerminalDeactivateResponse, *http.Response, error) {
 	return r.ApiService.DeactivateExecute(r)
 }
 
@@ -281,10 +281,10 @@ Deactivate a Virtual Terminal on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param code Code of the Virtual Terminal
- @return ApiDeactivateRequest
+ @return VirtualTerminalDeactivateAPIRequest
 */
-func (a *VirtualTerminalAPIService) Deactivate(ctx context.Context, code string) ApiDeactivateRequest {
-	return ApiDeactivateRequest{
+func (a *VirtualTerminalAPIService) Deactivate(ctx context.Context, code string) VirtualTerminalDeactivateAPIRequest {
+	return VirtualTerminalDeactivateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		code: code,
@@ -293,7 +293,7 @@ func (a *VirtualTerminalAPIService) Deactivate(ctx context.Context, code string)
 
 // Execute executes the request
 //  @return VirtualTerminalDeactivateResponse
-func (a *VirtualTerminalAPIService) DeactivateExecute(r ApiDeactivateRequest) (*VirtualTerminalDeactivateResponse, *http.Response, error) {
+func (a *VirtualTerminalAPIService) DeactivateExecute(r VirtualTerminalDeactivateAPIRequest) (*VirtualTerminalDeactivateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -378,19 +378,19 @@ func (a *VirtualTerminalAPIService) DeactivateExecute(r ApiDeactivateRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteSplitCodeRequest struct {
+type VirtualTerminalDeleteSplitCodeAPIRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	code string
 	virtualTerminalDeleteSplitCode *VirtualTerminalDeleteSplitCode
 }
 
-func (r ApiDeleteSplitCodeRequest) VirtualTerminalDeleteSplitCode(virtualTerminalDeleteSplitCode VirtualTerminalDeleteSplitCode) ApiDeleteSplitCodeRequest {
+func (r VirtualTerminalDeleteSplitCodeAPIRequest) VirtualTerminalDeleteSplitCode(virtualTerminalDeleteSplitCode VirtualTerminalDeleteSplitCode) VirtualTerminalDeleteSplitCodeAPIRequest {
 	r.virtualTerminalDeleteSplitCode = &virtualTerminalDeleteSplitCode
 	return r
 }
 
-func (r ApiDeleteSplitCodeRequest) Execute() (*VirtualTerminalDeleteSplitCodeResponse, *http.Response, error) {
+func (r VirtualTerminalDeleteSplitCodeAPIRequest) Execute() (*VirtualTerminalDeleteSplitCodeResponse, *http.Response, error) {
 	return r.ApiService.DeleteSplitCodeExecute(r)
 }
 
@@ -401,10 +401,10 @@ Remove Split Code from Virtual Terminal
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param code Code of the Virtual Terminal
- @return ApiDeleteSplitCodeRequest
+ @return VirtualTerminalDeleteSplitCodeAPIRequest
 */
-func (a *VirtualTerminalAPIService) DeleteSplitCode(ctx context.Context, code string) ApiDeleteSplitCodeRequest {
-	return ApiDeleteSplitCodeRequest{
+func (a *VirtualTerminalAPIService) DeleteSplitCode(ctx context.Context, code string) VirtualTerminalDeleteSplitCodeAPIRequest {
+	return VirtualTerminalDeleteSplitCodeAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		code: code,
@@ -413,7 +413,7 @@ func (a *VirtualTerminalAPIService) DeleteSplitCode(ctx context.Context, code st
 
 // Execute executes the request
 //  @return VirtualTerminalDeleteSplitCodeResponse
-func (a *VirtualTerminalAPIService) DeleteSplitCodeExecute(r ApiDeleteSplitCodeRequest) (*VirtualTerminalDeleteSplitCodeResponse, *http.Response, error) {
+func (a *VirtualTerminalAPIService) DeleteSplitCodeExecute(r VirtualTerminalDeleteSplitCodeAPIRequest) (*VirtualTerminalDeleteSplitCodeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -500,19 +500,19 @@ func (a *VirtualTerminalAPIService) DeleteSplitCodeExecute(r ApiDeleteSplitCodeR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestinationAssignRequest struct {
+type VirtualTerminalDestinationAssignAPIRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	code string
 	virtualTerminalDestinationAssign *VirtualTerminalDestinationAssign
 }
 
-func (r ApiDestinationAssignRequest) VirtualTerminalDestinationAssign(virtualTerminalDestinationAssign VirtualTerminalDestinationAssign) ApiDestinationAssignRequest {
+func (r VirtualTerminalDestinationAssignAPIRequest) VirtualTerminalDestinationAssign(virtualTerminalDestinationAssign VirtualTerminalDestinationAssign) VirtualTerminalDestinationAssignAPIRequest {
 	r.virtualTerminalDestinationAssign = &virtualTerminalDestinationAssign
 	return r
 }
 
-func (r ApiDestinationAssignRequest) Execute() (*VirtualTerminalDestinationAssignResponse, *http.Response, error) {
+func (r VirtualTerminalDestinationAssignAPIRequest) Execute() (*VirtualTerminalDestinationAssignResponse, *http.Response, error) {
 	return r.ApiService.DestinationAssignExecute(r)
 }
 
@@ -523,10 +523,10 @@ Add a destination (WhatsApp number) to a Virtual Terminal on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param code Code of the Virtual Terminal
- @return ApiDestinationAssignRequest
+ @return VirtualTerminalDestinationAssignAPIRequest
 */
-func (a *VirtualTerminalAPIService) DestinationAssign(ctx context.Context, code string) ApiDestinationAssignRequest {
-	return ApiDestinationAssignRequest{
+func (a *VirtualTerminalAPIService) DestinationAssign(ctx context.Context, code string) VirtualTerminalDestinationAssignAPIRequest {
+	return VirtualTerminalDestinationAssignAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		code: code,
@@ -535,7 +535,7 @@ func (a *VirtualTerminalAPIService) DestinationAssign(ctx context.Context, code 
 
 // Execute executes the request
 //  @return VirtualTerminalDestinationAssignResponse
-func (a *VirtualTerminalAPIService) DestinationAssignExecute(r ApiDestinationAssignRequest) (*VirtualTerminalDestinationAssignResponse, *http.Response, error) {
+func (a *VirtualTerminalAPIService) DestinationAssignExecute(r VirtualTerminalDestinationAssignAPIRequest) (*VirtualTerminalDestinationAssignResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -622,19 +622,19 @@ func (a *VirtualTerminalAPIService) DestinationAssignExecute(r ApiDestinationAss
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDestinationUnassignRequest struct {
+type VirtualTerminalDestinationUnassignAPIRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	code string
 	virtualTerminalDestinationUnassign *VirtualTerminalDestinationUnassign
 }
 
-func (r ApiDestinationUnassignRequest) VirtualTerminalDestinationUnassign(virtualTerminalDestinationUnassign VirtualTerminalDestinationUnassign) ApiDestinationUnassignRequest {
+func (r VirtualTerminalDestinationUnassignAPIRequest) VirtualTerminalDestinationUnassign(virtualTerminalDestinationUnassign VirtualTerminalDestinationUnassign) VirtualTerminalDestinationUnassignAPIRequest {
 	r.virtualTerminalDestinationUnassign = &virtualTerminalDestinationUnassign
 	return r
 }
 
-func (r ApiDestinationUnassignRequest) Execute() (*VirtualTerminalDestinationUnassignResponse, *http.Response, error) {
+func (r VirtualTerminalDestinationUnassignAPIRequest) Execute() (*VirtualTerminalDestinationUnassignResponse, *http.Response, error) {
 	return r.ApiService.DestinationUnassignExecute(r)
 }
 
@@ -645,10 +645,10 @@ Unassign a destination (WhatsApp Number) from a Virtual Terminal on your integra
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param code Code of the Virtual Terminal
- @return ApiDestinationUnassignRequest
+ @return VirtualTerminalDestinationUnassignAPIRequest
 */
-func (a *VirtualTerminalAPIService) DestinationUnassign(ctx context.Context, code string) ApiDestinationUnassignRequest {
-	return ApiDestinationUnassignRequest{
+func (a *VirtualTerminalAPIService) DestinationUnassign(ctx context.Context, code string) VirtualTerminalDestinationUnassignAPIRequest {
+	return VirtualTerminalDestinationUnassignAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		code: code,
@@ -657,7 +657,7 @@ func (a *VirtualTerminalAPIService) DestinationUnassign(ctx context.Context, cod
 
 // Execute executes the request
 //  @return VirtualTerminalDestinationUnassignResponse
-func (a *VirtualTerminalAPIService) DestinationUnassignExecute(r ApiDestinationUnassignRequest) (*VirtualTerminalDestinationUnassignResponse, *http.Response, error) {
+func (a *VirtualTerminalAPIService) DestinationUnassignExecute(r VirtualTerminalDestinationUnassignAPIRequest) (*VirtualTerminalDestinationUnassignResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -744,13 +744,13 @@ func (a *VirtualTerminalAPIService) DestinationUnassignExecute(r ApiDestinationU
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchRequest struct {
+type VirtualTerminalFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	code string
 }
 
-func (r ApiFetchRequest) Execute() (*VirtualTerminalFetchResponse, *http.Response, error) {
+func (r VirtualTerminalFetchAPIRequest) Execute() (*VirtualTerminalFetchResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -761,10 +761,10 @@ Fetch a Virtual Terminal on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param code Code of the Virtual Terminal
- @return ApiFetchRequest
+ @return VirtualTerminalFetchAPIRequest
 */
-func (a *VirtualTerminalAPIService) Fetch(ctx context.Context, code string) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *VirtualTerminalAPIService) Fetch(ctx context.Context, code string) VirtualTerminalFetchAPIRequest {
+	return VirtualTerminalFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		code: code,
@@ -773,7 +773,7 @@ func (a *VirtualTerminalAPIService) Fetch(ctx context.Context, code string) ApiF
 
 // Execute executes the request
 //  @return VirtualTerminalFetchResponse
-func (a *VirtualTerminalAPIService) FetchExecute(r ApiFetchRequest) (*VirtualTerminalFetchResponse, *http.Response, error) {
+func (a *VirtualTerminalAPIService) FetchExecute(r VirtualTerminalFetchAPIRequest) (*VirtualTerminalFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -858,7 +858,7 @@ func (a *VirtualTerminalAPIService) FetchExecute(r ApiFetchRequest) (*VirtualTer
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type VirtualTerminalListAPIRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	status *string
@@ -869,36 +869,36 @@ type ApiListRequest struct {
 }
 
 // Filter by status (&#39;active&#39; or &#39;inactive&#39;)
-func (r ApiListRequest) Status(status string) ApiListRequest {
+func (r VirtualTerminalListAPIRequest) Status(status string) VirtualTerminalListAPIRequest {
 	r.status = &status
 	return r
 }
 
 // Number of records per page
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r VirtualTerminalListAPIRequest) PerPage(perPage int32) VirtualTerminalListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // Search query string
-func (r ApiListRequest) Search(search string) ApiListRequest {
+func (r VirtualTerminalListAPIRequest) Search(search string) VirtualTerminalListAPIRequest {
 	r.search = &search
 	return r
 }
 
 // Cursor for next page
-func (r ApiListRequest) Next(next string) ApiListRequest {
+func (r VirtualTerminalListAPIRequest) Next(next string) VirtualTerminalListAPIRequest {
 	r.next = &next
 	return r
 }
 
 // Cursor for previous page
-func (r ApiListRequest) Previous(previous string) ApiListRequest {
+func (r VirtualTerminalListAPIRequest) Previous(previous string) VirtualTerminalListAPIRequest {
 	r.previous = &previous
 	return r
 }
 
-func (r ApiListRequest) Execute() (*VirtualTerminalListResponse, *http.Response, error) {
+func (r VirtualTerminalListAPIRequest) Execute() (*VirtualTerminalListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -908,10 +908,10 @@ List List Virtual Terminals
 List Virtual Terminals on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return VirtualTerminalListAPIRequest
 */
-func (a *VirtualTerminalAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *VirtualTerminalAPIService) List(ctx context.Context) VirtualTerminalListAPIRequest {
+	return VirtualTerminalListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -919,7 +919,7 @@ func (a *VirtualTerminalAPIService) List(ctx context.Context) ApiListRequest {
 
 // Execute executes the request
 //  @return VirtualTerminalListResponse
-func (a *VirtualTerminalAPIService) ListExecute(r ApiListRequest) (*VirtualTerminalListResponse, *http.Response, error) {
+func (a *VirtualTerminalAPIService) ListExecute(r VirtualTerminalListAPIRequest) (*VirtualTerminalListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1018,19 +1018,19 @@ func (a *VirtualTerminalAPIService) ListExecute(r ApiListRequest) (*VirtualTermi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateRequest struct {
+type VirtualTerminalUpdateAPIRequest struct {
 	ctx context.Context
 	ApiService *VirtualTerminalAPIService
 	code string
 	virtualTerminalUpdate *VirtualTerminalUpdate
 }
 
-func (r ApiUpdateRequest) VirtualTerminalUpdate(virtualTerminalUpdate VirtualTerminalUpdate) ApiUpdateRequest {
+func (r VirtualTerminalUpdateAPIRequest) VirtualTerminalUpdate(virtualTerminalUpdate VirtualTerminalUpdate) VirtualTerminalUpdateAPIRequest {
 	r.virtualTerminalUpdate = &virtualTerminalUpdate
 	return r
 }
 
-func (r ApiUpdateRequest) Execute() (*VirtualTerminalUpdateResponse, *http.Response, error) {
+func (r VirtualTerminalUpdateAPIRequest) Execute() (*VirtualTerminalUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -1041,10 +1041,10 @@ Update a Virtual Terminal on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param code Code of the Virtual Terminal
- @return ApiUpdateRequest
+ @return VirtualTerminalUpdateAPIRequest
 */
-func (a *VirtualTerminalAPIService) Update(ctx context.Context, code string) ApiUpdateRequest {
-	return ApiUpdateRequest{
+func (a *VirtualTerminalAPIService) Update(ctx context.Context, code string) VirtualTerminalUpdateAPIRequest {
+	return VirtualTerminalUpdateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		code: code,
@@ -1053,7 +1053,7 @@ func (a *VirtualTerminalAPIService) Update(ctx context.Context, code string) Api
 
 // Execute executes the request
 //  @return VirtualTerminalUpdateResponse
-func (a *VirtualTerminalAPIService) UpdateExecute(r ApiUpdateRequest) (*VirtualTerminalUpdateResponse, *http.Response, error) {
+func (a *VirtualTerminalAPIService) UpdateExecute(r VirtualTerminalUpdateAPIRequest) (*VirtualTerminalUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

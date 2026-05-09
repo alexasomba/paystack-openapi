@@ -25,18 +25,18 @@ import (
 // CardPreauthorizationAPIService CardPreauthorizationAPI service
 type CardPreauthorizationAPIService service
 
-type ApiCaptureRequest struct {
+type CardPreauthorizationCaptureAPIRequest struct {
 	ctx context.Context
 	ApiService *CardPreauthorizationAPIService
 	preAuthorizationCapture *PreAuthorizationCapture
 }
 
-func (r ApiCaptureRequest) PreAuthorizationCapture(preAuthorizationCapture PreAuthorizationCapture) ApiCaptureRequest {
+func (r CardPreauthorizationCaptureAPIRequest) PreAuthorizationCapture(preAuthorizationCapture PreAuthorizationCapture) CardPreauthorizationCaptureAPIRequest {
 	r.preAuthorizationCapture = &preAuthorizationCapture
 	return r
 }
 
-func (r ApiCaptureRequest) Execute() (*PreAuthorizationCaptureResponse, *http.Response, error) {
+func (r CardPreauthorizationCaptureAPIRequest) Execute() (*PreAuthorizationCaptureResponse, *http.Response, error) {
 	return r.ApiService.CaptureExecute(r)
 }
 
@@ -46,10 +46,10 @@ Capture Capture Preauthorization
 Charge a preauthorized transaction upon service delivery
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCaptureRequest
+ @return CardPreauthorizationCaptureAPIRequest
 */
-func (a *CardPreauthorizationAPIService) Capture(ctx context.Context) ApiCaptureRequest {
-	return ApiCaptureRequest{
+func (a *CardPreauthorizationAPIService) Capture(ctx context.Context) CardPreauthorizationCaptureAPIRequest {
+	return CardPreauthorizationCaptureAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *CardPreauthorizationAPIService) Capture(ctx context.Context) ApiCapture
 
 // Execute executes the request
 //  @return PreAuthorizationCaptureResponse
-func (a *CardPreauthorizationAPIService) CaptureExecute(r ApiCaptureRequest) (*PreAuthorizationCaptureResponse, *http.Response, error) {
+func (a *CardPreauthorizationAPIService) CaptureExecute(r CardPreauthorizationCaptureAPIRequest) (*PreAuthorizationCaptureResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -143,18 +143,18 @@ func (a *CardPreauthorizationAPIService) CaptureExecute(r ApiCaptureRequest) (*P
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiInitializeRequest struct {
+type CardPreauthorizationInitializeAPIRequest struct {
 	ctx context.Context
 	ApiService *CardPreauthorizationAPIService
 	preAuthorizationInitialize *PreAuthorizationInitialize
 }
 
-func (r ApiInitializeRequest) PreAuthorizationInitialize(preAuthorizationInitialize PreAuthorizationInitialize) ApiInitializeRequest {
+func (r CardPreauthorizationInitializeAPIRequest) PreAuthorizationInitialize(preAuthorizationInitialize PreAuthorizationInitialize) CardPreauthorizationInitializeAPIRequest {
 	r.preAuthorizationInitialize = &preAuthorizationInitialize
 	return r
 }
 
-func (r ApiInitializeRequest) Execute() (*PreAuthorizationInitializeResponse, *http.Response, error) {
+func (r CardPreauthorizationInitializeAPIRequest) Execute() (*PreAuthorizationInitializeResponse, *http.Response, error) {
 	return r.ApiService.InitializeExecute(r)
 }
 
@@ -164,10 +164,10 @@ Initialize Initialize Preauthorization
 Initialize a preauthorization transaction for a new customer
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInitializeRequest
+ @return CardPreauthorizationInitializeAPIRequest
 */
-func (a *CardPreauthorizationAPIService) Initialize(ctx context.Context) ApiInitializeRequest {
-	return ApiInitializeRequest{
+func (a *CardPreauthorizationAPIService) Initialize(ctx context.Context) CardPreauthorizationInitializeAPIRequest {
+	return CardPreauthorizationInitializeAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -175,7 +175,7 @@ func (a *CardPreauthorizationAPIService) Initialize(ctx context.Context) ApiInit
 
 // Execute executes the request
 //  @return PreAuthorizationInitializeResponse
-func (a *CardPreauthorizationAPIService) InitializeExecute(r ApiInitializeRequest) (*PreAuthorizationInitializeResponse, *http.Response, error) {
+func (a *CardPreauthorizationAPIService) InitializeExecute(r CardPreauthorizationInitializeAPIRequest) (*PreAuthorizationInitializeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -261,7 +261,7 @@ func (a *CardPreauthorizationAPIService) InitializeExecute(r ApiInitializeReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type CardPreauthorizationListAPIRequest struct {
 	ctx context.Context
 	ApiService *CardPreauthorizationAPIService
 	perPage *int32
@@ -273,42 +273,42 @@ type ApiListRequest struct {
 }
 
 // Specify how many records you want to retrieve per page. If not specify we use a default value of 50.
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r CardPreauthorizationListAPIRequest) PerPage(perPage int32) CardPreauthorizationListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // Specify exactly what page you want to retrieve. If not specify we use a default value of 1.
-func (r ApiListRequest) Page(page int32) ApiListRequest {
+func (r CardPreauthorizationListAPIRequest) Page(page int32) CardPreauthorizationListAPIRequest {
 	r.page = &page
 	return r
 }
 
 // A timestamp from which to start listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
-func (r ApiListRequest) From(from time.Time) ApiListRequest {
+func (r CardPreauthorizationListAPIRequest) From(from time.Time) CardPreauthorizationListAPIRequest {
 	r.from = &from
 	return r
 }
 
 // A timestamp at which to stop listing transaction e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
-func (r ApiListRequest) To(to time.Time) ApiListRequest {
+func (r CardPreauthorizationListAPIRequest) To(to time.Time) CardPreauthorizationListAPIRequest {
 	r.to = &to
 	return r
 }
 
 // Filter transactions by status.
-func (r ApiListRequest) Status(status string) ApiListRequest {
+func (r CardPreauthorizationListAPIRequest) Status(status string) CardPreauthorizationListAPIRequest {
 	r.status = &status
 	return r
 }
 
 // Filter transactions by amount using the supported currency code
-func (r ApiListRequest) Amount(amount int32) ApiListRequest {
+func (r CardPreauthorizationListAPIRequest) Amount(amount int32) CardPreauthorizationListAPIRequest {
 	r.amount = &amount
 	return r
 }
 
-func (r ApiListRequest) Execute() (*PreAuthorizationListResponse, *http.Response, error) {
+func (r CardPreauthorizationListAPIRequest) Execute() (*PreAuthorizationListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -318,10 +318,10 @@ List List Preauthorizations
 List preauthorizations carried out on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return CardPreauthorizationListAPIRequest
 */
-func (a *CardPreauthorizationAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *CardPreauthorizationAPIService) List(ctx context.Context) CardPreauthorizationListAPIRequest {
+	return CardPreauthorizationListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -329,7 +329,7 @@ func (a *CardPreauthorizationAPIService) List(ctx context.Context) ApiListReques
 
 // Execute executes the request
 //  @return PreAuthorizationListResponse
-func (a *CardPreauthorizationAPIService) ListExecute(r ApiListRequest) (*PreAuthorizationListResponse, *http.Response, error) {
+func (a *CardPreauthorizationAPIService) ListExecute(r CardPreauthorizationListAPIRequest) (*PreAuthorizationListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -431,18 +431,18 @@ func (a *CardPreauthorizationAPIService) ListExecute(r ApiListRequest) (*PreAuth
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiReleaseRequest struct {
+type CardPreauthorizationReleaseAPIRequest struct {
 	ctx context.Context
 	ApiService *CardPreauthorizationAPIService
 	preAuthorizationRelease *PreAuthorizationRelease
 }
 
-func (r ApiReleaseRequest) PreAuthorizationRelease(preAuthorizationRelease PreAuthorizationRelease) ApiReleaseRequest {
+func (r CardPreauthorizationReleaseAPIRequest) PreAuthorizationRelease(preAuthorizationRelease PreAuthorizationRelease) CardPreauthorizationReleaseAPIRequest {
 	r.preAuthorizationRelease = &preAuthorizationRelease
 	return r
 }
 
-func (r ApiReleaseRequest) Execute() (*PreAuthorizationReleaseResponse, *http.Response, error) {
+func (r CardPreauthorizationReleaseAPIRequest) Execute() (*PreAuthorizationReleaseResponse, *http.Response, error) {
 	return r.ApiService.ReleaseExecute(r)
 }
 
@@ -452,10 +452,10 @@ Release Release Preauthorization
 For when a customer cancels an order or you want to release the hold from their card.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiReleaseRequest
+ @return CardPreauthorizationReleaseAPIRequest
 */
-func (a *CardPreauthorizationAPIService) Release(ctx context.Context) ApiReleaseRequest {
-	return ApiReleaseRequest{
+func (a *CardPreauthorizationAPIService) Release(ctx context.Context) CardPreauthorizationReleaseAPIRequest {
+	return CardPreauthorizationReleaseAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -463,7 +463,7 @@ func (a *CardPreauthorizationAPIService) Release(ctx context.Context) ApiRelease
 
 // Execute executes the request
 //  @return PreAuthorizationReleaseResponse
-func (a *CardPreauthorizationAPIService) ReleaseExecute(r ApiReleaseRequest) (*PreAuthorizationReleaseResponse, *http.Response, error) {
+func (a *CardPreauthorizationAPIService) ReleaseExecute(r CardPreauthorizationReleaseAPIRequest) (*PreAuthorizationReleaseResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -549,18 +549,18 @@ func (a *CardPreauthorizationAPIService) ReleaseExecute(r ApiReleaseRequest) (*P
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiReserveAuthorizationRequest struct {
+type CardPreauthorizationReserveAuthorizationAPIRequest struct {
 	ctx context.Context
 	ApiService *CardPreauthorizationAPIService
 	preAuthorizationReserve *PreAuthorizationReserve
 }
 
-func (r ApiReserveAuthorizationRequest) PreAuthorizationReserve(preAuthorizationReserve PreAuthorizationReserve) ApiReserveAuthorizationRequest {
+func (r CardPreauthorizationReserveAuthorizationAPIRequest) PreAuthorizationReserve(preAuthorizationReserve PreAuthorizationReserve) CardPreauthorizationReserveAuthorizationAPIRequest {
 	r.preAuthorizationReserve = &preAuthorizationReserve
 	return r
 }
 
-func (r ApiReserveAuthorizationRequest) Execute() (*PreAuthorizationReserveWithAuthCodeResponse, *http.Response, error) {
+func (r CardPreauthorizationReserveAuthorizationAPIRequest) Execute() (*PreAuthorizationReserveWithAuthCodeResponse, *http.Response, error) {
 	return r.ApiService.ReserveAuthorizationExecute(r)
 }
 
@@ -570,10 +570,10 @@ ReserveAuthorization Reserve Preauthorization
 Hold an amount using an existing customer's authorization that's marked reusable.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiReserveAuthorizationRequest
+ @return CardPreauthorizationReserveAuthorizationAPIRequest
 */
-func (a *CardPreauthorizationAPIService) ReserveAuthorization(ctx context.Context) ApiReserveAuthorizationRequest {
-	return ApiReserveAuthorizationRequest{
+func (a *CardPreauthorizationAPIService) ReserveAuthorization(ctx context.Context) CardPreauthorizationReserveAuthorizationAPIRequest {
+	return CardPreauthorizationReserveAuthorizationAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -581,7 +581,7 @@ func (a *CardPreauthorizationAPIService) ReserveAuthorization(ctx context.Contex
 
 // Execute executes the request
 //  @return PreAuthorizationReserveWithAuthCodeResponse
-func (a *CardPreauthorizationAPIService) ReserveAuthorizationExecute(r ApiReserveAuthorizationRequest) (*PreAuthorizationReserveWithAuthCodeResponse, *http.Response, error) {
+func (a *CardPreauthorizationAPIService) ReserveAuthorizationExecute(r CardPreauthorizationReserveAuthorizationAPIRequest) (*PreAuthorizationReserveWithAuthCodeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -667,13 +667,13 @@ func (a *CardPreauthorizationAPIService) ReserveAuthorizationExecute(r ApiReserv
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiVerifyRequest struct {
+type CardPreauthorizationVerifyAPIRequest struct {
 	ctx context.Context
 	ApiService *CardPreauthorizationAPIService
 	reference string
 }
 
-func (r ApiVerifyRequest) Execute() (*PreAuthorizationVerifyResponse, *http.Response, error) {
+func (r CardPreauthorizationVerifyAPIRequest) Execute() (*PreAuthorizationVerifyResponse, *http.Response, error) {
 	return r.ApiService.VerifyExecute(r)
 }
 
@@ -684,10 +684,10 @@ Fetch and confirm the status of a preauthorized transaction.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param reference The transaction reference used to intiate the transaction
- @return ApiVerifyRequest
+ @return CardPreauthorizationVerifyAPIRequest
 */
-func (a *CardPreauthorizationAPIService) Verify(ctx context.Context, reference string) ApiVerifyRequest {
-	return ApiVerifyRequest{
+func (a *CardPreauthorizationAPIService) Verify(ctx context.Context, reference string) CardPreauthorizationVerifyAPIRequest {
+	return CardPreauthorizationVerifyAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		reference: reference,
@@ -696,7 +696,7 @@ func (a *CardPreauthorizationAPIService) Verify(ctx context.Context, reference s
 
 // Execute executes the request
 //  @return PreAuthorizationVerifyResponse
-func (a *CardPreauthorizationAPIService) VerifyExecute(r ApiVerifyRequest) (*PreAuthorizationVerifyResponse, *http.Response, error) {
+func (a *CardPreauthorizationAPIService) VerifyExecute(r CardPreauthorizationVerifyAPIRequest) (*PreAuthorizationVerifyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

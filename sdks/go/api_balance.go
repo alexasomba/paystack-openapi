@@ -24,12 +24,12 @@ import (
 // BalanceAPIService BalanceAPI service
 type BalanceAPIService service
 
-type ApiFetchRequest struct {
+type BalanceFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *BalanceAPIService
 }
 
-func (r ApiFetchRequest) Execute() (*BalanceCheckResponse, *http.Response, error) {
+func (r BalanceFetchAPIRequest) Execute() (*BalanceCheckResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -39,10 +39,10 @@ Fetch Fetch Balance
 Fetch the available balance on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFetchRequest
+ @return BalanceFetchAPIRequest
 */
-func (a *BalanceAPIService) Fetch(ctx context.Context) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *BalanceAPIService) Fetch(ctx context.Context) BalanceFetchAPIRequest {
+	return BalanceFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -50,7 +50,7 @@ func (a *BalanceAPIService) Fetch(ctx context.Context) ApiFetchRequest {
 
 // Execute executes the request
 //  @return BalanceCheckResponse
-func (a *BalanceAPIService) FetchExecute(r ApiFetchRequest) (*BalanceCheckResponse, *http.Response, error) {
+func (a *BalanceAPIService) FetchExecute(r BalanceFetchAPIRequest) (*BalanceCheckResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -145,7 +145,7 @@ func (a *BalanceAPIService) FetchExecute(r ApiFetchRequest) (*BalanceCheckRespon
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiLedgerRequest struct {
+type BalanceLedgerAPIRequest struct {
 	ctx context.Context
 	ApiService *BalanceAPIService
 	perPage *int32
@@ -155,30 +155,30 @@ type ApiLedgerRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiLedgerRequest) PerPage(perPage int32) ApiLedgerRequest {
+func (r BalanceLedgerAPIRequest) PerPage(perPage int32) BalanceLedgerAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiLedgerRequest) Page(page int32) ApiLedgerRequest {
+func (r BalanceLedgerAPIRequest) Page(page int32) BalanceLedgerAPIRequest {
 	r.page = &page
 	return r
 }
 
 // The start date
-func (r ApiLedgerRequest) From(from time.Time) ApiLedgerRequest {
+func (r BalanceLedgerAPIRequest) From(from time.Time) BalanceLedgerAPIRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiLedgerRequest) To(to time.Time) ApiLedgerRequest {
+func (r BalanceLedgerAPIRequest) To(to time.Time) BalanceLedgerAPIRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiLedgerRequest) Execute() (*BalanceFetchLedgerResponse, *http.Response, error) {
+func (r BalanceLedgerAPIRequest) Execute() (*BalanceFetchLedgerResponse, *http.Response, error) {
 	return r.ApiService.LedgerExecute(r)
 }
 
@@ -188,10 +188,10 @@ Ledger Balance Ledger
 Fetch all pay-ins and pay-outs that occured on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiLedgerRequest
+ @return BalanceLedgerAPIRequest
 */
-func (a *BalanceAPIService) Ledger(ctx context.Context) ApiLedgerRequest {
-	return ApiLedgerRequest{
+func (a *BalanceAPIService) Ledger(ctx context.Context) BalanceLedgerAPIRequest {
+	return BalanceLedgerAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -199,7 +199,7 @@ func (a *BalanceAPIService) Ledger(ctx context.Context) ApiLedgerRequest {
 
 // Execute executes the request
 //  @return BalanceFetchLedgerResponse
-func (a *BalanceAPIService) LedgerExecute(r ApiLedgerRequest) (*BalanceFetchLedgerResponse, *http.Response, error) {
+func (a *BalanceAPIService) LedgerExecute(r BalanceLedgerAPIRequest) (*BalanceFetchLedgerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

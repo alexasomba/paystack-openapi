@@ -11,12 +11,19 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Lint SDK specification
-        uses: stoplightio/spectral-action@latest
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Vite+
+        uses: voidzero-dev/setup-vp@v1
         with:
-          file_glob: "sdk/*.yaml"
-      - name: Lint distribution specification
-        uses: stoplightio/spectral-action@latest
-        with:
-          file_glob: "dist/*.yaml"
+          node-version: "24"
+
+      - name: Install dependencies
+        run: vp install
+
+      - name: Build spec bundles
+        run: vp run bundle
+
+      - name: Run spec lint
+        run: vp run lint

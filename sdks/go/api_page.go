@@ -25,19 +25,19 @@ import (
 // PageAPIService PageAPI service
 type PageAPIService service
 
-type ApiAddProductsRequest struct {
+type PageAddProductsAPIRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
 	id string
 	pageProduct *PageProduct
 }
 
-func (r ApiAddProductsRequest) PageProduct(pageProduct PageProduct) ApiAddProductsRequest {
+func (r PageAddProductsAPIRequest) PageProduct(pageProduct PageProduct) PageAddProductsAPIRequest {
 	r.pageProduct = &pageProduct
 	return r
 }
 
-func (r ApiAddProductsRequest) Execute() (*PageAddProductsResponse, *http.Response, error) {
+func (r PageAddProductsAPIRequest) Execute() (*PageAddProductsResponse, *http.Response, error) {
 	return r.ApiService.AddProductsExecute(r)
 }
 
@@ -50,10 +50,10 @@ that was created with a `product` type.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
- @return ApiAddProductsRequest
+ @return PageAddProductsAPIRequest
 */
-func (a *PageAPIService) AddProducts(ctx context.Context, id string) ApiAddProductsRequest {
-	return ApiAddProductsRequest{
+func (a *PageAPIService) AddProducts(ctx context.Context, id string) PageAddProductsAPIRequest {
+	return PageAddProductsAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -62,7 +62,7 @@ func (a *PageAPIService) AddProducts(ctx context.Context, id string) ApiAddProdu
 
 // Execute executes the request
 //  @return PageAddProductsResponse
-func (a *PageAPIService) AddProductsExecute(r ApiAddProductsRequest) (*PageAddProductsResponse, *http.Response, error) {
+func (a *PageAPIService) AddProductsExecute(r PageAddProductsAPIRequest) (*PageAddProductsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -149,13 +149,13 @@ func (a *PageAPIService) AddProductsExecute(r ApiAddProductsRequest) (*PageAddPr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCheckSlugAvailabilityRequest struct {
+type PageCheckSlugAvailabilityAPIRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
 	slug string
 }
 
-func (r ApiCheckSlugAvailabilityRequest) Execute() (*PageCheckSlugAvailabilityResponse, *http.Response, error) {
+func (r PageCheckSlugAvailabilityAPIRequest) Execute() (*PageCheckSlugAvailabilityResponse, *http.Response, error) {
 	return r.ApiService.CheckSlugAvailabilityExecute(r)
 }
 
@@ -166,10 +166,10 @@ Check if a custom slug is available for use when creating a payment page
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param slug The custom slug to check
- @return ApiCheckSlugAvailabilityRequest
+ @return PageCheckSlugAvailabilityAPIRequest
 */
-func (a *PageAPIService) CheckSlugAvailability(ctx context.Context, slug string) ApiCheckSlugAvailabilityRequest {
-	return ApiCheckSlugAvailabilityRequest{
+func (a *PageAPIService) CheckSlugAvailability(ctx context.Context, slug string) PageCheckSlugAvailabilityAPIRequest {
+	return PageCheckSlugAvailabilityAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		slug: slug,
@@ -178,7 +178,7 @@ func (a *PageAPIService) CheckSlugAvailability(ctx context.Context, slug string)
 
 // Execute executes the request
 //  @return PageCheckSlugAvailabilityResponse
-func (a *PageAPIService) CheckSlugAvailabilityExecute(r ApiCheckSlugAvailabilityRequest) (*PageCheckSlugAvailabilityResponse, *http.Response, error) {
+func (a *PageAPIService) CheckSlugAvailabilityExecute(r PageCheckSlugAvailabilityAPIRequest) (*PageCheckSlugAvailabilityResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -274,18 +274,18 @@ func (a *PageAPIService) CheckSlugAvailabilityExecute(r ApiCheckSlugAvailability
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateRequest struct {
+type PageCreateAPIRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
 	pageCreate *PageCreate
 }
 
-func (r ApiCreateRequest) PageCreate(pageCreate PageCreate) ApiCreateRequest {
+func (r PageCreateAPIRequest) PageCreate(pageCreate PageCreate) PageCreateAPIRequest {
 	r.pageCreate = &pageCreate
 	return r
 }
 
-func (r ApiCreateRequest) Execute() (*PageCreateResponse, *http.Response, error) {
+func (r PageCreateAPIRequest) Execute() (*PageCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -295,10 +295,10 @@ Create Create Page
 Create a webpage to receive payments
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateRequest
+ @return PageCreateAPIRequest
 */
-func (a *PageAPIService) Create(ctx context.Context) ApiCreateRequest {
-	return ApiCreateRequest{
+func (a *PageAPIService) Create(ctx context.Context) PageCreateAPIRequest {
+	return PageCreateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -306,7 +306,7 @@ func (a *PageAPIService) Create(ctx context.Context) ApiCreateRequest {
 
 // Execute executes the request
 //  @return PageCreateResponse
-func (a *PageAPIService) CreateExecute(r ApiCreateRequest) (*PageCreateResponse, *http.Response, error) {
+func (a *PageAPIService) CreateExecute(r PageCreateAPIRequest) (*PageCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -392,13 +392,13 @@ func (a *PageAPIService) CreateExecute(r ApiCreateRequest) (*PageCreateResponse,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchRequest struct {
+type PageFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
 	idOrSlug string
 }
 
-func (r ApiFetchRequest) Execute() (*PageFetchResponse, *http.Response, error) {
+func (r PageFetchAPIRequest) Execute() (*PageFetchResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -409,10 +409,10 @@ Get a previously created payment page
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param idOrSlug The page ID or slug you want to fetch
- @return ApiFetchRequest
+ @return PageFetchAPIRequest
 */
-func (a *PageAPIService) Fetch(ctx context.Context, idOrSlug string) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *PageAPIService) Fetch(ctx context.Context, idOrSlug string) PageFetchAPIRequest {
+	return PageFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		idOrSlug: idOrSlug,
@@ -421,7 +421,7 @@ func (a *PageAPIService) Fetch(ctx context.Context, idOrSlug string) ApiFetchReq
 
 // Execute executes the request
 //  @return PageFetchResponse
-func (a *PageAPIService) FetchExecute(r ApiFetchRequest) (*PageFetchResponse, *http.Response, error) {
+func (a *PageAPIService) FetchExecute(r PageFetchAPIRequest) (*PageFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -517,7 +517,7 @@ func (a *PageAPIService) FetchExecute(r ApiFetchRequest) (*PageFetchResponse, *h
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type PageListAPIRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
 	perPage *int32
@@ -527,30 +527,30 @@ type ApiListRequest struct {
 }
 
 // Number of records to fetch per page
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r PageListAPIRequest) PerPage(perPage int32) PageListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The section to retrieve
-func (r ApiListRequest) Page(page int32) ApiListRequest {
+func (r PageListAPIRequest) Page(page int32) PageListAPIRequest {
 	r.page = &page
 	return r
 }
 
 // The start date
-func (r ApiListRequest) From(from time.Time) ApiListRequest {
+func (r PageListAPIRequest) From(from time.Time) PageListAPIRequest {
 	r.from = &from
 	return r
 }
 
 // The end date
-func (r ApiListRequest) To(to time.Time) ApiListRequest {
+func (r PageListAPIRequest) To(to time.Time) PageListAPIRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiListRequest) Execute() (*PageListResponse, *http.Response, error) {
+func (r PageListAPIRequest) Execute() (*PageListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -560,10 +560,10 @@ List List Pages
 List all previously created payment pages
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return PageListAPIRequest
 */
-func (a *PageAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *PageAPIService) List(ctx context.Context) PageListAPIRequest {
+	return PageListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -571,7 +571,7 @@ func (a *PageAPIService) List(ctx context.Context) ApiListRequest {
 
 // Execute executes the request
 //  @return PageListResponse
-func (a *PageAPIService) ListExecute(r ApiListRequest) (*PageListResponse, *http.Response, error) {
+func (a *PageAPIService) ListExecute(r PageListAPIRequest) (*PageListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -682,19 +682,19 @@ func (a *PageAPIService) ListExecute(r ApiListRequest) (*PageListResponse, *http
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateRequest struct {
+type PageUpdateAPIRequest struct {
 	ctx context.Context
 	ApiService *PageAPIService
 	idOrSlug string
 	pageUpdate *PageUpdate
 }
 
-func (r ApiUpdateRequest) PageUpdate(pageUpdate PageUpdate) ApiUpdateRequest {
+func (r PageUpdateAPIRequest) PageUpdate(pageUpdate PageUpdate) PageUpdateAPIRequest {
 	r.pageUpdate = &pageUpdate
 	return r
 }
 
-func (r ApiUpdateRequest) Execute() (*PageUpdateResponse, *http.Response, error) {
+func (r PageUpdateAPIRequest) Execute() (*PageUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -705,10 +705,10 @@ Update a previously created payment page
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param idOrSlug The page ID or slug you want to fetch
- @return ApiUpdateRequest
+ @return PageUpdateAPIRequest
 */
-func (a *PageAPIService) Update(ctx context.Context, idOrSlug string) ApiUpdateRequest {
-	return ApiUpdateRequest{
+func (a *PageAPIService) Update(ctx context.Context, idOrSlug string) PageUpdateAPIRequest {
+	return PageUpdateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		idOrSlug: idOrSlug,
@@ -717,7 +717,7 @@ func (a *PageAPIService) Update(ctx context.Context, idOrSlug string) ApiUpdateR
 
 // Execute executes the request
 //  @return PageUpdateResponse
-func (a *PageAPIService) UpdateExecute(r ApiUpdateRequest) (*PageUpdateResponse, *http.Response, error) {
+func (a *PageAPIService) UpdateExecute(r PageUpdateAPIRequest) (*PageUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

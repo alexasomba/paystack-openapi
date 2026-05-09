@@ -25,19 +25,19 @@ import (
 // SplitAPIService SplitAPI service
 type SplitAPIService service
 
-type ApiAddSubaccountRequest struct {
+type SplitAddSubaccountAPIRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
 	id string
 	splitSubaccounts *SplitSubaccounts
 }
 
-func (r ApiAddSubaccountRequest) SplitSubaccounts(splitSubaccounts SplitSubaccounts) ApiAddSubaccountRequest {
+func (r SplitAddSubaccountAPIRequest) SplitSubaccounts(splitSubaccounts SplitSubaccounts) SplitAddSubaccountAPIRequest {
 	r.splitSubaccounts = &splitSubaccounts
 	return r
 }
 
-func (r ApiAddSubaccountRequest) Execute() (*SplitAddUpdateSubaccountResponse, *http.Response, error) {
+func (r SplitAddSubaccountAPIRequest) Execute() (*SplitAddUpdateSubaccountResponse, *http.Response, error) {
 	return r.ApiService.AddSubaccountExecute(r)
 }
 
@@ -48,10 +48,10 @@ Add a subaccount to a split configuration, or update the share of an existing su
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the split configuration to fetch
- @return ApiAddSubaccountRequest
+ @return SplitAddSubaccountAPIRequest
 */
-func (a *SplitAPIService) AddSubaccount(ctx context.Context, id string) ApiAddSubaccountRequest {
-	return ApiAddSubaccountRequest{
+func (a *SplitAPIService) AddSubaccount(ctx context.Context, id string) SplitAddSubaccountAPIRequest {
+	return SplitAddSubaccountAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -60,7 +60,7 @@ func (a *SplitAPIService) AddSubaccount(ctx context.Context, id string) ApiAddSu
 
 // Execute executes the request
 //  @return SplitAddUpdateSubaccountResponse
-func (a *SplitAPIService) AddSubaccountExecute(r ApiAddSubaccountRequest) (*SplitAddUpdateSubaccountResponse, *http.Response, error) {
+func (a *SplitAPIService) AddSubaccountExecute(r SplitAddSubaccountAPIRequest) (*SplitAddUpdateSubaccountResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -147,18 +147,18 @@ func (a *SplitAPIService) AddSubaccountExecute(r ApiAddSubaccountRequest) (*Spli
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateRequest struct {
+type SplitCreateAPIRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
 	splitCreate *SplitCreate
 }
 
-func (r ApiCreateRequest) SplitCreate(splitCreate SplitCreate) ApiCreateRequest {
+func (r SplitCreateAPIRequest) SplitCreate(splitCreate SplitCreate) SplitCreateAPIRequest {
 	r.splitCreate = &splitCreate
 	return r
 }
 
-func (r ApiCreateRequest) Execute() (*SplitCreateResponse, *http.Response, error) {
+func (r SplitCreateAPIRequest) Execute() (*SplitCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -168,10 +168,10 @@ Create Create Split
 Create a split configuration for transactions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateRequest
+ @return SplitCreateAPIRequest
 */
-func (a *SplitAPIService) Create(ctx context.Context) ApiCreateRequest {
-	return ApiCreateRequest{
+func (a *SplitAPIService) Create(ctx context.Context) SplitCreateAPIRequest {
+	return SplitCreateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -179,7 +179,7 @@ func (a *SplitAPIService) Create(ctx context.Context) ApiCreateRequest {
 
 // Execute executes the request
 //  @return SplitCreateResponse
-func (a *SplitAPIService) CreateExecute(r ApiCreateRequest) (*SplitCreateResponse, *http.Response, error) {
+func (a *SplitAPIService) CreateExecute(r SplitCreateAPIRequest) (*SplitCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -265,13 +265,13 @@ func (a *SplitAPIService) CreateExecute(r ApiCreateRequest) (*SplitCreateRespons
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchRequest struct {
+type SplitFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
 	id string
 }
 
-func (r ApiFetchRequest) Execute() (*SplitFetchResponse, *http.Response, error) {
+func (r SplitFetchAPIRequest) Execute() (*SplitFetchResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -282,10 +282,10 @@ Get details of a split configuration for a transaction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the split configuration to fetch
- @return ApiFetchRequest
+ @return SplitFetchAPIRequest
 */
-func (a *SplitAPIService) Fetch(ctx context.Context, id string) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *SplitAPIService) Fetch(ctx context.Context, id string) SplitFetchAPIRequest {
+	return SplitFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -294,7 +294,7 @@ func (a *SplitAPIService) Fetch(ctx context.Context, id string) ApiFetchRequest 
 
 // Execute executes the request
 //  @return SplitFetchResponse
-func (a *SplitAPIService) FetchExecute(r ApiFetchRequest) (*SplitFetchResponse, *http.Response, error) {
+func (a *SplitAPIService) FetchExecute(r SplitFetchAPIRequest) (*SplitFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -390,7 +390,7 @@ func (a *SplitAPIService) FetchExecute(r ApiFetchRequest) (*SplitFetchResponse, 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type SplitListAPIRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
 	subaccountCode *string
@@ -404,54 +404,54 @@ type ApiListRequest struct {
 }
 
 // Filter by subaccount code
-func (r ApiListRequest) SubaccountCode(subaccountCode string) ApiListRequest {
+func (r SplitListAPIRequest) SubaccountCode(subaccountCode string) SplitListAPIRequest {
 	r.subaccountCode = &subaccountCode
 	return r
 }
 
 // The name of the split
-func (r ApiListRequest) Name(name string) ApiListRequest {
+func (r SplitListAPIRequest) Name(name string) SplitListAPIRequest {
 	r.name = &name
 	return r
 }
 
 // The status of the split
-func (r ApiListRequest) Active(active bool) ApiListRequest {
+func (r SplitListAPIRequest) Active(active bool) SplitListAPIRequest {
 	r.active = &active
 	return r
 }
 
 // Sort by name, defaults to createdAt date
-func (r ApiListRequest) SortBy(sortBy string) ApiListRequest {
+func (r SplitListAPIRequest) SortBy(sortBy string) SplitListAPIRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
 // Number of splits per page. If not specified, we use a default value of 50.
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r SplitListAPIRequest) PerPage(perPage int32) SplitListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // Page number to view. If not specified, we use a default value of 1.
-func (r ApiListRequest) Page(page int32) ApiListRequest {
+func (r SplitListAPIRequest) Page(page int32) SplitListAPIRequest {
 	r.page = &page
 	return r
 }
 
 // A timestamp from which to start listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
-func (r ApiListRequest) From(from time.Time) ApiListRequest {
+func (r SplitListAPIRequest) From(from time.Time) SplitListAPIRequest {
 	r.from = &from
 	return r
 }
 
 // A timestamp at which to stop listing splits e.g. 2019-09-24T00:00:05.000Z, 2019-09-21
-func (r ApiListRequest) To(to time.Time) ApiListRequest {
+func (r SplitListAPIRequest) To(to time.Time) SplitListAPIRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiListRequest) Execute() (*SplitListResponse, *http.Response, error) {
+func (r SplitListAPIRequest) Execute() (*SplitListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -461,10 +461,10 @@ List List Splits
 List the transaction splits available on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return SplitListAPIRequest
 */
-func (a *SplitAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *SplitAPIService) List(ctx context.Context) SplitListAPIRequest {
+	return SplitListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -472,7 +472,7 @@ func (a *SplitAPIService) List(ctx context.Context) ApiListRequest {
 
 // Execute executes the request
 //  @return SplitListResponse
-func (a *SplitAPIService) ListExecute(r ApiListRequest) (*SplitListResponse, *http.Response, error) {
+func (a *SplitAPIService) ListExecute(r SplitListAPIRequest) (*SplitListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -591,19 +591,19 @@ func (a *SplitAPIService) ListExecute(r ApiListRequest) (*SplitListResponse, *ht
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRemoveSubaccountRequest struct {
+type SplitRemoveSubaccountAPIRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
 	id string
 	splitSubaccountRemove *SplitSubaccountRemove
 }
 
-func (r ApiRemoveSubaccountRequest) SplitSubaccountRemove(splitSubaccountRemove SplitSubaccountRemove) ApiRemoveSubaccountRequest {
+func (r SplitRemoveSubaccountAPIRequest) SplitSubaccountRemove(splitSubaccountRemove SplitSubaccountRemove) SplitRemoveSubaccountAPIRequest {
 	r.splitSubaccountRemove = &splitSubaccountRemove
 	return r
 }
 
-func (r ApiRemoveSubaccountRequest) Execute() (*SplitRemoveSubaccountResponse, *http.Response, error) {
+func (r SplitRemoveSubaccountAPIRequest) Execute() (*SplitRemoveSubaccountResponse, *http.Response, error) {
 	return r.ApiService.RemoveSubaccountExecute(r)
 }
 
@@ -614,10 +614,10 @@ Remove a subaccount from a split configuration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the split configuration to fetch
- @return ApiRemoveSubaccountRequest
+ @return SplitRemoveSubaccountAPIRequest
 */
-func (a *SplitAPIService) RemoveSubaccount(ctx context.Context, id string) ApiRemoveSubaccountRequest {
-	return ApiRemoveSubaccountRequest{
+func (a *SplitAPIService) RemoveSubaccount(ctx context.Context, id string) SplitRemoveSubaccountAPIRequest {
+	return SplitRemoveSubaccountAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -626,7 +626,7 @@ func (a *SplitAPIService) RemoveSubaccount(ctx context.Context, id string) ApiRe
 
 // Execute executes the request
 //  @return SplitRemoveSubaccountResponse
-func (a *SplitAPIService) RemoveSubaccountExecute(r ApiRemoveSubaccountRequest) (*SplitRemoveSubaccountResponse, *http.Response, error) {
+func (a *SplitAPIService) RemoveSubaccountExecute(r SplitRemoveSubaccountAPIRequest) (*SplitRemoveSubaccountResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -713,19 +713,19 @@ func (a *SplitAPIService) RemoveSubaccountExecute(r ApiRemoveSubaccountRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateRequest struct {
+type SplitUpdateAPIRequest struct {
 	ctx context.Context
 	ApiService *SplitAPIService
 	id string
 	splitUpdate *SplitUpdate
 }
 
-func (r ApiUpdateRequest) SplitUpdate(splitUpdate SplitUpdate) ApiUpdateRequest {
+func (r SplitUpdateAPIRequest) SplitUpdate(splitUpdate SplitUpdate) SplitUpdateAPIRequest {
 	r.splitUpdate = &splitUpdate
 	return r
 }
 
-func (r ApiUpdateRequest) Execute() (*SplitUpdateResponse, *http.Response, error) {
+func (r SplitUpdateAPIRequest) Execute() (*SplitUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -736,10 +736,10 @@ Update a split configuration for transactions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
- @return ApiUpdateRequest
+ @return SplitUpdateAPIRequest
 */
-func (a *SplitAPIService) Update(ctx context.Context, id string) ApiUpdateRequest {
-	return ApiUpdateRequest{
+func (a *SplitAPIService) Update(ctx context.Context, id string) SplitUpdateAPIRequest {
+	return SplitUpdateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -748,7 +748,7 @@ func (a *SplitAPIService) Update(ctx context.Context, id string) ApiUpdateReques
 
 // Execute executes the request
 //  @return SplitUpdateResponse
-func (a *SplitAPIService) UpdateExecute(r ApiUpdateRequest) (*SplitUpdateResponse, *http.Response, error) {
+func (a *SplitAPIService) UpdateExecute(r SplitUpdateAPIRequest) (*SplitUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

@@ -23,12 +23,12 @@ import (
 // IntegrationAPIService IntegrationAPI service
 type IntegrationAPIService service
 
-type ApiFetchPaymentSessionTimeoutRequest struct {
+type IntegrationFetchPaymentSessionTimeoutAPIRequest struct {
 	ctx context.Context
 	ApiService *IntegrationAPIService
 }
 
-func (r ApiFetchPaymentSessionTimeoutRequest) Execute() (*ControlPanelFetchPaymentSessionTimeoutResponse, *http.Response, error) {
+func (r IntegrationFetchPaymentSessionTimeoutAPIRequest) Execute() (*ControlPanelFetchPaymentSessionTimeoutResponse, *http.Response, error) {
 	return r.ApiService.FetchPaymentSessionTimeoutExecute(r)
 }
 
@@ -38,10 +38,10 @@ FetchPaymentSessionTimeout Fetch Payment Session Timeout
 Fetch the session timeout of a transaction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFetchPaymentSessionTimeoutRequest
+ @return IntegrationFetchPaymentSessionTimeoutAPIRequest
 */
-func (a *IntegrationAPIService) FetchPaymentSessionTimeout(ctx context.Context) ApiFetchPaymentSessionTimeoutRequest {
-	return ApiFetchPaymentSessionTimeoutRequest{
+func (a *IntegrationAPIService) FetchPaymentSessionTimeout(ctx context.Context) IntegrationFetchPaymentSessionTimeoutAPIRequest {
+	return IntegrationFetchPaymentSessionTimeoutAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -49,7 +49,7 @@ func (a *IntegrationAPIService) FetchPaymentSessionTimeout(ctx context.Context) 
 
 // Execute executes the request
 //  @return ControlPanelFetchPaymentSessionTimeoutResponse
-func (a *IntegrationAPIService) FetchPaymentSessionTimeoutExecute(r ApiFetchPaymentSessionTimeoutRequest) (*ControlPanelFetchPaymentSessionTimeoutResponse, *http.Response, error) {
+func (a *IntegrationAPIService) FetchPaymentSessionTimeoutExecute(r IntegrationFetchPaymentSessionTimeoutAPIRequest) (*ControlPanelFetchPaymentSessionTimeoutResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -144,18 +144,18 @@ func (a *IntegrationAPIService) FetchPaymentSessionTimeoutExecute(r ApiFetchPaym
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdatePaymentSessionTimeoutRequest struct {
+type IntegrationUpdatePaymentSessionTimeoutAPIRequest struct {
 	ctx context.Context
 	ApiService *IntegrationAPIService
 	paymentSession *PaymentSession
 }
 
-func (r ApiUpdatePaymentSessionTimeoutRequest) PaymentSession(paymentSession PaymentSession) ApiUpdatePaymentSessionTimeoutRequest {
+func (r IntegrationUpdatePaymentSessionTimeoutAPIRequest) PaymentSession(paymentSession PaymentSession) IntegrationUpdatePaymentSessionTimeoutAPIRequest {
 	r.paymentSession = &paymentSession
 	return r
 }
 
-func (r ApiUpdatePaymentSessionTimeoutRequest) Execute() (*ControlPanelUpdatePaymentSessionTimeoutResponse, *http.Response, error) {
+func (r IntegrationUpdatePaymentSessionTimeoutAPIRequest) Execute() (*ControlPanelUpdatePaymentSessionTimeoutResponse, *http.Response, error) {
 	return r.ApiService.UpdatePaymentSessionTimeoutExecute(r)
 }
 
@@ -165,10 +165,10 @@ UpdatePaymentSessionTimeout Update Payment Session Timeout
 Update the session timeout of a transaction
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUpdatePaymentSessionTimeoutRequest
+ @return IntegrationUpdatePaymentSessionTimeoutAPIRequest
 */
-func (a *IntegrationAPIService) UpdatePaymentSessionTimeout(ctx context.Context) ApiUpdatePaymentSessionTimeoutRequest {
-	return ApiUpdatePaymentSessionTimeoutRequest{
+func (a *IntegrationAPIService) UpdatePaymentSessionTimeout(ctx context.Context) IntegrationUpdatePaymentSessionTimeoutAPIRequest {
+	return IntegrationUpdatePaymentSessionTimeoutAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -176,7 +176,7 @@ func (a *IntegrationAPIService) UpdatePaymentSessionTimeout(ctx context.Context)
 
 // Execute executes the request
 //  @return ControlPanelUpdatePaymentSessionTimeoutResponse
-func (a *IntegrationAPIService) UpdatePaymentSessionTimeoutExecute(r ApiUpdatePaymentSessionTimeoutRequest) (*ControlPanelUpdatePaymentSessionTimeoutResponse, *http.Response, error) {
+func (a *IntegrationAPIService) UpdatePaymentSessionTimeoutExecute(r IntegrationUpdatePaymentSessionTimeoutAPIRequest) (*ControlPanelUpdatePaymentSessionTimeoutResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

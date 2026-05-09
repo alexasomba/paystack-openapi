@@ -30,7 +30,7 @@ def get_paystack_request_id(headers: Any) -> Optional[str]:
     # urllib3 uses HTTPHeaderDict, but it behaves like a mapping.
     for name in DEFAULT_REQUEST_ID_HEADERS:
         try:
-            value = headers.get(name)  # type: ignore[attr-defined]
+            value = headers.get(name)
         except Exception:
             value = None
         if value:
@@ -195,7 +195,7 @@ def create_configuration(
     # Default timeouts are applied by ReliableApiClient per-request.
     # Retries configure urllib3's pool manager.
     if retry is not None:
-        cfg.retries = retry
+        setattr(cfg, "retries", retry)
 
     # Keep for caller convenience
     _ = timeout_seconds

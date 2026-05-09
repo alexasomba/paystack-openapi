@@ -25,18 +25,18 @@ import (
 // SubaccountAPIService SubaccountAPI service
 type SubaccountAPIService service
 
-type ApiCreateRequest struct {
+type SubaccountCreateAPIRequest struct {
 	ctx context.Context
 	ApiService *SubaccountAPIService
 	subaccountCreate *SubaccountCreate
 }
 
-func (r ApiCreateRequest) SubaccountCreate(subaccountCreate SubaccountCreate) ApiCreateRequest {
+func (r SubaccountCreateAPIRequest) SubaccountCreate(subaccountCreate SubaccountCreate) SubaccountCreateAPIRequest {
 	r.subaccountCreate = &subaccountCreate
 	return r
 }
 
-func (r ApiCreateRequest) Execute() (*SubaccountCreateResponse, *http.Response, error) {
+func (r SubaccountCreateAPIRequest) Execute() (*SubaccountCreateResponse, *http.Response, error) {
 	return r.ApiService.CreateExecute(r)
 }
 
@@ -46,10 +46,10 @@ Create Create Subaccount
 Create a subacount for a partner
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateRequest
+ @return SubaccountCreateAPIRequest
 */
-func (a *SubaccountAPIService) Create(ctx context.Context) ApiCreateRequest {
-	return ApiCreateRequest{
+func (a *SubaccountAPIService) Create(ctx context.Context) SubaccountCreateAPIRequest {
+	return SubaccountCreateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *SubaccountAPIService) Create(ctx context.Context) ApiCreateRequest {
 
 // Execute executes the request
 //  @return SubaccountCreateResponse
-func (a *SubaccountAPIService) CreateExecute(r ApiCreateRequest) (*SubaccountCreateResponse, *http.Response, error) {
+func (a *SubaccountAPIService) CreateExecute(r SubaccountCreateAPIRequest) (*SubaccountCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -143,13 +143,13 @@ func (a *SubaccountAPIService) CreateExecute(r ApiCreateRequest) (*SubaccountCre
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFetchRequest struct {
+type SubaccountFetchAPIRequest struct {
 	ctx context.Context
 	ApiService *SubaccountAPIService
 	idOrCode string
 }
 
-func (r ApiFetchRequest) Execute() (*SubaccountFetchResponse, *http.Response, error) {
+func (r SubaccountFetchAPIRequest) Execute() (*SubaccountFetchResponse, *http.Response, error) {
 	return r.ApiService.FetchExecute(r)
 }
 
@@ -160,10 +160,10 @@ Get details of a subaccount on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param idOrCode The subaccount ID or code you want to fetch
- @return ApiFetchRequest
+ @return SubaccountFetchAPIRequest
 */
-func (a *SubaccountAPIService) Fetch(ctx context.Context, idOrCode string) ApiFetchRequest {
-	return ApiFetchRequest{
+func (a *SubaccountAPIService) Fetch(ctx context.Context, idOrCode string) SubaccountFetchAPIRequest {
+	return SubaccountFetchAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		idOrCode: idOrCode,
@@ -172,7 +172,7 @@ func (a *SubaccountAPIService) Fetch(ctx context.Context, idOrCode string) ApiFe
 
 // Execute executes the request
 //  @return SubaccountFetchResponse
-func (a *SubaccountAPIService) FetchExecute(r ApiFetchRequest) (*SubaccountFetchResponse, *http.Response, error) {
+func (a *SubaccountAPIService) FetchExecute(r SubaccountFetchAPIRequest) (*SubaccountFetchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -268,7 +268,7 @@ func (a *SubaccountAPIService) FetchExecute(r ApiFetchRequest) (*SubaccountFetch
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListRequest struct {
+type SubaccountListAPIRequest struct {
 	ctx context.Context
 	ApiService *SubaccountAPIService
 	perPage *int32
@@ -278,30 +278,30 @@ type ApiListRequest struct {
 }
 
 // Number of records to fetch per request
-func (r ApiListRequest) PerPage(perPage int32) ApiListRequest {
+func (r SubaccountListAPIRequest) PerPage(perPage int32) SubaccountListAPIRequest {
 	r.perPage = &perPage
 	return r
 }
 
 // The offset to retrieve data from
-func (r ApiListRequest) Page(page int32) ApiListRequest {
+func (r SubaccountListAPIRequest) Page(page int32) SubaccountListAPIRequest {
 	r.page = &page
 	return r
 }
 
 // A timestamp from which to start listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
-func (r ApiListRequest) From(from time.Time) ApiListRequest {
+func (r SubaccountListAPIRequest) From(from time.Time) SubaccountListAPIRequest {
 	r.from = &from
 	return r
 }
 
 // A timestamp at which to stop listing subaccounts e.g. 2016-09-24T00:00:05.000Z, 2016-09-21
-func (r ApiListRequest) To(to time.Time) ApiListRequest {
+func (r SubaccountListAPIRequest) To(to time.Time) SubaccountListAPIRequest {
 	r.to = &to
 	return r
 }
 
-func (r ApiListRequest) Execute() (*SubaccountListResponse, *http.Response, error) {
+func (r SubaccountListAPIRequest) Execute() (*SubaccountListResponse, *http.Response, error) {
 	return r.ApiService.ListExecute(r)
 }
 
@@ -311,10 +311,10 @@ List List Subaccounts
 List subaccounts available on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListRequest
+ @return SubaccountListAPIRequest
 */
-func (a *SubaccountAPIService) List(ctx context.Context) ApiListRequest {
-	return ApiListRequest{
+func (a *SubaccountAPIService) List(ctx context.Context) SubaccountListAPIRequest {
+	return SubaccountListAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -322,7 +322,7 @@ func (a *SubaccountAPIService) List(ctx context.Context) ApiListRequest {
 
 // Execute executes the request
 //  @return SubaccountListResponse
-func (a *SubaccountAPIService) ListExecute(r ApiListRequest) (*SubaccountListResponse, *http.Response, error) {
+func (a *SubaccountAPIService) ListExecute(r SubaccountListAPIRequest) (*SubaccountListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -437,19 +437,19 @@ func (a *SubaccountAPIService) ListExecute(r ApiListRequest) (*SubaccountListRes
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateRequest struct {
+type SubaccountUpdateAPIRequest struct {
 	ctx context.Context
 	ApiService *SubaccountAPIService
 	idOrCode string
 	subaccountUpdate *SubaccountUpdate
 }
 
-func (r ApiUpdateRequest) SubaccountUpdate(subaccountUpdate SubaccountUpdate) ApiUpdateRequest {
+func (r SubaccountUpdateAPIRequest) SubaccountUpdate(subaccountUpdate SubaccountUpdate) SubaccountUpdateAPIRequest {
 	r.subaccountUpdate = &subaccountUpdate
 	return r
 }
 
-func (r ApiUpdateRequest) Execute() (*SubaccountUpdateResponse, *http.Response, error) {
+func (r SubaccountUpdateAPIRequest) Execute() (*SubaccountUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateExecute(r)
 }
 
@@ -460,10 +460,10 @@ Update a subaccount details on your integration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param idOrCode The subaccount ID or code you want to fetch
- @return ApiUpdateRequest
+ @return SubaccountUpdateAPIRequest
 */
-func (a *SubaccountAPIService) Update(ctx context.Context, idOrCode string) ApiUpdateRequest {
-	return ApiUpdateRequest{
+func (a *SubaccountAPIService) Update(ctx context.Context, idOrCode string) SubaccountUpdateAPIRequest {
+	return SubaccountUpdateAPIRequest{
 		ApiService: a,
 		ctx: ctx,
 		idOrCode: idOrCode,
@@ -472,7 +472,7 @@ func (a *SubaccountAPIService) Update(ctx context.Context, idOrCode string) ApiU
 
 // Execute executes the request
 //  @return SubaccountUpdateResponse
-func (a *SubaccountAPIService) UpdateExecute(r ApiUpdateRequest) (*SubaccountUpdateResponse, *http.Response, error) {
+func (a *SubaccountAPIService) UpdateExecute(r SubaccountUpdateAPIRequest) (*SubaccountUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

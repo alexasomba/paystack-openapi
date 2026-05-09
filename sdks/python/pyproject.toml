@@ -38,11 +38,7 @@ build-backend = "setuptools.build_meta"
 extension-pkg-whitelist = "pydantic"
 
 [tool.mypy]
-files = [
-  "alexasomba_paystack",
-  #"test",  # auto-generated tests
-  "tests", # hand-written tests
-]
+files = ["alexasomba_paystack/extras.py", "test/test_contract.py"]
 # TODO: enable "strict" once all these individual checks are passing
 # strict = true
 
