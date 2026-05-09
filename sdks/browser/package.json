@@ -43,13 +43,13 @@
   ],
   "type": "module",
   "sideEffects": false,
-  "main": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.mts",
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.mjs"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     }
   },
   "publishConfig": {
@@ -76,11 +76,12 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
     "openapi-typescript": "^7.13.0",
-    "publint": "^0.3.18",
+    "publint": "^0.3.20",
     "typescript": "^5.9.3",
-    "vite-plus": "0.1.18",
-    "vitest": "4.1.4",
-    "yaml": "^2.8.3"
+    "vite": "npm:@voidzero-dev/vite-plus-core@^0.1.20",
+    "vite-plus": "^0.1.20",
+    "vitest": "npm:@voidzero-dev/vite-plus-test@^0.1.20",
+    "yaml": "^2.8.4"
   },
   "engines": {
     "node": ">=22.0.0"
