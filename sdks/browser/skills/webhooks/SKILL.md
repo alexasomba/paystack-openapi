@@ -5,6 +5,13 @@ description: Use when an agent considers webhook handling while using @alexasomb
 
 # Paystack Browser Webhook Boundary
 
+## License and compatibility
+
+- License: MIT, same as `@alexasomba/paystack-browser`.
+- Runtime compatibility: modern browsers and bundlers; package tooling and SSR builds require Node.js >=22.0.0.
+- Supported import path: `@alexasomba/paystack-browser`; the package is ESM with `type: "module"`.
+- Intended environment: frontend code using Paystack public keys only. Secret-key operations belong on a backend.
+
 Do not handle or verify Paystack webhooks in browser code. Webhooks are server-to-server events and require your Paystack secret key.
 
 ## Correct architecture

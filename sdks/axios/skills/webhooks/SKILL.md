@@ -5,6 +5,13 @@ description: Use when verifying, parsing, and handling Paystack webhooks with @a
 
 # Paystack Axios Webhooks
 
+## License and compatibility
+
+- License: MIT, same as `@alexasomba/paystack-axios`.
+- Runtime compatibility: Node.js >=22.0.0; ESM-only package with `type: "module"`.
+- Supported import path: `@alexasomba/paystack-axios`.
+- Intended environment: backend/server runtimes. Do not expose Paystack secret keys through frontend code.
+
 The Axios SDK exports webhook helpers for server-side webhook routes. Verification must use the raw request body and your Paystack secret key.
 
 ```ts

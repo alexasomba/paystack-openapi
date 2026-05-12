@@ -5,6 +5,13 @@ description: Use when calling Paystack API operations with @alexasomba/paystack-
 
 # Paystack Browser API Operations
 
+## License and compatibility
+
+- License: MIT, same as `@alexasomba/paystack-browser`.
+- Runtime compatibility: modern browsers and bundlers; package tooling and SSR builds require Node.js >=22.0.0.
+- Supported import path: `@alexasomba/paystack-browser`; the package is ESM with `type: "module"`.
+- Intended environment: frontend code using Paystack public keys only. Secret-key operations belong on a backend.
+
 The browser SDK exposes generated grouped helpers, but not every Paystack operation is appropriate for frontend use. Never call secret-key-only operations from the browser.
 
 ## Request shape

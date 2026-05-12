@@ -5,6 +5,13 @@ description: Use when choosing TypeScript request, query, response, or grouped c
 
 # Paystack Browser Typed Payloads
 
+## License and compatibility
+
+- License: MIT, same as `@alexasomba/paystack-browser`.
+- Runtime compatibility: modern browsers and bundlers; package tooling and SSR builds require Node.js >=22.0.0.
+- Supported import path: `@alexasomba/paystack-browser`; the package is ESM with `type: "module"`.
+- Intended environment: frontend code using Paystack public keys only. Secret-key operations belong on a backend.
+
 The browser SDK exports the same style of stable aliases as the server SDKs. Use them for frontend payment forms, service wrappers, and tests.
 
 ## Client and payload types

@@ -5,6 +5,13 @@ description: Use when calling Paystack API operations with @alexasomba/paystack-
 
 # Paystack Axios API Operations
 
+## License and compatibility
+
+- License: MIT, same as `@alexasomba/paystack-axios`.
+- Runtime compatibility: Node.js >=22.0.0; ESM-only package with `type: "module"`.
+- Supported import path: `@alexasomba/paystack-axios`.
+- Intended environment: backend/server runtimes. Do not expose Paystack secret keys through frontend code.
+
 The Axios SDK exposes the same grouped operation helpers as the generated OpenAPI surface while using Axios under the hood.
 
 ## Request shape

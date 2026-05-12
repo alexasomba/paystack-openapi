@@ -5,6 +5,13 @@ description: Use when handling @alexasomba/paystack-axios responses, PaystackRes
 
 # Paystack Axios Responses and Errors
 
+## License and compatibility
+
+- License: MIT, same as `@alexasomba/paystack-axios`.
+- Runtime compatibility: Node.js >=22.0.0; ESM-only package with `type: "module"`.
+- Supported import path: `@alexasomba/paystack-axios`.
+- Intended environment: backend/server runtimes. Do not expose Paystack secret keys through frontend code.
+
 Operation helpers return `PaystackResponse<T>`. Use `.unwrap()` to get `data` or throw a structured `PaystackError`.
 
 ```ts

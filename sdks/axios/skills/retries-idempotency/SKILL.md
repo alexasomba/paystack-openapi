@@ -5,6 +5,13 @@ description: Use when configuring @alexasomba/paystack-axios retries, Retry-Afte
 
 # Paystack Axios Retries and Idempotency
 
+## License and compatibility
+
+- License: MIT, same as `@alexasomba/paystack-axios`.
+- Runtime compatibility: Node.js >=22.0.0; ESM-only package with `type: "module"`.
+- Supported import path: `@alexasomba/paystack-axios`.
+- Intended environment: backend/server runtimes. Do not expose Paystack secret keys through frontend code.
+
 Configure retries for transient failures and idempotency for safe POST retries.
 
 ```ts
