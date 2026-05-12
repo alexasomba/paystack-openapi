@@ -23,6 +23,18 @@ const paystack = createPaystack({
 
 The SDK respects `Retry-After` for `429` responses when present.
 
+## Helper exports
+
+The SDK exports lower-level idempotency helpers for tests and custom transport utilities:
+
+- `DEFAULT_IDEMPOTENCY_HEADER`
+- `createIdempotencyKey()`
+- `resolveIdempotencyKey(input)`
+- `hasHeader(headers, name)`
+- `setHeader(headers, name, value)`
+
+Prefer `createPaystack({ idempotencyKey })` for normal browser application code.
+
 ## Best practices
 
 - Keep retry counts lower in the browser to avoid poor UX.

@@ -33,6 +33,18 @@ const paystack = createPaystack({
 });
 ```
 
+## Helper exports
+
+The SDK exports low-level idempotency helpers for tests and transport utilities:
+
+- `DEFAULT_IDEMPOTENCY_HEADER`
+- `createIdempotencyKey()`
+- `resolveIdempotencyKey(input)`
+- `hasHeader(headers, name)`
+- `setHeader(headers, name, value)`
+
+Most application code should configure `idempotencyKey` on `createPaystack` instead of calling these helpers directly.
+
 ## Best practices
 
 - Retry POST only when an idempotency key exists.

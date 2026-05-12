@@ -25,7 +25,17 @@ The SDK rejects keys that look like `sk_test_*` or `sk_live_*`.
 - Refunds and dispute operations.
 - Webhook verification.
 - Secret-key transaction verification before fulfillment.
+- Settlement, balance, integration, dispute evidence, or account administration workflows.
 - Any operation that would expose business-only credentials or privileged account state.
+
+Generated helpers may exist for these operations because the SDK is generated from the full OpenAPI surface. Treat them as type-level visibility, not browser permission.
+
+## Usually safe browser work
+
+- Collecting frontend checkout inputs.
+- Starting public-key checkout flows where Paystack permits browser calls.
+- Calling frontend-safe read or initialization operations only when they do not require a secret key.
+- Passing an `access_code` from your backend to `@alexasomba/paystack-inline`.
 
 ## Browser constraints
 

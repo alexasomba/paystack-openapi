@@ -31,9 +31,15 @@ try {
 }
 ```
 
+`PaystackError` exposes `status`, `requestId`, `code`, `type`, and `meta`. Use `isProcessorError()` and `isValidationError()` when branching on Paystack error categories.
+
 ## Envelope behavior
 
 Paystack responses commonly include `status`, `message`, `data`, and optional `meta`. A response with HTTP 2xx can still have `status: false`; handle that as failure.
+
+## Helper exports
+
+Use `getPaystackRequestId(headers)` when extracting diagnostics from raw Axios-backed responses or test fixtures. Request IDs are commonly returned in `x-paystack-request-id` or `x-request-id`.
 
 ## Best practices
 

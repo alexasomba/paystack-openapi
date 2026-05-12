@@ -31,6 +31,12 @@ try {
 }
 ```
 
+`PaystackError` exposes `status`, `requestId`, `code`, `type`, and `meta`. Use `isProcessorError()` and `isValidationError()` for programmatic branching, but do not show raw diagnostic details directly to users.
+
+## Helper exports
+
+Use `getPaystackRequestId(headers)` in tests or diagnostics when extracting request IDs from raw response headers. Request IDs are commonly returned in `x-paystack-request-id` or `x-request-id`.
+
 ## Best practices
 
 - Show user-safe messages in the UI; keep diagnostic details in logs.

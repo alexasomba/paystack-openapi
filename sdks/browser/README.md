@@ -31,7 +31,7 @@ npx @tanstack/intent@latest install --map
 npx @tanstack/intent@latest load @alexasomba/paystack-browser#browser-safety
 ```
 
-Useful skills include `client-setup`, `api-operations`, `typed-payloads`, `responses-errors`, `retries-idempotency`, `webhooks`, and `browser-safety`.
+Useful skills include `client-setup`, `api-operations`, `operation-discovery`, `typed-payloads`, `responses-errors`, `retries-idempotency`, `transport-testing`, `webhooks`, and `browser-safety`.
 
 Use your Paystack public key in browser environments. Do not expose a secret key in frontend code.
 
