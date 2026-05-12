@@ -1,6 +1,8 @@
 ---
 name: client-setup
 description: Use when installing or configuring @alexasomba/paystack-axios, creating an Axios-backed Paystack client, or choosing server-side authentication settings.
+license: MIT
+compatibility: "Node.js >=22.0.0; ESM-only package; backend/server runtime; import @alexasomba/paystack-axios."
 ---
 
 # Paystack Axios Client Setup

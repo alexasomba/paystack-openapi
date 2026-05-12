@@ -1,6 +1,8 @@
 ---
 name: retries-idempotency
 description: Use when configuring @alexasomba/paystack-browser retries, Retry-After behavior, idempotency keys, timeouts, and browser-safe retry semantics.
+license: MIT
+compatibility: "Modern browsers and bundlers; package tooling/SSR builds require Node.js >=22.0.0; ESM package; public-key frontend runtime only."
 ---
 
 # Paystack Browser Retries and Idempotency

@@ -1,6 +1,8 @@
 ---
 name: responses-errors
 description: Use when handling @alexasomba/paystack-axios responses, PaystackResponse, unwrap, PaystackError, request IDs, and Paystack API envelopes.
+license: MIT
+compatibility: "Node.js >=22.0.0; ESM-only package; backend/server runtime; import @alexasomba/paystack-axios."
 ---
 
 # Paystack Axios Responses and Errors

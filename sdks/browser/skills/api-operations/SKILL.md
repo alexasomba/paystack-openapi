@@ -1,6 +1,8 @@
 ---
 name: api-operations
 description: Use when calling Paystack API operations with @alexasomba/paystack-browser, including browser-safe request body, path params, query params, and pagination.
+license: MIT
+compatibility: "Modern browsers and bundlers; package tooling/SSR builds require Node.js >=22.0.0; ESM package; public-key frontend runtime only."
 ---
 
 # Paystack Browser API Operations

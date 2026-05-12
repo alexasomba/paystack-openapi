@@ -1,6 +1,8 @@
 ---
 name: api-operations
 description: Use when calling Paystack API operations with @alexasomba/paystack-axios, including request body, path params, query params, and pagination.
+license: MIT
+compatibility: "Node.js >=22.0.0; ESM-only package; backend/server runtime; import @alexasomba/paystack-axios."
 ---
 
 # Paystack Axios API Operations

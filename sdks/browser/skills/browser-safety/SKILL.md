@@ -1,6 +1,8 @@
 ---
 name: browser-safety
 description: Use when deciding what Paystack functionality can run in @alexasomba/paystack-browser versus what must move to a backend.
+license: MIT
+compatibility: "Modern browsers and bundlers; package tooling/SSR builds require Node.js >=22.0.0; ESM package; public-key frontend runtime only."
 ---
 
 # Paystack Browser Safety

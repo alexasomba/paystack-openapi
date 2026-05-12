@@ -1,6 +1,8 @@
 ---
 name: webhooks
 description: Use when verifying, parsing, and handling Paystack webhooks with @alexasomba/paystack-axios.
+license: MIT
+compatibility: "Node.js >=22.0.0; ESM-only package; backend/server runtime; import @alexasomba/paystack-axios."
 ---
 
 # Paystack Axios Webhooks

@@ -1,6 +1,8 @@
 ---
 name: retries-idempotency
 description: Use when configuring @alexasomba/paystack-axios retries, Retry-After behavior, idempotency keys, timeouts, and safe retry semantics.
+license: MIT
+compatibility: "Node.js >=22.0.0; ESM-only package; backend/server runtime; import @alexasomba/paystack-axios."
 ---
 
 # Paystack Axios Retries and Idempotency

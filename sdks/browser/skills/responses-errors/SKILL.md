@@ -1,6 +1,8 @@
 ---
 name: responses-errors
 description: Use when handling @alexasomba/paystack-browser responses, PaystackResponse, unwrap, PaystackError, request IDs, and Paystack API envelopes.
+license: MIT
+compatibility: "Modern browsers and bundlers; package tooling/SSR builds require Node.js >=22.0.0; ESM package; public-key frontend runtime only."
 ---
 
 # Paystack Browser Responses and Errors

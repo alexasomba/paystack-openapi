@@ -1,6 +1,8 @@
 ---
 name: typed-payloads
 description: Use when choosing TypeScript request, query, response, or grouped client types from @alexasomba/paystack-browser.
+license: MIT
+compatibility: "Modern browsers and bundlers; package tooling/SSR builds require Node.js >=22.0.0; ESM package; public-key frontend runtime only."
 ---
 
 # Paystack Browser Typed Payloads
