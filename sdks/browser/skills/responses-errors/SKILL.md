@@ -7,13 +7,6 @@ compatibility: "Modern browsers and bundlers; package tooling/SSR builds require
 
 # Paystack Browser Responses and Errors
 
-## License and compatibility
-
-- License: MIT, same as `@alexasomba/paystack-browser`.
-- Runtime compatibility: modern browsers and bundlers; package tooling and SSR builds require Node.js >=22.0.0.
-- Supported import path: `@alexasomba/paystack-browser`; the package is ESM with `type: "module"`.
-- Intended environment: frontend code using Paystack public keys only. Secret-key operations belong on a backend.
-
 Browser SDK operations return `PaystackResponse<T>`. Use `.unwrap()` for typed data or an exception.
 
 ```ts

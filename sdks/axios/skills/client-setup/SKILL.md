@@ -7,13 +7,6 @@ compatibility: "Node.js >=22.0.0; ESM-only package; backend/server runtime; impo
 
 # Paystack Axios Client Setup
 
-## License and compatibility
-
-- License: MIT, same as `@alexasomba/paystack-axios`.
-- Runtime compatibility: Node.js >=22.0.0; ESM-only package with `type: "module"`.
-- Supported import path: `@alexasomba/paystack-axios`.
-- Intended environment: backend/server runtimes. Do not expose Paystack secret keys through frontend code.
-
 Use `@alexasomba/paystack-axios` when a server-side application already standardizes on Axios interceptors, proxies, tracing, or transport configuration.
 
 ## Install and import
