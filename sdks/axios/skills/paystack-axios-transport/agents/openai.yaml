@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Axios Transport"
+  short_description: "Customize Paystack Axios transport"
+  default_prompt: "Use $paystack-axios-transport to customize Axios transport for the Paystack SDK."

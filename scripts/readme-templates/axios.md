@@ -27,10 +27,10 @@ This package ships TanStack Intent skills for agent-assisted Paystack integratio
 ```bash
 npx @tanstack/intent@latest list
 npx @tanstack/intent@latest install --map
-npx @tanstack/intent@latest load {{package_name}}#api-operations
+npx @tanstack/intent@latest load {{package_name}}#paystack-axios-api-operations
 ```
 
-Useful skills include `client-setup`, `api-operations`, `typed-payloads`, `responses-errors`, `retries-idempotency`, and `webhooks`.
+Useful skills include `paystack-axios-client-setup`, `paystack-axios-api-operations`, `paystack-axios-operation-discovery`, `paystack-axios-transport`, `paystack-axios-typed-payloads`, `paystack-axios-responses-errors`, `paystack-axios-retries-idempotency`, and `paystack-axios-webhooks`.
 
 Authenticate requests with your Paystack secret key:
 

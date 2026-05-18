@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Axios Retries and Idempotency"
+  short_description: "Configure Axios retries and keys"
+  default_prompt: "Use $paystack-axios-retries-idempotency to configure retries, timeouts, and idempotency keys."

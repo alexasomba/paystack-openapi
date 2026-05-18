@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Browser Transport Testing"
+  short_description: "Test browser SDK transport"
+  default_prompt: "Use $paystack-browser-transport-testing to test or customize Paystack Browser SDK transport behavior."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Browser Operation Discovery"
+  short_description: "Find safe browser SDK helpers"
+  default_prompt: "Use $paystack-browser-operation-discovery to find a generated browser SDK helper and check browser safety."

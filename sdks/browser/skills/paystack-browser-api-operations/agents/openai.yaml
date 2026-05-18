@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Browser API Operations"
+  short_description: "Call browser-safe Paystack APIs"
+  default_prompt: "Use $paystack-browser-api-operations to call browser-safe Paystack API operations."

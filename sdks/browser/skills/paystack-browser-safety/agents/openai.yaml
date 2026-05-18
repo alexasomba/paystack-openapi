@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Browser Safety"
+  short_description: "Keep Paystack secret keys off browsers"
+  default_prompt: "Use $paystack-browser-safety to decide whether a Paystack flow is safe to run in browser code."

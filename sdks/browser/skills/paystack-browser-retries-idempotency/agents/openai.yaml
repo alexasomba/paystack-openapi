@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Browser Retries and Idempotency"
+  short_description: "Configure browser retries and keys"
+  default_prompt: "Use $paystack-browser-retries-idempotency to configure browser retries, timeouts, and idempotency keys."

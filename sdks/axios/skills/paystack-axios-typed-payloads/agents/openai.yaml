@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Axios Typed Payloads"
+  short_description: "Choose typed Paystack Axios shapes"
+  default_prompt: "Use $paystack-axios-typed-payloads to choose typed Paystack request and response shapes for Axios."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Axios Operation Discovery"
+  short_description: "Find generated Paystack Axios helpers"
+  default_prompt: "Use $paystack-axios-operation-discovery to find the generated Axios SDK helper for a Paystack endpoint."

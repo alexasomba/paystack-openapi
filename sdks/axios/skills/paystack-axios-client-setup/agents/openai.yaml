@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Axios Client Setup"
+  short_description: "Configure the Paystack Axios SDK"
+  default_prompt: "Use $paystack-axios-client-setup to configure an Axios-backed Paystack client."

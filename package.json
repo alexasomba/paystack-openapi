@@ -72,9 +72,15 @@
     "build": "pnpm sdk:build",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
-    "prepare": "vp config"
+    "prepare": "vp config",
+    "skills:install": "skills-npm --yes --force",
+    "skills:check": "skills-npm --dry-run --force"
   },
   "devDependencies": {
+    "@alexasomba/paystack-axios": "workspace:*",
+    "@alexasomba/paystack-browser": "workspace:*",
+    "@alexasomba/paystack-inline": "workspace:*",
+    "@alexasomba/paystack-node": "workspace:*",
     "@arethetypeswrong/cli": "^0.18.2",
     "@eslint/compat": "^2.1.0",
     "@eslint/js": "^9.39.4",
@@ -97,7 +103,8 @@
     "vite": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "npm:@voidzero-dev/vite-plus-test@^0.1.20",
-    "yaml": "^2.8.4"
+    "yaml": "^2.8.4",
+    "skills-npm": "^1.1.1"
   },
   "packageManager": "pnpm@11.0.8"
 }
