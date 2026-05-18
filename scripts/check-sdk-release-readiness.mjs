@@ -2,17 +2,9 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const repoRoot = path.resolve(new URL(".", import.meta.url).pathname, "..");
+import { SDKS, getSdk } from "./sdk-registry.mjs";
 
-const requiredFilesBySdk = {
-  node: ["package.json", "README.md", "CHANGELOG.md", "openapi.yaml", "src/openapi-types.ts"],
-  axios: ["package.json", "README.md", "CHANGELOG.md", "openapi.yaml", "src/openapi-types.ts"],
-  browser: ["package.json", "README.md", "CHANGELOG.md", "openapi.yaml", "src/openapi-types.ts"],
-  inline: ["package.json", "README.md", "CHANGELOG.md"],
-  go: ["go.mod", "README.md", "openapi.yaml", "reliability.go"],
-  php: ["composer.json", "README.md", "openapi.yaml", "lib/Extras/HttpClientFactory.php"],
-  python: ["pyproject.toml", "README.md", "openapi.yaml", "alexasomba_paystack/extras.py"],
-};
+const repoRoot = path.resolve(new URL(".", import.meta.url).pathname, "..");
 
 const sdkSpec = fs.readFileSync(path.join(repoRoot, "src/assets/sdk/paystack.yaml"), "utf8");
 const failures = [];
@@ -32,15 +24,23 @@ function assertContains(filePath, pattern, message) {
   if (!pattern.test(contents)) failures.push(`${path.relative(repoRoot, filePath)}: ${message}`);
 }
 
-for (const [sdk, files] of Object.entries(requiredFilesBySdk)) {
-  const sdkDir = path.join(repoRoot, "sdks", sdk);
+/** @param {string} value */
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+for (const sdk of SDKS) {
+  const sdkDir = path.join(repoRoot, "sdks", sdk.name);
+  const files = sdk.requiredFiles ?? [];
   for (const file of files) assertFile(path.join(sdkDir, file));
 
   const openapiPath = path.join(sdkDir, "openapi.yaml");
-  if (fs.existsSync(openapiPath)) {
+  if (sdk.shipsOpenapi && fs.existsSync(openapiPath)) {
     const sdkOpenapi = fs.readFileSync(openapiPath, "utf8");
     if (sdkOpenapi !== sdkSpec) {
-      failures.push(`sdks/${sdk}/openapi.yaml is not synced with src/assets/sdk/paystack.yaml`);
+      failures.push(
+        `sdks/${sdk.name}/openapi.yaml is not synced with src/assets/sdk/paystack.yaml`,
+      );
     }
   }
 
@@ -59,24 +59,28 @@ for (const [sdk, files] of Object.entries(requiredFilesBySdk)) {
   }
 }
 
-for (const sdk of ["node", "axios", "browser", "inline"]) {
-  const packagePath = path.join(repoRoot, "sdks", sdk, "package.json");
+for (const sdk of SDKS.filter((candidate) => candidate.npm === true)) {
+  const packagePath = path.join(repoRoot, "sdks", sdk.name, "package.json");
   if (!fs.existsSync(packagePath)) continue;
   const pkg = JSON.parse(fs.readFileSync(packagePath, "utf8"));
   for (const field of ["name", "version", "license", "repository", "exports"]) {
-    if (pkg[field] === undefined) failures.push(`sdks/${sdk}/package.json missing ${field}`);
+    if (pkg[field] === undefined) failures.push(`sdks/${sdk.name}/package.json missing ${field}`);
+  }
+  if (pkg.name !== sdk.packageName) {
+    failures.push(`sdks/${sdk.name}/package.json name must be ${sdk.packageName}`);
   }
   if (pkg.publishConfig?.access !== "public") {
-    failures.push(`sdks/${sdk}/package.json publishConfig.access must be public`);
+    failures.push(`sdks/${sdk.name}/package.json publishConfig.access must be public`);
   }
 }
 
+const pythonSdk = getSdk("python");
 const pyprojectPath = path.join(repoRoot, "sdks/python/pyproject.toml");
 if (fs.existsSync(pyprojectPath)) {
   assertContains(pyprojectPath, /^version\s*=\s*".+"/m, "pyproject must include a version");
   assertContains(
     pyprojectPath,
-    /Repository\s*=\s*"https:\/\/github\.com\/alexasomba\/paystack-python"/,
+    new RegExp(`Repository\\s*=\\s*"${escapeRegExp(pythonSdk.repositoryUrl)}"`),
     "pyproject repository URL must point to the split repo",
   );
 }

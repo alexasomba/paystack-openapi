@@ -8,7 +8,6 @@ set -e
 # Default destination path
 DEST_BASE_PATH=${1:-"/Users/alexasomba/Documents/GitHub/alexasomba/paystack-sdks/sdks"}
 SDK_DIR="sdks"
-SDKS=("php" "go" "python" "node" "axios" "browser" "inline")
 
 echo "--------------------------------------------------"
 echo "Starting Local SDK Sync"
@@ -20,12 +19,16 @@ if [ ! -d "$DEST_BASE_PATH" ]; then
     exit 1
 fi
 
-for sdk in "${SDKS[@]}"; do
+while IFS=$'\t' read -r sdk repo branch; do
+    if [ -z "$sdk" ]; then
+        continue
+    fi
+
     src="$SDK_DIR/$sdk/"
-    dest="$DEST_BASE_PATH/paystack-$sdk/"
+    dest="$DEST_BASE_PATH/$repo/"
     
     if [ -d "$src" ]; then
-        echo "Syncing $sdk -> paystack-$sdk..."
+        echo "Syncing $sdk -> $repo..."
         
         # Ensure target folder exists
         mkdir -p "$dest"
@@ -47,7 +50,7 @@ for sdk in "${SDKS[@]}"; do
     else
         echo "[WARNING] Source SDK directory not found: $src"
     fi
-done
+done < <(node scripts/sdk-registry.mjs sync-plan)
 
 echo "--------------------------------------------------"
 echo "Local Sync Complete!"

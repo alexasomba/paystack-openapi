@@ -20,6 +20,8 @@
   "main": "src/index.js",
   "scripts": {
     "sdk:sync-spec": "node scripts/sync-sdk-spec.mjs",
+    "sdk:operations:sync": "node scripts/sync-ts-operation-generators.mjs",
+    "sdk:operations:check": "node scripts/sync-ts-operation-generators.mjs --check",
     "sdk:readmes:postprocess": "node scripts/postprocess-generated-readmes.mjs",
     "sdk:php:postprocess": "node scripts/postprocess-php-sdk.mjs",
     "sdk:python:postprocess": "node scripts/postprocess-python-sdk.mjs",
@@ -70,11 +72,11 @@
     "sdk:sync:full": "pnpm sdk:sync:local && pnpm sdk:sync:all",
     "sdk:sync:all": "./scripts/sync-sdks.sh",
     "build": "pnpm sdk:build",
+    "skills:install": "skills-npm --yes --force",
+    "skills:check": "skills-npm --dry-run --force",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
-    "prepare": "vp config",
-    "skills:install": "skills-npm --yes --force",
-    "skills:check": "skills-npm --dry-run --force"
+    "prepare": "vp config"
   },
   "devDependencies": {
     "@alexasomba/paystack-axios": "workspace:*",
@@ -98,13 +100,13 @@
     "nodemon": "^3.1.14",
     "open": "^11.0.0",
     "publint": "^0.3.20",
+    "skills-npm": "^1.1.1",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.2",
     "vite": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "npm:@voidzero-dev/vite-plus-test@^0.1.20",
-    "yaml": "^2.8.4",
-    "skills-npm": "^1.1.1"
+    "yaml": "^2.8.4"
   },
   "packageManager": "pnpm@11.0.8"
 }

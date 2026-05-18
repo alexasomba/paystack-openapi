@@ -3,6 +3,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { getSdk } from "./sdk-registry.mjs";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, "..");
@@ -653,102 +655,116 @@ function renderStableTypeExportsSection(packageName, credentialLine) {
   ].join("\n");
 }
 
+/** @param {string} name */
+function readmeTemplatePath(name) {
+  const sdk = getSdk(name);
+  if (sdk.readmeTemplate === undefined) {
+    throw new Error(`SDK ${name} does not declare a README template`);
+  }
+  return path.join(templatesDir, sdk.readmeTemplate);
+}
+
+/** @param {string} name */
+function readmeFilePath(name) {
+  return path.join(repoRoot, "sdks", getSdk(name).name, "README.md");
+}
+
 const TARGETS = [
   {
     name: "node",
-    templatePath: path.join(templatesDir, "node.md"),
-    filePath: path.join(repoRoot, "sdks/node/README.md"),
+    templatePath: readmeTemplatePath("node"),
+    filePath: readmeFilePath("node"),
     values: {
-      package_name: "@alexasomba/paystack-node",
+      package_name: getSdk("node").packageName,
       package_description:
         "TypeScript-first Paystack API client for Node.js, generated from the official Paystack OpenAPI spec.",
-      package_install: "pnpm add @alexasomba/paystack-node",
+      package_install: `pnpm add ${getSdk("node").packageName}`,
       stable_type_exports: renderStableTypeExportsSection(
-        "@alexasomba/paystack-node",
+        getSdk("node").packageName,
         "secretKey: process.env.PAYSTACK_SECRET_KEY!",
       ),
-      sdk_repo_url: "https://github.com/alexasomba/paystack-node",
-      related_sdk_1_name: "@alexasomba/paystack-browser",
-      related_sdk_1_url: "https://github.com/alexasomba/paystack-browser",
+      sdk_repo_url: getSdk("node").repositoryUrl,
+      related_sdk_1_name: getSdk("browser").packageName,
+      related_sdk_1_url: getSdk("browser").repositoryUrl,
       related_sdk_1_description: "Optimized for browser fetches.",
-      related_sdk_2_name: "@alexasomba/paystack-axios",
-      related_sdk_2_url: "https://github.com/alexasomba/paystack-axios",
+      related_sdk_2_name: getSdk("axios").packageName,
+      related_sdk_2_url: getSdk("axios").repositoryUrl,
       related_sdk_2_description: "For projects using Axios.",
     },
   },
   {
     name: "axios",
-    templatePath: path.join(templatesDir, "axios.md"),
-    filePath: path.join(repoRoot, "sdks/axios/README.md"),
+    templatePath: readmeTemplatePath("axios"),
+    filePath: readmeFilePath("axios"),
     values: {
-      package_name: "@alexasomba/paystack-axios",
+      package_name: getSdk("axios").packageName,
       package_description:
         "Paystack API client backed by Axios, providing a familiar ecosystem for Axios users while remaining fully typed and spec-compliant.",
-      package_install: "pnpm add @alexasomba/paystack-axios axios",
+      package_install: `pnpm add ${getSdk("axios").packageName} axios`,
       stable_type_exports: renderStableTypeExportsSection(
-        "@alexasomba/paystack-axios",
+        getSdk("axios").packageName,
         "secretKey: process.env.PAYSTACK_SECRET_KEY!",
       ),
-      sdk_repo_url: "https://github.com/alexasomba/paystack-axios",
-      related_sdk_1_name: "@alexasomba/paystack-node",
-      related_sdk_1_url: "https://github.com/alexasomba/paystack-node",
+      sdk_repo_url: getSdk("axios").repositoryUrl,
+      related_sdk_1_name: getSdk("node").packageName,
+      related_sdk_1_url: getSdk("node").repositoryUrl,
       related_sdk_1_description: "Native Node.js fetch implementation.",
-      related_sdk_2_name: "@alexasomba/paystack-browser",
-      related_sdk_2_url: "https://github.com/alexasomba/paystack-browser",
+      related_sdk_2_name: getSdk("browser").packageName,
+      related_sdk_2_url: getSdk("browser").repositoryUrl,
       related_sdk_2_description: "Optimized for browser fetches.",
     },
   },
   {
     name: "browser",
-    templatePath: path.join(templatesDir, "browser.md"),
-    filePath: path.join(repoRoot, "sdks/browser/README.md"),
+    templatePath: readmeTemplatePath("browser"),
+    filePath: readmeFilePath("browser"),
     values: {
-      package_name: "@alexasomba/paystack-browser",
+      package_name: getSdk("browser").packageName,
       package_description:
         "Paystack API client optimized for browser environments, providing a lightweight, fully typed, and spec-compliant way to interact with the Paystack API via native fetch.",
-      package_install: "pnpm add @alexasomba/paystack-browser",
+      package_install: `pnpm add ${getSdk("browser").packageName}`,
       stable_type_exports: renderStableTypeExportsSection(
-        "@alexasomba/paystack-browser",
+        getSdk("browser").packageName,
         'secretKey: "pk_test_..."',
       ),
-      sdk_repo_url: "https://github.com/alexasomba/paystack-browser",
-      related_sdk_1_name: "@alexasomba/paystack-node",
-      related_sdk_1_url: "https://github.com/alexasomba/paystack-node",
+      sdk_repo_url: getSdk("browser").repositoryUrl,
+      related_sdk_1_name: getSdk("node").packageName,
+      related_sdk_1_url: getSdk("node").repositoryUrl,
       related_sdk_1_description: "Native Node.js SDK with webhook support.",
-      related_sdk_2_name: "@alexasomba/paystack-axios",
-      related_sdk_2_url: "https://github.com/alexasomba/paystack-axios",
+      related_sdk_2_name: getSdk("axios").packageName,
+      related_sdk_2_url: getSdk("axios").repositoryUrl,
       related_sdk_2_description: "For projects using Axios.",
     },
   },
   {
     name: "python",
-    templatePath: path.join(templatesDir, "python.md"),
-    filePath: path.join(repoRoot, "sdks/python/README.md"),
+    templatePath: readmeTemplatePath("python"),
+    filePath: readmeFilePath("python"),
     values: {
-      package_name: "alexasomba-paystack",
-      package_slug: "alexasomba_paystack",
+      package_name: getSdk("python").packageName,
+      package_slug: getSdk("python").packageSlug,
       package_version: "1.1.1",
-      sdk_repo_url: "https://github.com/alexasomba/paystack-python",
+      sdk_repo_url: getSdk("python").repositoryUrl,
     },
   },
   {
     name: "php",
-    templatePath: path.join(templatesDir, "php.md"),
-    filePath: path.join(repoRoot, "sdks/php/README.md"),
+    templatePath: readmeTemplatePath("php"),
+    filePath: readmeFilePath("php"),
     values: {
       package_name: "Paystack",
       package_version: "1.1.1",
-      sdk_repo_url: "https://github.com/alexasomba/paystack-php",
+      sdk_repo_url: getSdk("php").repositoryUrl,
     },
   },
   {
     name: "go",
-    templatePath: path.join(templatesDir, "go.md"),
-    filePath: path.join(repoRoot, "sdks/go/README.md"),
+    templatePath: readmeTemplatePath("go"),
+    filePath: readmeFilePath("go"),
     values: {
       package_name: "Go API client for paystack",
       package_version: "1.1.1",
-      sdk_repo_url: "https://github.com/alexasomba/paystack-go",
+      sdk_repo_url: getSdk("go").repositoryUrl,
     },
   },
 ];
