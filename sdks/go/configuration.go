@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.4.0
+API version: 1.4.1
 Contact: techsupport@paystack.com
 */
 
@@ -90,7 +90,7 @@ type Configuration struct {
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "OpenAPI-Generator/1.4.0/go",
+		UserAgent:        "OpenAPI-Generator/1.4.1/go",
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{

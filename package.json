@@ -1,6 +1,6 @@
 {
   "name": "paystack-openapi",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "The OpenAPI specification for the Paystack API",
   "keywords": [
     "OpenAPI",
@@ -50,7 +50,7 @@
     "sdk:build": "pnpm sdk:sync-spec && pnpm -r --filter \"./sdks/*\" build",
     "sdk:check:release": "node scripts/check-sdk-release-readiness.mjs",
     "sdk:skills:validate": "pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present lint:skills",
-    "sdk:check:ts": "pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present typecheck && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present test && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present build && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present lint:package && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present lint:types && pnpm sdk:skills:validate",
+    "sdk:check:ts": "pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present typecheck && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present test && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present build && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present lint:package && pnpm -C sdks/node lint:types && pnpm -C sdks/axios lint:types && pnpm -C sdks/browser lint:types && pnpm -C sdks/inline lint:types && pnpm sdk:skills:validate",
     "sdk:check:go": "bash scripts/check-go-sdk.sh",
     "sdk:check:php": "bash scripts/check-php-sdk.sh",
     "sdk:check:python": "bash scripts/check-python-sdk.sh",

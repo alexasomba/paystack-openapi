@@ -6,6 +6,7 @@ const sdkDir = path.resolve("sdks/python");
 const modelsDir = path.join(sdkDir, "alexasomba_paystack/models");
 const pyprojectPath = path.join(sdkDir, "pyproject.toml");
 const gitPushPath = path.join(sdkDir, "git_push.sh");
+const testRequirementsPath = path.join(sdkDir, "test-requirements.txt");
 
 /** @param {string} contents */
 function updatePyproject(contents) {
@@ -17,7 +18,43 @@ function updatePyproject(contents) {
 
 /** @param {string} contents */
 function updateGitPush(contents) {
-  return contents.replace(/^(\s*git_repo_id=)".*"$/m, '$1"paystack-python"');
+  let updated = contents.replace(/^(\s*git_repo_id=)".*"$/m, '$1"paystack-python"');
+  const gitInitBlock = [
+    "git init",
+    "",
+    "git branch -M main",
+    "",
+    "# Adds the files in the local repository and stages them for commit.",
+    "git add .",
+    "",
+    "# Commits the tracked changes and prepares them to be pushed to a remote repository.",
+    "if git diff --cached --quiet; then",
+    '    echo "No changes to commit."',
+    "else",
+    '    git commit -m "$release_note"',
+    "fi",
+  ].join("\n");
+  updated = updated.replace(
+    /git init[\s\S]*?# Sets the new remote/,
+    `${gitInitBlock}\n\n# Sets the new remote`,
+  );
+  updated = updated.replace(/git pull origin master/g, "git pull origin main --no-rebase");
+  updated = updated.replace(/git push origin master/g, "git push origin main");
+  return updated;
+}
+
+/** @param {string} contents */
+function updateTestRequirements(contents) {
+  const required = ["ruff >= 0.14.8", "build >= 1.3.0", "twine >= 6.2.0"];
+  const lines = contents.trimEnd().split(/\r?\n/);
+  const normalized = new Set(lines.map((line) => line.trim().split(/\s+/)[0]));
+
+  for (const requirement of required) {
+    const packageName = requirement.split(/\s+/)[0];
+    if (!normalized.has(packageName)) lines.push(requirement);
+  }
+
+  return `${lines.join("\n")}\n`;
 }
 
 /** @param {string} contents */
@@ -155,6 +192,15 @@ function main() {
     if (updated !== original) {
       fs.writeFileSync(gitPushPath, updated, "utf8");
       console.log("postprocess-python-sdk: updated git_push.sh");
+    }
+  }
+
+  if (fs.existsSync(testRequirementsPath)) {
+    const original = fs.readFileSync(testRequirementsPath, "utf8");
+    const updated = updateTestRequirements(original);
+    if (updated !== original) {
+      fs.writeFileSync(testRequirementsPath, updated, "utf8");
+      console.log("postprocess-python-sdk: updated test-requirements.txt");
     }
   }
 
