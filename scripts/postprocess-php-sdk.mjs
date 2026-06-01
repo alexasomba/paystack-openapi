@@ -114,7 +114,28 @@ async function postprocessGitPush() {
     throw error;
   }
 
-  const next = prev.replace(/^(\s*git_repo_id=)".*"$/m, '$1"paystack-php"');
+  let next = prev.replace(/^(\s*git_repo_id=)".*"$/m, '$1"paystack-php"');
+  const gitInitBlock = [
+    "git init",
+    "",
+    "git branch -M main",
+    "",
+    "# Adds the files in the local repository and stages them for commit.",
+    "git add .",
+    "",
+    "# Commits the tracked changes and prepares them to be pushed to a remote repository.",
+    "if git diff --cached --quiet; then",
+    '    echo "No changes to commit."',
+    "else",
+    '    git commit -m "$release_note"',
+    "fi",
+  ].join("\n");
+  next = next.replace(
+    /git init[\s\S]*?# Sets the new remote/,
+    `${gitInitBlock}\n\n# Sets the new remote`,
+  );
+  next = next.replace(/git pull origin master/g, "git pull origin main --no-rebase");
+  next = next.replace(/git push origin master/g, "git push origin main");
 
   const prevNormalized = prev.replace(/\r\n/g, "\n");
   if (next === prevNormalized) return false;

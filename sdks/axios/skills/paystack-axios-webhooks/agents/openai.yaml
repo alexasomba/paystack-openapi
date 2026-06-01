@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Axios Webhooks"
+  short_description: "Verify Paystack webhooks with Axios"
+  default_prompt: "Use $paystack-axios-webhooks to verify and handle Paystack webhooks with the Axios SDK."

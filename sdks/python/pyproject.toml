@@ -1,6 +1,6 @@
 [project]
 name = "alexasomba_paystack"
-version = "1.4.0"
+version = "1.4.1"
 description = "Paystack"
 authors = [{ name = "OpenAPI Generator Community", email = "techsupport@paystack.com" }]
 readme = "README.md"
@@ -21,10 +21,9 @@ Repository = "https://github.com/alexasomba/paystack-python"
 requires-poetry = ">=2.0"
 
 [tool.poetry.group.dev.dependencies]
-pytest = ">= 9.0.3"
+pytest = ">= 7.2.1"
 pytest-cov = ">= 2.8.1"
 tox = ">= 3.9.0"
-filelock = ">= 3.20.3"
 flake8 = ">= 4.0.0"
 types-python-dateutil = ">= 2.8.19.14"
 mypy = ">= 1.5"
@@ -38,7 +37,11 @@ build-backend = "setuptools.build_meta"
 extension-pkg-whitelist = "pydantic"
 
 [tool.mypy]
-files = ["alexasomba_paystack/extras.py", "test/test_contract.py"]
+files = [
+  "alexasomba_paystack",
+  #"test",  # auto-generated tests
+  "tests", # hand-written tests
+]
 # TODO: enable "strict" once all these individual checks are passing
 # strict = true
 

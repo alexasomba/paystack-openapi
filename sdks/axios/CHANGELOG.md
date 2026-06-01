@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.10.6](https://github.com/alexasomba/paystack-axios/compare/v1.10.5...v1.10.6) (2026-06-01)
+
+### Bug Fixes
+
+- preserve Paystack error envelope fields on `PaystackError`
+- keep raw error bodies and transport causes available for diagnostics
+- align generated SDK release-readiness metadata checks
+
 ## [1.4.1](https://github.com/alexasomba/paystack-axios/compare/v1.4.0...v1.4.1) (2026-04-16)
 
 ### Bug Fixes

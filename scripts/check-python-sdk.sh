@@ -7,6 +7,10 @@ if ! command -v "$PYTHON_BIN" >/dev/null 2>&1 && command -v python3 >/dev/null 2
   PYTHON_BIN="python3"
 fi
 
+"$PYTHON_BIN" -m venv .venv
+PYTHON_BIN=".venv/bin/python"
+
+"$PYTHON_BIN" -m pip install --upgrade pip
 "$PYTHON_BIN" -m pip install -r requirements.txt -r test-requirements.txt
 "$PYTHON_BIN" -m pytest
 "$PYTHON_BIN" -m mypy --follow-imports=skip --disable-error-code=misc alexasomba_paystack/extras.py test/test_contract.py

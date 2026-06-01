@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Browser Client Setup"
+  short_description: "Configure the Paystack Browser SDK"
+  default_prompt: "Use $paystack-browser-client-setup to configure a browser-safe Paystack client."

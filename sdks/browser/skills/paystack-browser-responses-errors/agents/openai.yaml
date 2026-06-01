@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Browser Responses and Errors"
+  short_description: "Handle browser Paystack errors"
+  default_prompt: "Use $paystack-browser-responses-errors to handle Paystack Browser SDK responses and errors."

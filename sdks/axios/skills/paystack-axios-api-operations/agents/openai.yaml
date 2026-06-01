@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Axios API Operations"
+  short_description: "Call Paystack APIs with Axios"
+  default_prompt: "Use $paystack-axios-api-operations to call Paystack transactions or other API operations with Axios."

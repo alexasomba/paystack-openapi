@@ -11,7 +11,7 @@ Paystack API client backed by Axios, providing a familiar ecosystem for Axios us
 - **Axios-powered**: Reuse your Axios instance, interceptors, and configuration patterns.
 - **Spec-driven Accuracy**: Generated directly from the Paystack OpenAPI specification.
 - **100% Type-safe**: Full TypeScript support with generated types for every endpoint, request, and response.
-- **Detailed Error Handling**: `PaystackApiError` includes `status`, `url`, and Paystack `requestId`.
+- **Detailed Error Handling**: `PaystackError` preserves Paystack `code`, `type`, `meta`, request ID, HTTP status, and the raw response body.
 - **Smart Retries & Idempotency**: Built-in support for safe retries on idempotent methods with automatic `Idempotency-Key` handling.
 
 ## Install
@@ -27,10 +27,10 @@ This package ships TanStack Intent skills for agent-assisted Paystack integratio
 ```bash
 npx @tanstack/intent@latest list
 npx @tanstack/intent@latest install --map
-npx @tanstack/intent@latest load @alexasomba/paystack-axios#api-operations
+npx @tanstack/intent@latest load @alexasomba/paystack-axios#paystack-axios-api-operations
 ```
 
-Useful skills include `client-setup`, `api-operations`, `typed-payloads`, `responses-errors`, `retries-idempotency`, and `webhooks`.
+Useful skills include `paystack-axios-client-setup`, `paystack-axios-api-operations`, `paystack-axios-operation-discovery`, `paystack-axios-transport`, `paystack-axios-typed-payloads`, `paystack-axios-responses-errors`, `paystack-axios-retries-idempotency`, and `paystack-axios-webhooks`.
 
 Authenticate requests with your Paystack secret key:
 
@@ -59,7 +59,7 @@ const data = assertOk(result);
 console.log(data.authorization_url);
 ```
 
-`assertOk` returns the successful Paystack payload and throws a structured `PaystackApiError` for non-2xx responses.
+`assertOk` returns the successful Paystack payload and throws a structured `PaystackError` for non-2xx responses or `{ status: false }` envelopes.
 
 ## API Basics
 
@@ -187,11 +187,15 @@ const result = await paystack.transaction_initialize({
 const error = toPaystackApiError(result);
 
 if (error) {
+  console.error(`Status ${error.status}: ${error.message}`);
+  console.error(`Paystack code: ${error.code}`);
+  console.error(`Paystack type: ${error.type}`);
   console.error(`Paystack Request ID: ${error.requestId}`);
+  console.error(error.raw);
 }
 ```
 
-The error object also carries the HTTP status and request URL, which helps when debugging auth failures or malformed payloads.
+Use `error.code` and `error.type` for branching on validation, processor, and API failures. The `requestId` is useful when correlating logs or escalating an issue with Paystack support, while `error.raw` / `error.body` keeps the original response envelope available for diagnostics.
 
 ## Errors
 

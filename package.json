@@ -1,25 +1,27 @@
 {
   "name": "paystack-openapi",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "The OpenAPI specification for the Paystack API",
   "keywords": [
     "OpenAPI",
     "Paystack"
   ],
-  "homepage": "https://github.com/PaystackOSS/openapi#readme",
+  "homepage": "https://github.com/alexasomba/paystack-openapi#readme",
   "bugs": {
-    "url": "https://github.com/PaystackOSS/openapi/issues"
+    "url": "https://github.com/alexasomba/paystack-openapi/issues"
   },
   "license": "MIT",
   "author": "Damilola Odujoko",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PaystackOSS/openapi.git"
+    "url": "https://github.com/alexasomba/paystack-openapi.git"
   },
   "type": "module",
   "main": "src/index.js",
   "scripts": {
     "sdk:sync-spec": "node scripts/sync-sdk-spec.mjs",
+    "sdk:operations:sync": "node scripts/sync-ts-operation-generators.mjs",
+    "sdk:operations:check": "node scripts/sync-ts-operation-generators.mjs --check",
     "sdk:readmes:postprocess": "node scripts/postprocess-generated-readmes.mjs",
     "sdk:php:postprocess": "node scripts/postprocess-php-sdk.mjs",
     "sdk:python:postprocess": "node scripts/postprocess-python-sdk.mjs",
@@ -48,7 +50,7 @@
     "sdk:build": "pnpm sdk:sync-spec && pnpm -r --filter \"./sdks/*\" build",
     "sdk:check:release": "node scripts/check-sdk-release-readiness.mjs",
     "sdk:skills:validate": "pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present lint:skills",
-    "sdk:check:ts": "pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present typecheck && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present test && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present build && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present lint:package && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present lint:types && pnpm sdk:skills:validate",
+    "sdk:check:ts": "pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present typecheck && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present test && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present build && pnpm -r --filter \"./sdks/node\" --filter \"./sdks/axios\" --filter \"./sdks/browser\" --filter \"./sdks/inline\" --if-present lint:package && pnpm -C sdks/node lint:types && pnpm -C sdks/axios lint:types && pnpm -C sdks/browser lint:types && pnpm -C sdks/inline lint:types && pnpm sdk:skills:validate",
     "sdk:check:go": "bash scripts/check-go-sdk.sh",
     "sdk:check:php": "bash scripts/check-php-sdk.sh",
     "sdk:check:python": "bash scripts/check-python-sdk.sh",
@@ -70,11 +72,17 @@
     "sdk:sync:full": "pnpm sdk:sync:local && pnpm sdk:sync:all",
     "sdk:sync:all": "./scripts/sync-sdks.sh",
     "build": "pnpm sdk:build",
+    "skills:install": "skills-npm --yes --force",
+    "skills:check": "skills-npm --dry-run --force",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
     "prepare": "vp config"
   },
   "devDependencies": {
+    "@alexasomba/paystack-axios": "workspace:*",
+    "@alexasomba/paystack-browser": "workspace:*",
+    "@alexasomba/paystack-inline": "workspace:*",
+    "@alexasomba/paystack-node": "workspace:*",
     "@arethetypeswrong/cli": "^0.18.2",
     "@eslint/compat": "^2.1.0",
     "@eslint/js": "^9.39.4",
@@ -92,6 +100,7 @@
     "nodemon": "^3.1.14",
     "open": "^11.0.0",
     "publint": "^0.3.20",
+    "skills-npm": "^1.1.1",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.2",
     "vite": "catalog:",

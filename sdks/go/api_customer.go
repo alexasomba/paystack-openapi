@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.4.0
+API version: 1.4.1
 Contact: techsupport@paystack.com
 */
 
@@ -265,10 +265,10 @@ type CustomerDirectDebitActivationChargeAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	id int32
-	customerDirectDebitActivationChargeRequest *CustomerDirectDebitActivationChargeAPIRequest
+	customerDirectDebitActivationChargeRequest *CustomerDirectDebitActivationChargeRequest
 }
 
-func (r CustomerDirectDebitActivationChargeAPIRequest) CustomerDirectDebitActivationChargeAPIRequest(customerDirectDebitActivationChargeRequest CustomerDirectDebitActivationChargeAPIRequest) CustomerDirectDebitActivationChargeAPIRequest {
+func (r CustomerDirectDebitActivationChargeAPIRequest) CustomerDirectDebitActivationChargeRequest(customerDirectDebitActivationChargeRequest CustomerDirectDebitActivationChargeRequest) CustomerDirectDebitActivationChargeAPIRequest {
 	r.customerDirectDebitActivationChargeRequest = &customerDirectDebitActivationChargeRequest
 	return r
 }
@@ -747,10 +747,10 @@ type CustomerInitializeDirectDebitAPIRequest struct {
 	ctx context.Context
 	ApiService *CustomerAPIService
 	id int32
-	customerInitializeDirectDebitRequest *CustomerInitializeDirectDebitAPIRequest
+	customerInitializeDirectDebitRequest *CustomerInitializeDirectDebitRequest
 }
 
-func (r CustomerInitializeDirectDebitAPIRequest) CustomerInitializeDirectDebitAPIRequest(customerInitializeDirectDebitRequest CustomerInitializeDirectDebitAPIRequest) CustomerInitializeDirectDebitAPIRequest {
+func (r CustomerInitializeDirectDebitAPIRequest) CustomerInitializeDirectDebitRequest(customerInitializeDirectDebitRequest CustomerInitializeDirectDebitRequest) CustomerInitializeDirectDebitAPIRequest {
 	r.customerInitializeDirectDebitRequest = &customerInitializeDirectDebitRequest
 	return r
 }

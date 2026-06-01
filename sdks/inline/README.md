@@ -35,10 +35,10 @@ This package ships TanStack Intent skills for agent-assisted Paystack Inline int
 ```bash
 npx @tanstack/intent@latest list
 npx @tanstack/intent@latest install --map
-npx @tanstack/intent@latest load @alexasomba/paystack-inline#inline-checkout
+npx @tanstack/intent@latest load @alexasomba/paystack-inline#paystack-inline-checkout
 ```
 
-Useful skills include `inline-checkout`, `server-initialize-verify`, and `popup-options`.
+Useful skills include `paystack-inline-checkout`, `paystack-inline-server-verify`, `paystack-inline-popup-options`, and `paystack-inline-popup-lifecycle`.
 
 ---
 
@@ -496,6 +496,13 @@ interface PopupTransactionStatus {
 - [Paystack Docs — Webhooks](https://paystack.com/docs/payments/webhooks/)
 - [Paystack Docs — Payment Channels](https://paystack.com/docs/payments/payment-channels/)
 - [Paystack Docs — Subscriptions](https://paystack.com/docs/payments/subscriptions/)
+
+---
+
+## Source
+
+- Monorepo source: [alexasomba/paystack-openapi](https://github.com/alexasomba/paystack-openapi)
+- Standalone SDK repo: [https://github.com/alexasomba/paystack-inline](https://github.com/alexasomba/paystack-inline)
 
 ---
 

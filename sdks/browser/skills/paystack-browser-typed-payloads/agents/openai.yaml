@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Browser Typed Payloads"
+  short_description: "Choose browser typed request shapes"
+  default_prompt: "Use $paystack-browser-typed-payloads to choose browser-safe typed Paystack request and response shapes."

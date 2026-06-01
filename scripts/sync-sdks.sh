@@ -1,12 +1,13 @@
 #!/bin/bash
 
-# This script iterates through all SDKs and runs their git_push.sh script.
-# It assumes you have GIT_TOKEN set in your environment if you want to push without prompt.
+# This script syncs all SDKs into standalone local checkouts and pushes those repositories.
 
 set -e
 
-SDK_DIR="sdks"
-SDKS=("php" "go" "python" "node" "axios" "browser" "inline")
+DEFAULT_LOCAL_SDK_PATH="/Users/alexasomba/Documents/GitHub/alexasomba/paystack-sdks/sdks"
+DEST_BASE_PATH=${LOCAL_SDK_PATH:-"$DEFAULT_LOCAL_SDK_PATH"}
+GIT_USER_ID=${GIT_USER_ID:-"alexasomba"}
+GIT_HOST=${GIT_HOST:-"github.com"}
 
 # Check if a release note was provided
 RELEASE_NOTE=$1
@@ -14,29 +15,51 @@ if [ -z "$RELEASE_NOTE" ]; then
     RELEASE_NOTE="Update SDKs from openapi spec"
 fi
 
-# Optional local sync if LOCAL_SDK_PATH is provided (at once)
-if [ ! -z "$LOCAL_SDK_PATH" ]; then
-    echo "Local sync path detected: $LOCAL_SDK_PATH"
-    /bin/bash ./scripts/sync-local.sh "$LOCAL_SDK_PATH"
-fi
+echo "Local SDK path: $DEST_BASE_PATH"
+/bin/bash ./scripts/sync-local.sh "$DEST_BASE_PATH"
 
-for sdk in "${SDKS[@]}"; do
-    echo "--------------------------------------------------"
-    echo "Syncing SDK: $sdk"
-    echo "--------------------------------------------------"
-    
-    if [ -d "$SDK_DIR/$sdk" ]; then
-        cd "$SDK_DIR/$sdk"
-        if [ -f "git_push.sh" ]; then
-            /bin/sh git_push.sh "alexasomba" "paystack-$sdk" "$RELEASE_NOTE"
-        else
-            echo "[WARNING] No git_push.sh found in $SDK_DIR/$sdk"
-        fi
-        cd ../..
-    else
-        echo "[ERROR] SDK directory not found: $SDK_DIR/$sdk"
+while IFS=$'\t' read -r sdk repo branch; do
+    if [ -z "$sdk" ]; then
+        continue
     fi
-done
+
+    echo "--------------------------------------------------"
+    echo "Pushing SDK: $sdk -> $repo ($branch)"
+    echo "--------------------------------------------------"
+
+    repo_dir="$DEST_BASE_PATH/$repo"
+
+    if [ ! -d "$repo_dir/.git" ]; then
+        echo "[ERROR] Standalone SDK repository is not a git checkout: $repo_dir"
+        exit 1
+    fi
+
+    current_branch=$(git -C "$repo_dir" branch --show-current)
+    if [ "$current_branch" != "$branch" ]; then
+        git -C "$repo_dir" checkout "$branch"
+    fi
+
+    git -C "$repo_dir" add .
+
+    if git -C "$repo_dir" diff --cached --quiet; then
+        echo "No changes to push for $repo."
+    else
+        git -C "$repo_dir" commit -m "$RELEASE_NOTE"
+    fi
+
+    git_remote=$(git -C "$repo_dir" remote)
+    if [ "$git_remote" = "" ]; then
+        if [ "$GIT_TOKEN" = "" ]; then
+            echo "[INFO] \$GIT_TOKEN is not set. Using the git credential in your environment."
+            git -C "$repo_dir" remote add origin "https://${GIT_HOST}/${GIT_USER_ID}/${repo}.git"
+        else
+            git -C "$repo_dir" remote add origin "https://${GIT_USER_ID}:${GIT_TOKEN}@${GIT_HOST}/${GIT_USER_ID}/${repo}.git"
+        fi
+    fi
+
+    git -C "$repo_dir" pull origin "$branch" --no-rebase
+    git -C "$repo_dir" push origin "$branch"
+done < <(node scripts/sdk-registry.mjs sync-plan)
 
 echo "--------------------------------------------------"
 echo "All SDKs synced successfully!"

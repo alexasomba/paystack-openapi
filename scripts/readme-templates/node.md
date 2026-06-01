@@ -13,7 +13,7 @@
 - **Smart Retries**: Automatic retries for transient failures with exponential backoff and jitter.
 - **Retry-After Compliance**: Automatically respects Paystack `Retry-After` headers on rate limit responses.
 - **Sophisticated Idempotency**: Built-in support for manual, static, or automatic UUID-based idempotency keys on POST requests.
-- **Detailed Error Handling**: `PaystackApiError` includes `status`, `url`, and Paystack `requestId`.
+- **Detailed Error Handling**: `PaystackError` preserves Paystack `code`, `type`, `meta`, request ID, HTTP status, and the raw response body.
 - **Webhook Verification**: Timing-safe webhook signature verification helper included.
 
 ## Install
@@ -29,10 +29,10 @@ This package ships TanStack Intent skills for agent-assisted Paystack integratio
 ```bash
 npx @tanstack/intent@latest list
 npx @tanstack/intent@latest install --map
-npx @tanstack/intent@latest load {{package_name}}#api-operations
+npx @tanstack/intent@latest load {{package_name}}#paystack-node-api-operations
 ```
 
-Useful skills include `client-setup`, `api-operations`, `typed-payloads`, `responses-errors`, `retries-idempotency`, and `webhooks`.
+Useful skills include `paystack-node-client-setup`, `paystack-node-api-operations`, `paystack-node-operation-discovery`, `paystack-node-typed-payloads`, `paystack-node-responses-errors`, `paystack-node-retries-idempotency`, `paystack-node-transport-testing`, and `paystack-node-webhooks`.
 
 Authenticate requests with your Paystack secret key:
 
@@ -61,7 +61,7 @@ const data = assertOk(result);
 console.log(data.authorization_url);
 ```
 
-`assertOk` returns the successful Paystack payload and throws a structured `PaystackApiError` for non-2xx responses.
+`assertOk` returns the successful Paystack payload and throws a structured `PaystackError` for non-2xx responses or `{ status: false }` envelopes.
 
 {{api_basics}}
 
@@ -127,11 +127,14 @@ const error = toPaystackApiError(result);
 
 if (error) {
   console.error(`Status ${error.status}: ${error.message}`);
+  console.error(`Paystack code: ${error.code}`);
+  console.error(`Paystack type: ${error.type}`);
   console.error(`Paystack Request ID: ${error.requestId}`);
+  console.error(error.raw);
 }
 ```
 
-The `requestId` is useful when correlating logs or escalating an issue with Paystack support.
+Use `error.code` and `error.type` for branching on validation, processor, and API failures. The `requestId` is useful when correlating logs or escalating an issue with Paystack support, while `error.raw` / `error.body` keeps the original response envelope available for diagnostics.
 
 {{errors_overview}}
 

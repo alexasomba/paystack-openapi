@@ -3,7 +3,7 @@ Paystack
 
 The OpenAPI specification of the Paystack API that merchants and developers can harness to build financial solutions in Africa.
 
-API version: 1.4.0
+API version: 1.4.1
 Contact: techsupport@paystack.com
 */
 
@@ -153,10 +153,10 @@ func (a *ChargeAPIService) CheckExecute(r ChargeCheckAPIRequest) (*ChargeCheckPe
 type ChargeCreateAPIRequest struct {
 	ctx context.Context
 	ApiService *ChargeAPIService
-	chargeCreateRequest *ChargeCreateAPIRequest
+	chargeCreateRequest *ChargeCreateRequest
 }
 
-func (r ChargeCreateAPIRequest) ChargeCreateAPIRequest(chargeCreateRequest ChargeCreateAPIRequest) ChargeCreateAPIRequest {
+func (r ChargeCreateAPIRequest) ChargeCreateRequest(chargeCreateRequest ChargeCreateRequest) ChargeCreateAPIRequest {
 	r.chargeCreateRequest = &chargeCreateRequest
 	return r
 }

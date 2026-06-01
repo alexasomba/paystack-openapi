@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Axios Responses and Errors"
+  short_description: "Handle Paystack Axios errors"
+  default_prompt: "Use $paystack-axios-responses-errors to handle Paystack Axios SDK responses and errors."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paystack Browser Webhooks"
+  short_description: "Route Paystack webhooks to servers"
+  default_prompt: "Use $paystack-browser-webhooks to move Paystack webhook handling out of browser code."

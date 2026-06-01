@@ -1,0 +1,37 @@
+---
+name: paystack-axios-webhooks
+description: Use when verifying, parsing, and handling Paystack webhooks with the Paystack Axios SDK @alexasomba/paystack-axios, including webhook signatures and server routes.
+license: MIT
+compatibility: "Node.js >=22.0.0; ESM-only package; backend/server runtime; import @alexasomba/paystack-axios."
+---
+
+# Paystack Axios Webhooks
+
+The Axios SDK exports webhook helpers for server-side webhook routes. Verification must use the raw request body and your Paystack secret key.
+
+```ts
+import { Webhooks } from "@alexasomba/paystack-axios";
+
+const valid = Webhooks.verifySignature(
+  rawBody,
+  request.headers["x-paystack-signature"],
+  process.env.PAYSTACK_SECRET_KEY!,
+);
+```
+
+## Parse after verification
+
+```ts
+if (!valid) {
+  throw new Error("Invalid Paystack webhook signature");
+}
+
+const event = Webhooks.parseEvent(rawBody);
+```
+
+## Best practices
+
+- Verify before acting on an event.
+- Configure the route to preserve the exact raw body string.
+- Make handlers idempotent and safe for retries.
+- Reconcile important events by fetching the transaction or subscription from Paystack.

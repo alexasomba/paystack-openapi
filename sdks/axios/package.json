@@ -1,6 +1,6 @@
 {
   "name": "@alexasomba/paystack-axios",
-  "version": "1.10.1",
+  "version": "1.10.6",
   "description": "A Paystack SDK backed by Axios - Complete, Type-safe, and Axios-powered with full OpenAPI coverage.",
   "keywords": [
     "africa",
@@ -68,7 +68,7 @@
     "lint": "vp lint . --fix",
     "lint:package": "publint run --strict",
     "lint:skills": "intent validate",
-    "lint:types": "attw --profile esm-only --pack .",
+    "lint:types": "npm_config_ignore_scripts=true npm_config_cache=/tmp/paystack-openapi-npm-cache attw --profile esm-only --pack .",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "clean": "rm -rf dist",
     "prepack": "pnpm build",
