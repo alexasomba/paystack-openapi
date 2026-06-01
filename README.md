@@ -137,7 +137,8 @@ OpenAPI source flows into generated SDK source, then into split repos, and final
 3. Regenerate/build SDK sources with `vp run sdk:build` and language-specific generators when needed.
 4. Run `vp run sdk:check:release` to confirm SDK source metadata, split repo metadata, npm versions, README links, and shipped specs are not stale.
 5. Sync generated SDK output with `vp run sdk:sync:local` for local verification, then `vp run sdk:sync:all` when ready to push the split repos.
-6. Publish package releases from the split SDK repos after the generated source has been synced and package versions have been bumped.
+6. Push the matching `v*` tag to the source and split SDK repos, then create or refresh the GitHub Releases with `vp run sdk:release:github -- v1.10.6`.
+7. Publish package releases from the split SDK repos after the generated source has been synced and package versions have been bumped.
 
 ### Other languages (generated)
 

@@ -71,6 +71,7 @@
     "sdk:sync:local": "./scripts/sync-local.sh",
     "sdk:sync:full": "pnpm sdk:sync:local && pnpm sdk:sync:all",
     "sdk:sync:all": "./scripts/sync-sdks.sh",
+    "sdk:release:github": "node scripts/sync-github-releases.mjs",
     "build": "pnpm sdk:build",
     "skills:install": "skills-npm --yes --force",
     "skills:check": "skills-npm --dry-run --force",
