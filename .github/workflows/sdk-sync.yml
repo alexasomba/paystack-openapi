@@ -1,10 +1,7 @@
 name: SDK Sync
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -29,6 +26,34 @@ jobs:
 
       - name: Verify SDK release readiness
         run: vp run sdk:check:release
+
+      - name: Clone split SDK repositories
+        env:
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          GIT_USER_ID: alexasomba
+        run: |
+          set -euo pipefail
+
+          if [ -z "${GIT_TOKEN:-}" ]; then
+            echo "Missing GIT_TOKEN secret" >&2
+            exit 1
+          fi
+
+          sdk_base="$RUNNER_TEMP/paystack-sdks/sdks"
+          mkdir -p "$sdk_base"
+
+          while IFS=$'\t' read -r sdk repo branch; do
+            if [ -z "$sdk" ]; then
+              continue
+            fi
+
+            git clone \
+              --branch "$branch" \
+              "https://x-access-token:${GIT_TOKEN}@github.com/${GIT_USER_ID}/${repo}.git" \
+              "$sdk_base/$repo"
+          done < <(node scripts/sdk-registry.mjs sync-plan)
+
+          echo "LOCAL_SDK_PATH=$sdk_base" >> "$GITHUB_ENV"
 
       - name: Sync SDKs
         env:

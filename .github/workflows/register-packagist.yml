@@ -1,8 +1,6 @@
 name: Register package on Packagist
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
     inputs:
       tag:
