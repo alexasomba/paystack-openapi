@@ -138,7 +138,7 @@ OpenAPI source flows into generated SDK source, then into split repos, and final
 4. Run `vp run sdk:check:release` to confirm SDK source metadata, split repo metadata, npm versions, README links, and shipped specs are not stale.
 5. Sync generated SDK output with `vp run sdk:sync:local` for local verification, then `vp run sdk:sync:all` when ready to push the split repos.
 6. Push the matching `v*` tag to the source and split SDK repos, then create or refresh the GitHub Releases with `vp run sdk:release:github -- v1.10.7`.
-7. Publish package releases from the split SDK repos after the generated source has been synced and package versions have been bumped.
+7. Publish package releases from the split SDK repos after the generated source has been synced and package versions have been bumped. The TypeScript SDK repos publish to npm through `.github/workflows/publish-npm.yml` using npm Trusted Publisher, so no npm token is required in GitHub Actions.
 
 ### Other languages (generated)
 
@@ -160,14 +160,10 @@ Each folder contains its own README with language-specific usage and install ins
 
 Packagist (public) expects a VCS repository where the package's `composer.json` is at the repository root. Since this repo is a monorepo and the PHP SDK lives in `sdks/php`, publishing to Packagist is handled by splitting `sdks/php` into its own repository.
 
-- Create a dedicated repo for the PHP SDK (`alexasomba/paystack-php`) and add it on Packagist.
-- This repo includes a GitHub Action which, on tags like `v1.1.1`, subtree-splits `sdks/php` and pushes it to the dedicated repo (including the same tag).
-- Configure these GitHub repo secrets:
-  - `PHP_SPLIT_REPO`: `alexasomba/paystack-php`
-  - `PHP_SPLIT_PUSH_TOKEN`: a GitHub Personal Access Token (PAT) with `repo` scope (used to push the split branch and tags to the target repo)
-  - `PACKAGIST_TOKEN`: a Packagist API token (or `username:token`) used by the `register-packagist` workflow to create or update the package on Packagist
-
-If you see `Permission to ... denied to github-actions[bot]` in the split workflow, check that `PHP_SPLIT_PUSH_TOKEN` is set and has the required permissions.
+- The dedicated PHP SDK repo is `alexasomba/paystack-php`.
+- The normal release flow syncs generated PHP source and matching release tags to `alexasomba/paystack-php`.
+- Packagist only needs the split repo and its tags. Use the `Register package on Packagist` workflow manually if the package needs to be created or refreshed.
+- Configure `PACKAGIST_TOKEN` and, when the token is not already in `username:token` form, `PACKAGIST_USERNAME` for the manual registration workflow.
 
 ## Contributing
 
