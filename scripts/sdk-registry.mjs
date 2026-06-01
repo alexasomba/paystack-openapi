@@ -2,6 +2,8 @@
 import { pathToFileURL } from "node:url";
 
 export const SDK_OWNER = "alexasomba";
+export const SOURCE_REPOSITORY = "alexasomba/paystack-openapi";
+export const SOURCE_REPOSITORY_URL = `https://github.com/${SOURCE_REPOSITORY}`;
 export const DEFAULT_LOCAL_SDK_BASE_PATH =
   "/Users/alexasomba/Documents/GitHub/alexasomba/paystack-sdks/sdks";
 

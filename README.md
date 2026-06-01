@@ -16,11 +16,11 @@ You can download the specification and make use of it on:
 
 - Clone repo
   ```sh
-  git clone git@github.com:PaystackOSS/openapi.git
+  git clone git@github.com:alexasomba/paystack-openapi.git
   ```
 - Navigate to the cloned project and install dependencies
   ```sh
-  cd openapi
+  cd paystack-openapi
   vp install
   ```
 - Start the server to view the spec in your browser
@@ -126,6 +126,19 @@ paystack.setup({
 vp run sdk:build
 ```
 
+### Sync and release readiness
+
+The expected SDK release path is:
+
+OpenAPI source flows into generated SDK source, then into split repos, and finally into published packages.
+
+1. Update the OpenAPI source in `src/assets/openapi` or the SDK projection in `src/assets/sdk/paystack.yaml`.
+2. Validate the spec with `vp run validate`.
+3. Regenerate/build SDK sources with `vp run sdk:build` and language-specific generators when needed.
+4. Run `vp run sdk:check:release` to confirm SDK source metadata, split repo metadata, npm versions, README links, and shipped specs are not stale.
+5. Sync generated SDK output with `vp run sdk:sync:local` for local verification, then `vp run sdk:sync:all` when ready to push the split repos.
+6. Publish package releases from the split SDK repos after the generated source has been synced and package versions have been bumped.
+
 ### Other languages (generated)
 
 The following SDKs are generated via OpenAPI Generator and live in the `sdks/` directory:
@@ -165,8 +178,8 @@ Here are some of the ways to contribute to this repository:
 
 ## Issues
 
-You can [open an issue](https://github.com/PaystackOSS/openapi/issues) if you discover any bug or have problems using this repo.
+You can [open an issue](https://github.com/alexasomba/paystack-openapi/issues) if you discover any bug or have problems using this repo.
 
 ## License
 
-This repository is made available under the MIT license. Kindly read the [LICENSE](https://github.com/PaystackOSS/openapi/blob/main/LICENSE) file for more information.
+This repository is made available under the MIT license. Kindly read the [LICENSE](https://github.com/alexasomba/paystack-openapi/blob/main/LICENSE) file for more information.

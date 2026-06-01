@@ -20,6 +20,13 @@ describe("Error Handling", () => {
 
   describe("PaystackError", () => {
     it("should capture all relevant fields", () => {
+      const raw = {
+        status: false,
+        message: "Failed",
+        code: "some_error",
+        type: "api_error",
+      };
+      const cause = new Error("Original transport error");
       const err = new PaystackError({
         message: "Failed",
         status: 400,
@@ -27,6 +34,8 @@ describe("Error Handling", () => {
         code: "some_error",
         type: "api_error",
         meta: { detail: "something" },
+        raw,
+        cause,
       });
 
       expect(err.message).toContain("Failed");
@@ -36,6 +45,9 @@ describe("Error Handling", () => {
       expect(err.code).toBe("some_error");
       expect(err.type).toBe("api_error");
       expect(err.meta).toEqual({ detail: "something" });
+      expect(err.raw).toBe(raw);
+      expect(err.body).toBe(raw);
+      expect(err.cause).toBe(cause);
       expect(isPaystackApiError(err)).toBe(true);
     });
 

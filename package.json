@@ -6,15 +6,15 @@
     "OpenAPI",
     "Paystack"
   ],
-  "homepage": "https://github.com/PaystackOSS/openapi#readme",
+  "homepage": "https://github.com/alexasomba/paystack-openapi#readme",
   "bugs": {
-    "url": "https://github.com/PaystackOSS/openapi/issues"
+    "url": "https://github.com/alexasomba/paystack-openapi/issues"
   },
   "license": "MIT",
   "author": "Damilola Odujoko",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PaystackOSS/openapi.git"
+    "url": "https://github.com/alexasomba/paystack-openapi.git"
   },
   "type": "module",
   "main": "src/index.js",

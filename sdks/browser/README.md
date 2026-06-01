@@ -13,7 +13,7 @@ Paystack API client optimized for browser environments, providing a lightweight,
 - **100% Type-safe**: Full TypeScript support with generated types for every endpoint, request, and response.
 - **Smart Retries**: Automatic retries for transient failures with exponential backoff and jitter.
 - **Secure Idempotency**: Automatically handles `Idempotency-Key` headers using browser-safe random generation.
-- **Detailed Error Handling**: `PaystackApiError` includes `status`, `url`, and Paystack `requestId`.
+- **Detailed Error Handling**: `PaystackError` preserves Paystack `code`, `type`, `meta`, request ID, HTTP status, and the raw response body.
 
 ## Install
 
@@ -60,7 +60,7 @@ const data = assertOk(result);
 window.location.href = data.authorization_url;
 ```
 
-`assertOk` returns the successful Paystack payload and throws a structured `PaystackApiError` for non-2xx responses.
+`assertOk` returns the successful Paystack payload and throws a structured `PaystackError` for non-2xx responses or `{ status: false }` envelopes.
 
 ## API Basics
 
@@ -177,6 +177,25 @@ const paystack = createPaystack({
 - Error responses typically include `status`, `message`, `type`, `code`, and optional diagnostic `meta` information.
 - Error types described in `Paystack-API/0d-Errors.md` include `api_error`, `validation_error`, and `processor_error`.
 - For charge and verify flows, always inspect the returned response body and status fields, not just the HTTP code.
+
+```ts
+import { toPaystackApiError } from "@alexasomba/paystack-browser";
+
+const result = await paystack.transaction_initialize({
+  /* ... */
+});
+const error = toPaystackApiError(result);
+
+if (error) {
+  console.error(`Status ${error.status}: ${error.message}`);
+  console.error(`Paystack code: ${error.code}`);
+  console.error(`Paystack type: ${error.type}`);
+  console.error(`Paystack Request ID: ${error.requestId}`);
+  console.error(error.raw);
+}
+```
+
+Use `error.code` and `error.type` for branching on validation, processor, and API failures. The `requestId` is useful when correlating logs or escalating an issue with Paystack support, while `error.raw` / `error.body` keeps the original response envelope available for diagnostics.
 
 ## Coverage
 
