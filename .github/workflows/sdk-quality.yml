@@ -15,7 +15,7 @@ jobs:
     name: TypeScript SDKs
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: voidzero-dev/setup-vp@v1
         with:
           node-version: "24"
@@ -28,7 +28,7 @@ jobs:
     name: Go SDK
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-go@v5
         with:
           go-version: "1.23"
@@ -43,7 +43,7 @@ jobs:
     name: PHP SDK
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: shivammathur/setup-php@v2
         with:
           php-version: "8.1"
@@ -59,7 +59,7 @@ jobs:
     name: Python SDK
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
