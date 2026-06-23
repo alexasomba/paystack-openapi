@@ -1,0 +1,23 @@
+name: Notify Build System
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "dist/paystack.yaml"
+
+jobs:
+  dispatch:
+    name: Dispatch spec update
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Dispatch to Build System
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DISPATCH_TOKEN }}
+          repository: ${{ secrets.BUILD_SYSTEM }}
+          event-type: openapi-spec-updated
+          client-payload: >-
+            {"ref":"${{ github.ref }}","sha":"${{ github.sha }}","repository":"${{ github.repository }}"}
