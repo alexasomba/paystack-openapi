@@ -1,4 +1,6 @@
-import crypto from "node:crypto";
+import { hmac } from "@noble/hashes/hmac.js";
+import { sha512 } from "@noble/hashes/sha2.js";
+import { bytesToHex } from "@noble/hashes/utils.js";
 import type { components } from "./openapi-types.js";
 
 /**
@@ -21,8 +23,10 @@ export class Webhooks {
    * Computes the HMAC SHA512 signature of a webhook payload.
    */
   public static computeSignature(rawBody: string | Buffer | Uint8Array, secret: string) {
-    const body = typeof rawBody === "string" ? Buffer.from(rawBody, "utf8") : Buffer.from(rawBody);
-    return crypto.createHmac("sha512", secret).update(body).digest("hex");
+    const encoder = new TextEncoder();
+    const secretBytes = encoder.encode(secret);
+    const bodyBytes = typeof rawBody === "string" ? encoder.encode(rawBody) : rawBody;
+    return bytesToHex(hmac(sha512, secretBytes, bodyBytes));
   }
 
   /**
@@ -34,12 +38,16 @@ export class Webhooks {
 
     if (!provided) return false;
 
-    const expectedBuf = Buffer.from(expected, "utf8");
-    const providedBuf = Buffer.from(provided, "utf8");
+    const expectedBuf = new TextEncoder().encode(expected);
+    const providedBuf = new TextEncoder().encode(provided);
 
     if (expectedBuf.length !== providedBuf.length) return false;
 
-    return crypto.timingSafeEqual(expectedBuf, providedBuf);
+    let result = 0;
+    for (let i = 0; i < expectedBuf.length; i++) {
+      result |= expectedBuf[i] ^ providedBuf[i];
+    }
+    return result === 0;
   }
 
   /**
