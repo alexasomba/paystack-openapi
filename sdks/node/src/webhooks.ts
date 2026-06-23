@@ -1,4 +1,3 @@
-import { createHmac } from "node:crypto";
 import type { components } from "./openapi-types.js";
 
 /**
@@ -23,8 +22,25 @@ export const Webhooks = {
    * @param signature The value of the 'x-paystack-signature' header
    * @param secretKey Your Paystack Secret Key
    */
-  verifySignature(body: string, signature: string, secretKey: string): boolean {
-    const hash = createHmac("sha512", secretKey).update(body).digest("hex");
+  async verifySignature(body: string, signature: string, secretKey: string): Promise<boolean> {
+    const encoder = new TextEncoder();
+    const keyData = encoder.encode(secretKey);
+    const data = encoder.encode(body);
+
+    const key = await globalThis.crypto.subtle.importKey(
+      "raw",
+      keyData,
+      { name: "HMAC", hash: "SHA-512" },
+      false,
+      ["sign"],
+    );
+
+    const signatureBuffer = await globalThis.crypto.subtle.sign("HMAC", key, data);
+
+    const hash = Array.from(new Uint8Array(signatureBuffer))
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+
     return hash === signature;
   },
 

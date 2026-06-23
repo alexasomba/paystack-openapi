@@ -1,4 +1,4 @@
-import crypto from "node:crypto";
+import { timingSafeEqual } from "./crypto.js";
 import type { components } from "./openapi-types.js";
 
 /**
@@ -20,26 +20,43 @@ export class Webhooks {
   /**
    * Computes the HMAC SHA512 signature of a webhook payload.
    */
-  public static computeSignature(rawBody: string | Buffer | Uint8Array, secret: string) {
-    const body = typeof rawBody === "string" ? Buffer.from(rawBody, "utf8") : Buffer.from(rawBody);
-    return crypto.createHmac("sha512", secret).update(body).digest("hex");
+  public static async computeSignature(
+    rawBody: string | Buffer | Uint8Array,
+    secret: string,
+  ): Promise<string> {
+    const encoder = new TextEncoder();
+    const keyData = encoder.encode(secret);
+    const data = typeof rawBody === "string" ? encoder.encode(rawBody) : rawBody;
+
+    const key = await globalThis.crypto.subtle.importKey(
+      "raw",
+      keyData,
+      { name: "HMAC", hash: "SHA-512" },
+      false,
+      ["sign"],
+    );
+
+    const signatureBuffer = await globalThis.crypto.subtle.sign("HMAC", key, data as BufferSource);
+
+    return Array.from(new Uint8Array(signatureBuffer))
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
   }
 
   /**
    * Verifies that the signature in the request header matches the computed signature.
    */
-  public static verifySignature(input: PaystackWebhookSignatureInput): boolean {
-    const expected = this.computeSignature(input.rawBody, input.secret);
+  public static async verifySignature(input: PaystackWebhookSignatureInput): Promise<boolean> {
+    const expected = await this.computeSignature(input.rawBody, input.secret);
     const provided = (input.signature ?? "").trim().toLowerCase();
 
     if (!provided) return false;
 
-    const expectedBuf = Buffer.from(expected, "utf8");
-    const providedBuf = Buffer.from(provided, "utf8");
+    const encoder = new TextEncoder();
+    const expectedBuf = encoder.encode(expected);
+    const providedBuf = encoder.encode(provided);
 
-    if (expectedBuf.length !== providedBuf.length) return false;
-
-    return crypto.timingSafeEqual(expectedBuf, providedBuf);
+    return timingSafeEqual(expectedBuf, providedBuf);
   }
 
   /**
@@ -60,8 +77,9 @@ export class Webhooks {
 export const computePaystackWebhookSignature = (
   rawBody: string | Buffer | Uint8Array,
   secret: string,
-) => Webhooks.computeSignature(rawBody, secret);
+): Promise<string> => Webhooks.computeSignature(rawBody, secret);
 
 /** @deprecated Use Webhooks.verifySignature */
-export const verifyPaystackWebhookSignature = (input: PaystackWebhookSignatureInput) =>
-  Webhooks.verifySignature(input);
+export const verifyPaystackWebhookSignature = (
+  input: PaystackWebhookSignatureInput,
+): Promise<boolean> => Webhooks.verifySignature(input);

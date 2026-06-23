@@ -10,44 +10,44 @@ describe("Webhook Verification", () => {
   const validSignature =
     "2a57b7c3a88ee0635f8dcf86cb7c6f972841e865ba9fb14574828b098e81c09bde7462720c077c7b0745f170df361d50420822619451558d75d7ac4bbffe0b56";
 
-  it("should return true for a valid signature", () => {
-    expect(
+  it("should return true for a valid signature", async () => {
+    await expect(
       verifyPaystackWebhookSignature({
         secret,
         signature: validSignature,
         rawBody: payload,
       }),
-    ).toBe(true);
+    ).resolves.toBe(true);
   });
 
-  it("should return false for an invalid signature", () => {
-    expect(
+  it("should return false for an invalid signature", async () => {
+    await expect(
       verifyPaystackWebhookSignature({
         secret,
         signature: "invalid_sig",
         rawBody: payload,
       }),
-    ).toBe(false);
+    ).resolves.toBe(false);
   });
 
-  it("should handle Buffer payload (stringified)", () => {
+  it("should handle Buffer payload (stringified)", async () => {
     const bufferPayload = Buffer.from(payload);
-    expect(
+    await expect(
       verifyPaystackWebhookSignature({
         secret,
         signature: validSignature,
         rawBody: bufferPayload,
       }),
-    ).toBe(true);
+    ).resolves.toBe(true);
   });
 
-  it("should return false if signature is missing", () => {
-    expect(
+  it("should return false if signature is missing", async () => {
+    await expect(
       verifyPaystackWebhookSignature({
         secret,
         signature: "",
         rawBody: payload,
       }),
-    ).toBe(false);
+    ).resolves.toBe(false);
   });
 });
