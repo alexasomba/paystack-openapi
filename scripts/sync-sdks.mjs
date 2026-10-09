@@ -1,6 +1,14 @@
 import { execFileSync } from "node:child_process";
-import { openSync, closeSync, unlinkSync, realpathSync } from "node:fs";
+import {
+  openSync,
+  closeSync,
+  unlinkSync,
+  realpathSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
 import path from "node:path";
+import { parse, stringify } from "yaml";
 import { fileURLToPath } from "node:url";
 import { DEFAULT_LOCAL_SDK_BASE_PATH, SDKS } from "./sdk-registry.mjs";
 
@@ -33,6 +41,18 @@ const git = (dir, ...command) =>
 const exclusions = [
   ".git",
   "node_modules",
+  ".venv",
+  "__pycache__",
+  ".pytest_cache",
+  ".ruff_cache",
+  ".mypy_cache",
+  "*.egg-info",
+  "build",
+  ".env",
+  ".env.*",
+  "*.log",
+  "vendor",
+  "coverage",
   "dist",
   ".turbo",
   ".DS_Store",
@@ -71,6 +91,11 @@ for (const item of plan) {
     if (error instanceof Error && error.message.startsWith("Sync branch")) throw error;
   }
 }
+const workspace = parse(readFileSync(path.join(root, "pnpm-workspace.yaml"), "utf8"));
+const standaloneWorkspace = stringify({
+  ...workspace,
+  packages: ["."],
+});
 const locks = [];
 try {
   if (!dryRun) {
@@ -102,6 +127,14 @@ try {
 
     process.stdout.write(`${dryRun ? "Preview" : "Sync"} ${sdk.name}: ${destination}\n`);
     execFileSync("rsync", rsync, { stdio: "inherit" });
+    if (!dryRun && sdk.npm === true) {
+      // Split repositories need the catalog and security overrides from the source workspace.
+      writeFileSync(path.join(destination, "pnpm-workspace.yaml"), standaloneWorkspace);
+      execFileSync("pnpm", ["install", "--lockfile-only", "--ignore-scripts"], {
+        cwd: destination,
+        stdio: "inherit",
+      });
+    }
     if (!dryRun && remote) {
       git(destination, "add", "--all");
       if (git(destination, "diff", "--cached", "--name-only"))

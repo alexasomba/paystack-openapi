@@ -44,7 +44,7 @@ void test("dry-run leaves contents and Git refs untouched", () => {
     const result = spawnSync(
       process.execPath,
       ["scripts/sync-sdks.mjs", "--destination", base, "--dry-run"],
-      { encoding: "utf8" },
+      { encoding: "utf8", maxBuffer: 10 * 1024 * 1024 },
     );
     assert.equal(result.status, 0, result.stderr);
     assert.equal(git(dir, "show-ref").toString(), before);
