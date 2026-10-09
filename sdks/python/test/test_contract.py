@@ -11,7 +11,9 @@ import alexasomba_paystack
 from alexasomba_paystack.api.transaction_api import TransactionApi
 from alexasomba_paystack.extras import create_paystack_client
 from alexasomba_paystack.models.transaction_initialize import TransactionInitialize
-from alexasomba_paystack.models.transaction_initialize_amount import TransactionInitializeAmount
+from alexasomba_paystack.models.transaction_initialize_amount import (
+    TransactionInitializeAmount,
+)
 
 
 def load_fixtures() -> dict[str, Any]:

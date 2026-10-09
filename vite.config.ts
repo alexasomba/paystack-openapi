@@ -5,7 +5,7 @@ export default defineConfig({
     "*": "vp check --fix",
   },
   fmt: {
-    ignorePatterns: ["dist/**"],
+    ignorePatterns: ["**/dist/**", "sdks/*/src/openapi-types.ts", "sdks/*/src/operations.ts"],
   },
   run: {
     tasks: {

@@ -87,7 +87,7 @@ function wrapFetch(
   );
   const idempotencyHeader = options.idempotencyHeader ?? DEFAULT_IDEMPOTENCY_HEADER;
 
-  return (async (input: RequestInfo | URL, init?: RequestInit) => {
+  return async (input: RequestInfo | URL, init?: RequestInit) => {
     const method = (
       init?.method ?? (input instanceof Request ? input.method : "GET")
     ).toUpperCase();
@@ -173,7 +173,7 @@ function wrapFetch(
     }
 
     throw lastError;
-  }) as typeof fetch;
+  };
 }
 
 export function createPaystackClient(options: PaystackAxiosClientOptions): PaystackClient {

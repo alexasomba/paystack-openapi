@@ -10,10 +10,12 @@ const testRequirementsPath = path.join(sdkDir, "test-requirements.txt");
 
 /** @param {string} contents */
 function updatePyproject(contents) {
-  return contents.replace(
+  const updated = contents.replace(
     /^Repository\s*=\s*".*"$/m,
     'Repository = "https://github.com/alexasomba/paystack-python"',
   );
+  if (updated.includes("[tool.ruff.lint.isort]")) return updated;
+  return `${updated.trimEnd()}\n\n[tool.ruff.lint.isort]\nknown-first-party = ["alexasomba_paystack"]\n`;
 }
 
 /** @param {string} contents */
@@ -154,6 +156,12 @@ function main() {
     process.exitCode = 1;
     return;
   }
+
+  // Keep custom runtime helpers reproducible across OpenAPI Generator runs.
+  fs.copyFileSync(
+    path.resolve("scripts/sdk-templates/python-extras.py"),
+    path.join(sdkDir, "alexasomba_paystack/extras.py"),
+  );
 
   const files = fs
     .readdirSync(modelsDir)

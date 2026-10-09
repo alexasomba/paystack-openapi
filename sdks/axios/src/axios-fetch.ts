@@ -9,7 +9,7 @@ export function createAxiosFetch(options: AxiosFetchOptions = {}): typeof fetch 
   const instance = options.axiosInstance ?? axios.create();
   const baseConfig = options.axiosConfig ?? {};
 
-  return (async (input: RequestInfo | URL, init?: RequestInit) => {
+  return async (input: RequestInfo | URL, init?: RequestInit) => {
     const url =
       typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
 
@@ -55,5 +55,5 @@ export function createAxiosFetch(options: AxiosFetchOptions = {}): typeof fetch 
       statusText: response.statusText,
       headers: responseHeaders,
     });
-  }) as typeof fetch;
+  };
 }

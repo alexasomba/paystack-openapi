@@ -180,3 +180,9 @@ You can [open an issue](https://github.com/alexasomba/paystack-openapi/issues) i
 ## License
 
 This repository is made available under the MIT license. Kindly read the [LICENSE](https://github.com/alexasomba/paystack-openapi/blob/main/LICENSE) file for more information.
+
+## Safe SDK synchronization
+
+Preview the complete plan with `vp run sdk:sync:local -- --dry-run`. Every selected destination must already be an independent clean Git checkout; a dirty target aborts the whole plan before any target changes. Both local and remote sync create a `codex/sdk-sync-*` review branch, preserve Git metadata and build/state directories, and refuse existing sync branches. Use `--destination PATH`, `--sdk NAME`, or `--branch codex/NAME` for explicit scope. Remote sync commits the synchronized tree and pushes that review branch only; it does not pull, merge, write main, or create release tags. Review any deletion shown by the dry-run before applying.
+
+The Go/PHP/Python generator image is pinned to v7.19.0 for reproducible future generation; existing outputs retain their original snapshot-generator provenance until a separately verified regeneration. Script tests use Node's test runner (`vp run test:scripts`), while SDK tests use Vitest (`vp test run`).
