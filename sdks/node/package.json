@@ -85,7 +85,7 @@
     "openapi-fetch": "^0.17.0"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.18.2",
+    "@arethetypeswrong/cli": "^0.18.5",
     "@tanstack/intent": "^0.0.41",
     "@types/node": "^24.12.3",
     "openapi-typescript": "^7.13.0",

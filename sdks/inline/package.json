@@ -60,7 +60,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.18.2",
+    "@arethetypeswrong/cli": "^0.18.5",
     "@tanstack/intent": "^0.0.41",
     "jsdom": "^29.1.1",
     "publint": "^0.3.20",
