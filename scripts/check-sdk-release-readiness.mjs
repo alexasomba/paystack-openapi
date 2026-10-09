@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import fs from "node:fs";
 import path from "node:path";
+import { parse } from "yaml";
 
 import { SDK_OWNER, SDKS, SOURCE_REPOSITORY_URL, getSdk } from "./sdk-registry.mjs";
 
@@ -381,9 +382,19 @@ async function main() {
   const composerPath = path.join(repoRoot, "sdks/php/composer.json");
   if (fs.existsSync(composerPath)) {
     const composer = readJson(composerPath);
-    for (const field of ["name", "version", "license", "homepage", "support"]) {
+    for (const field of ["name", "license", "homepage", "support"]) {
       if (composer[field] === undefined) failures.push(`sdks/php/composer.json missing ${field}`);
     }
+    const phpGenerator = parse(
+      fs.readFileSync(path.join(repoRoot, "sdks/php/openapi-generator-config.yaml"), "utf8"),
+    );
+    if (
+      typeof phpGenerator.artifactVersion !== "string" ||
+      !parseSemver(phpGenerator.artifactVersion)
+    )
+      failures.push(
+        "PHP generator artifactVersion must be a valid semantic version for VCS release tags",
+      );
     assertEqual(composer.name, phpSdk.packageName, "sdks/php/composer.json name");
     assertEqual(composer.homepage, phpSdk.repositoryUrl, "sdks/php/composer.json homepage");
     assertEqual(

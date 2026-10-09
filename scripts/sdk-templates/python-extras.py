@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import secrets
 import time
-from collections.abc import Iterable, Sequence
+from collections.abc import Callable, Iterable, Sequence
 from dataclasses import dataclass, field
-from typing import Any, Callable, TypeVar
+from typing import Any, TypeVar
 
 import urllib3
 
