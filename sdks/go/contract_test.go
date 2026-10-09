@@ -29,7 +29,11 @@ type contractFixtures struct {
 func loadContractFixtures(t *testing.T) contractFixtures {
 	t.Helper()
 
-	contents, err := os.ReadFile(filepath.Join("..", "contract-fixtures", "paystack.json"))
+	fixturePath := filepath.Join("contract-fixtures", "paystack.json")
+	if _, err := os.Stat(fixturePath); os.IsNotExist(err) {
+		fixturePath = filepath.Join("..", "contract-fixtures", "paystack.json")
+	}
+	contents, err := os.ReadFile(fixturePath)
 	if err != nil {
 		t.Fatalf("read contract fixtures: %v", err)
 	}
