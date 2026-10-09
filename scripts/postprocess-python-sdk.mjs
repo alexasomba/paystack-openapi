@@ -1,19 +1,30 @@
 /* eslint-disable no-console */
 import fs from "node:fs";
 import path from "node:path";
+import { parse } from "yaml";
 
 const sdkDir = path.resolve("sdks/python");
 const modelsDir = path.join(sdkDir, "alexasomba_paystack/models");
 const pyprojectPath = path.join(sdkDir, "pyproject.toml");
 const gitPushPath = path.join(sdkDir, "git_push.sh");
 const testRequirementsPath = path.join(sdkDir, "test-requirements.txt");
+const packageVersion = parse(
+  fs.readFileSync(path.join(sdkDir, "openapi-generator-config.yaml"), "utf8"),
+).packageVersion;
 
 /** @param {string} contents */
 function updatePyproject(contents) {
-  const updated = contents.replace(
-    /^Repository\s*=\s*".*"$/m,
-    'Repository = "https://github.com/alexasomba/paystack-python"',
-  );
+  const updated = contents
+    .replace(
+      /^Repository\s*=\s*".*"$/m,
+      'Repository = "https://github.com/alexasomba/paystack-python"',
+    )
+    .replace(/^version = ".*"$/m, `version = "${packageVersion}"`)
+    .replace(/^requires-python = ".*"$/m, 'requires-python = ">=3.10"')
+    .replace(/urllib3 \(>=.*?,<3\.0\.0\)/g, "urllib3 (>=2.8.0,<3.0.0)")
+    .replace(/^pytest = ".*"$/m, 'pytest = ">=9.0.3"')
+    .replace(/^filelock = ".*"\n?/gm, "")
+    .replace(/^tox = ".*"$/m, 'tox = ">=3.9.0"\nfilelock = ">=3.20.3"');
   if (updated.includes("[tool.ruff.lint.isort]")) return updated;
   return `${updated.trimEnd()}\n\n[tool.ruff.lint.isort]\nknown-first-party = ["alexasomba_paystack"]\n`;
 }
@@ -47,7 +58,7 @@ function updateGitPush(contents) {
 
 /** @param {string} contents */
 function updateTestRequirements(contents) {
-  const required = ["ruff >= 0.14.8", "build >= 1.3.0", "twine >= 6.2.0"];
+  const required = ["ruff >= 0.14.8", "build >= 1.3.0", "twine >= 6.2.0", "filelock >= 3.20.3"];
   const lines = contents.trimEnd().split(/\r?\n/);
   const normalized = new Set(lines.map((line) => line.trim().split(/\s+/)[0]));
 
@@ -56,7 +67,7 @@ function updateTestRequirements(contents) {
     if (!normalized.has(packageName)) lines.push(requirement);
   }
 
-  return `${lines.join("\n")}\n`;
+  return `${lines.join("\n").replace(/^pytest\s*>=.*$/m, "pytest >= 9.0.3")}\n`;
 }
 
 /** @param {string} contents */
@@ -155,6 +166,22 @@ function main() {
     console.error(`postprocess-python-sdk: missing ${modelsDir}`);
     process.exitCode = 1;
     return;
+  }
+
+  for (const file of [
+    "setup.py",
+    "requirements.txt",
+    "alexasomba_paystack/__init__.py",
+    "alexasomba_paystack/api_client.py",
+  ]) {
+    const filePath = path.join(sdkDir, file);
+    const original = fs.readFileSync(filePath, "utf8");
+    const updated = original
+      .replace(/^(VERSION|__version__) = ".*"$/m, `$1 = "${packageVersion}"`)
+      .replace(/^PYTHON_REQUIRES = ".*"$/m, 'PYTHON_REQUIRES = ">= 3.10"')
+      .replace(/urllib3 >= .*?, < 3\.0\.0/g, "urllib3 >= 2.8.0, < 3.0.0")
+      .replace(/OpenAPI-Generator\/[\d.]+\/python/g, `OpenAPI-Generator/${packageVersion}/python`);
+    if (updated !== original) fs.writeFileSync(filePath, updated);
   }
 
   // Keep custom runtime helpers reproducible across OpenAPI Generator runs.

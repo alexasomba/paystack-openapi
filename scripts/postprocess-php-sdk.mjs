@@ -74,6 +74,11 @@ async function postprocessComposerJson() {
       source: "https://github.com/alexasomba/paystack-php",
     },
     authors: [{ name: "alexasomba" }],
+    require: {
+      ...json.require,
+      "guzzlehttp/guzzle": "^7.15.2",
+      "guzzlehttp/psr7": "^2.12.3",
+    },
     autoload: {
       "psr-4": {
         "Alexasomba\\Paystack\\": "lib/",
@@ -96,6 +101,8 @@ async function postprocessComposerJson() {
       },
     },
   };
+  // Composer infers the library version from its VCS tags.
+  delete nextJson.version;
 
   const next = `${JSON.stringify(nextJson, null, 4)}\n`;
   const prevNormalized = prev.replace(/\r\n/g, "\n");
