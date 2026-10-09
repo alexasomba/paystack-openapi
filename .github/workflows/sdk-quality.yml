@@ -16,9 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: voidzero-dev/setup-vp@v1
+      - uses: voidzero-dev/setup-vp@v1.21.1
         with:
-          node-version: "24"
+          node-version: 22.23.3
           cache: true
       - run: vp install
       - run: vp run sdk:check:release
@@ -32,9 +32,9 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: "1.23"
-      - uses: voidzero-dev/setup-vp@v1
+      - uses: voidzero-dev/setup-vp@v1.21.1
         with:
-          node-version: "24"
+          node-version: 22.23.3
           cache: true
       - run: vp install
       - run: vp run sdk:check:go
@@ -48,9 +48,9 @@ jobs:
         with:
           php-version: "8.1"
           coverage: none
-      - uses: voidzero-dev/setup-vp@v1
+      - uses: voidzero-dev/setup-vp@v1.21.1
         with:
-          node-version: "24"
+          node-version: 22.23.3
           cache: true
       - run: vp install
       - run: vp run sdk:check:php
@@ -63,9 +63,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - uses: voidzero-dev/setup-vp@v1
+      - uses: voidzero-dev/setup-vp@v1.21.1
         with:
-          node-version: "24"
+          node-version: 22.23.3
           cache: true
       - run: vp install
       - run: vp run sdk:check:python

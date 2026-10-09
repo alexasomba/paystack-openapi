@@ -45,3 +45,4 @@ documentations/
 .github/instructions
 
 scratch/
+.vitest/

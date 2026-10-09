@@ -12,11 +12,14 @@ The Axios SDK exports webhook helpers for server-side webhook routes. Verificati
 ```ts
 import { Webhooks } from "@alexasomba/paystack-axios";
 
-const valid = Webhooks.verifySignature(
-  rawBody,
-  request.headers["x-paystack-signature"],
-  process.env.PAYSTACK_SECRET_KEY!,
-);
+const signature = request.headers["x-paystack-signature"];
+const valid =
+  typeof signature === "string" &&
+  Webhooks.verifySignature({
+    rawBody,
+    signature,
+    secret: process.env.PAYSTACK_SECRET_KEY!,
+  });
 ```
 
 ## Parse after verification

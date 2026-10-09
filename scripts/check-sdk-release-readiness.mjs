@@ -192,12 +192,17 @@ async function fetchJson(url, label) {
 function assertNpmPackageMetadata(pkg, sdk, label) {
   const publishConfig = asPackageRecord(pkg.publishConfig);
   const bugs = asPackageRecord(pkg.bugs);
+  const repositoryUrl = getRepositoryUrl(pkg);
 
   assertEqual(pkg.name, sdk.packageName, `${label} name`);
   assertEqual(pkg.license, "MIT", `${label} license`);
   assertEqual(pkg.homepage, `${sdk.repositoryUrl}#readme`, `${label} homepage`);
   assertEqual(publishConfig.access, "public", `${label} publishConfig.access`);
-  assertEqual(getRepositoryUrl(pkg), `${sdk.repositoryUrl}.git`, `${label} repository.url`);
+  assertEqual(
+    typeof repositoryUrl === "string" ? repositoryUrl.replace(/^git\+/, "") : repositoryUrl,
+    `${sdk.repositoryUrl}.git`,
+    `${label} repository.url`,
+  );
   assertEqual(bugs.url, `${sdk.repositoryUrl}/issues`, `${label} bugs.url`);
 
   if (pkg.version === undefined) failures.push(`${label} missing version`);

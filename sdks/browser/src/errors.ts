@@ -73,9 +73,10 @@ export class PaystackError extends Error {
     this.raw = options.raw ?? options.body;
     this.body = options.body ?? options.raw;
 
-    // Ensure proper stack trace in Node.js
-    if (typeof Error.captureStackTrace === "function") {
-      Error.captureStackTrace(this, PaystackError);
+    // Hide this constructor from stack traces in Node runtimes without depending on Node types.
+    const captureStackTrace = Reflect.get(Error, "captureStackTrace");
+    if (typeof captureStackTrace === "function") {
+      captureStackTrace(this, PaystackError);
     }
   }
 
