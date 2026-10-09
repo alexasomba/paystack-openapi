@@ -10,7 +10,7 @@ Python client for the Paystack API, generated from the Paystack OpenAPI spec in 
 
 ## Requirements
 
-Python 3.9+
+Python 3.10+. Version 2.0 raises the minimum Python version so every installation can use the patched urllib3 2.8 transport. Upgrade Python before upgrading from the 1.x SDK.
 
 ## Installation
 
