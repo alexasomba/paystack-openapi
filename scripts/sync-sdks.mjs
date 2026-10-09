@@ -60,6 +60,7 @@ const exclusions = [
   "vendor",
   "coverage",
   "dist",
+  "contract-fixtures",
   ".turbo",
   ".DS_Store",
   ".worktrees",
