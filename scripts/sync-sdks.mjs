@@ -7,8 +7,12 @@ import {
   readFileSync,
   mkdirSync,
   writeFileSync,
+  mkdtempSync,
+  rmSync,
+  existsSync,
 } from "node:fs";
 import path from "node:path";
+import os from "node:os";
 import { parse, stringify } from "yaml";
 import { fileURLToPath } from "node:url";
 import { DEFAULT_LOCAL_SDK_BASE_PATH, SDKS } from "./sdk-registry.mjs";
@@ -42,6 +46,7 @@ const git = (dir, ...command) =>
 const exclusions = [
   ".git",
   "node_modules",
+  "pnpm-lock.yaml",
   ".venv",
   "__pycache__",
   ".pytest_cache",
@@ -139,10 +144,30 @@ try {
     if (!dryRun && sdk.npm === true) {
       // Split repositories need the catalog and security overrides from the source workspace.
       writeFileSync(path.join(destination, "pnpm-workspace.yaml"), standaloneWorkspace);
-      execFileSync("pnpm", ["install", "--lockfile-only", "--ignore-scripts"], {
-        cwd: destination,
-        stdio: "inherit",
-      });
+      // Generate without an existing virtual store: an up-to-date installed tree
+      // can otherwise leave a stale public lockfile untouched on pnpm 11.
+      const lockWorkspace = mkdtempSync(path.join(os.tmpdir(), "paystack-sdk-lock-"));
+      try {
+        for (const file of ["package.json", "pnpm-workspace.yaml", "pnpm-lock.yaml"]) {
+          const sourceFile = path.join(destination, file);
+          if (existsSync(sourceFile))
+            writeFileSync(path.join(lockWorkspace, file), readFileSync(sourceFile));
+        }
+        execFileSync(
+          "pnpm",
+          ["install", "--lockfile-only", "--ignore-scripts", "--no-frozen-lockfile"],
+          {
+            cwd: lockWorkspace,
+            stdio: "inherit",
+          },
+        );
+        writeFileSync(
+          path.join(destination, "pnpm-lock.yaml"),
+          readFileSync(path.join(lockWorkspace, "pnpm-lock.yaml")),
+        );
+      } finally {
+        rmSync(lockWorkspace, { recursive: true, force: true });
+      }
     }
     if (!dryRun && remote) {
       git(destination, "add", "--all");
