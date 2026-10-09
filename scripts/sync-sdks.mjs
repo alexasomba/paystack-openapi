@@ -5,6 +5,7 @@ import {
   unlinkSync,
   realpathSync,
   readFileSync,
+  mkdirSync,
   writeFileSync,
 } from "node:fs";
 import path from "node:path";
@@ -127,6 +128,14 @@ try {
 
     process.stdout.write(`${dryRun ? "Preview" : "Sync"} ${sdk.name}: ${destination}\n`);
     execFileSync("rsync", rsync, { stdio: "inherit" });
+    if (!dryRun && sdk.name === "node") {
+      const fixtureDir = path.join(destination, "test", "fixtures");
+      mkdirSync(fixtureDir, { recursive: true });
+      writeFileSync(
+        path.join(fixtureDir, "paystack.json"),
+        readFileSync(path.join(root, "sdks", "contract-fixtures", "paystack.json")),
+      );
+    }
     if (!dryRun && sdk.npm === true) {
       // Split repositories need the catalog and security overrides from the source workspace.
       writeFileSync(path.join(destination, "pnpm-workspace.yaml"), standaloneWorkspace);
