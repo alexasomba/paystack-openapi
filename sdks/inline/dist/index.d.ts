@@ -29,10 +29,20 @@ export interface PaystackPopGeneralOptions {
   connect_account?: string;
 }
 export interface PaystackPopCallbacks {
-  onError?: (error: { message: string }) => void;
+  onError?: (error: {
+    message: string;
+  }) => void;
   onCancel?: () => void;
-  onLoad?: (response: { id: number; customer: unknown; accessCode: string }) => void;
-  onSuccess?: (response: { id: number; reference: string; message: string }) => void;
+  onLoad?: (response: {
+    id: number;
+    customer: unknown;
+    accessCode: string;
+  }) => void;
+  onSuccess?: (response: {
+    id: number;
+    reference: string;
+    message: string;
+  }) => void;
   onClose?: () => void;
   callback?: (response: unknown) => void;
   onBankTransferConfirmationPending?: () => void;
@@ -60,12 +70,7 @@ export interface PaystackPopSubscriptionOptions {
   start_date?: string;
   subscription?: string | number;
 }
-export interface PaystackPopNewTransactionOptions
-  extends
-    PaystackPopGeneralOptions,
-    PaystackPopCallbacks,
-    PaystackPopSplitOptions,
-    PaystackPopSubscriptionOptions {}
+export interface PaystackPopNewTransactionOptions extends PaystackPopGeneralOptions, PaystackPopCallbacks, PaystackPopSplitOptions, PaystackPopSubscriptionOptions {}
 export interface PaystackPopCheckoutOptions extends PaystackPopNewTransactionOptions {}
 export interface PaystackPopPaymentRequestOptions extends PaystackPopNewTransactionOptions {
   container: string;
