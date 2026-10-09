@@ -15,7 +15,7 @@ Python 3.10+. Version 2.0 raises the minimum Python version so every installatio
 ## Installation
 
 ```sh
-pip install {{package_name}}
+pip install "{{package_name}}>=2.0.0"
 ```
 
 Or from source:
