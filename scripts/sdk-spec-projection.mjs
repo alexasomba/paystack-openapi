@@ -89,7 +89,7 @@ export function collectOperationLocations(spec) {
   const locations = new Set();
   for (const [route, item] of Object.entries(spec?.paths ?? {})) {
     for (const method of METHOD_KEYS) {
-      if (/** @type {any} */ (item)?.[method]?.operationId !== undefined) {
+      if (item?.[method]?.operationId !== undefined) {
         locations.add(`${method.toUpperCase()} ${route}`);
       }
     }
@@ -125,7 +125,7 @@ export function dedupeOperationIds(mergedSpec, sdkSpec) {
   const groups = new Map();
   for (const [route, item] of Object.entries(mergedSpec?.paths ?? {})) {
     for (const method of METHOD_KEYS) {
-      const op = /** @type {any} */ (item)?.[method];
+      const op = item?.[method];
       const operationId = op?.operationId;
       if (operationId === undefined) continue;
 

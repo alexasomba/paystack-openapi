@@ -153,7 +153,7 @@ describe("Client Functional Tests", () => {
       await paystack.customer.list({
         params: {
           query: { perPage: 50, page: 1 },
-        } as any,
+        },
       });
 
       const call = mockRequest.mock.calls[0][0];

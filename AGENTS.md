@@ -1,15 +1,5 @@
 # Paystack OpenAPI & SDKs
 
-<!-- intent-skills:start -->
-
-# Skill mappings - when working in these areas, load the linked skill file into context.
-
-skills:
-
-- task: "manage project development, CLI operations, and unified toolchain workflows using Vite+ (vp)"
-load: ".agents/skills/vite-plus/SKILL.md"
-<!-- intent-skills:end -->
-
 This repository serves as the central source of truth for the Paystack API OpenAPI specification and the generated Client Libraries (SDKs). It is a monorepo managed with `pnpm`.
 
 ## Project Structure
@@ -126,12 +116,7 @@ vp run typecheck
   ```
 
 - **Publish TS SDKs to npm:**
-  The monorepo workflow in `.github/workflows/publish-npm.yml` publishes only on tag pushes matching `v*` or manual dispatch. A push to `main` alone does not publish to npm.
-
-  ```bash
-  git tag v1.9.2
-  git push origin v1.9.2
-  ```
+  Publishing is owned by the individual SDK repositories' release workflows. Prepare and review a sync branch first, merge it with separate authorization, then push a matching `v*` tag in each standalone SDK repository. This monorepo has no `publish-npm.yml` workflow; a push here does not publish npm packages.
 
 - **Versioning Before Publish:**
   The `sdks/node`, `sdks/axios`, and `sdks/browser` `package.json` versions must be bumped before triggering npm publish. Syncing code alone is not enough.

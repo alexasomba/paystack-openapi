@@ -8,10 +8,13 @@ allowBuilds:
   protobufjs: true
   unrs-resolver: true
 catalog:
-  vite: npm:@voidzero-dev/vite-plus-core@^0.1.20
-  vite-plus: ^0.1.20
-  vitest: npm:@voidzero-dev/vite-plus-test@^0.1.20
+  "@vitest/coverage-v8": 5.0.3
+  vite: npm:@voidzero-dev/vite-plus-core@1.1.0
+  vite-plus: 1.1.0
+  vitest: 5.0.3
 overrides:
+  "axios": "^1.20.0"
+  "form-data": "^4.0.6"
   vite: "catalog:"
   vitest: "catalog:"
 peerDependencyRules:

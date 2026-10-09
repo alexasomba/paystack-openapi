@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "@noble/hashes": "^2.2.0",
-    "axios": "^1.16.0",
+    "axios": "^1.20.0",
     "openapi-fetch": "^0.17.0"
   },
   "devDependencies": {
@@ -86,9 +86,9 @@
     "openapi-typescript": "^7.13.0",
     "publint": "^0.3.20",
     "typescript": "^5.9.3",
-    "vite": "npm:@voidzero-dev/vite-plus-core@^0.1.20",
-    "vite-plus": "^0.1.20",
-    "vitest": "npm:@voidzero-dev/vite-plus-test@^0.1.20",
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:",
     "yaml": "^2.8.4"
   },
   "engines": {

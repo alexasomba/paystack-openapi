@@ -1,5 +1,5 @@
 //#region src/index.d.ts
-interface PaystackPopGeneralOptions {
+export interface PaystackPopGeneralOptions {
   key: string;
   amount: number;
   email: string;
@@ -28,7 +28,7 @@ interface PaystackPopGeneralOptions {
   language?: string;
   connect_account?: string;
 }
-interface PaystackPopCallbacks {
+export interface PaystackPopCallbacks {
   onError?: (error: { message: string }) => void;
   onCancel?: () => void;
   onLoad?: (response: { id: number; customer: unknown; accessCode: string }) => void;
@@ -37,7 +37,7 @@ interface PaystackPopCallbacks {
   callback?: (response: unknown) => void;
   onBankTransferConfirmationPending?: () => void;
 }
-interface PaystackPopSplitOptions {
+export interface PaystackPopSplitOptions {
   subaccountCode?: string;
   subaccount?: string;
   split_code?: string;
@@ -47,7 +47,7 @@ interface PaystackPopSplitOptions {
   transactionCharge?: string | number;
   transaction_charge?: string | number;
 }
-interface PaystackPopSubscriptionOptions {
+export interface PaystackPopSubscriptionOptions {
   planCode?: string;
   plan?: string;
   subscriptionCount?: number;
@@ -60,14 +60,14 @@ interface PaystackPopSubscriptionOptions {
   start_date?: string;
   subscription?: string | number;
 }
-interface PaystackPopNewTransactionOptions
+export interface PaystackPopNewTransactionOptions
   extends
     PaystackPopGeneralOptions,
     PaystackPopCallbacks,
     PaystackPopSplitOptions,
     PaystackPopSubscriptionOptions {}
-interface PaystackPopCheckoutOptions extends PaystackPopNewTransactionOptions {}
-interface PaystackPopPaymentRequestOptions extends PaystackPopNewTransactionOptions {
+export interface PaystackPopCheckoutOptions extends PaystackPopNewTransactionOptions {}
+export interface PaystackPopPaymentRequestOptions extends PaystackPopNewTransactionOptions {
   container: string;
   loadPaystackCheckoutButton?: string;
   styles?: {
@@ -82,14 +82,14 @@ interface PaystackPopPaymentRequestOptions extends PaystackPopNewTransactionOpti
   };
   onElementsMount?: (elements: unknown) => void;
 }
-interface PopupTransactionStatus {
+export interface PopupTransactionStatus {
   status: "null" | "error" | "abandoned" | "auth" | "failed" | "success" | "pending";
   id?: string;
   errors?: unknown[];
   response?: unknown;
   checkoutUrl?: string;
 }
-interface PopupTransaction {
+export interface PopupTransaction {
   id: string;
   backgroundDiv: HTMLElement;
   checkoutIframe: HTMLElement;
@@ -97,7 +97,7 @@ interface PopupTransaction {
   paymentRequestContainer: HTMLElement | null;
   getStatus(): PopupTransactionStatus;
 }
-interface PaystackPopInstance {
+export interface PaystackPopInstance {
   newTransaction(options: PaystackPopNewTransactionOptions): PopupTransaction;
   resumeTransaction(accessCode: string, callbacks?: PaystackPopCallbacks): PopupTransaction;
   cancelTransaction(idOrTransaction: string | PopupTransaction): void;
@@ -116,18 +116,5 @@ declare global {
 /**
  * Dynamically loads the Paystack Popup script (inline.js) and returns the constructor class.
  */
-declare function loadPaystack(): Promise<NonNullable<Window["PaystackPop"]>>;
+export declare function loadPaystack(): Promise<NonNullable<Window["PaystackPop"]>>;
 //#endregion
-export {
-  PaystackPopCallbacks,
-  PaystackPopCheckoutOptions,
-  PaystackPopGeneralOptions,
-  PaystackPopInstance,
-  PaystackPopNewTransactionOptions,
-  PaystackPopPaymentRequestOptions,
-  PaystackPopSplitOptions,
-  PaystackPopSubscriptionOptions,
-  PopupTransaction,
-  PopupTransactionStatus,
-  loadPaystack,
-};

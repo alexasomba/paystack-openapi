@@ -181,9 +181,7 @@ const paystack = createPaystack({
 ```ts
 import { toPaystackApiError } from "@alexasomba/paystack-axios";
 
-const result = await paystack.transaction_initialize({
-  /* ... */
-});
+const result = await paystack.transaction_initialize({/* ... */});
 const error = toPaystackApiError(result);
 
 if (error) {

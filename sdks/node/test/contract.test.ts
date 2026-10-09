@@ -77,7 +77,7 @@ describe("Paystack contract fixtures", () => {
 
     const result = await paystack.transaction.list({
       params: { query: fixtures.transactionList.query },
-    } as never);
+    });
 
     const info = await requestInfo(fetch.mock.calls[0]);
     const url = new URL(info.url);
