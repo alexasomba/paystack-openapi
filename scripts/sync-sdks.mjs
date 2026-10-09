@@ -128,8 +128,8 @@ try {
 
     process.stdout.write(`${dryRun ? "Preview" : "Sync"} ${sdk.name}: ${destination}\n`);
     execFileSync("rsync", rsync, { stdio: "inherit" });
-    if (!dryRun && sdk.name === "node") {
-      const fixtureDir = path.join(destination, "test", "fixtures");
+    if (!dryRun && ["node", "go", "php", "python"].includes(sdk.name)) {
+      const fixtureDir = path.join(destination, "contract-fixtures");
       mkdirSync(fixtureDir, { recursive: true });
       writeFileSync(
         path.join(fixtureDir, "paystack.json"),
