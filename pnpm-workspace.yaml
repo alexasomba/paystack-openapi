@@ -51,3 +51,5 @@ peerDependencyRules:
   allowedVersions:
     vite: "*"
     vitest: "*"
+    # The SDK workspace uses TypeScript 6; openapi-typescript still declares TypeScript 5.
+    typescript: "6.x"

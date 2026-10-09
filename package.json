@@ -85,7 +85,7 @@
     "@alexasomba/paystack-inline": "workspace:*",
     "@alexasomba/paystack-node": "workspace:*",
     "@arethetypeswrong/cli": "^0.18.5",
-    "@quobix/vacuum": "^0.26.4",
+    "@quobix/vacuum": "^0.26.8",
     "@redocly/cli": "^2.62.1",
     "@stoplight/spectral-cli": "^6.17.0",
     "@vitest/coverage-v8": "catalog:",
@@ -101,5 +101,5 @@
   "engines": {
     "node": ">=22.22.2"
   },
-  "packageManager": "pnpm@12.10.1"
+  "packageManager": "pnpm@12.11.0"
 }
