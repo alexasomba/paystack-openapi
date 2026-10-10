@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.11.1](https://github.com/alexasomba/paystack-browser/compare/v1.11.0...v1.11.1) (2026-10-10)
+
+### Miscellaneous Chores
+
+- Publish package metadata with the pnpm 12.11.2 toolchain.
+
+## [1.11.0](https://github.com/alexasomba/paystack-browser/compare/v1.10.9...v1.11.0) (2026-10-09)
+
+### Features
+
+- Regenerate SDK types and operations from the current Paystack OpenAPI source.
+
+### Miscellaneous Chores
+
+- Require Node.js 22 or later and update the supported pnpm and Vite+ toolchain.
+
 ## 1.10.9
 
 - Align standalone SDK installs with the source workspace catalog and patched dependencies.
