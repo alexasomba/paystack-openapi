@@ -27,7 +27,14 @@ type WebhookEvent struct {
 	WebhookEventOneOf13 *WebhookEventOneOf13
 	WebhookEventOneOf14 *WebhookEventOneOf14
 	WebhookEventOneOf15 *WebhookEventOneOf15
+	WebhookEventOneOf16 *WebhookEventOneOf16
+	WebhookEventOneOf17 *WebhookEventOneOf17
+	WebhookEventOneOf18 *WebhookEventOneOf18
+	WebhookEventOneOf19 *WebhookEventOneOf19
 	WebhookEventOneOf2 *WebhookEventOneOf2
+	WebhookEventOneOf20 *WebhookEventOneOf20
+	WebhookEventOneOf21 *WebhookEventOneOf21
+	WebhookEventOneOf22 *WebhookEventOneOf22
 	WebhookEventOneOf3 *WebhookEventOneOf3
 	WebhookEventOneOf4 *WebhookEventOneOf4
 	WebhookEventOneOf5 *WebhookEventOneOf5
@@ -93,10 +100,59 @@ func WebhookEventOneOf15AsWebhookEvent(v *WebhookEventOneOf15) WebhookEvent {
 	}
 }
 
+// WebhookEventOneOf16AsWebhookEvent is a convenience function that returns WebhookEventOneOf16 wrapped in WebhookEvent
+func WebhookEventOneOf16AsWebhookEvent(v *WebhookEventOneOf16) WebhookEvent {
+	return WebhookEvent{
+		WebhookEventOneOf16: v,
+	}
+}
+
+// WebhookEventOneOf17AsWebhookEvent is a convenience function that returns WebhookEventOneOf17 wrapped in WebhookEvent
+func WebhookEventOneOf17AsWebhookEvent(v *WebhookEventOneOf17) WebhookEvent {
+	return WebhookEvent{
+		WebhookEventOneOf17: v,
+	}
+}
+
+// WebhookEventOneOf18AsWebhookEvent is a convenience function that returns WebhookEventOneOf18 wrapped in WebhookEvent
+func WebhookEventOneOf18AsWebhookEvent(v *WebhookEventOneOf18) WebhookEvent {
+	return WebhookEvent{
+		WebhookEventOneOf18: v,
+	}
+}
+
+// WebhookEventOneOf19AsWebhookEvent is a convenience function that returns WebhookEventOneOf19 wrapped in WebhookEvent
+func WebhookEventOneOf19AsWebhookEvent(v *WebhookEventOneOf19) WebhookEvent {
+	return WebhookEvent{
+		WebhookEventOneOf19: v,
+	}
+}
+
 // WebhookEventOneOf2AsWebhookEvent is a convenience function that returns WebhookEventOneOf2 wrapped in WebhookEvent
 func WebhookEventOneOf2AsWebhookEvent(v *WebhookEventOneOf2) WebhookEvent {
 	return WebhookEvent{
 		WebhookEventOneOf2: v,
+	}
+}
+
+// WebhookEventOneOf20AsWebhookEvent is a convenience function that returns WebhookEventOneOf20 wrapped in WebhookEvent
+func WebhookEventOneOf20AsWebhookEvent(v *WebhookEventOneOf20) WebhookEvent {
+	return WebhookEvent{
+		WebhookEventOneOf20: v,
+	}
+}
+
+// WebhookEventOneOf21AsWebhookEvent is a convenience function that returns WebhookEventOneOf21 wrapped in WebhookEvent
+func WebhookEventOneOf21AsWebhookEvent(v *WebhookEventOneOf21) WebhookEvent {
+	return WebhookEvent{
+		WebhookEventOneOf21: v,
+	}
+}
+
+// WebhookEventOneOf22AsWebhookEvent is a convenience function that returns WebhookEventOneOf22 wrapped in WebhookEvent
+func WebhookEventOneOf22AsWebhookEvent(v *WebhookEventOneOf22) WebhookEvent {
+	return WebhookEvent{
+		WebhookEventOneOf22: v,
 	}
 }
 
@@ -290,6 +346,74 @@ func (dst *WebhookEvent) UnmarshalJSON(data []byte) error {
 		dst.WebhookEventOneOf15 = nil
 	}
 
+	// try to unmarshal data into WebhookEventOneOf16
+	err = newStrictDecoder(data).Decode(&dst.WebhookEventOneOf16)
+	if err == nil {
+		jsonWebhookEventOneOf16, _ := json.Marshal(dst.WebhookEventOneOf16)
+		if string(jsonWebhookEventOneOf16) == "{}" { // empty struct
+			dst.WebhookEventOneOf16 = nil
+		} else {
+			if err = validator.Validate(dst.WebhookEventOneOf16); err != nil {
+				dst.WebhookEventOneOf16 = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.WebhookEventOneOf16 = nil
+	}
+
+	// try to unmarshal data into WebhookEventOneOf17
+	err = newStrictDecoder(data).Decode(&dst.WebhookEventOneOf17)
+	if err == nil {
+		jsonWebhookEventOneOf17, _ := json.Marshal(dst.WebhookEventOneOf17)
+		if string(jsonWebhookEventOneOf17) == "{}" { // empty struct
+			dst.WebhookEventOneOf17 = nil
+		} else {
+			if err = validator.Validate(dst.WebhookEventOneOf17); err != nil {
+				dst.WebhookEventOneOf17 = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.WebhookEventOneOf17 = nil
+	}
+
+	// try to unmarshal data into WebhookEventOneOf18
+	err = newStrictDecoder(data).Decode(&dst.WebhookEventOneOf18)
+	if err == nil {
+		jsonWebhookEventOneOf18, _ := json.Marshal(dst.WebhookEventOneOf18)
+		if string(jsonWebhookEventOneOf18) == "{}" { // empty struct
+			dst.WebhookEventOneOf18 = nil
+		} else {
+			if err = validator.Validate(dst.WebhookEventOneOf18); err != nil {
+				dst.WebhookEventOneOf18 = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.WebhookEventOneOf18 = nil
+	}
+
+	// try to unmarshal data into WebhookEventOneOf19
+	err = newStrictDecoder(data).Decode(&dst.WebhookEventOneOf19)
+	if err == nil {
+		jsonWebhookEventOneOf19, _ := json.Marshal(dst.WebhookEventOneOf19)
+		if string(jsonWebhookEventOneOf19) == "{}" { // empty struct
+			dst.WebhookEventOneOf19 = nil
+		} else {
+			if err = validator.Validate(dst.WebhookEventOneOf19); err != nil {
+				dst.WebhookEventOneOf19 = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.WebhookEventOneOf19 = nil
+	}
+
 	// try to unmarshal data into WebhookEventOneOf2
 	err = newStrictDecoder(data).Decode(&dst.WebhookEventOneOf2)
 	if err == nil {
@@ -305,6 +429,57 @@ func (dst *WebhookEvent) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.WebhookEventOneOf2 = nil
+	}
+
+	// try to unmarshal data into WebhookEventOneOf20
+	err = newStrictDecoder(data).Decode(&dst.WebhookEventOneOf20)
+	if err == nil {
+		jsonWebhookEventOneOf20, _ := json.Marshal(dst.WebhookEventOneOf20)
+		if string(jsonWebhookEventOneOf20) == "{}" { // empty struct
+			dst.WebhookEventOneOf20 = nil
+		} else {
+			if err = validator.Validate(dst.WebhookEventOneOf20); err != nil {
+				dst.WebhookEventOneOf20 = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.WebhookEventOneOf20 = nil
+	}
+
+	// try to unmarshal data into WebhookEventOneOf21
+	err = newStrictDecoder(data).Decode(&dst.WebhookEventOneOf21)
+	if err == nil {
+		jsonWebhookEventOneOf21, _ := json.Marshal(dst.WebhookEventOneOf21)
+		if string(jsonWebhookEventOneOf21) == "{}" { // empty struct
+			dst.WebhookEventOneOf21 = nil
+		} else {
+			if err = validator.Validate(dst.WebhookEventOneOf21); err != nil {
+				dst.WebhookEventOneOf21 = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.WebhookEventOneOf21 = nil
+	}
+
+	// try to unmarshal data into WebhookEventOneOf22
+	err = newStrictDecoder(data).Decode(&dst.WebhookEventOneOf22)
+	if err == nil {
+		jsonWebhookEventOneOf22, _ := json.Marshal(dst.WebhookEventOneOf22)
+		if string(jsonWebhookEventOneOf22) == "{}" { // empty struct
+			dst.WebhookEventOneOf22 = nil
+		} else {
+			if err = validator.Validate(dst.WebhookEventOneOf22); err != nil {
+				dst.WebhookEventOneOf22 = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.WebhookEventOneOf22 = nil
 	}
 
 	// try to unmarshal data into WebhookEventOneOf3
@@ -436,7 +611,14 @@ func (dst *WebhookEvent) UnmarshalJSON(data []byte) error {
 		dst.WebhookEventOneOf13 = nil
 		dst.WebhookEventOneOf14 = nil
 		dst.WebhookEventOneOf15 = nil
+		dst.WebhookEventOneOf16 = nil
+		dst.WebhookEventOneOf17 = nil
+		dst.WebhookEventOneOf18 = nil
+		dst.WebhookEventOneOf19 = nil
 		dst.WebhookEventOneOf2 = nil
+		dst.WebhookEventOneOf20 = nil
+		dst.WebhookEventOneOf21 = nil
+		dst.WebhookEventOneOf22 = nil
 		dst.WebhookEventOneOf3 = nil
 		dst.WebhookEventOneOf4 = nil
 		dst.WebhookEventOneOf5 = nil
@@ -487,8 +669,36 @@ func (src WebhookEvent) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.WebhookEventOneOf15)
 	}
 
+	if src.WebhookEventOneOf16 != nil {
+		return json.Marshal(&src.WebhookEventOneOf16)
+	}
+
+	if src.WebhookEventOneOf17 != nil {
+		return json.Marshal(&src.WebhookEventOneOf17)
+	}
+
+	if src.WebhookEventOneOf18 != nil {
+		return json.Marshal(&src.WebhookEventOneOf18)
+	}
+
+	if src.WebhookEventOneOf19 != nil {
+		return json.Marshal(&src.WebhookEventOneOf19)
+	}
+
 	if src.WebhookEventOneOf2 != nil {
 		return json.Marshal(&src.WebhookEventOneOf2)
+	}
+
+	if src.WebhookEventOneOf20 != nil {
+		return json.Marshal(&src.WebhookEventOneOf20)
+	}
+
+	if src.WebhookEventOneOf21 != nil {
+		return json.Marshal(&src.WebhookEventOneOf21)
+	}
+
+	if src.WebhookEventOneOf22 != nil {
+		return json.Marshal(&src.WebhookEventOneOf22)
 	}
 
 	if src.WebhookEventOneOf3 != nil {
@@ -559,8 +769,36 @@ func (obj *WebhookEvent) GetActualInstance() (interface{}) {
 		return obj.WebhookEventOneOf15
 	}
 
+	if obj.WebhookEventOneOf16 != nil {
+		return obj.WebhookEventOneOf16
+	}
+
+	if obj.WebhookEventOneOf17 != nil {
+		return obj.WebhookEventOneOf17
+	}
+
+	if obj.WebhookEventOneOf18 != nil {
+		return obj.WebhookEventOneOf18
+	}
+
+	if obj.WebhookEventOneOf19 != nil {
+		return obj.WebhookEventOneOf19
+	}
+
 	if obj.WebhookEventOneOf2 != nil {
 		return obj.WebhookEventOneOf2
+	}
+
+	if obj.WebhookEventOneOf20 != nil {
+		return obj.WebhookEventOneOf20
+	}
+
+	if obj.WebhookEventOneOf21 != nil {
+		return obj.WebhookEventOneOf21
+	}
+
+	if obj.WebhookEventOneOf22 != nil {
+		return obj.WebhookEventOneOf22
 	}
 
 	if obj.WebhookEventOneOf3 != nil {
@@ -629,8 +867,36 @@ func (obj WebhookEvent) GetActualInstanceValue() (interface{}) {
 		return *obj.WebhookEventOneOf15
 	}
 
+	if obj.WebhookEventOneOf16 != nil {
+		return *obj.WebhookEventOneOf16
+	}
+
+	if obj.WebhookEventOneOf17 != nil {
+		return *obj.WebhookEventOneOf17
+	}
+
+	if obj.WebhookEventOneOf18 != nil {
+		return *obj.WebhookEventOneOf18
+	}
+
+	if obj.WebhookEventOneOf19 != nil {
+		return *obj.WebhookEventOneOf19
+	}
+
 	if obj.WebhookEventOneOf2 != nil {
 		return *obj.WebhookEventOneOf2
+	}
+
+	if obj.WebhookEventOneOf20 != nil {
+		return *obj.WebhookEventOneOf20
+	}
+
+	if obj.WebhookEventOneOf21 != nil {
+		return *obj.WebhookEventOneOf21
+	}
+
+	if obj.WebhookEventOneOf22 != nil {
+		return *obj.WebhookEventOneOf22
 	}
 
 	if obj.WebhookEventOneOf3 != nil {

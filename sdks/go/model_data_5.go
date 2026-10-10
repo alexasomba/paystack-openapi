@@ -22,17 +22,27 @@ var _ MappedNullable = &Data5{}
 
 // Data5 struct for Data5
 type Data5 struct {
-	Customer DedicatedNubanCreateResponseDataCustomer `json:"customer"`
-	Bank DedicatedNubanListResponseArrayBank `json:"bank"`
 	Id int32 `json:"id"`
-	AccountName string `json:"account_name"`
-	AccountNumber string `json:"account_number"`
-	CreatedAt string `json:"created_at"`
-	UpdatedAt string `json:"updated_at"`
-	Currency string `json:"currency"`
-	SplitConfig NullableTransactionPartialDebitResponseDataMetadata `json:"split_config"`
-	Active bool `json:"active"`
-	Assigned bool `json:"assigned"`
+	RefundAmount NullableInt32 `json:"refund_amount"`
+	Currency NullableString `json:"currency"`
+	Status string `json:"status"`
+	Resolution interface{} `json:"resolution,omitempty"`
+	Domain string `json:"domain"`
+	Transaction DisputeFetchResponseDataTransaction `json:"transaction"`
+	TransactionReference interface{} `json:"transaction_reference,omitempty"`
+	Category NullableString `json:"category"`
+	Customer DisputeFetchResponseDataCustomer `json:"customer"`
+	Bin NullableString `json:"bin"`
+	Last4 NullableString `json:"last4"`
+	DueAt interface{} `json:"dueAt,omitempty"`
+	ResolvedAt interface{} `json:"resolvedAt,omitempty"`
+	Evidence interface{} `json:"evidence,omitempty"`
+	Attachments interface{} `json:"attachments,omitempty"`
+	Note interface{} `json:"note,omitempty"`
+	History []DisputeHistoryArray `json:"history"`
+	Messages []DisputeMessagesArray `json:"messages"`
+	CreatedAt string `json:"createdAt"`
+	UpdatedAt string `json:"updatedAt"`
 }
 
 type _Data5 Data5
@@ -41,19 +51,22 @@ type _Data5 Data5
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewData5(customer DedicatedNubanCreateResponseDataCustomer, bank DedicatedNubanListResponseArrayBank, id int32, accountName string, accountNumber string, createdAt string, updatedAt string, currency string, splitConfig NullableTransactionPartialDebitResponseDataMetadata, active bool, assigned bool) *Data5 {
+func NewData5(id int32, refundAmount NullableInt32, currency NullableString, status string, domain string, transaction DisputeFetchResponseDataTransaction, category NullableString, customer DisputeFetchResponseDataCustomer, bin NullableString, last4 NullableString, history []DisputeHistoryArray, messages []DisputeMessagesArray, createdAt string, updatedAt string) *Data5 {
 	this := Data5{}
-	this.Customer = customer
-	this.Bank = bank
 	this.Id = id
-	this.AccountName = accountName
-	this.AccountNumber = accountNumber
+	this.RefundAmount = refundAmount
+	this.Currency = currency
+	this.Status = status
+	this.Domain = domain
+	this.Transaction = transaction
+	this.Category = category
+	this.Customer = customer
+	this.Bin = bin
+	this.Last4 = last4
+	this.History = history
+	this.Messages = messages
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
-	this.Currency = currency
-	this.SplitConfig = splitConfig
-	this.Active = active
-	this.Assigned = assigned
 	return &this
 }
 
@@ -63,54 +76,6 @@ func NewData5(customer DedicatedNubanCreateResponseDataCustomer, bank DedicatedN
 func NewData5WithDefaults() *Data5 {
 	this := Data5{}
 	return &this
-}
-
-// GetCustomer returns the Customer field value
-func (o *Data5) GetCustomer() DedicatedNubanCreateResponseDataCustomer {
-	if o == nil {
-		var ret DedicatedNubanCreateResponseDataCustomer
-		return ret
-	}
-
-	return o.Customer
-}
-
-// GetCustomerOk returns a tuple with the Customer field value
-// and a boolean to check if the value has been set.
-func (o *Data5) GetCustomerOk() (*DedicatedNubanCreateResponseDataCustomer, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Customer, true
-}
-
-// SetCustomer sets field value
-func (o *Data5) SetCustomer(v DedicatedNubanCreateResponseDataCustomer) {
-	o.Customer = v
-}
-
-// GetBank returns the Bank field value
-func (o *Data5) GetBank() DedicatedNubanListResponseArrayBank {
-	if o == nil {
-		var ret DedicatedNubanListResponseArrayBank
-		return ret
-	}
-
-	return o.Bank
-}
-
-// GetBankOk returns a tuple with the Bank field value
-// and a boolean to check if the value has been set.
-func (o *Data5) GetBankOk() (*DedicatedNubanListResponseArrayBank, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Bank, true
-}
-
-// SetBank sets field value
-func (o *Data5) SetBank(v DedicatedNubanListResponseArrayBank) {
-	o.Bank = v
 }
 
 // GetId returns the Id field value
@@ -137,52 +102,509 @@ func (o *Data5) SetId(v int32) {
 	o.Id = v
 }
 
-// GetAccountName returns the AccountName field value
-func (o *Data5) GetAccountName() string {
+// GetRefundAmount returns the RefundAmount field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *Data5) GetRefundAmount() int32 {
+	if o == nil || o.RefundAmount.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.RefundAmount.Get()
+}
+
+// GetRefundAmountOk returns a tuple with the RefundAmount field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Data5) GetRefundAmountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RefundAmount.Get(), o.RefundAmount.IsSet()
+}
+
+// SetRefundAmount sets field value
+func (o *Data5) SetRefundAmount(v int32) {
+	o.RefundAmount.Set(&v)
+}
+
+// GetCurrency returns the Currency field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *Data5) GetCurrency() string {
+	if o == nil || o.Currency.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Currency.Get()
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Data5) GetCurrencyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Currency.Get(), o.Currency.IsSet()
+}
+
+// SetCurrency sets field value
+func (o *Data5) SetCurrency(v string) {
+	o.Currency.Set(&v)
+}
+
+// GetStatus returns the Status field value
+func (o *Data5) GetStatus() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AccountName
+	return o.Status
 }
 
-// GetAccountNameOk returns a tuple with the AccountName field value
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *Data5) GetAccountNameOk() (*string, bool) {
+func (o *Data5) GetStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AccountName, true
+	return &o.Status, true
 }
 
-// SetAccountName sets field value
-func (o *Data5) SetAccountName(v string) {
-	o.AccountName = v
+// SetStatus sets field value
+func (o *Data5) SetStatus(v string) {
+	o.Status = v
 }
 
-// GetAccountNumber returns the AccountNumber field value
-func (o *Data5) GetAccountNumber() string {
+// GetResolution returns the Resolution field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Data5) GetResolution() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.Resolution
+}
+
+// GetResolutionOk returns a tuple with the Resolution field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Data5) GetResolutionOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Resolution) {
+		return nil, false
+	}
+	return &o.Resolution, true
+}
+
+// HasResolution returns a boolean if a field has been set.
+func (o *Data5) HasResolution() bool {
+	if o != nil && !IsNil(o.Resolution) {
+		return true
+	}
+
+	return false
+}
+
+// SetResolution gets a reference to the given interface{} and assigns it to the Resolution field.
+func (o *Data5) SetResolution(v interface{}) {
+	o.Resolution = v
+}
+
+// GetDomain returns the Domain field value
+func (o *Data5) GetDomain() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AccountNumber
+	return o.Domain
 }
 
-// GetAccountNumberOk returns a tuple with the AccountNumber field value
+// GetDomainOk returns a tuple with the Domain field value
 // and a boolean to check if the value has been set.
-func (o *Data5) GetAccountNumberOk() (*string, bool) {
+func (o *Data5) GetDomainOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AccountNumber, true
+	return &o.Domain, true
 }
 
-// SetAccountNumber sets field value
-func (o *Data5) SetAccountNumber(v string) {
-	o.AccountNumber = v
+// SetDomain sets field value
+func (o *Data5) SetDomain(v string) {
+	o.Domain = v
+}
+
+// GetTransaction returns the Transaction field value
+func (o *Data5) GetTransaction() DisputeFetchResponseDataTransaction {
+	if o == nil {
+		var ret DisputeFetchResponseDataTransaction
+		return ret
+	}
+
+	return o.Transaction
+}
+
+// GetTransactionOk returns a tuple with the Transaction field value
+// and a boolean to check if the value has been set.
+func (o *Data5) GetTransactionOk() (*DisputeFetchResponseDataTransaction, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Transaction, true
+}
+
+// SetTransaction sets field value
+func (o *Data5) SetTransaction(v DisputeFetchResponseDataTransaction) {
+	o.Transaction = v
+}
+
+// GetTransactionReference returns the TransactionReference field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Data5) GetTransactionReference() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.TransactionReference
+}
+
+// GetTransactionReferenceOk returns a tuple with the TransactionReference field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Data5) GetTransactionReferenceOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.TransactionReference) {
+		return nil, false
+	}
+	return &o.TransactionReference, true
+}
+
+// HasTransactionReference returns a boolean if a field has been set.
+func (o *Data5) HasTransactionReference() bool {
+	if o != nil && !IsNil(o.TransactionReference) {
+		return true
+	}
+
+	return false
+}
+
+// SetTransactionReference gets a reference to the given interface{} and assigns it to the TransactionReference field.
+func (o *Data5) SetTransactionReference(v interface{}) {
+	o.TransactionReference = v
+}
+
+// GetCategory returns the Category field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *Data5) GetCategory() string {
+	if o == nil || o.Category.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Category.Get()
+}
+
+// GetCategoryOk returns a tuple with the Category field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Data5) GetCategoryOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Category.Get(), o.Category.IsSet()
+}
+
+// SetCategory sets field value
+func (o *Data5) SetCategory(v string) {
+	o.Category.Set(&v)
+}
+
+// GetCustomer returns the Customer field value
+func (o *Data5) GetCustomer() DisputeFetchResponseDataCustomer {
+	if o == nil {
+		var ret DisputeFetchResponseDataCustomer
+		return ret
+	}
+
+	return o.Customer
+}
+
+// GetCustomerOk returns a tuple with the Customer field value
+// and a boolean to check if the value has been set.
+func (o *Data5) GetCustomerOk() (*DisputeFetchResponseDataCustomer, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Customer, true
+}
+
+// SetCustomer sets field value
+func (o *Data5) SetCustomer(v DisputeFetchResponseDataCustomer) {
+	o.Customer = v
+}
+
+// GetBin returns the Bin field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *Data5) GetBin() string {
+	if o == nil || o.Bin.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Bin.Get()
+}
+
+// GetBinOk returns a tuple with the Bin field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Data5) GetBinOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Bin.Get(), o.Bin.IsSet()
+}
+
+// SetBin sets field value
+func (o *Data5) SetBin(v string) {
+	o.Bin.Set(&v)
+}
+
+// GetLast4 returns the Last4 field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *Data5) GetLast4() string {
+	if o == nil || o.Last4.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Last4.Get()
+}
+
+// GetLast4Ok returns a tuple with the Last4 field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Data5) GetLast4Ok() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Last4.Get(), o.Last4.IsSet()
+}
+
+// SetLast4 sets field value
+func (o *Data5) SetLast4(v string) {
+	o.Last4.Set(&v)
+}
+
+// GetDueAt returns the DueAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Data5) GetDueAt() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.DueAt
+}
+
+// GetDueAtOk returns a tuple with the DueAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Data5) GetDueAtOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.DueAt) {
+		return nil, false
+	}
+	return &o.DueAt, true
+}
+
+// HasDueAt returns a boolean if a field has been set.
+func (o *Data5) HasDueAt() bool {
+	if o != nil && !IsNil(o.DueAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetDueAt gets a reference to the given interface{} and assigns it to the DueAt field.
+func (o *Data5) SetDueAt(v interface{}) {
+	o.DueAt = v
+}
+
+// GetResolvedAt returns the ResolvedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Data5) GetResolvedAt() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.ResolvedAt
+}
+
+// GetResolvedAtOk returns a tuple with the ResolvedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Data5) GetResolvedAtOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.ResolvedAt) {
+		return nil, false
+	}
+	return &o.ResolvedAt, true
+}
+
+// HasResolvedAt returns a boolean if a field has been set.
+func (o *Data5) HasResolvedAt() bool {
+	if o != nil && !IsNil(o.ResolvedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetResolvedAt gets a reference to the given interface{} and assigns it to the ResolvedAt field.
+func (o *Data5) SetResolvedAt(v interface{}) {
+	o.ResolvedAt = v
+}
+
+// GetEvidence returns the Evidence field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Data5) GetEvidence() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.Evidence
+}
+
+// GetEvidenceOk returns a tuple with the Evidence field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Data5) GetEvidenceOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Evidence) {
+		return nil, false
+	}
+	return &o.Evidence, true
+}
+
+// HasEvidence returns a boolean if a field has been set.
+func (o *Data5) HasEvidence() bool {
+	if o != nil && !IsNil(o.Evidence) {
+		return true
+	}
+
+	return false
+}
+
+// SetEvidence gets a reference to the given interface{} and assigns it to the Evidence field.
+func (o *Data5) SetEvidence(v interface{}) {
+	o.Evidence = v
+}
+
+// GetAttachments returns the Attachments field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Data5) GetAttachments() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.Attachments
+}
+
+// GetAttachmentsOk returns a tuple with the Attachments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Data5) GetAttachmentsOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Attachments) {
+		return nil, false
+	}
+	return &o.Attachments, true
+}
+
+// HasAttachments returns a boolean if a field has been set.
+func (o *Data5) HasAttachments() bool {
+	if o != nil && !IsNil(o.Attachments) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttachments gets a reference to the given interface{} and assigns it to the Attachments field.
+func (o *Data5) SetAttachments(v interface{}) {
+	o.Attachments = v
+}
+
+// GetNote returns the Note field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Data5) GetNote() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.Note
+}
+
+// GetNoteOk returns a tuple with the Note field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Data5) GetNoteOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Note) {
+		return nil, false
+	}
+	return &o.Note, true
+}
+
+// HasNote returns a boolean if a field has been set.
+func (o *Data5) HasNote() bool {
+	if o != nil && !IsNil(o.Note) {
+		return true
+	}
+
+	return false
+}
+
+// SetNote gets a reference to the given interface{} and assigns it to the Note field.
+func (o *Data5) SetNote(v interface{}) {
+	o.Note = v
+}
+
+// GetHistory returns the History field value
+func (o *Data5) GetHistory() []DisputeHistoryArray {
+	if o == nil {
+		var ret []DisputeHistoryArray
+		return ret
+	}
+
+	return o.History
+}
+
+// GetHistoryOk returns a tuple with the History field value
+// and a boolean to check if the value has been set.
+func (o *Data5) GetHistoryOk() ([]DisputeHistoryArray, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.History, true
+}
+
+// SetHistory sets field value
+func (o *Data5) SetHistory(v []DisputeHistoryArray) {
+	o.History = v
+}
+
+// GetMessages returns the Messages field value
+func (o *Data5) GetMessages() []DisputeMessagesArray {
+	if o == nil {
+		var ret []DisputeMessagesArray
+		return ret
+	}
+
+	return o.Messages
+}
+
+// GetMessagesOk returns a tuple with the Messages field value
+// and a boolean to check if the value has been set.
+func (o *Data5) GetMessagesOk() ([]DisputeMessagesArray, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Messages, true
+}
+
+// SetMessages sets field value
+func (o *Data5) SetMessages(v []DisputeMessagesArray) {
+	o.Messages = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -233,104 +655,6 @@ func (o *Data5) SetUpdatedAt(v string) {
 	o.UpdatedAt = v
 }
 
-// GetCurrency returns the Currency field value
-func (o *Data5) GetCurrency() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value
-// and a boolean to check if the value has been set.
-func (o *Data5) GetCurrencyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Currency, true
-}
-
-// SetCurrency sets field value
-func (o *Data5) SetCurrency(v string) {
-	o.Currency = v
-}
-
-// GetSplitConfig returns the SplitConfig field value
-// If the value is explicit nil, the zero value for TransactionPartialDebitResponseDataMetadata will be returned
-func (o *Data5) GetSplitConfig() TransactionPartialDebitResponseDataMetadata {
-	if o == nil || o.SplitConfig.Get() == nil {
-		var ret TransactionPartialDebitResponseDataMetadata
-		return ret
-	}
-
-	return *o.SplitConfig.Get()
-}
-
-// GetSplitConfigOk returns a tuple with the SplitConfig field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data5) GetSplitConfigOk() (*TransactionPartialDebitResponseDataMetadata, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.SplitConfig.Get(), o.SplitConfig.IsSet()
-}
-
-// SetSplitConfig sets field value
-func (o *Data5) SetSplitConfig(v TransactionPartialDebitResponseDataMetadata) {
-	o.SplitConfig.Set(&v)
-}
-
-// GetActive returns the Active field value
-func (o *Data5) GetActive() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.Active
-}
-
-// GetActiveOk returns a tuple with the Active field value
-// and a boolean to check if the value has been set.
-func (o *Data5) GetActiveOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Active, true
-}
-
-// SetActive sets field value
-func (o *Data5) SetActive(v bool) {
-	o.Active = v
-}
-
-// GetAssigned returns the Assigned field value
-func (o *Data5) GetAssigned() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.Assigned
-}
-
-// GetAssignedOk returns a tuple with the Assigned field value
-// and a boolean to check if the value has been set.
-func (o *Data5) GetAssignedOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Assigned, true
-}
-
-// SetAssigned sets field value
-func (o *Data5) SetAssigned(v bool) {
-	o.Assigned = v
-}
-
 func (o Data5) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -341,17 +665,41 @@ func (o Data5) MarshalJSON() ([]byte, error) {
 
 func (o Data5) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["customer"] = o.Customer
-	toSerialize["bank"] = o.Bank
 	toSerialize["id"] = o.Id
-	toSerialize["account_name"] = o.AccountName
-	toSerialize["account_number"] = o.AccountNumber
-	toSerialize["created_at"] = o.CreatedAt
-	toSerialize["updated_at"] = o.UpdatedAt
-	toSerialize["currency"] = o.Currency
-	toSerialize["split_config"] = o.SplitConfig.Get()
-	toSerialize["active"] = o.Active
-	toSerialize["assigned"] = o.Assigned
+	toSerialize["refund_amount"] = o.RefundAmount.Get()
+	toSerialize["currency"] = o.Currency.Get()
+	toSerialize["status"] = o.Status
+	if o.Resolution != nil {
+		toSerialize["resolution"] = o.Resolution
+	}
+	toSerialize["domain"] = o.Domain
+	toSerialize["transaction"] = o.Transaction
+	if o.TransactionReference != nil {
+		toSerialize["transaction_reference"] = o.TransactionReference
+	}
+	toSerialize["category"] = o.Category.Get()
+	toSerialize["customer"] = o.Customer
+	toSerialize["bin"] = o.Bin.Get()
+	toSerialize["last4"] = o.Last4.Get()
+	if o.DueAt != nil {
+		toSerialize["dueAt"] = o.DueAt
+	}
+	if o.ResolvedAt != nil {
+		toSerialize["resolvedAt"] = o.ResolvedAt
+	}
+	if o.Evidence != nil {
+		toSerialize["evidence"] = o.Evidence
+	}
+	if o.Attachments != nil {
+		toSerialize["attachments"] = o.Attachments
+	}
+	if o.Note != nil {
+		toSerialize["note"] = o.Note
+	}
+	toSerialize["history"] = o.History
+	toSerialize["messages"] = o.Messages
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
@@ -360,17 +708,20 @@ func (o *Data5) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"customer",
-		"bank",
 		"id",
-		"account_name",
-		"account_number",
-		"created_at",
-		"updated_at",
+		"refund_amount",
 		"currency",
-		"split_config",
-		"active",
-		"assigned",
+		"status",
+		"domain",
+		"transaction",
+		"category",
+		"customer",
+		"bin",
+		"last4",
+		"history",
+		"messages",
+		"createdAt",
+		"updatedAt",
 	}
 
 	allProperties := make(map[string]interface{})

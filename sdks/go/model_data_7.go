@@ -22,25 +22,23 @@ var _ MappedNullable = &Data7{}
 
 // Data7 struct for Data7
 type Data7 struct {
-	Id int32 `json:"id"`
-	RefundAmount NullableInt32 `json:"refund_amount"`
-	Currency NullableString `json:"currency"`
-	Status string `json:"status"`
-	Resolution interface{} `json:"resolution,omitempty"`
+	Integration int32 `json:"integration"`
+	Transaction int32 `json:"transaction"`
+	Dispute NullableInt32 `json:"dispute"`
+	Settlement NullableInt32 `json:"settlement"`
 	Domain string `json:"domain"`
-	Transaction DisputeFetchResponseDataTransaction `json:"transaction"`
-	TransactionReference interface{} `json:"transaction_reference,omitempty"`
-	Category NullableString `json:"category"`
-	Customer DisputeFetchResponseDataCustomer `json:"customer"`
-	Bin NullableString `json:"bin"`
-	Last4 NullableString `json:"last4"`
-	DueAt interface{} `json:"dueAt,omitempty"`
-	ResolvedAt interface{} `json:"resolvedAt,omitempty"`
-	Evidence interface{} `json:"evidence,omitempty"`
-	Attachments interface{} `json:"attachments,omitempty"`
-	Note interface{} `json:"note,omitempty"`
-	History []DisputeHistoryArray `json:"history"`
-	Messages []DisputeMessagesArray `json:"messages"`
+	Amount int32 `json:"amount"`
+	DeductedAmount int32 `json:"deducted_amount"`
+	FullyDeducted bool `json:"fully_deducted"`
+	Currency string `json:"currency"`
+	Channel string `json:"channel"`
+	Status string `json:"status"`
+	RefundedBy string `json:"refunded_by"`
+	RefundedAt string `json:"refunded_at"`
+	ExpectedAt string `json:"expected_at"`
+	CustomerNote string `json:"customer_note"`
+	MerchantNote string `json:"merchant_note"`
+	Id int32 `json:"id"`
 	CreatedAt string `json:"createdAt"`
 	UpdatedAt string `json:"updatedAt"`
 }
@@ -51,20 +49,25 @@ type _Data7 Data7
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewData7(id int32, refundAmount NullableInt32, currency NullableString, status string, domain string, transaction DisputeFetchResponseDataTransaction, category NullableString, customer DisputeFetchResponseDataCustomer, bin NullableString, last4 NullableString, history []DisputeHistoryArray, messages []DisputeMessagesArray, createdAt string, updatedAt string) *Data7 {
+func NewData7(integration int32, transaction int32, dispute NullableInt32, settlement NullableInt32, domain string, amount int32, deductedAmount int32, fullyDeducted bool, currency string, channel string, status string, refundedBy string, refundedAt string, expectedAt string, customerNote string, merchantNote string, id int32, createdAt string, updatedAt string) *Data7 {
 	this := Data7{}
-	this.Id = id
-	this.RefundAmount = refundAmount
-	this.Currency = currency
-	this.Status = status
-	this.Domain = domain
+	this.Integration = integration
 	this.Transaction = transaction
-	this.Category = category
-	this.Customer = customer
-	this.Bin = bin
-	this.Last4 = last4
-	this.History = history
-	this.Messages = messages
+	this.Dispute = dispute
+	this.Settlement = settlement
+	this.Domain = domain
+	this.Amount = amount
+	this.DeductedAmount = deductedAmount
+	this.FullyDeducted = fullyDeducted
+	this.Currency = currency
+	this.Channel = channel
+	this.Status = status
+	this.RefundedBy = refundedBy
+	this.RefundedAt = refundedAt
+	this.ExpectedAt = expectedAt
+	this.CustomerNote = customerNote
+	this.MerchantNote = merchantNote
+	this.Id = id
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -78,137 +81,104 @@ func NewData7WithDefaults() *Data7 {
 	return &this
 }
 
-// GetId returns the Id field value
-func (o *Data7) GetId() int32 {
+// GetIntegration returns the Integration field value
+func (o *Data7) GetIntegration() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.Id
+	return o.Integration
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIntegrationOk returns a tuple with the Integration field value
 // and a boolean to check if the value has been set.
-func (o *Data7) GetIdOk() (*int32, bool) {
+func (o *Data7) GetIntegrationOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Id, true
+	return &o.Integration, true
 }
 
-// SetId sets field value
-func (o *Data7) SetId(v int32) {
-	o.Id = v
+// SetIntegration sets field value
+func (o *Data7) SetIntegration(v int32) {
+	o.Integration = v
 }
 
-// GetRefundAmount returns the RefundAmount field value
+// GetTransaction returns the Transaction field value
+func (o *Data7) GetTransaction() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Transaction
+}
+
+// GetTransactionOk returns a tuple with the Transaction field value
+// and a boolean to check if the value has been set.
+func (o *Data7) GetTransactionOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Transaction, true
+}
+
+// SetTransaction sets field value
+func (o *Data7) SetTransaction(v int32) {
+	o.Transaction = v
+}
+
+// GetDispute returns the Dispute field value
 // If the value is explicit nil, the zero value for int32 will be returned
-func (o *Data7) GetRefundAmount() int32 {
-	if o == nil || o.RefundAmount.Get() == nil {
+func (o *Data7) GetDispute() int32 {
+	if o == nil || o.Dispute.Get() == nil {
 		var ret int32
 		return ret
 	}
 
-	return *o.RefundAmount.Get()
+	return *o.Dispute.Get()
 }
 
-// GetRefundAmountOk returns a tuple with the RefundAmount field value
+// GetDisputeOk returns a tuple with the Dispute field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data7) GetRefundAmountOk() (*int32, bool) {
+func (o *Data7) GetDisputeOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.RefundAmount.Get(), o.RefundAmount.IsSet()
+	return o.Dispute.Get(), o.Dispute.IsSet()
 }
 
-// SetRefundAmount sets field value
-func (o *Data7) SetRefundAmount(v int32) {
-	o.RefundAmount.Set(&v)
+// SetDispute sets field value
+func (o *Data7) SetDispute(v int32) {
+	o.Dispute.Set(&v)
 }
 
-// GetCurrency returns the Currency field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *Data7) GetCurrency() string {
-	if o == nil || o.Currency.Get() == nil {
-		var ret string
+// GetSettlement returns the Settlement field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *Data7) GetSettlement() int32 {
+	if o == nil || o.Settlement.Get() == nil {
+		var ret int32
 		return ret
 	}
 
-	return *o.Currency.Get()
+	return *o.Settlement.Get()
 }
 
-// GetCurrencyOk returns a tuple with the Currency field value
+// GetSettlementOk returns a tuple with the Settlement field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data7) GetCurrencyOk() (*string, bool) {
+func (o *Data7) GetSettlementOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Currency.Get(), o.Currency.IsSet()
+	return o.Settlement.Get(), o.Settlement.IsSet()
 }
 
-// SetCurrency sets field value
-func (o *Data7) SetCurrency(v string) {
-	o.Currency.Set(&v)
-}
-
-// GetStatus returns the Status field value
-func (o *Data7) GetStatus() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value
-// and a boolean to check if the value has been set.
-func (o *Data7) GetStatusOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Status, true
-}
-
-// SetStatus sets field value
-func (o *Data7) SetStatus(v string) {
-	o.Status = v
-}
-
-// GetResolution returns the Resolution field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Data7) GetResolution() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-	return o.Resolution
-}
-
-// GetResolutionOk returns a tuple with the Resolution field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data7) GetResolutionOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Resolution) {
-		return nil, false
-	}
-	return &o.Resolution, true
-}
-
-// HasResolution returns a boolean if a field has been set.
-func (o *Data7) HasResolution() bool {
-	if o != nil && !IsNil(o.Resolution) {
-		return true
-	}
-
-	return false
-}
-
-// SetResolution gets a reference to the given interface{} and assigns it to the Resolution field.
-func (o *Data7) SetResolution(v interface{}) {
-	o.Resolution = v
+// SetSettlement sets field value
+func (o *Data7) SetSettlement(v int32) {
+	o.Settlement.Set(&v)
 }
 
 // GetDomain returns the Domain field value
@@ -235,376 +205,292 @@ func (o *Data7) SetDomain(v string) {
 	o.Domain = v
 }
 
-// GetTransaction returns the Transaction field value
-func (o *Data7) GetTransaction() DisputeFetchResponseDataTransaction {
+// GetAmount returns the Amount field value
+func (o *Data7) GetAmount() int32 {
 	if o == nil {
-		var ret DisputeFetchResponseDataTransaction
+		var ret int32
 		return ret
 	}
 
-	return o.Transaction
+	return o.Amount
 }
 
-// GetTransactionOk returns a tuple with the Transaction field value
+// GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
-func (o *Data7) GetTransactionOk() (*DisputeFetchResponseDataTransaction, bool) {
+func (o *Data7) GetAmountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Transaction, true
+	return &o.Amount, true
 }
 
-// SetTransaction sets field value
-func (o *Data7) SetTransaction(v DisputeFetchResponseDataTransaction) {
-	o.Transaction = v
+// SetAmount sets field value
+func (o *Data7) SetAmount(v int32) {
+	o.Amount = v
 }
 
-// GetTransactionReference returns the TransactionReference field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Data7) GetTransactionReference() interface{} {
+// GetDeductedAmount returns the DeductedAmount field value
+func (o *Data7) GetDeductedAmount() int32 {
 	if o == nil {
-		var ret interface{}
+		var ret int32
 		return ret
 	}
-	return o.TransactionReference
+
+	return o.DeductedAmount
 }
 
-// GetTransactionReferenceOk returns a tuple with the TransactionReference field value if set, nil otherwise
+// GetDeductedAmountOk returns a tuple with the DeductedAmount field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data7) GetTransactionReferenceOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.TransactionReference) {
+func (o *Data7) GetDeductedAmountOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.TransactionReference, true
+	return &o.DeductedAmount, true
 }
 
-// HasTransactionReference returns a boolean if a field has been set.
-func (o *Data7) HasTransactionReference() bool {
-	if o != nil && !IsNil(o.TransactionReference) {
-		return true
+// SetDeductedAmount sets field value
+func (o *Data7) SetDeductedAmount(v int32) {
+	o.DeductedAmount = v
+}
+
+// GetFullyDeducted returns the FullyDeducted field value
+func (o *Data7) GetFullyDeducted() bool {
+	if o == nil {
+		var ret bool
+		return ret
 	}
 
-	return false
+	return o.FullyDeducted
 }
 
-// SetTransactionReference gets a reference to the given interface{} and assigns it to the TransactionReference field.
-func (o *Data7) SetTransactionReference(v interface{}) {
-	o.TransactionReference = v
+// GetFullyDeductedOk returns a tuple with the FullyDeducted field value
+// and a boolean to check if the value has been set.
+func (o *Data7) GetFullyDeductedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.FullyDeducted, true
 }
 
-// GetCategory returns the Category field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *Data7) GetCategory() string {
-	if o == nil || o.Category.Get() == nil {
+// SetFullyDeducted sets field value
+func (o *Data7) SetFullyDeducted(v bool) {
+	o.FullyDeducted = v
+}
+
+// GetCurrency returns the Currency field value
+func (o *Data7) GetCurrency() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Category.Get()
+	return o.Currency
 }
 
-// GetCategoryOk returns a tuple with the Category field value
+// GetCurrencyOk returns a tuple with the Currency field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data7) GetCategoryOk() (*string, bool) {
+func (o *Data7) GetCurrencyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Category.Get(), o.Category.IsSet()
+	return &o.Currency, true
 }
 
-// SetCategory sets field value
-func (o *Data7) SetCategory(v string) {
-	o.Category.Set(&v)
+// SetCurrency sets field value
+func (o *Data7) SetCurrency(v string) {
+	o.Currency = v
 }
 
-// GetCustomer returns the Customer field value
-func (o *Data7) GetCustomer() DisputeFetchResponseDataCustomer {
+// GetChannel returns the Channel field value
+func (o *Data7) GetChannel() string {
 	if o == nil {
-		var ret DisputeFetchResponseDataCustomer
-		return ret
-	}
-
-	return o.Customer
-}
-
-// GetCustomerOk returns a tuple with the Customer field value
-// and a boolean to check if the value has been set.
-func (o *Data7) GetCustomerOk() (*DisputeFetchResponseDataCustomer, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Customer, true
-}
-
-// SetCustomer sets field value
-func (o *Data7) SetCustomer(v DisputeFetchResponseDataCustomer) {
-	o.Customer = v
-}
-
-// GetBin returns the Bin field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *Data7) GetBin() string {
-	if o == nil || o.Bin.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Bin.Get()
+	return o.Channel
 }
 
-// GetBinOk returns a tuple with the Bin field value
+// GetChannelOk returns a tuple with the Channel field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data7) GetBinOk() (*string, bool) {
+func (o *Data7) GetChannelOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Bin.Get(), o.Bin.IsSet()
+	return &o.Channel, true
 }
 
-// SetBin sets field value
-func (o *Data7) SetBin(v string) {
-	o.Bin.Set(&v)
+// SetChannel sets field value
+func (o *Data7) SetChannel(v string) {
+	o.Channel = v
 }
 
-// GetLast4 returns the Last4 field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *Data7) GetLast4() string {
-	if o == nil || o.Last4.Get() == nil {
+// GetStatus returns the Status field value
+func (o *Data7) GetStatus() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Last4.Get()
+	return o.Status
 }
 
-// GetLast4Ok returns a tuple with the Last4 field value
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data7) GetLast4Ok() (*string, bool) {
+func (o *Data7) GetStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Last4.Get(), o.Last4.IsSet()
+	return &o.Status, true
 }
 
-// SetLast4 sets field value
-func (o *Data7) SetLast4(v string) {
-	o.Last4.Set(&v)
+// SetStatus sets field value
+func (o *Data7) SetStatus(v string) {
+	o.Status = v
 }
 
-// GetDueAt returns the DueAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Data7) GetDueAt() interface{} {
+// GetRefundedBy returns the RefundedBy field value
+func (o *Data7) GetRefundedBy() string {
 	if o == nil {
-		var ret interface{}
-		return ret
-	}
-	return o.DueAt
-}
-
-// GetDueAtOk returns a tuple with the DueAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data7) GetDueAtOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.DueAt) {
-		return nil, false
-	}
-	return &o.DueAt, true
-}
-
-// HasDueAt returns a boolean if a field has been set.
-func (o *Data7) HasDueAt() bool {
-	if o != nil && !IsNil(o.DueAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetDueAt gets a reference to the given interface{} and assigns it to the DueAt field.
-func (o *Data7) SetDueAt(v interface{}) {
-	o.DueAt = v
-}
-
-// GetResolvedAt returns the ResolvedAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Data7) GetResolvedAt() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-	return o.ResolvedAt
-}
-
-// GetResolvedAtOk returns a tuple with the ResolvedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data7) GetResolvedAtOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.ResolvedAt) {
-		return nil, false
-	}
-	return &o.ResolvedAt, true
-}
-
-// HasResolvedAt returns a boolean if a field has been set.
-func (o *Data7) HasResolvedAt() bool {
-	if o != nil && !IsNil(o.ResolvedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetResolvedAt gets a reference to the given interface{} and assigns it to the ResolvedAt field.
-func (o *Data7) SetResolvedAt(v interface{}) {
-	o.ResolvedAt = v
-}
-
-// GetEvidence returns the Evidence field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Data7) GetEvidence() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-	return o.Evidence
-}
-
-// GetEvidenceOk returns a tuple with the Evidence field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data7) GetEvidenceOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Evidence) {
-		return nil, false
-	}
-	return &o.Evidence, true
-}
-
-// HasEvidence returns a boolean if a field has been set.
-func (o *Data7) HasEvidence() bool {
-	if o != nil && !IsNil(o.Evidence) {
-		return true
-	}
-
-	return false
-}
-
-// SetEvidence gets a reference to the given interface{} and assigns it to the Evidence field.
-func (o *Data7) SetEvidence(v interface{}) {
-	o.Evidence = v
-}
-
-// GetAttachments returns the Attachments field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Data7) GetAttachments() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-	return o.Attachments
-}
-
-// GetAttachmentsOk returns a tuple with the Attachments field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data7) GetAttachmentsOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Attachments) {
-		return nil, false
-	}
-	return &o.Attachments, true
-}
-
-// HasAttachments returns a boolean if a field has been set.
-func (o *Data7) HasAttachments() bool {
-	if o != nil && !IsNil(o.Attachments) {
-		return true
-	}
-
-	return false
-}
-
-// SetAttachments gets a reference to the given interface{} and assigns it to the Attachments field.
-func (o *Data7) SetAttachments(v interface{}) {
-	o.Attachments = v
-}
-
-// GetNote returns the Note field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Data7) GetNote() interface{} {
-	if o == nil {
-		var ret interface{}
-		return ret
-	}
-	return o.Note
-}
-
-// GetNoteOk returns a tuple with the Note field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data7) GetNoteOk() (*interface{}, bool) {
-	if o == nil || IsNil(o.Note) {
-		return nil, false
-	}
-	return &o.Note, true
-}
-
-// HasNote returns a boolean if a field has been set.
-func (o *Data7) HasNote() bool {
-	if o != nil && !IsNil(o.Note) {
-		return true
-	}
-
-	return false
-}
-
-// SetNote gets a reference to the given interface{} and assigns it to the Note field.
-func (o *Data7) SetNote(v interface{}) {
-	o.Note = v
-}
-
-// GetHistory returns the History field value
-func (o *Data7) GetHistory() []DisputeHistoryArray {
-	if o == nil {
-		var ret []DisputeHistoryArray
+		var ret string
 		return ret
 	}
 
-	return o.History
+	return o.RefundedBy
 }
 
-// GetHistoryOk returns a tuple with the History field value
+// GetRefundedByOk returns a tuple with the RefundedBy field value
 // and a boolean to check if the value has been set.
-func (o *Data7) GetHistoryOk() ([]DisputeHistoryArray, bool) {
+func (o *Data7) GetRefundedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.History, true
+	return &o.RefundedBy, true
 }
 
-// SetHistory sets field value
-func (o *Data7) SetHistory(v []DisputeHistoryArray) {
-	o.History = v
+// SetRefundedBy sets field value
+func (o *Data7) SetRefundedBy(v string) {
+	o.RefundedBy = v
 }
 
-// GetMessages returns the Messages field value
-func (o *Data7) GetMessages() []DisputeMessagesArray {
+// GetRefundedAt returns the RefundedAt field value
+func (o *Data7) GetRefundedAt() string {
 	if o == nil {
-		var ret []DisputeMessagesArray
+		var ret string
 		return ret
 	}
 
-	return o.Messages
+	return o.RefundedAt
 }
 
-// GetMessagesOk returns a tuple with the Messages field value
+// GetRefundedAtOk returns a tuple with the RefundedAt field value
 // and a boolean to check if the value has been set.
-func (o *Data7) GetMessagesOk() ([]DisputeMessagesArray, bool) {
+func (o *Data7) GetRefundedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Messages, true
+	return &o.RefundedAt, true
 }
 
-// SetMessages sets field value
-func (o *Data7) SetMessages(v []DisputeMessagesArray) {
-	o.Messages = v
+// SetRefundedAt sets field value
+func (o *Data7) SetRefundedAt(v string) {
+	o.RefundedAt = v
+}
+
+// GetExpectedAt returns the ExpectedAt field value
+func (o *Data7) GetExpectedAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ExpectedAt
+}
+
+// GetExpectedAtOk returns a tuple with the ExpectedAt field value
+// and a boolean to check if the value has been set.
+func (o *Data7) GetExpectedAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ExpectedAt, true
+}
+
+// SetExpectedAt sets field value
+func (o *Data7) SetExpectedAt(v string) {
+	o.ExpectedAt = v
+}
+
+// GetCustomerNote returns the CustomerNote field value
+func (o *Data7) GetCustomerNote() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CustomerNote
+}
+
+// GetCustomerNoteOk returns a tuple with the CustomerNote field value
+// and a boolean to check if the value has been set.
+func (o *Data7) GetCustomerNoteOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CustomerNote, true
+}
+
+// SetCustomerNote sets field value
+func (o *Data7) SetCustomerNote(v string) {
+	o.CustomerNote = v
+}
+
+// GetMerchantNote returns the MerchantNote field value
+func (o *Data7) GetMerchantNote() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MerchantNote
+}
+
+// GetMerchantNoteOk returns a tuple with the MerchantNote field value
+// and a boolean to check if the value has been set.
+func (o *Data7) GetMerchantNoteOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MerchantNote, true
+}
+
+// SetMerchantNote sets field value
+func (o *Data7) SetMerchantNote(v string) {
+	o.MerchantNote = v
+}
+
+// GetId returns the Id field value
+func (o *Data7) GetId() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *Data7) GetIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *Data7) SetId(v int32) {
+	o.Id = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -665,39 +551,23 @@ func (o Data7) MarshalJSON() ([]byte, error) {
 
 func (o Data7) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["refund_amount"] = o.RefundAmount.Get()
-	toSerialize["currency"] = o.Currency.Get()
-	toSerialize["status"] = o.Status
-	if o.Resolution != nil {
-		toSerialize["resolution"] = o.Resolution
-	}
-	toSerialize["domain"] = o.Domain
+	toSerialize["integration"] = o.Integration
 	toSerialize["transaction"] = o.Transaction
-	if o.TransactionReference != nil {
-		toSerialize["transaction_reference"] = o.TransactionReference
-	}
-	toSerialize["category"] = o.Category.Get()
-	toSerialize["customer"] = o.Customer
-	toSerialize["bin"] = o.Bin.Get()
-	toSerialize["last4"] = o.Last4.Get()
-	if o.DueAt != nil {
-		toSerialize["dueAt"] = o.DueAt
-	}
-	if o.ResolvedAt != nil {
-		toSerialize["resolvedAt"] = o.ResolvedAt
-	}
-	if o.Evidence != nil {
-		toSerialize["evidence"] = o.Evidence
-	}
-	if o.Attachments != nil {
-		toSerialize["attachments"] = o.Attachments
-	}
-	if o.Note != nil {
-		toSerialize["note"] = o.Note
-	}
-	toSerialize["history"] = o.History
-	toSerialize["messages"] = o.Messages
+	toSerialize["dispute"] = o.Dispute.Get()
+	toSerialize["settlement"] = o.Settlement.Get()
+	toSerialize["domain"] = o.Domain
+	toSerialize["amount"] = o.Amount
+	toSerialize["deducted_amount"] = o.DeductedAmount
+	toSerialize["fully_deducted"] = o.FullyDeducted
+	toSerialize["currency"] = o.Currency
+	toSerialize["channel"] = o.Channel
+	toSerialize["status"] = o.Status
+	toSerialize["refunded_by"] = o.RefundedBy
+	toSerialize["refunded_at"] = o.RefundedAt
+	toSerialize["expected_at"] = o.ExpectedAt
+	toSerialize["customer_note"] = o.CustomerNote
+	toSerialize["merchant_note"] = o.MerchantNote
+	toSerialize["id"] = o.Id
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
@@ -708,18 +578,23 @@ func (o *Data7) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"id",
-		"refund_amount",
-		"currency",
-		"status",
-		"domain",
+		"integration",
 		"transaction",
-		"category",
-		"customer",
-		"bin",
-		"last4",
-		"history",
-		"messages",
+		"dispute",
+		"settlement",
+		"domain",
+		"amount",
+		"deducted_amount",
+		"fully_deducted",
+		"currency",
+		"channel",
+		"status",
+		"refunded_by",
+		"refunded_at",
+		"expected_at",
+		"customer_note",
+		"merchant_note",
+		"id",
 		"createdAt",
 		"updatedAt",
 	}

@@ -92,9 +92,86 @@ oneOf:
     properties:
       event:
         type: string
-        enum: [invoice.failed]
+        enum: [invoice.payment_failed]
       data:
-        $ref: "./PaymentRequestVerifyResponse.yaml#/properties/data"
+        type: object
+        description: The invoice payment failure payload. Inspect status and invoice details before changing access.
+        additionalProperties: true
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [charge.dispute.remind]
+      data:
+        $ref: "./DisputeFetchResponse.yaml#/properties/data"
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [refund.pending, refund.processing, refund.needs-attention]
+      data:
+        type: object
+        description: Refund lifecycle details. Payload fields vary with processor and refund state.
+        additionalProperties: true
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [customeridentification.success, customeridentification.failed]
+      data:
+        type: object
+        description: Customer identification result and verification details.
+        additionalProperties: true
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [paymentrequest.pending, paymentrequest.success]
+      data:
+        type: object
+        description: Payment request lifecycle details.
+        additionalProperties: true
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [subscription.expiring_cards]
+      data:
+        type: object
+        description: Subscription and card expiry information for the affected customer.
+        additionalProperties: true
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [direct_debit.authorization.created, direct_debit.authorization.active]
+      data:
+        type: object
+        description: Direct Debit authorization and mandate status details.
+        additionalProperties: true
+    required: [event, data]
+
+  - type: object
+    properties:
+      event:
+        type: string
+        enum: [zero_charge_authorization.success]
+      data:
+        type: object
+        description: Zero-charge card authorization result.
+        additionalProperties: true
     required: [event, data]
 
   - type: object

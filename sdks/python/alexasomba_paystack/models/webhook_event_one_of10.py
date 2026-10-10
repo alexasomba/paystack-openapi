@@ -35,8 +35,8 @@ class WebhookEventOneOf10(BaseModel):
     @field_validator('event')
     def event_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['dedicatedaccount.assign.success']):
-            raise ValueError("must be one of enum values ('dedicatedaccount.assign.success')")
+        if value not in set(['charge.dispute.remind']):
+            raise ValueError("must be one of enum values ('charge.dispute.remind')")
         return value
 
     model_config = ConfigDict(

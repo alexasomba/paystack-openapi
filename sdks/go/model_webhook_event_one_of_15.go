@@ -23,7 +23,8 @@ var _ MappedNullable = &WebhookEventOneOf15{}
 // WebhookEventOneOf15 struct for WebhookEventOneOf15
 type WebhookEventOneOf15 struct {
 	Event string `json:"event"`
-	Data Data7 `json:"data"`
+	// Direct Debit authorization and mandate status details.
+	Data map[string]interface{} `json:"data"`
 }
 
 type _WebhookEventOneOf15 WebhookEventOneOf15
@@ -32,7 +33,7 @@ type _WebhookEventOneOf15 WebhookEventOneOf15
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebhookEventOneOf15(event string, data Data7) *WebhookEventOneOf15 {
+func NewWebhookEventOneOf15(event string, data map[string]interface{}) *WebhookEventOneOf15 {
 	this := WebhookEventOneOf15{}
 	this.Event = event
 	this.Data = data
@@ -72,9 +73,9 @@ func (o *WebhookEventOneOf15) SetEvent(v string) {
 }
 
 // GetData returns the Data field value
-func (o *WebhookEventOneOf15) GetData() Data7 {
+func (o *WebhookEventOneOf15) GetData() map[string]interface{} {
 	if o == nil {
-		var ret Data7
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -83,15 +84,15 @@ func (o *WebhookEventOneOf15) GetData() Data7 {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *WebhookEventOneOf15) GetDataOk() (*Data7, bool) {
+func (o *WebhookEventOneOf15) GetDataOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Data, true
+	return o.Data, true
 }
 
 // SetData sets field value
-func (o *WebhookEventOneOf15) SetData(v Data7) {
+func (o *WebhookEventOneOf15) SetData(v map[string]interface{}) {
 	o.Data = v
 }
 

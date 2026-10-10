@@ -22,25 +22,17 @@ var _ MappedNullable = &Data6{}
 
 // Data6 struct for Data6
 type Data6 struct {
-	Integration int32 `json:"integration"`
-	Transaction int32 `json:"transaction"`
-	Dispute NullableInt32 `json:"dispute"`
-	Settlement NullableInt32 `json:"settlement"`
-	Domain string `json:"domain"`
-	Amount int32 `json:"amount"`
-	DeductedAmount int32 `json:"deducted_amount"`
-	FullyDeducted bool `json:"fully_deducted"`
-	Currency string `json:"currency"`
-	Channel string `json:"channel"`
-	Status string `json:"status"`
-	RefundedBy string `json:"refunded_by"`
-	RefundedAt string `json:"refunded_at"`
-	ExpectedAt string `json:"expected_at"`
-	CustomerNote string `json:"customer_note"`
-	MerchantNote string `json:"merchant_note"`
+	Customer DedicatedNubanCreateResponseDataCustomer `json:"customer"`
+	Bank DedicatedNubanListResponseArrayBank `json:"bank"`
 	Id int32 `json:"id"`
-	CreatedAt string `json:"createdAt"`
-	UpdatedAt string `json:"updatedAt"`
+	AccountName string `json:"account_name"`
+	AccountNumber string `json:"account_number"`
+	CreatedAt string `json:"created_at"`
+	UpdatedAt string `json:"updated_at"`
+	Currency string `json:"currency"`
+	SplitConfig NullableTransactionPartialDebitResponseDataMetadata `json:"split_config"`
+	Active bool `json:"active"`
+	Assigned bool `json:"assigned"`
 }
 
 type _Data6 Data6
@@ -49,27 +41,19 @@ type _Data6 Data6
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewData6(integration int32, transaction int32, dispute NullableInt32, settlement NullableInt32, domain string, amount int32, deductedAmount int32, fullyDeducted bool, currency string, channel string, status string, refundedBy string, refundedAt string, expectedAt string, customerNote string, merchantNote string, id int32, createdAt string, updatedAt string) *Data6 {
+func NewData6(customer DedicatedNubanCreateResponseDataCustomer, bank DedicatedNubanListResponseArrayBank, id int32, accountName string, accountNumber string, createdAt string, updatedAt string, currency string, splitConfig NullableTransactionPartialDebitResponseDataMetadata, active bool, assigned bool) *Data6 {
 	this := Data6{}
-	this.Integration = integration
-	this.Transaction = transaction
-	this.Dispute = dispute
-	this.Settlement = settlement
-	this.Domain = domain
-	this.Amount = amount
-	this.DeductedAmount = deductedAmount
-	this.FullyDeducted = fullyDeducted
-	this.Currency = currency
-	this.Channel = channel
-	this.Status = status
-	this.RefundedBy = refundedBy
-	this.RefundedAt = refundedAt
-	this.ExpectedAt = expectedAt
-	this.CustomerNote = customerNote
-	this.MerchantNote = merchantNote
+	this.Customer = customer
+	this.Bank = bank
 	this.Id = id
+	this.AccountName = accountName
+	this.AccountNumber = accountNumber
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
+	this.Currency = currency
+	this.SplitConfig = splitConfig
+	this.Active = active
+	this.Assigned = assigned
 	return &this
 }
 
@@ -81,392 +65,52 @@ func NewData6WithDefaults() *Data6 {
 	return &this
 }
 
-// GetIntegration returns the Integration field value
-func (o *Data6) GetIntegration() int32 {
+// GetCustomer returns the Customer field value
+func (o *Data6) GetCustomer() DedicatedNubanCreateResponseDataCustomer {
 	if o == nil {
-		var ret int32
+		var ret DedicatedNubanCreateResponseDataCustomer
 		return ret
 	}
 
-	return o.Integration
+	return o.Customer
 }
 
-// GetIntegrationOk returns a tuple with the Integration field value
+// GetCustomerOk returns a tuple with the Customer field value
 // and a boolean to check if the value has been set.
-func (o *Data6) GetIntegrationOk() (*int32, bool) {
+func (o *Data6) GetCustomerOk() (*DedicatedNubanCreateResponseDataCustomer, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Integration, true
+	return &o.Customer, true
 }
 
-// SetIntegration sets field value
-func (o *Data6) SetIntegration(v int32) {
-	o.Integration = v
+// SetCustomer sets field value
+func (o *Data6) SetCustomer(v DedicatedNubanCreateResponseDataCustomer) {
+	o.Customer = v
 }
 
-// GetTransaction returns the Transaction field value
-func (o *Data6) GetTransaction() int32 {
+// GetBank returns the Bank field value
+func (o *Data6) GetBank() DedicatedNubanListResponseArrayBank {
 	if o == nil {
-		var ret int32
+		var ret DedicatedNubanListResponseArrayBank
 		return ret
 	}
 
-	return o.Transaction
+	return o.Bank
 }
 
-// GetTransactionOk returns a tuple with the Transaction field value
+// GetBankOk returns a tuple with the Bank field value
 // and a boolean to check if the value has been set.
-func (o *Data6) GetTransactionOk() (*int32, bool) {
+func (o *Data6) GetBankOk() (*DedicatedNubanListResponseArrayBank, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Transaction, true
+	return &o.Bank, true
 }
 
-// SetTransaction sets field value
-func (o *Data6) SetTransaction(v int32) {
-	o.Transaction = v
-}
-
-// GetDispute returns the Dispute field value
-// If the value is explicit nil, the zero value for int32 will be returned
-func (o *Data6) GetDispute() int32 {
-	if o == nil || o.Dispute.Get() == nil {
-		var ret int32
-		return ret
-	}
-
-	return *o.Dispute.Get()
-}
-
-// GetDisputeOk returns a tuple with the Dispute field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data6) GetDisputeOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Dispute.Get(), o.Dispute.IsSet()
-}
-
-// SetDispute sets field value
-func (o *Data6) SetDispute(v int32) {
-	o.Dispute.Set(&v)
-}
-
-// GetSettlement returns the Settlement field value
-// If the value is explicit nil, the zero value for int32 will be returned
-func (o *Data6) GetSettlement() int32 {
-	if o == nil || o.Settlement.Get() == nil {
-		var ret int32
-		return ret
-	}
-
-	return *o.Settlement.Get()
-}
-
-// GetSettlementOk returns a tuple with the Settlement field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Data6) GetSettlementOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Settlement.Get(), o.Settlement.IsSet()
-}
-
-// SetSettlement sets field value
-func (o *Data6) SetSettlement(v int32) {
-	o.Settlement.Set(&v)
-}
-
-// GetDomain returns the Domain field value
-func (o *Data6) GetDomain() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Domain
-}
-
-// GetDomainOk returns a tuple with the Domain field value
-// and a boolean to check if the value has been set.
-func (o *Data6) GetDomainOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Domain, true
-}
-
-// SetDomain sets field value
-func (o *Data6) SetDomain(v string) {
-	o.Domain = v
-}
-
-// GetAmount returns the Amount field value
-func (o *Data6) GetAmount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.Amount
-}
-
-// GetAmountOk returns a tuple with the Amount field value
-// and a boolean to check if the value has been set.
-func (o *Data6) GetAmountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Amount, true
-}
-
-// SetAmount sets field value
-func (o *Data6) SetAmount(v int32) {
-	o.Amount = v
-}
-
-// GetDeductedAmount returns the DeductedAmount field value
-func (o *Data6) GetDeductedAmount() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.DeductedAmount
-}
-
-// GetDeductedAmountOk returns a tuple with the DeductedAmount field value
-// and a boolean to check if the value has been set.
-func (o *Data6) GetDeductedAmountOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.DeductedAmount, true
-}
-
-// SetDeductedAmount sets field value
-func (o *Data6) SetDeductedAmount(v int32) {
-	o.DeductedAmount = v
-}
-
-// GetFullyDeducted returns the FullyDeducted field value
-func (o *Data6) GetFullyDeducted() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.FullyDeducted
-}
-
-// GetFullyDeductedOk returns a tuple with the FullyDeducted field value
-// and a boolean to check if the value has been set.
-func (o *Data6) GetFullyDeductedOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.FullyDeducted, true
-}
-
-// SetFullyDeducted sets field value
-func (o *Data6) SetFullyDeducted(v bool) {
-	o.FullyDeducted = v
-}
-
-// GetCurrency returns the Currency field value
-func (o *Data6) GetCurrency() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Currency
-}
-
-// GetCurrencyOk returns a tuple with the Currency field value
-// and a boolean to check if the value has been set.
-func (o *Data6) GetCurrencyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Currency, true
-}
-
-// SetCurrency sets field value
-func (o *Data6) SetCurrency(v string) {
-	o.Currency = v
-}
-
-// GetChannel returns the Channel field value
-func (o *Data6) GetChannel() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Channel
-}
-
-// GetChannelOk returns a tuple with the Channel field value
-// and a boolean to check if the value has been set.
-func (o *Data6) GetChannelOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Channel, true
-}
-
-// SetChannel sets field value
-func (o *Data6) SetChannel(v string) {
-	o.Channel = v
-}
-
-// GetStatus returns the Status field value
-func (o *Data6) GetStatus() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value
-// and a boolean to check if the value has been set.
-func (o *Data6) GetStatusOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Status, true
-}
-
-// SetStatus sets field value
-func (o *Data6) SetStatus(v string) {
-	o.Status = v
-}
-
-// GetRefundedBy returns the RefundedBy field value
-func (o *Data6) GetRefundedBy() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RefundedBy
-}
-
-// GetRefundedByOk returns a tuple with the RefundedBy field value
-// and a boolean to check if the value has been set.
-func (o *Data6) GetRefundedByOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RefundedBy, true
-}
-
-// SetRefundedBy sets field value
-func (o *Data6) SetRefundedBy(v string) {
-	o.RefundedBy = v
-}
-
-// GetRefundedAt returns the RefundedAt field value
-func (o *Data6) GetRefundedAt() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RefundedAt
-}
-
-// GetRefundedAtOk returns a tuple with the RefundedAt field value
-// and a boolean to check if the value has been set.
-func (o *Data6) GetRefundedAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RefundedAt, true
-}
-
-// SetRefundedAt sets field value
-func (o *Data6) SetRefundedAt(v string) {
-	o.RefundedAt = v
-}
-
-// GetExpectedAt returns the ExpectedAt field value
-func (o *Data6) GetExpectedAt() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ExpectedAt
-}
-
-// GetExpectedAtOk returns a tuple with the ExpectedAt field value
-// and a boolean to check if the value has been set.
-func (o *Data6) GetExpectedAtOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ExpectedAt, true
-}
-
-// SetExpectedAt sets field value
-func (o *Data6) SetExpectedAt(v string) {
-	o.ExpectedAt = v
-}
-
-// GetCustomerNote returns the CustomerNote field value
-func (o *Data6) GetCustomerNote() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.CustomerNote
-}
-
-// GetCustomerNoteOk returns a tuple with the CustomerNote field value
-// and a boolean to check if the value has been set.
-func (o *Data6) GetCustomerNoteOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CustomerNote, true
-}
-
-// SetCustomerNote sets field value
-func (o *Data6) SetCustomerNote(v string) {
-	o.CustomerNote = v
-}
-
-// GetMerchantNote returns the MerchantNote field value
-func (o *Data6) GetMerchantNote() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.MerchantNote
-}
-
-// GetMerchantNoteOk returns a tuple with the MerchantNote field value
-// and a boolean to check if the value has been set.
-func (o *Data6) GetMerchantNoteOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.MerchantNote, true
-}
-
-// SetMerchantNote sets field value
-func (o *Data6) SetMerchantNote(v string) {
-	o.MerchantNote = v
+// SetBank sets field value
+func (o *Data6) SetBank(v DedicatedNubanListResponseArrayBank) {
+	o.Bank = v
 }
 
 // GetId returns the Id field value
@@ -491,6 +135,54 @@ func (o *Data6) GetIdOk() (*int32, bool) {
 // SetId sets field value
 func (o *Data6) SetId(v int32) {
 	o.Id = v
+}
+
+// GetAccountName returns the AccountName field value
+func (o *Data6) GetAccountName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AccountName
+}
+
+// GetAccountNameOk returns a tuple with the AccountName field value
+// and a boolean to check if the value has been set.
+func (o *Data6) GetAccountNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AccountName, true
+}
+
+// SetAccountName sets field value
+func (o *Data6) SetAccountName(v string) {
+	o.AccountName = v
+}
+
+// GetAccountNumber returns the AccountNumber field value
+func (o *Data6) GetAccountNumber() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AccountNumber
+}
+
+// GetAccountNumberOk returns a tuple with the AccountNumber field value
+// and a boolean to check if the value has been set.
+func (o *Data6) GetAccountNumberOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AccountNumber, true
+}
+
+// SetAccountNumber sets field value
+func (o *Data6) SetAccountNumber(v string) {
+	o.AccountNumber = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -541,6 +233,104 @@ func (o *Data6) SetUpdatedAt(v string) {
 	o.UpdatedAt = v
 }
 
+// GetCurrency returns the Currency field value
+func (o *Data6) GetCurrency() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Currency
+}
+
+// GetCurrencyOk returns a tuple with the Currency field value
+// and a boolean to check if the value has been set.
+func (o *Data6) GetCurrencyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Currency, true
+}
+
+// SetCurrency sets field value
+func (o *Data6) SetCurrency(v string) {
+	o.Currency = v
+}
+
+// GetSplitConfig returns the SplitConfig field value
+// If the value is explicit nil, the zero value for TransactionPartialDebitResponseDataMetadata will be returned
+func (o *Data6) GetSplitConfig() TransactionPartialDebitResponseDataMetadata {
+	if o == nil || o.SplitConfig.Get() == nil {
+		var ret TransactionPartialDebitResponseDataMetadata
+		return ret
+	}
+
+	return *o.SplitConfig.Get()
+}
+
+// GetSplitConfigOk returns a tuple with the SplitConfig field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Data6) GetSplitConfigOk() (*TransactionPartialDebitResponseDataMetadata, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SplitConfig.Get(), o.SplitConfig.IsSet()
+}
+
+// SetSplitConfig sets field value
+func (o *Data6) SetSplitConfig(v TransactionPartialDebitResponseDataMetadata) {
+	o.SplitConfig.Set(&v)
+}
+
+// GetActive returns the Active field value
+func (o *Data6) GetActive() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Active
+}
+
+// GetActiveOk returns a tuple with the Active field value
+// and a boolean to check if the value has been set.
+func (o *Data6) GetActiveOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Active, true
+}
+
+// SetActive sets field value
+func (o *Data6) SetActive(v bool) {
+	o.Active = v
+}
+
+// GetAssigned returns the Assigned field value
+func (o *Data6) GetAssigned() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Assigned
+}
+
+// GetAssignedOk returns a tuple with the Assigned field value
+// and a boolean to check if the value has been set.
+func (o *Data6) GetAssignedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Assigned, true
+}
+
+// SetAssigned sets field value
+func (o *Data6) SetAssigned(v bool) {
+	o.Assigned = v
+}
+
 func (o Data6) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -551,25 +341,17 @@ func (o Data6) MarshalJSON() ([]byte, error) {
 
 func (o Data6) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["integration"] = o.Integration
-	toSerialize["transaction"] = o.Transaction
-	toSerialize["dispute"] = o.Dispute.Get()
-	toSerialize["settlement"] = o.Settlement.Get()
-	toSerialize["domain"] = o.Domain
-	toSerialize["amount"] = o.Amount
-	toSerialize["deducted_amount"] = o.DeductedAmount
-	toSerialize["fully_deducted"] = o.FullyDeducted
-	toSerialize["currency"] = o.Currency
-	toSerialize["channel"] = o.Channel
-	toSerialize["status"] = o.Status
-	toSerialize["refunded_by"] = o.RefundedBy
-	toSerialize["refunded_at"] = o.RefundedAt
-	toSerialize["expected_at"] = o.ExpectedAt
-	toSerialize["customer_note"] = o.CustomerNote
-	toSerialize["merchant_note"] = o.MerchantNote
+	toSerialize["customer"] = o.Customer
+	toSerialize["bank"] = o.Bank
 	toSerialize["id"] = o.Id
-	toSerialize["createdAt"] = o.CreatedAt
-	toSerialize["updatedAt"] = o.UpdatedAt
+	toSerialize["account_name"] = o.AccountName
+	toSerialize["account_number"] = o.AccountNumber
+	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["updated_at"] = o.UpdatedAt
+	toSerialize["currency"] = o.Currency
+	toSerialize["split_config"] = o.SplitConfig.Get()
+	toSerialize["active"] = o.Active
+	toSerialize["assigned"] = o.Assigned
 	return toSerialize, nil
 }
 
@@ -578,25 +360,17 @@ func (o *Data6) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"integration",
-		"transaction",
-		"dispute",
-		"settlement",
-		"domain",
-		"amount",
-		"deducted_amount",
-		"fully_deducted",
-		"currency",
-		"channel",
-		"status",
-		"refunded_by",
-		"refunded_at",
-		"expected_at",
-		"customer_note",
-		"merchant_note",
+		"customer",
+		"bank",
 		"id",
-		"createdAt",
-		"updatedAt",
+		"account_name",
+		"account_number",
+		"created_at",
+		"updated_at",
+		"currency",
+		"split_config",
+		"active",
+		"assigned",
 	}
 
 	allProperties := make(map[string]interface{})

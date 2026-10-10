@@ -535,7 +535,14 @@ alexasomba_paystack/models/webhook_event_one_of12.py
 alexasomba_paystack/models/webhook_event_one_of13.py
 alexasomba_paystack/models/webhook_event_one_of14.py
 alexasomba_paystack/models/webhook_event_one_of15.py
+alexasomba_paystack/models/webhook_event_one_of16.py
+alexasomba_paystack/models/webhook_event_one_of17.py
+alexasomba_paystack/models/webhook_event_one_of18.py
+alexasomba_paystack/models/webhook_event_one_of19.py
 alexasomba_paystack/models/webhook_event_one_of2.py
+alexasomba_paystack/models/webhook_event_one_of20.py
+alexasomba_paystack/models/webhook_event_one_of21.py
+alexasomba_paystack/models/webhook_event_one_of22.py
 alexasomba_paystack/models/webhook_event_one_of3.py
 alexasomba_paystack/models/webhook_event_one_of4.py
 alexasomba_paystack/models/webhook_event_one_of5.py

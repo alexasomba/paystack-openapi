@@ -553,7 +553,14 @@ __all__ = [
     "WebhookEventOneOf13",
     "WebhookEventOneOf14",
     "WebhookEventOneOf15",
+    "WebhookEventOneOf16",
+    "WebhookEventOneOf17",
+    "WebhookEventOneOf18",
+    "WebhookEventOneOf19",
     "WebhookEventOneOf2",
+    "WebhookEventOneOf20",
+    "WebhookEventOneOf21",
+    "WebhookEventOneOf22",
     "WebhookEventOneOf3",
     "WebhookEventOneOf4",
     "WebhookEventOneOf5",
@@ -1102,7 +1109,14 @@ from alexasomba_paystack.models.webhook_event_one_of12 import WebhookEventOneOf1
 from alexasomba_paystack.models.webhook_event_one_of13 import WebhookEventOneOf13 as WebhookEventOneOf13
 from alexasomba_paystack.models.webhook_event_one_of14 import WebhookEventOneOf14 as WebhookEventOneOf14
 from alexasomba_paystack.models.webhook_event_one_of15 import WebhookEventOneOf15 as WebhookEventOneOf15
+from alexasomba_paystack.models.webhook_event_one_of16 import WebhookEventOneOf16 as WebhookEventOneOf16
+from alexasomba_paystack.models.webhook_event_one_of17 import WebhookEventOneOf17 as WebhookEventOneOf17
+from alexasomba_paystack.models.webhook_event_one_of18 import WebhookEventOneOf18 as WebhookEventOneOf18
+from alexasomba_paystack.models.webhook_event_one_of19 import WebhookEventOneOf19 as WebhookEventOneOf19
 from alexasomba_paystack.models.webhook_event_one_of2 import WebhookEventOneOf2 as WebhookEventOneOf2
+from alexasomba_paystack.models.webhook_event_one_of20 import WebhookEventOneOf20 as WebhookEventOneOf20
+from alexasomba_paystack.models.webhook_event_one_of21 import WebhookEventOneOf21 as WebhookEventOneOf21
+from alexasomba_paystack.models.webhook_event_one_of22 import WebhookEventOneOf22 as WebhookEventOneOf22
 from alexasomba_paystack.models.webhook_event_one_of3 import WebhookEventOneOf3 as WebhookEventOneOf3
 from alexasomba_paystack.models.webhook_event_one_of4 import WebhookEventOneOf4 as WebhookEventOneOf4
 from alexasomba_paystack.models.webhook_event_one_of5 import WebhookEventOneOf5 as WebhookEventOneOf5

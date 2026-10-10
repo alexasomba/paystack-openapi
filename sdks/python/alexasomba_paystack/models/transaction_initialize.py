@@ -55,8 +55,8 @@ class TransactionInitialize(BaseModel):
             return value
 
         for i in value:
-            if i not in set(['card', 'bank', 'ussd', 'qr', 'eft', 'mobile_money', 'bank_transfer', 'apple_pay', 'capitec_pay', 'payattitude']):
-                raise ValueError("each list item must be one of ('card', 'bank', 'ussd', 'qr', 'eft', 'mobile_money', 'bank_transfer', 'apple_pay', 'capitec_pay', 'payattitude')")
+            if i not in set(['apple_pay', 'bank', 'bank_transfer', 'capitec_pay', 'card', 'eft', 'mobile_money', 'payattitude', 'qr', 'ussd']):
+                raise ValueError("each list item must be one of ('apple_pay', 'bank', 'bank_transfer', 'capitec_pay', 'card', 'eft', 'mobile_money', 'payattitude', 'qr', 'ussd')")
         return value
 
     @field_validator('bearer')
