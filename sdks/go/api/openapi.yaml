@@ -9113,6 +9113,13 @@ components:
         - $ref: "#/components/schemas/WebhookEvent_oneOf_13"
         - $ref: "#/components/schemas/WebhookEvent_oneOf_14"
         - $ref: "#/components/schemas/WebhookEvent_oneOf_15"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_16"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_17"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_18"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_19"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_20"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_21"
+        - $ref: "#/components/schemas/WebhookEvent_oneOf_22"
       properties:
         event:
           description: The type of event that occurred.
@@ -9220,16 +9227,16 @@ components:
             An array of payment channels to control what channels you want to make available to the user to make a payment with
           items:
             enum:
-              - card
+              - apple_pay
               - bank
-              - ussd
-              - qr
+              - bank_transfer
+              - capitec_pay
+              - card
               - eft
               - mobile_money
-              - bank_transfer
-              - apple_pay
-              - capitec_pay
               - payattitude
+              - qr
+              - ussd
             type: string
           type: array
         callback_url:
@@ -21802,106 +21809,6 @@ components:
       type: object
     data-5:
       properties:
-        customer:
-          $ref: "#/components/schemas/DedicatedNubanCreateResponse_data_customer"
-        bank:
-          $ref: "#/components/schemas/DedicatedNubanListResponseArray_bank"
-        id:
-          type: integer
-        account_name:
-          type: string
-        account_number:
-          type: string
-        created_at:
-          type: string
-        updated_at:
-          type: string
-        currency:
-          type: string
-        split_config:
-          $ref: "#/components/schemas/TransactionPartialDebitResponse_data_metadata"
-        active:
-          type: boolean
-        assigned:
-          type: boolean
-      required:
-        - account_name
-        - account_number
-        - active
-        - assigned
-        - bank
-        - created_at
-        - currency
-        - customer
-        - id
-        - split_config
-        - updated_at
-      type: object
-    data-6:
-      properties:
-        integration:
-          type: integer
-        transaction:
-          type: integer
-        dispute:
-          nullable: true
-          type: integer
-        settlement:
-          nullable: true
-          type: integer
-        domain:
-          type: string
-        amount:
-          type: integer
-        deducted_amount:
-          type: integer
-        fully_deducted:
-          type: boolean
-        currency:
-          type: string
-        channel:
-          type: string
-        status:
-          type: string
-        refunded_by:
-          type: string
-        refunded_at:
-          type: string
-        expected_at:
-          type: string
-        customer_note:
-          type: string
-        merchant_note:
-          type: string
-        id:
-          type: integer
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-      required:
-        - amount
-        - channel
-        - createdAt
-        - currency
-        - customer_note
-        - deducted_amount
-        - dispute
-        - domain
-        - expected_at
-        - fully_deducted
-        - id
-        - integration
-        - merchant_note
-        - refunded_at
-        - refunded_by
-        - settlement
-        - status
-        - transaction
-        - updatedAt
-      type: object
-    data-7:
-      properties:
         id:
           type: integer
         refund_amount:
@@ -21965,6 +21872,106 @@ components:
         - last4
         - messages
         - refund_amount
+        - status
+        - transaction
+        - updatedAt
+      type: object
+    data-6:
+      properties:
+        customer:
+          $ref: "#/components/schemas/DedicatedNubanCreateResponse_data_customer"
+        bank:
+          $ref: "#/components/schemas/DedicatedNubanListResponseArray_bank"
+        id:
+          type: integer
+        account_name:
+          type: string
+        account_number:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        currency:
+          type: string
+        split_config:
+          $ref: "#/components/schemas/TransactionPartialDebitResponse_data_metadata"
+        active:
+          type: boolean
+        assigned:
+          type: boolean
+      required:
+        - account_name
+        - account_number
+        - active
+        - assigned
+        - bank
+        - created_at
+        - currency
+        - customer
+        - id
+        - split_config
+        - updated_at
+      type: object
+    data-7:
+      properties:
+        integration:
+          type: integer
+        transaction:
+          type: integer
+        dispute:
+          nullable: true
+          type: integer
+        settlement:
+          nullable: true
+          type: integer
+        domain:
+          type: string
+        amount:
+          type: integer
+        deducted_amount:
+          type: integer
+        fully_deducted:
+          type: boolean
+        currency:
+          type: string
+        channel:
+          type: string
+        status:
+          type: string
+        refunded_by:
+          type: string
+        refunded_at:
+          type: string
+        expected_at:
+          type: string
+        customer_note:
+          type: string
+        merchant_note:
+          type: string
+        id:
+          type: integer
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+        - amount
+        - channel
+        - createdAt
+        - currency
+        - customer_note
+        - deducted_amount
+        - dispute
+        - domain
+        - expected_at
+        - fully_deducted
+        - id
+        - integration
+        - merchant_note
+        - refunded_at
+        - refunded_by
+        - settlement
         - status
         - transaction
         - updatedAt
@@ -22100,10 +22107,13 @@ components:
       properties:
         event:
           enum:
-            - invoice.failed
+            - invoice.payment_failed
           type: string
         data:
-          $ref: "#/components/schemas/data-4"
+          additionalProperties: true
+          description: The invoice payment failure payload. Inspect status and invoice
+            details before changing access.
+          type: object
       required:
         - data
         - event
@@ -22112,7 +22122,7 @@ components:
       properties:
         event:
           enum:
-            - dedicatedaccount.assign.success
+            - charge.dispute.remind
           type: string
         data:
           $ref: "#/components/schemas/data-5"
@@ -22124,10 +22134,15 @@ components:
       properties:
         event:
           enum:
-            - dedicatedaccount.assign.failed
+            - refund.pending
+            - refund.processing
+            - refund.needs-attention
           type: string
         data:
-          $ref: "#/components/schemas/data-5"
+          additionalProperties: true
+          description: Refund lifecycle details. Payload fields vary with processor
+            and refund state.
+          type: object
       required:
         - data
         - event
@@ -22136,10 +22151,13 @@ components:
       properties:
         event:
           enum:
-            - refund.processed
+            - customeridentification.success
+            - customeridentification.failed
           type: string
         data:
-          $ref: "#/components/schemas/data-6"
+          additionalProperties: true
+          description: Customer identification result and verification details.
+          type: object
       required:
         - data
         - event
@@ -22148,10 +22166,13 @@ components:
       properties:
         event:
           enum:
-            - refund.failed
+            - paymentrequest.pending
+            - paymentrequest.success
           type: string
         data:
-          $ref: "#/components/schemas/data-6"
+          additionalProperties: true
+          description: Payment request lifecycle details.
+          type: object
       required:
         - data
         - event
@@ -22160,10 +22181,12 @@ components:
       properties:
         event:
           enum:
-            - charge.dispute.create
+            - subscription.expiring_cards
           type: string
         data:
-          $ref: "#/components/schemas/data-7"
+          additionalProperties: true
+          description: Subscription and card expiry information for the affected customer.
+          type: object
       required:
         - data
         - event
@@ -22172,10 +22195,99 @@ components:
       properties:
         event:
           enum:
-            - charge.dispute.resolve
+            - direct_debit.authorization.created
+            - direct_debit.authorization.active
+          type: string
+        data:
+          additionalProperties: true
+          description: Direct Debit authorization and mandate status details.
+          type: object
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_16:
+      properties:
+        event:
+          enum:
+            - zero_charge_authorization.success
+          type: string
+        data:
+          additionalProperties: true
+          description: Zero-charge card authorization result.
+          type: object
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_17:
+      properties:
+        event:
+          enum:
+            - dedicatedaccount.assign.success
+          type: string
+        data:
+          $ref: "#/components/schemas/data-6"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_18:
+      properties:
+        event:
+          enum:
+            - dedicatedaccount.assign.failed
+          type: string
+        data:
+          $ref: "#/components/schemas/data-6"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_19:
+      properties:
+        event:
+          enum:
+            - refund.processed
           type: string
         data:
           $ref: "#/components/schemas/data-7"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_20:
+      properties:
+        event:
+          enum:
+            - refund.failed
+          type: string
+        data:
+          $ref: "#/components/schemas/data-7"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_21:
+      properties:
+        event:
+          enum:
+            - charge.dispute.create
+          type: string
+        data:
+          $ref: "#/components/schemas/data-5"
+      required:
+        - data
+        - event
+      type: object
+    WebhookEvent_oneOf_22:
+      properties:
+        event:
+          enum:
+            - charge.dispute.resolve
+          type: string
+        data:
+          $ref: "#/components/schemas/data-5"
       required:
         - data
         - event

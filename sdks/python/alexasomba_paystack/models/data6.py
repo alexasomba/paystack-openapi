@@ -18,8 +18,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from alexasomba_paystack.models.dedicated_nuban_create_response_data_customer import DedicatedNubanCreateResponseDataCustomer
+from alexasomba_paystack.models.dedicated_nuban_list_response_array_bank import DedicatedNubanListResponseArrayBank
+from alexasomba_paystack.models.transaction_partial_debit_response_data_metadata import TransactionPartialDebitResponseDataMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,26 +30,18 @@ class Data6(BaseModel):
     """
     Data6
     """ # noqa: E501
-    integration: StrictInt
-    transaction: StrictInt
-    dispute: Optional[StrictInt]
-    settlement: Optional[StrictInt]
-    domain: StrictStr
-    amount: StrictInt
-    deducted_amount: StrictInt
-    fully_deducted: StrictBool
-    currency: StrictStr
-    channel: StrictStr
-    status: StrictStr
-    refunded_by: StrictStr
-    refunded_at: StrictStr
-    expected_at: StrictStr
-    customer_note: StrictStr
-    merchant_note: StrictStr
+    customer: DedicatedNubanCreateResponseDataCustomer
+    bank: DedicatedNubanListResponseArrayBank
     id: StrictInt
-    created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
-    updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    __properties: ClassVar[List[str]] = ["integration", "transaction", "dispute", "settlement", "domain", "amount", "deducted_amount", "fully_deducted", "currency", "channel", "status", "refunded_by", "refunded_at", "expected_at", "customer_note", "merchant_note", "id", "createdAt", "updatedAt"]
+    account_name: StrictStr
+    account_number: StrictStr
+    created_at: StrictStr
+    updated_at: StrictStr
+    currency: StrictStr
+    split_config: Optional[TransactionPartialDebitResponseDataMetadata]
+    active: StrictBool
+    assigned: StrictBool
+    __properties: ClassVar[List[str]] = ["customer", "bank", "id", "account_name", "account_number", "created_at", "updated_at", "currency", "split_config", "active", "assigned"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,15 +82,19 @@ class Data6(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if dispute (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of customer
+        if self.customer:
+            _dict['customer'] = self.customer.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of bank
+        if self.bank:
+            _dict['bank'] = self.bank.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of split_config
+        if self.split_config:
+            _dict['split_config'] = self.split_config.to_dict()
+        # set to None if split_config (nullable) is None
         # and model_fields_set contains the field
-        if self.dispute is None and "dispute" in self.model_fields_set:
-            _dict['dispute'] = None
-
-        # set to None if settlement (nullable) is None
-        # and model_fields_set contains the field
-        if self.settlement is None and "settlement" in self.model_fields_set:
-            _dict['settlement'] = None
+        if self.split_config is None and "split_config" in self.model_fields_set:
+            _dict['split_config'] = None
 
         return _dict
 
@@ -109,25 +108,17 @@ class Data6(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "integration": obj.get("integration"),
-            "transaction": obj.get("transaction"),
-            "dispute": obj.get("dispute"),
-            "settlement": obj.get("settlement"),
-            "domain": obj.get("domain"),
-            "amount": obj.get("amount"),
-            "deducted_amount": obj.get("deducted_amount"),
-            "fully_deducted": obj.get("fully_deducted"),
-            "currency": obj.get("currency"),
-            "channel": obj.get("channel"),
-            "status": obj.get("status"),
-            "refunded_by": obj.get("refunded_by"),
-            "refunded_at": obj.get("refunded_at"),
-            "expected_at": obj.get("expected_at"),
-            "customer_note": obj.get("customer_note"),
-            "merchant_note": obj.get("merchant_note"),
+            "customer": DedicatedNubanCreateResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
+            "bank": DedicatedNubanListResponseArrayBank.from_dict(obj["bank"]) if obj.get("bank") is not None else None,
             "id": obj.get("id"),
-            "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
-            "updatedAt": obj.get("updatedAt")
+            "account_name": obj.get("account_name"),
+            "account_number": obj.get("account_number"),
+            "created_at": obj.get("created_at"),
+            "updated_at": obj.get("updated_at"),
+            "currency": obj.get("currency"),
+            "split_config": TransactionPartialDebitResponseDataMetadata.from_dict(obj["split_config"]) if obj.get("split_config") is not None else None,
+            "active": obj.get("active"),
+            "assigned": obj.get("assigned")
         })
         return _obj
 

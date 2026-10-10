@@ -534,7 +534,14 @@ lib/Model/WebhookEventOneOf12.php
 lib/Model/WebhookEventOneOf13.php
 lib/Model/WebhookEventOneOf14.php
 lib/Model/WebhookEventOneOf15.php
+lib/Model/WebhookEventOneOf16.php
+lib/Model/WebhookEventOneOf17.php
+lib/Model/WebhookEventOneOf18.php
+lib/Model/WebhookEventOneOf19.php
 lib/Model/WebhookEventOneOf2.php
+lib/Model/WebhookEventOneOf20.php
+lib/Model/WebhookEventOneOf21.php
+lib/Model/WebhookEventOneOf22.php
 lib/Model/WebhookEventOneOf3.php
 lib/Model/WebhookEventOneOf4.php
 lib/Model/WebhookEventOneOf5.php

@@ -18,9 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
-from alexasomba_paystack.models.data7 import Data7
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,14 +28,14 @@ class WebhookEventOneOf14(BaseModel):
     WebhookEventOneOf14
     """ # noqa: E501
     event: StrictStr
-    data: Data7
+    data: Dict[str, Any] = Field(description="Subscription and card expiry information for the affected customer.")
     __properties: ClassVar[List[str]] = ["event", "data"]
 
     @field_validator('event')
     def event_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['charge.dispute.create']):
-            raise ValueError("must be one of enum values ('charge.dispute.create')")
+        if value not in set(['subscription.expiring_cards']):
+            raise ValueError("must be one of enum values ('subscription.expiring_cards')")
         return value
 
     model_config = ConfigDict(
@@ -78,9 +77,6 @@ class WebhookEventOneOf14(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of data
-        if self.data:
-            _dict['data'] = self.data.to_dict()
         return _dict
 
     @classmethod
@@ -94,7 +90,7 @@ class WebhookEventOneOf14(BaseModel):
 
         _obj = cls.model_validate({
             "event": obj.get("event"),
-            "data": Data7.from_dict(obj["data"]) if obj.get("data") is not None else None
+            "data": obj.get("data")
         })
         return _obj
 

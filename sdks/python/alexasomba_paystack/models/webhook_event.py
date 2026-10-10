@@ -26,7 +26,14 @@ from alexasomba_paystack.models.webhook_event_one_of12 import WebhookEventOneOf1
 from alexasomba_paystack.models.webhook_event_one_of13 import WebhookEventOneOf13
 from alexasomba_paystack.models.webhook_event_one_of14 import WebhookEventOneOf14
 from alexasomba_paystack.models.webhook_event_one_of15 import WebhookEventOneOf15
+from alexasomba_paystack.models.webhook_event_one_of16 import WebhookEventOneOf16
+from alexasomba_paystack.models.webhook_event_one_of17 import WebhookEventOneOf17
+from alexasomba_paystack.models.webhook_event_one_of18 import WebhookEventOneOf18
+from alexasomba_paystack.models.webhook_event_one_of19 import WebhookEventOneOf19
 from alexasomba_paystack.models.webhook_event_one_of2 import WebhookEventOneOf2
+from alexasomba_paystack.models.webhook_event_one_of20 import WebhookEventOneOf20
+from alexasomba_paystack.models.webhook_event_one_of21 import WebhookEventOneOf21
+from alexasomba_paystack.models.webhook_event_one_of22 import WebhookEventOneOf22
 from alexasomba_paystack.models.webhook_event_one_of3 import WebhookEventOneOf3
 from alexasomba_paystack.models.webhook_event_one_of4 import WebhookEventOneOf4
 from alexasomba_paystack.models.webhook_event_one_of5 import WebhookEventOneOf5
@@ -38,7 +45,7 @@ from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-WEBHOOKEVENT_ONE_OF_SCHEMAS = ["WebhookEventOneOf", "WebhookEventOneOf1", "WebhookEventOneOf10", "WebhookEventOneOf11", "WebhookEventOneOf12", "WebhookEventOneOf13", "WebhookEventOneOf14", "WebhookEventOneOf15", "WebhookEventOneOf2", "WebhookEventOneOf3", "WebhookEventOneOf4", "WebhookEventOneOf5", "WebhookEventOneOf6", "WebhookEventOneOf7", "WebhookEventOneOf8", "WebhookEventOneOf9"]
+WEBHOOKEVENT_ONE_OF_SCHEMAS = ["WebhookEventOneOf", "WebhookEventOneOf1", "WebhookEventOneOf10", "WebhookEventOneOf11", "WebhookEventOneOf12", "WebhookEventOneOf13", "WebhookEventOneOf14", "WebhookEventOneOf15", "WebhookEventOneOf16", "WebhookEventOneOf17", "WebhookEventOneOf18", "WebhookEventOneOf19", "WebhookEventOneOf2", "WebhookEventOneOf20", "WebhookEventOneOf21", "WebhookEventOneOf22", "WebhookEventOneOf3", "WebhookEventOneOf4", "WebhookEventOneOf5", "WebhookEventOneOf6", "WebhookEventOneOf7", "WebhookEventOneOf8", "WebhookEventOneOf9"]
 
 class WebhookEvent(BaseModel):
     """
@@ -76,8 +83,22 @@ class WebhookEvent(BaseModel):
     oneof_schema_15_validator: Optional[WebhookEventOneOf14] = None
     # data type: WebhookEventOneOf15
     oneof_schema_16_validator: Optional[WebhookEventOneOf15] = None
-    actual_instance: Optional[Union[WebhookEventOneOf, WebhookEventOneOf1, WebhookEventOneOf10, WebhookEventOneOf11, WebhookEventOneOf12, WebhookEventOneOf13, WebhookEventOneOf14, WebhookEventOneOf15, WebhookEventOneOf2, WebhookEventOneOf3, WebhookEventOneOf4, WebhookEventOneOf5, WebhookEventOneOf6, WebhookEventOneOf7, WebhookEventOneOf8, WebhookEventOneOf9]] = None
-    one_of_schemas: Set[str] = { "WebhookEventOneOf", "WebhookEventOneOf1", "WebhookEventOneOf10", "WebhookEventOneOf11", "WebhookEventOneOf12", "WebhookEventOneOf13", "WebhookEventOneOf14", "WebhookEventOneOf15", "WebhookEventOneOf2", "WebhookEventOneOf3", "WebhookEventOneOf4", "WebhookEventOneOf5", "WebhookEventOneOf6", "WebhookEventOneOf7", "WebhookEventOneOf8", "WebhookEventOneOf9" }
+    # data type: WebhookEventOneOf16
+    oneof_schema_17_validator: Optional[WebhookEventOneOf16] = None
+    # data type: WebhookEventOneOf17
+    oneof_schema_18_validator: Optional[WebhookEventOneOf17] = None
+    # data type: WebhookEventOneOf18
+    oneof_schema_19_validator: Optional[WebhookEventOneOf18] = None
+    # data type: WebhookEventOneOf19
+    oneof_schema_20_validator: Optional[WebhookEventOneOf19] = None
+    # data type: WebhookEventOneOf20
+    oneof_schema_21_validator: Optional[WebhookEventOneOf20] = None
+    # data type: WebhookEventOneOf21
+    oneof_schema_22_validator: Optional[WebhookEventOneOf21] = None
+    # data type: WebhookEventOneOf22
+    oneof_schema_23_validator: Optional[WebhookEventOneOf22] = None
+    actual_instance: Optional[Union[WebhookEventOneOf, WebhookEventOneOf1, WebhookEventOneOf10, WebhookEventOneOf11, WebhookEventOneOf12, WebhookEventOneOf13, WebhookEventOneOf14, WebhookEventOneOf15, WebhookEventOneOf16, WebhookEventOneOf17, WebhookEventOneOf18, WebhookEventOneOf19, WebhookEventOneOf2, WebhookEventOneOf20, WebhookEventOneOf21, WebhookEventOneOf22, WebhookEventOneOf3, WebhookEventOneOf4, WebhookEventOneOf5, WebhookEventOneOf6, WebhookEventOneOf7, WebhookEventOneOf8, WebhookEventOneOf9]] = None
+    one_of_schemas: Set[str] = { "WebhookEventOneOf", "WebhookEventOneOf1", "WebhookEventOneOf10", "WebhookEventOneOf11", "WebhookEventOneOf12", "WebhookEventOneOf13", "WebhookEventOneOf14", "WebhookEventOneOf15", "WebhookEventOneOf16", "WebhookEventOneOf17", "WebhookEventOneOf18", "WebhookEventOneOf19", "WebhookEventOneOf2", "WebhookEventOneOf20", "WebhookEventOneOf21", "WebhookEventOneOf22", "WebhookEventOneOf3", "WebhookEventOneOf4", "WebhookEventOneOf5", "WebhookEventOneOf6", "WebhookEventOneOf7", "WebhookEventOneOf8", "WebhookEventOneOf9" }
 
     model_config = ConfigDict(
         validate_assignment=True,
@@ -180,12 +201,47 @@ class WebhookEvent(BaseModel):
             error_messages.append(f"Error! Input type `{type(v)}` is not `WebhookEventOneOf15`")
         else:
             match += 1
+        # validate data type: WebhookEventOneOf16
+        if not isinstance(v, WebhookEventOneOf16):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `WebhookEventOneOf16`")
+        else:
+            match += 1
+        # validate data type: WebhookEventOneOf17
+        if not isinstance(v, WebhookEventOneOf17):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `WebhookEventOneOf17`")
+        else:
+            match += 1
+        # validate data type: WebhookEventOneOf18
+        if not isinstance(v, WebhookEventOneOf18):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `WebhookEventOneOf18`")
+        else:
+            match += 1
+        # validate data type: WebhookEventOneOf19
+        if not isinstance(v, WebhookEventOneOf19):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `WebhookEventOneOf19`")
+        else:
+            match += 1
+        # validate data type: WebhookEventOneOf20
+        if not isinstance(v, WebhookEventOneOf20):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `WebhookEventOneOf20`")
+        else:
+            match += 1
+        # validate data type: WebhookEventOneOf21
+        if not isinstance(v, WebhookEventOneOf21):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `WebhookEventOneOf21`")
+        else:
+            match += 1
+        # validate data type: WebhookEventOneOf22
+        if not isinstance(v, WebhookEventOneOf22):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `WebhookEventOneOf22`")
+        else:
+            match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in WebhookEvent with oneOf schemas: WebhookEventOneOf, WebhookEventOneOf1, WebhookEventOneOf10, WebhookEventOneOf11, WebhookEventOneOf12, WebhookEventOneOf13, WebhookEventOneOf14, WebhookEventOneOf15, WebhookEventOneOf2, WebhookEventOneOf3, WebhookEventOneOf4, WebhookEventOneOf5, WebhookEventOneOf6, WebhookEventOneOf7, WebhookEventOneOf8, WebhookEventOneOf9. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in WebhookEvent with oneOf schemas: WebhookEventOneOf, WebhookEventOneOf1, WebhookEventOneOf10, WebhookEventOneOf11, WebhookEventOneOf12, WebhookEventOneOf13, WebhookEventOneOf14, WebhookEventOneOf15, WebhookEventOneOf16, WebhookEventOneOf17, WebhookEventOneOf18, WebhookEventOneOf19, WebhookEventOneOf2, WebhookEventOneOf20, WebhookEventOneOf21, WebhookEventOneOf22, WebhookEventOneOf3, WebhookEventOneOf4, WebhookEventOneOf5, WebhookEventOneOf6, WebhookEventOneOf7, WebhookEventOneOf8, WebhookEventOneOf9. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in WebhookEvent with oneOf schemas: WebhookEventOneOf, WebhookEventOneOf1, WebhookEventOneOf10, WebhookEventOneOf11, WebhookEventOneOf12, WebhookEventOneOf13, WebhookEventOneOf14, WebhookEventOneOf15, WebhookEventOneOf2, WebhookEventOneOf3, WebhookEventOneOf4, WebhookEventOneOf5, WebhookEventOneOf6, WebhookEventOneOf7, WebhookEventOneOf8, WebhookEventOneOf9. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in WebhookEvent with oneOf schemas: WebhookEventOneOf, WebhookEventOneOf1, WebhookEventOneOf10, WebhookEventOneOf11, WebhookEventOneOf12, WebhookEventOneOf13, WebhookEventOneOf14, WebhookEventOneOf15, WebhookEventOneOf16, WebhookEventOneOf17, WebhookEventOneOf18, WebhookEventOneOf19, WebhookEventOneOf2, WebhookEventOneOf20, WebhookEventOneOf21, WebhookEventOneOf22, WebhookEventOneOf3, WebhookEventOneOf4, WebhookEventOneOf5, WebhookEventOneOf6, WebhookEventOneOf7, WebhookEventOneOf8, WebhookEventOneOf9. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -296,13 +352,55 @@ class WebhookEvent(BaseModel):
             match += 1
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
+        # deserialize data into WebhookEventOneOf16
+        try:
+            instance.actual_instance = WebhookEventOneOf16.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into WebhookEventOneOf17
+        try:
+            instance.actual_instance = WebhookEventOneOf17.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into WebhookEventOneOf18
+        try:
+            instance.actual_instance = WebhookEventOneOf18.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into WebhookEventOneOf19
+        try:
+            instance.actual_instance = WebhookEventOneOf19.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into WebhookEventOneOf20
+        try:
+            instance.actual_instance = WebhookEventOneOf20.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into WebhookEventOneOf21
+        try:
+            instance.actual_instance = WebhookEventOneOf21.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into WebhookEventOneOf22
+        try:
+            instance.actual_instance = WebhookEventOneOf22.from_json(json_str)
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into WebhookEvent with oneOf schemas: WebhookEventOneOf, WebhookEventOneOf1, WebhookEventOneOf10, WebhookEventOneOf11, WebhookEventOneOf12, WebhookEventOneOf13, WebhookEventOneOf14, WebhookEventOneOf15, WebhookEventOneOf2, WebhookEventOneOf3, WebhookEventOneOf4, WebhookEventOneOf5, WebhookEventOneOf6, WebhookEventOneOf7, WebhookEventOneOf8, WebhookEventOneOf9. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into WebhookEvent with oneOf schemas: WebhookEventOneOf, WebhookEventOneOf1, WebhookEventOneOf10, WebhookEventOneOf11, WebhookEventOneOf12, WebhookEventOneOf13, WebhookEventOneOf14, WebhookEventOneOf15, WebhookEventOneOf16, WebhookEventOneOf17, WebhookEventOneOf18, WebhookEventOneOf19, WebhookEventOneOf2, WebhookEventOneOf20, WebhookEventOneOf21, WebhookEventOneOf22, WebhookEventOneOf3, WebhookEventOneOf4, WebhookEventOneOf5, WebhookEventOneOf6, WebhookEventOneOf7, WebhookEventOneOf8, WebhookEventOneOf9. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into WebhookEvent with oneOf schemas: WebhookEventOneOf, WebhookEventOneOf1, WebhookEventOneOf10, WebhookEventOneOf11, WebhookEventOneOf12, WebhookEventOneOf13, WebhookEventOneOf14, WebhookEventOneOf15, WebhookEventOneOf2, WebhookEventOneOf3, WebhookEventOneOf4, WebhookEventOneOf5, WebhookEventOneOf6, WebhookEventOneOf7, WebhookEventOneOf8, WebhookEventOneOf9. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into WebhookEvent with oneOf schemas: WebhookEventOneOf, WebhookEventOneOf1, WebhookEventOneOf10, WebhookEventOneOf11, WebhookEventOneOf12, WebhookEventOneOf13, WebhookEventOneOf14, WebhookEventOneOf15, WebhookEventOneOf16, WebhookEventOneOf17, WebhookEventOneOf18, WebhookEventOneOf19, WebhookEventOneOf2, WebhookEventOneOf20, WebhookEventOneOf21, WebhookEventOneOf22, WebhookEventOneOf3, WebhookEventOneOf4, WebhookEventOneOf5, WebhookEventOneOf6, WebhookEventOneOf7, WebhookEventOneOf8, WebhookEventOneOf9. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -316,7 +414,7 @@ class WebhookEvent(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], WebhookEventOneOf, WebhookEventOneOf1, WebhookEventOneOf10, WebhookEventOneOf11, WebhookEventOneOf12, WebhookEventOneOf13, WebhookEventOneOf14, WebhookEventOneOf15, WebhookEventOneOf2, WebhookEventOneOf3, WebhookEventOneOf4, WebhookEventOneOf5, WebhookEventOneOf6, WebhookEventOneOf7, WebhookEventOneOf8, WebhookEventOneOf9]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], WebhookEventOneOf, WebhookEventOneOf1, WebhookEventOneOf10, WebhookEventOneOf11, WebhookEventOneOf12, WebhookEventOneOf13, WebhookEventOneOf14, WebhookEventOneOf15, WebhookEventOneOf16, WebhookEventOneOf17, WebhookEventOneOf18, WebhookEventOneOf19, WebhookEventOneOf2, WebhookEventOneOf20, WebhookEventOneOf21, WebhookEventOneOf22, WebhookEventOneOf3, WebhookEventOneOf4, WebhookEventOneOf5, WebhookEventOneOf6, WebhookEventOneOf7, WebhookEventOneOf8, WebhookEventOneOf9]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

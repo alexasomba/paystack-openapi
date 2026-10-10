@@ -18,12 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from alexasomba_paystack.models.dispute_fetch_response_data_customer import DisputeFetchResponseDataCustomer
-from alexasomba_paystack.models.dispute_fetch_response_data_transaction import DisputeFetchResponseDataTransaction
-from alexasomba_paystack.models.dispute_history_array import DisputeHistoryArray
-from alexasomba_paystack.models.dispute_messages_array import DisputeMessagesArray
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,28 +27,26 @@ class Data7(BaseModel):
     """
     Data7
     """ # noqa: E501
-    id: StrictInt
-    refund_amount: Optional[StrictInt]
-    currency: Optional[StrictStr]
-    status: StrictStr
-    resolution: Optional[Any] = None
+    integration: StrictInt
+    transaction: StrictInt
+    dispute: Optional[StrictInt]
+    settlement: Optional[StrictInt]
     domain: StrictStr
-    transaction: DisputeFetchResponseDataTransaction
-    transaction_reference: Optional[Any] = None
-    category: Optional[StrictStr]
-    customer: DisputeFetchResponseDataCustomer
-    bin: Optional[StrictStr]
-    last4: Optional[StrictStr]
-    due_at: Optional[Any] = Field(default=None, alias="dueAt")
-    resolved_at: Optional[Any] = Field(default=None, alias="resolvedAt")
-    evidence: Optional[Any] = None
-    attachments: Optional[Any] = None
-    note: Optional[Any] = None
-    history: List[DisputeHistoryArray]
-    messages: List[DisputeMessagesArray]
+    amount: StrictInt
+    deducted_amount: StrictInt
+    fully_deducted: StrictBool
+    currency: StrictStr
+    channel: StrictStr
+    status: StrictStr
+    refunded_by: StrictStr
+    refunded_at: StrictStr
+    expected_at: StrictStr
+    customer_note: StrictStr
+    merchant_note: StrictStr
+    id: StrictInt
     created_at: StrictStr = Field(validation_alias=AliasChoices('created_at', 'createdAt'), serialization_alias='createdAt')
     updated_at: StrictStr = Field(validation_alias=AliasChoices('updated_at', 'updatedAt'), serialization_alias='updatedAt')
-    __properties: ClassVar[List[str]] = ["id", "refund_amount", "currency", "status", "resolution", "domain", "transaction", "transaction_reference", "category", "customer", "bin", "last4", "dueAt", "resolvedAt", "evidence", "attachments", "note", "history", "messages", "createdAt", "updatedAt"]
+    __properties: ClassVar[List[str]] = ["integration", "transaction", "dispute", "settlement", "domain", "amount", "deducted_amount", "fully_deducted", "currency", "channel", "status", "refunded_by", "refunded_at", "expected_at", "customer_note", "merchant_note", "id", "createdAt", "updatedAt"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -93,85 +87,15 @@ class Data7(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of transaction
-        if self.transaction:
-            _dict['transaction'] = self.transaction.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of customer
-        if self.customer:
-            _dict['customer'] = self.customer.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in history (list)
-        _items = []
-        if self.history:
-            for _item_history in self.history:
-                if _item_history:
-                    _items.append(_item_history.to_dict())
-            _dict['history'] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in messages (list)
-        _items = []
-        if self.messages:
-            for _item_messages in self.messages:
-                if _item_messages:
-                    _items.append(_item_messages.to_dict())
-            _dict['messages'] = _items
-        # set to None if refund_amount (nullable) is None
+        # set to None if dispute (nullable) is None
         # and model_fields_set contains the field
-        if self.refund_amount is None and "refund_amount" in self.model_fields_set:
-            _dict['refund_amount'] = None
+        if self.dispute is None and "dispute" in self.model_fields_set:
+            _dict['dispute'] = None
 
-        # set to None if currency (nullable) is None
+        # set to None if settlement (nullable) is None
         # and model_fields_set contains the field
-        if self.currency is None and "currency" in self.model_fields_set:
-            _dict['currency'] = None
-
-        # set to None if resolution (nullable) is None
-        # and model_fields_set contains the field
-        if self.resolution is None and "resolution" in self.model_fields_set:
-            _dict['resolution'] = None
-
-        # set to None if transaction_reference (nullable) is None
-        # and model_fields_set contains the field
-        if self.transaction_reference is None and "transaction_reference" in self.model_fields_set:
-            _dict['transaction_reference'] = None
-
-        # set to None if category (nullable) is None
-        # and model_fields_set contains the field
-        if self.category is None and "category" in self.model_fields_set:
-            _dict['category'] = None
-
-        # set to None if bin (nullable) is None
-        # and model_fields_set contains the field
-        if self.bin is None and "bin" in self.model_fields_set:
-            _dict['bin'] = None
-
-        # set to None if last4 (nullable) is None
-        # and model_fields_set contains the field
-        if self.last4 is None and "last4" in self.model_fields_set:
-            _dict['last4'] = None
-
-        # set to None if due_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.due_at is None and "due_at" in self.model_fields_set:
-            _dict['dueAt'] = None
-
-        # set to None if resolved_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.resolved_at is None and "resolved_at" in self.model_fields_set:
-            _dict['resolvedAt'] = None
-
-        # set to None if evidence (nullable) is None
-        # and model_fields_set contains the field
-        if self.evidence is None and "evidence" in self.model_fields_set:
-            _dict['evidence'] = None
-
-        # set to None if attachments (nullable) is None
-        # and model_fields_set contains the field
-        if self.attachments is None and "attachments" in self.model_fields_set:
-            _dict['attachments'] = None
-
-        # set to None if note (nullable) is None
-        # and model_fields_set contains the field
-        if self.note is None and "note" in self.model_fields_set:
-            _dict['note'] = None
+        if self.settlement is None and "settlement" in self.model_fields_set:
+            _dict['settlement'] = None
 
         return _dict
 
@@ -185,25 +109,23 @@ class Data7(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "id": obj.get("id"),
-            "refund_amount": obj.get("refund_amount"),
-            "currency": obj.get("currency"),
-            "status": obj.get("status"),
-            "resolution": obj.get("resolution"),
+            "integration": obj.get("integration"),
+            "transaction": obj.get("transaction"),
+            "dispute": obj.get("dispute"),
+            "settlement": obj.get("settlement"),
             "domain": obj.get("domain"),
-            "transaction": DisputeFetchResponseDataTransaction.from_dict(obj["transaction"]) if obj.get("transaction") is not None else None,
-            "transaction_reference": obj.get("transaction_reference"),
-            "category": obj.get("category"),
-            "customer": DisputeFetchResponseDataCustomer.from_dict(obj["customer"]) if obj.get("customer") is not None else None,
-            "bin": obj.get("bin"),
-            "last4": obj.get("last4"),
-            "dueAt": obj.get("dueAt"),
-            "resolvedAt": obj.get("resolvedAt"),
-            "evidence": obj.get("evidence"),
-            "attachments": obj.get("attachments"),
-            "note": obj.get("note"),
-            "history": [DisputeHistoryArray.from_dict(_item) for _item in obj["history"]] if obj.get("history") is not None else None,
-            "messages": [DisputeMessagesArray.from_dict(_item) for _item in obj["messages"]] if obj.get("messages") is not None else None,
+            "amount": obj.get("amount"),
+            "deducted_amount": obj.get("deducted_amount"),
+            "fully_deducted": obj.get("fully_deducted"),
+            "currency": obj.get("currency"),
+            "channel": obj.get("channel"),
+            "status": obj.get("status"),
+            "refunded_by": obj.get("refunded_by"),
+            "refunded_at": obj.get("refunded_at"),
+            "expected_at": obj.get("expected_at"),
+            "customer_note": obj.get("customer_note"),
+            "merchant_note": obj.get("merchant_note"),
+            "id": obj.get("id"),
             "created_at": obj.get("created_at") if obj.get("created_at") is not None else obj.get("createdAt"),
             "updatedAt": obj.get("updatedAt")
         })
