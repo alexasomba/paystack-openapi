@@ -1,3 +1,5 @@
+[English](README.md) · [Español](README.es-ES.md) · [Français](README.fr-FR.md)
+
 # @alexasomba/paystack-browser
 
 [![npm version](https://img.shields.io/npm/v/@alexasomba/paystack-browser.svg)](https://www.npmjs.com/package/@alexasomba/paystack-browser)
