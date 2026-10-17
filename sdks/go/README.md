@@ -1,3 +1,5 @@
+[English](README.md) · [Español](README.es-ES.md) · [Français](README.fr-FR.md)
+
 # Go API client for paystack
 
 Go client for the Paystack API, generated from the Paystack OpenAPI spec in this repository.

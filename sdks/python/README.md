@@ -1,3 +1,5 @@
+[English](README.md) · [Español](README.es-ES.md) · [Français](README.fr-FR.md)
+
 # alexasomba-paystack
 
 Python client for the Paystack API, generated from the Paystack OpenAPI spec in this repository.
