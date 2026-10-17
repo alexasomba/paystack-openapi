@@ -8,16 +8,15 @@
 
 Cliente de la API de Paystack para Node.js, diseñado específicamente para TypeScript y generado a partir de la especificación OpenAPI oficial de Paystack.
 
-
 ## Características
 
 - **Precisión basada en especificaciones**: Generado directamente a partir de la especificación OpenAPI de Paystack.
 - **100% seguro en cuanto a tipos (Type-safe)**: Compatibilidad total con TypeScript, incluyendo tipos generados para cada endpoint, solicitud y respuesta.
-- **Reintentos inteligentes**: Reintentos automáticos ante fallos transitorios, utilizando retroceso exponencial (*exponential backoff*) y aleatorización (*jitter*).
+- **Reintentos inteligentes**: Reintentos automáticos ante fallos transitorios, utilizando retroceso exponencial (_exponential backoff_) y aleatorización (_jitter_).
 - **Respeto de Retry-After**: Respeta automáticamente las cabeceras `Retry-After` de Paystack en las respuestas de límite de solicitudes.
 - **Idempotencia avanzada**: Soporte integrado para claves de idempotencia (basadas en UUID) —ya sean manuales, estáticas o automáticas— en solicitudes POST.
 - **Gestión detallada de errores**: `PaystackError` conserva los campos `code`, `type` y `meta` de Paystack, junto con el ID de solicitud, el estado HTTP y el cuerpo de la respuesta sin procesar.
-- **Verificación de webhooks**: Incluye una utilidad para verificar firmas de webhooks de forma segura frente a ataques de temporización (*timing-safe*).
+- **Verificación de webhooks**: Incluye una utilidad para verificar firmas de webhooks de forma segura frente a ataques de temporización (_timing-safe_).
 
 ## Instalación
 
@@ -25,10 +24,9 @@ Cliente de la API de Paystack para Node.js, diseñado específicamente para Type
 pnpm add @alexasomba/paystack-node
 ```
 
-
 ## Funciones del agente
 
-Este paquete incluye funciones de *TanStack Intent* para la integración con Paystack asistida por un agente:
+Este paquete incluye funciones de _TanStack Intent_ para la integración con Paystack asistida por un agente:
 
 ```bash
 npx @tanstack/intent@latest list
@@ -43,7 +41,6 @@ Autentica las solicitudes utilizando tu clave secreta de Paystack:
 ```ts
 process.env.PAYSTACK_SECRET_KEY = "sk_test_...";
 ```
-
 
 ## Inicio rápido
 
@@ -66,8 +63,7 @@ const data = assertOk(result);
 console.log(data.authorization_url);
 ```
 
-`assertOk` devuelve el *payload* (carga útil) de Paystack tras una operación exitosa, o bien lanza un `PaystackError` estructurado en caso de obtener respuestas que no sean de tipo 2xx, o al recibir envoltorios (estructuras de respuesta) de tipo `{ status: false }`.
-
+`assertOk` devuelve el _payload_ (carga útil) de Paystack tras una operación exitosa, o bien lanza un `PaystackError` estructurado en caso de obtener respuestas que no sean de tipo 2xx, o al recibir envoltorios (estructuras de respuesta) de tipo `{ status: false }`.
 
 ## Conceptos básicos de la API
 
@@ -77,7 +73,6 @@ console.log(data.authorization_url);
 - La mayoría de las respuestas exitosas siguen la estructura de envoltorio compuesta por `status`, `message`, `data` y, opcionalmente, `meta`, tal como se describe en `Paystack-API/0a-Introduction.md`.
 - Los importes suelen enviarse en subunidades de moneda, como kobo, pesewas o céntimos. Consulta la documentación del módulo para conocer las reglas específicas de cada moneda.
 
-
 ## Autenticación y entornos
 
 - Los SDK del lado del servidor deben utilizar tu clave secreta (`sk_test_*` o `sk_live_*`).
@@ -86,7 +81,6 @@ console.log(data.authorization_url);
 - Los modos de prueba (test) y de producción (live) utilizan claves diferentes y entornos aislados.
 - Rota las claves si se ven comprometidas y nunca incluyas claves secretas en el control de versiones (repositorio de código).
 - Si habilitas la lista blanca de direcciones IP en Paystack, las solicitudes provenientes de direcciones IP que no estén en dicha lista serán bloqueadas.
-
 
 ## Configuración avanzada
 
@@ -107,7 +101,6 @@ const paystack = createPaystack({
   },
 });
 ```
-
 
 ## Exportación de tipos estables
 
@@ -165,7 +158,6 @@ Los segmentos de cliente incluyen `PaystackTransactionClient`, `PaystackCustomer
 
 Los métodos agrupados corresponden a las operaciones de OpenAPI generadas y admitidas. Las funciones auxiliares no admitidas, como `subscription.update`, han sido excluidas deliberadamente de la interfaz pública del SDK.
 
-
 ### Webhooks
 
 Utilice la función auxiliar para webhooks al validar eventos de servidor a servidor provenientes de Paystack. Pase el cuerpo de la solicitud (request body) en su formato original (raw), no como un objeto JSON analizado (parsed).
@@ -180,11 +172,9 @@ const isValid = verifyPaystackWebhookSignature({
 });
 ```
 
-
 ### Gestión de la paginación
 
 Los endpoints de listado ofrecen controles de paginación a través de parámetros de consulta (query params) como `perPage`, `page`, `next` y `previous`. Asimismo, los encabezados de respuesta (response headers) siguen estando disponibles si necesita realizar una gestión manual de la paginación.
-
 
 ## Paginación
 
@@ -199,7 +189,6 @@ const result = await paystack.customer_list({ query: { perPage: 20 } });
 const customers = assertOk(result);
 const total = result.response.headers.get("x-total-count");
 ```
-
 
 ## Gestión de errores
 
@@ -220,63 +209,58 @@ if (error) {
 
 Utiliza `error.code` y `error.type` para gestionar los flujos en caso de fallos de validación, de procesamiento o de la API. `requestId` resulta útil para correlacionar registros (logs) o escalar un problema al equipo de soporte de Paystack, mientras que `error.raw` / `error.body` permiten conservar el envoltorio de respuesta original para fines de diagnóstico.
 
-
 ## Errores
 
 - Paystack emplea códigos de estado HTTP convencionales, tales como `200`, `201`, `400`, `401`, `404` y `5xx`.
 - Las respuestas de error suelen incluir `status`, `message`, `type`, `code`, además de información de diagnóstico opcional (`meta`).
 - Los tipos de error descritos en `Paystack-API/0d-Errors.md` incluyen `api_error`, `validation_error` y `processor_error`.
-- Para los flujos de cobro (*charge*) y verificación (*verify*), inspecciona siempre el cuerpo de la respuesta y los campos de estado, no solo el código HTTP.
-
+- Para los flujos de cobro (_charge_) y verificación (_verify_), inspecciona siempre el cuerpo de la respuesta y los campos de estado, no solo el código HTTP.
 
 ## Cobertura
 
-Este SDK se genera a partir de la especificación del SDK contenida en este *monorepo* y, actualmente, incluye el conjunto completo de operaciones tipadas generadas para el contrato alineado con la API de Paystack.
-
+Este SDK se genera a partir de la especificación del SDK contenida en este _monorepo_ y, actualmente, incluye el conjunto completo de operaciones tipadas generadas para el contrato alineado con la API de Paystack.
 
 ## Módulos
 
 En este SDK, estas familias de esquemas se exponen mediante tipos de TypeScript generados en `src/openapi-types.ts` y funciones auxiliares de operación en `src/operations.ts`.
 
-| Módulo                                                               | Familia de esquemas / modelos                            |
-| -------------------------------------------------------------------- | -------------------------------------------------------- |
-| Transacciones                                                        | `Transaction*`                                  |
-| Verificación de pagos (verificación de transacciones)                | `VerifyResponse / TransactionFetchResponse`                                  |
-| Cobros (*Charges*)                                                   | `Charge*`                                  |
-| Cobros masivos (*Bulk Charges*)                                      | `BulkCharge*`                                  |
-| Subcuentas                                                           | `Subaccount*`                                  |
-| División de transacciones (*Transaction Splits*)                     | `Split*`                                  |
-| Terminal                                                             | `Terminal*`                                  |
-| Terminal virtual                                                     | `VirtualTerminal*`                                  |
-| Clientes                                                             | `Customer*`                                              |
-| Domiciliación bancaria                                               | `DirectDebit*`                                           |
-| Cuentas virtuales dedicadas                                          | `DedicatedNuban* / DedicatedVirtualAccount*`             |
-| Apple Pay                                                            | `ApplePay*`                                              |
-| Planes                                                               | `Plan*`                                                  |
-| Suscripciones                                                        | `Subscription*`                                          |
-| Destinatarios de transferencias                                      | `TransferRecipient*`                                     |
-| Transferencias                                                       | `Transfer*`                                              |
-| Control de transferencias (configuración de OTP; en Transferencias)  | `TransferEnable* / TransferDisable* / TransferFinalize*` |
-| Saldo                                                                | `Balance*`                                               |
-| Solicitudes de pago (facturas)                                       | `PaymentRequest*`                                        |
+| Módulo                                                                                    | Familia de esquemas / modelos                            |
+| ----------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Transacciones                                                                             | `Transaction*`                                           |
+| Verificación de pagos (verificación de transacciones)                                     | `VerifyResponse / TransactionFetchResponse`              |
+| Cobros (_Charges_)                                                                        | `Charge*`                                                |
+| Cobros masivos (_Bulk Charges_)                                                           | `BulkCharge*`                                            |
+| Subcuentas                                                                                | `Subaccount*`                                            |
+| División de transacciones (_Transaction Splits_)                                          | `Split*`                                                 |
+| Terminal                                                                                  | `Terminal*`                                              |
+| Terminal virtual                                                                          | `VirtualTerminal*`                                       |
+| Clientes                                                                                  | `Customer*`                                              |
+| Domiciliación bancaria                                                                    | `DirectDebit*`                                           |
+| Cuentas virtuales dedicadas                                                               | `DedicatedNuban* / DedicatedVirtualAccount*`             |
+| Apple Pay                                                                                 | `ApplePay*`                                              |
+| Planes                                                                                    | `Plan*`                                                  |
+| Suscripciones                                                                             | `Subscription*`                                          |
+| Destinatarios de transferencias                                                           | `TransferRecipient*`                                     |
+| Transferencias                                                                            | `Transfer*`                                              |
+| Control de transferencias (configuración de OTP; en Transferencias)                       | `TransferEnable* / TransferDisable* / TransferFinalize*` |
+| Saldo                                                                                     | `Balance*`                                               |
+| Solicitudes de pago (facturas)                                                            | `PaymentRequest*`                                        |
 | Verificación (resolución de cuenta / validación de cuenta / resolución de BIN de tarjeta) | `Verification*`                                          |
-| Productos                                                            | `Product*`                                               |
-| Tiendas (Storefronts)                                                | `Storefront*`                                            |
-| Pedidos                                                              | `Order*`                                                 |
-| Páginas de pago                                                      | `Page*`                                                  |
-| Liquidaciones                                                        | `Settlement*`                                            |
-| Integración                                                          | `Integration*`                                           |
-| Panel de control (tiempo de espera de la sesión de pago; en Integración) | `ControlPanel*`                                          |
-| Reembolsos                                                           | `Refund*`                                                |
-| Disputas                                                             | `Dispute*`                                               |
-| Bancos                                                               | `Bank*`                                                  |
-| Varios                                                               | `Miscellaneous* / Currency`                              |
-
+| Productos                                                                                 | `Product*`                                               |
+| Tiendas (Storefronts)                                                                     | `Storefront*`                                            |
+| Pedidos                                                                                   | `Order*`                                                 |
+| Páginas de pago                                                                           | `Page*`                                                  |
+| Liquidaciones                                                                             | `Settlement*`                                            |
+| Integración                                                                               | `Integration*`                                           |
+| Panel de control (tiempo de espera de la sesión de pago; en Integración)                  | `ControlPanel*`                                          |
+| Reembolsos                                                                                | `Refund*`                                                |
+| Disputas                                                                                  | `Dispute*`                                               |
+| Bancos                                                                                    | `Bank*`                                                  |
+| Varios                                                                                    | `Miscellaneous* / Currency`                              |
 
 ## Ejemplos de módulos
 
 Estos son ejemplos deliberadamente breves. Úsalos como puntos de partida y, a continuación, amplía los cuerpos de las solicitudes (request bodies) utilizando los campos tipados que te ofrece tu editor y `src/openapi-types.ts`.
-
 
 ### Transacciones
 
@@ -286,7 +270,6 @@ const tx = await paystack.transaction_initialize({
 });
 ```
 
-
 ### Verificación de pagos (verificación de transacciones)
 
 ```ts
@@ -294,7 +277,6 @@ const verified = await paystack.transaction_verify({
   params: { path: { reference: "ref_123" } },
 });
 ```
-
 
 ### Cargos
 
@@ -308,7 +290,6 @@ await paystack.charge_create({
 });
 ```
 
-
 ### Cargos masivos
 
 ```ts
@@ -316,7 +297,6 @@ await paystack.bulkCharge_initiate({
   body: [{ authorization: "AUTH_xxx", amount: 5000, reference: "bulk-ref-1" }],
 });
 ```
-
 
 ### Subcuentas
 
@@ -331,7 +311,6 @@ await paystack.subaccount_create({
 });
 ```
 
-
 ### División de transacciones
 
 ```ts
@@ -340,13 +319,11 @@ await paystack.split_create({
 });
 ```
 
-
 ### Terminal
 
 ```ts
 const terminals = await paystack.terminal_list();
 ```
-
 
 ### Terminal virtual
 
@@ -356,7 +333,6 @@ await paystack.virtualTerminal_create({
 });
 ```
 
-
 ### Clientes
 
 ```ts
@@ -364,7 +340,6 @@ await paystack.customer_create({
   body: { email: "customer@example.com", first_name: "Ada", last_name: "Lovelace" },
 });
 ```
-
 
 ### Débito directo
 
@@ -374,7 +349,6 @@ await paystack.directdebit_initialize({
 });
 ```
 
-
 ### Cuentas virtuales dedicadas
 
 ```ts
@@ -382,7 +356,6 @@ await paystack.dedicatedAccount_assign({
   body: { customer: 12345, preferred_bank: "wema-bank" },
 });
 ```
-
 
 ### Apple Pay
 
@@ -392,7 +365,6 @@ await paystack.applePay_registerDomain({
 });
 ```
 
-
 ### Planes
 
 ```ts
@@ -401,7 +373,6 @@ await paystack.plan_create({
 });
 ```
 
-
 ### Suscripciones
 
 ```ts
@@ -409,7 +380,6 @@ await paystack.subscription_create({
   body: { customer: "CUS_xxx", plan: "PLN_xxx" },
 });
 ```
-
 
 ### Destinatarios de transferencias
 
@@ -425,7 +395,6 @@ await paystack.transferrecipient_create({
 });
 ```
 
-
 ### Transferencias
 
 ```ts
@@ -434,20 +403,17 @@ await paystack.transfer_create({
 });
 ```
 
-
 ### Control de transferencias (configuración de OTP; en la sección de Transferencias)
 
 ```ts
 await paystack.transfer_enableOtp();
 ```
 
-
 ### Saldo
 
 ```ts
 const balance = await paystack.balance_fetch();
 ```
-
 
 ### Solicitudes de pago (facturas)
 
@@ -457,7 +423,6 @@ await paystack.paymentRequest_create({
 });
 ```
 
-
 ### Verificación (resolución de cuenta / validación de cuenta / resolución de BIN de tarjeta)
 
 ```ts
@@ -465,7 +430,6 @@ await paystack.bank_resolveAccountNumber({
   params: { query: { account_number: "0001234567", bank_code: "057" } },
 });
 ```
-
 
 ### Productos
 
@@ -475,13 +439,11 @@ await paystack.product_create({
 });
 ```
 
-
 ### Tiendas
 
 ```ts
 const storefronts = await paystack.storefront_list();
 ```
-
 
 ### Pedidos
 
@@ -491,7 +453,6 @@ await paystack.order_create({
 });
 ```
 
-
 ### Páginas de pago
 
 ```ts
@@ -500,20 +461,17 @@ await paystack.page_create({
 });
 ```
 
-
 ### Liquidaciones
 
 ```ts
 const settlements = await paystack.settlement_list();
 ```
 
-
 ### Integración
 
 ```ts
 const timeout = await paystack.integration_fetchPaymentSessionTimeout();
 ```
-
 
 ### Panel de control (tiempo de espera de la sesión de pago; en la sección de Integración)
 
@@ -523,7 +481,6 @@ await paystack.integration_updatePaymentSessionTimeout({
 });
 ```
 
-
 ### Reembolsos
 
 ```ts
@@ -532,13 +489,11 @@ await paystack.refund_create({
 });
 ```
 
-
 ### Disputas
 
 ```ts
 const disputes = await paystack.dispute_list();
 ```
-
 
 ### Bancos
 
@@ -546,30 +501,25 @@ const disputes = await paystack.dispute_list();
 const banks = await paystack.bank_list({ params: { query: { country: "nigeria" } } });
 ```
 
-
 ### Varios
 
 ```ts
 const countries = await paystack.miscellaneous_listCountries();
 ```
 
-
 ## SDK relacionados
 
 - [@alexasomba/paystack-browser](https://github.com/alexasomba/paystack-browser) - Optimizado para peticiones desde el navegador.
 - [@alexasomba/paystack-axios](https://github.com/alexasomba/paystack-axios) - Para proyectos que utilizan Axios.
 
-
 ## Utilizado por
 
 - **[Better Auth Paystack Plugin](https://github.com/alexasomba/better-auth-paystack)**: Un plugin integral de Paystack para Better Auth.
-
 
 ## Fuente
 
 - Fuente del monorepo: [alexasomba/paystack-openapi](https://github.com/alexasomba/paystack-openapi)
 - Repositorio del SDK independiente: [https://github.com/alexasomba/paystack-node](https://github.com/alexasomba/paystack-node)
-
 
 ## Licencia
 

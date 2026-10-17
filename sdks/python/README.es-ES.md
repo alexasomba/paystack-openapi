@@ -4,18 +4,15 @@
 
 Cliente de Python para la API de Paystack, generado a partir de la especificación OpenAPI de Paystack incluida en este repositorio.
 
-
 ## ¿Por qué utilizar este SDK?
 
 - Generado a partir de la fuente de verdad (OpenAPI de Paystack) contenida en este repositorio.
 - Incluye utilidades opcionales para gestionar tiempos de espera (timeouts), reintentos, idempotencia y errores de API estructurados.
 - Mantiene los modelos y las API generados alineados con la especificación de generación del SDK.
 
-
 ## Requisitos
 
 Python 3.10 o superior. La versión 2.0 eleva el requisito mínimo de Python para garantizar que todas las instalaciones puedan utilizar el transporte `urllib3` 2.8 (con parches). Asegúrate de actualizar Python antes de pasar de la versión 1.x del SDK a la nueva versión.
-
 
 ## Instalación
 
@@ -43,7 +40,6 @@ configuration = alexasomba_paystack.Configuration(
 )
 ```
 
-
 ## Inicio rápido
 
 ```python
@@ -70,25 +66,22 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 
 Las llamadas a la API generadas devuelven instancias de modelos tipados. Captura `ApiException` si necesitas acceder a los detalles de la respuesta HTTP sin procesar durante la depuración.
 
-
 ## Conceptos básicos de la API
 
 - URL base: `https://api.paystack.co`
 - Es obligatorio utilizar HTTPS para todas las solicitudes.
 - Tanto las solicitudes como las respuestas están basadas en formato JSON.
 - La mayoría de las respuestas exitosas siguen la estructura de envoltorio (envelope) compuesta por `status`, `message`, `data` y, opcionalmente, `meta`, tal como se describe en `Paystack-API/0a-Introduction.md`.
-- Los importes suelen enviarse en subunidades de moneda, como *kobo*, *pesewas* o céntimos. Consulta la documentación del módulo para conocer las reglas específicas de cada moneda.
-
+- Los importes suelen enviarse en subunidades de moneda, como _kobo_, _pesewas_ o céntimos. Consulta la documentación del módulo para conocer las reglas específicas de cada moneda.
 
 ## Autenticación y entornos
 
 - Los SDK del lado del servidor deben utilizar tu clave secreta (`sk_test_*` o `sk_live_*`).
 - Los SDK del lado del navegador deben utilizar únicamente tu clave pública (`pk_test_*` o `pk_live_*`).
 - Envía las credenciales de la API del lado del servidor como `Authorization: Bearer YOUR_SECRET_KEY`.
-- Los modos de prueba (*test*) y de producción (*live*) utilizan claves diferentes y entornos aislados.
+- Los modos de prueba (_test_) y de producción (_live_) utilizan claves diferentes y entornos aislados.
 - Rota las claves si estas quedan expuestas y nunca incluyas claves secretas en el control de versiones (repositorio de código).
 - Si habilitas la lista blanca de direcciones IP en Paystack, las solicitudes provenientes de direcciones IP que no estén en dicha lista serán bloqueadas.
-
 
 ## Fiabilidad
 
@@ -104,20 +97,17 @@ client = create_paystack_client(
 )
 ```
 
-Utiliza la capa de funciones adicionales (*extras layer*) cuando necesites un cliente de nivel superior que ya incluya configuraciones predefinidas para tiempos de espera (*timeout*), reintentos e idempotencia.
-
+Utiliza la capa de funciones adicionales (_extras layer_) cuando necesites un cliente de nivel superior que ya incluya configuraciones predefinidas para tiempos de espera (_timeout_), reintentos e idempotencia.
 
 ## Paginación
 
-- Paystack admite tanto la paginación basada en desplazamiento (*offset*) como la paginación basada en punteros (*cursor*).
+- Paystack admite tanto la paginación basada en desplazamiento (_offset_) como la paginación basada en punteros (_cursor_).
 - La paginación basada en desplazamiento utiliza `page` y `perPage`.
 - La paginación basada en punteros utiliza `use_cursor=true`, junto con los punteros `next` o `previous`, los cuales se obtienen a través de `meta`.
 - La paginación basada en punteros resulta especialmente útil para conjuntos de datos grandes o que cambian con frecuencia.
 - La estructura exacta de `meta` varía según el endpoint y el modo de paginación.
 
-
 ## Cobertura
-
 
 ## Errores
 
@@ -128,12 +118,11 @@ Utiliza la capa de funciones adicionales (*extras layer*) cuando necesites un cl
 
 Este SDK se genera a partir de la especificación del SDK en este monorepositorio y abarca las operaciones incluidas en los módulos de API generados bajo `alexasomba_paystack.api`.
 
-
 ## Módulos
 
 Para este SDK, estas familias de esquemas se generan como módulos de modelo bajo `alexasomba_paystack.models` y son utilizadas por los módulos de API generados bajo `alexasomba_paystack.api`.
 
-| Módulo                                                               | Familia de esquemas/modelos                                    |
+| Módulo                                                               | Familia de esquemas/modelos                              |
 | -------------------------------------------------------------------- | -------------------------------------------------------- |
 | Transactions                                                         | `Transaction*`                                           |
 | Verify Payments (Transaction verification)                           | `VerifyResponse / TransactionFetchResponse`              |
@@ -167,7 +156,6 @@ Para este SDK, estas familias de esquemas se generan como módulos de modelo baj
 | Bancos                                                               | `Bank*`                                                  |
 | Varios                                                               | `Miscellaneous* / Currency`                              |
 
-
 ## Ejemplos de módulos
 
 Estos ejemplos son deliberadamente breves. Úsalos como puntos de partida y, posteriormente, amplía los modelos generados y los argumentos de los métodos según las necesidades de tu caso de uso.
@@ -180,13 +168,11 @@ response = transaction_api.transaction_initialize(
 )
 ```
 
-
 ### Verificación de pagos (verificación de transacciones)
 
 ```python
 verified = transaction_api.transaction_verify("ref_123")
 ```
-
 
 ### Cargos
 
@@ -196,7 +182,6 @@ charge_api.charge_create(
 )
 ```
 
-
 ### Cargos masivos
 
 ```python
@@ -204,7 +189,6 @@ bulk_charge_api.bulk_charge_initiate([
     BulkChargeInitiate(authorization="AUTH_xxx", amount=5000, reference="bulk-ref-1")
 ])
 ```
-
 
 ### Subcuentas
 
@@ -214,7 +198,6 @@ subaccount_api.subaccount_create(
 )
 ```
 
-
 ### División de transacciones
 
 ```python
@@ -223,13 +206,11 @@ split_api.split_create(
 )
 ```
 
-
 ### Terminal
 
 ```python
 terminals = terminal_api.terminal_list()
 ```
-
 
 ### Terminal virtual
 
@@ -239,7 +220,6 @@ virtual_terminal_api.virtual_terminal_create(
 )
 ```
 
-
 ### Clientes
 
 ```python
@@ -247,7 +227,6 @@ customer_api.customer_create(
     customer_create=CustomerCreate(email="customer@example.com")
 )
 ```
-
 
 ### Débito directo
 
@@ -257,7 +236,6 @@ direct_debit_api.directdebit_initialize(
 )
 ```
 
-
 ### Cuentas virtuales dedicadas
 
 ```python
@@ -265,7 +243,6 @@ dedicated_virtual_account_api.dedicated_account_assign(
     dedicated_virtual_account_assign=DedicatedVirtualAccountAssign(customer=12345)
 )
 ```
-
 
 ### Apple Pay
 
@@ -275,7 +252,6 @@ apple_pay_api.apple_pay_register_domain(
 )
 ```
 
-
 ### Planes
 
 ```python
@@ -283,7 +259,6 @@ plan_api.plan_create(
     plan_create=PlanCreate(name="Starter", amount=500000, interval="monthly")
 )
 ```
-
 
 ### Suscripciones
 
@@ -293,7 +268,6 @@ subscription_api.subscription_create(
 )
 ```
 
-
 ### Destinatarios de transferencias
 
 ```python
@@ -301,7 +275,6 @@ transfer_recipient_api.transferrecipient_create(
     transfer_recipient_create=TransferRecipientCreate(name="Ada Lovelace", type="nuban")
 )
 ```
-
 
 ### Transferencias
 
@@ -311,20 +284,17 @@ transfer_api.transfer_create(
 )
 ```
 
-
 ### Control de transferencias (configuración de OTP; dentro de Transferencias)
 
 ```python
 transfer_api.transfer_enable_otp()
 ```
 
-
 ### Saldo
 
 ```python
 balance = balance_api.balance_fetch()
 ```
-
 
 ### Solicitudes de pago (facturas)
 
@@ -334,13 +304,11 @@ payment_request_api.payment_request_create(
 )
 ```
 
-
 ### Verificación (resolución de cuenta / validación de cuenta / resolución de BIN de tarjeta)
 
 ```python
 resolved = bank_api.bank_resolve_account_number("0001234567", "057")
 ```
-
 
 ### Productos
 
@@ -350,13 +318,11 @@ product_api.product_create(
 )
 ```
 
-
 ### Tiendas
 
 ```python
 storefronts = storefront_api.storefront_list()
 ```
-
 
 ### Pedidos
 
@@ -364,13 +330,11 @@ storefronts = storefront_api.storefront_list()
 order_api.order_create(order_create=OrderCreate(customer="CUS_xxx"))
 ```
 
-
 ### Páginas de pago
 
 ```python
 page_api.page_create(page_create=PageCreate(name="Event Ticket", amount=5000))
 ```
-
 
 ### Liquidaciones
 
@@ -378,13 +342,11 @@ page_api.page_create(page_create=PageCreate(name="Event Ticket", amount=5000))
 settlements = settlement_api.settlement_list()
 ```
 
-
 ### Integración
 
 ```python
 timeout = integration_api.integration_fetch_payment_session_timeout()
 ```
-
 
 ### Panel de control (tiempo de espera de la sesión de pago; en la sección de Integración)
 
@@ -392,13 +354,11 @@ timeout = integration_api.integration_fetch_payment_session_timeout()
 integration_api.integration_update_payment_session_timeout(20)
 ```
 
-
 ### Reembolsos
 
 ```python
 refund_api.refund_create(refund_create=RefundCreate(transaction=123456789, amount=5000))
 ```
-
 
 ### Disputas
 
@@ -406,20 +366,17 @@ refund_api.refund_create(refund_create=RefundCreate(transaction=123456789, amoun
 disputes = dispute_api.dispute_list()
 ```
 
-
 ### Bancos
 
 ```python
 banks = bank_api.bank_list(country="nigeria")
 ```
 
-
 ### Varios
 
 ```python
 countries = miscellaneous_api.miscellaneous_list_countries()
 ```
-
 
 ## Notas de configuración
 
@@ -432,7 +389,6 @@ El cliente de Python generado sigue ofreciendo la interfaz de configuración est
 - Navegador: [alexasomba/paystack-browser](https://github.com/alexasomba/paystack-browser)
 - Go: [alexasomba/paystack-go](https://github.com/alexasomba/paystack-go)
 - PHP: [alexasomba/paystack-php](https://github.com/alexasomba/paystack-php)
-
 
 ## Código fuente
 

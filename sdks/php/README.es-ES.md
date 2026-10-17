@@ -4,18 +4,15 @@
 
 Cliente PHP para la API de Paystack, generado a partir de la especificación OpenAPI de Paystack incluida en este repositorio.
 
-
 ## ¿Por qué utilizar este SDK?
 
 - Generado a partir de la fuente de verdad (OpenAPI de Paystack) contenida en este repositorio.
 - Incluye utilidades opcionales para gestionar tiempos de espera (timeouts), reintentos, idempotencia y errores de API estructurados.
 - Mantiene los modelos y las clases de la API generados en consonancia con la especificación de generación del SDK.
 
-
 ## Requisitos
 
 PHP 8.1 o superior.
-
 
 ## Instalación
 
@@ -46,7 +43,6 @@ $config = Configuration::getDefaultConfiguration()
     ->setAccessToken($_ENV['PAYSTACK_SECRET_KEY']);
 ```
 
-
 ## Inicio rápido
 
 ```php
@@ -75,7 +71,6 @@ echo $response->getData()->getAuthorizationUrl() . PHP_EOL;
 
 Los métodos de la API generados devuelven objetos de modelo tipados. Captura la excepción `ApiException` si necesitas acceder a los códigos de estado, encabezados o cuerpos de respuesta originales durante el proceso de depuración (debugging).
 
-
 ## Conceptos básicos de la API
 
 - URL base: `https://api.paystack.co`
@@ -93,7 +88,6 @@ Los métodos de la API generados devuelven objetos de modelo tipados. Captura la
 - Rota las claves si estas se ven comprometidas y nunca incluyas claves secretas en el control de versiones (código fuente).
 - Si habilitas la lista blanca de direcciones IP en Paystack, las solicitudes provenientes de direcciones IP que no estén en dicha lista serán bloqueadas.
 
-
 ## Fiabilidad
 
 Este SDK incluye herramientas auxiliares opcionales en `Alexasomba\Paystack\Extras`:
@@ -109,19 +103,17 @@ $client = HttpClientFactory::create([
 ]);
 ```
 
-Utiliza la capa de opciones adicionales (*extras*) cuando desees establecer, en un único lugar, los valores predeterminados para el tiempo de espera (*timeout*), los reintentos y la idempotencia en toda tu aplicación.
-
+Utiliza la capa de opciones adicionales (_extras_) cuando desees establecer, en un único lugar, los valores predeterminados para el tiempo de espera (_timeout_), los reintentos y la idempotencia en toda tu aplicación.
 
 ## Paginación
 
-- Paystack admite tanto la paginación basada en desplazamiento (*offset*) como la paginación basada en punteros (*cursor*).
+- Paystack admite tanto la paginación basada en desplazamiento (_offset_) como la paginación basada en punteros (_cursor_).
 - La paginación basada en desplazamiento utiliza `page` y `perPage`.
 - La paginación basada en punteros utiliza `use_cursor=true`, junto con los punteros `next` o `previous`, los cuales se devuelven en `meta`.
 - La paginación basada en punteros resulta especialmente útil para conjuntos de datos grandes o que cambian con frecuencia.
-- La estructura exacta de `meta` varía según el *endpoint* y el modo de paginación utilizado.
+- La estructura exacta de `meta` varía según el _endpoint_ y el modo de paginación utilizado.
 
 ## Cobertura
-
 
 ## Errores
 
@@ -132,12 +124,11 @@ Utiliza la capa de opciones adicionales (*extras*) cuando desees establecer, en 
 
 Este SDK se genera a partir de la especificación del SDK contenida en este monorepositorio y abarca las operaciones incluidas en las clases de API generadas bajo `lib/Api`.
 
-
 ## Módulos
 
 En este SDK, estas familias de esquemas se presentan como clases de modelo generadas bajo `lib/Model` y son utilizadas por las clases de API bajo `lib/Api`.
 
-| Módulo                                                               | Familia de esquemas/modelos                               |
+| Módulo                                                               | Familia de esquemas/modelos                              |
 | -------------------------------------------------------------------- | -------------------------------------------------------- |
 | Transacciones                                                        | `Transaction*`                                           |
 | Verify Payments (Transaction verification)                           | `VerifyResponse / TransactionFetchResponse`              |
@@ -171,7 +162,6 @@ En este SDK, estas familias de esquemas se presentan como clases de modelo gener
 | Bancos                                                               | `Bank*`                                                  |
 | Varios                                                               | `Miscellaneous* / Currency`                              |
 
-
 ## Ejemplos de módulos
 
 Estos ejemplos son deliberadamente breves. Úsalos como puntos de partida y, a continuación, amplía los objetos de modelo generados y los argumentos de los métodos de la API según las necesidades de tu caso de uso.
@@ -184,20 +174,17 @@ $response = $transactionApi->transactionInitialize(
 );
 ```
 
-
 ### Verificación de pagos (verificación de transacciones)
 
 ```php
 $verified = $transactionApi->transactionVerify('ref_123');
 ```
 
-
 ### Cargos
 
 ```php
 $chargeApi->chargeCreate(new ChargeCreateRequest(['email' => 'customer@example.com']));
 ```
-
 
 ### Cargos masivos
 
@@ -207,13 +194,11 @@ $bulkChargeApi->bulkChargeInitiate([
 ]);
 ```
 
-
 ### Subcuentas
 
 ```php
 $subaccountApi->subaccountCreate(new SubaccountCreate(['business_name' => 'Acme Stores']));
 ```
-
 
 ### División de transacciones
 
@@ -221,13 +206,11 @@ $subaccountApi->subaccountCreate(new SubaccountCreate(['business_name' => 'Acme 
 $splitApi->splitCreate(new SplitCreate(['name' => 'Main split', 'type' => 'percentage', 'currency' => 'NGN']));
 ```
 
-
 ### Terminal
 
 ```php
 $terminals = $terminalApi->terminalList();
 ```
-
 
 ### Terminal virtual
 
@@ -235,13 +218,11 @@ $terminals = $terminalApi->terminalList();
 $virtualTerminalApi->virtualTerminalCreate(new VirtualTerminalCreate(['name' => 'Web checkout terminal']));
 ```
 
-
 ### Clientes
 
 ```php
 $customerApi->customerCreate(new CustomerCreate(['email' => 'customer@example.com']));
 ```
-
 
 ### Débito directo
 
@@ -249,13 +230,11 @@ $customerApi->customerCreate(new CustomerCreate(['email' => 'customer@example.co
 $directDebitApi->directdebitInitialize(new DirectDebitInitializeRequest(['email' => 'customer@example.com']));
 ```
 
-
 ### Cuentas virtuales dedicadas
 
 ```php
 $dedicatedVirtualAccountApi->dedicatedAccountAssign(new DedicatedVirtualAccountAssign(['customer' => 12345]));
 ```
-
 
 ### Apple Pay
 
@@ -263,13 +242,11 @@ $dedicatedVirtualAccountApi->dedicatedAccountAssign(new DedicatedVirtualAccountA
 $applePayApi->applePayRegisterDomain(new ApplePayParam(['domain_name' => 'example.com']));
 ```
 
-
 ### Planes
 
 ```php
 $planApi->planCreate(new PlanCreate(['name' => 'Starter', 'amount' => 500000, 'interval' => 'monthly']));
 ```
-
 
 ### Suscripciones
 
@@ -277,13 +254,11 @@ $planApi->planCreate(new PlanCreate(['name' => 'Starter', 'amount' => 500000, 'i
 $subscriptionApi->subscriptionCreate(new SubscriptionCreate(['customer' => 'CUS_xxx', 'plan' => 'PLN_xxx']));
 ```
 
-
 ### Destinatarios de transferencias
 
 ```php
 $transferRecipientApi->transferrecipientCreate(new TransferRecipientCreate(['name' => 'Ada Lovelace', 'type' => 'nuban']));
 ```
-
 
 ### Transferencias
 
@@ -291,13 +266,11 @@ $transferRecipientApi->transferrecipientCreate(new TransferRecipientCreate(['nam
 $transferApi->transferCreate(new TransferInitiate(['source' => 'balance', 'amount' => 5000, 'recipient' => 'RCP_xxx']));
 ```
 
-
 ### Control de transferencias (configuración de OTP; dentro de Transferencias)
 
 ```php
 $transferApi->transferEnableOtp();
 ```
-
 
 ### Saldo
 
@@ -305,13 +278,11 @@ $transferApi->transferEnableOtp();
 $balance = $balanceApi->balanceFetch();
 ```
 
-
 ### Solicitudes de pago (facturas)
 
 ```php
 $paymentRequestApi->paymentRequestCreate(new PaymentRequestCreate(['amount' => 5000, 'description' => 'Consulting invoice']));
 ```
-
 
 ### Verificación (resolución de cuenta / validación de cuenta / resolución de BIN de tarjeta)
 
@@ -319,13 +290,11 @@ $paymentRequestApi->paymentRequestCreate(new PaymentRequestCreate(['amount' => 5
 $resolved = $bankApi->bankResolveAccountNumber('0001234567', '057');
 ```
 
-
 ### Productos
 
 ```php
 $productApi->productCreate(new ProductCreate(['name' => 'T-shirt', 'price' => 5000, 'currency' => 'NGN']));
 ```
-
 
 ### Tiendas
 
@@ -333,13 +302,11 @@ $productApi->productCreate(new ProductCreate(['name' => 'T-shirt', 'price' => 50
 $storefronts = $storefrontApi->storefrontList();
 ```
 
-
 ### Pedidos
 
 ```php
 $orderApi->orderCreate(new OrderCreate(['customer' => 'CUS_xxx']));
 ```
-
 
 ### Páginas de pago
 
@@ -347,13 +314,11 @@ $orderApi->orderCreate(new OrderCreate(['customer' => 'CUS_xxx']));
 $pageApi->pageCreate(new PageCreate(['name' => 'Event Ticket', 'amount' => 5000]));
 ```
 
-
 ### Liquidaciones
 
 ```php
 $settlements = $settlementApi->settlementList();
 ```
-
 
 ### Integración
 
@@ -361,13 +326,11 @@ $settlements = $settlementApi->settlementList();
 $timeout = $integrationApi->integrationFetchPaymentSessionTimeout();
 ```
 
-
 ### Panel de control (tiempo de espera de la sesión de pago; en la sección de Integración)
 
 ```php
 $integrationApi->integrationUpdatePaymentSessionTimeout(20);
 ```
-
 
 ### Reembolsos
 
@@ -375,13 +338,11 @@ $integrationApi->integrationUpdatePaymentSessionTimeout(20);
 $refundApi->refundCreate(new RefundCreate(['transaction' => 123456789, 'amount' => 5000]));
 ```
 
-
 ### Disputas
 
 ```php
 $disputes = $disputeApi->disputeList();
 ```
-
 
 ### Bancos
 
@@ -389,13 +350,11 @@ $disputes = $disputeApi->disputeList();
 $banks = $bankApi->bankList('nigeria');
 ```
 
-
 ### Varios
 
 ```php
 $countries = $miscellaneousApi->miscellaneousListCountries();
 ```
-
 
 ## Notas de configuración
 
@@ -408,7 +367,6 @@ El cliente PHP generado sigue ofreciendo la interfaz de configuración estándar
 - Navegador: [alexasomba/paystack-browser](https://github.com/alexasomba/paystack-browser)
 - Go: [alexasomba/paystack-go](https://github.com/alexasomba/paystack-go)
 - Python: [alexasomba/paystack-python](https://github.com/alexasomba/paystack-python)
-
 
 ## Código fuente
 

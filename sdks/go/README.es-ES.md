@@ -4,13 +4,11 @@
 
 Cliente para la API de Paystack escrito en Go, generado a partir de la especificación OpenAPI de Paystack incluida en este repositorio.
 
-
 ## ¿Por qué utilizar este SDK?
 
 - Generado a partir de la especificación OpenAPI de Paystack (la fuente de referencia) contenida en este repositorio.
 - Incluye utilidades para mejorar la fiabilidad, tales como gestión de tiempos de espera (timeouts), reintentos, idempotencia y errores de API estructurados.
 - Ofrece cobertura de endpoints conforme a la especificación utilizada para generar el cliente.
-
 
 ## Instalación
 
@@ -25,7 +23,6 @@ import paystack "github.com/alexasomba/paystack-go"
 ```
 
 Autentica tus solicitudes incluyendo tu clave secreta (secret key) de Paystack como un token de tipo "bearer" en la cabecera de la configuración generada.
-
 
 ## Inicio rápido
 
@@ -61,7 +58,6 @@ fmt.Println(resp.Data.AuthorizationUrl)
 
 El cliente generado devuelve el objeto de respuesta tipado de Paystack, la respuesta HTTP sin procesar y un posible error. Al depurar problemas de integración, revisa tanto el error como el contenido (payload) de la respuesta.
 
-
 ## Conceptos básicos de la API
 
 - URL base: `https://api.paystack.co`
@@ -69,7 +65,6 @@ El cliente generado devuelve el objeto de respuesta tipado de Paystack, la respu
 - Tanto las solicitudes como las respuestas utilizan el formato JSON.
 - La mayoría de las respuestas exitosas siguen la estructura de envoltorio (envelope) descrita en `Paystack-API/0a-Introduction.md`, que incluye los campos `status`, `message`, `data` y, opcionalmente, `meta`.
 - Los importes suelen enviarse en subunidades de la moneda (por ejemplo: kobo, pesewas o centavos). Consulta la documentación del módulo para conocer las reglas específicas de cada moneda.
-
 
 ## Autenticación y entornos
 
@@ -79,7 +74,6 @@ El cliente generado devuelve el objeto de respuesta tipado de Paystack, la respu
 - Los modos de prueba (test) y de producción (live) emplean claves distintas y entornos aislados.
 - Rota las claves si estas llegan a exponerse y nunca incluyas claves secretas en el control de versiones (repositorio de código).
 - Si habilitas la lista blanca de direcciones IP en Paystack, las solicitudes provenientes de direcciones IP que no estén en dicha lista serán bloqueadas.
-
 
 ## Fiabilidad
 
@@ -94,7 +88,6 @@ client, ctx := paystack.NewAPIClientWithReliability(os.Getenv("PAYSTACK_SECRET_K
 
 Utiliza estas herramientas cuando desees estandarizar, en un único lugar, el comportamiento relativo a los tiempos de espera (timeout), los reintentos y la idempotencia en todos tus servicios.
 
-
 ## Paginación
 
 - Paystack admite tanto la paginación basada en desplazamiento (offset) como la basada en punteros (cursor).
@@ -105,7 +98,6 @@ Utiliza estas herramientas cuando desees estandarizar, en un único lugar, el co
 
 ## Cobertura
 
-
 ## Errores
 
 - Paystack utiliza códigos de estado HTTP convencionales, tales como `200`, `201`, `400`, `401`, `404` y `5xx`.
@@ -114,7 +106,6 @@ Utiliza estas herramientas cuando desees estandarizar, en un único lugar, el co
 - Para los flujos de cobro y verificación, examine siempre el cuerpo de la respuesta devuelta y los campos de estado, no solo el código HTTP.
 
 Este SDK se genera a partir de [api/openapi.yaml](./api/openapi.yaml) e incluye actualmente el conjunto completo de operaciones derivadas de la especificación del SDK, la cual está alineada con la API de Paystack.
-
 
 ## Módulos
 
@@ -154,7 +145,6 @@ En este SDK, estas familias de esquemas se generan como modelos de Go en la raí
 | Bancos                                                               | `Bank*`                                                  |
 | Varios                                                               | `Miscellaneous* / Currency`                              |
 
-
 ## Ejemplos de módulos
 
 Estos ejemplos son deliberadamente breves. Úsalos como puntos de partida y, a continuación, amplía las estructuras de solicitud tipadas y los constructores de solicitudes (builders) de estilo fluido que ofrece el paquete generado.
@@ -167,13 +157,11 @@ resp, _, err := client.TransactionAPI.TransactionInitialize(ctx).
   Execute()
 ```
 
-
 ### Verificación de pagos (verificación de transacciones)
 
 ```go
 verified, _, err := client.TransactionAPI.TransactionVerify(ctx, "ref_123").Execute()
 ```
-
 
 ### Cargos
 
@@ -183,7 +171,6 @@ _, _, err := client.ChargeAPI.ChargeCreate(ctx).
   Execute()
 ```
 
-
 ### Cargos masivos
 
 ```go
@@ -191,7 +178,6 @@ _, _, err := client.BulkChargeAPI.BulkChargeInitiate(ctx).
   BulkChargeInitiate([]paystack.BulkChargeInitiate{{Authorization: "AUTH_xxx", Amount: 5000, Reference: "bulk-ref-1"}}).
   Execute()
 ```
-
 
 ### Subcuentas
 
@@ -201,7 +187,6 @@ _, _, err := client.SubaccountAPI.SubaccountCreate(ctx).
   Execute()
 ```
 
-
 ### División de transacciones
 
 ```go
@@ -210,13 +195,11 @@ _, _, err := client.SplitAPI.SplitCreate(ctx).
   Execute()
 ```
 
-
 ### Terminal
 
 ```go
 terminals, _, err := client.TerminalAPI.TerminalList(ctx).Execute()
 ```
-
 
 ### Terminal virtual
 
@@ -226,7 +209,6 @@ _, _, err := client.VirtualTerminalAPI.VirtualTerminalCreate(ctx).
   Execute()
 ```
 
-
 ### Clientes
 
 ```go
@@ -234,7 +216,6 @@ _, _, err := client.CustomerAPI.CustomerCreate(ctx).
   CustomerCreate(paystack.CustomerCreate{Email: "customer@example.com"}).
   Execute()
 ```
-
 
 ### Débito directo
 
@@ -244,7 +225,6 @@ _, _, err := client.DirectDebitAPI.DirectdebitInitialize(ctx).
   Execute()
 ```
 
-
 ### Cuentas virtuales dedicadas
 
 ```go
@@ -252,7 +232,6 @@ _, _, err := client.DedicatedVirtualAccountAPI.DedicatedAccountAssign(ctx).
   DedicatedVirtualAccountAssign(paystack.DedicatedVirtualAccountAssign{Customer: 12345}).
   Execute()
 ```
-
 
 ### Apple Pay
 
@@ -262,7 +241,6 @@ _, _, err := client.ApplePayAPI.ApplePayRegisterDomain(ctx).
   Execute()
 ```
 
-
 ### Planes
 
 ```go
@@ -270,7 +248,6 @@ _, _, err := client.PlanAPI.PlanCreate(ctx).
   PlanCreate(paystack.PlanCreate{Name: "Starter", Amount: 500000, Interval: "monthly"}).
   Execute()
 ```
-
 
 ### Suscripciones
 
@@ -280,7 +257,6 @@ _, _, err := client.SubscriptionAPI.SubscriptionCreate(ctx).
   Execute()
 ```
 
-
 ### Destinatarios de transferencias
 
 ```go
@@ -288,7 +264,6 @@ _, _, err := client.TransferRecipientAPI.TransferrecipientCreate(ctx).
   TransferRecipientCreate(paystack.TransferRecipientCreate{Name: "Ada Lovelace", Type: "nuban"}).
   Execute()
 ```
-
 
 ### Transferencias
 
@@ -298,20 +273,17 @@ _, _, err := client.TransferAPI.TransferCreate(ctx).
   Execute()
 ```
 
-
 ### Control de transferencias (configuración de OTP; dentro de Transferencias)
 
 ```go
 _, _, err := client.TransferAPI.TransferEnableOtp(ctx).Execute()
 ```
 
-
 ### Saldo
 
 ```go
 balance, _, err := client.BalanceAPI.BalanceFetch(ctx).Execute()
 ```
-
 
 ### Solicitudes de pago (facturas)
 
@@ -320,7 +292,6 @@ _, _, err := client.PaymentRequestAPI.PaymentRequestCreate(ctx).
   PaymentRequestCreate(paystack.PaymentRequestCreate{Amount: 5000, Description: "Consulting invoice"}).
   Execute()
 ```
-
 
 ### Verificación (resolución de cuenta / validación de cuenta / resolución de BIN de tarjeta)
 
@@ -331,7 +302,6 @@ resolved, _, err := client.BankAPI.BankResolveAccountNumber(ctx).
   Execute()
 ```
 
-
 ### Productos
 
 ```go
@@ -340,13 +310,11 @@ _, _, err := client.ProductAPI.ProductCreate(ctx).
   Execute()
 ```
 
-
 ### Tiendas
 
 ```go
 storefronts, _, err := client.StorefrontAPI.StorefrontList(ctx).Execute()
 ```
-
 
 ### Pedidos
 
@@ -356,7 +324,6 @@ _, _, err := client.OrderAPI.OrderCreate(ctx).
   Execute()
 ```
 
-
 ### Páginas de pago
 
 ```go
@@ -365,20 +332,17 @@ _, _, err := client.PageAPI.PageCreate(ctx).
   Execute()
 ```
 
-
 ### Liquidaciones
 
 ```go
 settlements, _, err := client.SettlementAPI.SettlementList(ctx).Execute()
 ```
 
-
 ### Integración
 
 ```go
 timeout, _, err := client.IntegrationAPI.IntegrationFetchPaymentSessionTimeout(ctx).Execute()
 ```
-
 
 ### Panel de control (tiempo de espera de la sesión de pago; en la sección de Integración)
 
@@ -388,7 +352,6 @@ _, _, err := client.IntegrationAPI.IntegrationUpdatePaymentSessionTimeout(ctx).
   Execute()
 ```
 
-
 ### Reembolsos
 
 ```go
@@ -397,13 +360,11 @@ _, _, err := client.RefundAPI.RefundCreate(ctx).
   Execute()
 ```
 
-
 ### Disputas
 
 ```go
 disputes, _, err := client.DisputeAPI.DisputeList(ctx).Execute()
 ```
-
 
 ### Bancos
 
@@ -413,13 +374,11 @@ banks, _, err := client.BankAPI.BankList(ctx).
   Execute()
 ```
 
-
 ### Varios
 
 ```go
 countries, _, err := client.MiscellaneousAPI.MiscellaneousListCountries(ctx).Execute()
 ```
-
 
 ## Notas de configuración
 
@@ -432,7 +391,6 @@ El cliente de Go generado sigue exponiendo la interfaz de configuración estánd
 - Navegador: [alexasomba/paystack-browser](https://github.com/alexasomba/paystack-browser)
 - PHP: [alexasomba/paystack-php](https://github.com/alexasomba/paystack-php)
 - Python: [alexasomba/paystack-python](https://github.com/alexasomba/paystack-python)
-
 
 ## Código fuente
 

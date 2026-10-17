@@ -4,7 +4,6 @@
 
 Accédez au client pour l'API Paystack, générée à partir de la spécification Paystack OpenAPI dans ce référentiel.
 
-
 ## Pourquoi ce SDK
 
 - Généré à partir de la source de vérité Paystack OpenAPI dans ce dépôt
@@ -24,7 +23,6 @@ import paystack "github.com/alexasomba/paystack-go"
 ```
 
 Authentifiez les demandes en attachant votre clé secrète Paystack en tant qu'en-tête de jeton de porteur sur la configuration générée.
-
 
 ## Démarrage rapide
 
@@ -60,7 +58,6 @@ fmt.Println(resp.Data.AuthorizationUrl)
 
 Le client généré renvoie l'objet de réponse Paystack tapé, la réponse HTTP brute et une erreur. Vérifiez à la fois l’erreur et la charge utile de la réponse lors du débogage des problèmes d’intégration.
 
-
 ## Bases de l'API
 
 - URL de base : `https://api.paystack.co`
@@ -68,7 +65,6 @@ Le client généré renvoie l'objet de réponse Paystack tapé, la réponse HTTP
 - Les demandes et les réponses sont basées sur JSON.
 - Les réponses les plus réussies suivent les enveloppes `status`, `message`, `data` et `meta` en option décrites dans `Paystack-API/0a-Introduction.md`.
 - Les montants sont généralement envoyés en sous-unités monétaires telles que le kobo, les pesewas ou les centimes. Consultez la documentation du module pour connaître les règles spécifiques aux devises.
-
 
 ## Authentification et environnements
 
@@ -78,7 +74,6 @@ Le client généré renvoie l'objet de réponse Paystack tapé, la réponse HTTP
 - Les modes test et live utilisent différentes clés et environnements isolés.
 - Faites pivoter les clés si elles sont exposées et ne confiez jamais les clés secrètes au contrôle de code source.
 - Si vous activez la liste blanche des adresses IP dans Paystack, les demandes provenant d'adresses IP non sur liste blanche seront bloquées.
-
 
 ## Fiabilité
 
@@ -93,7 +88,6 @@ client, ctx := paystack.NewAPIClientWithReliability(os.Getenv("PAYSTACK_SECRET_K
 
 Utilisez ces assistants lorsque vous souhaitez un seul endroit pour standardiser le comportement de délai d’attente, de nouvelle tentative et d’idempotence entre les services.
 
-
 ## Pagination
 
 - Paystack prend en charge à la fois la pagination décalée et la pagination du curseur.
@@ -102,9 +96,7 @@ Utilisez ces assistants lorsque vous souhaitez un seul endroit pour standardiser
 - La pagination du curseur est particulièrement utile pour les ensembles de données volumineux ou qui changent fréquemment.
 - La forme exacte du `meta` varie selon le point final et le mode de pagination.
 
-
 ## Couverture
-
 
 ## Erreurs
 
@@ -119,45 +111,43 @@ Ce SDK est généré à partir de [api/openapi.yaml](./api/openapi.yaml) et est 
 
 Pour ce SDK, ces familles de schémas sont émises en tant que modèles Go générés dans la racine du package et référencées par les services API générés.
 
-| Module | Schéma / famille de modèles |
-| -------------------------------------------------------------------- | ---------------------------------------------------- |
-| Opérations | `Transaction*` |
-| Vérifier les paiements (vérification des transactions) | `VerifyResponse / TransactionFetchResponse` |
-| Frais | `Charge*` |
-| Frais de gros | `BulkCharge*` |
-| Sous-comptes | `Subaccount*` |
-| Fractionnements de transactions | `Split*` |
-| Borne | `Terminal*` |
-| Terminal virtuel | `VirtualTerminal*` |
-| Clients | `Customer*` |
-| Prélèvement automatique | `DirectDebit*` |
-| Comptes virtuels dédiés | `DedicatedNuban* / DedicatedVirtualAccount*` |
-| Apple Payer | `ApplePay*` |
-| Forfaits | `Plan*` |
-| Abonnements | `Subscription*` |
-| Destinataires du transfert | `TransferRecipient*` |
-| Transferts | `Transfer*` |
-| Contrôle des transferts (paramètres OTP ; sous Transferts) | `TransferEnable* / TransferDisable* / TransferFinalize*` |
-| Solde | `Balance*` |
-| Demandes de paiement (factures) | `PaymentRequest*` |
-| Vérification (Résoudre le compte / Valider le compte / Résoudre le BIN de la carte) | `Verification*` |
-| Produits | `Product*` |
-| Vitrines de magasins | `Storefront*` |
-| Commandes | `Order*` |
-| Pages de paiement | `Page*` |
-| Règlements | `Settlement*` |
-| Intégration | `Integration*` |
-| Panneau de configuration (Délai d'expiration de la session de paiement ; sous Intégration) | `ControlPanel*` |
-| Remboursements | `Refund*` |
-| Litiges | `Dispute*` |
-| Banques | `Bank*` |
-| Divers | `Miscellaneous* / Currency` |
-
+| Module                                                                                     | Schéma / famille de modèles                              |
+| ------------------------------------------------------------------------------------------ | -------------------------------------------------------- |
+| Opérations                                                                                 | `Transaction*`                                           |
+| Vérifier les paiements (vérification des transactions)                                     | `VerifyResponse / TransactionFetchResponse`              |
+| Frais                                                                                      | `Charge*`                                                |
+| Frais de gros                                                                              | `BulkCharge*`                                            |
+| Sous-comptes                                                                               | `Subaccount*`                                            |
+| Fractionnements de transactions                                                            | `Split*`                                                 |
+| Borne                                                                                      | `Terminal*`                                              |
+| Terminal virtuel                                                                           | `VirtualTerminal*`                                       |
+| Clients                                                                                    | `Customer*`                                              |
+| Prélèvement automatique                                                                    | `DirectDebit*`                                           |
+| Comptes virtuels dédiés                                                                    | `DedicatedNuban* / DedicatedVirtualAccount*`             |
+| Apple Payer                                                                                | `ApplePay*`                                              |
+| Forfaits                                                                                   | `Plan*`                                                  |
+| Abonnements                                                                                | `Subscription*`                                          |
+| Destinataires du transfert                                                                 | `TransferRecipient*`                                     |
+| Transferts                                                                                 | `Transfer*`                                              |
+| Contrôle des transferts (paramètres OTP ; sous Transferts)                                 | `TransferEnable* / TransferDisable* / TransferFinalize*` |
+| Solde                                                                                      | `Balance*`                                               |
+| Demandes de paiement (factures)                                                            | `PaymentRequest*`                                        |
+| Vérification (Résoudre le compte / Valider le compte / Résoudre le BIN de la carte)        | `Verification*`                                          |
+| Produits                                                                                   | `Product*`                                               |
+| Vitrines de magasins                                                                       | `Storefront*`                                            |
+| Commandes                                                                                  | `Order*`                                                 |
+| Pages de paiement                                                                          | `Page*`                                                  |
+| Règlements                                                                                 | `Settlement*`                                            |
+| Intégration                                                                                | `Integration*`                                           |
+| Panneau de configuration (Délai d'expiration de la session de paiement ; sous Intégration) | `ControlPanel*`                                          |
+| Remboursements                                                                             | `Refund*`                                                |
+| Litiges                                                                                    | `Dispute*`                                               |
+| Banques                                                                                    | `Bank*`                                                  |
+| Divers                                                                                     | `Miscellaneous* / Currency`                              |
 
 ## Exemples de modules
 
 Ce sont des exemples volontairement courts. Utilisez-les comme points d'entrée, puis développez les structures de requêtes typées et les générateurs de requêtes fluides affichés par le package généré.
-
 
 ### Transactions
 
@@ -167,13 +157,11 @@ resp, _, err := client.TransactionAPI.TransactionInitialize(ctx).
   Execute()
 ```
 
-
 ### Vérifier les paiements (vérification des transactions)
 
 ```go
 verified, _, err := client.TransactionAPI.TransactionVerify(ctx, "ref_123").Execute()
 ```
-
 
 ### Frais
 
@@ -183,7 +171,6 @@ _, _, err := client.ChargeAPI.ChargeCreate(ctx).
   Execute()
 ```
 
-
 ### Frais groupés
 
 ```go
@@ -191,7 +178,6 @@ _, _, err := client.BulkChargeAPI.BulkChargeInitiate(ctx).
   BulkChargeInitiate([]paystack.BulkChargeInitiate{{Authorization: "AUTH_xxx", Amount: 5000, Reference: "bulk-ref-1"}}).
   Execute()
 ```
-
 
 ### Sous-comptes
 
@@ -201,7 +187,6 @@ _, _, err := client.SubaccountAPI.SubaccountCreate(ctx).
   Execute()
 ```
 
-
 ### Répartition des transactions
 
 ```go
@@ -210,12 +195,11 @@ _, _, err := client.SplitAPI.SplitCreate(ctx).
   Execute()
 ```
 
-
 ### Terminal
+
 ```go
 terminals, _, err := client.TerminalAPI.TerminalList(ctx).Execute()
 ```
-
 
 ### Terminal virtuel
 
@@ -225,7 +209,6 @@ _, _, err := client.VirtualTerminalAPI.VirtualTerminalCreate(ctx).
   Execute()
 ```
 
-
 ### Clients
 
 ```go
@@ -233,7 +216,6 @@ _, _, err := client.CustomerAPI.CustomerCreate(ctx).
   CustomerCreate(paystack.CustomerCreate{Email: "customer@example.com"}).
   Execute()
 ```
-
 
 ### Prélèvement automatique
 
@@ -243,7 +225,6 @@ _, _, err := client.DirectDebitAPI.DirectdebitInitialize(ctx).
   Execute()
 ```
 
-
 ### Comptes virtuels dédiés
 
 ```go
@@ -251,7 +232,6 @@ _, _, err := client.DedicatedVirtualAccountAPI.DedicatedAccountAssign(ctx).
   DedicatedVirtualAccountAssign(paystack.DedicatedVirtualAccountAssign{Customer: 12345}).
   Execute()
 ```
-
 
 ### Apple Pay
 
@@ -261,14 +241,13 @@ _, _, err := client.ApplePayAPI.ApplePayRegisterDomain(ctx).
   Execute()
 ```
 
-
 ### Plans
+
 ```go
 _, _, err := client.PlanAPI.PlanCreate(ctx).
   PlanCreate(paystack.PlanCreate{Name: "Starter", Amount: 500000, Interval: "monthly"}).
   Execute()
 ```
-
 
 ### Abonnements
 
@@ -278,7 +257,6 @@ _, _, err := client.SubscriptionAPI.SubscriptionCreate(ctx).
   Execute()
 ```
 
-
 ### Destinataires du transfert
 
 ```go
@@ -286,7 +264,6 @@ _, _, err := client.TransferRecipientAPI.TransferrecipientCreate(ctx).
   TransferRecipientCreate(paystack.TransferRecipientCreate{Name: "Ada Lovelace", Type: "nuban"}).
   Execute()
 ```
-
 
 ### Transferts
 
@@ -296,20 +273,17 @@ _, _, err := client.TransferAPI.TransferCreate(ctx).
   Execute()
 ```
 
-
 ### Contrôle des transferts (paramètres OTP ; sous Transferts)
 
 ```go
 _, _, err := client.TransferAPI.TransferEnableOtp(ctx).Execute()
 ```
 
-
 ### Solde
 
 ```go
 balance, _, err := client.BalanceAPI.BalanceFetch(ctx).Execute()
 ```
-
 
 ### Demandes de paiement (factures)
 
@@ -318,7 +292,6 @@ _, _, err := client.PaymentRequestAPI.PaymentRequestCreate(ctx).
   PaymentRequestCreate(paystack.PaymentRequestCreate{Amount: 5000, Description: "Consulting invoice"}).
   Execute()
 ```
-
 
 ### Vérification (Résoudre le compte / Valider le compte / Résoudre le BIN de la carte)
 
@@ -329,7 +302,6 @@ resolved, _, err := client.BankAPI.BankResolveAccountNumber(ctx).
   Execute()
 ```
 
-
 ### Produits
 
 ```go
@@ -338,13 +310,11 @@ _, _, err := client.ProductAPI.ProductCreate(ctx).
   Execute()
 ```
 
-
 ### Vitrines de magasins
 
 ```go
 storefronts, _, err := client.StorefrontAPI.StorefrontList(ctx).Execute()
 ```
-
 
 ### Commandes
 
@@ -354,7 +324,6 @@ _, _, err := client.OrderAPI.OrderCreate(ctx).
   Execute()
 ```
 
-
 ### Pages de paiement
 
 ```go
@@ -363,20 +332,17 @@ _, _, err := client.PageAPI.PageCreate(ctx).
   Execute()
 ```
 
-
 ### Règlements
 
 ```go
 settlements, _, err := client.SettlementAPI.SettlementList(ctx).Execute()
 ```
 
-
 ### Intégration
 
 ```go
 timeout, _, err := client.IntegrationAPI.IntegrationFetchPaymentSessionTimeout(ctx).Execute()
 ```
-
 
 ### Panneau de configuration (Délai d'expiration de la session de paiement ; sous Intégration)
 
@@ -386,7 +352,6 @@ _, _, err := client.IntegrationAPI.IntegrationUpdatePaymentSessionTimeout(ctx).
   Execute()
 ```
 
-
 ### Remboursements
 
 ```go
@@ -395,13 +360,11 @@ _, _, err := client.RefundAPI.RefundCreate(ctx).
   Execute()
 ```
 
-
 ### Litiges
 
 ```go
 disputes, _, err := client.DisputeAPI.DisputeList(ctx).Execute()
 ```
-
 
 ### Banques
 
@@ -411,18 +374,15 @@ banks, _, err := client.BankAPI.BankList(ctx).
   Execute()
 ```
 
-
 ### Divers
 
 ```go
 countries, _, err := client.MiscellaneousAPI.MiscellaneousListCountries(ctx).Execute()
 ```
 
-
 ## Notes de configuration
 
 Le client Go généré expose toujours la surface de configuration standard du serveur OpenAPI Generator. Dans la plupart des intégrations, la seule chose que vous devez remplacer est l'en-tête du jeton du porteur.
-
 
 ## SDK associés
 
@@ -431,7 +391,6 @@ Le client Go généré expose toujours la surface de configuration standard du s
 - Navigateur : [alexasomba/paystack-browser](https://github.com/alexasomba/paystack-browser)
 - PHP : [alexasomba/paystack-php](https://github.com/alexasomba/paystack-php)
 - Python : [alexasomba/paystack-python](https://github.com/alexasomba/paystack-python)
-
 
 ## Source
 

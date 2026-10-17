@@ -6,7 +6,6 @@
 
 La spécification OpenAPI pour [API Paystack](https://paystack.com/docs/api).
 
-
 ## Pour commencer
 
 La [spécification OpenAPI](https://swagger.io/specification/) fournit une autre alternative pour tester l'API Paystack.
@@ -14,7 +13,6 @@ Vous pouvez télécharger la spécification et l'utiliser sur :
 
 - [SwaggerHub](https://swagger.io/tools/swaggerhub/)
 - [Éditeur OpenAPI (Swagger)](https://marketplace.visualstudio.com/items?itemName=42Crunch.vscode-openapi)
-
 
 ## Configurer localement
 
@@ -31,9 +29,9 @@ Vous pouvez télécharger la spécification et l'utiliser sur :
   ```sh
   vp run dev
   ```
- > [!NOTE]
-> Pour le moment, le fichier `paystack.yaml` est la seule spécification qui s'ouvre automatiquement dans votre navigateur. Si la spécification ne s'ouvre pas automatiquement dans votre navigateur, vous pouvez ouvrir manuellement http://localhost:7070 dans votre navigateur.
 
+> [!NOTE]
+> Pour le moment, le fichier `paystack.yaml` est la seule spécification qui s'ouvre automatiquement dans votre navigateur. Si la spécification ne s'ouvre pas automatiquement dans votre navigateur, vous pouvez ouvrir manuellement http://localhost:7070 dans votre navigateur.
 
 ## Composants
 
@@ -47,11 +45,9 @@ Il y a deux dossiers d'intérêt de niveau supérieur dans ce dépôt :
 - `use_cases` : il s'agit d'un ensemble de spécifications contenant des API pour les cas d'utilisation courants de l'API Paystack (par exemple, `wallet.yaml`, `betting.yaml`). Ceux-ci sont utilisés pour créer les collections dans notre [Espace de travail Postman](https://www.postman.com/paystack-developers?tab=collections).
 - `dist` : contient les fichiers de spécifications OpenAPI groupés (par exemple, `paystack.yaml`, `betting.yaml`) générés à partir de `src`.
 
-
 ## SDK
 
 Ce référentiel contient également des SDK TypeScript générés à partir de la spécification OpenAPI dans `src/assets/sdk/paystack.yaml`.
-
 
 ### Node (serveur)
 
@@ -71,7 +67,6 @@ const { data, error } = await paystack.transaction_initialize({
 if (error) throw error;
 ```
 
-
 ### Axios (serveur)
 
 - Contenu : `@alexasomba/paystack-axios`.
@@ -90,7 +85,6 @@ const { data, error } = await paystack.transaction_initialize({
 if (error) throw error;
 ```
 
-
 ### Navigateur
 
 - Contenu : `@alexasomba/paystack-browser`.
@@ -108,7 +102,6 @@ const { data, error } = await paystack.POST("/transaction/initialize", {
 
 if (error) throw error;
 ```
-
 
 ### En ligne (JS/TS)
 
@@ -130,13 +123,11 @@ paystack.setup({
 });
 ```
 
-
 ### Construire localement
 
 ```sh
 vp run sdk:build
 ```
-
 
 ### Synchronisation et préparation à la publication
 
@@ -151,7 +142,6 @@ La source OpenAPI circule dans la source du SDK générée, puis dans les dépô
 5. Synchronisez la sortie du SDK générée avec `vp run sdk:sync:local` pour une vérification locale, puis avec `vp run sdk:sync:all` lorsque vous êtes prêt à envoyer les dépôts fractionnés.
 6. Poussez la balise `v*` correspondante vers la source et divisez les dépôts du SDK, puis créez ou actualisez les versions GitHub avec `vp run sdk:release:github -- v1.10.7`.
 7. Publiez les versions du package à partir des dépôts du SDK fractionné une fois que la source générée a été synchronisée et que les versions du package ont été modifiées. Les dépôts du SDK TypeScript sont publiés sur npm via `.github/workflows/publish-npm.yml` à l'aide de npm Trusted Publisher, donc aucun jeton npm n'est requis dans les actions GitHub.
-
 
 ### Autres langues (générées)
 
@@ -169,7 +159,6 @@ vp run sdk:others:generate
 
 Chaque dossier contient son propre README avec des instructions d'utilisation et d'installation spécifiques à la langue.
 
-
 ### Packagiste (PHP)
 
 Packagist (public) attend un référentiel VCS dans lequel le `composer.json` du package se trouve à la racine du référentiel. Étant donné que ce référentiel est un monorepo et que le SDK PHP réside dans `sdks/php`, la publication sur Packagist est gérée en divisant `sdks/php` dans son propre référentiel.
@@ -179,7 +168,6 @@ Packagist (public) attend un référentiel VCS dans lequel le `composer.json` du
 - Packagist n'a besoin que du dépôt divisé et de ses balises. Utilisez le workflow `Register package on Packagist` manuellement si le package doit être créé ou actualisé.
 - Configurez `PACKAGIST_TOKEN` et, lorsque le jeton n'est pas déjà sous la forme `username:token`, `PACKAGIST_USERNAME` pour le workflow d'enregistrement manuel.
 
-
 ## Contribuer
 
 Voici quelques-unes des façons de contribuer à ce référentiel :
@@ -188,16 +176,13 @@ Voici quelques-unes des façons de contribuer à ce référentiel :
 - Soulever un problème
 - Proposer une amélioration
 
-
 ## Problèmes
 
 Vous pouvez [ouvrir un problème](https://github.com/alexasomba/paystack-openapi/issues) si vous découvrez un bug ou rencontrez des problèmes lors de l'utilisation de ce dépôt.
 
-
 ## Licence
 
 Ce référentiel est mis à disposition sous la licence MIT. Veuillez lire le fichier [LICENSE](https://github.com/alexasomba/paystack-openapi/blob/main/LICENSE) pour plus d'informations.
-
 
 ## Synchronisation sécurisée du SDK
 

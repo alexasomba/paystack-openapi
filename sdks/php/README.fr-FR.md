@@ -4,13 +4,11 @@
 
 Client PHP pour l'API Paystack, généré à partir de la spécification Paystack OpenAPI dans ce référentiel.
 
-
 ## Pourquoi ce SDK
 
 - Généré à partir de la source de vérité Paystack OpenAPI dans ce dépôt
 - Inclut des aides opt-in pour les délais d'attente, les tentatives, l'idempotence et les erreurs d'API structurées
 - Maintient les modèles générés et les classes API alignés sur les spécifications de génération du SDK
-
 
 ## Exigences
 
@@ -45,7 +43,6 @@ $config = Configuration::getDefaultConfiguration()
     ->setAccessToken($_ENV['PAYSTACK_SECRET_KEY']);
 ```
 
-
 ## Démarrage rapide
 
 ```php
@@ -74,7 +71,6 @@ echo $response->getData()->getAuthorizationUrl() . PHP_EOL;
 
 Les méthodes API générées renvoient des objets de modèle typés. Attrapez `ApiException` lorsque vous avez besoin de codes d'état bruts, d'en-têtes ou de corps de réponse lors du débogage.
 
-
 ## Bases de l'API
 
 - URL de base : `https://api.paystack.co`
@@ -82,7 +78,6 @@ Les méthodes API générées renvoient des objets de modèle typés. Attrapez `
 - Les demandes et les réponses sont basées sur JSON.
 - Les réponses les plus réussies suivent l'enveloppe `status`, `message`, `data` et l'enveloppe optionnelle `meta` décrite dans `Paystack-API/0a-Introduction.md`.
 - Les montants sont généralement envoyés en sous-unités monétaires telles que le kobo, les pesewas ou les centimes. Consultez la documentation du module pour connaître les règles spécifiques aux devises.
-
 
 ## Authentification et environnements
 
@@ -92,7 +87,6 @@ Les méthodes API générées renvoient des objets de modèle typés. Attrapez `
 - Les modes test et live utilisent différentes clés et environnements isolés.
 - Faites pivoter les clés si elles sont exposées et ne confiez jamais les clés secrètes au contrôle de code source.
 - Si vous activez la liste blanche des adresses IP dans Paystack, les demandes provenant d'adresses IP non sur liste blanche seront bloquées.
-
 
 ## Fiabilité
 
@@ -111,7 +105,6 @@ $client = HttpClientFactory::create([
 
 Utilisez la couche d'extras lorsque vous souhaitez définir en un seul endroit les paramètres par défaut de délai d'expiration, de nouvelle tentative et d'idempotence dans votre application.
 
-
 ## Pagination
 
 - Paystack prend en charge à la fois la pagination décalée et la pagination du curseur.
@@ -120,9 +113,7 @@ Utilisez la couche d'extras lorsque vous souhaitez définir en un seul endroit l
 - La pagination du curseur est particulièrement utile pour les ensembles de données volumineux ou qui changent fréquemment.
 - La forme exacte du `meta` varie selon le point final et le mode de pagination.
 
-
 ## Couverture
-
 
 ## Erreurs
 
@@ -137,45 +128,43 @@ Ce SDK est généré à partir de la spécification SDK dans ce monorepo et couv
 
 Pour ce SDK, ces familles de schémas sont émises en tant que classes de modèles générées sous `lib/Model` et utilisées par les classes API sous `lib/Api`.
 
-| Module | Schéma / famille de modèles |
-| -------------------------------------------------------------------- | ---------------------------------------------------- |
-| Opérations | `Transaction*` |
-| Vérifier les paiements (vérification des transactions) | `VerifyResponse / TransactionFetchResponse` |
-| Frais | `Charge*` |
-| Frais de gros | `BulkCharge*` |
-| Sous-comptes | `Subaccount*` |
-| Fractionnements de transactions | `Split*` |
-| Borne | `Terminal*` |
-| Terminal virtuel | `VirtualTerminal*` |
-| Clients | `Customer*` |
-| Prélèvement automatique | `DirectDebit*` |
-| Comptes virtuels dédiés | `DedicatedNuban* / DedicatedVirtualAccount*` |
-| Apple Payer | `ApplePay*` |
-| Forfaits | `Plan*` |
-| Abonnements | `Subscription*` |
-| Destinataires du transfert | `TransferRecipient*` |
-| Transferts | `Transfer*` |
-| Contrôle des transferts (paramètres OTP ; sous Transferts) | `TransferEnable* / TransferDisable* / TransferFinalize*` |
-| Solde | `Balance*` |
-| Demandes de paiement (factures) | `PaymentRequest*` |
-| Vérification (Résoudre le compte / Valider le compte / Résoudre le BIN de la carte) | `Verification*` |
-| Produits | `Product*` |
-| Vitrines de magasins | `Storefront*` |
-| Commandes | `Order*` |
-| Pages de paiement | `Page*` |
-| Règlements | `Settlement*` |
-| Intégration | `Integration*` |
-| Panneau de configuration (Délai d'expiration de la session de paiement ; sous Intégration) | `ControlPanel*` |
-| Remboursements | `Refund*` |
-| Litiges | `Dispute*` |
-| Banques | `Bank*` |
-| Divers | `Miscellaneous* / Currency` |
-
+| Module                                                                                     | Schéma / famille de modèles                              |
+| ------------------------------------------------------------------------------------------ | -------------------------------------------------------- |
+| Opérations                                                                                 | `Transaction*`                                           |
+| Vérifier les paiements (vérification des transactions)                                     | `VerifyResponse / TransactionFetchResponse`              |
+| Frais                                                                                      | `Charge*`                                                |
+| Frais de gros                                                                              | `BulkCharge*`                                            |
+| Sous-comptes                                                                               | `Subaccount*`                                            |
+| Fractionnements de transactions                                                            | `Split*`                                                 |
+| Borne                                                                                      | `Terminal*`                                              |
+| Terminal virtuel                                                                           | `VirtualTerminal*`                                       |
+| Clients                                                                                    | `Customer*`                                              |
+| Prélèvement automatique                                                                    | `DirectDebit*`                                           |
+| Comptes virtuels dédiés                                                                    | `DedicatedNuban* / DedicatedVirtualAccount*`             |
+| Apple Payer                                                                                | `ApplePay*`                                              |
+| Forfaits                                                                                   | `Plan*`                                                  |
+| Abonnements                                                                                | `Subscription*`                                          |
+| Destinataires du transfert                                                                 | `TransferRecipient*`                                     |
+| Transferts                                                                                 | `Transfer*`                                              |
+| Contrôle des transferts (paramètres OTP ; sous Transferts)                                 | `TransferEnable* / TransferDisable* / TransferFinalize*` |
+| Solde                                                                                      | `Balance*`                                               |
+| Demandes de paiement (factures)                                                            | `PaymentRequest*`                                        |
+| Vérification (Résoudre le compte / Valider le compte / Résoudre le BIN de la carte)        | `Verification*`                                          |
+| Produits                                                                                   | `Product*`                                               |
+| Vitrines de magasins                                                                       | `Storefront*`                                            |
+| Commandes                                                                                  | `Order*`                                                 |
+| Pages de paiement                                                                          | `Page*`                                                  |
+| Règlements                                                                                 | `Settlement*`                                            |
+| Intégration                                                                                | `Integration*`                                           |
+| Panneau de configuration (Délai d'expiration de la session de paiement ; sous Intégration) | `ControlPanel*`                                          |
+| Remboursements                                                                             | `Refund*`                                                |
+| Litiges                                                                                    | `Dispute*`                                               |
+| Banques                                                                                    | `Bank*`                                                  |
+| Divers                                                                                     | `Miscellaneous* / Currency`                              |
 
 ## Exemples de modules
 
 Ce sont des exemples volontairement courts. Utilisez-les comme points d'entrée, puis développez les objets de modèle générés et les arguments de méthode API pour votre cas d'utilisation.
-
 
 ### Transactions
 
@@ -185,20 +174,17 @@ $response = $transactionApi->transactionInitialize(
 );
 ```
 
-
 ### Vérifier les paiements (vérification des transactions)
 
 ```php
 $verified = $transactionApi->transactionVerify('ref_123');
 ```
 
-
 ### Frais
 
 ```php
 $chargeApi->chargeCreate(new ChargeCreateRequest(['email' => 'customer@example.com']));
 ```
-
 
 ### Frais groupés
 
@@ -208,13 +194,11 @@ $bulkChargeApi->bulkChargeInitiate([
 ]);
 ```
 
-
 ### Sous-comptes
 
 ```php
 $subaccountApi->subaccountCreate(new SubaccountCreate(['business_name' => 'Acme Stores']));
 ```
-
 
 ### Répartition des transactions
 
@@ -222,12 +206,11 @@ $subaccountApi->subaccountCreate(new SubaccountCreate(['business_name' => 'Acme 
 $splitApi->splitCreate(new SplitCreate(['name' => 'Main split', 'type' => 'percentage', 'currency' => 'NGN']));
 ```
 
-
 ### Terminal
+
 ```php
 $terminals = $terminalApi->terminalList();
 ```
-
 
 ### Terminal virtuel
 
@@ -235,13 +218,11 @@ $terminals = $terminalApi->terminalList();
 $virtualTerminalApi->virtualTerminalCreate(new VirtualTerminalCreate(['name' => 'Web checkout terminal']));
 ```
 
-
 ### Clients
 
 ```php
 $customerApi->customerCreate(new CustomerCreate(['email' => 'customer@example.com']));
 ```
-
 
 ### Prélèvement automatique
 
@@ -249,13 +230,11 @@ $customerApi->customerCreate(new CustomerCreate(['email' => 'customer@example.co
 $directDebitApi->directdebitInitialize(new DirectDebitInitializeRequest(['email' => 'customer@example.com']));
 ```
 
-
 ### Comptes virtuels dédiés
 
 ```php
 $dedicatedVirtualAccountApi->dedicatedAccountAssign(new DedicatedVirtualAccountAssign(['customer' => 12345]));
 ```
-
 
 ### Apple Pay
 
@@ -263,12 +242,11 @@ $dedicatedVirtualAccountApi->dedicatedAccountAssign(new DedicatedVirtualAccountA
 $applePayApi->applePayRegisterDomain(new ApplePayParam(['domain_name' => 'example.com']));
 ```
 
-
 ### Plans
+
 ```php
 $planApi->planCreate(new PlanCreate(['name' => 'Starter', 'amount' => 500000, 'interval' => 'monthly']));
 ```
-
 
 ### Abonnements
 
@@ -276,13 +254,11 @@ $planApi->planCreate(new PlanCreate(['name' => 'Starter', 'amount' => 500000, 'i
 $subscriptionApi->subscriptionCreate(new SubscriptionCreate(['customer' => 'CUS_xxx', 'plan' => 'PLN_xxx']));
 ```
 
-
 ### Destinataires du transfert
 
 ```php
 $transferRecipientApi->transferrecipientCreate(new TransferRecipientCreate(['name' => 'Ada Lovelace', 'type' => 'nuban']));
 ```
-
 
 ### Transferts
 
@@ -290,13 +266,11 @@ $transferRecipientApi->transferrecipientCreate(new TransferRecipientCreate(['nam
 $transferApi->transferCreate(new TransferInitiate(['source' => 'balance', 'amount' => 5000, 'recipient' => 'RCP_xxx']));
 ```
 
-
 ### Contrôle des transferts (paramètres OTP ; sous Transferts)
 
 ```php
 $transferApi->transferEnableOtp();
 ```
-
 
 ### Solde
 
@@ -304,13 +278,11 @@ $transferApi->transferEnableOtp();
 $balance = $balanceApi->balanceFetch();
 ```
 
-
 ### Demandes de paiement (factures)
 
 ```php
 $paymentRequestApi->paymentRequestCreate(new PaymentRequestCreate(['amount' => 5000, 'description' => 'Consulting invoice']));
 ```
-
 
 ### Vérification (Résoudre le compte / Valider le compte / Résoudre le BIN de la carte)
 
@@ -318,13 +290,11 @@ $paymentRequestApi->paymentRequestCreate(new PaymentRequestCreate(['amount' => 5
 $resolved = $bankApi->bankResolveAccountNumber('0001234567', '057');
 ```
 
-
 ### Produits
 
 ```php
 $productApi->productCreate(new ProductCreate(['name' => 'T-shirt', 'price' => 5000, 'currency' => 'NGN']));
 ```
-
 
 ### Vitrines de magasins
 
@@ -332,13 +302,11 @@ $productApi->productCreate(new ProductCreate(['name' => 'T-shirt', 'price' => 50
 $storefronts = $storefrontApi->storefrontList();
 ```
 
-
 ### Commandes
 
 ```php
 $orderApi->orderCreate(new OrderCreate(['customer' => 'CUS_xxx']));
 ```
-
 
 ### Pages de paiement
 
@@ -346,13 +314,11 @@ $orderApi->orderCreate(new OrderCreate(['customer' => 'CUS_xxx']));
 $pageApi->pageCreate(new PageCreate(['name' => 'Event Ticket', 'amount' => 5000]));
 ```
 
-
 ### Règlements
 
 ```php
 $settlements = $settlementApi->settlementList();
 ```
-
 
 ### Intégration
 
@@ -360,13 +326,11 @@ $settlements = $settlementApi->settlementList();
 $timeout = $integrationApi->integrationFetchPaymentSessionTimeout();
 ```
 
-
 ### Panneau de configuration (Délai d'expiration de la session de paiement ; sous Intégration)
 
 ```php
 $integrationApi->integrationUpdatePaymentSessionTimeout(20);
 ```
-
 
 ### Remboursements
 
@@ -374,13 +338,11 @@ $integrationApi->integrationUpdatePaymentSessionTimeout(20);
 $refundApi->refundCreate(new RefundCreate(['transaction' => 123456789, 'amount' => 5000]));
 ```
 
-
 ### Litiges
 
 ```php
 $disputes = $disputeApi->disputeList();
 ```
-
 
 ### Banques
 
@@ -388,18 +350,15 @@ $disputes = $disputeApi->disputeList();
 $banks = $bankApi->bankList('nigeria');
 ```
 
-
 ### Divers
 
 ```php
 $countries = $miscellaneousApi->miscellaneousListCountries();
 ```
 
-
 ## Notes de configuration
 
 Le client PHP généré expose toujours la surface de configuration standard d'OpenAPI Generator. Dans la plupart des intégrations, la principale exigence est de définir le jeton du porteur et éventuellement de l'échanger dans un client Guzzle personnalisé.
-
 
 ## SDK associés
 
@@ -408,7 +367,6 @@ Le client PHP généré expose toujours la surface de configuration standard d'O
 - Navigateur : [alexasomba/paystack-browser](https://github.com/alexasomba/paystack-browser)
 - Allez : [alexasomba/paystack-go](https://github.com/alexasomba/paystack-go)
 - Python : [alexasomba/paystack-python](https://github.com/alexasomba/paystack-python)
-
 
 ## Source
 

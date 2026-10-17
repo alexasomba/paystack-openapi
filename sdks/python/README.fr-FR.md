@@ -4,13 +4,11 @@
 
 Client Python pour l'API Paystack, généré à partir de la spécification Paystack OpenAPI dans ce référentiel.
 
-
 ## Pourquoi ce SDK
 
 - Généré à partir de la source de vérité Paystack OpenAPI dans ce dépôt
 - Inclut des aides opt-in pour les délais d'attente, les tentatives, l'idempotence et les erreurs d'API structurées
 - Maintient les modèles et les API générés alignés sur les spécifications de génération du SDK
-
 
 ## Exigences
 
@@ -42,7 +40,6 @@ configuration = alexasomba_paystack.Configuration(
 )
 ```
 
-
 ## Démarrage rapide
 
 ```python
@@ -69,7 +66,6 @@ with alexasomba_paystack.ApiClient(configuration) as api_client:
 
 Les appels d'API générés renvoient des instances de modèle typées. Capturez `ApiException` lorsque vous avez besoin des détails bruts de la réponse HTTP lors du débogage.
 
-
 ## Bases de l'API
 
 - URL de base : `https://api.paystack.co`
@@ -77,7 +73,6 @@ Les appels d'API générés renvoient des instances de modèle typées. Capturez
 - Les demandes et les réponses sont basées sur JSON.
 - Les réponses les plus réussies suivent les enveloppes `status`, `message`, `data` et `meta` en option décrites dans `Paystack-API/0a-Introduction.md`.
 - Les montants sont généralement envoyés en sous-unités monétaires telles que le kobo, les pesewas ou les centimes. Consultez la documentation du module pour connaître les règles spécifiques aux devises.
-
 
 ## Authentification et environnements
 
@@ -87,7 +82,6 @@ Les appels d'API générés renvoient des instances de modèle typées. Capturez
 - Les modes test et live utilisent différentes clés et environnements isolés.
 - Faites pivoter les clés si elles sont exposées et ne confiez jamais les clés secrètes au contrôle de code source.
 - Si vous activez la liste blanche des adresses IP dans Paystack, les demandes provenant d'adresses IP non sur liste blanche seront bloquées.
-
 
 ## Fiabilité
 
@@ -105,7 +99,6 @@ client = create_paystack_client(
 
 Utilisez la couche extras lorsque vous souhaitez un client de niveau supérieur avec un comportement de délai d'attente, de nouvelle tentative et d'idempotence préconfiguré.
 
-
 ## Pagination
 
 - Paystack prend en charge à la fois la pagination décalée et la pagination du curseur.
@@ -114,9 +107,7 @@ Utilisez la couche extras lorsque vous souhaitez un client de niveau supérieur 
 - La pagination du curseur est particulièrement utile pour les ensembles de données volumineux ou qui changent fréquemment.
 - La forme exacte du `meta` varie selon le point final et le mode de pagination.
 
-
 ## Couverture
-
 
 ## Erreurs
 
@@ -131,45 +122,43 @@ Ce SDK est généré à partir de la spécification SDK dans ce monorepo et couv
 
 Pour ce SDK, ces familles de schémas sont émises en tant que modules de modèle générés sous `alexasomba_paystack.models` et utilisées par les modules API générés sous `alexasomba_paystack.api`.
 
-| Module | Schéma / famille de modèles |
-| -------------------------------------------------------------------- | ---------------------------------------------------- |
-| Opérations | `Transaction*` |
-| Vérifier les paiements (vérification des transactions) | `VerifyResponse / TransactionFetchResponse` |
-| Frais | `Charge*` |
-| Frais de gros | `BulkCharge*` |
-| Sous-comptes | `Subaccount*` |
-| Fractionnements de transactions | `Split*` |
-| Borne | `Terminal*` |
-| Terminal virtuel | `VirtualTerminal*` |
-| Clients | `Customer*` |
-| Prélèvement automatique | `DirectDebit*` |
-| Comptes virtuels dédiés | `DedicatedNuban* / DedicatedVirtualAccount*` |
-| Apple Payer | `ApplePay*` |
-| Forfaits | `Plan*` |
-| Abonnements | `Subscription*` |
-| Destinataires du transfert | `TransferRecipient*` |
-| Transferts | `Transfer*` |
-| Contrôle des transferts (paramètres OTP ; sous Transferts) | `TransferEnable* / TransferDisable* / TransferFinalize*` |
-| Solde | `Balance*` |
-| Demandes de paiement (factures) | `PaymentRequest*` |
-| Vérification (Résoudre le compte / Valider le compte / Résoudre le BIN de la carte) | `Verification*` |
-| Produits | `Product*` |
-| Vitrines de magasins | `Storefront*` |
-| Commandes | `Order*` |
-| Pages de paiement | `Page*` |
-| Règlements | `Settlement*` |
-| Intégration | `Integration*` |
-| Panneau de configuration (Délai d'expiration de la session de paiement ; sous Intégration) | `ControlPanel*` |
-| Remboursements | `Refund*` |
-| Litiges | `Dispute*` |
-| Banques | `Bank*` |
-| Divers | `Miscellaneous* / Currency` |
-
+| Module                                                                                     | Schéma / famille de modèles                              |
+| ------------------------------------------------------------------------------------------ | -------------------------------------------------------- |
+| Opérations                                                                                 | `Transaction*`                                           |
+| Vérifier les paiements (vérification des transactions)                                     | `VerifyResponse / TransactionFetchResponse`              |
+| Frais                                                                                      | `Charge*`                                                |
+| Frais de gros                                                                              | `BulkCharge*`                                            |
+| Sous-comptes                                                                               | `Subaccount*`                                            |
+| Fractionnements de transactions                                                            | `Split*`                                                 |
+| Borne                                                                                      | `Terminal*`                                              |
+| Terminal virtuel                                                                           | `VirtualTerminal*`                                       |
+| Clients                                                                                    | `Customer*`                                              |
+| Prélèvement automatique                                                                    | `DirectDebit*`                                           |
+| Comptes virtuels dédiés                                                                    | `DedicatedNuban* / DedicatedVirtualAccount*`             |
+| Apple Payer                                                                                | `ApplePay*`                                              |
+| Forfaits                                                                                   | `Plan*`                                                  |
+| Abonnements                                                                                | `Subscription*`                                          |
+| Destinataires du transfert                                                                 | `TransferRecipient*`                                     |
+| Transferts                                                                                 | `Transfer*`                                              |
+| Contrôle des transferts (paramètres OTP ; sous Transferts)                                 | `TransferEnable* / TransferDisable* / TransferFinalize*` |
+| Solde                                                                                      | `Balance*`                                               |
+| Demandes de paiement (factures)                                                            | `PaymentRequest*`                                        |
+| Vérification (Résoudre le compte / Valider le compte / Résoudre le BIN de la carte)        | `Verification*`                                          |
+| Produits                                                                                   | `Product*`                                               |
+| Vitrines de magasins                                                                       | `Storefront*`                                            |
+| Commandes                                                                                  | `Order*`                                                 |
+| Pages de paiement                                                                          | `Page*`                                                  |
+| Règlements                                                                                 | `Settlement*`                                            |
+| Intégration                                                                                | `Integration*`                                           |
+| Panneau de configuration (Délai d'expiration de la session de paiement ; sous Intégration) | `ControlPanel*`                                          |
+| Remboursements                                                                             | `Refund*`                                                |
+| Litiges                                                                                    | `Dispute*`                                               |
+| Banques                                                                                    | `Bank*`                                                  |
+| Divers                                                                                     | `Miscellaneous* / Currency`                              |
 
 ## Exemples de modules
 
 Ce sont des exemples volontairement courts. Utilisez-les comme points d'entrée, puis développez les modèles générés et les arguments de méthode pour votre cas d'utilisation.
-
 
 ### Transactions
 
@@ -179,13 +168,11 @@ response = transaction_api.transaction_initialize(
 )
 ```
 
-
 ### Vérifier les paiements (vérification des transactions)
 
 ```python
 verified = transaction_api.transaction_verify("ref_123")
 ```
-
 
 ### Frais
 
@@ -195,7 +182,6 @@ charge_api.charge_create(
 )
 ```
 
-
 ### Frais groupés
 
 ```python
@@ -203,7 +189,6 @@ bulk_charge_api.bulk_charge_initiate([
     BulkChargeInitiate(authorization="AUTH_xxx", amount=5000, reference="bulk-ref-1")
 ])
 ```
-
 
 ### Sous-comptes
 
@@ -213,7 +198,6 @@ subaccount_api.subaccount_create(
 )
 ```
 
-
 ### Répartition des transactions
 
 ```python
@@ -222,12 +206,11 @@ split_api.split_create(
 )
 ```
 
-
 ### Terminal
+
 ```python
 terminals = terminal_api.terminal_list()
 ```
-
 
 ### Terminal virtuel
 
@@ -237,7 +220,6 @@ virtual_terminal_api.virtual_terminal_create(
 )
 ```
 
-
 ### Clients
 
 ```python
@@ -245,7 +227,6 @@ customer_api.customer_create(
     customer_create=CustomerCreate(email="customer@example.com")
 )
 ```
-
 
 ### Prélèvement automatique
 
@@ -255,7 +236,6 @@ direct_debit_api.directdebit_initialize(
 )
 ```
 
-
 ### Comptes virtuels dédiés
 
 ```python
@@ -263,7 +243,6 @@ dedicated_virtual_account_api.dedicated_account_assign(
     dedicated_virtual_account_assign=DedicatedVirtualAccountAssign(customer=12345)
 )
 ```
-
 
 ### Apple Pay
 
@@ -273,14 +252,13 @@ apple_pay_api.apple_pay_register_domain(
 )
 ```
 
-
 ### Plans
+
 ```python
 plan_api.plan_create(
     plan_create=PlanCreate(name="Starter", amount=500000, interval="monthly")
 )
 ```
-
 
 ### Abonnements
 
@@ -290,7 +268,6 @@ subscription_api.subscription_create(
 )
 ```
 
-
 ### Destinataires du transfert
 
 ```python
@@ -298,7 +275,6 @@ transfer_recipient_api.transferrecipient_create(
     transfer_recipient_create=TransferRecipientCreate(name="Ada Lovelace", type="nuban")
 )
 ```
-
 
 ### Transferts
 
@@ -308,20 +284,17 @@ transfer_api.transfer_create(
 )
 ```
 
-
 ### Contrôle des transferts (paramètres OTP ; sous Transferts)
 
 ```python
 transfer_api.transfer_enable_otp()
 ```
 
-
 ### Solde
 
 ```python
 balance = balance_api.balance_fetch()
 ```
-
 
 ### Demandes de paiement (factures)
 
@@ -331,13 +304,11 @@ payment_request_api.payment_request_create(
 )
 ```
 
-
 ### Vérification (Résoudre le compte / Valider le compte / Résoudre le BIN de la carte)
 
 ```python
 resolved = bank_api.bank_resolve_account_number("0001234567", "057")
 ```
-
 
 ### Produits
 
@@ -347,13 +318,11 @@ product_api.product_create(
 )
 ```
 
-
 ### Vitrines de magasins
 
 ```python
 storefronts = storefront_api.storefront_list()
 ```
-
 
 ### Commandes
 
@@ -361,13 +330,11 @@ storefronts = storefront_api.storefront_list()
 order_api.order_create(order_create=OrderCreate(customer="CUS_xxx"))
 ```
 
-
 ### Pages de paiement
 
 ```python
 page_api.page_create(page_create=PageCreate(name="Event Ticket", amount=5000))
 ```
-
 
 ### Règlements
 
@@ -375,13 +342,11 @@ page_api.page_create(page_create=PageCreate(name="Event Ticket", amount=5000))
 settlements = settlement_api.settlement_list()
 ```
 
-
 ### Intégration
 
 ```python
 timeout = integration_api.integration_fetch_payment_session_timeout()
 ```
-
 
 ### Panneau de configuration (Délai d'expiration de la session de paiement ; sous Intégration)
 
@@ -389,13 +354,11 @@ timeout = integration_api.integration_fetch_payment_session_timeout()
 integration_api.integration_update_payment_session_timeout(20)
 ```
 
-
 ### Remboursements
 
 ```python
 refund_api.refund_create(refund_create=RefundCreate(transaction=123456789, amount=5000))
 ```
-
 
 ### Litiges
 
@@ -403,13 +366,11 @@ refund_api.refund_create(refund_create=RefundCreate(transaction=123456789, amoun
 disputes = dispute_api.dispute_list()
 ```
 
-
 ### Banques
 
 ```python
 banks = bank_api.bank_list(country="nigeria")
 ```
-
 
 ### Divers
 
@@ -417,11 +378,9 @@ banks = bank_api.bank_list(country="nigeria")
 countries = miscellaneous_api.miscellaneous_list_countries()
 ```
 
-
 ## Notes de configuration
 
 Le client Python généré expose toujours la surface de configuration standard d'OpenAPI Generator. En utilisation normale, la principale chose dont vous avez besoin est la configuration du jeton du porteur ainsi que tout réglage facultatif du client HTTP.
-
 
 ## SDK associés
 
@@ -430,7 +389,6 @@ Le client Python généré expose toujours la surface de configuration standard 
 - Navigateur : [alexasomba/paystack-browser](https://github.com/alexasomba/paystack-browser)
 - Allez : [alexasomba/paystack-go](https://github.com/alexasomba/paystack-go)
 - PHP : [alexasomba/paystack-php](https://github.com/alexasomba/paystack-php)
-
 
 ## Source
 
